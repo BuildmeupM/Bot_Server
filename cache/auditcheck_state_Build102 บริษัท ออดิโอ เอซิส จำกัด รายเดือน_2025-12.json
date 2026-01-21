@@ -1,0 +1,738 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-01-21T12:47:41.392Z",
+  "last_saved": "2026-01-21T19:47:41.161354",
+  "company": "Build102 บริษัท ออดิโอ เอซิส จำกัด รายเดือน",
+  "taxMonth": "2025-12",
+  "taxYear": "2025",
+  "taxMonthValue": "12",
+  "comparisonNotes": {
+    "0": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: IVHQ25100216",
+    "1": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: IVHQ25110055",
+    "2": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: IV0000177963",
+    "4": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: VHC68128173156",
+    "5": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: RS4IE25120070579",
+    "6": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI52F232512A-2512000045",
+    "7": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105535099511' แต่ OCR='0105533099511'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI52Y712566B-2512-000022' แต่ OCR='TJ52Y712566B-2512-000022'",
+    "8": "เหมือนต้องมี - ",
+    "10": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: RS4IE25120072231",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO30092330B-2512-000534' แต่ OCR='TI030092330B-2512-000534'",
+    "12": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI52F032562A-2512-000271' แต่ OCR='FIS:F031562A-2512-000271'",
+    "13": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TIO000016812001160",
+    "14": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: IVHQ25120060",
+    "16": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: YZPG02590516664",
+    "17": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: RS4IE25120073161",
+    "18": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด' แต่ OCR='บริษัท ปิโตรเลียมไทยคอร์ปอเรชัน จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI5261K0377B-2512-000565' แต่ OCR='T15261K037/B-2512-000565'",
+    "19": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: WE1252/680025880",
+    "20": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอสเอสเอ็ม. เซอร์วิส จำกัด' แต่ OCR='บริษัท เอสแอลเอ็ม เซอร์วิส จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016812000718' แต่ OCR='TI0000016812000718'",
+    "21": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เต็กย้ง ทวีทรัพย์ จำกัด' แต่ OCR='บจก. เด็กยัง ทรัพย์'",
+    "22": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI5203W2258A-2512-000772",
+    "23": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI5263B0248A-2512-000390",
+    "24": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI525151866B-2512-000407",
+    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอสเอ็มเค ออยล์ จำกัด' แต่ OCR='บริษัท เอส เอ็ม เค ออยล์ จำกัด'",
+    "26": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: PKTIE25120102026",
+    "27": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: IV-202512116",
+    "29": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: INV2025120624",
+    "30": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขารังสิต คลองสี่)'",
+    "31": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI5211B2545C-2512-000445",
+    "32": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI522051926A-2512-001101",
+    "33": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: RT-20251200313",
+    "34": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ดาวธัญบุรี จำกัด' แต่ OCR='บริษัท ดาวปัญญา จำกัด'",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขารังสิต คลองสี่)'",
+    "36": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอสเอสเอ็ม. เซอร์วิส จำกัด' แต่ OCR='บริษัท เอสแอลเอ็ม. เซอร์วิส จำกัด'",
+    "37": "ขัด บริษัทออก",
+    "38": "สาขาไม่ตรงกัน: ภาษีซื้อ='00621' แต่ OCR='00001'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI520111768A-2512-000574' แต่ OCR='AB520111768A-2512-013300'",
+    "39": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI525151866A-2512-000863' แต่ OCR='T1525151866A-2512-000863'",
+    "40": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='VI6812-0091' แต่ OCR='V16812-0091'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='26/12/2025' แต่ OCR='26/12/2023'",
+    "41": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: 100/4955"
+  },
+  "initialNotes": {
+    "0": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: IVHQ25100216",
+    "1": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: IVHQ25110055",
+    "2": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: IV0000177963",
+    "4": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: VHC68128173156",
+    "5": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: RS4IE25120070579",
+    "6": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI52F232512A-2512000045",
+    "7": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105535099511' แต่ OCR='0105533099511'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI52Y712566B-2512-000022' แต่ OCR='TJ52Y712566B-2512-000022'",
+    "8": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI5203W2258A 2512 000242",
+    "10": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: RS4IE25120072231",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โชคดี  ออยล์ จำกัด' แต่ OCR='บริษัท โชคดีออยล์ จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO30092330B-2512-000534' แต่ OCR='TI030092330B-2512-000534'",
+    "12": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI52F032562A-2512-000271' แต่ OCR='FIS:F031562A-2512-000271'",
+    "13": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TIO000016812001160",
+    "14": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: IVHQ25120060",
+    "16": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: YZPG02590516664",
+    "17": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: RS4IE25120073161",
+    "18": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด' แต่ OCR='บริษัท ปิโตรเลียมไทยคอร์ปอเรชัน จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI5261K0377B-2512-000565' แต่ OCR='T15261K037/B-2512-000565'",
+    "19": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: WE1252/680025880",
+    "20": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอสเอสเอ็ม. เซอร์วิส จำกัด' แต่ OCR='บริษัท เอสแอลเอ็ม เซอร์วิส จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016812000718' แต่ OCR='TI0000016812000718'",
+    "21": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เต็กย้ง ทวีทรัพย์ จำกัด' แต่ OCR='บจก. เด็กยัง ทรัพย์'",
+    "22": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI5203W2258A-2512-000772",
+    "23": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI5263B0248A-2512-000390",
+    "24": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI525151866B-2512-000407",
+    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอสเอ็มเค ออยล์ จำกัด' แต่ OCR='บริษัท เอส เอ็ม เค ออยล์ จำกัด'",
+    "26": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: PKTIE25120102026",
+    "27": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: IV-202512116",
+    "29": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: INV2025120624",
+    "30": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขารังสิต คลองสี่)'",
+    "31": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI5211B2545C-2512-000445",
+    "32": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: TI522051926A-2512-001101",
+    "33": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: RT-20251200313",
+    "34": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ดาวธัญบุรี จำกัด' แต่ OCR='บริษัท ดาวปัญญา จำกัด'",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขารังสิต คลองสี่)'",
+    "36": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอสเอสเอ็ม. เซอร์วิส จำกัด' แต่ OCR='บริษัท เอสแอลเอ็ม. เซอร์วิส จำกัด'",
+    "37": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: 066812/4802",
+    "38": "สาขาไม่ตรงกัน: ภาษีซื้อ='00621' แต่ OCR='00001'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI520111768A-2512-000574' แต่ OCR='AB520111768A-2512-013300'",
+    "39": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI525151866A-2512-000863' แต่ OCR='T1525151866A-2512-000863'",
+    "40": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='VI6812-0091' แต่ OCR='V16812-0091'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='26/12/2025' แต่ OCR='26/12/2023'",
+    "41": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: 100/4955"
+  },
+  "comparisonApprovals": {
+    "0-document_no_match": true,
+    "0-date_match": true,
+    "0-company_name_match": true,
+    "0-tax_id_match": true,
+    "0-branch_match": true,
+    "0-reference_no_match": true,
+    "0-amount_before_vat_match": true,
+    "0-vat_amount_match": true,
+    "0-total_amount_match": true,
+    "0-document_type_match": true,
+    "1-document_no_match": true,
+    "1-date_match": true,
+    "1-company_name_match": true,
+    "1-tax_id_match": true,
+    "1-branch_match": true,
+    "1-reference_no_match": true,
+    "1-amount_before_vat_match": true,
+    "1-vat_amount_match": true,
+    "1-total_amount_match": true,
+    "1-document_type_match": true,
+    "2-company_name_match": true,
+    "2-document_type_match": true,
+    "2-total_amount_match": true,
+    "2-amount_before_vat_match": true,
+    "2-vat_amount_match": true,
+    "2-reference_no_match": true,
+    "2-branch_match": true,
+    "2-tax_id_match": true,
+    "2-date_match": true,
+    "2-document_no_match": true,
+    "4-document_no_match": true,
+    "4-date_match": true,
+    "4-company_name_match": true,
+    "4-tax_id_match": true,
+    "4-branch_match": true,
+    "4-reference_no_match": true,
+    "4-amount_before_vat_match": true,
+    "4-vat_amount_match": true,
+    "4-total_amount_match": true,
+    "4-document_type_match": true,
+    "5-document_no_match": true,
+    "5-date_match": true,
+    "5-company_name_match": true,
+    "5-tax_id_match": true,
+    "5-branch_match": true,
+    "5-reference_no_match": true,
+    "5-amount_before_vat_match": true,
+    "5-vat_amount_match": true,
+    "5-total_amount_match": true,
+    "5-document_type_match": true,
+    "6-document_no_match": true,
+    "6-date_match": true,
+    "6-company_name_match": true,
+    "6-tax_id_match": true,
+    "6-branch_match": true,
+    "6-reference_no_match": true,
+    "6-amount_before_vat_match": true,
+    "6-vat_amount_match": true,
+    "6-total_amount_match": true,
+    "6-document_type_match": true,
+    "7-document_no_match": true,
+    "7-tax_id_match": true,
+    "8-date_match": true,
+    "8-company_name_match": true,
+    "8-tax_id_match": true,
+    "8-branch_match": true,
+    "8-reference_no_match": true,
+    "8-amount_before_vat_match": true,
+    "8-vat_amount_match": true,
+    "8-total_amount_match": true,
+    "8-document_type_match": true,
+    "10-document_no_match": true,
+    "10-date_match": true,
+    "10-company_name_match": true,
+    "10-tax_id_match": true,
+    "10-branch_match": true,
+    "10-reference_no_match": true,
+    "10-vat_amount_match": true,
+    "10-document_type_match": true,
+    "10-amount_before_vat_match": true,
+    "10-total_amount_match": true,
+    "11-company_name_match": true,
+    "12-document_no_match": true,
+    "13-document_no_match": true,
+    "13-company_name_match": true,
+    "13-date_match": true,
+    "13-tax_id_match": true,
+    "13-branch_match": true,
+    "13-reference_no_match": true,
+    "13-amount_before_vat_match": true,
+    "13-vat_amount_match": true,
+    "13-total_amount_match": true,
+    "13-document_type_match": true,
+    "14-company_name_match": true,
+    "14-date_match": true,
+    "14-document_no_match": true,
+    "14-tax_id_match": true,
+    "14-branch_match": true,
+    "14-reference_no_match": true,
+    "14-amount_before_vat_match": true,
+    "14-vat_amount_match": true,
+    "14-total_amount_match": true,
+    "14-document_type_match": true,
+    "16-document_no_match": true,
+    "16-date_match": true,
+    "16-company_name_match": true,
+    "16-tax_id_match": true,
+    "16-branch_match": true,
+    "16-reference_no_match": true,
+    "16-amount_before_vat_match": true,
+    "16-vat_amount_match": true,
+    "16-total_amount_match": true,
+    "16-document_type_match": true,
+    "17-document_no_match": true,
+    "17-date_match": true,
+    "17-company_name_match": true,
+    "17-tax_id_match": true,
+    "17-branch_match": true,
+    "17-reference_no_match": true,
+    "17-amount_before_vat_match": true,
+    "17-vat_amount_match": true,
+    "17-document_type_match": true,
+    "17-total_amount_match": true,
+    "18-document_no_match": true,
+    "18-company_name_match": true,
+    "19-document_no_match": true,
+    "19-date_match": true,
+    "19-company_name_match": true,
+    "19-tax_id_match": true,
+    "19-branch_match": true,
+    "19-reference_no_match": true,
+    "19-amount_before_vat_match": true,
+    "19-vat_amount_match": true,
+    "19-total_amount_match": true,
+    "19-document_type_match": true,
+    "20-document_no_match": true,
+    "20-company_name_match": true,
+    "21-company_name_match": true,
+    "22-document_no_match": true,
+    "22-date_match": true,
+    "22-company_name_match": true,
+    "22-branch_match": true,
+    "22-tax_id_match": true,
+    "22-reference_no_match": true,
+    "22-amount_before_vat_match": true,
+    "22-vat_amount_match": true,
+    "22-total_amount_match": true,
+    "22-document_type_match": true,
+    "23-document_no_match": true,
+    "23-date_match": true,
+    "23-tax_id_match": true,
+    "23-company_name_match": true,
+    "23-branch_match": true,
+    "23-reference_no_match": true,
+    "23-amount_before_vat_match": true,
+    "23-total_amount_match": true,
+    "23-vat_amount_match": true,
+    "23-document_type_match": true,
+    "24-document_no_match": true,
+    "24-date_match": true,
+    "24-company_name_match": true,
+    "24-tax_id_match": true,
+    "24-branch_match": true,
+    "24-reference_no_match": true,
+    "24-amount_before_vat_match": true,
+    "24-vat_amount_match": true,
+    "24-total_amount_match": true,
+    "24-document_type_match": true,
+    "25-company_name_match": true,
+    "26-document_no_match": true,
+    "26-date_match": true,
+    "26-company_name_match": true,
+    "26-tax_id_match": true,
+    "26-branch_match": true,
+    "26-reference_no_match": true,
+    "26-amount_before_vat_match": true,
+    "26-vat_amount_match": true,
+    "26-total_amount_match": true,
+    "26-document_type_match": true,
+    "27-document_no_match": true,
+    "27-date_match": true,
+    "27-company_name_match": true,
+    "27-tax_id_match": true,
+    "27-branch_match": true,
+    "27-reference_no_match": true,
+    "27-amount_before_vat_match": true,
+    "27-vat_amount_match": true,
+    "27-total_amount_match": true,
+    "27-document_type_match": true,
+    "29-reference_no_match": true,
+    "29-amount_before_vat_match": true,
+    "29-vat_amount_match": true,
+    "29-total_amount_match": true,
+    "29-document_type_match": true,
+    "29-document_no_match": true,
+    "29-date_match": true,
+    "29-company_name_match": true,
+    "29-tax_id_match": true,
+    "29-branch_match": true,
+    "31-date_match": true,
+    "31-document_no_match": true,
+    "31-company_name_match": true,
+    "31-tax_id_match": true,
+    "31-branch_match": true,
+    "31-reference_no_match": true,
+    "31-amount_before_vat_match": true,
+    "31-vat_amount_match": true,
+    "31-total_amount_match": true,
+    "31-document_type_match": true,
+    "34-company_name_match": true,
+    "32-document_no_match": true,
+    "32-date_match": true,
+    "32-company_name_match": true,
+    "32-tax_id_match": true,
+    "32-branch_match": true,
+    "32-reference_no_match": true,
+    "32-amount_before_vat_match": true,
+    "32-vat_amount_match": true,
+    "32-total_amount_match": true,
+    "32-document_type_match": true,
+    "30-company_name_match": true,
+    "33-document_no_match": true,
+    "33-date_match": true,
+    "33-company_name_match": true,
+    "33-tax_id_match": true,
+    "33-branch_match": true,
+    "33-reference_no_match": true,
+    "33-amount_before_vat_match": true,
+    "33-total_amount_match": true,
+    "33-document_type_match": true,
+    "33-vat_amount_match": true,
+    "35-company_name_match": true,
+    "36-company_name_match": true,
+    "37-document_no_match": true,
+    "37-branch_match": true,
+    "37-tax_id_match": true,
+    "37-date_match": true,
+    "37-reference_no_match": true,
+    "37-amount_before_vat_match": true,
+    "37-vat_amount_match": true,
+    "37-total_amount_match": true,
+    "37-document_type_match": true,
+    "38-document_no_match": true,
+    "38-branch_match": true,
+    "39-document_no_match": true,
+    "40-document_no_match": true,
+    "40-date_match": true,
+    "41-document_no_match": true,
+    "41-date_match": true,
+    "41-company_name_match": true,
+    "41-tax_id_match": true,
+    "41-branch_match": true,
+    "41-reference_no_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {
+    "0": true
+  },
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build102 บริษัท ออดิโอ เอซิส จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2025\\2025-12\\VAT",
+  "step4OCRData": {
+    "count": 42,
+    "metadata": [
+      {
+        "filename": "19.12.2025_EXP-202512038_ปกรณ์ช่าง 252_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขารังสิต คลองสี่)"
+      },
+      {
+        "filename": "26.12.2025_EXP-202601005_ค่าน้ำมัน 1310_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "26.12.2025_EXP-202512063_ค่าน้ำมัน 150_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ชุมพลวัสดุก่อสร้าง"
+      },
+      {
+        "filename": "10.12.2025_EXP-202512048_ค่าน้ำมัน 1377_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "13.12.2025_EXP-202512051_ค่าน้ำมัน 1486_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชัน จำกัด"
+      },
+      {
+        "filename": "24.12.2025_EXP-202512062_ค่าน้ำมัน 1463_VAT.pdf",
+        "company_name": "บริษัท เอสแอลเอ็ม. เซอร์วิส จำกัด"
+      },
+      {
+        "filename": "14.12.2025_EXP-202512052_ค่าน้ำมัน 1000_VAT.pdf",
+        "company_name": "บริษัท เอสแอลเอ็ม เซอร์วิส จำกัด"
+      },
+      {
+        "filename": "24.12.2025_EXP-202512039_อุปกรณ์ช่าง 352_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขารังสิต คลองสี่)"
+      },
+      {
+        "filename": "26.12.2025_EXP-202512064_ค่าน้ำมัน 1357_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "17.12.2025_EXP-202512057_ค่าน้ำมัน 1460_VAT.pdf",
+        "company_name": "บริษัท เอส เอ็ม เค ออยล์ จำกัด"
+      },
+      {
+        "filename": "10.12.2025_EXP-202512049_ค่าน้ำมัน 2260_VAT.pdf"
+      },
+      {
+        "filename": "25.12.2025_EXP-202601004_ค่าน้ำมัน 1680_VAT.pdf"
+      },
+      {
+        "filename": "12.12.2025_EXP-202512050_ค่าน้ำมัน 1000_VAT.pdf",
+        "company_name": "บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)"
+      },
+      {
+        "filename": "23.12.2025_EXP-202512061_ค่าน้ำมัน 1530_VAT.pdf",
+        "company_name": "บริษัท ดาวปัญญา จำกัด"
+      },
+      {
+        "filename": "07.12.2025_EXP-202512046_ค่าน้ำมัน 1430_VAT.pdf",
+        "company_name": "บริษัท เอสเอสเอ็ม. เซอร์วิส จำกัด"
+      },
+      {
+        "filename": "01.12.2025_EXP-202512041_ค่าน้ำมัน 1398_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "09.12.2025_EXP-202512047_ค่าน้ำมัน 1328_VAT.pdf",
+        "company_name": "บริษัท โชคดีออยล์ จำกัด"
+      },
+      {
+        "filename": "15.12.2025_EXP-202512054_ค่าน้ำมัน 1551_VAT.pdf"
+      },
+      {
+        "filename": "13.12.2025_EXP-202512066_ค่าน้ำ 192.60_VAT.pdf"
+      },
+      {
+        "filename": "16.12.2025_EXP-202512056_ค่าน้ำมัน 1510_VAT.pdf"
+      },
+      {
+        "filename": "17.12.2025_EXP-202512032_สินค้าเพื่อบริการ 5940_VAT.pdf"
+      },
+      {
+        "filename": "20.12.2025_EXP-202512060_ค่าน้ำมัน 1495_VAT.pdf"
+      },
+      {
+        "filename": "12.12.2025_EXP-202512065_ค่าไฟฟ้า 3483.62_VAT.pdf"
+      },
+      {
+        "filename": "31.12.2025_EXP-202512034_สินค้าเพื่อบริการ 2140_VAT.pdf"
+      },
+      {
+        "filename": "20.12.2025_EXP-202512059_ค่าน้ำมัน 1300_VAT.pdf"
+      },
+      {
+        "filename": "09.12.2025_EXP-202512036_อุปกรณ์ช่าง 298_VAT.pdf"
+      },
+      {
+        "filename": "02.12.2025_EXP-202512043_ค่าน้ำมัน 1476_VAT.pdf"
+      },
+      {
+        "filename": "13.12.2025_EXP-202512037_อุปกรณ์ช่าง 340_VAT.pdf"
+      },
+      {
+        "filename": "23.12.2025_WHT_EXP-202512023_ค่าทำบัญชี 4160_VAT.pdf"
+      },
+      {
+        "filename": "12.11.2025_EXP-202511051_สินค้าเพื่อบริการ 70587.90_VAT.pdf"
+      },
+      {
+        "filename": "18.12.2025_EXP-202512031_สินค้าเพื่อบริการ 5594_VAT.pdf"
+      },
+      {
+        "filename": "05.12.2025_EXP-202512045_ค่าน้ำมัน 1771_VAT.pdf"
+      },
+      {
+        "filename": "01.12.2025_EXP-202512042_ค่าน้ำมัน 1510_VAT.pdf"
+      },
+      {
+        "filename": "15.12.2025_EXP-202512053_ค่าน้ำมัน 1240_VAT.pdf"
+      },
+      {
+        "filename": "01.12.2025_EXP-202512040_อุปกรณ์สำนักงาน 640_VAT.pdf"
+      },
+      {
+        "filename": "11.12.2025_EXP-202512033_สินค้าเพื่อบริการ 2856.90_VAT.pdf"
+      },
+      {
+        "filename": "31.10.2025_EXP-202510087_สินค้าเพื่อบริการ 34475.40_VAT.pdf"
+      },
+      {
+        "filename": "19.12.2025_EXP-202512030_สินค้าเพื่อบริการ 3430_VAT.pdf"
+      },
+      {
+        "filename": "02.12.2025_EXP-202512035_ อุปกรณ์ช่าง 390_VAT.pdf"
+      },
+      {
+        "filename": "19.12.2025_EXP-202512058_ค่าน้ำมัน 1340_VAT.pdf",
+        "company_name": "บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)"
+      },
+      {
+        "filename": "04.12.2025_EXP-202512044_ค่าน้ำมัน 2273_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "15.12.2025_EXP-202512055_ค่าน้ำมัน 1630_VAT.pdf",
+        "company_name": "บจก. เด็กยัง ทรัพย์"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 42,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-202510087",
+        "match_status": "no_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-202511051",
+        "match_status": "no_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-202512042",
+        "match_status": "no_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-202512041",
+        "ocr_document_no": "TI522490295B-2512-000025",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-202512040",
+        "match_status": "no_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-202512035",
+        "match_status": "no_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-202512043",
+        "match_status": "no_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-202512044",
+        "ocr_document_no": "TJ52Y712566B-2512-000022",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-202512045",
+        "match_status": "no_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-202512046",
+        "ocr_document_no": "TIO000016812000349",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-202512036",
+        "match_status": "no_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-202512047",
+        "ocr_document_no": "TI030092330B-2512-000534",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-202512048",
+        "ocr_document_no": "FIS:F031562A-2512-000271",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-202512049",
+        "match_status": "no_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-202512033",
+        "match_status": "no_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-202512050",
+        "ocr_document_no": "100870",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-202512065",
+        "match_status": "no_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-202512037",
+        "match_status": "no_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-202512051",
+        "ocr_document_no": "T15261K037/B-2512-000565",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-202512066",
+        "match_status": "no_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-202512052",
+        "ocr_document_no": "TI0000016812000718",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-202512055",
+        "ocr_document_no": "TI2512-01000",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-202512054",
+        "match_status": "no_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-202512053",
+        "match_status": "no_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-202512056",
+        "match_status": "no_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-202512057",
+        "ocr_document_no": "62974",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-202512032",
+        "match_status": "no_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-202512031",
+        "match_status": "no_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-202512058",
+        "ocr_document_no": "101100",
+        "match_status": "full_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-202512030",
+        "match_status": "no_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-202512038",
+        "ocr_document_no": "RS4IE25120074423",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-202512060",
+        "match_status": "no_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-202512059",
+        "match_status": "no_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-202512023",
+        "match_status": "no_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-202512061",
+        "ocr_document_no": "TI2512-01447",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-202512039",
+        "ocr_document_no": "RS4IE25120075449",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-202512062",
+        "ocr_document_no": "TIO000016812001320",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXP-202601004",
+        "match_status": "no_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-202512064",
+        "ocr_document_no": "AB520111768A-2512-013300",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-202601005",
+        "ocr_document_no": "T1525151866A-2512-000863",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXP-202512063",
+        "ocr_document_no": "V16812-0091",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXP-202512034",
+        "match_status": "no_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

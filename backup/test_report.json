@@ -1,0 +1,32 @@
+{
+  "timestamp": "2025-10-08T10:51:44.302441",
+  "summary": {
+    "total_tests": 4,
+    "passed_tests": 3,
+    "failed_tests": 1,
+    "success_rate": 75.0
+  },
+  "test_results": [
+    {
+      "test": "FileManager Build000 ทดสอบระบบ",
+      "status": "PASS",
+      "folders_found": 4,
+      "details": "พบโฟลเดอร์ 4/4 โฟลเดอร์ในระบบ Build000 ทดสอบระบบ"
+    },
+    {
+      "test": "WebAutomation",
+      "status": "PASS",
+      "details": "Playwright ทำงานได้ปกติ"
+    },
+    {
+      "test": "File Operations",
+      "status": "PASS",
+      "details": "การทำงานกับไฟล์ปกติ"
+    },
+    {
+      "test": "PDFReader",
+      "status": "FAIL",
+      "error": "ไม่สามารถอ่านไฟล์ PDF ได้เลย"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Requirement already satisfied: pyinstaller in c:\users\user\appdata\local\programs\python\python312\lib\site-packages (6.3.0)
+Requirement already satisfied: setuptools>=42.0.0 in c:\users\user\appdata\local\programs\python\python312\lib\site-packages (from pyinstaller) (80.9.0)
+Requirement already satisfied: altgraph in c:\users\user\appdata\local\programs\python\python312\lib\site-packages (from pyinstaller) (0.17.4)
+Requirement already satisfied: pyinstaller-hooks-contrib>=2021.4 in c:\users\user\appdata\local\programs\python\python312\lib\site-packages (from pyinstaller) (2024.8)
+Requirement already satisfied: packaging>=22.0 in c:\users\user\appdata\local\programs\python\python312\lib\site-packages (from pyinstaller) (25.0)
+Requirement already satisfied: pefile>=2022.5.30 in c:\users\user\appdata\local\programs\python\python312\lib\site-packages (from pyinstaller) (2023.2.7)
+Requirement already satisfied: pywin32-ctypes>=0.2.1 in c:\users\user\appdata\local\programs\python\python312\lib\site-packages (from pyinstaller) (0.2.3)

@@ -1,0 +1,1389 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BotV3 System Architecture & Workflow</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ 
+      startOnLoad: true, 
+      securityLevel: "loose", 
+      theme: "default",
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/panzoom@9.4.3/dist/panzoom.min.js"></script>
+  <style>
+    body { 
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; 
+      margin: 16px; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { 
+      max-width: 1400px; 
+      margin: 0 auto; 
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      font-weight: 300;
+    }
+    .header p {
+      margin: 10px 0 0 0;
+      opacity: 0.8;
+      font-size: 1.1em;
+    }
+    .content {
+      padding: 30px;
+    }
+    .mermaid { 
+      overflow: auto; 
+      background: #f8f9fa;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .section {
+      margin: 40px 0;
+    }
+    .section h2 {
+      color: #2c3e50;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .info-box {
+      background: #ecf0f1;
+      border-left: 4px solid #3498db;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 0 10px 10px 0;
+    }
+    
+    .flow-container {
+      position: relative;
+      border: 2px solid #3498db;
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+    
+    .flow-controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      display: flex;
+      gap: 5px;
+    }
+    
+    .flow-btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .flow-btn:hover {
+      background: #2980b9;
+      transform: translateY(-1px);
+    }
+    
+    .flow-btn:active {
+      transform: translateY(0);
+    }
+    
+    .flow-content {
+      min-height: 600px;
+      position: relative;
+    }
+    
+    .flow-step {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 2px solid #dee2e6;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .flow-step:hover {
+      border-color: #3498db;
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .flow-step.active {
+      border-color: #e74c3c;
+      background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+      box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+    }
+    
+    .flow-arrow {
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      color: #3498db;
+      z-index: 10;
+    }
+    
+    .flow-arrow::before {
+      content: "→";
+    }
+    
+    .step-number {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      background: #3498db;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    .step-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+    
+    .step-description {
+      font-size: 14px;
+      color: #7f8c8d;
+      line-height: 1.4;
+    }
+    
+    .step-details {
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(52, 152, 219, 0.1);
+      border-radius: 5px;
+      font-size: 12px;
+      color: #2c3e50;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+    }
+    
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 1000px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .close:hover {
+      color: #000;
+    }
+    
+    /* Mermaid diagram zoom styles */
+    .mermaid {
+      cursor: grab;
+    }
+    
+    .mermaid:active {
+      cursor: grabbing;
+    }
+    
+    .mermaid svg {
+      max-width: none !important;
+      height: auto !important;
+    }
+    
+    /* Features Grid Styles */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    
+    .feature-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 15px;
+      padding: 25px;
+      color: white;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      border-radius: 15px;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+    
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .feature-card h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .feature-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .feature-card li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .feature-card li:last-child {
+      border-bottom: none;
+    }
+    
+    .feature-card li::before {
+      content: '✓';
+      margin-right: 10px;
+      font-weight: bold;
+      color: #4ade80;
+    }
+    
+    /* Different gradient colors for each card */
+    .feature-card:nth-child(1) {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .feature-card:nth-child(2) {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    
+    .feature-card:nth-child(3) {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    .feature-card:nth-child(4) {
+      background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+    
+    .feature-card:nth-child(5) {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    }
+    
+    .feature-card:nth-child(6) {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      color: #333;
+    }
+    
+    .feature-card:nth-child(6) li::before {
+      color: #10b981;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🤖 BotV3 System Architecture</h1>
+      <p>ระบบประมวลผล PDF อัตโนมัติ - Enterprise Level</p>
+    </div>
+    
+    <div class="content">
+        <div class="section">
+        <h2>🏗️ System Architecture Overview</h2>
+        <div class="flow-container">
+          <div class="flow-controls">
+            <button class="flow-btn" onclick="zoomInArchitecture()">🔍+</button>
+            <button class="flow-btn" onclick="zoomOutArchitecture()">🔍-</button>
+            <button class="flow-btn" onclick="resetZoomArchitecture()">🏠</button>
+          </div>
+          <div class="mermaid" id="architectureDiagram">
+graph TB
+    subgraph "🏗️ System Architecture"
+        A[🤖 MainSystemOrchestrator] --> B[📄 PDFReader]
+        A --> C[🌐 WebAutomationPlaywright]
+        A --> D[📁 FileManager]
+        A --> E[📊 ReportManager]
+        
+        B --> F[📋 PDF Parsers]
+        C --> G[🔐 PeakEngine API]
+        D --> H[📂 Folder Scanner]
+        E --> I[📱 LINE Notifications]
+    end
+    
+    subgraph "⚙️ Configuration"
+        J[📝 config.py] --> K[🏢 COMPANY_VAT_STATUS]
+        J --> L[📁 MAIN_FOLDERS]
+        J --> M[🔗 PEAK_ENGINE_URL]
+        J --> N[📱 LINE_OA_CONFIG]
+    end
+    
+    subgraph "📊 Data Flow"
+        O[📄 PDF Files] --> P[🔍 Extract Data]
+        P --> Q[🏷️ Classify Company]
+        Q --> R[📋 Generate Form Data]
+        R --> S[🌐 Web Automation]
+        S --> T[📁 File Management]
+        T --> U[📊 Reporting]
+    end
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>🔄 Main Workflow Process</h2>
+          <div class="flow-container">
+            <div class="flow-content" id="flowContent">
+              <div class="flow-step" onclick="showStepDetails(1)">
+                <div class="step-number">1</div>
+                <div class="step-title">🚀 เริ่มต้นระบบ</div>
+                <div class="step-description">เริ่มต้นการทำงานของระบบ BotV3</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(2)">
+                <div class="step-number">2</div>
+                <div class="step-title">⚙️ โหลดการตั้งค่า</div>
+                <div class="step-description">โหลด config.py + Build000.txt</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(3)">
+                <div class="step-number">3</div>
+                <div class="step-title">📂 สแกนโฟลเดอร์หลัก</div>
+                <div class="step-description">A./AA./AAA. → Build* → ลูกค้า/ระบบอัตโนมัติ</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(4)">
+                <div class="step-number">4</div>
+                <div class="step-title">📄 ค้นหาไฟล์ PDF</div>
+                <div class="step-description">ข้ามโฟลเดอร์ผลลัพธ์</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(5)">
+                <div class="step-number">5</div>
+                <div class="step-title">🔍 อ่าน PDF แบบ Batch</div>
+                <div class="step-description">process_pdf_batch</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(6)">
+                <div class="step-number">6</div>
+                <div class="step-title">🏷️ จำแนกประเภท</div>
+                <div class="step-description">VAT/NoneVat + Service Name</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(7)">
+                <div class="step-number">7</div>
+                <div class="step-title">🔄 วนลูปประมวลผล</div>
+                <div class="step-description">แต่ละไฟล์ PDF</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(8)">
+                <div class="step-number">8</div>
+                <div class="step-title">🔐 เข้าสู่ระบบ PeakEngine</div>
+                <div class="step-description">ใช้ข้อมูลจาก Build000.txt</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(9)">
+                <div class="step-number">9</div>
+                <div class="step-title">👤 เลือก Customer ID</div>
+                <div class="step-description">จาก pdf_data['customer_id'] retry ≤ 3 ครั้ง</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(10)">
+                <div class="step-number">10</div>
+                <div class="step-title">🔢 กรอก Account Code</div>
+                <div class="step-description">จาก pdf_data['account_code']</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(11)">
+                <div class="step-number">11</div>
+                <div class="step-title">📅 กรอกวันที่เอกสาร</div>
+                <div class="step-description">จาก pdf_data['document_date'] XPath: #iptdate</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(12)">
+                <div class="step-number">12</div>
+                <div class="step-title">💰 กรอกยอดรวม</div>
+                <div class="step-description">จาก pdf_data['total_amount']</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(13)">
+                <div class="step-number">13</div>
+                <div class="step-title">📋 กรอกข้อมูลภาษี</div>
+                <div class="step-description">VAT: ddltaxstatus='รวมภาษี' / NoneVat: ddlvattypeid1='ไม่มี'</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(14)">
+                <div class="step-number">14</div>
+                <div class="step-title">💾 บันทึกและรอผล</div>
+                <div class="step-description">wait_for_save_result</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(15)">
+                <div class="step-number">15</div>
+                <div class="step-title">✅ อนุมัติสำเร็จ</div>
+                <div class="step-description">อ่านเลขเอกสารจาก #iptnumber</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(16)">
+                <div class="step-number">16</div>
+                <div class="step-title">📄 สร้างไฟล์ใหม่</div>
+                <div class="step-description">VAT: DD.MM.YYYY EXP-XXXXXXXXXXX / NoneVat: EXP-XXXXXXXXXXX</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(17)">
+                <div class="step-number">17</div>
+                <div class="step-title">📤 อัปโหลดไฟล์</div>
+                <div class="step-description">set_input_files รอ 'เพิ่มไฟล์สำเร็จ'</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(18)">
+                <div class="step-number">18</div>
+                <div class="step-title">📁 ย้ายไฟล์</div>
+                <div class="step-description">ต้นฉบับ → เอกสารต้นฉบับ / ไฟล์ใหม่ → เอกสารบันทึกแล้ว</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(19)">
+                <div class="step-number">19</div>
+                <div class="step-title">📊 สร้างรายงาน</div>
+                <div class="step-description">ReportManager</div>
+                <div class="flow-arrow"></div>
+              </div>
+              
+              <div class="flow-step" onclick="showStepDetails(20)">
+                <div class="step-number">20</div>
+                <div class="step-title">🏁 เสร็จสิ้น</div>
+                <div class="step-description">ส่งแจ้งเตือน LINE และบันทึกรายงาน</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>📋 Data Flow & Web Form Mapping</h2>
+          <div class="flow-container">
+            <div class="flow-controls">
+              <button class="flow-btn" onclick="zoomInDataFlow()">🔍+</button>
+              <button class="flow-btn" onclick="zoomOutDataFlow()">🔍-</button>
+              <button class="flow-btn" onclick="resetZoomDataFlow()">🏠</button>
+            </div>
+            <div class="mermaid" id="dataFlowDiagram">
+flowchart LR
+    subgraph "📄 PDF Data Source"
+        A[PDF File] --> B[PDFReader.process_pdf_batch]
+        B --> C[Extract Fields]
+        C --> D[company_name]
+        C --> E[customer_id]
+        C --> F[account_code]
+        C --> G[document_date]
+        C --> H[total_amount]
+        C --> I[document_number]
+        C --> J[vat_amount]
+    end
+    
+    subgraph "🏷️ Data Classification"
+        D --> K[folder_group<br/>special/regular]
+        K --> L[Group Decision]
+        L --> M[Service Name Mapping]
+        M --> N[GROUP1_COMPANY_MAPPING<br/>(regular/VAT)<br/>GROUP3_COMPANY_MAPPING<br/>(special/NoneVat)]
+        K --> O[COMPANY_VAT_STATUS<br/>(fallback only)]
+    end
+    
+    subgraph "🌐 Web Form Fields"
+        E --> P[Customer ID Dropdown<br/>#iptcontactname]
+        F --> Q[Account Code Input<br/>#iptaccountcode1]
+        G --> R[Date Input<br/>#iptdate]
+        H --> S[Total Amount Input<br/>#ipttotal]
+        I --> T[Document Number Input<br/>#inputModalReceivedTaxInvoiceNumber<br/>(regular only)]
+        L --> U[Tax Status Dropdown<br/>#ddltaxstatus (regular)<br/>#ddlvattypeid1 (special)]
+        N --> V[Service Name<br/>สำหรับชื่อไฟล์]
+    end
+    
+    subgraph "📊 Processing Results"
+        P --> W[Form Validation]
+        Q --> W
+        R --> W
+        S --> W
+        T --> W
+        U --> W
+        W --> X[Save & Wait Result]
+        X --> Y[Read Document Number<br/>#iptnumber]
+        Y --> Z[Generate Filename<br/>EXP-XXXXXXXXXXX ชื่อบริการ<br/>(ไม่ใส่วันที่)]
+        V --> Z
+        Z --> AA[File Management<br/>regular → เอกสาร Vat<br/>special → เอกสาร NoneVat]
+    end
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>🔍 Web Form Field Details</h2>
+          <div class="info-box">
+            <h3>📝 Form Fields Mapping</h3>
+            <table style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+              <tr style="background: #f8f9fa;">
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Field Name</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">PDF Source</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Web Element</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Description</th>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Customer ID</strong></td>
+                <td style="border: 1px solid #ddd; padding: 12px;">pdf_data['customer_id']</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">#iptcontactname</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">Dropdown selection with retry logic</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Account Code</strong></td>
+                <td style="border: 1px solid #ddd; padding: 12px;">pdf_data['account_code']</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">#iptaccountcode1</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">Text input with validation</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Document Date</strong></td>
+                <td style="border: 1px solid #ddd; padding: 12px;">pdf_data['document_date']</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">#iptdate</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">Date input field</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Total Amount</strong></td>
+                <td style="border: 1px solid #ddd; padding: 12px;">pdf_data['total_amount']</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">#ipttotal</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">Numeric input for total amount</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Document Number</strong></td>
+                <td style="border: 1px solid #ddd; padding: 12px;">pdf_data['document_number']</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">#inputModalReceivedTaxInvoiceNumber</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">Modal popup input (regular only)</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Tax Status</strong></td>
+                <td style="border: 1px solid #ddd; padding: 12px;">folder_group (special/regular)</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">#ddltaxstatus (regular) / #ddlvattypeid1 (special)</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">regular: 'รวมภาษี' / special: 'ไม่มี'</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Generated Doc Number</strong></td>
+                <td style="border: 1px solid #ddd; padding: 12px;">System Generated</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">#iptnumber</td>
+                <td style="border: 1px solid #ddd; padding: 12px;">Read after successful save</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>📊 Data Processing Flow</h2>
+          <div class="mermaid">
+flowchart LR
+    subgraph "📄 PDF Processing"
+        A[PDF File] --> B[Extract Text]
+        B --> C[Parse Data]
+        C --> D[Extract Fields]
+        D --> E[Validate Data]
+    end
+    
+    subgraph "🏷️ Classification"
+        E --> F[Detect Company]
+        F --> G[Check VAT Status]
+        G --> H[Assign Group]
+        H --> I[Select Service Name]
+    end
+    
+    subgraph "🌐 Web Automation"
+        I --> J[Login PeakEngine]
+        J --> K[Fill Form Fields]
+        K --> L[Submit & Wait]
+        L --> M[Check Result]
+    end
+    
+    subgraph "📁 File Management"
+        M --> N[Generate Filename]
+        N --> O[Create New File]
+        O --> P[Upload to System]
+        P --> Q[Move Files]
+    end
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>🔄 Detailed Form Filling Process</h2>
+    <div class="mermaid">
+flowchart TD
+    START([เริ่มกรอกฟอร์ม]) --> LOGIN[🔐 เข้าสู่ระบบ PeakEngine]
+    LOGIN --> NAVIGATE[🧭 ไปหน้า Express<br/>ใช้ express_link จาก Build000.txt]
+    
+    NAVIGATE --> CUSTOMER[👤 เลือก Customer ID]
+    CUSTOMER --> CUSTOMER_DETAIL[📋 รายละเอียด Customer ID<br/>1. ค้นหาใน dropdown #iptcontactname<br/>2. retry ≤ 3 ครั้ง<br/>3. ตรวจสอบ modal #mdCreateContactWithGetInfo<br/>4. ปิด modal ถ้าปรากฏ]
+    
+    CUSTOMER_DETAIL --> ACCOUNT[🔢 กรอก Account Code]
+    ACCOUNT --> ACCOUNT_DETAIL[📋 รายละเอียด Account Code<br/>1. กรอกใน #iptaccountcode1<br/>2. ตรวจสอบ modal อีกครั้ง<br/>3. รีเซ็ตและกรอกใหม่ถ้าจำเป็น]
+    
+    ACCOUNT_DETAIL --> DATE[📅 กรอกวันที่เอกสาร]
+    DATE --> DATE_DETAIL[📋 รายละเอียดวันที่<br/>1. กรอกใน #iptdate<br/>2. ใช้ pdf_data['document_date']<br/>3. รองรับหลาย format]
+    
+    DATE_DETAIL --> AMOUNT[💰 กรอกยอดรวม]
+    AMOUNT --> AMOUNT_DETAIL[📋 รายละเอียดยอดรวม<br/>1. กรอกใน #ipttotal<br/>2. ใช้ pdf_data['total_amount']<br/>3. แปลงเป็นตัวเลข]
+    
+    AMOUNT_DETAIL --> TAXCHECK{ตรวจสอบ folder_group?}
+    TAXCHECK -->|regular| VATPROC[📋 ประมวลผล regular (VAT)]
+    TAXCHECK -->|special| NONVATPROC[📋 ประมวลผล special (NoneVat)]
+    
+    VATPROC --> VATDETAIL[📋 รายละเอียด regular<br/>1. เลือก ddltaxstatus='รวมภาษี'<br/>2. คลิก receivedTaxInvoiceAddButton<br/>3. กรอกเลขที่เอกสารใน modal<br/>4. ใช้ pdf_data['document_number']]
+    
+    NONVATPROC --> NONVATDETAIL[📋 รายละเอียด special<br/>1. เลือก ddlvattypeid1='ไม่มี'<br/>2. ข้ามการกรอกเลขที่เอกสาร<br/>3. ไปขั้นตอนบันทึก]
+    
+    VATDETAIL --> SAVE[💾 บันทึกข้อมูล]
+    NONVATDETAIL --> SAVE
+    
+    SAVE --> SAVEDETAIL[📋 รายละเอียดการบันทึก<br/>1. กดปุ่มบันทึก<br/>2. รอผล wait_for_save_result<br/>3. ตรวจสอบ timeout/error<br/>4. จัดการ modal และ connection error]
+    
+    SAVEDETAIL --> RESULT{ผลการบันทึก?}
+    RESULT -->|อนุมัติ| SUCCESS[✅ อนุมัติสำเร็จ]
+    RESULT -->|ซ้ำ| DUPLICATE[🔄 เอกสารซ้ำ]
+    RESULT -->|ผิดพลาด| ERROR[❌ ข้อผิดพลาด]
+    
+    SUCCESS --> READDOC[📄 อ่านเลขเอกสาร<br/>อ่านจาก #iptnumber]
+    READDOC --> CONTINUE[➡️ ดำเนินการต่อ]
+    
+    DUPLICATE --> MOVEDUP[📁 ย้ายไฟล์ซ้ำ<br/>ย้ายไปเอกสารซ้ำรอตรวจ]
+    MOVEDUP --> CONTINUE
+    
+    ERROR --> RETRY[🔄 ลองใหม่<br/>รีเซ็ตหน้าเว็บ ≤ 2 ครั้ง]
+    RETRY --> START
+    
+    CONTINUE --> END([เสร็จสิ้น])
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>🔧 Error Handling & Recovery</h2>
+          <div class="info-box">
+            <h3>⚠️ Error Scenarios & Solutions</h3>
+            <div style="margin: 20px 0;">
+              <h4>🔴 Connection Errors</h4>
+              <ul>
+                <li><strong>EPIPE Error:</strong> ตรวจสอบ connection และรีเซ็ต browser</li>
+                <li><strong>Page Timeout:</strong> ตรวจสอบ page health และรีเฟรชหน้า</li>
+                <li><strong>Element Not Found:</strong> ใช้หลาย selector และรอให้ element โหลด</li>
+              </ul>
+              
+              <h4>🟡 Form Validation Errors</h4>
+              <ul>
+                <li><strong>Customer ID ไม่พบ:</strong> retry ≤ 3 ครั้ง</li>
+                <li><strong>Modal ปรากฏ:</strong> ปิด modal และรีเซ็ตหน้า</li>
+                <li><strong>ข้อมูลไม่ครบ:</strong> ตรวจสอบ PDF data และกรอกใหม่</li>
+              </ul>
+              
+              <h4>🟠 Web Automation Errors</h4>
+              <ul>
+                <li><strong>Save Timeout:</strong> รอผลบันทึกและตรวจสอบ status</li>
+                <li><strong>VAT ไม่ตรง:</strong> แก้ไข VAT และตรวจสอบซ้ำ</li>
+                <li><strong>Upload Failed:</strong> ตรวจสอบไฟล์และลองอัปโหลดใหม่</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>⚙️ Key Components</h2>
+          <div class="info-box">
+            <h3>🤖 MainSystemOrchestrator</h3>
+            <p>ตัวจัดการหลักที่ควบคุมการทำงานทั้งหมด รับผิดชอบการสแกนโฟลเดอร์ การประสานงานระหว่างโมดูลต่างๆ และการจัดการ lifecycle ของระบบ</p>
+          </div>
+          
+          <div class="info-box">
+            <h3>📄 PDFReader</h3>
+            <p>โมดูลอ่านและแยกข้อมูลจากไฟล์ PDF รองรับการประมวลผลแบบ batch และการจำแนกบริษัทอัตโนมัติ</p>
+          </div>
+          
+          <div class="info-box">
+            <h3>🌐 WebAutomationPlaywright</h3>
+            <p>ระบบควบคุมเว็บไซต์ PeakEngine ใช้ Playwright สำหรับการกรอกฟอร์ม การจัดการ error และการตรวจสอบการค้างของหน้าเว็บ</p>
+          </div>
+          
+          <div class="info-box">
+            <h3>📁 FileManager</h3>
+            <p>จัดการไฟล์และโฟลเดอร์ สร้างไฟล์ PDF ใหม่ การย้ายไฟล์ และการจัดการโครงสร้างโฟลเดอร์</p>
+          </div>
+          
+          <div class="info-box">
+            <h3>📊 ReportManager</h3>
+            <p>รวบรวมสถิติการทำงาน สร้างรายงาน และส่งการแจ้งเตือนผ่าน LINE Notify และ LINE OA</p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>🔧 Configuration & Settings</h2>
+          <div class="mermaid">
+graph TB
+    subgraph "📝 Configuration Files"
+        A[config.py] --> B[COMPANY_VAT_STATUS]
+        A --> C[MAIN_FOLDERS]
+        A --> D[GROUP_MAPPING]
+        A --> E[LINE_CONFIG]
+        
+        F[Build000.txt] --> G[Login Credentials]
+        F --> H[PeakEngine URLs]
+        
+        I[folder_settings.json] --> J[Folder Groups]
+        I --> K[Folder Codes]
+    end
+    
+    subgraph "📁 Folder Structure"
+        L[V:/A.โฟร์เดอร์หลัก] --> M[Build000 ทดสอบระบบ]
+        L --> N[Build001 ระบบจริง]
+        M --> O[ลูกค้า/ระบบอัตโนมัติ]
+        O --> P[PDF Files]
+    end
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2>📈 System Features</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">📁</div>
+              <h3>Multi-Folder Support</h3>
+              <ul>
+                <li>📂 A./AA./AAA. Folders</li>
+                <li>🔍 Build* Detection</li>
+                <li>🔄 Recursive Scanning</li>
+                <li>⚡ Real-time Monitoring</li>
+              </ul>
+            </div>
+            
+            <div class="feature-card">
+              <div class="feature-icon">📄</div>
+              <h3>PDF Processing</h3>
+              <ul>
+                <li>⚡ Batch Processing</li>
+                <li>🏢 Company Detection</li>
+                <li>📊 Data Extraction</li>
+                <li>🛡️ Error Handling</li>
+              </ul>
+            </div>
+            
+            <div class="feature-card">
+              <div class="feature-icon">🌐</div>
+              <h3>Web Automation</h3>
+              <ul>
+                <li>🎭 Playwright Integration</li>
+                <li>📝 Form Filling</li>
+                <li>🔄 Error Recovery</li>
+                <li>⏱️ Timeout Handling</li>
+              </ul>
+            </div>
+            
+            <div class="feature-card">
+              <div class="feature-icon">📁</div>
+              <h3>File Management</h3>
+              <ul>
+                <li>🏷️ Smart Naming</li>
+                <li>📂 File Organization</li>
+                <li>🔄 Duplicate Handling</li>
+                <li>🧹 Cleanup</li>
+              </ul>
+            </div>
+            
+            <div class="feature-card">
+              <div class="feature-icon">📊</div>
+              <h3>Reporting</h3>
+              <ul>
+                <li>📈 Real-time Stats</li>
+                <li>📱 LINE Notifications</li>
+                <li>📄 File Reports</li>
+                <li>🔍 Error Tracking</li>
+              </ul>
+            </div>
+            
+            <div class="feature-card">
+              <div class="feature-icon">🖥️</div>
+              <h3>GUI Interface</h3>
+              <ul>
+                <li>🖥️ Desktop App</li>
+                <li>📖 PDF Reader</li>
+                <li>📝 Real-time Logs</li>
+                <li>📊 Status Monitoring</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal for step details -->
+  <div id="stepModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentZoom = 1;
+    let panzoomInstance = null;
+    let architecturePanzoom = null;
+    let dataFlowPanzoom = null;
+    
+    // Initialize panzoom when page loads
+    window.addEventListener('load', function() {
+      // Main workflow (no zoom)
+      const flowContent = document.getElementById('flowContent');
+      
+      // Architecture diagram zoom
+      const architectureDiagram = document.getElementById('architectureDiagram');
+      if (architectureDiagram) {
+        architecturePanzoom = panzoom(architectureDiagram, {
+          minZoom: 0.5,
+          maxZoom: 3,
+          initialZoom: 1,
+          bounds: true,
+          boundsPadding: 0.1
+        });
+      }
+      
+      // Data flow diagram zoom
+      const dataFlowDiagram = document.getElementById('dataFlowDiagram');
+      if (dataFlowDiagram) {
+        dataFlowPanzoom = panzoom(dataFlowDiagram, {
+          minZoom: 0.5,
+          maxZoom: 3,
+          initialZoom: 1,
+          bounds: true,
+          boundsPadding: 0.1
+        });
+      }
+    });
+    
+    // Architecture diagram zoom functions
+    function zoomInArchitecture() {
+      if (architecturePanzoom) {
+        architecturePanzoom.zoomIn();
+      }
+    }
+    
+    function zoomOutArchitecture() {
+      if (architecturePanzoom) {
+        architecturePanzoom.zoomOut();
+      }
+    }
+    
+    function resetZoomArchitecture() {
+      if (architecturePanzoom) {
+        architecturePanzoom.zoomTo(1);
+        architecturePanzoom.moveTo(0, 0);
+      }
+    }
+    
+    // Data flow diagram zoom functions
+    function zoomInDataFlow() {
+      if (dataFlowPanzoom) {
+        dataFlowPanzoom.zoomIn();
+      }
+    }
+    
+    function zoomOutDataFlow() {
+      if (dataFlowPanzoom) {
+        dataFlowPanzoom.zoomOut();
+      }
+    }
+    
+    function resetZoomDataFlow() {
+      if (dataFlowPanzoom) {
+        dataFlowPanzoom.zoomTo(1);
+        dataFlowPanzoom.moveTo(0, 0);
+      }
+    }
+    
+    function showStepDetails(stepNumber) {
+      const stepDetails = getStepDetails(stepNumber);
+      const modal = document.getElementById('stepModal');
+      const modalContent = document.getElementById('modalContent');
+      
+      modalContent.innerHTML = stepDetails;
+      modal.style.display = 'block';
+      
+      // Highlight the selected step
+      document.querySelectorAll('.flow-step').forEach(step => {
+        step.classList.remove('active');
+      });
+      event.currentTarget.classList.add('active');
+    }
+    
+    function closeModal() {
+      document.getElementById('stepModal').style.display = 'none';
+      document.querySelectorAll('.flow-step').forEach(step => {
+        step.classList.remove('active');
+      });
+    }
+    
+    function getStepDetails(stepNumber) {
+      const stepData = {
+        1: {
+          title: "🚀 เริ่มต้นระบบ",
+          description: "เริ่มต้นการทำงานของระบบ BotV3",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>โหลด MainSystemOrchestrator</li>
+              <li>ตรวจสอบการเชื่อมต่อระบบ</li>
+              <li>เตรียมพร้อมสำหรับการประมวลผล</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>main_system.py</li>
+              <li>config.py</li>
+            </ul>
+          `
+        },
+        2: {
+          title: "⚙️ โหลดการตั้งค่า",
+          description: "โหลด config.py + Build000.txt",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>อ่าน COMPANY_VAT_STATUS</li>
+              <li>อ่าน MAIN_FOLDERS</li>
+              <li>อ่านข้อมูล login จาก Build000.txt</li>
+              <li>ตั้งค่า LINE notifications</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>config.py</li>
+              <li>Build000.txt</li>
+            </ul>
+          `
+        },
+        3: {
+          title: "📂 สแกนโฟลเดอร์หลัก",
+          description: "A./AA./AAA. → Build* → ลูกค้า/ระบบอัตโนมัติ",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>สแกนโฟลเดอร์ A.โฟร์เดอร์หลัก</li>
+              <li>สแกนโฟลเดอร์ AA.โฟรเดอร์หลัก</li>
+              <li>สแกนโฟลเดอร์ AAA.โฟรเดอร์หลัก</li>
+              <li>ค้นหา Build* folders</li>
+              <li>หาโฟลเดอร์ ลูกค้า/ระบบอัตโนมัติ</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>main_system.py - find_main_folders()</li>
+              <li>main_system.py - find_automation_folders()</li>
+            </ul>
+          `
+        },
+        4: {
+          title: "📄 ค้นหาไฟล์ PDF",
+          description: "ข้ามโฟลเดอร์ผลลัพธ์",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>ค้นหาไฟล์ .pdf ในโฟลเดอร์ระบบอัตโนมัติ</li>
+              <li>ข้ามโฟลเดอร์ 'เอกสารต้นฉบับ'</li>
+              <li>ข้ามโฟลเดอร์ 'เอกสารบันทึกแล้ว'</li>
+              <li>ข้ามโฟลเดอร์ 'เอกสารซ้ำรอตรวจ'</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>main_system.py - find_pdf_files_in_folder()</li>
+            </ul>
+          `
+        },
+        5: {
+          title: "🔍 อ่าน PDF แบบ Batch",
+          description: "process_pdf_batch",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>ใช้ PDFReader.process_pdf_batch()</li>
+              <li>อ่านไฟล์ PDF ทั้งหมดพร้อมกัน</li>
+              <li>แยกข้อมูลสำคัญจากแต่ละไฟล์</li>
+              <li>จัดการไฟล์ที่อ่านไม่ได้</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>pdf_reader.py - process_pdf_batch()</li>
+              <li>pdf_parsers/ - parsers เฉพาะ</li>
+            </ul>
+          `
+        },
+        6: {
+          title: "🏷️ จำแนกประเภท",
+          description: "folder_group (special/regular) + Service Name Mapping",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li><strong>หลัก:</strong> ใช้ folder_group จาก folder_settings.json</li>
+              <li><strong>special:</strong> ใช้ GROUP3_COMPANY_MAPPING (NoneVat)</li>
+              <li><strong>regular:</strong> ใช้ GROUP1_COMPANY_MAPPING (VAT)</li>
+              <li><strong>fallback:</strong> ใช้ COMPANY_VAT_STATUS ถ้า group='unknown'</li>
+              <li>เตรียมข้อมูลสำหรับกรอกฟอร์ม</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>folder_settings.json - folder_group</li>
+              <li>config.py - GROUP1_COMPANY_MAPPING</li>
+              <li>config.py - GROUP3_COMPANY_MAPPING</li>
+              <li>config.py - COMPANY_VAT_STATUS (fallback)</li>
+            </ul>
+          `
+        },
+        7: {
+          title: "🔄 วนลูปประมวลผล",
+          description: "แต่ละไฟล์ PDF",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>วนลูปผ่านไฟล์ PDF ที่อ่านสำเร็จ</li>
+              <li>เริ่มต้น WebAutomationPlaywright</li>
+              <li>ประมวลผลทีละไฟล์</li>
+              <li>จัดการ error และ retry</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>main_system.py - process_folder()</li>
+              <li>web_automation_playwright.py</li>
+            </ul>
+          `
+        },
+        8: {
+          title: "🔐 เข้าสู่ระบบ PeakEngine",
+          description: "ใช้ข้อมูลจาก Build000.txt",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>เปิด browser ด้วย Playwright</li>
+              <li>ไปที่ PEAK_ENGINE_URL</li>
+              <li>กรอก username และ password</li>
+              <li>ไปที่หน้า Express</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>web_automation_playwright.py - login()</li>
+              <li>Build000.txt - credentials</li>
+            </ul>
+          `
+        },
+        9: {
+          title: "👤 เลือก Customer ID",
+          description: "จาก pdf_data['customer_id'] retry ≤ 3 ครั้ง",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>ค้นหาใน dropdown #iptcontactname</li>
+              <li>retry ≤ 3 ครั้งถ้าไม่พบ</li>
+              <li>ตรวจสอบ modal #mdCreateContactWithGetInfo</li>
+              <li>ปิด modal ถ้าปรากฏ</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>web_automation_playwright.py - fill_customer_id()</li>
+              <li>web_automation_playwright.py - check_and_handle_unexpected_modal()</li>
+            </ul>
+          `
+        },
+        10: {
+          title: "🔢 กรอก Account Code",
+          description: "จาก pdf_data['account_code']",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>กรอกใน #iptaccountcode1</li>
+              <li>ตรวจสอบ modal อีกครั้ง</li>
+              <li>รีเซ็ตและกรอกใหม่ถ้าจำเป็น</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>web_automation_playwright.py - fill_account_code()</li>
+            </ul>
+          `
+        },
+        11: {
+          title: "📅 กรอกวันที่เอกสาร",
+          description: "จาก pdf_data['document_date'] XPath: #iptdate",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>กรอกใน #iptdate</li>
+              <li>ใช้ pdf_data['document_date']</li>
+              <li>รองรับหลาย format</li>
+              <li>ใช้หลาย selector ถ้าไม่พบ</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>web_automation_playwright.py - fill_form_data()</li>
+            </ul>
+          `
+        },
+        12: {
+          title: "💰 กรอกยอดรวม",
+          description: "จาก pdf_data['total_amount']",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>กรอกใน #ipttotal</li>
+              <li>ใช้ pdf_data['total_amount']</li>
+              <li>แปลงเป็นตัวเลข</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>web_automation_playwright.py - fill_form_data()</li>
+            </ul>
+          `
+        },
+        13: {
+          title: "📋 กรอกข้อมูลภาษี",
+          description: "folder_group='special' → NoneVat / folder_group='regular' → VAT",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li><strong>folder_group='special':</strong> เลือก ddlvattypeid1='ไม่มี' (ข้ามเลขที่เอกสาร)</li>
+              <li><strong>folder_group='regular':</strong> เลือก ddltaxstatus='รวมภาษี' + กรอกเลขที่เอกสาร</li>
+              <li>ใช้ modal #inputModalReceivedTaxInvoiceNumber (เฉพาะ regular)</li>
+              <li>fallback: ใช้ COMPANY_VAT_STATUS ถ้า group='unknown'</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>web_automation_playwright.py - fill_form_data()</li>
+              <li>folder_settings.json - folder_group</li>
+            </ul>
+          `
+        },
+        14: {
+          title: "💾 บันทึกและรอผล",
+          description: "wait_for_save_result",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>กดปุ่มบันทึก</li>
+              <li>รอผล wait_for_save_result</li>
+              <li>ตรวจสอบ timeout/error</li>
+              <li>จัดการ modal และ connection error</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>web_automation_playwright.py - wait_for_save_result()</li>
+            </ul>
+          `
+        },
+        15: {
+          title: "✅ อนุมัติสำเร็จ",
+          description: "อ่านเลขเอกสารจาก #iptnumber + ตรวจ/แก้ไข VAT (เฉพาะ regular)",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>ตรวจสอบผลการบันทึก</li>
+              <li>อ่านเลขเอกสารจาก #iptnumber</li>
+              <li><strong>folder_group='regular':</strong> ตรวจสอบ/แก้ไข VAT</li>
+              <li><strong>folder_group='special':</strong> ข้ามการตรวจ/แก้ไข VAT</li>
+              <li>ตรวจสอบวันที่ก่อนอัปโหลด</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>web_automation_playwright.py - process_pdf_data()</li>
+              <li>web_automation_playwright.py - check_and_fix_vat_value()</li>
+              <li>web_automation_playwright.py - verify_date_before_upload()</li>
+            </ul>
+          `
+        },
+        16: {
+          title: "📄 สร้างไฟล์ใหม่",
+          description: "EXP-XXXXXXXXXXX ชื่อบริการ (ไม่ใส่วันที่ทั้ง VAT และ NoneVat)",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li><strong>รูปแบบใหม่:</strong> EXP-XXXXXXXXXXX ชื่อบริการ.pdf (ไม่ใส่วันที่)</li>
+              <li><strong>VAT (regular):</strong> ใช้ GROUP1_COMPANY_MAPPING</li>
+              <li><strong>NoneVat (special):</strong> ใช้ GROUP3_COMPANY_MAPPING</li>
+              <li>ใช้เลขจาก #iptnumber</li>
+              <li>ใช้ folder_group เป็นหลักในการเลือก mapping</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>file_manager.py - create_new_pdf_from_form_data()</li>
+              <li>file_manager.py - _get_service_name()</li>
+            </ul>
+          `
+        },
+        17: {
+          title: "📤 อัปโหลดไฟล์",
+          description: "set_input_files รอ 'เพิ่มไฟล์สำเร็จ'",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>ใช้ set_input_files()</li>
+              <li>รอ 'เพิ่มไฟล์สำเร็จ' (dvgreenalert)</li>
+              <li>ตรวจสอบการอัปโหลด</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>web_automation_playwright.py - upload_file_directly()</li>
+            </ul>
+          `
+        },
+        18: {
+          title: "📁 ย้ายไฟล์",
+          description: "ต้นฉบับ → เอกสารต้นฉบับ / ไฟล์ใหม่ → เอกสาร Vat/NoneVat",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>ย้ายไฟล์ต้นฉบับ → 'เอกสารต้นฉบับ'</li>
+              <li><strong>folder_group='regular':</strong> ย้ายไฟล์ใหม่ → 'เอกสาร Vat'</li>
+              <li><strong>folder_group='special':</strong> ย้ายไฟล์ใหม่ → 'เอกสาร NoneVat'</li>
+              <li>ลบไฟล์ชั่วคราว</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>file_manager.py - move_original_and_processed()</li>
+              <li>web_automation_playwright.py - process_pdf_data()</li>
+            </ul>
+          `
+        },
+        19: {
+          title: "📊 สร้างรายงาน",
+          description: "ReportManager",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>รวบรวมสถิติการทำงาน</li>
+              <li>นับจำนวนไฟล์ที่ประมวลผลสำเร็จ/ล้มเหลว</li>
+              <li>แยกประเภทตามบริษัท</li>
+              <li>เตรียมข้อมูลสำหรับแจ้งเตือน</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>report_manager.py - ReportManager</li>
+            </ul>
+          `
+        },
+        20: {
+          title: "🏁 เสร็จสิ้น",
+          description: "ส่งแจ้งเตือน LINE และบันทึกรายงาน",
+          details: `
+            <h3>📋 รายละเอียด</h3>
+            <ul>
+              <li>ส่งแจ้งเตือน LINE 'สิ้นสุดการทำงาน'</li>
+              <li>บันทึกรายงานไฟล์ 'รายงานการทำงาน_YYYYMMDD_HHMMSS.txt'</li>
+              <li>ปิด browser และ cleanup</li>
+            </ul>
+            <h3>🔧 ไฟล์ที่เกี่ยวข้อง</h3>
+            <ul>
+              <li>report_manager.py - send_end_notification()</li>
+              <li>report_manager.py - write_report_file()</li>
+            </ul>
+          `
+        }
+      };
+      
+      const step = stepData[stepNumber];
+      if (step) {
+        return `
+          <h2>${step.title}</h2>
+          <p><strong>คำอธิบาย:</strong> ${step.description}</p>
+          ${step.details}
+        `;
+      }
+      return '<h2>ไม่พบข้อมูล</h2>';
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('stepModal');
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>

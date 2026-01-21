@@ -1,0 +1,27 @@
+# Requirements สำหรับ Desktop Application
+# ติดตั้งด้วย: pip install -r requirements_desktop.txt
+
+# ===== Web Automation =====
+playwright==1.40.0
+
+# ===== PDF Processing =====
+PyPDF2==3.0.1
+
+# ===== Data Processing =====
+pandas==2.1.3
+openpyxl==3.1.2
+
+# ===== Image Processing =====
+Pillow==10.1.0
+
+# ===== Utilities =====
+python-dotenv==1.0.0
+
+# ===== Build เป็น EXE (optional) =====
+pyinstaller==6.3.0
+
+# ===== หมายเหตุ =====
+# ไม่ต้องติดตั้ง Flask, Flask-CORS, requests (ไม่ใช้ Web API)
+# Tkinter มากับ Python แล้ว (ไม่ต้องติดตั้ง)
+
+

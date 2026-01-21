@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คู่มือการใช้งาน BotV3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 3px solid #e3f2fd;
+        }
+
+        .header h1 {
+            color: #1565c0;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #546e7a;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .navigation {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .navigation a {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .navigation a:hover {
+            background: linear-gradient(135deg, #2980b9, #1f5f8b);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.6em;
+            margin: 30px 0 20px 0;
+            padding-left: 15px;
+            border-left: 4px solid #3498db;
+        }
+
+        .step {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border-left: 8px solid #00c851;
+            box-shadow: 0 10px 30px rgba(0, 200, 81, 0.15);
+        }
+
+        .step h4 {
+            color: #00c851;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #00c851, #00a644);
+            color: white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-weight: bold;
+            font-size: 1.3em;
+            box-shadow: 0 6px 20px rgba(0, 200, 81, 0.3);
+        }
+
+        .button-demo {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 3px solid #2196f3;
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: 600;
+            color: #1565c0;
+            cursor: default;
+            font-size: 1.2em;
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.2);
+        }
+
+        .quick-step {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            border-left: 6px solid #9c27b0;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(156, 39, 176, 0.15);
+        }
+
+        .quick-step .emoji {
+            font-size: 2.5em;
+            margin: 15px 0;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .quick-step p {
+            color: #6a1b9a;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .visual-guide {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 2px solid #ff9800;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.2);
+        }
+
+        .visual-guide h4 {
+            color: #e65100;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .visual-guide img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 2px solid #e3f2fd;
+            cursor: default;
+        }
+
+        .image-caption {
+            font-size: 1em;
+            color: #666;
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            border: 2px solid #4caf50;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.2);
+        }
+
+        .highlight-box h4 {
+            color: #2e7d32;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .highlight-box .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);
+            text-align: center;
+        }
+
+        .success-box h4 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+
+        .success-box p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 6px solid #3498db;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h5 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .info-card ul {
+            color: #546e7a;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-left: 20px;
+        }
+
+        .info-card li {
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 1.1em;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .navigation a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .step {
+                padding: 25px;
+            }
+
+            .button-demo {
+                padding: 15px 25px;
+                font-size: 1.1em;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .step:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .step:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .step:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .step:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📁 วิธีใช้งาน BotV3</h1>
+            <p>5 ขั้นตอนง่ายๆ สำหรับผู้ใช้ทั่วไป</p>
+        </div>
+
+        <div class="navigation">
+            <a href="คู่มือการใช้งานระบบ_BotV3_Index.html">🏠 หน้าหลัก</a>
+            <a href="คู่มือการใช้งานระบบ_BotV3_แนะนำระบบ.html">🚀 แนะนำระบบ</a>
+            <a href="คู่มือการใช้งานระบบ_BotV3_สร้างฐานข้อมูล.html">📝 สร้างฐานข้อมูล</a>
+            <a href="คู่มือการใช้งานระบบ_BotV3_แก้ไขไฟล์.html">✏️ แก้ไขไฟล์</a>
+        </div>
+
+        <div class="section">
+            <div class="visual-guide">
+                <span style="font-size: 4em; display: block; margin: 20px 0;">🎯</span>
+                <h3>ทำตาม 5 ขั้นตอนนี้!</h3>
+                <p>ง่ายมาก ไม่ต้องกังวล</p>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">1</span>เลือกโหมด</h4>
+                <div class="button-demo">📁 กำหนดโฟลเดอร์เอง</div>
+                <div class="quick-step">
+                    <span class="emoji">👆</span>
+                    <p>คลิกปุ่มนี้ในส่วนเลือกโฟลเดอร์หลัก</p>
+                    <p>ปุ่มนี้จะแสดงอยู่เสมอสำหรับผู้ใช้ทั่วไป</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">2</span>เลือกโฟลเดอร์</h4>
+                <div class="button-demo">📂 เลือกโฟลเดอร์</div>
+                <div class="quick-step">
+                    <span class="emoji">📂</span>
+                    <p>เลือกโฟลเดอร์ที่มีไฟล์ PDF</p>
+                    <p>การเลือกโฟลเดอร์จะต้องเข้าไปที่โฟลเดอร์ที่เลือก >> ลูกค้า >> ระบบอัตโนมัติ</p>
+                </div>
+                
+                <div class="visual-guide">
+                    <h4>📷 หน้าต่างเลือกโฟลเดอร์</h4>
+                    <img src="คู่มือ - สำหรับเลือกโฟลเดอร์การทำงาน.png" alt="หน้าต่างเลือกโฟลเดอร์">
+                    <p class="image-caption">ตัวอย่างหน้าต่างเลือกโฟลเดอร์ - เลือกโฟลเดอร์ที่ต้องการประมวลผล PDF</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>
+                        <span class="emoji">💡</span>
+                        เคล็ดลับ
+                    </h4>
+                    <p>เลือกโฟลเดอร์ที่มี PDF โดยตรง (ไม่เข้าไปในโฟลเดอร์ย่อย)</p>
+                    <p>ระบบจะสแกนไฟล์ PDF ทั้งหมดในโฟลเดอร์ที่เลือก</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">3</span>ดูข้อมูล</h4>
+                <div class="quick-step">
+                    <span class="emoji">📊</span>
+                    <p>ระบบจะแสดงข้อมูลต่างๆ ดังนี้:</p>
+                    <p>• รหัสโฟลเดอร์ (เช่น Build000, Build001)</p>
+                    <p>• ประเภทภาษีมูลค่าเพิ่ม (VAT หรือ NoneVat)</p>
+                    <p>• ข้อมูลจากไฟล์ JSON (ถ้ามี)</p>
+                    <p>• ปุ่มสำหรับแก้ไขข้อมูล</p>
+                </div>
+                
+                <div class="info-card">
+                    <h5>📋 ข้อมูลที่ระบบจะแสดง</h5>
+                    <ul>
+                        <li><strong>รหัสโฟลเดอร์:</strong> ระบุโฟลเดอร์ที่เลือก</li>
+                        <li><strong>ประเภทภาษี:</strong> VAT (จดภาษี) หรือ NoneVat (ยังไม่จด)</li>
+                        <li><strong>ข้อมูลบริษัท:</strong> จากไฟล์ JSON ถ้ามี</li>
+                        <li><strong>ปุ่มจัดการ:</strong> แก้ไขข้อมูล JSON และ TXT</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">4</span>แก้ไขข้อมูล (ถ้าต้องการ)</h4>
+                <div class="button-demo">✏️ แก้ไขผังบัญชี</div>
+                <div class="button-demo">📄 แก้ไขข้อมูล login</div>
+                <div class="button-demo">📊 จัดการข้อมูลภาษี</div>
+                <div class="quick-step">
+                    <span class="emoji">🔧</span>
+                    <p>แก้ไขข้อมูลให้ถูกต้อง (ไม่บังคับ)</p>
+                    <p>หากข้อมูลถูกต้องแล้ว สามารถข้ามขั้นตอนนี้ได้</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <h4>
+                        <span class="emoji">ℹ️</span>
+                        หมายเหตุ
+                    </h4>
+                    <p>การแก้ไขข้อมูลจะช่วยให้ผลลัพธ์แม่นยำขึ้น</p>
+                    <p>หากไม่แน่ใจ สามารถใช้ข้อมูลเดิมได้</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">5</span>เริ่มทำงาน</h4>
+                <div class="button-demo">▶️ เริ่มการทำงาน</div>
+                <div class="quick-step">
+                    <span class="emoji">🚀</span>
+                    <p>คลิกแล้วรอผลลัพธ์!</p>
+                    <p>ระบบจะแสดงความคืบหน้าในหน้าจอ</p>
+                </div>
+                
+                <div class="info-card">
+                    <h5>📊 ระบบจะแสดงผลลัพธ์</h5>
+                    <ul>
+                        <li><strong>จำนวนไฟล์ PDF:</strong> ทั้งหมดที่พบในโฟลเดอร์</li>
+                        <li><strong>ไฟล์ที่อ่านสำเร็จ:</strong> สามารถดึงข้อมูลได้</li>
+                        <li><strong>ไฟล์ที่อ่านไม่ได้:</strong> มีปัญหาหรือเสียหาย</li>
+                        <li><strong>สถิติสรุป:</strong> รายงานผลการประมวลผล</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <h4>🎉 เสร็จแล้ว!</h4>
+                <p>ระบบจะแสดงผลลัพธ์ในหน้าจอ: จำนวนไฟล์, ไฟล์สำเร็จ, ไฟล์ไม่สำเร็จ</p>
+                <p>หากเปิดใช้งาน LINE Notify จะส่งแจ้งเตือนผลลัพธ์ทันที</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 เคล็ดลับการใช้งาน</h2>
+            
+            <div class="info-card">
+                <h5>🎯 สำหรับผู้ใช้ใหม่</h5>
+                <ul>
+                    <li>เริ่มต้นด้วยโหมด "กำหนดโฟลเดอร์เอง" เสมอ</li>
+                    <li>เลือกโฟลเดอร์ที่มีไฟล์ PDF ไม่เยอะเกินไป (แนะนำไม่เกิน 60 ไฟล์)</li>
+                    <li>เนื่องจากว่าบอทมีการทำงานที่ซับซ้อนมากขึ้นถ้าวางไฟล์เยอะๆ อาจทำให้บอททำงานช้าลง</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h5>⚡ เพิ่มประสิทธิภาพ</h5>
+                <ul>
+                    <li>ตรวจสอบไฟล์ PDF ก่อนประมวลผล (ไม่มีรหัสผ่าน, ไม่เสียหาย)</li>
+                    <li>แก้ไขข้อมูล ผังบัญชี ให้ถูกต้องเพื่อการทำงานที่ถูกต้อง</li>
+                    <li>แก้ไขข้อมูล ข้อมูล login ให้ถูกต้องเพื่อการทำงานที่ถูกต้อง</li>
+                    <li>ใช้ LINE Notify เพื่อรับผลลัพธ์ทันที</li>
+                </ul>
+            </div>
+            
+            <div class="info-card">
+                <h5>🔧 การแก้ไขปัญหา</h5>
+                <ul>
+                    <li>หากไฟล์มีการย้ายไปยัง >> ผลการประมวลผล ให้ตรวจสอบตามนี้
+                        <li>- 1. เอกสารฐานข้อมูลไม่เรียบร้อย คือ เอกสารที่ไม่มีผังบัญชี </li>
+                        <li>- 2. เอกสารรอดำเนินการ คือ เอกสารที่อ่านได้บางส่วน อาจจะเกิดจากมีการเปลี่ยนแบบฟอร์มของไฟล์ทำให้ระบบอ่านได้บางส่วน</li>
+                        <li>- 3. เอกสารอ่านข้อมูลไม่ได้ คือ เอกสารที่เป็นประเภทรูปภาพ หรือ เป็นเอกสารที่ระบบไม่รู้จักและยังไม่ได้ทำเข้าระบบบอท</li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🤖 BotV3 - ระบบประมวลผล PDF อัตโนมัติ</p>
+            <p>© 2025 - ออกแบบและพัฒนาสำหรับการใช้งานที่สะดวกและมีประสิทธิภาพ</p>
+        </div>
+    </div>
+</body>
+</html>

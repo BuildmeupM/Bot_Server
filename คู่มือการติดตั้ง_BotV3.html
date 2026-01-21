@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คู่มือการติดตั้ง BotV3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 3px solid #e3f2fd;
+        }
+
+        .header h1 {
+            color: #1565c0;
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #546e7a;
+            font-size: 1.4em;
+            font-weight: 500;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.6em;
+            margin: 30px 0 20px 0;
+            padding-left: 15px;
+            border-left: 4px solid #3498db;
+        }
+
+        .step {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border-left: 8px solid #00c851;
+            box-shadow: 0 10px 30px rgba(0, 200, 81, 0.15);
+        }
+
+        .step h4 {
+            color: #00c851;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #00c851, #00a644);
+            color: white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-weight: bold;
+            font-size: 1.3em;
+            box-shadow: 0 6px 20px rgba(0, 200, 81, 0.3);
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 6px solid #3498db;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h5 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: #546e7a;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            border: 2px solid #4caf50;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.2);
+        }
+
+        .highlight-box h4 {
+            color: #2e7d32;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .highlight-box .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border: 2px solid #f44336;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(244, 67, 54, 0.2);
+        }
+
+        .warning-box h4 {
+            color: #c62828;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .warning-box .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+        }
+
+        .code-block .comment {
+            color: #95a5a6;
+        }
+
+        .code-block .keyword {
+            color: #3498db;
+        }
+
+        .code-block .string {
+            color: #e74c3c;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 1.1em;
+            margin-top: 40px;
+        }
+
+        .emoji-large {
+            font-size: 4em;
+            margin: 20px 0;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 คู่มือการติดตั้ง BotV3</h1>
+            <p>ระบบประมวลผล PDF อัตโนมัติ</p>
+        </div>
+
+        <div class="section">
+            <div style="text-align: center; margin: 30px 0;">
+                <span class="emoji-large">📦</span>
+                <h3>การติดตั้งแบบอัตโนมัติ</h3>
+                <p>วิธีที่ง่ายที่สุดสำหรับผู้ใช้ทั่วไป</p>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">1</span>ดาวน์โหลดไฟล์</h4>
+                <div class="info-card">
+                    <h5>📁 ไฟล์ที่จำเป็น</h5>
+                    <p>• ไฟล์โปรแกรม BotV3 ทั้งหมด</p>
+                    <p>• install_botv3.py</p>
+                    <p>• setup.bat (Windows) หรือ setup.sh (Linux/Mac)</p>
+                    <p>• requirements_setup.txt</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">2</span>ตรวจสอบข้อกำหนดระบบ</h4>
+                <div class="info-card">
+                    <h5>💻 ข้อกำหนดระบบ</h5>
+                    <p><strong>Python:</strong> เวอร์ชัน 3.8 หรือสูงกว่า</p>
+                    <p><strong>RAM:</strong> อย่างน้อย 4 GB</p>
+                    <p><strong>Storage:</strong> อย่างน้อย 1 GB พื้นที่ว่าง</p>
+                    <p><strong>OS:</strong> Windows 10+, macOS 10.14+, Ubuntu 18.04+</p>
+                </div>
+
+                <div class="warning-box">
+                    <h4>
+                        <span class="emoji">⚠️</span>
+                        ข้อควรระวัง
+                    </h4>
+                    <p>หากยังไม่มี Python กรุณาติดตั้งก่อน</p>
+                    <p>ดาวน์โหลดได้ที่: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a></p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">3</span>รันการติดตั้ง</h4>
+                
+                <div class="info-card">
+                    <h5>🖥️ Windows</h5>
+                    <div class="code-block">
+<span class="comment"># ดับเบิลคลิกที่ไฟล์ setup.bat</span>
+<span class="comment"># หรือรันใน Command Prompt:</span>
+setup.bat
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h5>🐧 Linux / 🍎 macOS</h5>
+                    <div class="code-block">
+<span class="comment"># รันใน Terminal:</span>
+./setup.sh
+
+<span class="comment"># หรือรัน Python โดยตรง:</span>
+python3 install_botv3.py
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>
+                        <span class="emoji">💡</span>
+                        เคล็ดลับ
+                    </h4>
+                    <p>การติดตั้งจะใช้เวลาประมาณ 5-10 นาที ขึ้นอยู่กับความเร็วอินเทอร์เน็ต</p>
+                    <p>ระบบจะติดตั้ง packages และ browsers อัตโนมัติ</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">4</span>การตั้งค่าเริ่มต้น</h4>
+                
+                <div class="info-card">
+                    <h5>⚙️ ไฟล์ที่สร้างขึ้น</h5>
+                    <p>• <strong>config_template.py</strong> - ไฟล์ template การตั้งค่า</p>
+                    <p>• <strong>รหัส/Build000.json</strong> - ไฟล์ข้อมูลบริษัทตัวอย่าง</p>
+                    <p>• <strong>รหัส/Build000.txt</strong> - ไฟล์ข้อมูล login ตัวอย่าง</p>
+                    <p>• <strong>folder_settings/folder_settings.json</strong> - ไฟล์การตั้งค่าโฟลเดอร์</p>
+                </div>
+
+                <div class="warning-box">
+                    <h4>
+                        <span class="emoji">⚠️</span>
+                        ขั้นตอนสำคัญ
+                    </h4>
+                    <p>1. คัดลอก config_template.py เป็น config.py</p>
+                    <p>2. แก้ไขข้อมูลใน config.py ให้ถูกต้อง</p>
+                    <p>3. แก้ไขไฟล์ข้อมูลในโฟลเดอร์ 'รหัส/'</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔧 การตั้งค่าเพิ่มเติม</h2>
+            
+            <div class="step">
+                <h4><span class="step-number">1</span>การตั้งค่า LINE</h4>
+                
+                <div class="info-card">
+                    <h5>📱 LINE Notify (แนะนำ)</h5>
+                    <div class="code-block">
+<span class="comment"># ใน config.py</span>
+LINE_NOTIFY_TOKEN = <span class="string">"your_line_notify_token_here"</span>
+                    </div>
+                    <p>1. เข้า <a href="https://notify-bot.line.me/" target="_blank">LINE Notify</a></p>
+                    <p>2. สร้าง Token ใหม่</p>
+                    <p>3. คัดลอก Token มาใส่ใน config.py</p>
+                </div>
+
+                <div class="info-card">
+                    <h5>🤖 LINE OA (Messaging API)</h5>
+                    <div class="code-block">
+<span class="comment"># ใน config.py</span>
+LINE_OA_CHANNEL_ACCESS_TOKEN = <span class="string">"your_channel_access_token"</span>
+LINE_OA_DEFAULT_TO = <span class="string">"user_id_or_group_id"</span>
+                    </div>
+                    <p>1. สร้าง LINE Official Account</p>
+                    <p>2. เปิดใช้งาน Messaging API</p>
+                    <p>3. ใส่ Channel Access Token และ User ID</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">2</span>การตั้งค่าโฟลเดอร์</h4>
+                
+                <div class="info-card">
+                    <h5>📁 โครงสร้างโฟลเดอร์</h5>
+                    <div class="code-block">
+<span class="comment"># ใน config.py</span>
+BASE_FOLDER = <span class="string">"V"</span>  <span class="comment"># หรือ "Synology"</span>
+MAIN_FOLDERS = [<span class="string">"A.โฟร์เดอร์หลัก"</span>, <span class="string">"AA.โฟรเดอร์หลัก"</span>]
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 การเริ่มต้นใช้งาน</h2>
+            
+            <div class="step">
+                <h4><span class="step-number">1</span>เริ่มต้นระบบ</h4>
+                
+                <div class="info-card">
+                    <h5>🖥️ Windows</h5>
+                    <div class="code-block">
+<span class="comment"># ดับเบิลคลิกที่ไฟล์</span>
+start_botv3.bat
+
+<span class="comment"># หรือรันใน Command Prompt:</span>
+python bot_gui_tkinter.py
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h5>🐧 Linux / 🍎 macOS</h5>
+                    <div class="code-block">
+<span class="comment"># รันใน Terminal:</span>
+./start_botv3.sh
+
+<span class="comment"># หรือรัน Python โดยตรง:</span>
+python3 bot_gui_tkinter.py
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h4><span class="step-number">2</span>โหมดการทำงาน</h4>
+                
+                <div class="info-card">
+                    <h5>🖥️ Desktop GUI</h5>
+                    <p>ใช้งานผ่านหน้าต่าง GUI หลัก</p>
+                    <p>เหมาะสำหรับการใช้งานทั่วไป</p>
+                </div>
+
+                <div class="info-card">
+                    <h5>🌐 Web Control</h5>
+                    <p>ควบคุมผ่านเว็บเบราว์เซอร์</p>
+                    <p>เหมาะสำหรับการใช้งานระยะไกล</p>
+                    <div class="code-block">
+python main_control.html  <span class="comment"># เปิดในเบราว์เซอร์</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔧 การแก้ไขปัญหา</h2>
+            
+            <div class="warning-box">
+                <h4>
+                    <span class="emoji">❌</span>
+                    ปัญหาที่พบบ่อย
+                </h4>
+                <p><strong>ไม่สามารถติดตั้ง Playwright ได้:</strong></p>
+                <div class="code-block">
+pip install --upgrade playwright
+playwright install chromium
+                </div>
+                
+                <p><strong>ไม่พบไฟล์ config.py:</strong></p>
+                <div class="code-block">
+<span class="comment"># คัดลอก template</span>
+copy config_template.py config.py  <span class="comment"># Windows</span>
+cp config_template.py config.py    <span class="comment"># Linux/Mac</span>
+                </div>
+                
+                <p><strong>ไม่สามารถเชื่อมต่อ LINE ได้:</strong></p>
+                <p>• ตรวจสอบ LINE Token</p>
+                <p>• ตรวจสอบการเชื่อมต่ออินเทอร์เน็ต</p>
+                <p>• ตรวจสอบ User ID หรือ Group ID</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📞 การสนับสนุน</h2>
+            
+            <div class="info-card">
+                <h5>📖 คู่มือการใช้งาน</h5>
+                <p>• <a href="คู่มือการใช้งานระบบ_BotV3_Index.html">หน้าหลัก</a></p>
+                <p>• <a href="คู่มือการใช้งานระบบ_BotV3_แนะนำระบบ.html">แนะนำระบบ</a></p>
+                <p>• <a href="คู่มือการใช้งานระบบ_BotV3_การใช้งาน.html">การใช้งาน</a></p>
+                <p>• <a href="คู่มือการใช้งานระบบ_BotV3_สร้างฐานข้อมูล.html">การสร้างฐานข้อมูล</a></p>
+                <p>• <a href="คู่มือการใช้งานระบบ_BotV3_แก้ไขไฟล์.html">การแก้ไขไฟล์</a></p>
+            </div>
+
+            <div class="highlight-box">
+                <h4>
+                    <span class="emoji">💡</span>
+                    เคล็ดลับการใช้งาน
+                </h4>
+                <p>• เริ่มต้นด้วยโหมด "กำหนดโฟลเดอร์เอง" เสมอ</p>
+                <p>• ตรวจสอบไฟล์ PDF ก่อนประมวลผล (ไม่มีรหัสผ่าน)</p>
+                <p>• ใช้ LINE Notify เพื่อรับผลลัพธ์ทันที</p>
+                <p>• ระบบจำกัดการประมวลผลสูงสุดที่ 60 รายการต่อครั้ง</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🤖 BotV3 - ระบบประมวลผล PDF อัตโนมัติ</p>
+            <p>© 2025 - ออกแบบและพัฒนาสำหรับการใช้งานที่สะดวกและมีประสิทธิภาพ</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+# BotV3 Requirements - Setup Version
+# ไฟล์ requirements สำหรับการติดตั้ง BotV3
+
+# Core dependencies
+tkinter
+pathlib
+json
+datetime
+typing
+threading
+subprocess
+shutil
+os
+sys
+platform
+requests
+
+# PDF Processing
+PyPDF2>=3.0.0
+pdfplumber>=0.9.0
+pymupdf>=1.23.0
+
+# Web Automation
+playwright>=1.40.0
+selenium>=4.15.0
+
+# GUI and Desktop
+tkinter-tooltip>=2.0.0
+pillow>=10.0.0
+
+# Web Framework (สำหรับ Web Control)
+flask>=2.3.0
+flask-cors>=4.0.0
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# File Handling
+openpyxl>=3.1.0
+python-docx>=0.8.11
+
+# Network and API
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Logging and Debugging
+colorlog>=6.7.0
+
+# Development and Testing (optional)
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0
+
+# Platform specific (optional)
+pywin32>=306; sys_platform == "win32"
+pyobjc>=9.0; sys_platform == "darwin"

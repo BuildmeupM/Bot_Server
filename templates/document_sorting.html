@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BotV3 - ระบบคัดแยกเอกสาร</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0e1117;
+            color: #fafafa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .nav-bar {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav-link {
+            padding: 10px 20px;
+            background: #334155;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .nav-link:hover {
+            background: #475569;
+        }
+        
+        .nav-link.active {
+            background: #10b981;
+        }
+        
+        .panel {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .panel h2 {
+            color: #fbbf24;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #cbd5e1;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #475569;
+            border-radius: 5px;
+            background: #0f172a;
+            color: #fafafa;
+            font-size: 14px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: #475569;
+            color: white;
+        }
+        
+        .btn-full {
+            width: 100%;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #10b981;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            color: #94a3b8;
+        }
+        
+        .duplicate-list {
+            margin-top: 20px;
+        }
+        
+        .duplicate-item {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #334155;
+        }
+        
+        .duplicate-item h4 {
+            color: #fbbf24;
+            margin-bottom: 10px;
+        }
+        
+        .file-list {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .file-item {
+            background: #1e293b;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .file-path {
+            color: #cbd5e1;
+            font-size: 0.9em;
+            flex: 1;
+            margin-right: 10px;
+            word-break: break-all;
+        }
+        
+        .file-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+        
+        .extracted-data {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 1px solid #334155;
+        }
+        
+        .data-item {
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            font-size: 0.9em;
+        }
+        
+        .data-label {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+        
+        .skip-folders {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        
+        .skip-folder-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            background: #1e293b;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #94a3b8;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .checkbox-container input[type="checkbox"] {
+            width: auto;
+        }
+        
+        /* Popup Modal Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .popup-overlay.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popup-modal {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.3s ease;
+            border: 2px solid #334155;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .popup-modal.large {
+            max-width: 800px;
+        }
+        
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-shrink: 0;
+        }
+        
+        .popup-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fafafa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .popup-close {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 28px;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .popup-close:hover {
+            background: #334155;
+            color: #fafafa;
+        }
+        
+        .popup-body {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            word-wrap: break-word;
+            overflow-y: auto;
+            flex: 1;
+            min-height: 0;
+        }
+        
+        .popup-body:not(:has(div)) {
+            white-space: pre-line;
+        }
+        
+        .popup-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .popup-body::-webkit-scrollbar-track {
+            background: #0f172a;
+            border-radius: 4px;
+        }
+        
+        .popup-body::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+        
+        .popup-body::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        
+        .popup-footer {
+            flex-shrink: 0;
+        }
+        
+        .popup-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .popup-icon {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+        
+        .popup-success .popup-icon {
+            color: #10b981;
+        }
+        
+        .popup-error .popup-icon {
+            color: #ef4444;
+        }
+        
+        .popup-warning .popup-icon {
+            color: #f59e0b;
+        }
+        
+        .popup-info .popup-icon {
+            color: #3b82f6;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Popup Modal -->
+    <div id="popupOverlay" class="popup-overlay" onclick="closePopupOnOverlay(event)">
+        <div class="popup-modal" onclick="event.stopPropagation()">
+            <div class="popup-header">
+                <div class="popup-title" id="popupTitle">
+                    <span class="popup-icon" id="popupIcon">ℹ️</span>
+                    <span id="popupTitleText">แจ้งเตือน</span>
+                </div>
+                <button class="popup-close" onclick="closePopupWithoutCallback()">&times;</button>
+            </div>
+            <div class="popup-body" id="popupBody">
+                <!-- ข้อความจะถูกใส่ที่นี่ -->
+            </div>
+            <div class="popup-footer">
+                <button class="btn btn-primary" id="popupConfirmBtn">ตกลง</button>
+                <button class="btn btn-secondary" id="popupCancelBtn" style="display: none;">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1>📋 BotV3 - ระบบคัดแยกเอกสาร</h1>
+            <p style="margin-top: 10px; opacity: 0.9;">ระบบตรวจสอบและคัดแยกเอกสาร PDF</p>
+        </div>
+        
+        <div class="nav-bar">
+            <a href="/" class="nav-link">🏠 หน้าหลัก</a>
+            <a href="/pdf" class="nav-link">🤖 ประมวลผล PDF</a>
+            <a href="/email" class="nav-link">📧 ส่งอีเมลล์</a>
+            <a href="/document-sorting" class="nav-link active">📋 คัดแยกเอกสาร</a>
+            <a href="/auditcheck" class="nav-link">🔍 ตรวจภาษี</a>
+        </div>
+        
+        <!-- ส่วนสแกน PDF -->
+        <div class="panel">
+            <h2>🔍 ตรวจสอบ PDF และหาชื่อซ้ำกัน</h2>
+            
+            <div class="form-group">
+                <label>Path โฟลเดอร์ที่จะสแกน</label>
+                <input type="text" id="basePathInput" placeholder="พิมพ์หรือวาง path โฟลเดอร์ เช่น V:\A.โฟร์เดอร์หลัก\Build000">
+            </div>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="includeSubfolders" checked>
+                <label for="includeSubfolders">สแกนโฟลเดอร์ย่อยทั้งหมด (Recursive)</label>
+            </div>
+            
+            <div class="skip-folders">
+                <label>โฟลเดอร์ที่จะข้าม (Skip Folders)</label>
+                <div id="skipFoldersList"></div>
+                <button class="btn btn-secondary btn-small" onclick="addSkipFolder()" style="margin-top: 10px;">+ เพิ่มโฟลเดอร์ที่จะข้าม</button>
+            </div>
+            
+            <button class="btn btn-primary btn-full" onclick="scanPDFs()" style="margin-top: 20px;">🔍 เริ่มสแกน PDF</button>
+        </div>
+        
+        <!-- สถิติ -->
+        <div class="panel" id="statsPanel" style="display: none;">
+            <h2>📊 สถิติ</h2>
+            <div class="stats-grid" id="statsGrid"></div>
+        </div>
+        
+        <!-- รายการไฟล์ตามคีย์เวิร์ด -->
+        <div class="panel" id="keywordPanel" style="display: none;">
+            <h2>🏷️ ไฟล์ตามคีย์เวิร์ด</h2>
+            <div id="keywordList" class="duplicate-list"></div>
+        </div>
+        
+        <!-- รายการไฟล์ซ้ำ -->
+        <div class="panel" id="duplicatesPanel" style="display: none;">
+            <h2>📄 ไฟล์ที่มีชื่อซ้ำกัน</h2>
+            <div id="duplicatesList" class="duplicate-list"></div>
+        </div>
+    </div>
+    
+    <script>
+        let skipFolders = [];
+        let scanResult = null;
+        let popupCallback = null;
+        let isScanning = false; // เพิ่ม flag เพื่อป้องกันการสแกนซ้ำ
+        
+        // Popup Functions
+        function showPopup(message, type = 'info', title = null, callback = null) {
+            const overlay = document.getElementById('popupOverlay');
+            const modal = overlay.querySelector('.popup-modal');
+            const titleText = document.getElementById('popupTitleText');
+            const icon = document.getElementById('popupIcon');
+            const body = document.getElementById('popupBody');
+            const confirmBtn = document.getElementById('popupConfirmBtn');
+            const cancelBtn = document.getElementById('popupCancelBtn');
+            
+            // ลบ class ประเภทเดิม
+            modal.classList.remove('popup-success', 'popup-error', 'popup-warning', 'popup-info');
+            
+            // กำหนดประเภทและไอคอน
+            let iconText = 'ℹ️';
+            let titleDefault = 'แจ้งเตือน';
+            
+            switch(type) {
+                case 'success':
+                    modal.classList.add('popup-success');
+                    iconText = '✅';
+                    titleDefault = 'สำเร็จ';
+                    break;
+                case 'error':
+                    modal.classList.add('popup-error');
+                    iconText = '❌';
+                    titleDefault = 'เกิดข้อผิดพลาด';
+                    break;
+                case 'warning':
+                    modal.classList.add('popup-warning');
+                    iconText = '⚠️';
+                    titleDefault = 'คำเตือน';
+                    break;
+                case 'info':
+                default:
+                    modal.classList.add('popup-info');
+                    iconText = 'ℹ️';
+                    titleDefault = 'ข้อมูล';
+                    break;
+            }
+            
+            titleText.textContent = title || titleDefault;
+            icon.textContent = iconText;
+            body.textContent = message;
+        }
+        
+        function showPopupHTML(htmlContent, type = 'info', title = null, callback = null) {
+            const overlay = document.getElementById('popupOverlay');
+            const modal = overlay.querySelector('.popup-modal');
+            const titleText = document.getElementById('popupTitleText');
+            const icon = document.getElementById('popupIcon');
+            const body = document.getElementById('popupBody');
+            const confirmBtn = document.getElementById('popupConfirmBtn');
+            const cancelBtn = document.getElementById('popupCancelBtn');
+            
+            // ลบ class ประเภทเดิม
+            modal.classList.remove('popup-success', 'popup-error', 'popup-warning', 'popup-info', 'large');
+            
+            // เพิ่ม class large สำหรับ popup ที่แสดงข้อมูลยาว
+            modal.classList.add('large');
+            
+            // กำหนดประเภทและไอคอน
+            let iconText = 'ℹ️';
+            let titleDefault = 'แจ้งเตือน';
+            
+            switch(type) {
+                case 'success':
+                    modal.classList.add('popup-success');
+                    iconText = '✅';
+                    titleDefault = 'สำเร็จ';
+                    break;
+                case 'error':
+                    modal.classList.add('popup-error');
+                    iconText = '❌';
+                    titleDefault = 'เกิดข้อผิดพลาด';
+                    break;
+                case 'warning':
+                    modal.classList.add('popup-warning');
+                    iconText = '⚠️';
+                    titleDefault = 'คำเตือน';
+                    break;
+                case 'info':
+                default:
+                    modal.classList.add('popup-info');
+                    iconText = 'ℹ️';
+                    titleDefault = 'ข้อมูล';
+                    break;
+            }
+            
+            titleText.textContent = title || titleDefault;
+            icon.textContent = iconText;
+            body.innerHTML = htmlContent;
+            
+            // ถ้ามี callback ให้แสดงปุ่มยืนยัน และซ่อนปุ่มยกเลิก
+            if (callback) {
+                popupCallback = callback;
+                confirmBtn.textContent = 'ยืนยัน';
+                cancelBtn.style.display = 'none';
+                
+                // ลบ event listener เก่า
+                const newConfirmBtn = confirmBtn.cloneNode(true);
+                confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+                
+                newConfirmBtn.onclick = function() {
+                    const cb = callback; // เก็บ callback ก่อน
+                    closePopupWithoutCallback();
+                    // เรียก callback หลังจากปิด popup แล้ว
+                    setTimeout(() => {
+                        if (cb) cb();
+                    }, 100);
+                };
+            } else {
+                popupCallback = null;
+                confirmBtn.textContent = 'ตกลง';
+                cancelBtn.style.display = 'none';
+                
+                // ลบ event listener เก่า
+                const newConfirmBtn = confirmBtn.cloneNode(true);
+                confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+                
+                newConfirmBtn.onclick = function() {
+                    closePopupWithoutCallback();
+                };
+            }
+            
+            overlay.classList.add('show');
+            
+            // ปิดเมื่อกด ESC
+            document.addEventListener('keydown', handlePopupEsc);
+        }
+        
+        function closePopup() {
+            closePopupWithoutCallback();
+            if (popupCallback) {
+                popupCallback();
+                popupCallback = null;
+            }
+        }
+        
+        function closePopupWithoutCallback() {
+            const overlay = document.getElementById('popupOverlay');
+            overlay.classList.remove('show');
+            document.removeEventListener('keydown', handlePopupEsc);
+        }
+        
+        function closePopupOnOverlay(event) {
+            if (event.target.id === 'popupOverlay') {
+                closePopupWithoutCallback();
+            }
+        }
+        
+        function handlePopupEsc(event) {
+            if (event.key === 'Escape') {
+                closePopupWithoutCallback();
+            }
+        }
+        
+        function showConfirm(message, title = 'ยืนยัน', callback = null) {
+            const overlay = document.getElementById('popupOverlay');
+            const modal = overlay.querySelector('.popup-modal');
+            const titleText = document.getElementById('popupTitleText');
+            const icon = document.getElementById('popupIcon');
+            const body = document.getElementById('popupBody');
+            const confirmBtn = document.getElementById('popupConfirmBtn');
+            const cancelBtn = document.getElementById('popupCancelBtn');
+            
+            modal.classList.remove('popup-success', 'popup-error', 'popup-warning', 'popup-info');
+            modal.classList.add('popup-warning');
+            
+            titleText.textContent = title;
+            icon.textContent = '❓';
+            body.textContent = message;
+            
+            confirmBtn.textContent = 'ยืนยัน';
+            cancelBtn.style.display = 'inline-block';
+            
+            // ลบ event listener เก่า
+            const newConfirmBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+            
+            const newCancelBtn = cancelBtn.cloneNode(true);
+            cancelBtn.parentNode.replaceChild(newCancelBtn, cancelBtn);
+            
+            newConfirmBtn.onclick = function() {
+                const cb = callback; // เก็บ callback ก่อน
+                closePopupWithoutCallback();
+                // เรียก callback หลังจากปิด popup แล้ว
+                setTimeout(() => {
+                    if (cb) cb(true);
+                }, 100);
+            };
+            
+            newCancelBtn.onclick = function() {
+                const cb = callback; // เก็บ callback ก่อน
+                closePopupWithoutCallback();
+                // เรียก callback หลังจากปิด popup แล้ว
+                setTimeout(() => {
+                    if (cb) cb(false);
+                }, 100);
+            };
+            
+            overlay.classList.add('show');
+            document.addEventListener('keydown', handlePopupEsc);
+        }
+        
+        function addSkipFolder() {
+            showInputPopup('กรุณาใส่ชื่อโฟลเดอร์ที่จะข้าม:', 'เพิ่มโฟลเดอร์ที่จะข้าม', function(folderName) {
+                if (folderName && folderName.trim()) {
+                    skipFolders.push(folderName.trim());
+                    updateSkipFoldersList();
+                }
+            });
+        }
+        
+        function removeSkipFolder(index) {
+            skipFolders.splice(index, 1);
+            updateSkipFoldersList();
+        }
+        
+        function updateSkipFoldersList() {
+            const listDiv = document.getElementById('skipFoldersList');
+            listDiv.innerHTML = '';
+            
+            skipFolders.forEach((folder, index) => {
+                const item = document.createElement('div');
+                item.className = 'skip-folder-item';
+                item.innerHTML = `
+                    <span>${folder}</span>
+                    <button class="btn btn-secondary btn-small" onclick="removeSkipFolder(${index})">ลบ</button>
+                `;
+                listDiv.appendChild(item);
+            });
+            
+            if (skipFolders.length === 0) {
+                listDiv.innerHTML = '<p style="color: #94a3b8; font-style: italic;">ยังไม่มีโฟลเดอร์ที่จะข้าม</p>';
+            }
+        }
+        
+        async function scanPDFs() {
+            // ป้องกันการสแกนซ้ำ
+            if (isScanning) {
+                console.log('กำลังสแกนอยู่แล้ว...');
+                return;
+            }
+            
+            const basePath = document.getElementById('basePathInput').value.trim();
+            if (!basePath) {
+                showPopup('กรุณาระบุ path โฟลเดอร์', 'warning');
+                return;
+            }
+            
+            isScanning = true;
+            const includeSubfolders = document.getElementById('includeSubfolders').checked;
+            
+            // แสดง loading
+            document.getElementById('duplicatesPanel').style.display = 'none';
+            document.getElementById('keywordPanel').style.display = 'none';
+            
+            const statsPanel = document.getElementById('statsPanel');
+            const statsGrid = document.getElementById('statsGrid');
+            
+            // ตรวจสอบว่า statsPanel มีอยู่
+            if (!statsPanel) {
+                showPopup('ไม่พบ statsPanel element', 'error');
+                return;
+            }
+            
+            // ลบ loading indicator เก่าถ้ามี
+            const existingLoading = statsPanel.querySelector('.loading-indicator');
+            if (existingLoading) {
+                existingLoading.remove();
+            }
+            
+            // แสดง loading
+            statsPanel.style.display = 'block';
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'loading-indicator';
+            loadingDiv.innerHTML = '<div class="loading">⏳ กำลังสแกน PDF...</div>';
+            loadingDiv.style.marginTop = '20px';
+            
+            // ใส่ loading หลังจาก h2
+            const h2 = statsPanel.querySelector('h2');
+            if (h2) {
+                h2.insertAdjacentElement('afterend', loadingDiv);
+            } else {
+                statsPanel.appendChild(loadingDiv);
+            }
+            
+            // ซ่อน statsGrid ชั่วคราว
+            if (statsGrid) {
+                statsGrid.style.display = 'none';
+            }
+            
+            try {
+                // เพิ่มโฟลเดอร์คีย์เวิร์ดเข้าไปใน skip_folders โดยอัตโนมัติ
+                const keywordFolders = ['NONE_VAT', 'VAT', 'WHT'];
+                const allSkipFolders = [...skipFolders];
+                
+                // เพิ่มโฟลเดอร์คีย์เวิร์ดถ้ายังไม่มี
+                keywordFolders.forEach(keywordFolder => {
+                    if (!allSkipFolders.includes(keywordFolder)) {
+                        allSkipFolders.push(keywordFolder);
+                    }
+                });
+                
+                const response = await fetch('/api/document-sorting/scan', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        base_path: basePath,
+                        skip_folders: allSkipFolders,
+                        include_subfolders: includeSubfolders
+                    })
+                });
+                
+                const data = await response.json();
+                
+                // ลบ loading
+                if (loadingDiv && loadingDiv.parentNode) {
+                    loadingDiv.remove();
+                }
+                
+                if (data.success) {
+                    scanResult = data;
+                    displayStats(data.stats);
+                    displayFilesByKeyword(data.files_by_keyword || {});
+                    displayDuplicates(data.duplicates);
+                } else {
+                    showPopup('เกิดข้อผิดพลาด: ' + data.error, 'error');
+                    statsPanel.style.display = 'none';
+                }
+            } catch (error) {
+                // ลบ loading
+                if (loadingDiv && loadingDiv.parentNode) {
+                    loadingDiv.remove();
+                }
+                showPopup('เกิดข้อผิดพลาด: ' + error.message, 'error');
+                statsPanel.style.display = 'none';
+            } finally {
+                isScanning = false; // ปลดล็อกเมื่อสแกนเสร็จ
+            }
+        }
+        
+        function displayStats(stats) {
+            const statsPanel = document.getElementById('statsPanel');
+            const statsGrid = document.getElementById('statsGrid');
+            if (!statsGrid || !statsPanel) {
+                console.error('statsGrid or statsPanel element not found');
+                return;
+            }
+            
+            // ลบ keywordStatsDiv เก่าถ้ามี
+            const existingKeywordStats = statsPanel.querySelector('.keyword-stats-section');
+            if (existingKeywordStats) {
+                existingKeywordStats.remove();
+            }
+            
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-value">${stats.total_folders}</div>
+                    <div class="stat-label">โฟลเดอร์ทั้งหมด</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.total_pdf_files}</div>
+                    <div class="stat-label">ไฟล์ PDF ทั้งหมด</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.unique_filenames}</div>
+                    <div class="stat-label">ชื่อไฟล์ที่ไม่ซ้ำ</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.duplicate_filenames}</div>
+                    <div class="stat-label">ชื่อไฟล์ที่ซ้ำกัน</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${stats.duplicate_files_count}</div>
+                    <div class="stat-label">จำนวนไฟล์ซ้ำ</div>
+                </div>
+            `;
+            
+            // แสดง statsGrid
+            statsGrid.style.display = 'grid';
+            
+            // แสดงสถิติตามคีย์เวิร์ด ถ้ามี
+            if (stats.keyword_stats && Object.keys(stats.keyword_stats).length > 0) {
+                const keywordStatsHTML = Object.keys(stats.keyword_stats).map(keyword => {
+                    const count = stats.keyword_stats[keyword];
+                    return `
+                        <div class="stat-card">
+                            <div class="stat-value">${count}</div>
+                            <div class="stat-label">${keyword}</div>
+                        </div>
+                    `;
+                }).join('');
+                
+                if (keywordStatsHTML) {
+                    const keywordStatsDiv = document.createElement('div');
+                    keywordStatsDiv.className = 'keyword-stats-section';
+                    keywordStatsDiv.style.marginTop = '20px';
+                    keywordStatsDiv.innerHTML = `
+                        <h3 style="color: #60a5fa; margin-bottom: 15px;">📊 สถิติตามคีย์เวิร์ด</h3>
+                        <div class="stats-grid">${keywordStatsHTML}</div>
+                    `;
+                    statsPanel.appendChild(keywordStatsDiv);
+                }
+            }
+        }
+        
+        function displayFilesByKeyword(filesByKeyword) {
+            const keywordList = document.getElementById('keywordList');
+            if (!keywordList) return;
+            
+            keywordList.innerHTML = '';
+            
+            if (!filesByKeyword || Object.keys(filesByKeyword).length === 0) {
+                keywordList.innerHTML = '<p style="color: #94a3b8; text-align: center; padding: 20px;">ไม่พบไฟล์ที่จัดกลุ่มตามคีย์เวิร์ด</p>';
+                document.getElementById('keywordPanel').style.display = 'block';
+                return;
+            }
+            
+            // เรียงลำดับคีย์เวิร์ดตามลำดับ: NONE_VAT, VAT, WHT, OTHER
+            const keywordOrder = ['NONE_VAT', 'VAT', 'WHT', 'OTHER'];
+            const sortedKeywords = Object.keys(filesByKeyword).sort((a, b) => {
+                const aIndex = keywordOrder.indexOf(a);
+                const bIndex = keywordOrder.indexOf(b);
+                if (aIndex === -1 && bIndex === -1) return a.localeCompare(b);
+                if (aIndex === -1) return 1;
+                if (bIndex === -1) return -1;
+                return aIndex - bIndex;
+            });
+            
+            sortedKeywords.forEach(keyword => {
+                const files = filesByKeyword[keyword];
+                if (!files || files.length === 0) return;
+                
+                const keywordItem = document.createElement('div');
+                keywordItem.className = 'duplicate-item';
+                
+                // เลือกสีตามคีย์เวิร์ด
+                let keywordColor = '#10b981';
+                let keywordIcon = '🏷️';
+                if (keyword === 'NONE_VAT') {
+                    keywordColor = '#f59e0b';
+                    keywordIcon = '📄';
+                } else if (keyword === 'VAT') {
+                    keywordColor = '#3b82f6';
+                    keywordIcon = '📋';
+                } else if (keyword === 'WHT') {
+                    keywordColor = '#8b5cf6';
+                    keywordIcon = '📊';
+                } else {
+                    keywordColor = '#64748b';
+                    keywordIcon = '📁';
+                }
+                
+                let fileListHTML = '<div class="file-list">';
+                files.forEach((fileInfo, index) => {
+                    fileListHTML += `
+                        <div class="file-item" data-keyword="${keyword}" data-filepath="${fileInfo.path}">
+                            <div class="file-path">${index + 1}. ${fileInfo.filename}</div>
+                            <div style="color: #94a3b8; font-size: 0.85em; margin-top: 3px;">${fileInfo.folder}</div>
+                        </div>
+                    `;
+                });
+                fileListHTML += '</div>';
+                
+                keywordItem.innerHTML = `
+                    <h4 style="color: ${keywordColor};">${keywordIcon} ${keyword} (${files.length} ไฟล์)</h4>
+                    <button class="btn btn-primary btn-small" onclick="extractKeywordData('${keyword}')" style="margin-bottom: 10px;">📖 ดึงข้อมูลทั้งหมดและรวมกัน</button>
+                    ${fileListHTML}
+                `;
+                
+                keywordList.appendChild(keywordItem);
+            });
+            
+            document.getElementById('keywordPanel').style.display = 'block';
+        }
+        
+        function displayDuplicates(duplicates) {
+            const duplicatesList = document.getElementById('duplicatesList');
+            duplicatesList.innerHTML = '';
+            
+            if (Object.keys(duplicates).length === 0) {
+                duplicatesList.innerHTML = '<p style="color: #94a3b8; text-align: center; padding: 20px;">ไม่พบไฟล์ที่ชื่อซ้ำกัน</p>';
+                document.getElementById('duplicatesPanel').style.display = 'block';
+                return;
+            }
+            
+            Object.keys(duplicates).forEach(filename => {
+                const filePaths = duplicates[filename];
+                const duplicateItem = document.createElement('div');
+                duplicateItem.className = 'duplicate-item';
+                
+                let fileListHTML = '<div class="file-list">';
+                filePaths.forEach((filePath, index) => {
+                    fileListHTML += `
+                        <div class="file-item" data-filename="${filename}" data-filepath="${filePath}">
+                            <div class="file-path">${index + 1}. ${filePath}</div>
+                        </div>
+                    `;
+                });
+                fileListHTML += '</div>';
+                
+                duplicateItem.innerHTML = `
+                    <h4>📄 ${filename} (${filePaths.length} ไฟล์)</h4>
+                    <button class="btn btn-primary btn-small" onclick="extractAllData('${filename}')" style="margin-bottom: 10px;">📖 อ่านข้อมูลจากไฟล์ทั้งหมด</button>
+                    ${fileListHTML}
+                `;
+                
+                duplicatesList.appendChild(duplicateItem);
+            });
+            
+            document.getElementById('duplicatesPanel').style.display = 'block';
+        }
+        
+        async function extractKeywordData(keyword) {
+            if (!scanResult || !scanResult.files_by_keyword || !scanResult.files_by_keyword[keyword]) {
+                showPopup('ไม่พบข้อมูลไฟล์', 'warning');
+                return;
+            }
+            
+            const files = scanResult.files_by_keyword[keyword];
+            const filePaths = files.map(f => f.path);
+            
+            // หา keyword item ที่เกี่ยวข้อง (หาใน keywordPanel)
+            const keywordItems = Array.from(document.querySelectorAll('#keywordList .duplicate-item'));
+            const keywordItem = keywordItems.find(item => {
+                const h4 = item.querySelector('h4');
+                return h4 && h4.textContent.includes(keyword);
+            });
+            
+            if (!keywordItem) {
+                showPopup('ไม่พบ keyword item', 'error');
+                return;
+            }
+            
+            // ลบข้อมูลเก่าทั้งหมด (extracted-data และ moving-status)
+            const existingData = keywordItem.querySelector('.extracted-data');
+            if (existingData) {
+                existingData.remove();
+            }
+            
+            const existingMovingStatus = keywordItem.querySelector('.moving-status');
+            if (existingMovingStatus) {
+                existingMovingStatus.remove();
+            }
+            
+            // แสดง loading
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'extracted-data';
+            loadingDiv.innerHTML = `<div class="loading">⏳ กำลังอ่านข้อมูลจากไฟล์ทั้งหมด (${files.length} ไฟล์)...</div>`;
+            keywordItem.appendChild(loadingDiv);
+            
+            try {
+                const response = await fetch('/api/document-sorting/extract-keyword-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        keyword: keyword,
+                        file_paths: filePaths
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showKeywordExtractedData(keywordItem, keyword, data);
+                } else {
+                    loadingDiv.innerHTML = '<div class="data-item" style="color: #e74c3c;">ไม่สามารถอ่านข้อมูลได้: ' + (data.error || 'Unknown error') + '</div>';
+                }
+            } catch (error) {
+                loadingDiv.innerHTML = '<div class="data-item" style="color: #e74c3c;">เกิดข้อผิดพลาด: ' + error.message + '</div>';
+            }
+        }
+        
+        function showKeywordExtractedData(keywordItem, keyword, data) {
+            // ลบ loading
+            const loadingDiv = keywordItem.querySelector('.extracted-data');
+            if (loadingDiv) loadingDiv.remove();
+            
+            let dataHTML = '<div style="max-height: 70vh; overflow-y: auto; padding-right: 10px;">';
+            dataHTML += '<h4 style="color: #fbbf24; margin-bottom: 10px;">📊 ข้อมูลที่อ่านได้จากไฟล์ทั้งหมด:</h4>';
+            
+            // แสดงข้อมูลรวม
+            if (data.merged_data && Object.keys(data.merged_data).length > 0) {
+                dataHTML += '<div style="background: #1e293b; padding: 15px; border-radius: 5px; margin-bottom: 15px;">';
+                dataHTML += '<h5 style="color: #60a5fa; margin-bottom: 10px;">📋 ข้อมูลรวม:</h5>';
+                
+                const merged = data.merged_data;
+                if (merged.company_name) {
+                    dataHTML += `<div class="data-item"><span class="data-label">บริษัท:</span> ${merged.company_name}</div>`;
+                }
+                if (merged.tax_id) {
+                    dataHTML += `<div class="data-item"><span class="data-label">เลขประจำตัวผู้เสียภาษี:</span> ${merged.tax_id}</div>`;
+                }
+                if (merged.document_number) {
+                    dataHTML += `<div class="data-item"><span class="data-label">เลขที่เอกสาร:</span> ${merged.document_number}</div>`;
+                }
+                if (merged.document_date) {
+                    dataHTML += `<div class="data-item"><span class="data-label">วันที่เอกสาร:</span> ${merged.document_date}</div>`;
+                }
+                
+                dataHTML += '</div>';
+            }
+            
+            // แสดงชื่อไฟล์ที่สร้างอัตโนมัติ
+            if (data.suggested_filename) {
+                dataHTML += '<div style="background: #0f172a; padding: 15px; border-radius: 5px; margin-bottom: 15px; border-left: 3px solid #10b981;">';
+                dataHTML += '<h5 style="color: #10b981; margin-bottom: 10px;">✨ ชื่อไฟล์ที่แนะนำ:</h5>';
+                dataHTML += `<div class="data-item"><code style="color: #60a5fa; font-size: 1.1em;">${data.suggested_filename}</code></div>`;
+                dataHTML += '</div>';
+                
+                // เพิ่มปุ่มเริ่มทำงาน
+                dataHTML += '<div style="background: #0f172a; padding: 15px; border-radius: 5px; margin-bottom: 15px; border-left: 3px solid #f59e0b;">';
+                dataHTML += '<h5 style="color: #f59e0b; margin-bottom: 10px;">🚀 การดำเนินการ:</h5>';
+                dataHTML += `<button class="btn btn-primary" onclick="closePopupWithoutCallback(); setTimeout(() => { createFolderAndMoveFiles('${keyword}', '${data.suggested_filename.replace(/'/g, "\\'")}'); }, 100);" style="width: 100%; margin-bottom: 10px;">📁 สร้างโฟลเดอร์และย้ายไฟล์ทั้งหมด</button>`;
+                dataHTML += '<p style="color: #94a3b8; font-size: 0.9em; margin: 0;">ระบบจะสร้างโฟลเดอร์ตามคีย์เวิร์ดในตำแหน่งเดียวกับ path และย้ายไฟล์ทั้งหมดไปยังโฟลเดอร์นั้น</p>';
+                dataHTML += '</div>';
+            }
+            
+            // แสดงรายละเอียดแต่ละไฟล์
+            if (data.extracted_data && data.extracted_data.length > 0) {
+                dataHTML += '<h5 style="color: #60a5fa; margin-bottom: 10px;">📄 รายละเอียดแต่ละไฟล์:</h5>';
+                
+                data.extracted_data.forEach((extracted, index) => {
+                    if (extracted.success && extracted.data) {
+                        dataHTML += `<div style="background: #0f172a; padding: 10px; border-radius: 5px; margin-bottom: 10px; border-left: 3px solid #10b981;">`;
+                        dataHTML += `<div class="data-item" style="margin-bottom: 5px;"><span class="data-label">ไฟล์ ${index + 1}:</span> ${extracted.folder}</div>`;
+                        
+                        if (extracted.data.company_name) {
+                            dataHTML += `<div class="data-item" style="margin-left: 20px;"><span class="data-label">บริษัท:</span> ${extracted.data.company_name}</div>`;
+                        }
+                        if (extracted.data.tax_id) {
+                            dataHTML += `<div class="data-item" style="margin-left: 20px;"><span class="data-label">เลขประจำตัวผู้เสียภาษี:</span> ${extracted.data.tax_id}</div>`;
+                        }
+                        if (extracted.data.document_number) {
+                            dataHTML += `<div class="data-item" style="margin-left: 20px;"><span class="data-label">เลขที่เอกสาร:</span> ${extracted.data.document_number}</div>`;
+                        }
+                        if (extracted.data.document_date) {
+                            dataHTML += `<div class="data-item" style="margin-left: 20px;"><span class="data-label">วันที่เอกสาร:</span> ${extracted.data.document_date}</div>`;
+                        }
+                        
+                        dataHTML += '</div>';
+                    }
+                });
+            }
+            
+            dataHTML += '</div>';
+            
+            // แสดงใน popup
+            showPopupHTML(dataHTML, 'info', `ข้อมูลจาก ${keyword}`, null);
+        }
+        
+        async function extractAllData(filename) {
+            if (!scanResult || !scanResult.duplicates[filename]) {
+                showPopup('ไม่พบข้อมูลไฟล์', 'warning');
+                return;
+            }
+            
+            const filePaths = scanResult.duplicates[filename];
+            
+            // หา duplicate item ที่เกี่ยวข้อง
+            const duplicateItem = Array.from(document.querySelectorAll('.duplicate-item')).find(item => 
+                item.querySelector('h4').textContent.includes(filename)
+            );
+            
+            if (!duplicateItem) return;
+            
+            // ลบข้อมูลเก่าถ้ามี
+            const existingData = duplicateItem.querySelector('.extracted-data');
+            if (existingData) {
+                existingData.remove();
+            }
+            
+            // แสดง loading
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'extracted-data';
+            loadingDiv.innerHTML = '<div class="loading">⏳ กำลังอ่านข้อมูลจากไฟล์ทั้งหมด...</div>';
+            duplicateItem.appendChild(loadingDiv);
+            
+            try {
+                const response = await fetch('/api/document-sorting/extract-duplicate-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        file_paths: filePaths
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success && data.extracted_data.length > 0) {
+                    showAllExtractedData(duplicateItem, filename, data.extracted_data);
+                } else {
+                    loadingDiv.innerHTML = '<div class="data-item" style="color: #e74c3c;">ไม่สามารถอ่านข้อมูลได้</div>';
+                }
+            } catch (error) {
+                loadingDiv.innerHTML = '<div class="data-item" style="color: #e74c3c;">เกิดข้อผิดพลาด: ' + error.message + '</div>';
+            }
+        }
+        
+        function showAllExtractedData(duplicateItem, filename, extractedDataList) {
+            // ลบ loading
+            const loadingDiv = duplicateItem.querySelector('.extracted-data');
+            if (loadingDiv) loadingDiv.remove();
+            
+            const dataDiv = document.createElement('div');
+            dataDiv.className = 'extracted-data';
+            
+            let dataHTML = '<h4 style="color: #fbbf24; margin-bottom: 10px;">📊 ข้อมูลที่อ่านได้จากไฟล์ทั้งหมด:</h4>';
+            
+            // รวมข้อมูลจากทุกไฟล์
+            const allData = {};
+            const fileDataList = [];
+            
+            extractedDataList.forEach((extracted, index) => {
+                if (extracted.success && extracted.data) {
+                    fileDataList.push({
+                        filePath: extracted.file_path,
+                        folder: extracted.folder,
+                        data: extracted.data
+                    });
+                    
+                    // รวมข้อมูล
+                    if (extracted.data.company_name && !allData.company_name) {
+                        allData.company_name = extracted.data.company_name;
+                    }
+                    if (extracted.data.tax_id && !allData.tax_id) {
+                        allData.tax_id = extracted.data.tax_id;
+                    }
+                    if (extracted.data.document_number && !allData.document_number) {
+                        allData.document_number = extracted.data.document_number;
+                    }
+                    if (extracted.data.document_date && !allData.document_date) {
+                        allData.document_date = extracted.data.document_date;
+                    }
+                }
+            });
+            
+            // แสดงข้อมูลที่รวมแล้ว
+            if (Object.keys(allData).length > 0) {
+                dataHTML += '<div style="background: #1e293b; padding: 15px; border-radius: 5px; margin-bottom: 15px;">';
+                dataHTML += '<h5 style="color: #60a5fa; margin-bottom: 10px;">📋 ข้อมูลรวม:</h5>';
+                
+                if (allData.company_name) {
+                    dataHTML += `<div class="data-item"><span class="data-label">บริษัท:</span> ${allData.company_name}</div>`;
+                }
+                if (allData.tax_id) {
+                    dataHTML += `<div class="data-item"><span class="data-label">เลขประจำตัวผู้เสียภาษี:</span> ${allData.tax_id}</div>`;
+                }
+                if (allData.document_number) {
+                    dataHTML += `<div class="data-item"><span class="data-label">เลขที่เอกสาร:</span> ${allData.document_number}</div>`;
+                }
+                if (allData.document_date) {
+                    dataHTML += `<div class="data-item"><span class="data-label">วันที่เอกสาร:</span> ${allData.document_date}</div>`;
+                }
+                
+                dataHTML += '</div>';
+            }
+            
+            // แสดงข้อมูลจากแต่ละไฟล์
+            if (fileDataList.length > 0) {
+                dataHTML += '<h5 style="color: #60a5fa; margin-bottom: 10px;">📄 รายละเอียดแต่ละไฟล์:</h5>';
+                
+                fileDataList.forEach((fileData, index) => {
+                    dataHTML += `<div style="background: #0f172a; padding: 10px; border-radius: 5px; margin-bottom: 10px; border-left: 3px solid #10b981;">`;
+                    dataHTML += `<div class="data-item" style="margin-bottom: 5px;"><span class="data-label">ไฟล์ ${index + 1}:</span> ${fileData.folder}</div>`;
+                    
+                    if (fileData.data) {
+                        if (fileData.data.company_name) {
+                            dataHTML += `<div class="data-item" style="margin-left: 20px;"><span class="data-label">บริษัท:</span> ${fileData.data.company_name}</div>`;
+                        }
+                        if (fileData.data.tax_id) {
+                            dataHTML += `<div class="data-item" style="margin-left: 20px;"><span class="data-label">เลขประจำตัวผู้เสียภาษี:</span> ${fileData.data.tax_id}</div>`;
+                        }
+                        if (fileData.data.document_number) {
+                            dataHTML += `<div class="data-item" style="margin-left: 20px;"><span class="data-label">เลขที่เอกสาร:</span> ${fileData.data.document_number}</div>`;
+                        }
+                        if (fileData.data.document_date) {
+                            dataHTML += `<div class="data-item" style="margin-left: 20px;"><span class="data-label">วันที่เอกสาร:</span> ${fileData.data.document_date}</div>`;
+                        }
+                        if (fileData.data.total_amount) {
+                            dataHTML += `<div class="data-item" style="margin-left: 20px;"><span class="data-label">ยอดรวม:</span> ${fileData.data.total_amount}</div>`;
+                        }
+                    }
+                    
+                    dataHTML += '</div>';
+                });
+            } else {
+                dataHTML += '<div class="data-item" style="color: #94a3b8;">ไม่พบข้อมูลจากไฟล์ใดๆ</div>';
+            }
+            
+            dataDiv.innerHTML = dataHTML;
+            duplicateItem.appendChild(dataDiv);
+        }
+        
+        async function createFolderAndMoveFiles(keyword, suggestedFilename) {
+            if (!scanResult || !scanResult.files_by_keyword || !scanResult.files_by_keyword[keyword]) {
+                showPopup('ไม่พบข้อมูลไฟล์', 'warning');
+                return;
+            }
+            
+            // ดึง base path จาก input
+            const basePathInput = document.getElementById('basePathInput');
+            if (!basePathInput || !basePathInput.value.trim()) {
+                showPopup('กรุณาระบุ Base Path ก่อน', 'warning');
+                return;
+            }
+            
+            const basePath = basePathInput.value.trim();
+            const files = scanResult.files_by_keyword[keyword];
+            const filePaths = files.map(f => f.path);
+            
+            // สร้างชื่อโฟลเดอร์ตามคีย์เวิร์ด
+            const folderName = keyword;
+            
+            // ยืนยันก่อนทำงาน
+            const confirmMessage = `ยืนยันการสร้างโฟลเดอร์ "${folderName}" และย้ายไฟล์ทั้งหมด (${files.length} ไฟล์) ไปยังโฟลเดอร์นั้น?\n\nตำแหน่ง: ${basePath}\\${folderName}`;
+            
+            showConfirm(confirmMessage, 'ยืนยันการดำเนินการ', function(confirmed) {
+                if (!confirmed) {
+                    return;
+                }
+                
+                // ดำเนินการต่อ
+                proceedWithMoveFiles(keyword, basePath, folderName, filePaths, suggestedFilename);
+            });
+        }
+        
+        async function proceedWithMoveFiles(keyword, basePath, folderName, filePaths, suggestedFilename) {
+            
+            // แสดง loading
+            const keywordItems = Array.from(document.querySelectorAll('#keywordList .duplicate-item'));
+            const keywordItem = keywordItems.find(item => {
+                const h4 = item.querySelector('h4');
+                return h4 && h4.textContent.includes(keyword);
+            });
+            
+            let loadingDiv = null;
+            if (keywordItem) {
+                loadingDiv = keywordItem.querySelector('.moving-status');
+                if (!loadingDiv) {
+                    loadingDiv = document.createElement('div');
+                    loadingDiv.className = 'moving-status';
+                    loadingDiv.style.cssText = 'background: #1e293b; padding: 15px; border-radius: 5px; margin-top: 15px; border-left: 3px solid #f59e0b;';
+                    keywordItem.appendChild(loadingDiv);
+                }
+                loadingDiv.innerHTML = '<div class="loading">⏳ กำลังสร้างโฟลเดอร์และย้ายไฟล์...</div>';
+            }
+            
+            try {
+                const response = await fetch('/api/document-sorting/create-folder-and-move', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        keyword: keyword,
+                        base_path: basePath,
+                        folder_name: folderName,
+                        file_paths: filePaths,
+                        suggested_filename: suggestedFilename
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    if (keywordItem && loadingDiv) {
+                        loadingDiv.innerHTML = `
+                            <div style="color: #10b981;">
+                                <h5 style="color: #10b981; margin-bottom: 10px;">✅ สำเร็จ!</h5>
+                                <div style="margin-bottom: 5px;">📁 สร้างโฟลเดอร์: ${data.folder_path}</div>
+                                <div style="margin-bottom: 5px;">📄 ย้ายไฟล์: ${data.moved_count} ไฟล์</div>
+                                ${data.error_count > 0 ? `<div style="color: #f59e0b;">⚠️ ไฟล์ที่ไม่สามารถย้ายได้: ${data.error_count} ไฟล์</div>` : ''}
+                            </div>
+                        `;
+                    }
+                    showPopup(`สร้างโฟลเดอร์: ${data.folder_path}\nย้ายไฟล์: ${data.moved_count} ไฟล์${data.error_count > 0 ? `\n⚠️ ไฟล์ที่ไม่สามารถย้ายได้: ${data.error_count} ไฟล์` : ''}`, 'success', 'สำเร็จ', function() {
+                        // เมื่อกดยืนยันแล้ว ให้สแกนใหม่เพื่อกรองข้อมูลที่ย้ายแล้วออก
+                        setTimeout(() => {
+                            scanPDFs();
+                        }, 500);
+                    });
+                } else {
+                    if (keywordItem && loadingDiv) {
+                        loadingDiv.innerHTML = `<div style="color: #e74c3c;">❌ เกิดข้อผิดพลาด: ${data.error || 'Unknown error'}</div>`;
+                    }
+                    showPopup('ไม่สามารถสร้างโฟลเดอร์และย้ายไฟล์ได้: ' + (data.error || 'Unknown error'), 'error');
+                }
+            } catch (error) {
+                if (keywordItem && loadingDiv) {
+                    loadingDiv.innerHTML = `<div style="color: #e74c3c;">❌ เกิดข้อผิดพลาด: ${error.message}</div>`;
+                }
+                showPopup('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            }
+        }
+        
+        async function moveFile(filePath) {
+            // สร้าง popup สำหรับกรอก destination folder
+            showInputPopup('กรุณาระบุโฟลเดอร์ปลายทาง:', 'โฟลเดอร์ปลายทาง', function(destinationFolder) {
+                if (!destinationFolder || !destinationFolder.trim()) {
+                    return;
+                }
+                
+                // สร้าง popup สำหรับกรอกชื่อไฟล์ใหม่ (optional)
+                showInputPopup('ชื่อไฟล์ใหม่ (หรือปล่อยว่างเพื่อใช้ชื่อเดิม):', 'ชื่อไฟล์ใหม่', function(newFilename) {
+                    // ยืนยันก่อนย้าย
+                    const confirmMsg = `ยืนยันการย้ายไฟล์:\n${filePath}\nไปยัง:\n${destinationFolder.trim()}`;
+                    showConfirm(confirmMsg, 'ยืนยันการย้ายไฟล์', function(confirmed) {
+                        if (!confirmed) {
+                            return;
+                        }
+                        
+                        // ดำเนินการย้ายไฟล์
+                        proceedMoveFile(filePath, destinationFolder.trim(), newFilename ? newFilename.trim() : null);
+                    });
+                }, true); // true = optional input
+            });
+        }
+        
+        async function proceedMoveFile(filePath, destinationFolder, newFilename) {
+            try {
+                const response = await fetch('/api/document-sorting/move-file', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        source_path: filePath,
+                        destination_folder: destinationFolder,
+                        new_filename: newFilename
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showPopup('ย้ายไฟล์สำเร็จ: ' + data.message, 'success');
+                    // รีเฟรชรายการ
+                    setTimeout(() => {
+                        scanPDFs();
+                    }, 500);
+                } else {
+                    showPopup('ไม่สามารถย้ายไฟล์ได้: ' + data.error, 'error');
+                }
+            } catch (error) {
+                showPopup('เกิดข้อผิดพลาด: ' + error.message, 'error');
+            }
+        }
+        
+        function showInputPopup(message, title, callback, optional = false) {
+            const overlay = document.getElementById('popupOverlay');
+            const modal = overlay.querySelector('.popup-modal');
+            const titleText = document.getElementById('popupTitleText');
+            const icon = document.getElementById('popupIcon');
+            const body = document.getElementById('popupBody');
+            const confirmBtn = document.getElementById('popupConfirmBtn');
+            const cancelBtn = document.getElementById('popupCancelBtn');
+            
+            modal.classList.remove('popup-success', 'popup-error', 'popup-warning', 'popup-info');
+            modal.classList.add('popup-info');
+            
+            titleText.textContent = title || 'กรุณากรอกข้อมูล';
+            icon.textContent = '📝';
+            
+            // สร้าง input field
+            body.innerHTML = `<div style="margin-bottom: 10px;">${message}</div><input type="text" id="popupInput" class="form-group input" style="width: 100%; padding: 10px; border: 1px solid #475569; border-radius: 5px; background: #0f172a; color: #fafafa; font-size: 14px;" autofocus>`;
+            
+            const input = document.getElementById('popupInput');
+            confirmBtn.textContent = 'ตกลง';
+            cancelBtn.style.display = 'inline-block';
+            
+            // ลบ event listener เก่า
+            const newConfirmBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+            
+            const newCancelBtn = cancelBtn.cloneNode(true);
+            cancelBtn.parentNode.replaceChild(newCancelBtn, cancelBtn);
+            
+            const handleConfirm = function() {
+                const value = input.value.trim();
+                if (!optional && !value) {
+                    showPopup('กรุณากรอกข้อมูล', 'warning');
+                    return;
+                }
+                const cb = callback; // เก็บ callback ก่อน
+                closePopupWithoutCallback();
+                // เรียก callback หลังจากปิด popup แล้ว
+                setTimeout(() => {
+                    if (cb) cb(value || null);
+                }, 100);
+            };
+            
+            newConfirmBtn.onclick = handleConfirm;
+            
+            newCancelBtn.onclick = function() {
+                const cb = callback; // เก็บ callback ก่อน
+                closePopupWithoutCallback();
+                // เรียก callback หลังจากปิด popup แล้ว
+                setTimeout(() => {
+                    if (cb) cb(null);
+                }, 100);
+            };
+            
+            // กด Enter เพื่อยืนยัน
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleConfirm();
+                }
+            });
+            
+            overlay.classList.add('show');
+            document.addEventListener('keydown', handlePopupEsc);
+            
+            // Focus ที่ input
+            setTimeout(() => {
+                input.focus();
+            }, 100);
+        }
+        
+        // เรียกใช้เมื่อโหลดหน้าเพจ
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSkipFoldersList();
+        });
+    </script>
+</body>
+</html>

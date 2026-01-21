@@ -1,0 +1,5939 @@
+{
+  "000 ทดสอบระบบ": {
+    "pattern_name": "000 ทดสอบระบบ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Ekkachai.S@bmuc.co.th",
+      "Sutthida.S@bmuc.co.th"
+    ],
+    "default_cc": [
+      "yuttana.w@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "เป็นระบบทดสอบการทำงาน",
+    "logo_path": null,
+    "company_name": "บริษัท ทดสอบระบบ จำกัด",
+    "line_user_id": "C389a6ce3fd337a5f41666d3c39fcd4fb",
+    "tax_id": ""
+  },
+  "23 ไอเอฟเอฟ ลีกัล": {
+    "pattern_name": "23 ไอเอฟเอฟ ลีกัล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "nada@infinite-flair.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไอเอฟเอฟ ลีกัล จำกัด",
+    "line_user_id": "U7ba3170cece5f67d5c9f950c5be67a1e",
+    "tax_id": "0105564095340"
+  },
+  "57 ทีเอ็นพี กรุ๊ป โฮลดิ้ง ": {
+    "pattern_name": "57 ทีเอ็นพี กรุ๊ป โฮลดิ้ง ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "phuwanath.t@tnpgroup.co.th"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทีเอ็นพี กรุ๊ป โฮลดิ้ง จำกัด",
+    "line_user_id": "U5264cfc59715169b993d6687a77094ad",
+    "tax_id": "0-1055-64169-90-4"
+  },
+  "219 พราว โซลูชั่น เทคโนโลยี ": {
+    "pattern_name": "219 พราว โซลูชั่น เทคโนโลยี ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "anchalee.s@ratchata.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พราว โซลูชั่น เทคโนโลยี จำกัด",
+    "line_user_id": "U5ade5937f7551a756f9be12fe639f729",
+    "tax_id": "0-1055-65197-86-3"
+  },
+  "487 ผึ้งหวาน เร็นท์แอนด์เซอร์วิซ": {
+    "pattern_name": "487 ผึ้งหวาน เร็นท์แอนด์เซอร์วิซ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "danakorn@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ผึ้งหวาน เร็นท์แอนด์เซอร์วิซ จำกัด",
+    "line_user_id": "C867929b379b2633cc9b1a2991f647251",
+    "tax_id": "0105566057755"
+  },
+  "1 เน็ฏซ์สเต็ป แมเนจเม้นท์": {
+    "pattern_name": "1 เน็ฏซ์สเต็ป แมเนจเม้นท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "wangteva@gmail.com\nteva.t@nextstepmgmt.co.th\nnucharee.t@nextstepmgmt.co.th\nwatcharakorn.c@nextstepmgmt.co.th"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เน็กซ์สเต็ป แมเนจเม้นท์ จำกัด",
+    "line_user_id": "Cd32f9cc9a5791f3628998f6cf6339b9f",
+    "tax_id": "0105564065416"
+  },
+  "8 ฟาร์มโคปูน": {
+    "pattern_name": "8 ฟาร์มโคปูน",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "farmkopoon@gmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ฟาร์มโคปูน จำกัด",
+    "line_user_id": "U1acace67072a94717be0033938a58233",
+    "tax_id": "0175564000217"
+  },
+  "18 เอสท์ เซเรนด์ เอ็นจิเนียริ่ง": {
+    "pattern_name": "18 เอสท์ เซเรนด์ เอ็นจิเนียริ่ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sun.estserend@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอสท์ เซเรนด์ เอ็นจิเนียริ่ง จำกัด",
+    "line_user_id": "U32cec96734a9292d62c086e5d5647c5f",
+    "tax_id": "0205564022171"
+  },
+  "21 ไซม่อน อินเตอร์เนชั่นแนล โปรไวเดอร์": {
+    "pattern_name": "21 ไซม่อน อินเตอร์เนชั่นแนล โปรไวเดอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "siminterprovider@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไซม่อน อินเตอร์เนชั่นแนล โปรไวเดอร์ จำกัด",
+    "line_user_id": "Ue139f7c228d38481bc3113b3566659ad",
+    "tax_id": "0105564092901"
+  },
+  "27 พีพี แสตมป์": {
+    "pattern_name": "27 พีพี แสตมป์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pattana015@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พีพี แสตมป์ จำกัด",
+    "line_user_id": "Uad58370aa5930d1a20186ae7d6021446",
+    "tax_id": "0105564122649"
+  },
+  "31 วันเดอร์ เฟรมเมอร์": {
+    "pattern_name": "31 วันเดอร์ เฟรมเมอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "hello@wonderframer.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วันเดอร์ เฟรมเมอร์ จำกัด",
+    "line_user_id": "U0367fbe91e629f448194aa97032dd977",
+    "tax_id": "0105564123530"
+  },
+  "33 วรัญญาแอร์": {
+    "pattern_name": "33 วรัญญาแอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Waranyaa.air@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วรัญญาแอร์ จำกัด",
+    "line_user_id": "Uabac010fd211df486bcc01bb0db89516",
+    "tax_id": "0135564020340"
+  },
+  "34 สมาร์ท ไบโอวิชั่น": {
+    "pattern_name": "34 สมาร์ท ไบโอวิชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "smartbiovision@gmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สมาร์ท ไบโอวิชั่น จำกัด",
+    "line_user_id": "U80a63490fcba8d1a17981982d0d4be0d",
+    "tax_id": "0105564129287"
+  },
+  "35 พีเทล ฟลาวเวอร์": {
+    "pattern_name": "35 พีเทล ฟลาวเวอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sukvasa.mew@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พีเทล ฟลาวเวอร์ จำกัด",
+    "line_user_id": "U3ad4ab4cd269d71efafda6b8d8d5fac6",
+    "tax_id": "0105564135791"
+  },
+  "38 แอดวินเทรด": {
+    "pattern_name": "38 แอดวินเทรด",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "admin@adwintrade.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แอดวินเทรด จำกัด",
+    "line_user_id": "C3f4553dd0be8ee551a648ec66c5934c1",
+    "tax_id": "0105564131401"
+  },
+  "39 เอ็นไอเอส เซอร์วิส": {
+    "pattern_name": "39 เอ็นไอเอส เซอร์วิส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "radis@nisservice.com \nnijrada@nisservice.com"
+    ],
+    "default_cc": [
+      "Chayada.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอ็นไอเอส เซอร์วิส จำกัด",
+    "line_user_id": "C90e5154a6d7ab352209e659ecd296422",
+    "tax_id": "0105556009511"
+  },
+  "41 อัครา มีเดีย": {
+    "pattern_name": "41 อัครา มีเดีย",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "techaakaramanee@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อัครา มีเดีย จำกัด",
+    "line_user_id": "U22cbcfab065e0e8efedd5fd47f3ed766",
+    "tax_id": "0105564142291"
+  },
+  "42 ไททันส์เกน": {
+    "pattern_name": "42 ไททันส์เกน",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Kznititonhell@gmail.com"
+    ],
+    "default_cc": [
+      "Chayada.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไททันส์เกน จำกัด",
+    "line_user_id": "Uf6dcba51e258aee015ac096b67427123",
+    "tax_id": "0195564001574"
+  },
+  "43 ต้นข้าว รีไซเคิล": {
+    "pattern_name": "43 ต้นข้าว รีไซเคิล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Tonkaow.recycle00@gmail.com"
+    ],
+    "default_cc": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ต้นข้าว รีไซเคิล จำกัด",
+    "line_user_id": "U28d8c16d2f4e2ae4079fecb3dc7986c7",
+    "tax_id": "0195564002813"
+  },
+  "44 นิธิชญา ฟู้ดส์": {
+    "pattern_name": "44 นิธิชญา ฟู้ดส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "wiriyatanx@gmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท นิธิชญา ฟู้ดส์ จำกัด",
+    "line_user_id": "Cc2b6caf55cc5b86b8089ef8e7b37e039",
+    "tax_id": "0105564143549"
+  },
+  "45 ฮั่นไท สทรีท": {
+    "pattern_name": "45 ฮั่นไท สทรีท",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "hantaistreet@gmail.com"
+    ],
+    "default_cc": [
+      "Chayada.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ฮั่นไท สทรีท จำกัด",
+    "line_user_id": "Uc859a0cb57b09c703c442eb33388ca18",
+    "tax_id": "0805564003112"
+  },
+  "49 โอฬารทรัพย์": {
+    "pattern_name": "49 โอฬารทรัพย์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "panjama.film@gmail.com\nk.phakwara@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท โอฬารทรัพย์ จำกัด",
+    "line_user_id": "Uee802c31d48fe0e3f68beab9c1829f30",
+    "tax_id": "0905564004851"
+  },
+  "50 เดอะไบค์": {
+    "pattern_name": "50 เดอะไบค์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "wirundet.lalao@gmail.com"
+    ],
+    "default_cc": [
+      "Chayada.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เดอะไบค์ จำกัด",
+    "line_user_id": "U3ab24513b58dc0a1fdc8f5174074e528",
+    "tax_id": "0315564002111"
+  },
+  "57 ทีเอ็นพี กรุ๊ป โฮลดิ้ง": {
+    "pattern_name": "57 ทีเอ็นพี กรุ๊ป โฮลดิ้ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "phuwanath.t@tnpgroup.co.th"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทีเอ็นพี กรุ๊ป โฮลดิ้ง จำกัด",
+    "line_user_id": "U5264cfc59715169b993d6687a77094ad",
+    "tax_id": "0105564169904"
+  },
+  "60 มาหะนาอิม เทรดดิ้ง": {
+    "pattern_name": "60 มาหะนาอิม เทรดดิ้ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "info@mahanaoim.co.th"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "ห้างหุ้นส่งจำกัด มาหะนาอิม เทรดดิ้ง",
+    "line_user_id": "Uc01cc90e5fc47c45d150cd00b522e35b",
+    "tax_id": "0105562015047"
+  },
+  "61 มามิ เพลย์เฮาส์": {
+    "pattern_name": "61 มามิ เพลย์เฮาส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "mamiplayhouse.ac@gmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มามิ เพลย์เฮาส์ จำกั",
+    "line_user_id": "Ua7982977a18840b01339a21968ee7aed",
+    "tax_id": "0135564026933"
+  },
+  "63 เอสเคเอส แอดวานซ์": {
+    "pattern_name": "63 เอสเคเอส แอดวานซ์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Suttipak.S@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอสเคเอส แอดวานซ์ จำกัด",
+    "line_user_id": "U10130c1e608b256cc28f176918618103",
+    "tax_id": "0115564010841"
+  },
+  "64 ไมด์ เดอร์มา": {
+    "pattern_name": "64 ไมด์ เดอร์มา",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sentlemide@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไมด์ เดเอร์มา จำกัด",
+    "line_user_id": "U28d8c16d2f4e2ae4079fecb3dc7986c7",
+    "tax_id": "0195564002813"
+  },
+  "65 เดอะ ไทม์ ควีน": {
+    "pattern_name": "65 เดอะ ไทม์ ควีน",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "mutita@thetimequeen.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เดอะ ไทม์ ควีน จำกัด",
+    "line_user_id": "U14fa45c870a12a882f75d3daae49dcb5",
+    "tax_id": "0105564117149"
+  },
+  "71 ซีเอสซี คอนแทรคเตอร์": {
+    "pattern_name": "71 ซีเอสซี คอนแทรคเตอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pat.p@chc-contractors.co.th"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีเอสซี คอนแทรคเตอร์ จำกัด",
+    "line_user_id": "U14236e709ea1f277383fdbd2a64afddf",
+    "tax_id": "0125559006024"
+  },
+  "73 โอเคบีแอล (ประเทศไทย)": {
+    "pattern_name": "73 โอเคบีแอล (ประเทศไทย)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "smithapimollikit@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท โอเคบีแอล (ประเทศไทย) จำกัด",
+    "line_user_id": "U53f540e4f03d70da871261224ba11367",
+    "tax_id": "0105564119630"
+  },
+  "75 เฮลเมทช้อปบีเคเค": {
+    "pattern_name": "75 เฮลเมทช้อปบีเคเค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "helmetshopbkk@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เฮลเมทช้อปบีเคเค จำกัด",
+    "line_user_id": "C91e59d52b6bfe111cb6b4519124f47e5",
+    "tax_id": "0105565000016"
+  },
+  "77 เกิดทวีผล": {
+    "pattern_name": "77 เกิดทวีผล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "srijanpapatson@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เกิดทวีผล จำกัด",
+    "line_user_id": "Ua7108acf205bdbde5b0bec3cc6e884a7",
+    "tax_id": "0905564007371"
+  },
+  "81 ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส": {
+    "pattern_name": "81 ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "surawee.por@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส จำกัด",
+    "line_user_id": "U923c2aa802d724db88400d0319d783e7",
+    "tax_id": "0735564008182"
+  },
+  "84 เอสซีที คูลลิ่ง ทาวเวอร์": {
+    "pattern_name": "84 เอสซีที คูลลิ่ง ทาวเวอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sct.cooling@gmail.com"
+    ],
+    "default_cc": [
+      "Chayada.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอสซีที คูลลิ่ง ทาวเวอร์ จำกัด",
+    "line_user_id": "U023c22abc489da0bd871bdc96a831443",
+    "tax_id": "0105564175823"
+  },
+  "85 ซิสโปรเจค": {
+    "pattern_name": "85 ซิสโปรเจค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "projectsis89@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซิสโปรเจค จำกัด",
+    "line_user_id": "Uf8e44170fe1769e1e27ccade4aa1aa13",
+    "tax_id": "0125564030728"
+  },
+  "96 ทีพี อินฟินิตี้ อินเตอร์เนชั่นแนล": {
+    "pattern_name": "96 ทีพี อินฟินิตี้ อินเตอร์เนชั่นแนล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "fundsbag@gmail.com"
+    ],
+    "default_cc": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทีพี อินฟินิตี้ อินเตอร์เนชั่นแนล จำกัด",
+    "line_user_id": "U158ddde1f698842d734b2c6cf7059ab9",
+    "tax_id": "0225565000635"
+  },
+  "98 เฟเวอริท พีส": {
+    "pattern_name": "98 เฟเวอริท พีส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "j.wichakoon@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เฟเวอริท พีส จำกัด",
+    "line_user_id": "U78a85bd18767638cb0550a8200f3efe5",
+    "tax_id": "0125565011794"
+  },
+  "99 ฮีลิคซ ฟิฟตี้เอท คอร์ปอเรชั่น": {
+    "pattern_name": "99 ฮีลิคซ ฟิฟตี้เอท คอร์ปอเรชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "jedsada.ard@gmail.com"
+    ],
+    "default_cc": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ฮั่ีลิคซ ฟิฟตี้เอท คอร์ปอเรชั่น จำกัด",
+    "line_user_id": "U35b00e066d51d54a2128c33b2dbb5e71",
+    "tax_id": "0105565065452"
+  },
+  "100 ดิ โอลา เฟอร์": {
+    "pattern_name": "100 ดิ โอลา เฟอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "accounting@olafur.asia"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ดิ โอลา เฟอร์ จำกัด",
+    "line_user_id": "U1dc1f7d35399ef6917c611ecb44f71e6",
+    "tax_id": "0105565083787"
+  },
+  "102 ออดิโอ เอซิส": {
+    "pattern_name": "102 ออดิโอ เอซิส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "nawatat@audioasis.co.th"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ออดิโอ เอซิส จำกัด",
+    "line_user_id": "Cb96485292f576e202a34c346913ee2a5",
+    "tax_id": "0135565009684"
+  },
+  "103 กฤษณะ แอร์เซอร์วิส": {
+    "pattern_name": "103 กฤษณะ แอร์เซอร์วิส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "kritsana.airservice@gmail.com"
+    ],
+    "default_cc": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท กฤษณะ แอร์เซอร์วิส จำกัด",
+    "line_user_id": "U1a7593a49d54612f14895013dfd042c3",
+    "tax_id": "0315565001185"
+  },
+  "104 โมดูมอร์": {
+    "pattern_name": "104 โมดูมอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "paheyisoicus@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท โมดูลมอร์ จำกัด",
+    "line_user_id": "U92053ae885642660afd90e114b64f5ef",
+    "tax_id": "0835565006506"
+  },
+  "105 อดิศรติวเตอร์": {
+    "pattern_name": "105 อดิศรติวเตอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "adisorntutor@gmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อดิศรติวเตอร์ จำกัด",
+    "line_user_id": "Uce3a609e8b6f08341a08cd8e9d2f4c06",
+    "tax_id": "0105565049902"
+  },
+  "109 ซิลค อินทีเรีย": {
+    "pattern_name": "109 ซิลค อินทีเรีย",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "fun.silk.interior@gmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซิลค อินทีเรีย จำกัด",
+    "line_user_id": "U6b3f7e32cc687e0198ced2f5d62c9129",
+    "tax_id": "0105565006120"
+  },
+  "114 ดับเบิ้ลยูเอ็ม เจมส์ แอนด์ โค.": {
+    "pattern_name": "114 ดับเบิ้ลยูเอ็ม เจมส์ แอนด์ โค.",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "gems.connect9@gmail.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ดิับเบิ้ลยูเอ็ม เจมส์ แอนด์ โค. จำกัด",
+    "line_user_id": "C6ee8ef61fef7fe852f7b5cdb681099ec",
+    "tax_id": "0105565091674"
+  },
+  "115 เอซี.ดีซี.อีเล็คทริค 2022": {
+    "pattern_name": "115 เอซี.ดีซี.อีเล็คทริค 2022",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Jiranuch.mo33@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอซี.ดีซี.อีเล็คทริค 2022 จำกัด",
+    "line_user_id": "Ud10d6a667166d564f4e8f4dd39e9a94e",
+    "tax_id": "0175565000270"
+  },
+  "116 เดอะอีวีส์": {
+    "pattern_name": "116 เดอะอีวีส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "eviescookies.th@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เดอะอีวีส์ จำกัด",
+    "line_user_id": "U9b9f39d501439b3768ad3bae91d30a73",
+    "tax_id": "0105565121166"
+  },
+  "117 แม็กม่า โชว์เคส": {
+    "pattern_name": "117 แม็กม่า โชว์เคส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "s.nithira@gmail.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แม็กม่า โชว์เคส จำกัด",
+    "line_user_id": "Ud7f32bf44236bbac52c965624379a426",
+    "tax_id": "0105565006481"
+  },
+  "120 โคนาโก้ คอร์ปอเรชั่น": {
+    "pattern_name": "120 โคนาโก้ คอร์ปอเรชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "conago.farm@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท โคนาโก้ คอร์ปอเรชั่น จำกัด",
+    "line_user_id": "Ua64727ff825586847a5aff8aa14417aa",
+    "tax_id": "0105564035037"
+  },
+  "122 ชิคสไมล์เด็นทัล (สาขานนทบุรี)": {
+    "pattern_name": "122 ชิคสไมล์เด็นทัล (สาขานนทบุรี)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pisizawa@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ชิคสไมล์เด็นทัล จำกัด",
+    "line_user_id": "C1b06aad274526ee6b89d2c6e4c49ba5a",
+    "tax_id": "0705565002650"
+  },
+  "122.1 ชิคสไมล์เด็นทัล (สาขาราชบุรี)": {
+    "pattern_name": "122.1 ชิคสไมล์เด็นทัล (สาขาราชบุรี)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pisizawa@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ชิคสไมล์เด็นทัล จำกัด",
+    "line_user_id": "C1b06aad274526ee6b89d2c6e4c49ba5a",
+    "tax_id": "0705565002650"
+  },
+  "122.2 ชิคสไมล์เด็นทัล (สาขากาญจนพิเศษ)": {
+    "pattern_name": "122.2 ชิคสไมล์เด็นทัล (สาขากาญจนพิเศษ)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pisizawa@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ชิคสไมล์เด็นทัล จำกัด",
+    "line_user_id": "C1b06aad274526ee6b89d2c6e4c49ba5a",
+    "tax_id": "0705565002650"
+  },
+  "134 ซีเค พีเจเอส": {
+    "pattern_name": "134 ซีเค พีเจเอส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "ckpjs22@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีเค พีเจเอส จำกัด",
+    "line_user_id": "U5f7db2b850f8f277100436658284509a",
+    "tax_id": "0205565035765"
+  },
+  "137 มูฟ พร็อพเพอร์ตี้": {
+    "pattern_name": "137 มูฟ พร็อพเพอร์ตี้",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "moveproperty2020@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มูฟ พร็อพเพอร์ตี้ จำกัด",
+    "line_user_id": "Ud176877966626f11b778e95e4a7cad86",
+    "tax_id": "0205563037302"
+  },
+  "141 ไทย โอทอป วิลเลจ": {
+    "pattern_name": "141 ไทย โอทอป วิลเลจ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "acc.thaiotopvillage@gmail.com"
+    ],
+    "default_cc": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไทย โอทอป วิลเลจ จำกัด",
+    "line_user_id": "C3943b6a647866d3efb2b065f954d954c",
+    "tax_id": "0105565146011"
+  },
+  "143 ซีไพน์ เอสเตท": {
+    "pattern_name": "143 ซีไพน์ เอสเตท",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pariya_sang@hotmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีไพน์ เอสเตท จำกัด",
+    "line_user_id": "U5070f8de5d0ec064ca84ca66474b5363",
+    "tax_id": "0775565002013"
+  },
+  "146 วัชรเบญจกมล": {
+    "pattern_name": "146 วัชรเบญจกมล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Kamonthip.kp@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วัชรเบญจกมล จำกัด",
+    "line_user_id": "U6421f2a4c1945698605e85332301fac9",
+    "tax_id": "0205565043121"
+  },
+  "155 มายด์ทัช โค้ดดิ้ง": {
+    "pattern_name": "155 มายด์ทัช โค้ดดิ้ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "contact@mindtouch-coding.co.th\npiyatat.jiangsiripun@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มายทัช โค้ดดิ้ง จำกัด",
+    "line_user_id": "U4d217e9a636c21b1b8c3a78ca22e327a",
+    "tax_id": "0105565181924"
+  },
+  "157 ทีเค. นอนสติ๊ก": {
+    "pattern_name": "157 ทีเค. นอนสติ๊ก",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "D.Dussadee.tk@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทีเค. นอนสติ๊ก จำกัด",
+    "line_user_id": "C7c96110a521a217ac40a31dca41506b8",
+    "tax_id": "0105565189488"
+  },
+  "158 ซีโอ บิวตี้กรุ๊ป": {
+    "pattern_name": "158 ซีโอ บิวตี้กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "karibeautyofficial@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีโอ บิ้วตี้กรุ๊ป จำกัด",
+    "line_user_id": "Uecad6207e4b780abbac6d9a4d923ad3e",
+    "tax_id": "0105565151952"
+  },
+  "162 ดี.ไอ.วาย.มี พิคเจอร์": {
+    "pattern_name": "162 ดี.ไอ.วาย.มี พิคเจอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Diymespacex@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ดี.ไอ.วาย.มี พิคเจอร์ จำกัด",
+    "line_user_id": "U476bd2706779e378ba31663a71e34d82",
+    "tax_id": "0105565191962"
+  },
+  "165 บีพี เอ็มไพร์": {
+    "pattern_name": "165 บีพี เอ็มไพร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "bp.empire68@gmail.com"
+    ],
+    "default_cc": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บีพี เอ็มไพร์ จำกัด",
+    "line_user_id": "C739e24ed7eabad05c2dd53641290fdd1",
+    "tax_id": "0125565028247"
+  },
+  "171 ไมโคร พลัส 99": {
+    "pattern_name": "171 ไมโคร พลัส 99",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "peerawat.ltd@gmail.com"
+    ],
+    "default_cc": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไมโค พลัส 99 จำกัด",
+    "line_user_id": "Ucc6ff13ce978f8f26ff07eba22f7de89",
+    "tax_id": "0355565000278"
+  },
+  "172 ดีพลัสทราเวล คอร์ปอเรชั่น": {
+    "pattern_name": "172 ดีพลัสทราเวล คอร์ปอเรชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "office.dplustravel@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ดีพลัสทราเวล คอร์ปอเรชั่น จำกัด",
+    "line_user_id": "C03540996824b81232b35f42fefccf93a",
+    "tax_id": "0605566000066"
+  },
+  "174 เจเอสซี อพารืทเม้นท์": {
+    "pattern_name": "174 เจเอสซี อพารืทเม้นท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "jsc.serviceapartment@gmail.com\n5415518@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เจเอสซี อพาร์ทเม้นท์ จำกัด",
+    "line_user_id": "U599610a297f3fed3de248bf6b0099267",
+    "tax_id": "0105558033877"
+  },
+  "176 ไทยศิริ อินเตอร์ ลีเกิล": {
+    "pattern_name": "176 ไทยศิริ อินเตอร์ ลีเกิล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Sdenkesineelam@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไทยศิริ อินเตอร์ ลีเกิล จำกัด",
+    "line_user_id": "U41651a13024dfae2f6035945ab319fd9",
+    "tax_id": "0105566008801"
+  },
+  "179 ซีเล็คทริคเอนเนอร์จี": {
+    "pattern_name": "179 ซีเล็คทริคเอนเนอร์จี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "jirapat.ch@selectricenergy.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีเล็คทริคเอนเนอร์จี จำกัด",
+    "line_user_id": "U3240c8fb975061da4e9fa0f7a81591b9",
+    "tax_id": "0215565006625"
+  },
+  "182 เคพีที เทคนิคอล แอนด์ เซอร์วิส": {
+    "pattern_name": "182 เคพีที เทคนิคอล แอนด์ เซอร์วิส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pichet@kpt-technical.com\nnattikarn@kpt-technical.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เคพีที เทคนิคอล แอนด์ เซอร์วิส จำกัด",
+    "line_user_id": "C86427ce670cef1015666f3164a1b8359",
+    "tax_id": "0205554022551"
+  },
+  "185 วัตคุง": {
+    "pattern_name": "185 วัตคุง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "S.satawatj@hotmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วัตคุง จำกัด",
+    "line_user_id": "Uc560d7f67d256aa659d7178ca532fd58",
+    "tax_id": "0195566000401"
+  },
+  "186 เดอะการ์ตูน พาร์ทเนอร์": {
+    "pattern_name": "186 เดอะการ์ตูน พาร์ทเนอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "manit.pulsawad@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เดอะการ์ตูน พาร์ทเนอร์ จำกัด",
+    "line_user_id": "U1928f27260544efac64cbc3e3702b0b8",
+    "tax_id": "0125566002993"
+  },
+  "190 ไอแซดซี เทรดดิ้ง": {
+    "pattern_name": "190 ไอแซดซี เทรดดิ้ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "izctrading@outlook.com"
+    ],
+    "default_cc": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไอแซดซี เทรดดิ้ง จำกัด",
+    "line_user_id": "Cac636b854757a738e47398c3a7536ed7",
+    "tax_id": "0205565045361"
+  },
+  "193 ไบร์ท ซาวอริ่ง (ไทยแลนด์)": {
+    "pattern_name": "193 ไบร์ท ซาวอริ่ง (ไทยแลนด์)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Joobkayut@gmail.com"
+    ],
+    "default_cc": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไบร์ท ซาวอริ่ง (ไทยแลนด์) จำกัด",
+    "line_user_id": "U7ed2e90e7a635673d98b32d355124a6c",
+    "tax_id": "0115566001199"
+  },
+  "195 อภิชาติ โรโบติกส์": {
+    "pattern_name": "195 อภิชาติ โรโบติกส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "kitti.thamrong@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อภิชาติ โรโบติกส์ จำกัด",
+    "line_user_id": "U08268d4f11c417a8412d5ef31ea942a2",
+    "tax_id": "0105566041760"
+  },
+  "196 แบงค็อก บาร์ริสเตอร์ และการบัญชี": {
+    "pattern_name": "196 แบงค็อก บาร์ริสเตอร์ และการบัญชี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Nattawat.legal@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แบงค็อก บาร์ริสเตอร์ และการบัญชี จำกัด",
+    "line_user_id": "U9a6fcaa9fc153fb729348928345e5f9e",
+    "tax_id": "0105566024091"
+  },
+  "197 มิตรร่วมชัย ออโตพาร์ท": {
+    "pattern_name": "197 มิตรร่วมชัย ออโตพาร์ท",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "naphath.mrc@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มิตรร่วมชัย ออโตพาร์ท จำกัด",
+    "line_user_id": "U963de252a77efc2046b3d7d965a05665",
+    "tax_id": "0105565194325"
+  },
+  "198 ไอสาม เกทเวย์": {
+    "pattern_name": "198 ไอสาม เกทเวย์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "jirapat@i3gateway.com\naccounting@i3gateway.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไอสาม เกทเวย์ จำกัด",
+    "line_user_id": "Cb2d9c61eba3004bed62b7dd9568b3681",
+    "tax_id": "0105553114437"
+  },
+  "200 เดอะ ทอมมี่": {
+    "pattern_name": "200 เดอะ ทอมมี่",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sukanya190487@gmail.com \nTommytaxibangkok@gmail.com"
+    ],
+    "default_cc": [
+      "Chayada.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เดอะ ทอมมี่ จำกัด",
+    "line_user_id": "C31f43438f1d9287416d992dc58cb2253",
+    "tax_id": "0105566049884"
+  },
+  "201 รับเงินไม่หยุด": {
+    "pattern_name": "201 รับเงินไม่หยุด",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "tnp.human@gmail.com"
+    ],
+    "default_cc": [
+      "Chayada.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท รับเงินไม่หยุด จำกัด",
+    "line_user_id": "C399f6582698d6d480398735667a9f585",
+    "tax_id": "0115566009637"
+  },
+  "203 อะโกร ไซเอนซ์ เทค": {
+    "pattern_name": "203 อะโกร ไซเอนซ์ เทค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "info@agrosciencetech.com"
+    ],
+    "default_cc": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อะโกร ไซเอนซ์ เทค จำกัด",
+    "line_user_id": "U7f0268f3b33a78e54186ab347e02d3af",
+    "tax_id": "0125566009017"
+  },
+  "204 มอส เอ็นเนอร์ยี่": {
+    "pattern_name": "204 มอส เอ็นเนอร์ยี่",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "thippawan.p@mossenergy.co\nnaruemon.s@mossenergy.co\nsirinya.w@mossenergy.co"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มอส เอ็นเนอร์ยี่ จำกัด",
+    "line_user_id": "C161e4749e3d33314d54f62781b5163fe",
+    "tax_id": "0105561112022"
+  },
+  "205 สตูดิโอนุ้ย": {
+    "pattern_name": "205 สตูดิโอนุ้ย",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pawinee.business@gmail.com \nnuinaruphon.business@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สตูดิโอนุ้ย จำกัด",
+    "line_user_id": "Cfebcd8948a9ad9571506a9482f5f3fbd",
+    "tax_id": "0125566008851"
+  },
+  "206 โนวาเซลิก": {
+    "pattern_name": "206 โนวาเซลิก",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "novacelikco@gmail.com \njeerada@novacelikco.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท โนวาเซลิก จำกัด",
+    "line_user_id": "U2d1c09d594ef726ff5166a2c2f6b09a9",
+    "tax_id": "0505566004861"
+  },
+  "210 ธรรมรัตน์ ค้าข้าว1688": {
+    "pattern_name": "210 ธรรมรัตน์ ค้าข้าว1688",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Nopphakornff@gmail.com"
+    ],
+    "default_cc": [
+      "Chayada.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ธรรมรัตน์ ค้าข้าว1688 จำกัด",
+    "line_user_id": "C9bbd27541638f92004e0cd3b9cdf770c",
+    "tax_id": "0715566000987"
+  },
+  "211 นพกร ก่อสร้าง เอ็นพีเค": {
+    "pattern_name": "211 นพกร ก่อสร้าง เอ็นพีเค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Nopphakornff@gmail.com"
+    ],
+    "default_cc": [
+      "Chayada.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท นพกร ก่อสร้าง เอ็นพีเค จำกัด",
+    "line_user_id": "C2e326b7aabb7ef208b84424f63c2a7d6",
+    "tax_id": "0715566000979"
+  },
+  "212 เมก้าวิสด้า กรุ๊ป": {
+    "pattern_name": "212 เมก้าวิสด้า กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "admin@megawisda.group"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เมก้าวิสด้า กรุ๊ป จำกัด",
+    "line_user_id": "Uccd7ca2e354926bbf3e0e3f94be1ec8a",
+    "tax_id": "0105566051528"
+  },
+  "213 แพสชั่นทูวิน": {
+    "pattern_name": "213 แพสชั่นทูวิน",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "passiontowin2019@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แพสชั่นทูวิน จำกัด",
+    "line_user_id": "Cfe0c75cb6f05ebd88cca67321c9027ca",
+    "tax_id": "0115566009491"
+  },
+  "214 เอส.ยู.คอมพาเนียน(สำนักงานใหญ่)": {
+    "pattern_name": "214 เอส.ยู.คอมพาเนียน(สำนักงานใหญ่)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sucompanion@gmail.com"
+    ],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอส.ยู.คอมพาเนียน จำกัด (สำนักงานใหญ่)",
+    "line_user_id": "Cc91566b16db2ffc5c94ca17cb554a307",
+    "tax_id": "0125566013014"
+  },
+  "214.1 เอส.ยู.คอมพาเนียน (สาขา1 ปากเกร็ด)": {
+    "pattern_name": "214.1 เอส.ยู.คอมพาเนียน (สาขา1 ปากเกร็ด)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sucompanion@gmail.com"
+    ],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอส.ยู.คอมพาเนียน จำกัด (สาขา1 ปากเกร็ด)",
+    "line_user_id": "Cc91566b16db2ffc5c94ca17cb554a307",
+    "tax_id": ""
+  },
+  "216 เอส พี อินโนเทค": {
+    "pattern_name": "216 เอส พี อินโนเทค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "prachya.spinnotech@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอส พี อินโนเทค จำกัด",
+    "line_user_id": "C869434b0905137345ebb72ad53a92f0a",
+    "tax_id": "0205566008508"
+  },
+  "217 เทคโทนิก เทรดดิ้ง": {
+    "pattern_name": "217 เทคโทนิก เทรดดิ้ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sopon@techtonictrading.com\npodchara@techtonictrading.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เทคโทนิก เทรดดิ้ง จำกัด",
+    "line_user_id": "U4133c8f23553f167193483ea5f9eb79f",
+    "tax_id": "0105565147416"
+  },
+  "219 พราว โซลูชั่น เทคโนโลยี": {
+    "pattern_name": "219 พราว โซลูชั่น เทคโนโลยี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "anchalee.s@ratchata.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พราว โซลูชั่น เทคโนโลยี จำกัด",
+    "line_user_id": "U5ade5937f7551a756f9be12fe639f729",
+    "tax_id": "0105565197863"
+  },
+  "222 วัชรกัมพล เกาะพะงัน": {
+    "pattern_name": "222 วัชรกัมพล เกาะพะงัน",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "nmsince1988@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วัชรกัมพล เกาะพะงัน จำกัด",
+    "line_user_id": "Cab511143140f45f61dc647608741fb44",
+    "tax_id": "0845566010060"
+  },
+  "223 เอ็นแอนด์เอ็ม ครีเอชั่น": {
+    "pattern_name": "223 เอ็นแอนด์เอ็ม ครีเอชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "nandmcreation.1@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอ็นแอนด์เอ็ม ครีเอชั่น จำกัด",
+    "line_user_id": "Cda11fe78a9af1cf121d4fa98fb0bf31d",
+    "tax_id": "0125566014860"
+  },
+  "224 เทค อินโนไลฟ์": {
+    "pattern_name": "224 เทค อินโนไลฟ์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "techinnolife@gmail.com\nyai52@yahoo.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เทค อินโนไลฟ์ จำกัด",
+    "line_user_id": "Cd686d3132291981b38adb6cdaa025750",
+    "tax_id": "0125566014851"
+  },
+  "225 มาเก็ต ไวส์ เมเนจเม้นต์": {
+    "pattern_name": "225 มาเก็ต ไวส์ เมเนจเม้นต์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "juthamart.l@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มาเก็ต ไวส์ เมเนจเม้นต์ จำกัด",
+    "line_user_id": "U3c7742d71e3e86fcc10b202d9abfa25f",
+    "tax_id": "0105566088685"
+  },
+  "226 สเกลอัพ ฟุลฟิลเม้นท์": {
+    "pattern_name": "226 สเกลอัพ ฟุลฟิลเม้นท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "narit.i@outlook.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สเกลอัพ ฟุลฟิลเม้นท์ จำกัด",
+    "line_user_id": "C62bba2ad0dc6ce24c83e4f598e4a01a6",
+    "tax_id": "0105566072622"
+  },
+  "230 โคซี่แอนด์ริช": {
+    "pattern_name": "230 โคซี่แอนด์ริช",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "cozyrich.co@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท โคซี่แอนด์ริช จำกัด",
+    "line_user_id": "U808d280d66706859d75c8af35a582603",
+    "tax_id": "0205566022811"
+  },
+  "233 เอส.อี.เอเซีย เซอร์วิส": {
+    "pattern_name": "233 เอส.อี.เอเซีย เซอร์วิส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "seasiavisa@gmail.com\nphasuphon@gmail.com\njiggyjang.kie@gmail.com"
+    ],
+    "default_cc": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอส.อี.เอเซีย เซอร์วิส จำกัด",
+    "line_user_id": "C428e26a4e4a346c9d64d4a952a9cc183",
+    "tax_id": "0115566004210"
+  },
+  "238 ฟู้ดแฮนด์เลอร์ (ประเทศไทย)": {
+    "pattern_name": "238 ฟู้ดแฮนด์เลอร์ (ประเทศไทย)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Foodhandler2455@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ฟู้ดแฮนด์เลอร์ (ประเทศไทย) จำกัด",
+    "line_user_id": "Ue21eb2a8c0b62c3b89c584e17bad2526",
+    "tax_id": "0105566102068"
+  },
+  "242 ล้านเก้า เอส.พี.": {
+    "pattern_name": "242 ล้านเก้า เอส.พี.",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sin.werawat@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ล้านเก้า เอส.พี. จำกัด",
+    "line_user_id": "U0ca7052a16e5bfd49cde64da909b6145",
+    "tax_id": "0105566027864"
+  },
+  "243 ซี เทร์ร่า": {
+    "pattern_name": "243 ซี เทร์ร่า",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "aphicha.ctera@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซี เทร์ร่า จำกัด",
+    "line_user_id": "U4b7679108c575fa01aff153e2ff20030",
+    "tax_id": "0105566070549"
+  },
+  "246 วัน แพสทรี่ กรุ๊ป": {
+    "pattern_name": "246 วัน แพสทรี่ กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Onepastrygroup@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วัน แพสทรี่ กรุ๊ป จำกัด",
+    "line_user_id": "Ue8b2bf5af6e96e8926dfc9316f3fad87",
+    "tax_id": "0105566123855"
+  },
+  "247 แอมมิรี ไร้ขีด": {
+    "pattern_name": "247 แอมมิรี ไร้ขีด",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Pyt.lews@gmail.com\nSarapao.k@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แอมมิรี ไร้ขีด จำกัด",
+    "line_user_id": "Cd46316640ba3a41da70e6f262bf1c525",
+    "tax_id": "0215566006611"
+  },
+  "250 เบสท์โฮมคอนโด": {
+    "pattern_name": "250 เบสท์โฮมคอนโด",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "contact@besthomecondo.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เบสท์โฮมคอนโด จำกัด",
+    "line_user_id": "U17e59b1d84be2d985ef72f96594cd555",
+    "tax_id": "0105566118436"
+  },
+  "251 อินเตอร์เอกซ์เทค": {
+    "pattern_name": "251 อินเตอร์เอกซ์เทค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "interxtech@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อินเตอร์เอกซ์เทค จำกัด",
+    "line_user_id": "U17add6631222a82dd8d50bd047263555",
+    "tax_id": "0105566127737"
+  },
+  "253 เอสเตท อินเตอร์แลนด์": {
+    "pattern_name": "253 เอสเตท อินเตอร์แลนด์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "interteamland2020@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอสเตท อินเตอร์แลนด์ จำกัด",
+    "line_user_id": "Ucb8cc29540e1455711ec5e27d3501995",
+    "tax_id": "0135566012522"
+  },
+  "254 บุญโฮมดี อินทีเรีย เดคอร์": {
+    "pattern_name": "254 บุญโฮมดี อินทีเรีย เดคอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "bhd.boonhomedee@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บุญโฮมดี อินทีเรีย เดคอร์ จำกัด",
+    "line_user_id": "C036c9c6dbc8849b7cc0f19fa6d4b9a1d",
+    "tax_id": "0245566002763"
+  },
+  "256 ธนศิริ การค้า": {
+    "pattern_name": "256 ธนศิริ การค้า",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Thanasiri.Kkha@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ธนศิริ การค้า จำกัด",
+    "line_user_id": "U246549d884bfa313c330602bf1b10624",
+    "tax_id": "0135566012107"
+  },
+  "257 แบล็กดอตแล็บ": {
+    "pattern_name": "257 แบล็กดอตแล็บ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "ekapon.sc@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แบล็กดอตแล็บ จำกัด",
+    "line_user_id": "C4e640735589a39d6a7bfddd46409de4d",
+    "tax_id": "0105566127991"
+  },
+  "259 วรากร เซอร์วิส แอนด์ ทรานสปอร์ต": {
+    "pattern_name": "259 วรากร เซอร์วิส แอนด์ ทรานสปอร์ต",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "jaksornwan@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วรากร เซอร์วิส แอนด์ ทรานสปอร์ต จำกัด",
+    "line_user_id": "Ub8096bff443fb7dcb7d436f873b5a4fb",
+    "tax_id": "0125566024784"
+  },
+  "260 พาซ เดนทัล": {
+    "pattern_name": "260 พาซ เดนทัล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pazdentacc@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พาซ เดนทัล จำกัด",
+    "line_user_id": "Ca565d457ac6ccea3b2bc2eab497628e2",
+    "tax_id": "0105566143368"
+  },
+  "261 โดสออฟไดฟ์": {
+    "pattern_name": "261 โดสออฟไดฟ์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "doseofdives@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท โดสออฟไดฟ์ จำกัด",
+    "line_user_id": "C4effac4f83231436d2449fd9a6fac5bb",
+    "tax_id": "0105566124754"
+  },
+  "262 พาร์ทเนอร์ ฟอร์ กู้ดส์": {
+    "pattern_name": "262 พาร์ทเนอร์ ฟอร์ กู้ดส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Partnerforgoods@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พาร์ทเนอร์ ฟอร์ กู้ดส์ จำกัด",
+    "line_user_id": "U3175784ee9f39c2aecd393ea1d496ea8",
+    "tax_id": "0105566118398"
+  },
+  "263 สตาย่า": {
+    "pattern_name": "263 สตาย่า",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sataya.official@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สตาย่า จำกัด",
+    "line_user_id": "U5cbaa9a7f45444378416ed2dfdf7c931",
+    "tax_id": "0105566148696"
+  },
+  "265 พรอสเพ็ค อีโค่เทค": {
+    "pattern_name": "265 พรอสเพ็ค อีโค่เทค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "prospectecotech@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พรอสเพ็ค อีโค่เทค จำกัด",
+    "line_user_id": "Ud0275301a7371fe1816cfcc90dff6366",
+    "tax_id": "0105566133028"
+  },
+  "266 นิศา เคมีเทค": {
+    "pattern_name": "266 นิศา เคมีเทค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "nisa.cropscience@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท นิศา เคมีเทค จำกัด",
+    "line_user_id": "C791131aaab02669547aea91235829078",
+    "tax_id": "0105566150950"
+  },
+  "269 เวริ เวล กู๊ด ซัพพอร์ต": {
+    "pattern_name": "269 เวริ เวล กู๊ด ซัพพอร์ต",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Verywellgoodsup@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เวริ เวล กู๊ด ซัพพอร์ต จำกัด",
+    "line_user_id": "Cb6e488e3c1354208c14ad05723ef6a90",
+    "tax_id": "0115566024971"
+  },
+  "272 นิว รีสต๊อก": {
+    "pattern_name": "272 นิว รีสต๊อก",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "newrestock.thailand@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท นิว รีสต๊อก จำกัด",
+    "line_user_id": "U7afdc679d7b2c0a4057fa70ab5c13e1f",
+    "tax_id": "0745566008163"
+  },
+  "273 กลอรี่ คอนซัลแทนท์": {
+    "pattern_name": "273 กลอรี่ คอนซัลแทนท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "glory.consult88@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท กลอรี่ คอนซัลแทนท์ จำกัด",
+    "line_user_id": "C5c41df547cf4847a213d5cfad7956ef5",
+    "tax_id": "0105566161145"
+  },
+  "279 โอฬารแกรนด์": {
+    "pattern_name": "279 โอฬารแกรนด์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "panjama.film@gmail.com\nk.phakwara@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท โอฬารแกรนด์ จำกัด",
+    "line_user_id": "Uee802c31d48fe0e3f68beab9c1829f30",
+    "tax_id": "0125566030458"
+  },
+  "282 เมดโปร เอ็กซ์ตรีม": {
+    "pattern_name": "282 เมดโปร เอ็กซ์ตรีม",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Official@medproextreme.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เมดโปร เอ็กซ์ตรีม จำกัด",
+    "line_user_id": "C5e818c7c6160389033e675aaf94cd09b",
+    "tax_id": "0105566131211"
+  },
+  "287 ลุคอีซี่": {
+    "pattern_name": "287 ลุคอีซี่",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sale.lookeasy@gmail.com"
+    ],
+    "default_cc": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ลุคอีซี่ จำกัด",
+    "line_user_id": "C4ec37c0a680d6230d966c01022995503",
+    "tax_id": "0125566034721"
+  },
+  "289 วินทีเรีย ดีไซน์": {
+    "pattern_name": "289 วินทีเรีย ดีไซน์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "wanipon.kw@gmail.com"
+    ],
+    "default_cc": [
+      "Chayada.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วินทีเรีย ดีไซน์ จำกัด",
+    "line_user_id": "U17da310848dd6178b52543724597f0d9",
+    "tax_id": "0135566026604"
+  },
+  "290 มิรีชอป": {
+    "pattern_name": "290 มิรีชอป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Pyt.lews@gmail.com\nSarapao.k@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มิรีชอป จำกัด",
+    "line_user_id": "C0afd2205f5cf25f149d8b64536cdf309",
+    "tax_id": "0215566006670"
+  },
+  "291 มิชชั่น วิว": {
+    "pattern_name": "291 มิชชั่น วิว",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "mathunoon.33@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มิชชั่น วิว จำกัด",
+    "line_user_id": "U79fe47e61f5d88ed4e762f8eee4f02a6",
+    "tax_id": "0705566002602"
+  },
+  "293 ซีพีอาร์ โซลูชั่น (ไทยแลนด์)": {
+    "pattern_name": "293 ซีพีอาร์ โซลูชั่น (ไทยแลนด์)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "admin@cprsolutionsth.com\nNipapat.c@cprsolutionsth.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีพีอาร์ โซลูชั่น (ไทยแลนด์) จำกัด",
+    "line_user_id": "C8b1bc05c2619274f3210ab0e7b41d551",
+    "tax_id": "0105558164963"
+  },
+  "294 ไทยหือ": {
+    "pattern_name": "294 ไทยหือ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "thaihuecoltd2023@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไทยหือ จำกัด",
+    "line_user_id": "Cad803ecdb3599a17c1183ff1168deea7",
+    "tax_id": "0115566014070"
+  },
+  "295 ฟอเรจ ไวน์": {
+    "pattern_name": "295 ฟอเรจ ไวน์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "warutthaya@toadovechem.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ฟอเรจ ไวน์ จำกัด",
+    "line_user_id": "Ue53b77ddd6b2648a5bff049da9a29f4c",
+    "tax_id": "0105566132676"
+  },
+  "304 สกุลกาญจน์ ไอที": {
+    "pattern_name": "304 สกุลกาญจน์ ไอที",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Piyaporn.jirakhon@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สกุลกาญจน์ ไอที จำกัด",
+    "line_user_id": "Uc1af444b3d89a3d137dfbbc5bef94c49",
+    "tax_id": "0325566000638"
+  },
+  "305 ดีจีดี ชีวภาพ": {
+    "pattern_name": "305 ดีจีดี ชีวภาพ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "dgd.dgdgroups@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ดีจีดี ชีวภาพ จำกัด",
+    "line_user_id": "Uc1867b085d8abe7e547f286b7a3272b5",
+    "tax_id": "0105565095831"
+  },
+  "306 วิซแรพ": {
+    "pattern_name": "306 วิซแรพ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "wimonphornk@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วิซแรพ จำกัด",
+    "line_user_id": "U98c62fcb26f9404c8e98bfa9e5c7e375",
+    "tax_id": "0105565204479"
+  },
+  "309 เอ็นทีเจอินเตอร์": {
+    "pattern_name": "309 เอ็นทีเจอินเตอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "ntjintertrade@gmail.com"
+    ],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอ็นทีเจอินเตอร์ จำกัด",
+    "line_user_id": "U336ed2e6fffe3dd53379de9193410def",
+    "tax_id": "0195562002875"
+  },
+  "310 เวลตี้ เฮลท์": {
+    "pattern_name": "310 เวลตี้ เฮลท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "thanutras.wealthy@gmail.com"
+    ],
+    "default_cc": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เวลตี้ เฮลท์ จำกัด",
+    "line_user_id": "U0ce7b252fd114ff3272b3941a8a49a99",
+    "tax_id": "0105565010895"
+  },
+  "311 เซลออน": {
+    "pattern_name": "311 เซลออน",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "hello@sailon.co.th"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เซลออน จำกัด",
+    "line_user_id": "Cb7f756843e48c5609524d7522aaf5d7b",
+    "tax_id": "0415566004535"
+  },
+  "313 เฮียเม้ง มั่งมี": {
+    "pattern_name": "313 เฮียเม้ง มั่งมี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "meng.restaurant@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เฮียเม้ง มั่งมี จำกัด",
+    "line_user_id": "U7d03eed69436e238458f069f07fe61c2",
+    "tax_id": "0745566012187"
+  },
+  "314 ชัยเน็ต49": {
+    "pattern_name": "314 ชัยเน็ต49",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "chainet49@gmail.com\nSuphida.bow@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ชัยเน็ต49 จำกัด",
+    "line_user_id": "Ca75455f794d1ecc4316d24e5021ea643",
+    "tax_id": "0755563000480"
+  },
+  "315 ลิฟวิ่งโฮม แอนด์ เดคคอร์": {
+    "pattern_name": "315 ลิฟวิ่งโฮม แอนด์ เดคคอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "zerntrinos@gmail.com"
+    ],
+    "default_cc": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ลิฟวิ่งโฮม แอนด์ เดคคอร์ จำกัด",
+    "line_user_id": "Cdaa1f25f64c6b043d22e2b4ab8704a56",
+    "tax_id": "0105566235572"
+  },
+  "317 ทีเอส ออโตเมชั่น": {
+    "pattern_name": "317 ทีเอส ออโตเมชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Sup.r@tsautomation.co.th"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทีเอส ออโตเทชั่น จำกัด",
+    "line_user_id": "Ceae1d1b40a50f2715762ee867d77e3ee",
+    "tax_id": "0105566238971"
+  },
+  "318 ฟีนิกซ์ พลัส คาร์วอช (ประเทศไทย)": {
+    "pattern_name": "318 ฟีนิกซ์ พลัส คาร์วอช (ประเทศไทย)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Lxbin2013@gmail.com\nLalit.bin@phoenixplus.co.th\nplus.leena2021@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ฟีนิกซ์ พลัส คาร์วอช (ประเทศไทย) จำกัด",
+    "line_user_id": "C7490e3005d0a6372d3e38fff355b6526",
+    "tax_id": "0105567169867"
+  },
+  "319 แพนเตอร์ พลัส (ประเทศไทย)": {
+    "pattern_name": "319 แพนเตอร์ พลัส (ประเทศไทย)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Lxbin2013@gmail.com\nLalit.bin@phoenixplus.co.th\nplus.leena2021@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แพนเตอร์ พลัส (ประเทศไทย) จำกัด",
+    "line_user_id": "C7490e3005d0a6372d3e38fff355b6526",
+    "tax_id": "0105564111329"
+  },
+  "320 คอนทินิวอัส อิมพรูฟเมนท์": {
+    "pattern_name": "320 คอนทินิวอัส อิมพรูฟเมนท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Pyt.lews@gmail.com\nSarapao.k@gmail.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คอนทินิวอัส อิมพรูฟเมนท์ จำกัด",
+    "line_user_id": "C1d8d9e7d40da183619ef1f289a444852",
+    "tax_id": "0215558000293"
+  },
+  "321 ว่านนาวา": {
+    "pattern_name": "321 ว่านนาวา",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Wannava929@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ว่านนาวา จำกัด",
+    "line_user_id": "Ccb9b40500bd8abbd8f21d0a03b54232a",
+    "tax_id": "0735561005662"
+  },
+  "323 ซูการ์ เดอ มั้งค์": {
+    "pattern_name": "323 ซูการ์ เดอ มั้งค์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Sugardemonk@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซูการ์ เดอ มั้งค์ จำกัด",
+    "line_user_id": "Ca55b5966b54c43f5aab150a4536246df",
+    "tax_id": "0135564002503"
+  },
+  "324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)": {
+    "pattern_name": "324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "psubdee@gmail.com\nthaivi.finance@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)",
+    "line_user_id": "C175fe7a9b39e2d41204f7a2c133f7cab",
+    "tax_id": "0993000281811"
+  },
+  "325 ลีฟ เอร่า": {
+    "pattern_name": "325 ลีฟ เอร่า",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "lyvera.thailand@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ลีฟ เอร่า จำกัด",
+    "line_user_id": "Ud6c8a72320b4b0b9ca0f9b068a0f9e10",
+    "tax_id": "0105566127249"
+  },
+  "327 แกรนด์ คอนด้อม": {
+    "pattern_name": "327 แกรนด์ คอนด้อม",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "support@grandcondom.com"
+    ],
+    "default_cc": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แกรนด์ คอนด้อม จำกัด",
+    "line_user_id": "Ua4a1646e1faed09bb4971587688d04a5",
+    "tax_id": "0105561207481"
+  },
+  "331 ครู ชีค เอ็ดดูเคชั่น คอนซัลแตนท์": {
+    "pattern_name": "331 ครู ชีค เอ็ดดูเคชั่น คอนซัลแตนท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Krucheek33@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ครู ชีค เอ็ดดูเคชั่น คอนซัลแตนท์ จำกัด",
+    "line_user_id": "C8640262a39b21c49be85a6bdbd267628",
+    "tax_id": "0105567008065"
+  },
+  "332 มีผลเทรดดิ้ง": {
+    "pattern_name": "332 มีผลเทรดดิ้ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "arch947@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มีผลเทรดดิ้ง จำกัด",
+    "line_user_id": "C241ce1222b187516b80b607cd89d350e",
+    "tax_id": "0125567003144"
+  },
+  "333 โลกแบ่งปัน": {
+    "pattern_name": "333 โลกแบ่งปัน",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "baengpunpay@gmail.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท โลกแบ่งปัน จำกัด",
+    "line_user_id": "C98569d8d6967ba0518ba151e98033d4f",
+    "tax_id": "0105566015017"
+  },
+  "334 พีพี อิเล็กทรอนิกส์": {
+    "pattern_name": "334 พีพี อิเล็กทรอนิกส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "electricalengineering.kmutnb@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พีพี อิเล็กทรอนิกส์ จำกัด",
+    "line_user_id": "U0138797c8873bf594d20aee262028045",
+    "tax_id": "0135567001486"
+  },
+  "335 วันเดอส์ คุ๊กกิ้ง คอร์ปอเรชั่น": {
+    "pattern_name": "335 วันเดอส์ คุ๊กกิ้ง คอร์ปอเรชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Kitchi@wonderscooking.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วันเดอส์ คุ๊กกิ้ง คอร์ปอเรชั่น จำกัด",
+    "line_user_id": "Uf494e6b79a11cf61c3136d542fd94071",
+    "tax_id": "0115566005542"
+  },
+  "340 ซีเซลล์ เทคโนโลยี": {
+    "pattern_name": "340 ซีเซลล์ เทคโนโลยี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "account@zecelltech.com\njariya@zecelltech.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีเซลล์ เทคโนโลยี จำกัด",
+    "line_user_id": "Cc2bd4fce7f5593322e4b625641bc1f45",
+    "tax_id": "0745558001007"
+  },
+  "342 คอนนิ โซลูชั่น (อัลฟ่า 6)": {
+    "pattern_name": "342 คอนนิ โซลูชั่น (อัลฟ่า 6)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "account@zecelltech.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คอนนิ โซลูชั่น จำกัด รายเดือน (อัลฟ่า 6)",
+    "line_user_id": "Cd7e4657f15c196ecdfe4c4f529efff20",
+    "tax_id": "0745561002345"
+  },
+  "343 เอ็ดดูเคชั่น เอ็นจิเนียริ่ง": {
+    "pattern_name": "343 เอ็ดดูเคชั่น เอ็นจิเนียริ่ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Poomylim@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอ็ดดูเคชั่น เอ็นจิเนียริ่ง จำกัด",
+    "line_user_id": "U4bf4c5af77cdb13f6437d6e36d29191a",
+    "tax_id": "0105566020070"
+  },
+  "344 คอนเน็กซ์บุ๊ค": {
+    "pattern_name": "344 คอนเน็กซ์บุ๊ค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "connexbook@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คอนเน็กซ์บุ๊ค จำกัด",
+    "line_user_id": "Ce41c53c02b8d3f79ffdcef17d6b3b9ee",
+    "tax_id": "0195562002042"
+  },
+  "345 อัครา จิวเวลส์": {
+    "pattern_name": "345 อัครา จิวเวลส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "akaramanee.jewels@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อัครา จิวเวลส์ จำกัด",
+    "line_user_id": "Uad6e070cef0af069ffe74ac1223f47c8",
+    "tax_id": "0105567047729"
+  },
+  "347 อภิญญา พริ้นติ้ง": {
+    "pattern_name": "347 อภิญญา พริ้นติ้ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "nilyn.ap@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อภิญญา พริ้นติ้ง จำกัด",
+    "line_user_id": "U462946a0161c8e0733d4666422e42bb4",
+    "tax_id": "0105559198535"
+  },
+  "349 จีพีที เซอร์วิส": {
+    "pattern_name": "349 จีพีที เซอร์วิส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "weena2528@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท จีพีที เซอร์วิส จำกัด",
+    "line_user_id": "U635c76329385ddf02f2b12c35d199a47",
+    "tax_id": "0125567008286"
+  },
+  "351 ออสก้า ฮาร์เซอร์ (ประเทศไทย)": {
+    "pattern_name": "351 ออสก้า ฮาร์เซอร์ (ประเทศไทย)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "oskar.herzel2020@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ออสก้า ฮาร์เซอร์ (ประเทศไทย) จำกัด",
+    "line_user_id": "U9f93ccce0ef84b1241ddd379b20bb64c",
+    "tax_id": "0105547065861"
+  },
+  "352 คราฟต์สคูป": {
+    "pattern_name": "352 คราฟต์สคูป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "craftscoopcbi@gmail.com"
+    ],
+    "default_cc": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คราฟต์สคูป จำกัด",
+    "line_user_id": "C8f5650f107b47e4d8f8d876bf06abbea",
+    "tax_id": "0205566062731"
+  },
+  "354 คัลเลอร์ มายด์ ดีไซน์": {
+    "pattern_name": "354 คัลเลอร์ มายด์ ดีไซน์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Colormind2002@gmail.com \ncolormind.design02@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คัลเลอร์ มายด์ ดีไซน์ จำกัด",
+    "line_user_id": "Ua561b8a37d993a0d591cde6c4a670026",
+    "tax_id": "0105551110183"
+  },
+  "355 รณิช สโตร์": {
+    "pattern_name": "355 รณิช สโตร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "oranich.js@gmail.com"
+    ],
+    "default_cc": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท รณิช สโตร์ จำกัด",
+    "line_user_id": "U7e75695e39406dc723ffc38e8bdbcbc0",
+    "tax_id": "0105566206980"
+  },
+  "356 บลู เปเปอร์": {
+    "pattern_name": "356 บลู เปเปอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "admin@blupaper.co"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บลู เปเปอร์ จำกัด",
+    "line_user_id": "Ccab55ce3461b9ffa0c3766999c41bc4e",
+    "tax_id": "0105567058470"
+  },
+  "358 อีท โน สลีพ": {
+    "pattern_name": "358 อีท โน สลีพ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "account@eatnosleep.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อีท โน สลีพ จำกัด",
+    "line_user_id": "C115eb4fce6b725e61fe0cfd1f26c305a",
+    "tax_id": "0105564024426"
+  },
+  "360 เจซีซี คอร์ปอเรชั่น (ประเทศไทย)": {
+    "pattern_name": "360 เจซีซี คอร์ปอเรชั่น (ประเทศไทย)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "haris@jcc-jung.com\nptestamvithit@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เจซีซี คอร์ปอเรชั่น (ประเทศไทย) จำกัด",
+    "line_user_id": "Uf8782cbd93fb1ac245b535bd71b753f9",
+    "tax_id": "0115566013201"
+  },
+  "361 อินโนไซน์": {
+    "pattern_name": "361 อินโนไซน์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "acc@innosignth.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อินโนไซน์ จำกัด",
+    "line_user_id": "Cea5c2892ccf0c708727ca63e230af069",
+    "tax_id": "0105566115810"
+  },
+  "362 ไอสตาร์ ยิมนาสติก": {
+    "pattern_name": "362 ไอสตาร์ ยิมนาสติก",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "istar.gymnastics@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไอสตาร์ ยิมนาสติก จำกัด",
+    "line_user_id": "C8188d43e17848ee20a585509b3d87ed4",
+    "tax_id": "0105567065875"
+  },
+  "363 ลิมฟาร์": {
+    "pattern_name": "363 ลิมฟาร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "kritsada34@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ลิมฟาร์ จำกัด",
+    "line_user_id": "",
+    "tax_id": "0125567013093"
+  },
+  "364 สามหกห้า แอนด์ โค": {
+    "pattern_name": "364 สามหกห้า แอนด์ โค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "bmt365shop@gmail.com"
+    ],
+    "default_cc": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สามหกห้า แอนด์ โค จำกัด",
+    "line_user_id": "C15209dd483d8e21285f7b3ea75153265",
+    "tax_id": "0105567069927"
+  },
+  "365 เนเบอร์ฮูด บี": {
+    "pattern_name": "365 เนเบอร์ฮูด บี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "barblah.bkk@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เนเบอร์ฮูด บี จำกัด",
+    "line_user_id": "Cbc868257b3acd552b61e0fb3d9e4c052",
+    "tax_id": "0105566026221"
+  },
+  "369 มีพรอนันต์": {
+    "pattern_name": "369 มีพรอนันต์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "MeePornAnan@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มีพรอนันต์ จำกัด",
+    "line_user_id": "Ua8dfb8769b1c83d5ba73a78987b3d627",
+    "tax_id": "0205560040507"
+  },
+  "371 บีเคพี เพอร์เฟค แมเนจเมนท์": {
+    "pattern_name": "371 บีเคพี เพอร์เฟค แมเนจเมนท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "bkpperfectmanagement@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บีเคพี เพอร์เฟค แมเนจเมนท์ จำกัด",
+    "line_user_id": "U0ec07239e2b7be1be0a64ae23812e500",
+    "tax_id": "0115567005490"
+  },
+  "374 ณัฏฐกรณ์ เอ็นจิเนียริ่ง แอนด์ เทรดดิ้ง": {
+    "pattern_name": "374 ณัฏฐกรณ์ เอ็นจิเนียริ่ง แอนด์ เทรดดิ้ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "natthakorn.2024.001@gmail.com"
+    ],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ณัฏฐกรณ์ เอ็นจิเนียริ่ง แอนด์ เทรดดิ้ง จำกัด",
+    "line_user_id": "C2aefa72967322ffaa71b790e7f9cb5c8",
+    "tax_id": "0105567065409"
+  },
+  "375 เวิร์ท แอนด์ เวลตี้": {
+    "pattern_name": "375 เวิร์ท แอนด์ เวลตี้",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "waanwaanclinic.mkt@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เวิร์ท แอนด์ เวลตี้ จำกัด",
+    "line_user_id": "Ce6117c241965de95e454ea227b822c6f",
+    "tax_id": "0215564007156"
+  },
+  "376 ก็อดฟาเธอร์ บิสสิเนส": {
+    "pattern_name": "376 ก็อดฟาเธอร์ บิสสิเนส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "supaporn270727@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ก็อดฟาเธอร์ บิสสิเนส จำกัด",
+    "line_user_id": "C335819c6c034a40bba33c2460766b3ff",
+    "tax_id": "0105562140381"
+  },
+  "377 พรีเมี่ยม ซีเนียร์ แคร์ เซ็นเตอร์": {
+    "pattern_name": "377 พรีเมี่ยม ซีเนียร์ แคร์ เซ็นเตอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "kanokporn.kraj@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พรีเมี่ยม ซีเนียร์ แคร์ เซ็นเตอร์ จำกัด",
+    "line_user_id": "U8763a2aa4b915711243df98af60676bd",
+    "tax_id": "0735566004656"
+  },
+  "378 ห้างหุ้นส่วนจำกัด ทิพวาทิต": {
+    "pattern_name": "378 ห้างหุ้นส่วนจำกัด ทิพวาทิต",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "rungtip24@hotmail.com และ vatitt5111@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "ห้างหุ้นส่วนจำกัด ทิพวาทิต",
+    "line_user_id": "C9eb6d0fb4e2c135544d3973041dcdaa9",
+    "tax_id": "0763565000451"
+  },
+  "379 ไพลภูมิจันท์": {
+    "pattern_name": "379 ไพลภูมิจันท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "phaiphomchan@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไพลภูมิจันท์ จำกัด",
+    "line_user_id": "U54c99f0ad71a331a70de85ce805cb640",
+    "tax_id": "0225561001815"
+  },
+  "380 ทีซี อินโนเวทีฟ กรุ๊ป (ประเทศไทย)": {
+    "pattern_name": "380 ทีซี อินโนเวทีฟ กรุ๊ป (ประเทศไทย)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "TcInnovativegroupthailand@gmail.com  \nและ  edison_huangs@hotmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทีซี อินโนเวทีฟ กรุ๊ป (ประเทศไทย) จำกัด",
+    "line_user_id": "Cd9531fdd2dad6bd268d8b148e2895438",
+    "tax_id": "0105565102650"
+  },
+  "382 มีเดช เอ็นเตอร์เทนเม้นท์": {
+    "pattern_name": "382 มีเดช เอ็นเตอร์เทนเม้นท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "medech.official@hotmail.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มีเดช เอ็นเตอร์เทนเม้นท์ จำกัด",
+    "line_user_id": "C713bd321a106adf68230b31c95e149e7",
+    "tax_id": "0105567060105"
+  },
+  "384 รักษาความปลอดภัย ที.เอ็น.พี.โปรดักชั่น": {
+    "pattern_name": "384 รักษาความปลอดภัย ที.เอ็น.พี.โปรดักชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "tnp.pro2023@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท รักษาความปลอดภัย ที.เอ็น.พี.โปรดักชั่น จำกัด",
+    "line_user_id": "Ccc4c1d2305f9478f5203682d46f00164",
+    "tax_id": "0105564113224"
+  },
+  "386 เซล สตอรี่": {
+    "pattern_name": "386 เซล สตอรี่",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "jirapat@i3gateway.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เซล สตอรี่ จำกัด",
+    "line_user_id": "C62785207f5b20556383cb546014d89df",
+    "tax_id": "0105567080459"
+  },
+  "387 วอเตอร์ อินโนเวชั่น แอนด์ คอนซัลแทนท์": {
+    "pattern_name": "387 วอเตอร์ อินโนเวชั่น แอนด์ คอนซัลแทนท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "half.ratthikorn@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วอเตอร์ อินโนเวชั่น แอนด์ คอนซัลแทนท์ จำกัด",
+    "line_user_id": "Ud3dd14c758dfb484e5c18fe524e7fc76",
+    "tax_id": "0135567014308"
+  },
+  "388 รักษาความปลอดภัย ดับบลิว.เอ็น. ซีเคียวริตี้ การ์ด": {
+    "pattern_name": "388 รักษาความปลอดภัย ดับบลิว.เอ็น. ซีเคียวริตี้ การ์ด",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "wn.secarity.guard@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท รักษาความปลอดภัย ดับบลิว.เอ็น. ซีเคียวริตี้ การ์ด จำกัด",
+    "line_user_id": "C83482c13ce19a600ec4a87ffd2e346a4",
+    "tax_id": "0705566004613"
+  },
+  "390 บาบิลอน ซีแอนด์จี": {
+    "pattern_name": "390 บาบิลอน ซีแอนด์จี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "thanawat.stu@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "ห้างหุ้นส่วนจำกัด บาบิลอน ซีแอนด์จี",
+    "line_user_id": "Cd4ed9c777856744db30915d22987cd69",
+    "tax_id": "0103567004173"
+  },
+  "392 ร็อคเก็ต ลิ้ง เอ็นเตอร์เทนเม้นท์": {
+    "pattern_name": "392 ร็อคเก็ต ลิ้ง เอ็นเตอร์เทนเม้นท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "rocketlinkent@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ร็อคเก็ต ลิ้ง เอ็นเตอร์เทนเม้นท์ จำกัด",
+    "line_user_id": "U873400226073949929249f176d8ff60f",
+    "tax_id": "0105567025946"
+  },
+  "393 บี อาย ดับเบิล แอล": {
+    "pattern_name": "393 บี อาย ดับเบิล แอล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "billpiyachon@gmail.com"
+    ],
+    "default_cc": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บี อาย ดับเบิล แอล จำกัด",
+    "line_user_id": "U18cdd35a540c46accb2bed1b695b4739",
+    "tax_id": "0125567015479"
+  },
+  "395 แพนด้า ภูเก็ต ทัวร์": {
+    "pattern_name": "395 แพนด้า ภูเก็ต ทัวร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pandaphukettour@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แพนด้า ภูเก็ต ทัวร์ จำกัด",
+    "line_user_id": "Cf31ff30cec1e1193b382ba5743993e99",
+    "tax_id": "0435567000509"
+  },
+  "396 กะทิ กะลา": {
+    "pattern_name": "396 กะทิ กะลา",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "info@katikala.com\npaungmaneeboonlieng@gmail.com\nsomjaa@katikala.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท กะทิ กะลา จำกัด",
+    "line_user_id": "Cd9873f670e8478bffd19d15b3b96440b",
+    "tax_id": "0105534017065"
+  },
+  "408 มิว สเปซ แอนด์ แอดวานซ์ เทคโนโลยี": {
+    "pattern_name": "408 มิว สเปซ แอนด์ แอดวานซ์ เทคโนโลยี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "billing@muspacecorp.com\nsamathorn.t@muspacecorp.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มิว สเปซ แอนด์ แอดวานซ์ เทคโนโลยี จำกัด",
+    "line_user_id": "C0bf937bb7fdd3ec98df12dc2ab9f8e48",
+    "tax_id": "0105560101507"
+  },
+  "409 ทิตตา อินเตอร์เทรด": {
+    "pattern_name": "409 ทิตตา อินเตอร์เทรด",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Boonyathas@icloud.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทิตตา อินเตอร์เทรด จำกัด",
+    "line_user_id": "Ua9ce62038f5bc92deb5a966b42202486",
+    "tax_id": "0105564064517"
+  },
+  "410 เมก้า พาร์ท เอ็นจิเนียร์": {
+    "pattern_name": "410 เมก้า พาร์ท เอ็นจิเนียร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "megaparts.e@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เมก้า พาร์ท เอ็นจิเนียร์ จำกัด",
+    "line_user_id": "Uc9c71b83552f006bd9f01fe42d8242e0",
+    "tax_id": "0105567087453"
+  },
+  "411 3567": {
+    "pattern_name": "411 3567",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Pyt.lews@gmail.com\nsarapao.k@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท 3567 จำกัด",
+    "line_user_id": "C1679149cf3c62c0c9f71d983ea64ebca",
+    "tax_id": "0215567007378"
+  },
+  "412 159 ไลน์ เอ็นจิเนียริ่ง": {
+    "pattern_name": "412 159 ไลน์ เอ็นจิเนียริ่ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "aom.transview@gmail.com"
+    ],
+    "default_cc": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท 159 ไลน์ เอ็นจิเนียริ่ง จำกัด",
+    "line_user_id": "Uc7ffe1444f3a2238680e2cdceee80eaf",
+    "tax_id": "0105565180499"
+  },
+  "413 เนกต์สเตปไวน์": {
+    "pattern_name": "413 เนกต์สเตปไวน์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Beevittoria31@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เนกซ์สเตปไวน์ จำกัด",
+    "line_user_id": "C96a27a4ebcefada3a95d6a1b8a4ab5a8",
+    "tax_id": "0105566077161"
+  },
+  "415 ซีดีที. ฟู้ด แอนด์ เบฟเวอเรจ กรุ๊ป": {
+    "pattern_name": "415 ซีดีที. ฟู้ด แอนด์ เบฟเวอเรจ กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "cdt.ceo@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีดีที. ฟู้ด แอนด์ เบฟเวอเรจ กรุ๊ป จำกัด",
+    "line_user_id": "C8b423dffa36ae98c72e55bdc4aee2ac8",
+    "tax_id": "0535567000354"
+  },
+  "417 ทีเอสพี อินเตอร์กรุ๊ป": {
+    "pattern_name": "417 ทีเอสพี อินเตอร์กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Tanyawat.met@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทีเอสพี อินเตอร์กรุ๊ป จำกัด",
+    "line_user_id": "Cdb3e53646865bc2c6a1a0ca515bce9a2",
+    "tax_id": "0105567136098"
+  },
+  "418 คาร์บอนไวซ์": {
+    "pattern_name": "418 คาร์บอนไวซ์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Natalie@carbonwize.io\nSaranya@carbonwize.io"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คาร์บอนไวซ์ จำกัด",
+    "line_user_id": "U134d2f4d54b6893d65324b708b2a340c",
+    "tax_id": "0105565165422"
+  },
+  "420 เปรมสิริ แลปบอราทอรี": {
+    "pattern_name": "420 เปรมสิริ แลปบอราทอรี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "premsirilab@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เปรมสิริ แลปบอราทอรี จำกัด",
+    "line_user_id": "Ce917c7d26e387f282f84e2636c0b411b",
+    "tax_id": "0105566083977"
+  },
+  "422 เทสเซ่น": {
+    "pattern_name": "422 เทสเซ่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Kanyanat.anek@gmail.com\nSales.tessen@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เทสเซ่น จำกัด",
+    "line_user_id": "C18530a03d1c6a928f75ac28c2a143144",
+    "tax_id": "0105566163270"
+  },
+  "424 คเชนทร์ ดิจิทัล": {
+    "pattern_name": "424 คเชนทร์ ดิจิทัล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "finance@kachen.co\nw@kachen.co\nsunanthawadee061087@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คเชนทร์ ดิจิทัล จำกัด",
+    "line_user_id": "C3d9e2db7672b04e2f00984c2d151183a",
+    "tax_id": "0105562119420"
+  },
+  "425 ธิน โซลูชั่นซิสเต็มส์": {
+    "pattern_name": "425 ธิน โซลูชั่นซิสเต็มส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pattarawadee.l@tss.co.th \nfinance@tss.co.th\nworrawee@tss.co.th"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ธิน โซลูชั่นซิสเต็มส์ จำกัด",
+    "line_user_id": "Cfee5d48c2e6450c880214e565b93a9f9",
+    "tax_id": "0125549000384"
+  },
+  "427 เอ็นเนอร์จี้ เอ็กซ์พลอเรชั่น": {
+    "pattern_name": "427 เอ็นเนอร์จี้ เอ็กซ์พลอเรชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "billing@muspacecorp.com\nsamathorn.t@muspacecorp.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอ็นเนอร์จี้ เอ็กซ์พลอเรชั่น จำกัด",
+    "line_user_id": "C57270a3cafc259b5d4fdc0e6b13d7ae9",
+    "tax_id": "0135561012338"
+  },
+  "428 มอนเตสซอรี ฟอร์ ไลฟ์": {
+    "pattern_name": "428 มอนเตสซอรี ฟอร์ ไลฟ์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "chenyuyin.mm@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มอนเตสซอรี ฟอร์ ไลฟ์ จำกัด",
+    "line_user_id": "U55d7541c3627a0f48143306cec252bb1",
+    "tax_id": "0125567027221"
+  },
+  "429 ซันนี่ เดย์ โซลูชั่น": {
+    "pattern_name": "429 ซันนี่ เดย์ โซลูชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "thaitanu.m@sunnydayth.com\nchomchana.L@sunnydayth.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซันนี่ เดย์ โซลูชั่น จำกัด /",
+    "line_user_id": "C6b7016f2f6fc7ee19ab282aa1c2b8df7",
+    "tax_id": "0105567152689"
+  },
+  "431 พลอยดาว": {
+    "pattern_name": "431 พลอยดาว",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "ploydaoproduction@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พลอยดาว จำกัด",
+    "line_user_id": "Ucff8564a0a25928605922328b0009dd8",
+    "tax_id": "0105556140846"
+  },
+  "432 แฮพเพ่นทูบีแบ๊ก": {
+    "pattern_name": "432 แฮพเพ่นทูบีแบ๊ก",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "meimeisaekoi@gmail.com"
+    ],
+    "default_cc": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แฮพเพ่นทูบีแบ๊ก จำกัด",
+    "line_user_id": "U4f2f87af96ac0e0ace2de7f9d5a123e0",
+    "tax_id": "0125566008711"
+  },
+  "433 ซำกลาส": {
+    "pattern_name": "433 ซำกลาส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "someglass.barandcafe@gmail.com"
+    ],
+    "default_cc": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซำกลาส จำกัด",
+    "line_user_id": "U4435965e52921f2680b47cc8cf148c6e",
+    "tax_id": "0115567024567"
+  },
+  "434 เดอะธีรติ": {
+    "pattern_name": "434 เดอะธีรติ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Yuthasak.s@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัม เดอะธีรติ จำกัด",
+    "line_user_id": "C49eff4269a5b9f8b2c52add0bebd84ce",
+    "tax_id": "0115567028872"
+  },
+  "435 พัฒนพาณิช": {
+    "pattern_name": "435 พัฒนพาณิช",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "phatthanaphanich@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พัฒนพาณิช จำกัด",
+    "line_user_id": "Ub4afd24c4571161979c99630c7e6caa9",
+    "tax_id": "7355067007900"
+  },
+  "437 ซีดี แอสเซนด์": {
+    "pattern_name": "437 ซีดี แอสเซนด์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "chakrit.d@yahoo.com"
+    ],
+    "default_cc": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีดี แอสเซนด์ จำกัด",
+    "line_user_id": "C0cd68e117f31a688ec6c8b17f193ae6a",
+    "tax_id": "0735567007900"
+  },
+  "438 ริคโควิลเล": {
+    "pattern_name": "438 ริคโควิลเล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "riccovillethailand@gmail.com"
+    ],
+    "default_cc": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ริคโควิลเล จำกัด",
+    "line_user_id": "Uae6308e2aba0d71c929a6349c6274287",
+    "tax_id": "0125567001982"
+  },
+  "439 มหาศาล โมเดิร์น": {
+    "pattern_name": "439 มหาศาล โมเดิร์น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Mahasan.modern@gmail.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มหาศาล โมเดิร์น จำกัด",
+    "line_user_id": "Cf699fae36bf320dd75f038762ecf4f99",
+    "tax_id": "0225567001477"
+  },
+  "440 ศุภส่องแสง กรุ๊ป": {
+    "pattern_name": "440 ศุภส่องแสง กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "hi@mail.rangthong.com"
+    ],
+    "default_cc": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ศุภส่องแสง กรุ๊ป จำกัด",
+    "line_user_id": "U788558593af23e0ba7d04bdf79fa635c",
+    "tax_id": "0105567182391"
+  },
+  "442 อีติ๋มหน้าโง่": {
+    "pattern_name": "442 อีติ๋มหน้าโง่",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "etim8832@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อีติ๋มหน้าโง่ จำกัด",
+    "line_user_id": "U7dc80fc5c1a196d483282cff4c08739f",
+    "tax_id": "0105567078420"
+  },
+  "444 อกริมาติกส์": {
+    "pattern_name": "444 อกริมาติกส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "osathanond.u@gmail.com"
+    ],
+    "default_cc": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อีกริมาติกส์ จำกัด",
+    "line_user_id": "U6dc6d13960744c67c20d53e6fd52fe72",
+    "tax_id": "0105567082851"
+  },
+  "445 บิสเนอเรชั่น": {
+    "pattern_name": "445 บิสเนอเรชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "bizgen.info@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บิสเนอเรชั่น จำกัด",
+    "line_user_id": "C25215f03041c42c12c7f8a9cd536cc1d",
+    "tax_id": "0105567202775"
+  },
+  "449 เพลงพิชญ์ กรุ๊ป": {
+    "pattern_name": "449 เพลงพิชญ์ กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Plengpichgroup@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เพลงพิชญ์ กรุ๊ป จำกัด",
+    "line_user_id": "U341c4382107063df9870d8c202d81c2d",
+    "tax_id": "0205567067214"
+  },
+  "450 วิชณกรณ์": {
+    "pattern_name": "450 วิชณกรณ์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "wichnagon@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วิชณกรณ์ จำกัด",
+    "line_user_id": "U8552e41a7172b515ee7c1cf151cc821f",
+    "tax_id": "0125567038657"
+  },
+  "451 เจเจเค ซัพพลาย แอนด์ เซอร์วิส": {
+    "pattern_name": "451 เจเจเค ซัพพลาย แอนด์ เซอร์วิส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "jjkservice2024@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เจเจเค ซัพพลาย แอนด์ เซอร์วิส จำกัด",
+    "line_user_id": "U9c84d8279143a1b8aa421b699b38c76e",
+    "tax_id": "0105567133641"
+  },
+  "452 คลินิกด้วยใจ": {
+    "pattern_name": "452 คลินิกด้วยใจ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "duayjaiclinic@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คลินิกด้วยใจ จำกัด",
+    "line_user_id": "Ub35861671231511cf5cfa00fe2656792",
+    "tax_id": "0125567038088"
+  },
+  "455 ปลายจวัก ฟู้ด แอนด์ เบเวอเรจ": {
+    "pattern_name": "455 ปลายจวัก ฟู้ด แอนด์ เบเวอเรจ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pjw.foodandbev@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ปลายจวัก ฟู้ด แอนด์ เบเวอเรจ จำกัด",
+    "line_user_id": "C50804db44eed17a4aefa6abe55c975d8",
+    "tax_id": "0215567014544"
+  },
+  "456 ซีแอล เมด": {
+    "pattern_name": "456 ซีแอล เมด",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "qzlilym@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีแอล เมด จำกัด",
+    "line_user_id": "Ud35186a9b85ac3b31bb3c0df3aea558a",
+    "tax_id": "0105567240308"
+  },
+  "457 ยูริช เอ็กซ์เพรส": {
+    "pattern_name": "457 ยูริช เอ็กซ์เพรส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "urichexpress@hotmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ยูริช เอ็กซ์เพรส จำกัด",
+    "line_user_id": "Ubc2183070294f03ede062e61b5b6390c",
+    "tax_id": "0735567010978"
+  },
+  "459 อาร์ พี ที ออโต้เทค": {
+    "pattern_name": "459 อาร์ พี ที ออโต้เทค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Rptautotech@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อาร์ พี ที ออโต้เทค จำกัด",
+    "line_user_id": "U943a2276e5878943ef2edf386c2e04d6",
+    "tax_id": "0105567230701"
+  },
+  "460 ฐานเติมความรู้": {
+    "pattern_name": "460 ฐานเติมความรู้",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "narongrit_sup@yahoo.com"
+    ],
+    "default_cc": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ฐานเติมความรู้ จำกัด",
+    "line_user_id": "Uee4ac1ffec1eb6ba84cc55724bd422d7",
+    "tax_id": "0105567246047"
+  },
+  "463 วาย เลิร์นนิ่ง (ไทยแลนด์)": {
+    "pattern_name": "463 วาย เลิร์นนิ่ง (ไทยแลนด์)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "p.chaithanapat@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วาย เลิร์นนิ่ง (ไทยแลนด์) จำกัด",
+    "line_user_id": "C6ef128e0c552c24e67bbe6ea888a2091",
+    "tax_id": "0105564038397"
+  },
+  "464 อยุธยา ศูนย์ล้อ": {
+    "pattern_name": "464 อยุธยา ศูนย์ล้อ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Ayutthayasoonlor@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อยุธยา ศูนย์ล้อ จำกัด",
+    "line_user_id": "C923e9e56b6ac05f194684bb3c8d04de4",
+    "tax_id": "0143537000960"
+  },
+  "465 บีทรูตดอทซี": {
+    "pattern_name": "465 บีทรูตดอทซี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Bright@beetrootc.com"
+    ],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บีทรูตดอทซี จำกัด",
+    "line_user_id": "Cf2d5218df7d28aac9003f68435799143",
+    "tax_id": "0125561015469"
+  },
+  "466 แดดดี้ โปรเจค": {
+    "pattern_name": "466 แดดดี้ โปรเจค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Daddyproject.house@gmail.com"
+    ],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แดดดี้ โปรเจค จำกัด",
+    "line_user_id": "Uadfd9f51f42cc8ddb3620961ffe63a3f",
+    "tax_id": "0105566115305"
+  },
+  "467 เพาเวอร์ อินดัสเทรียล ซัพพลาย": {
+    "pattern_name": "467 เพาเวอร์ อินดัสเทรียล ซัพพลาย",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "A.nutnaree@powerindustrialsupply.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เพาเวอร์ อินดัสเทรียล ซัพพลาย จำกัด",
+    "line_user_id": "Caf7bd82fa6f2178f629d5833a8d632a0",
+    "tax_id": "0103536017915"
+  },
+  "468 เบบี้ 5": {
+    "pattern_name": "468 เบบี้ 5",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Ndoo.officer@gmail.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เบบี้ 5 จำกัด",
+    "line_user_id": "Cba657433f1a387239ea7c840660b5751",
+    "tax_id": "0735562004732"
+  },
+  "471 กะเพราคุณพ่อ": {
+    "pattern_name": "471 กะเพราคุณพ่อ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "kaprowkhunphorthailand@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท กะเพราคุณพ่อ จำกัด",
+    "line_user_id": "U54dd18a6a2973b0c3691d0d8cc8aaf20",
+    "tax_id": "0105560008825"
+  },
+  "472 กำไรมีไม่": {
+    "pattern_name": "472 กำไรมีไม่",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "kumrainolimit@gmail.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท กำไรมีไม่ จำกัด",
+    "line_user_id": "C087579ed8afe5330e5cfb81f5d82c05a",
+    "tax_id": "0105567249178"
+  },
+  "473 ราวด์บอกซ์": {
+    "pattern_name": "473 ราวด์บอกซ์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sales@roundbox.fun"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ราวด์บอกซ์ จำกัด",
+    "line_user_id": "Cc77d5463e758f91f1cc3f834e8e73ff8",
+    "tax_id": "0105567102924"
+  },
+  "474 คัดสรร เคมี": {
+    "pattern_name": "474 คัดสรร เคมี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Kudsanchem.official@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คัดสรร เคมี จำกัด",
+    "line_user_id": "C71ce88dc035e4dd90dd79ab96d6632c4",
+    "tax_id": "0715567001341"
+  },
+  "475 เจ็น-เอ็ม กรุ๊ป": {
+    "pattern_name": "475 เจ็น-เอ็ม กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sakowrat.m@genmgroup.com\nSale@duckyengineer.com\nnapolheng@duckyengineer.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เจ็น-เอ็ม กรุ๊ป จำกัด",
+    "line_user_id": "C68a7699e18cae857e196957567358092",
+    "tax_id": "0125566042073"
+  },
+  "477 คชา ดีเวลลอปเมนท์": {
+    "pattern_name": "477 คชา ดีเวลลอปเมนท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Daranim@hotmail.com"
+    ],
+    "default_cc": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คชา ดีเวลลอปเมนท์ จำกัด",
+    "line_user_id": "C9555aac7c6ec23d30766710bc8fe2f4a",
+    "tax_id": "0105553040671"
+  },
+  "480 จอลลี่อาย คอสเม่ เชี่ยน": {
+    "pattern_name": "480 จอลลี่อาย คอสเม่ เชี่ยน",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "jollyeyecosmeasian@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท จอลลี่อาย คอสเม่ เชี่ยน จำกัด",
+    "line_user_id": "Cde8801e7a0d5d95eb1319862f4942361",
+    "tax_id": "0105567171047"
+  },
+  "482 เคเอ็มสตูดิโอ": {
+    "pattern_name": "482 เคเอ็มสตูดิโอ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "khaninr1602@gmail.com\nminphonemyinthtoo24@gmail.com"
+    ],
+    "default_cc": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เคเอ็มสตูดิโอ จำกัด",
+    "line_user_id": "C915a425c69d4065225f372f71fe4ab2f",
+    "tax_id": "0105568000254"
+  },
+  "483 ด้อนท์รัช": {
+    "pattern_name": "483 ด้อนท์รัช",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "dontrush.bkk@outlook.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ด้อนท์รัช จำกัด",
+    "line_user_id": "U83e36e94c94529bcb92cbfc5bd50e452",
+    "tax_id": "0105567230884"
+  },
+  "486 เอส พี เค ดิสทริบิวเตอร์": {
+    "pattern_name": "486 เอส พี เค ดิสทริบิวเตอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "danakorn@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอส พี เค ดิสทริบิวเตอร์ จำกัด",
+    "line_user_id": "C867929b379b2633cc9b1a2991f647251",
+    "tax_id": "0105564027140"
+  },
+  "488 อาภาธีร์": {
+    "pattern_name": "488 อาภาธีร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "account@apa-tree.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อาภาธีร์ จำกัด",
+    "line_user_id": "C7bd23fd3078ec16f6a1746f750d3f446",
+    "tax_id": "0825568000274"
+  },
+  "490 แอนทิบอล เทคโนโลยี โซลูชั่น": {
+    "pattern_name": "490 แอนทิบอล เทคโนโลยี โซลูชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "suwapidt.c@antiboltech.com\nsujinun.p@antiboltech.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แอนทิบอล เทคโนโลยี โซลูชั่น จำกัด",
+    "line_user_id": "C010b76d2e9e6387e2fc091e25b8750b0",
+    "tax_id": "0125566028739"
+  },
+  "491 พีพี โกรท อินฟินิตี้": {
+    "pattern_name": "491 พีพี โกรท อินฟินิตี้",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "gurockowen@gmail.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พีพี โกรท อินฟินิตี้ จำกัด",
+    "line_user_id": "C9475b80572afadcb952a95317f327a4e",
+    "tax_id": "0265567000152"
+  },
+  "493 ฟิตแอนด์ฟาร์ม": {
+    "pattern_name": "493 ฟิตแอนด์ฟาร์ม",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Fitandpharm@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ฟิตแอนด์ฟาร์ม จำกัด",
+    "line_user_id": "C3c784b73a306670ec748d106a8241222",
+    "tax_id": "0105566030539"
+  },
+  "494 แมชชีนเนอรี่ เวิร์ค": {
+    "pattern_name": "494 แมชชีนเนอรี่ เวิร์ค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "buildmeupxmachine@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แมชชีนเนอรี่ เวิร์ค จำกัด",
+    "line_user_id": "C56c5efcf99bed0bf1dad2dcaf10d91fa",
+    "tax_id": "0115565004836"
+  },
+  "495 เรบิน่า กรุ๊ป": {
+    "pattern_name": "495 เรบิน่า กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Marketing@rebinathailand.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เรบิน่า กรุ๊ป จำกัด",
+    "line_user_id": "Cff5c341c6b9155fd2a05b1fe1a9b80e2",
+    "tax_id": "0105563161349"
+  },
+  "496 สเปดิฟอร์ม ดับบลิวเจ ชิปปิ้ง": {
+    "pattern_name": "496 สเปดิฟอร์ม ดับบลิวเจ ชิปปิ้ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Spedifort.wj@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สเปดิฟอร์ม ดับบลิวเจ ชิปปิ้ง จำกัด",
+    "line_user_id": "U1706ae4a7637d94d9838018cfa64e6d0",
+    "tax_id": "0715568001247"
+  },
+  "497 พีเอ็นพียี่สิบสี่อินเตอร์กรุ๊ป": {
+    "pattern_name": "497 พีเอ็นพียี่สิบสี่อินเตอร์กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pnp24intergroup@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "ห้างหุ้นส่วน พี่เอ็นพียี่สิบสี่อินเตอร์กรุ๊ป จำกัด",
+    "line_user_id": "U1a3e96f7645e32e97467748b4cf1aae5",
+    "tax_id": "1333568000830"
+  },
+  "498 เพ็ทโตะบอนนี่": {
+    "pattern_name": "498 เพ็ทโตะบอนนี่",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "mhom.arisara@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เพ็ทโตะบอนนี่ จำกัด",
+    "line_user_id": "U654507edd49cabfbd5288a222d9529af",
+    "tax_id": "0125567036255"
+  },
+  "499 บี-ฟอร์ม เอ็นจิเนียริ่ง": {
+    "pattern_name": "499 บี-ฟอร์ม เอ็นจิเนียริ่ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "b.formengineering105@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บี-ฟอร์ม เอ็นจิเนียริ่ง จำกัด",
+    "line_user_id": "C13a88b092c0ce92d20301c9452d84e76",
+    "tax_id": "0745567007934"
+  },
+  "500 ออนแคร์ (ประเทศไทย)": {
+    "pattern_name": "500 ออนแคร์ (ประเทศไทย)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Suwarathonb@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ออนแคร์ (ประเทศไทย) จำกัด",
+    "line_user_id": "U8a55d7e5031c5d43e1c78a2249526e64",
+    "tax_id": "0105568080177"
+  },
+  "503 บีโลว์ โฟร์ตี้": {
+    "pattern_name": "503 บีโลว์ โฟร์ตี้",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "supparat.papaee@gmail.com\nAcc@innosignth.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บีโลว์ โฟร์ตี้ จำกัด",
+    "line_user_id": "Cca2e7a274d1e2f9c4b525bfa72bcf78c",
+    "tax_id": "0105568035872"
+  },
+  "504 คอลมี โลจิสติกส์": {
+    "pattern_name": "504 คอลมี โลจิสติกส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "callme.logistics@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "ห้างหุ้นส่วน คอลมี โลจิสติกส์",
+    "line_user_id": "C5a95b23780b801cbd93a5e61a64ac4a9",
+    "tax_id": "0103568001763"
+  },
+  "505 ซอส คอมแพเนียน": {
+    "pattern_name": "505 ซอส คอมแพเนียน",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "saus.companion@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซอส คอมแพเนียน จำกัด",
+    "line_user_id": "Ue9aca315b58e1742a62c6446b194374f",
+    "tax_id": "0105568092078"
+  },
+  "506 เอนเนจี เซ็นทริก": {
+    "pattern_name": "506 เอนเนจี เซ็นทริก",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Eileen@energycentric.co.th\nSales@energycentric.co.th"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอนเนจี เซ็นทริก จำกัด",
+    "line_user_id": "Ce64b8c9c9e1682aeac8dd81d649c1294",
+    "tax_id": "0105565089912"
+  },
+  "508 ภูรีภัทรา แอนด์ โค": {
+    "pattern_name": "508 ภูรีภัทรา แอนด์ โค",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "phuriphatthra.co@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ภูรีภัทรา แอนด์ โค จำกัด",
+    "line_user_id": "Ca9e5a7428d581c9a6279fae141b04fab",
+    "tax_id": "0105567085230"
+  },
+  "509 โชคดีมีชัย โชคชัยมีวัวซอฟต์": {
+    "pattern_name": "509 โชคดีมีชัย โชคชัยมีวัวซอฟต์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sarunyhot@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท โชคดีมีชัย โชคชัยมีวัวซอฟต์ จำกัด",
+    "line_user_id": "U293b3fe15f8d751c641f1dddede9b9ca",
+    "tax_id": "0105566236269"
+  },
+  "510 สาร์ท เมดิแคร์": {
+    "pattern_name": "510 สาร์ท เมดิแคร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "smart.medicare20@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สาร์ท เมดิแคร์ จำกัด",
+    "line_user_id": "U06a64e06a6009e7e4b20e13f524ced2b",
+    "tax_id": "0125563003271"
+  },
+  "511 เคพีที แอสเซท": {
+    "pattern_name": "511 เคพีที แอสเซท",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pichet@kpt-technical.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เคพีที แอสเซท จำกัด",
+    "line_user_id": "C86427ce670cef1015666f3164a1b8359",
+    "tax_id": "0205568035243"
+  },
+  "512 โบ มี กรุ๊ป": {
+    "pattern_name": "512 โบ มี กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "bome.officiathailand@gmail.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริิษัท โบ มี กรุ๊ป จำกัด",
+    "line_user_id": "C3b34180da6f7d0c426bdee6c33153967",
+    "tax_id": "0105567130502"
+  },
+  "513 สวีท แอนด์ ซาวร์ กรุ๊ป": {
+    "pattern_name": "513 สวีท แอนด์ ซาวร์ กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Glasshalffullbar@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สวีท แอนด์ ซาวร์ กรุ๊ป จำกัด",
+    "line_user_id": "Uf2e4c3add7784c8f6832c35f2c107e40",
+    "tax_id": "0105568080193"
+  },
+  "514 สหทูลส์": {
+    "pattern_name": "514 สหทูลส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Niphon.p@sahatools.com\nWeeraya.t@sahatools.com"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สหทูลส์ จำกัด",
+    "line_user_id": "C2ffa8b05e594326241dee422c615c1dc",
+    "tax_id": "0305555003924"
+  },
+  "516 มอร์ธี กรุ๊ป": {
+    "pattern_name": "516 มอร์ธี กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "dailiful.team@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มอร์ธี กรุ๊ป จำกัด",
+    "line_user_id": "U1a728cb8cabe03844bd1f90219664468",
+    "tax_id": "0765567002363"
+  },
+  "518 ลีวาโปรดักชั่น": {
+    "pattern_name": "518 ลีวาโปรดักชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Leevaproduction@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ลีวาโปรดักชั่น จำกัด",
+    "line_user_id": "Uc7df729de5bc40436b5ffb161aaff4e1",
+    "tax_id": "0105568117801"
+  },
+  "519 คัลติเวชั่น": {
+    "pattern_name": "519 คัลติเวชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "inquiries@cultthailand.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คัลติเวชั่น จำกัด",
+    "line_user_id": "Ua64727ff825586847a5aff8aa14417aa",
+    "tax_id": "0105568110092"
+  },
+  "520 เอ.เค.เอฟ.กรุ๊ป": {
+    "pattern_name": "520 เอ.เค.เอฟ.กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "a.k.f.group@hotmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอ.เค.เอฟ.กรุ๊ป จำกัด",
+    "line_user_id": "Ce2cc087ee56a4080cee1ad1ff7202d87",
+    "tax_id": "0125568022576"
+  },
+  "521 พร้อสเพอร์ ไฮยีน": {
+    "pattern_name": "521 พร้อสเพอร์ ไฮยีน",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "prosperhygienes@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท พร้อสเพอร์ ไฮยีน จำกัด",
+    "line_user_id": "Cf76095244472a50ba783ce80e0eb5c9b",
+    "tax_id": "0105568133483"
+  },
+  "522 แกลมนิตี้": {
+    "pattern_name": "522 แกลมนิตี้",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "glamnity@outlook.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บริษัท แกลมนิตี้ จํากัด",
+    "line_user_id": "C8d67011b5a4628e9aea85bc31b07217e",
+    "tax_id": "0125568020549"
+  },
+  "523 ไพร์ม-รดา แอสเสท": {
+    "pattern_name": "523 ไพร์ม-รดา แอสเสท",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "primerada.asset@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไพร์ม-รดา แอสเสท จํากัด",
+    "line_user_id": "C3e2db9eeed710043f927895540376134",
+    "tax_id": "0105568130301"
+  },
+  "524 บีสต์เมกเกอร์": {
+    "pattern_name": "524 บีสต์เมกเกอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "beastmakerofficial@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บีสต์เมกเกอร์ จํากัด",
+    "line_user_id": "C9b4e4d100910417ee0159526f70df5c7",
+    "tax_id": "0105568125375"
+  },
+  "527 ซีซี อินเตอร์เนชั่นแนล เทรด แอนด์ ทราเวิล": {
+    "pattern_name": "527 ซีซี อินเตอร์เนชั่นแนล เทรด แอนด์ ทราเวิล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Chayanonchote.ccint@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีซี อินเตอร์เนชั่นแนล เทรด แอนด์ ทราเวิล จำกัด",
+    "line_user_id": "C6fa341fc697be96f5ee03db987459ed2",
+    "tax_id": "0105567248562"
+  },
+  "528 สยามอีวี โซลูชั่น": {
+    "pattern_name": "528 สยามอีวี โซลูชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "bamjunhyuk2000@gmail.com\nSiamevsolutions@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สยามอีวี โซลูชั่น จำกัด",
+    "line_user_id": "C9c30f0810574c694c9e09834b437e293",
+    "tax_id": "0105567244389"
+  },
+  "530 เอ็มเคดับเบิ้ลยู": {
+    "pattern_name": "530 เอ็มเคดับเบิ้ลยู",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "mkjunide@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอ็มเคดับเบิ้ลยู จํากัด",
+    "line_user_id": "Ca73965891bcb3097c8bbde72825ab657",
+    "tax_id": "0115568014875"
+  },
+  "531 เค.เอส ขนมมงคล": {
+    "pattern_name": "531 เค.เอส ขนมมงคล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "tassy_lh@hotmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เค.เอส ขนมมงคล จำกัด",
+    "line_user_id": "Ud7875198481cba76d5b945d2d83d4c97",
+    "tax_id": "0105563076678"
+  },
+  "532 เหิง หยวน ฟู๊ด": {
+    "pattern_name": "532 เหิง หยวน ฟู๊ด",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "herngyuanfood_2015@hotmail.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เหิง หยวน ฟู๊ด จำกัด",
+    "line_user_id": "Cb5a059a7eca6a030b256e6bb824380b4",
+    "tax_id": "0215558003870"
+  },
+  "533 ลานนาไรซ์เทรด": {
+    "pattern_name": "533 ลานนาไรซ์เทรด",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Paradeepeamyow@gmail.com\nkhunnai.vijittra@gmail.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ลานนาไรซ์เทรด จำกัด",
+    "line_user_id": "Ce272af4ab49b408e883f39d022d36621",
+    "tax_id": "0115554011992"
+  },
+  "534 ลานนาแคปปิตอล": {
+    "pattern_name": "534 ลานนาแคปปิตอล",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "ninanrsth@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ลานนา แคปปิตอล จำกัด",
+    "line_user_id": "Ce272af4ab49b408e883f39d022d36621",
+    "tax_id": "0115561021388"
+  },
+  "536 ทาเล้นท์ คิดส์": {
+    "pattern_name": "536 ทาเล้นท์ คิดส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Mathtalent.rama2@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทาเล้นท์ คิดส์ จำกัด",
+    "line_user_id": "U98333dcb0ff1325229ee571e5d6f6ed4",
+    "tax_id": "0105565060981"
+  },
+  "537 ไอแวร์แอนด์ริช": {
+    "pattern_name": "537 ไอแวร์แอนด์ริช",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "piti.mnwtnk@gmail.com\nmattaneeya.suthon@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไอแวร์แอนด์ริช จำกัด",
+    "line_user_id": "Cb59d1ab50c1cc1bccd49ec34f53e44e6",
+    "tax_id": "0105567217390"
+  },
+  "539 ไอ แอม ฟิวเจอร์": {
+    "pattern_name": "539 ไอ แอม ฟิวเจอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "iamfuture.acc@gmail.com\npeerawat@i-am-future.com"
+    ],
+    "default_cc": [
+      "Pongist.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไอ แอม ฟิวเจอร์ จำกัด",
+    "line_user_id": "Cd0be84c782e69c15b35b893e5dd95a44",
+    "tax_id": "0105564121171"
+  },
+  "540 อ่างทองเคเบิลทีวี": {
+    "pattern_name": "540 อ่างทองเคเบิลทีวี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "iamfuture.acc@gmail.com\npeerawat@i-am-future.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อ่างทองเคเบิลทีวี จำกัด",
+    "line_user_id": "Cd0be84c782e69c15b35b893e5dd95a44",
+    "tax_id": "0155547000051"
+  },
+  "541 ไพร์ม พี เอ็นเตอร์ไพรส์": {
+    "pattern_name": "541 ไพร์ม พี เอ็นเตอร์ไพรส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "primepenterprise@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไพร์ม พี เอ็นเตอร์ไพรส์ จำกัด",
+    "line_user_id": "Uc1b4b7adb2173d97d62690734703c9ff",
+    "tax_id": "0105568159245"
+  },
+  "542 ซีซีบี ขายส่ง": {
+    "pattern_name": "542 ซีซีบี ขายส่ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "ccbwholesale.acc0@gmail.com"
+    ],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซีซีบี ขายส่ง จำกัด",
+    "line_user_id": "Cd3b1a65a29bf933414f34529d4e4b5ad",
+    "tax_id": "0105568010756"
+  },
+  "543 ชายนี่ คิดส์": {
+    "pattern_name": "543 ชายนี่ คิดส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "shineekids.acc@gmail.com"
+    ],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ชายนี่ คิดส์ จำกัด",
+    "line_user_id": "Cd3b1a65a29bf933414f34529d4e4b5ad",
+    "tax_id": "0105568010616"
+  },
+  "544 ทีซีเค วัสดุ": {
+    "pattern_name": "544 ทีซีเค วัสดุ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "tckwatsadu.acc0@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทีซีเค วัสดุ จำกัด",
+    "line_user_id": "Cd3b1a65a29bf933414f34529d4e4b5ad",
+    "tax_id": "0105568010721"
+  },
+  "545 ดิสโพซิชั่น": {
+    "pattern_name": "545 ดิสโพซิชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sopon@techtonictrading.com\npodchara@techtonictrading.com"
+    ],
+    "default_cc": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษั ดิสโพซิชั่น จำกัด",
+    "line_user_id": "U4133c8f23553f167193483ea5f9eb79f",
+    "tax_id": "0105566026647"
+  },
+  "546 เอเชีย ทริปเปิ้ล สกาย": {
+    "pattern_name": "546 เอเชีย ทริปเปิ้ล สกาย",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "asiatriplesky25@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอเชีย ทริปเปิ้ล สกาย จำกัด",
+    "line_user_id": "C9c30f0810574c694c9e09834b437e293",
+    "tax_id": "0105568080673"
+  },
+  "547 อัลโตเทคโนโลยี": {
+    "pattern_name": "547 อัลโตเทคโนโลยี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "mark@altoai.co"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อัลโตเทคโนโลยี จำกัด",
+    "line_user_id": "Ua4ceaeb83454fa2bc220bc6dad31e705",
+    "tax_id": "0105567091566"
+  },
+  "549 ไมร่า แอคทีฟ": {
+    "pattern_name": "549 ไมร่า แอคทีฟ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "myraactivewear@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไมร่า แอคทีฟ จำกัด",
+    "line_user_id": "U280d599bf0ecdc184bc50b07bf98294c",
+    "tax_id": "0105567051513"
+  },
+  "550 เน็กซ์ไลฟ์สไตล์": {
+    "pattern_name": "550 เน็กซ์ไลฟ์สไตล์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sales.nextlifestyle@gmail.com"
+    ],
+    "default_cc": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เน็กซ์ ไลฟ์สไตล์ จำกัด",
+    "line_user_id": "Cb807389859b1cd5bcf5a165e13e65aeb",
+    "tax_id": "0745567007675"
+  },
+  "551 บางยี่ขัน ซัพพลาย แอนด์ เซอร์วิส": {
+    "pattern_name": "551 บางยี่ขัน ซัพพลาย แอนด์ เซอร์วิส",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Kumphol789@byk.co.th\nAccount454@byk.co.th"
+    ],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บางยี่ขัน ซัพพลาย แอนด์ เซอร์วิส จำกัด",
+    "line_user_id": "C86d5ef3bc971a87dacecb714255ff4e8",
+    "tax_id": "0105555166051"
+  },
+  "552 แรพิด แล็บ": {
+    "pattern_name": "552 แรพิด แล็บ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "rapidlab25@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท แรพิด แล็บ จำกัด",
+    "line_user_id": "C979ec1edabbc3c6d530a554f86d897ec",
+    "tax_id": "0105568172594"
+  },
+  "553 ไอเอเจเนอเรทีฟ": {
+    "pattern_name": "553 ไอเอเจเนอเรทีฟ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "iagnt.ad@gmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไอเอเจเนอเรทีฟ จำกัด",
+    "line_user_id": "C52cfcedd7e2d012fb7494674285d9d28",
+    "tax_id": "0105568175054"
+  },
+  "555 ทีอีเอ คอร์ปอเรชั่น": {
+    "pattern_name": "555 ทีอีเอ คอร์ปอเรชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทีอีเอ คอร์ปอเรชั่น จำกัด",
+    "line_user_id": "C4ffcc81b6285007817374e2af12acc48",
+    "tax_id": "0105555004167"
+  },
+  "556 ซากุระทราเวลแอนด์คอนซัลติ้ง": {
+    "pattern_name": "556 ซากุระทราเวลแอนด์คอนซัลติ้ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "masaki.sri@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซากุระทราเวลแอนด์คอนซัลติ้ง จำกัด",
+    "line_user_id": "C07e949762de40598ee86418742e3de7a",
+    "tax_id": "0105568189934"
+  },
+  "557 จิ๊กซอว์ คอนสตรัคชั่น": {
+    "pattern_name": "557 จิ๊กซอว์ คอนสตรัคชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Jeabnin99@gmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท จิ๊กซอว์ คอนสตรัคชั่น จำกัด",
+    "line_user_id": "C6b89d45e94532091870dbb8d7e69dab1",
+    "tax_id": "0225557000052"
+  },
+  "558 เอ็นไว ซีแอลไอ": {
+    "pattern_name": "558 เอ็นไว ซีแอลไอ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "a_sadorn@hotmail.com"
+    ],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอ็นไว ซีแอลไอ จำกัด",
+    "line_user_id": "Cd050bb3c46ddba586de0a049e681223e",
+    "tax_id": "0135567031822"
+  },
+  "559 ซุปพลิมี (ไทยแลนด์)": {
+    "pattern_name": "559 ซุปพลิมี (ไทยแลนด์)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "bulianmanlika@gmail.com\nsupplime.thailand@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ซุปพลิมี (ไทยแลนด์) จำกัด",
+    "line_user_id": "Ca651ed9a38f13b3e026aca04db922c2e",
+    "tax_id": "0735567010129"
+  },
+  "560 ชี บาย ชี": {
+    "pattern_name": "560 ชี บาย ชี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "shebyshith@gmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ชี บาย ชี (ไทยแลนด์) จำกัด",
+    "line_user_id": "C94b19e7d1c02347adec51b273cbce39e",
+    "tax_id": "0105568058953"
+  },
+  "561 เจริญเคมีภัณท์": {
+    "pattern_name": "561 เจริญเคมีภัณท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "charoenkhem.official@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เจริญเคมีภัณฑ์ จำกัด",
+    "line_user_id": "C38e6061c560fedfd4b0ceb8577277797",
+    "tax_id": "0735568009302"
+  },
+  "566 ไซท์ แอสเซท": {
+    "pattern_name": "566 ไซท์ แอสเซท",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "sightasset@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ไซท์ แอสเซท จำกัด",
+    "line_user_id": "Ufb3c9f163a57dd49ab3d4db977f82931",
+    "tax_id": "0205568002302"
+  },
+  "567 ชามหาเศรษฐี": {
+    "pattern_name": "567 ชามหาเศรษฐี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "teaseasonthailand@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ชามหาเศรษฐี จำกัด",
+    "line_user_id": "Cff5b0ec96602b0dcb6b4d463286dd97d",
+    "tax_id": "0105568203244"
+  },
+  "568 เอ็นเอ็นดี เมดิคอลเซ็นเตอร์": {
+    "pattern_name": "568 เอ็นเอ็นดี เมดิคอลเซ็นเตอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "nndmedicalcenter712@gmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอ็นเอ็นดี เมดิคอลเซ็นเตอร์ จำกัด",
+    "line_user_id": "Cd542cd3a7d6907d9add79f3d85b7cccb",
+    "tax_id": "0135552011316"
+  },
+  "569 วีเอ็นดี เมดิคอลเซ็นเตอร์": {
+    "pattern_name": "569 วีเอ็นดี เมดิคอลเซ็นเตอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "vndmedicalcenter712@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท วีเอ็นดี เมดิคอลเซ็นเตอร์ จำกัด",
+    "line_user_id": "Cd542cd3a7d6907d9add79f3d85b7cccb",
+    "tax_id": "0135546001771"
+  },
+  "570 จีเอ็นดี เซ็นเตอร์": {
+    "pattern_name": "570 จีเอ็นดี เซ็นเตอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "gndcenter712@gmail.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท จีเอ็นดี เซ็นเตอร์ จำกัด",
+    "line_user_id": "Cd542cd3a7d6907d9add79f3d85b7cccb",
+    "tax_id": "0135566032540"
+  },
+  "571 อร่อยเดสุ": {
+    "pattern_name": "571 อร่อยเดสุ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "zen@aroidesu.com"
+    ],
+    "default_cc": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อร่อยเดสุ จำกัด",
+    "line_user_id": "U405cc226b566121c53c2e8eb3452badf",
+    "tax_id": "0555567000923"
+  },
+  "572 ฮอร์สด็อก แล็บ": {
+    "pattern_name": "572 ฮอร์สด็อก แล็บ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "pinyanes.t@gmail.com"
+    ],
+    "default_cc": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ฮอร์สด็อก แล็บ จำกัด",
+    "line_user_id": "C246592f1ba5d9ee0cbb1e34d7bfc9303",
+    "tax_id": "0105568211361"
+  },
+  "573 มาเทีย ดีไซน์": {
+    "pattern_name": "573 มาเทีย ดีไซน์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Matiadesignteam@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท มาเทีย ดีไซน์ จำกัด",
+    "line_user_id": "C4b1587a49c44f46a215b6e3edd1c2222",
+    "tax_id": "0135568023572"
+  },
+  "574 ลอว์ เมต โซลูชั่นส์": {
+    "pattern_name": "574 ลอว์ เมต โซลูชั่นส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "lawmatesolutions@gmail.com"
+    ],
+    "default_cc": [
+      "rachchanon.t@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ลอว์ เมต โซลูชั่นส์ จำกัด",
+    "line_user_id": "C87a1c9d3ec583abd62603c52f1f5fafc",
+    "tax_id": "0575568005007"
+  },
+  "576 ธิชรินทร์ ทาปิโอก้า": {
+    "pattern_name": "576 ธิชรินทร์ ทาปิโอก้า",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "nun121043@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ธิชรินทร์ ทาปิโอก้า จำกัด",
+    "line_user_id": "C2755f770db9627080c0312d0a2b9da0a",
+    "tax_id": "0625568000616"
+  },
+  "577 บลูเคม (ประเทศไทย)": {
+    "pattern_name": "577 บลูเคม (ประเทศไทย)",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Bluechem.th@gmail.com"
+    ],
+    "default_cc": [
+      "Suthasinee.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท บลูเคม (ประเทศไทย) จำกัด",
+    "line_user_id": "Cc53f642ffdd36075e4011bf08ae0b71a",
+    "tax_id": "0195568002281"
+  },
+  "578 ทีเอ็นพี ไฟท์ คอนสตรัคชั่น": {
+    "pattern_name": "578 ทีเอ็นพี ไฟท์ คอนสตรัคชั่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "patchax97@gmail.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ทีเอ็นพี ไฟท์ คอนสตรัคชั่น จำกัด",
+    "line_user_id": "Ue129ef137fa3c8f452ab09d0a6753e47",
+    "tax_id": "0205568047632"
+  },
+  "579 อาร์ค เซเว่น": {
+    "pattern_name": "579 อาร์ค เซเว่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "piyanan.bci@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อาร์ค เซเว่น จำกัด",
+    "line_user_id": "Ceba3223b24e36ae8b703dc49573f0b8c",
+    "tax_id": "0105568125626"
+  },
+  "580 บริษัท ช็อปดิท จำกัด": {
+    "pattern_name": "580 บริษัท ช็อปดิท จำกัด",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "tee.wu@teacorp.co.th\naccount@teacorp.co.th"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ช็อปดิท จำกัด",
+    "line_user_id": "Ce94eb40c6f279a63909291575df2e64c",
+    "tax_id": "0105560174342"
+  },
+  "581 ชนะ ซอฟต์แวร์": {
+    "pattern_name": "581 ชนะ ซอฟต์แวร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "ben@chanasoftware.com"
+    ],
+    "default_cc": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ชนะ ซอฟต์แวร์ จำกัด",
+    "line_user_id": "Ud00fdbe30a5d4ca0e2408116e2b083b5",
+    "tax_id": "0105568202418"
+  },
+  "582 สกีคิว": {
+    "pattern_name": "582 สกีคิว",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "nuttapon@gmail.com"
+    ],
+    "default_cc": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท สกีคิว จำกัด",
+    "line_user_id": "Ce71d70ba694128811f808d543973ad70",
+    "tax_id": "0105568138019"
+  },
+  "583 อุ้ม-ต๊ะ": {
+    "pattern_name": "583 อุ้ม-ต๊ะ",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "Tuppong_84@hotmail.com"
+    ],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท อุ้ม-ต๊ะ จำกัด",
+    "line_user_id": "Ue33cb90683898a8479d592128ee2e1ee",
+    "tax_id": "0105564180142"
+  },
+  "584 กทม เอ็มเอ็กซ์ เน็ตเวิร์ค เทคโนโลยี": {
+    "pattern_name": "584 กทม เอ็มเอ็กซ์ เน็ตเวิร์ค เทคโนโลยี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท กทม เอ็มเอ็กซ์ เน็ตเวิร์ค เทคโนโลยี จำกัด",
+    "line_user_id": "",
+    "tax_id": "0105568104319"
+  },
+  "585 คลินิกทันตกรรมไอคิว": {
+    "pattern_name": "585 คลินิกทันตกรรมไอคิว",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท คลินิกทันตกรรมไอคิว จำกัด",
+    "line_user_id": "",
+    "tax_id": "0135568000050"
+  },
+  "587 เอ็นเอ พร็อพเพอร์ตี้ แมนเนจเม้นท์": {
+    "pattern_name": "587 เอ็นเอ พร็อพเพอร์ตี้ แมนเนจเม้นท์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เอ็นเอ พร็อพเพอร์ตี้ แมนเนจเม้นท์ จำกัด",
+    "line_user_id": "Ccafc8c77c27e4786ed3e6d6797f7d190",
+    "tax_id": "0115561031235"
+  },
+  "588 เพลย์ฟิลด์เซเว่น": {
+    "pattern_name": "588 เพลย์ฟิลด์เซเว่น",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เพลย์ฟิลด์เซเว่น จำกัด",
+    "line_user_id": "C7569b90dd64f24adef04b7f38526ef9e",
+    "tax_id": "0155568000378"
+  },
+  "589 เวิลด เทรด เทคโนโลยี": {
+    "pattern_name": "589 เวิลด เทรด เทคโนโลยี",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท เวิลด เทรด เทคโนโลยี จำกัด",
+    "line_user_id": "Uc6d00c5a53649dcd776cfdb21d54e39d",
+    "tax_id": ""
+  },
+  "590 ธรา อินเตอร์": {
+    "pattern_name": "590 ธรา อินเตอร์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ธรา อินเตอร์ จำกัด",
+    "line_user_id": "Ce0152a558363630408332f620a90c8a1",
+    "tax_id": ""
+  },
+  "592 ชางไห่ เยาซู คอนสตรัคชั่น เอ็นจิเนียร์ริ่ง": {
+    "pattern_name": "592 ชางไห่ เยาซู คอนสตรัคชั่น เอ็นจิเนียร์ริ่ง",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "Jirat.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท ชางไห่ เยาซู คอนสตรัคชั่น เอ็นจิเนียร์ริ่ง จำกัด",
+    "line_user_id": "Ca86fc44888f8a79614305b5961976caa",
+    "tax_id": "0105561007792"
+  },
+  "594 นุ๊ก กรุ๊ป": {
+    "pattern_name": "594 นุ๊ก กรุ๊ป",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท นุ๊ก กรุ๊ป จำกัด",
+    "line_user_id": "Uacaade976101503aacf42825b479f8f9",
+    "tax_id": ""
+  },
+  "595 โรงเรียน อิสลามแสงธรรมบูรพา": {
+    "pattern_name": "595 โรงเรียน อิสลามแสงธรรมบูรพา",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "buildmeup1consultant@gmail.com"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "โรงเรียน อิสลามแสงธรรมบูรพา",
+    "line_user_id": "Cf868c11460928ebdf6104a1d9f3baeb7",
+    "tax_id": ""
+  },
+  "596 เคทีทีชัย": {
+    "pattern_name": "596 เคทีทีชัย",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [],
+    "default_cc": [
+      "Supacha.N@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "ห้างหุ้นส่วนจำกัด เคทีทีชัย",
+    "line_user_id": "C180a97bdadf22f46cb174531d186c24f",
+    "tax_id": ""
+  },
+  "138 นูโร ไบโอติกส์": {
+    "pattern_name": "138 นูโร ไบโอติกส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "acc.thaiotopvillage@gmail.com"
+    ],
+    "default_cc": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท นูโร ไบโอติกส์ จำกัด",
+    "line_user_id": "U1b609db94fbb39c4648b8265f4e728a2",
+    "tax_id": "0-1055-65113-21-0"
+  }
+}

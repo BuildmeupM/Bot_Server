@@ -1,0 +1,41 @@
+# Requirements for creating EXE files
+# ไฟล์ requirements สำหรับการสร้างไฟล์ .exe
+
+# Core dependencies
+pyinstaller>=5.13.0
+auto-py-to-exe>=2.40.0
+
+# Additional tools for EXE creation
+cx-freeze>=6.15.0
+nuitka>=1.8.0
+
+# GUI dependencies
+tkinter
+pillow>=10.0.0
+
+# Web automation
+playwright>=1.40.0
+selenium>=4.15.0
+
+# PDF processing
+PyPDF2>=3.0.0
+pdfplumber>=0.9.0
+pymupdf>=1.23.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Network and API
+requests>=2.31.0
+
+# File handling
+openpyxl>=3.1.0
+python-docx>=0.8.11
+
+# Logging
+colorlog>=6.7.0
+
+# Web framework
+flask>=2.3.0
+flask-cors>=4.0.0

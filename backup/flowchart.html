@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โฟลวชาร์จระบบบอทอัตโนมัติ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kanit', 'Sarabun', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .flowchart-container {
+            padding: 40px;
+            background: #f8fafc;
+        }
+
+        .flow-step {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+
+        .flow-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .step-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .step-details {
+            background: #f3f4f6;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 8px 0;
+        }
+
+        .detail-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .icon-folder { background: #10b981; }
+        .icon-file { background: #3b82f6; }
+        .icon-web { background: #f59e0b; }
+        .icon-process { background: #8b5cf6; }
+        .icon-output { background: #ef4444; }
+
+        .detail-text {
+            color: #374151;
+            font-size: 0.95rem;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2rem;
+            color: #3b82f6;
+        }
+
+        .branch-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .branch {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .branch-title {
+            font-weight: 600;
+            color: #0369a1;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .error-handling {
+            background: #fef2f2;
+            border: 2px solid #fecaca;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .error-title {
+            color: #dc2626;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .status-success { background: #dcfce7; color: #166534; }
+        .status-warning { background: #fef3c7; color: #92400e; }
+        .status-error { background: #fee2e2; color: #991b1b; }
+
+        .tech-stack {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .tech-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+        }
+
+        .tech-name {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 5px;
+        }
+
+        .tech-desc {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .flowchart-container {
+                padding: 20px;
+            }
+
+            .branch-container {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 โฟลวชาร์จระบบบอทอัตโนมัติ</h1>
+            <p>ขั้นตอนการทำงานของระบบประมวลผลเอกสาร PDF แบบอัตโนมัติ</p>
+        </div>
+
+        <div class="flowchart-container">
+            <!-- ขั้นตอนที่ 1: การเริ่มต้นระบบ -->
+            <div class="flow-step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    การเริ่มต้นระบบ (System Initialization)
+                </div>
+                <div class="step-description">
+                    ระบบเริ่มต้นและเตรียมพร้อมสำหรับการประมวลผลเอกสาร
+                </div>
+                <div class="step-details">
+                    <div class="detail-item">
+                        <div class="detail-icon icon-folder">📁</div>
+                        <div class="detail-text">ตรวจสอบโฟลเดอร์หลัก (V/Synology)</div>
+                    </div>
+                                         <div class="detail-item">
+                         <div class="detail-icon icon-folder">🔍</div>
+                         <div class="detail-text">สแกนโฟลเดอร์ย่อยจาก Synology (V:)</div>
+                     </div>
+                     <div class="detail-item">
+                         <div class="detail-icon icon-folder">📁</div>
+                         <div class="detail-text">A.โฟร์เดอร์หลัก</div>
+                     </div>
+                     <div class="detail-item">
+                         <div class="detail-icon icon-folder">📁</div>
+                         <div class="detail-text">AA.โฟรเดอร์หลัก</div>
+                     </div>
+                     <div class="detail-item">
+                         <div class="detail-icon icon-folder">📁</div>
+                         <div class="detail-text">AAA.โฟรเดอร์หลัก</div>
+                     </div>
+                     <div class="detail-item">
+                         <div class="detail-icon icon-folder">❌</div>
+                         <div class="detail-text">ข้ามโฟลเดอร์: #recycle, #snapshot, A.BMUT, A.Buildmeup, A.งานนอก</div>
+                     </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-folder">📂</div>
+                        <div class="detail-text">เข้าไปในโฟลเดอร์ "ลูกค้า" → "ระบบอัตโนมัติ"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-arrow">⬇️</div>
+
+            <!-- ขั้นตอนที่ 2: การอ่านและประมวลผลเอกสาร -->
+            <div class="flow-step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    การอ่านและประมวลผลเอกสาร (Document Processing)
+                </div>
+                <div class="step-description">
+                    อ่านไฟล์ PDF และดึงข้อมูลที่จำเป็นออกมา
+                </div>
+                <div class="step-details">
+                    <div class="detail-item">
+                        <div class="detail-icon icon-file">📄</div>
+                        <div class="detail-text">อ่านไฟล์ PDF ทีละไฟล์จากโฟลเดอร์ "ระบบอัตโนมัติ"</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">⚙️</div>
+                        <div class="detail-text">ดึงข้อมูล: เลขที่ใบแจ้งหนี้, วันที่, จำนวนเงิน, ชื่อบริษัท</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-folder">📋</div>
+                        <div class="detail-text">อ่านไฟล์ JSON config เพื่อหา customer_id, account_code, account_code2</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-folder">⚡</div>
+                        <div class="detail-text">อ่าน folder_settings.json เพื่อจำแนกประเภท (VAT/Non-VAT)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-arrow">⬇️</div>
+
+            <!-- ขั้นตอนที่ 3: การเชื่อมต่อเว็บไซต์ -->
+            <div class="flow-step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    การเชื่อมต่อเว็บไซต์ (Web Automation)
+                </div>
+                <div class="step-description">
+                    เข้าไปยัง Peak Engine และดำเนินการตามขั้นตอนต่างๆ
+                </div>
+                <div class="step-details">
+                    <div class="detail-item">
+                        <div class="detail-icon icon-web">🌐</div>
+                        <div class="detail-text">เปิด https://secure.peakengine.com/Home/Login</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-file">🔑</div>
+                        <div class="detail-text">อ่านข้อมูลล็อกอินจากไฟล์ TXT (Username, Password, Link company, Link Express)</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">🔐</div>
+                        <div class="detail-text">ล็อกอินเข้าสู่ระบบ</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-web">🏢</div>
+                        <div class="detail-text">ไปยัง Link Company → Link Express</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-arrow">⬇️</div>
+
+            <!-- ขั้นตอนที่ 4: การกรอกข้อมูลและอัปโหลด -->
+            <div class="flow-step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    การกรอกข้อมูลและอัปโหลด (Data Entry & Upload)
+                </div>
+                <div class="step-description">
+                    กรอกข้อมูลในฟอร์มและอัปโหลดเอกสาร
+                </div>
+                <div class="step-details">
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">✍️</div>
+                        <div class="detail-text">กรอกข้อมูลในฟอร์มเว็บไซต์ (ผู้ใช้จะช่วยพัฒนาส่วนนี้)</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-file">📤</div>
+                        <div class="detail-text">สร้างไฟล์ PDF ใหม่และเปลี่ยนชื่อตาม company mapping</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-web">🔄</div>
+                        <div class="detail-text">อัปโหลดไฟล์ใหม่ลงในเว็บไซต์</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-arrow">⬇️</div>
+
+            <!-- ขั้นตอนที่ 5: การจัดการไฟล์และผลลัพธ์ -->
+            <div class="flow-step">
+                <div class="step-title">
+                    <span class="step-number">5</span>
+                    การจัดการไฟล์และผลลัพธ์ (File Management & Output)
+                </div>
+                <div class="step-description">
+                    จัดระเบียบไฟล์และสร้างรายงาน
+                </div>
+                <div class="step-details">
+                    <div class="detail-item">
+                        <div class="detail-icon icon-folder">📁</div>
+                        <div class="detail-text">ย้ายไฟล์ต้นฉบับไป "เอกสารต้นฉบับ"</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-folder">📂</div>
+                        <div class="detail-text">ย้ายไฟล์ใหม่ไป "เอกสารที่บันทึกแล้ว" → "เอกสาร NoneVat" หรือ "เอกสาร Vat"</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">📊</div>
+                        <div class="detail-text">สร้าง Log การทำงานในไฟล์ Excel</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-file">📝</div>
+                        <div class="detail-text">สร้างรายงานสรุปในไฟล์ TXT</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-arrow">⬇️</div>
+
+            <!-- ขั้นตอนที่ 6: การวนลูปและจัดการข้อผิดพลาด -->
+            <div class="flow-step">
+                <div class="step-title">
+                    <span class="step-number">6</span>
+                    การวนลูปและจัดการข้อผิดพลาด (Loop & Error Handling)
+                </div>
+                <div class="step-description">
+                    วนลูปการทำงานสำหรับไฟล์ที่เหลือและจัดการข้อผิดพลาด
+                </div>
+                <div class="step-details">
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">🔄</div>
+                        <div class="detail-text">กลับไปที่ Link Express สำหรับไฟล์ถัดไป</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">⏱️</div>
+                        <div class="detail-text">ตรวจสอบการทำงานผิดพลาดหรือโหลดนานผิดปกติ</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">⏭️</div>
+                        <div class="detail-text">ข้ามไปไฟล์ถัดไปหากเกิดปัญหา (จะกลับมาทำใหม่ภายหลัง)</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">✅</div>
+                        <div class="detail-text">ทำซ้ำจนกว่าจะประมวลผลไฟล์ครบทุกไฟล์</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- การจัดการข้อผิดพลาด -->
+            <div class="error-handling">
+                <div class="error-title">🚨 การจัดการข้อผิดพลาด (Error Handling)</div>
+                <div class="step-details">
+                    <div class="detail-item">
+                        <div class="detail-icon icon-error">⚠️</div>
+                        <div class="detail-text">ตรวจสอบการล็อกอินล้มเหลว</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-error">⚠️</div>
+                        <div class="detail-text">ตรวจสอบการโหลดหน้าเว็บที่ล่าช้า</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-error">⚠️</div>
+                        <div class="detail-text">ตรวจสอบการอัปโหลดไฟล์ที่ล้มเหลว</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-error">⚠️</div>
+                        <div class="detail-text">บันทึกข้อผิดพลาดใน Log และพยายามทำซ้ำ</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- สถานะการทำงาน -->
+            <div class="branch-container">
+                <div class="branch">
+                    <div class="branch-title">📊 สถานะการทำงาน</div>
+                    <div class="detail-item">
+                        <span class="status-indicator status-success">กำลังทำงาน</span>
+                        <span class="detail-text">บอทกำลังประมวลผลไฟล์</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="status-indicator status-warning">หยุดชั่วคราว</span>
+                        <span class="detail-text">หยุดการทำงานชั่วคราว</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="status-indicator status-error">เกิดข้อผิดพลาด</span>
+                        <span class="detail-text">พบปัญหาในการทำงาน</span>
+                    </div>
+                </div>
+                <div class="branch">
+                    <div class="branch-title">🎯 ผลลัพธ์ที่คาดหวัง</div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">✅</div>
+                        <div class="detail-text">ไฟล์ PDF ถูกประมวลผลครบถ้วน</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">📁</div>
+                        <div class="detail-text">ไฟล์ถูกจัดระเบียบในโฟลเดอร์ที่เหมาะสม</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon icon-process">📊</div>
+                        <div class="detail-text">รายงานและ Log ถูกสร้างขึ้นอย่างสมบูรณ์</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- เทคโนโลยีที่ใช้ -->
+            <div class="tech-stack">
+                <div class="tech-title">🛠️ เทคโนโลยีที่ใช้ (Technology Stack)</div>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <div class="tech-name">Python</div>
+                        <div class="tech-desc">Backend Logic & PDF Processing</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Playwright</div>
+                        <div class="tech-desc">Web Automation & Browser Control</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">PyPDF2</div>
+                        <div class="tech-desc">PDF Text Extraction</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">React</div>
+                        <div class="tech-desc">Frontend User Interface</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Tailwind CSS</div>
+                        <div class="tech-desc">Styling & Responsive Design</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-name">Pandas</div>
+                        <div class="tech-desc">Data Processing & Excel Export</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

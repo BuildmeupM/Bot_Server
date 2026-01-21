@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แนะนำระบบ BotV3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 3px solid #e3f2fd;
+        }
+
+        .header h1 {
+            color: #1565c0;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #546e7a;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .navigation {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .navigation a {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .navigation a:hover {
+            background: linear-gradient(135deg, #2980b9, #1f5f8b);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        .section h3 {
+            color: #34495e;
+            font-size: 1.6em;
+            margin: 30px 0 20px 0;
+            padding-left: 15px;
+            border-left: 4px solid #3498db;
+        }
+
+        .visual-guide {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border: 2px solid #ff9800;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.2);
+        }
+
+        .visual-guide h3 {
+            color: #e65100;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+        }
+
+        .emoji-large {
+            font-size: 4em;
+            margin: 20px 0;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 6px solid #3498db;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card .emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .info-card h5 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: #546e7a;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            border: 2px solid #4caf50;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+        }
+
+        .feature-box h4 {
+            color: #2e7d32;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-box .emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .mode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .mode-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid #e3f2fd;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-color: #3498db;
+        }
+
+        .mode-card .emoji {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+        }
+
+        .mode-card h5 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .mode-card p {
+            color: #546e7a;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .recommended {
+            border-color: #4caf50;
+            background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+        }
+
+        .recommended::before {
+            content: "⭐ แนะนำ";
+            background: #4caf50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            position: absolute;
+            top: -10px;
+            right: 20px;
+        }
+
+        .mode-card {
+            position: relative;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 1.1em;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .info-grid, .mode-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .navigation a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 BotV3 ทำอะไรได้บ้าง?</h1>
+            <p>ระบบประมวลผล PDF อัตโนมัติ</p>
+        </div>
+
+        <div class="navigation">
+            <a href="คู่มือการใช้งานระบบ_BotV3_Index.html">🏠 หน้าหลัก</a>
+            <a href="คู่มือการใช้งานระบบ_BotV3_การใช้งาน.html">📁 การใช้งาน</a>
+            <a href="คู่มือการใช้งานระบบ_BotV3_สร้างฐานข้อมูล.html">📝 สร้างฐานข้อมูล</a>
+        </div>
+
+        <div class="section">
+            <div class="visual-guide">
+                <span class="emoji-large">📄</span>
+                <h3>อ่าน PDF → แยกข้อมูล → บันทึกผลลัพธ์</h3>
+                <p>ระบบจะทำงานให้คุณอัตโนมัติ!</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="emoji">📄</span>
+                    <h5>อ่านไฟล์ PDF</h5>
+                    <p>สแกนข้อมูลอัตโนมัติจากไฟล์ PDF ทั้งหมดในโฟลเดอร์ที่เลือก</p>
+                </div>
+                <div class="info-card">
+                    <span class="emoji">🔍</span>
+                    <h5>แยกข้อมูลสำคัญ</h5>
+                    <p>ดึงข้อมูลสำคัญ: ชื่อบริษัท, รหัสผู้ติดต่อ, โค้ดบัญชี</p>
+                </div>
+                <div class="info-card">
+                    <span class="emoji">💾</span>
+                    <h5>บันทึกผลลัพธ์</h5>
+                    <p>บันทึกข้อมูลในรูปแบบ JSON หรือ TXT พร้อมรายงานสถิติ</p>
+                </div>
+                <div class="info-card">
+                    <span class="emoji">📱</span>
+                    <h5>แจ้งเตือน LINE</h5>
+                    <p>ส่งผลลัพธ์ผ่าน LINE Notify ทันทีเมื่อประมวลผลเสร็จ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 เลือกโหมดการทำงาน</h2>
+            
+            <div class="feature-box">
+                <h4>
+                    <span class="emoji">💡</span>
+                    แนะนำ: ใช้โหมด "กำหนดโฟลเดอร์เอง"
+                </h4>
+                <p>ง่ายที่สุด เหมาะสำหรับผู้ใช้ทั่วไป! สามารถเลือกโฟลเดอร์ที่ต้องการประมวลผลได้โดยตรง</p>
+            </div>
+            
+            <div class="mode-grid">
+                <div class="mode-card">
+                    <span class="emoji">🔄</span>
+                    <h5>โหมดอัตโนมัติ</h5>
+                    <p>สแกนโฟลเดอร์ทั้งหมดตามที่กำหนดไว้ในระบบ</p>
+                    <p><strong>เหมาะสำหรับ:</strong> การประมวลผลแบบรวม</p>
+                </div>
+                
+                <div class="mode-card">
+                    <span class="emoji">✋</span>
+                    <h5>เลือกโฟลเดอร์หลักเอง</h5>
+                    <p>เลือกโฟลเดอร์หลักจากรายการที่ระบบสแกนพบ</p>
+                    <p><strong>เหมาะสำหรับ:</strong> การเลือกโฟลเดอร์หลักเฉพาะ</p>
+                </div>
+                
+                <div class="mode-card recommended">
+                    <span class="emoji">📁</span>
+                    <h5>กำหนดโฟลเดอร์เอง</h5>
+                    <p>เลือกโฟลเดอร์เฉพาะที่ต้องการประมวลผลได้โดยตรง</p>
+                    <p><strong>เหมาะสำหรับ:</strong> ผู้ใช้ทั่วไป - ง่ายและรวดเร็ว</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌟 ฟีเจอร์เด่นของ BotV3</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="emoji">🎨</span>
+                    <h5>Interface ใช้งานง่าย</h5>
+                    <p>หน้าจอสวยงาม เข้าใจง่าย เหมาะสำหรับผู้ใช้ทุกระดับ</p>
+                </div>
+                
+                <div class="info-card">
+                    <span class="emoji">⚡</span>
+                    <h5>ประมวลผลเร็ว</h5>
+                    <p>ใช้เทคโนโลยีล่าสุดในการอ่านและประมวลผลไฟล์ PDF</p>
+                </div>
+                
+                <div class="info-card">
+                    <span class="emoji">🔒</span>
+                    <h5>ระบบรักษาความปลอดภัย</h5>
+                    <p>มีระบบแอดมินแยกจากผู้ใช้ทั่วไป ป้องกันการใช้งานผิดวัตถุประสงค์</p>
+                </div>
+                
+                <div class="info-card">
+                    <span class="emoji">📊</span>
+                    <h5>รายงานสถิติ</h5>
+                    <p>แสดงสถิติการประมวลผล: จำนวนไฟล์, สำเร็จ, ไม่สำเร็จ</p>
+                </div>
+                
+                <div class="info-card">
+                    <span class="emoji">🔧</span>
+                    <h5>แก้ไขข้อมูลได้</h5>
+                    <p>สามารถแก้ไขข้อมูล JSON และ TXT ผ่านหน้าจอระบบ</p>
+                </div>
+                
+                <div class="info-card">
+                    <span class="emoji">📱</span>
+                    <h5>แจ้งเตือน LINE</h5>
+                    <p>ส่งผลลัพธ์ผ่าน LINE Notify พร้อมรายละเอียดครบถ้วน</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 เริ่มต้นใช้งาน</h2>
+            
+            <div class="visual-guide">
+                <span class="emoji-large">🎯</span>
+                <h3>เพียง 5 ขั้นตอนง่ายๆ</h3>
+                <p>คุณจะสามารถใช้งาน BotV3 ได้ทันที!</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="emoji">1️⃣</span>
+                    <h5>เลือกโหมด</h5>
+                    <p>เลือก "กำหนดโฟลเดอร์เอง" สำหรับการใช้งานทั่วไป</p>
+                </div>
+                
+                <div class="info-card">
+                    <span class="emoji">2️⃣</span>
+                    <h5>เลือกโฟลเดอร์</h5>
+                    <p>คลิก "เลือกโฟลเดอร์" และเลือกโฟลเดอร์ที่มีไฟล์ PDF</p>
+                </div>
+                
+                <div class="info-card">
+                    <span class="emoji">3️⃣</span>
+                    <h5>ดูข้อมูล</h5>
+                    <p>ระบบจะแสดงข้อมูลโฟลเดอร์และประเภทภาษี</p>
+                </div>
+                
+                <div class="info-card">
+                    <span class="emoji">4️⃣</span>
+                    <h5>แก้ไขข้อมูล (ไม่บังคับ)</h5>
+                    <p>แก้ไขข้อมูล JSON/TXT หากต้องการ</p>
+                </div>
+                
+                <div class="info-card">
+                    <span class="emoji">5️⃣</span>
+                    <h5>เริ่มทำงาน</h5>
+                    <p>คลิก "เริ่มการทำงาน" และรอผลลัพธ์!</p>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <h4>
+                    <span class="emoji">🎉</span>
+                    เสร็จแล้ว!
+                </h4>
+                <p>ระบบจะแสดงผลลัพธ์ในหน้าจอ: จำนวนไฟล์, ไฟล์สำเร็จ, ไฟล์ไม่สำเร็จ และส่งแจ้งเตือนผ่าน LINE (หากเปิดใช้งาน)</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🤖 BotV3 - ระบบประมวลผล PDF อัตโนมัติ</p>
+            <p>© 2025 - ออกแบบและพัฒนาสำหรับการใช้งานที่สะดวกและมีประสิทธิภาพ</p>
+        </div>
+    </div>
+</body>
+</html>
