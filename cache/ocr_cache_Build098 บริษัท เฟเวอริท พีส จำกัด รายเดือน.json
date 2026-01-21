@@ -3194,5 +3194,71 @@
       "method": "aksonocr"
     },
     "cached_at": 1768972520.280722
+  },
+  "c9344c5e047400fa0603dfa06e744c3c": {
+    "filename": "02.12.2025_EXP-20251200020_ค่าบริการ_Shopee_VAT.pdf",
+    "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build098 บริษัท เฟเวอริท พีส จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2025\\2025-12\\VAT\\Shopee\\02.12.2025_EXP-20251200020_ค่าบริการ_Shopee_VAT.pdf",
+    "data": {
+      "filename": "02.12.2025_EXP-20251200020_ค่าบริการ_Shopee_VAT.pdf",
+      "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build098 บริษัท เฟเวอริท พีส จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2025\\2025-12\\VAT\\Shopee\\02.12.2025_EXP-20251200020_ค่าบริการ_Shopee_VAT.pdf",
+      "success": true,
+      "company_name": "Shopee (Thailand) Co., Ltd.",
+      "tax_id": "0105558019581",
+      "branch": "00000",
+      "date": "02/12/2025",
+      "document_number": "TRSPEMKP00-00000-25 1202-0016709",
+      "reference_number": "EXP-20251200020",
+      "amount_before_vat": 6228.03,
+      "vat_amount": 435.97,
+      "total_amount": 6664.0,
+      "buyer_name": "บริษัท เฟเวอริท ฟีล จำกัด",
+      "buyer_tax_id": "0125565011794",
+      "buyer_address": "145/27 หมู่บ้าน อัยย์ ราชพฤกษ์ หมู่ที่ 7 ตำบลมหาสวัสดิ์ อำเภอบางกรวย นนทบุรี 11130",
+      "document_type": "Receipt/Tax Invoice",
+      "document_status": "ต้นฉบับ",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "2,077.57",
+          "ราคาต่อหน่วย": "2,077.57",
+          "รายการ": "Commission fee",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1,123.36",
+          "ราคาต่อหน่วย": "1,123.36",
+          "รายการ": "Transaction fee",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "2,591.59",
+          "ราคาต่อหน่วย": "2,591.59",
+          "รายการ": "Service fee",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "333.64",
+          "ราคาต่อหน่วย": "333.64",
+          "รายการ": "AMS Pay-Per-Sales Service Fee",
+          "ลำดับ": "4"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "101.87",
+          "ราคาต่อหน่วย": "101.87",
+          "รายการ": "Platform Infrastructure Fee",
+          "ลำดับ": "5"
+        }
+      ],
+      "customs_duty": 0.0,
+      "has_customs_duty": false,
+      "is_customs_department": false,
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: TRSPEMKP00-00000-25 1202-0016709\nวันที่: 02/12/2025\nชื่อผู้ขาย: Shopee (Thailand) Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105558019581\nที่อยู่ผู้ขาย: 89 AIA Capital Center, 24th Floor, Ratchadaphisek Road Dindaeng Sub-District, Dindaeng District, Bangkok, Thailand 10400\nชื่อผู้ซื้อ: บริษัท เฟเวอริท ฟีล จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125565011794\nที่อยู่ผู้ซื้อ: 145/27 หมู่บ้าน อัยย์ ราชพฤกษ์ หมู่ที่ 7 ตำบลมหา...",
+      "method": "aksonocr"
+    },
+    "cached_at": 1769015990.5496054
   }
 }

@@ -472,19 +472,38 @@
         .comparison-row-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.3s ease-out, opacity 0.2s ease-out;
+            opacity: 0;
+            visibility: hidden;
         }
         
         .comparison-row.expanded .comparison-row-content {
             max-height: 2000px;
-            transition: max-height 0.5s ease-in;
+            opacity: 1;
+            visibility: visible;
+            transition: max-height 0.5s ease-in, opacity 0.3s ease-in, visibility 0s linear 0s;
+        }
+        
+        /* ป้องกัน rows ที่ถูกซ่อนไม่ให้แสดงผล */
+        .comparison-tab-content:not(.active) .comparison-row {
+            display: none !important;
         }
         
         .comparison-content-wrapper {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .comparison-sides-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+        }
+        
+        .company-data-section {
+            width: 100%;
         }
         
         .comparison-side {
@@ -595,12 +614,12 @@
         }
         
         .comparison-tab-content {
-            display: none;
+            display: none !important;
             margin-top: 15px;
         }
         
         .comparison-tab-content.active {
-            display: block;
+            display: block !important;
         }
         
         .comparison-tab-badge {
@@ -792,12 +811,30 @@
         @keyframes modalSlideIn {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.02);
+            }
+        }
+        
+        .company-info-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .company-info-card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(16, 185, 129, 0.2);
         }
         
         .modal-header {
@@ -981,7 +1018,7 @@
                             <option value="12">ธันวาคม</option>
                         </select>
                         <select id="taxYear" class="form-control">
-                            <option value="">-- เลือกปี --</option>
+                            <!-- ปีจะถูกสร้างโดย JavaScript -->
                         </select>
                     </div>
                 </div>
@@ -1000,6 +1037,76 @@
                         <div class="autocomplete-dropdown" id="companyDropdown"></div>
                     </div>
                     <input type="hidden" id="companyValue" />
+                </div>
+                
+                <div class="form-group" id="companyInfoGroup" style="display: none;">
+                    <label style="display: flex; align-items: center; gap: 8px; font-size: 1.1em; font-weight: 600; color: #fafafa; margin-bottom: 15px;">
+                        <span style="font-size: 1.3em;">📋</span>
+                        <span>ข้อมูลบริษัท</span>
+                    </label>
+                    <div id="companyInfoCard" class="company-info-card-hover" style="margin-top: 10px; padding: 24px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 12px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(16, 185, 129, 0.1);">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 2px solid rgba(51, 65, 85, 0.5);">
+                            <div style="flex: 1;">
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                    <div style="width: 4px; height: 24px; background: linear-gradient(180deg, #10b981 0%, #059669 100%); border-radius: 2px;"></div>
+                                    <div>
+                                        <div style="color: #60a5fa; font-size: 0.75em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">Build</div>
+                                        <div style="color: #fafafa; font-size: 1.3em; font-weight: 700; background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;" id="companyBuild">-</div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 16px;">
+                                    <div style="color: #94a3b8; font-size: 0.75em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">ชื่อบริษัท</div>
+                                    <div style="color: #fafafa; font-size: 1.05em; font-weight: 500; line-height: 1.5;" id="companyName">-</div>
+                                </div>
+                                <div style="margin-top: 16px;">
+                                    <div style="color: #94a3b8; font-size: 0.75em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">เลขประจำตัวผู้เสียภาษี 13 หลัก</div>
+                                    <div style="color: #fafafa; font-size: 1.05em; font-weight: 500; line-height: 1.5;" id="companyTaxId">-</div>
+                                </div>
+                            </div>
+                            <button type="button" onclick="openDatabaseModal()" style="padding: 10px 20px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; display: flex; align-items: center; gap: 6px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.3)';">
+                                <span>✏️</span>
+                                <span>แก้ไขข้อมูล</span>
+                            </button>
+                        </div>
+                        
+                        <div style="padding-top: 20px;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                                <div style="padding: 16px; background: rgba(15, 23, 42, 0.6); border-radius: 8px; border: 1px solid rgba(51, 65, 85, 0.3); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(96, 165, 250, 0.5)'; this.style.background='rgba(15, 23, 42, 0.8)';" onmouseout="this.style.borderColor='rgba(51, 65, 85, 0.3)'; this.style.background='rgba(15, 23, 42, 0.6)';">
+                                    <div style="display: flex; align-items: center; gap: 8px; color: #60a5fa; font-size: 0.85em; font-weight: 600; margin-bottom: 10px;">
+                                        <span style="font-size: 1.2em;">📍</span>
+                                        <span>ที่อยู่บริษัท</span>
+                                    </div>
+                                    <div style="color: #cbd5e1; font-size: 0.95em; line-height: 1.7;" id="companyAddress">-</div>
+                                </div>
+                                <div style="padding: 16px; background: rgba(15, 23, 42, 0.6); border-radius: 8px; border: 1px solid rgba(51, 65, 85, 0.3); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(96, 165, 250, 0.5)'; this.style.background='rgba(15, 23, 42, 0.8)';" onmouseout="this.style.borderColor='rgba(51, 65, 85, 0.3)'; this.style.background='rgba(15, 23, 42, 0.6)';">
+                                    <div style="display: flex; align-items: center; gap: 8px; color: #60a5fa; font-size: 0.85em; font-weight: 600; margin-bottom: 10px;">
+                                        <span style="font-size: 1.2em;">📊</span>
+                                        <span>สถานะภาษีมูลค่าเพิ่ม</span>
+                                    </div>
+                                    <div style="color: #cbd5e1; font-size: 0.95em;" id="companyVatStatus">-</div>
+                                </div>
+                                <div style="padding: 16px; background: rgba(15, 23, 42, 0.6); border-radius: 8px; border: 1px solid rgba(51, 65, 85, 0.3); transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(96, 165, 250, 0.5)'; this.style.background='rgba(15, 23, 42, 0.8)';" onmouseout="this.style.borderColor='rgba(51, 65, 85, 0.3)'; this.style.background='rgba(15, 23, 42, 0.6)';">
+                                    <div style="display: flex; align-items: center; gap: 8px; color: #60a5fa; font-size: 0.85em; font-weight: 600; margin-bottom: 10px;">
+                                        <span style="font-size: 1.2em;">📅</span>
+                                        <span>วันที่จดภาษีมูลค่าเพิ่ม</span>
+                                    </div>
+                                    <div style="color: #cbd5e1; font-size: 0.95em;" id="companyVatDate">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="noCompanyData" style="display: none; margin-top: 20px; padding: 20px; background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%); border-radius: 10px; border: 2px dashed rgba(251, 191, 36, 0.3);">
+                            <div style="display: flex; align-items: center; gap: 10px; color: #fbbf24; margin-bottom: 12px; font-weight: 600;">
+                                <span style="font-size: 1.5em;">⚠️</span>
+                                <span>ยังไม่มีข้อมูลบริษัท</span>
+                            </div>
+                            <div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 16px; line-height: 1.6;">กรุณาเพิ่มข้อมูลบริษัท (Build, ชื่อบริษัท, ที่อยู่, สถานะภาษี, วันที่จด) เพื่อเชื่อมโยงกับบริษัทนี้</div>
+                            <button type="button" onclick="openDatabaseModal()" style="padding: 10px 20px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)';">
+                                <span>➕</span>
+                                <span>เพิ่มข้อมูลบริษัท</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 
                 <button class="btn" onclick="startAudit()">🚀 เริ่มตรวจสอบ</button>
@@ -1082,6 +1189,124 @@
                     <div class="modal-footer">
                         <button class="modal-btn modal-btn-secondary" onclick="closeOCRConfirmModal()">ยกเลิก</button>
                         <button class="modal-btn modal-btn-primary" id="modalConfirmBtn">ตกลง</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal สำหรับเพิ่ม/แก้ไขข้อมูลบริษัท -->
+            <div class="modal-overlay" id="databaseModal" style="display: none; backdrop-filter: blur(4px);">
+                <div class="modal-content" style="max-width: 700px;">
+                    <div class="modal-header" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-bottom: 2px solid rgba(59, 130, 246, 0.2); padding: 24px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 16px;">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);">
+                                    🏢
+                                </div>
+                                <div>
+                                    <div class="modal-title" style="font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #fafafa 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">เพิ่ม/แก้ไขข้อมูลบริษัท</div>
+                                    <div style="color: #94a3b8; font-size: 0.85em; margin-top: 4px;">กรอกข้อมูลบริษัท</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body" style="padding: 24px; background: #0f172a;">
+                        <form id="companyForm">
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                                    <span>🔢</span>
+                                    <span>Build</span>
+                                    <span style="color: #ef4444;">*</span>
+                                </label>
+                                <input type="text" id="companyBuildInput" class="form-control" placeholder="เช่น Build001, Build002" required style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';" onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';" />
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                                    <span>🏢</span>
+                                    <span>ชื่อบริษัท</span>
+                                    <span style="color: #ef4444;">*</span>
+                                </label>
+                                <input type="text" id="companyNameInput" class="form-control" placeholder="กรุณากรอกชื่อบริษัท" required style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';" onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';" />
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                                    <span>🆔</span>
+                                    <span>เลขประจำตัวผู้เสียภาษี 13 หลัก</span>
+                                </label>
+                                <input type="text" id="companyTaxIdInput" class="form-control" placeholder="กรุณากรอกเลขประจำตัวผู้เสียภาษี 13 หลัก" maxlength="13" pattern="[0-9]{13}" style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;" oninput="this.value = this.value.replace(/[^0-9]/g, '');" onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';" onblur="this.style.borderColor='#334155'; this.style.boxShadow='none'; validateTaxId(this);" />
+                                <div id="taxIdError" style="color: #ef4444; font-size: 0.85em; margin-top: 5px; display: none;"></div>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                                    <span>📊</span>
+                                    <span>สถานะภาษีมูลค่าเพิ่ม</span>
+                                    <span style="color: #ef4444;">*</span>
+                                </label>
+                                <select id="companyVatStatusInput" class="form-control" required style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;" onchange="handleVatStatusChange()" onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';" onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';">
+                                    <option value="">-- เลือกสถานะ --</option>
+                                    <option value="จดภาษีมูลค่าเพิ่ม">จดภาษีมูลค่าเพิ่ม</option>
+                                    <option value="ยังไม่จดภาษีมูลค่าเพิ่ม">ยังไม่จดภาษีมูลค่าเพิ่ม</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                                    <span>📅</span>
+                                    <span>วันที่จดภาษีมูลค่าเพิ่ม</span>
+                                    <span id="vatDateRequired" style="color: #ef4444; display: none;">*</span>
+                                </label>
+                                <input type="date" id="companyVatDateInput" class="form-control" style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';" onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';" />
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                                    <span>📍</span>
+                                    <span>ที่อยู่บริษัท</span>
+                                    <span style="color: #ef4444;">*</span>
+                                </label>
+                                <textarea id="companyAddressInput" class="form-control" rows="8" placeholder="กรุณากรอกที่อยู่บริษัท" required style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease; resize: both; min-height: 120px; width: 100%;" onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';" onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';"></textarea>
+                            </div>
+                            
+                            <div class="form-group" style="margin-bottom: 20px;">
+                                <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                                    <span>🗄️</span>
+                                    <span>ฐานข้อมูล</span>
+                                </label>
+                                <div style="display: flex; gap: 8px; align-items: center;">
+                                    <select id="companyDatabaseSelect" class="form-control" style="flex: 1; background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';" onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';">
+                                        <option value="">-- ไม่เลือกฐานข้อมูล --</option>
+                                    </select>
+                                    <button type="button" onclick="openDatabaseManagementModal()" style="padding: 12px 20px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); transition: all 0.3s ease; white-space: nowrap;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(139, 92, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(139, 92, 246, 0.3)';">
+                                        <span style="font-size: 1.1em;">⚙️</span>
+                                        <span>จัดการฐานข้อมูล</span>
+                                    </button>
+                                </div>
+                                <div style="color: #94a3b8; font-size: 0.85em; margin-top: 8px;">
+                                    เลือกฐานข้อมูลที่ต้องการเชื่อมโยงกับบริษัทนี้ (ถ้ามี)
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;">
+                                <button type="button" onclick="window.open('https://vsinter.rd.go.th/rd-webcontent-web/#/vatsearch', '_blank')" style="flex: 1; min-width: 200px; padding: 12px 20px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)';">
+                                    <span style="font-size: 1.1em;">🔗</span>
+                                    <span>ไปยังหน้า VAT-Info</span>
+                                </button>
+                                <button type="button" onclick="window.open('https://datawarehouse.dbd.go.th/', '_blank')" style="flex: 1; min-width: 200px; padding: 12px 20px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.3)';">
+                                    <span style="font-size: 1.1em;">🏛️</span>
+                                    <span>ไปยังหน้า DBD - DWH</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer" style="padding: 20px 24px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-top: 1px solid rgba(51, 65, 85, 0.5); display: flex; justify-content: flex-end; gap: 12px;">
+                        <button class="modal-btn modal-btn-secondary" onclick="closeDatabaseModal()" style="padding: 10px 24px; border-radius: 8px; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-1px)';" onmouseout="this.style.transform='translateY(0)';">
+                            ยกเลิก
+                        </button>
+                        <button class="modal-btn modal-btn-primary" id="saveDatabaseBtn" onclick="saveCompanyConfigForm()" style="padding: 10px 24px; border-radius: 8px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.3)';">
+                            💾 บันทึก
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1279,29 +1504,28 @@
             
             console.log('✅ พบ element taxYear แล้ว กำลังสร้าง dropdown...');
             
-            // ล้าง options เดิมทั้งหมด (รวม placeholder)
+            // ล้าง options เดิมทั้งหมด
             yearSelect.innerHTML = '';
-            
-            // เพิ่ม placeholder กลับมา
-            const placeholderOption = document.createElement('option');
-            placeholderOption.value = '';
-            placeholderOption.textContent = '-- เลือกปี --';
-            yearSelect.appendChild(placeholderOption);
             
             const currentYear = new Date().getFullYear();
             
-            // เพิ่มปีจากปีปัจจุบัน - 1 ถึงปีปัจจุบัน + 1 (ปีก่อนหน้า, ปีปัจจุบัน, ปีถัดไป)
+            // เพิ่มปีจากปีปัจจุบัน - 1 ถึงปีปัจจุบัน + 1 (ย้อนหลัง 1 ปี, ปีปัจจุบัน, ล่วงหน้า 1 ปี)
             for (let year = currentYear - 1; year <= currentYear + 1; year++) {
                 const option = document.createElement('option');
                 option.value = year;
                 option.textContent = year;
+                // ตั้งค่าเริ่มต้นเป็นปีปัจจุบัน
+                if (year === currentYear) {
+                    option.selected = true;
+                }
                 yearSelect.appendChild(option);
             }
             
-            console.log(`✅ สร้าง dropdown ปีสำเร็จ: ${currentYear - 1}, ${currentYear}, ${currentYear + 1} (${yearSelect.options.length - 1} ปี)`);
+            console.log(`✅ สร้าง dropdown ปีสำเร็จ: ${currentYear - 1}, ${currentYear}, ${currentYear + 1}`);
+            console.log(`✅ ตั้งค่าเริ่มต้นเป็นปีปัจจุบัน: ${currentYear}`);
             
             // ตรวจสอบว่า options ถูกสร้างหรือไม่
-            if (yearSelect.options.length <= 1) {
+            if (yearSelect.options.length === 0) {
                 console.error('❌ ไม่สามารถสร้าง dropdown ปีได้ - ลองสร้างแบบ hardcode');
                 // ลองสร้างแบบ hardcode
                 const years = [currentYear - 1, currentYear, currentYear + 1];
@@ -1309,15 +1533,17 @@
                     const option = document.createElement('option');
                     option.value = year;
                     option.textContent = year;
+                    if (year === currentYear) {
+                        option.selected = true;
+                    }
                     yearSelect.appendChild(option);
                 });
-                console.log(`✅ สร้าง dropdown ปีแบบ hardcode สำเร็จ: ${yearSelect.options.length - 1} ปี`);
+                console.log(`✅ สร้าง dropdown ปีแบบ hardcode สำเร็จ: ${yearSelect.options.length} ปี`);
             }
             
-            // ตั้งค่าเดือนและปีปัจจุบันหลังจากสร้าง dropdown เสร็จ
+            // ตั้งค่าเดือนปัจจุบันหลังจากสร้าง dropdown เสร็จ
             setTimeout(function() {
                 const now = new Date();
-                const year = now.getFullYear();
                 const month = String(now.getMonth() + 1).padStart(2, '0');
                 const taxMonthEl = document.getElementById('taxMonth');
                 
@@ -1327,24 +1553,10 @@
                     console.log(`✅ ตั้งค่าเดือน: ${month}`);
                 }
                 
-                // ตั้งค่าปี
-                if (yearSelect && yearSelect.options.length > 1) {
-                    // หาปีที่ต้องการใน dropdown
-                    let yearFound = false;
-                    for (let i = 0; i < yearSelect.options.length; i++) {
-                        if (yearSelect.options[i].value == year) {
-                            yearSelect.value = year;
-                            yearFound = true;
-                            console.log(`✅ ตั้งค่าปี: ${year}`);
-                            break;
-                        }
-                    }
-                    
-                    if (!yearFound && yearSelect.options.length > 1) {
-                        // ถ้าไม่พบปีที่ต้องการ ให้เลือกปีแรกที่มี (ไม่ใช่ placeholder)
-                        yearSelect.selectedIndex = 1;
-                        console.log(`✅ ตั้งค่าปี: ${yearSelect.value} (ปีแรกที่มี)`);
-                    }
+                // ตรวจสอบว่าปีถูกตั้งค่าถูกต้องหรือไม่
+                if (yearSelect && yearSelect.value != currentYear) {
+                    yearSelect.value = currentYear;
+                    console.log(`✅ ตั้งค่าปีเป็นปีปัจจุบัน: ${currentYear}`);
                 }
             }, 100);
         }
@@ -1515,6 +1727,12 @@
             dropdown.classList.remove('show');
             clearBtn.style.display = 'block';
             selectedCompanyIndex = -1;
+            
+            // แสดงส่วนข้อมูลบริษัท
+            document.getElementById('companyInfoGroup').style.display = 'block';
+            
+            // โหลดข้อมูลบริษัทที่บันทึกไว้
+            loadCompanyInfo(company);
         }
         
         function clearCompany() {
@@ -1527,7 +1745,460 @@
             dropdown.classList.remove('show');
             clearBtn.style.display = 'none';
             selectedCompanyIndex = -1;
+            
+            // ซ่อนส่วนข้อมูลบริษัทเมื่อล้างบริษัท
+            document.getElementById('companyInfoGroup').style.display = 'none';
         }
+        
+        // ฟังก์ชันแปลงวันที่จาก YYYY-MM-DD เป็น dd/mm/yyyy
+        function formatDate(dateString) {
+            if (!dateString || dateString === '-') {
+                return '-';
+            }
+            
+            try {
+                // แปลงจาก YYYY-MM-DD เป็น Date object
+                const date = new Date(dateString + 'T00:00:00');
+                
+                // ตรวจสอบว่า date ถูกต้องหรือไม่
+                if (isNaN(date.getTime())) {
+                    return dateString; // ถ้าแปลงไม่ได้ให้คืนค่าเดิม
+                }
+                
+                // แปลงเป็น dd/mm/yyyy
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                
+                return `${day}/${month}/${year}`;
+            } catch (error) {
+                console.error('Error formatting date:', error);
+                return dateString; // ถ้าเกิดข้อผิดพลาดให้คืนค่าเดิม
+            }
+        }
+        
+        // ฟังก์ชันตัดคำหลัง "จำกัด" ออก
+        function removeTextAfterLimited(companyName) {
+            if (!companyName || companyName === '-') {
+                return companyName;
+            }
+            
+            // หาตำแหน่งของคำว่า "จำกัด"
+            const limitedIndex = companyName.indexOf('จำกัด');
+            
+            if (limitedIndex !== -1) {
+                // ตัดคำหลัง "จำกัด" ออก (รวมช่องว่างที่ตามมาด้วย)
+                return companyName.substring(0, limitedIndex + 'จำกัด'.length).trim();
+            }
+            
+            return companyName;
+        }
+        
+        // โหลดข้อมูลบริษัทที่บันทึกไว้
+        async function loadCompanyInfo(company) {
+            if (!company) {
+                document.getElementById('companyInfoGroup').style.display = 'none';
+                return;
+            }
+            
+            try {
+                // แยก Build และชื่อบริษัทจาก company string (รูปแบบ: "Build001 ชื่อบริษัท")
+                const parts = company.split(' ');
+                const build = parts[0]; // Build001
+                const companyName = parts.slice(1).join(' '); // ส่วนที่เหลือ
+                
+                // ตั้งค่า Build และชื่อบริษัทใน UI
+                document.getElementById('companyBuild').textContent = build;
+                document.getElementById('companyName').textContent = removeTextAfterLimited(companyName || company);
+                
+                // โหลดข้อมูลบริษัทจาก API (ส่ง customer parameter ด้วย)
+                const customer = companyName || company;
+                const apiUrl = `/api/auditcheck/company?build=${encodeURIComponent(build)}&company_name=${encodeURIComponent(companyName || company)}&customer=${encodeURIComponent(customer)}`;
+                console.log('🔍 เรียก API:', apiUrl);
+                console.log('📋 พารามิเตอร์:', { build, companyName, customer });
+                
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                console.log('📦 Response จาก API:', data);
+                
+                if (data.success && data.company) {
+                    // แสดงข้อมูลบริษัท
+                    const comp = data.company;
+                    console.log('✅ พบข้อมูลบริษัท:', comp);
+                    document.getElementById('companyBuild').textContent = comp.build || build;
+                    document.getElementById('companyName').textContent = removeTextAfterLimited(comp.company_name || companyName || company);
+                    document.getElementById('companyTaxId').textContent = comp.tax_id || '-';
+                    document.getElementById('companyAddress').textContent = comp.company_address || '-';
+                    document.getElementById('companyVatStatus').textContent = comp.vat_status || '-';
+                    document.getElementById('companyVatDate').textContent = formatDate(comp.vat_registration_date);
+                    
+                    // ซ่อนข้อความ "ยังไม่มีข้อมูล"
+                    document.getElementById('noCompanyData').style.display = 'none';
+                } else {
+                    // ไม่พบข้อมูล - แสดงข้อความให้เพิ่มข้อมูล
+                    console.warn('⚠️ ไม่พบข้อมูลบริษัท:', data);
+                    document.getElementById('companyTaxId').textContent = '-';
+                    document.getElementById('companyAddress').textContent = '-';
+                    document.getElementById('companyVatStatus').textContent = '-';
+                    document.getElementById('companyVatDate').textContent = '-';
+                    document.getElementById('noCompanyData').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error loading company info:', error);
+                // แสดงข้อความให้เพิ่มข้อมูล
+                document.getElementById('companyTaxId').textContent = '-';
+                document.getElementById('companyAddress').textContent = '-';
+                document.getElementById('companyVatStatus').textContent = '-';
+                document.getElementById('companyVatDate').textContent = '-';
+                document.getElementById('noCompanyData').style.display = 'block';
+            }
+        }
+        
+        // ===== ฟังก์ชันจัดการข้อมูลบริษัท =====
+        let editingDbConfigId = null;
+        
+        // ตรวจสอบเลขประจำตัวผู้เสียภาษี 13 หลัก
+        function validateTaxId(input) {
+            const taxId = input.value.trim();
+            const errorDiv = document.getElementById('taxIdError');
+            
+            if (taxId === '') {
+                errorDiv.style.display = 'none';
+                input.style.borderColor = '#334155';
+                return true;
+            }
+            
+            if (taxId.length !== 13) {
+                errorDiv.textContent = 'กรุณากรอกเลขประจำตัวผู้เสียภาษีให้ครบ 13 หลัก';
+                errorDiv.style.display = 'block';
+                input.style.borderColor = '#ef4444';
+                return false;
+            }
+            
+            // ตรวจสอบว่าเป็นตัวเลขทั้งหมด
+            if (!/^\d{13}$/.test(taxId)) {
+                errorDiv.textContent = 'กรุณากรอกเฉพาะตัวเลขเท่านั้น';
+                errorDiv.style.display = 'block';
+                input.style.borderColor = '#ef4444';
+                return false;
+            }
+            
+            errorDiv.style.display = 'none';
+            input.style.borderColor = '#10b981';
+            return true;
+        }
+        
+        // จัดการเมื่อเปลี่ยนสถานะภาษีมูลค่าเพิ่ม
+        function handleVatStatusChange() {
+            const vatStatus = document.getElementById('companyVatStatusInput').value;
+            const vatDateInput = document.getElementById('companyVatDateInput');
+            const vatDateRequired = document.getElementById('vatDateRequired');
+            
+            if (vatStatus === 'จดภาษีมูลค่าเพิ่ม') {
+                // บังคับกรอกวันที่
+                vatDateInput.removeAttribute('disabled');
+                vatDateInput.setAttribute('required', 'required');
+                vatDateRequired.style.display = 'inline';
+                vatDateInput.style.borderColor = '#3b82f6';
+                vatDateInput.style.opacity = '1';
+                vatDateInput.style.cursor = 'text';
+            } else if (vatStatus === 'ยังไม่จดภาษีมูลค่าเพิ่ม') {
+                // ห้ามกรอกวันที่ - disable input
+                vatDateInput.removeAttribute('required');
+                vatDateInput.setAttribute('disabled', 'disabled');
+                vatDateInput.value = ''; // ล้างค่าที่กรอกไว้
+                vatDateRequired.style.display = 'none';
+                vatDateInput.style.borderColor = '#334155';
+                vatDateInput.style.opacity = '0.5';
+                vatDateInput.style.cursor = 'not-allowed';
+            } else {
+                // ไม่ได้เลือกสถานะ
+                vatDateInput.removeAttribute('required');
+                vatDateInput.removeAttribute('disabled');
+                vatDateRequired.style.display = 'none';
+                vatDateInput.style.borderColor = '#334155';
+                vatDateInput.style.opacity = '1';
+                vatDateInput.style.cursor = 'text';
+            }
+        }
+        
+        // เปิด modal เพิ่ม/แก้ไขข้อมูลบริษัท
+        async function openDatabaseModal(dbId = null) {
+            editingDbConfigId = dbId;
+            const modal = document.getElementById('databaseModal');
+            const form = document.getElementById('companyForm');
+            
+            // รีเซ็ตฟอร์ม
+            form.reset();
+            
+            // โหลดรายการฐานข้อมูล
+            await loadDatabasesForCompany();
+            
+            // ถ้าเป็นการแก้ไข ให้โหลดข้อมูลบริษัทที่เลือกอยู่
+            const company = document.getElementById('companyValue').value || document.getElementById('companySelect').value;
+            if (company) {
+                try {
+                    // แยก Build และชื่อบริษัท
+                    const parts = company.split(' ');
+                    const build = parts[0];
+                    const companyName = parts.slice(1).join(' ');
+                    
+                    // โหลดข้อมูลบริษัท
+                    const customer = companyName || company;
+                    const response = await fetch(`/api/auditcheck/company?build=${encodeURIComponent(build)}&company_name=${encodeURIComponent(companyName || company)}&customer=${encodeURIComponent(customer)}`);
+                    const data = await response.json();
+                    
+                    if (data.success && data.company) {
+                        // แสดงข้อมูลบริษัทในฟอร์ม
+                        const comp = data.company;
+                        document.getElementById('companyBuildInput').value = comp.build || '';
+                        document.getElementById('companyNameInput').value = comp.company_name || '';
+                        document.getElementById('companyTaxIdInput').value = comp.tax_id || '';
+                        document.getElementById('companyVatStatusInput').value = comp.vat_status || '';
+                        document.getElementById('companyVatDateInput').value = comp.vat_registration_date || '';
+                        document.getElementById('companyAddressInput').value = comp.company_address || '';
+                        
+                        // ตรวจสอบสถานะภาษีมูลค่าเพิ่มเพื่อบังคับกรอกวันที่
+                        handleVatStatusChange();
+                        // ตรวจสอบเลขประจำตัวผู้เสียภาษี
+                        validateTaxId(document.getElementById('companyTaxIdInput'));
+                    } else {
+                        // ถ้ายังไม่มีข้อมูล ให้ใส่ Build และชื่อบริษัทจากที่เลือก (เชื่อมโยงกัน)
+                        document.getElementById('companyBuildInput').value = build;
+                        document.getElementById('companyNameInput').value = companyName || company;
+                    }
+                    
+                    // โหลดฐานข้อมูลที่เชื่อมโยงกับบริษัทนี้
+                    await loadCompanyDatabase(company);
+                } catch (error) {
+                    console.error('Error loading company data:', error);
+                    // ถ้าโหลดไม่ได้ ให้ใส่ Build และชื่อบริษัทจากที่เลือก (เชื่อมโยงกัน)
+                    const parts = company.split(' ');
+                    const build = parts[0];
+                    const companyName = parts.slice(1).join(' ');
+                    document.getElementById('companyBuildInput').value = build;
+                    document.getElementById('companyNameInput').value = companyName || company;
+                    
+                    // โหลดฐานข้อมูลที่เชื่อมโยงกับบริษัทนี้
+                    await loadCompanyDatabase(company);
+                }
+            }
+            
+            modal.style.display = 'flex';
+        }
+        
+        // โหลดรายการฐานข้อมูลทั้งหมด
+        async function loadDatabasesForCompany() {
+            try {
+                const response = await fetch('/api/auditcheck/databases');
+                const data = await response.json();
+                
+                const select = document.getElementById('companyDatabaseSelect');
+                // เก็บค่าเดิม
+                const currentValue = select.value;
+                
+                // ล้าง options (ยกเว้น option แรก)
+                while (select.options.length > 1) {
+                    select.remove(1);
+                }
+                
+                if (data.success && data.databases && data.databases.length > 0) {
+                    data.databases.forEach(db => {
+                        const option = document.createElement('option');
+                        option.value = db.id;
+                        option.textContent = `${db.name} (${db.type})${db.description ? ' - ' + db.description : ''}`;
+                        select.appendChild(option);
+                    });
+                }
+                
+                // คืนค่าที่เลือกไว้เดิม
+                if (currentValue) {
+                    select.value = currentValue;
+                }
+            } catch (error) {
+                console.error('Error loading databases:', error);
+            }
+        }
+        
+        // โหลดฐานข้อมูลที่เชื่อมโยงกับบริษัท
+        async function loadCompanyDatabase(company) {
+            try {
+                const response = await fetch(`/api/auditcheck/databases?company=${encodeURIComponent(company)}`);
+                const data = await response.json();
+                
+                if (data.success && data.companyDatabase) {
+                    document.getElementById('companyDatabaseSelect').value = data.companyDatabase;
+                } else {
+                    document.getElementById('companyDatabaseSelect').value = '';
+                }
+            } catch (error) {
+                console.error('Error loading company database:', error);
+                document.getElementById('companyDatabaseSelect').value = '';
+            }
+        }
+        
+        // เปิด modal จัดการฐานข้อมูล (placeholder - ต้องสร้าง modal ใหม่)
+        function openDatabaseManagementModal() {
+            showAlert('info', 'ฟีเจอร์จัดการฐานข้อมูลจะเปิดในหน้าต่างใหม่\nกรุณาเพิ่มฐานข้อมูลผ่าน API หรือสร้างหน้าจัดการฐานข้อมูลแยก');
+            // TODO: สร้าง modal สำหรับจัดการฐานข้อมูล (เพิ่ม/แก้ไข/ลบ)
+        }
+        
+        // ปิด modal
+        function closeDatabaseModal() {
+            document.getElementById('databaseModal').style.display = 'none';
+            editingDbConfigId = null;
+            // รีเซ็ตฟอร์ม
+            document.getElementById('companyForm').reset();
+        }
+        
+        // บันทึกข้อมูลบริษัทจากฟอร์ม
+        async function saveCompanyConfigForm() {
+            const form = document.getElementById('companyForm');
+            
+            // ตรวจสอบ validation
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            
+            const build = document.getElementById('companyBuildInput').value.trim();
+            const companyName = document.getElementById('companyNameInput').value.trim();
+            const taxId = document.getElementById('companyTaxIdInput').value.trim();
+            const vatStatus = document.getElementById('companyVatStatusInput').value.trim();
+            const vatDate = document.getElementById('companyVatDateInput').value.trim();
+            const companyAddress = document.getElementById('companyAddressInput').value.trim();
+            
+            // Validation
+            if (!build) {
+                showAlert('warning', 'กรุณากรอก Build');
+                document.getElementById('companyBuildInput').focus();
+                return;
+            }
+            
+            if (!companyName) {
+                showAlert('warning', 'กรุณากรอกชื่อบริษัท');
+                document.getElementById('companyNameInput').focus();
+                return;
+            }
+            
+            if (!vatStatus) {
+                showAlert('warning', 'กรุณาเลือกสถานะภาษีมูลค่าเพิ่ม');
+                document.getElementById('companyVatStatusInput').focus();
+                return;
+            }
+            
+            // ถ้าเลือก "จดภาษีมูลค่าเพิ่ม" ต้องบังคับกรอกวันที่
+            if (vatStatus === 'จดภาษีมูลค่าเพิ่ม' && !vatDate) {
+                showAlert('warning', 'กรุณากรอกวันที่จดภาษีมูลค่าเพิ่ม (จำเป็นเมื่อเลือก "จดภาษีมูลค่าเพิ่ม")');
+                document.getElementById('companyVatDateInput').focus();
+                return;
+            }
+            
+            if (!companyAddress) {
+                showAlert('warning', 'กรุณากรอกที่อยู่บริษัท');
+                document.getElementById('companyAddressInput').focus();
+                return;
+            }
+            
+            // ตรวจสอบ Tax ID ถ้ามีการกรอก ต้องเป็น 13 หลัก
+            if (taxId && taxId.length !== 13) {
+                showAlert('warning', 'เลขประจำตัวผู้เสียภาษีต้องเป็น 13 หลัก');
+                document.getElementById('companyTaxIdInput').focus();
+                return;
+            }
+            
+            try {
+                // บันทึกข้อมูลบริษัท (Build และชื่อบริษัทจะเชื่อมโยงกัน)
+                // ส่ง customer parameter เพื่อแยกไฟล์ตาม customer
+                const response = await fetch('/api/auditcheck/companies', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        build: build,
+                        company_name: companyName,
+                        customer: companyName, // ใช้ company_name เป็น customer identifier
+                        tax_id: taxId || '',
+                        vat_status: vatStatus,
+                        vat_registration_date: vatDate || '',
+                        company_address: companyAddress
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // บันทึกการเชื่อมโยงฐานข้อมูล (ถ้ามีการเลือก)
+                    const selectedDatabaseId = document.getElementById('companyDatabaseSelect').value.trim();
+                    const newCompanyDisplay = `${build} ${companyName}`;
+                    
+                    if (selectedDatabaseId) {
+                        try {
+                            const dbMappingResponse = await fetch('/api/auditcheck/company-database', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    company: newCompanyDisplay,
+                                    database_id: selectedDatabaseId
+                                })
+                            });
+                            
+                            const dbMappingResult = await dbMappingResponse.json();
+                            if (dbMappingResult.success) {
+                                showAlert('success', `บันทึกข้อมูลบริษัทและฐานข้อมูลสำเร็จ\nBuild: ${build} และชื่อบริษัท: ${companyName} เชื่อมโยงกันแล้ว\nฐานข้อมูลถูกเชื่อมโยงแล้ว`);
+                            } else {
+                                showAlert('warning', `บันทึกข้อมูลบริษัทสำเร็จ แต่ไม่สามารถบันทึกการเชื่อมโยงฐานข้อมูลได้: ${dbMappingResult.error || 'ไม่ทราบสาเหตุ'}`);
+                            }
+                        } catch (dbError) {
+                            console.error('Error saving database mapping:', dbError);
+                            showAlert('warning', `บันทึกข้อมูลบริษัทสำเร็จ แต่เกิดข้อผิดพลาดในการบันทึกการเชื่อมโยงฐานข้อมูล: ${dbError.message}`);
+                        }
+                    } else {
+                        // ถ้าไม่เลือกฐานข้อมูล ให้ลบการเชื่อมโยงเดิม (ถ้ามี)
+                        try {
+                            await fetch('/api/auditcheck/company-database', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    company: newCompanyDisplay,
+                                    database_id: ''
+                                })
+                            });
+                        } catch (dbError) {
+                            console.error('Error removing database mapping:', dbError);
+                        }
+                        showAlert('success', `บันทึกข้อมูลบริษัทสำเร็จ\nBuild: ${build} และชื่อบริษัท: ${companyName} เชื่อมโยงกันแล้ว`);
+                    }
+                    
+                    closeDatabaseModal();
+                    
+                    // อัพเดทชื่อบริษัทใน dropdown ให้ตรงกับ Build และชื่อบริษัทที่บันทึก (เชื่อมโยงกัน)
+                    document.getElementById('companySelect').value = newCompanyDisplay;
+                    document.getElementById('companyValue').value = newCompanyDisplay;
+                    
+                    // โหลดข้อมูลบริษัทใหม่เพื่อแสดงข้อมูลที่บันทึก (Build และชื่อบริษัทเชื่อมโยงกัน)
+                    await loadCompanyInfo(newCompanyDisplay);
+                } else {
+                    showAlert('error', result.error || 'เกิดข้อผิดพลาดในการบันทึก');
+                }
+            } catch (error) {
+                console.error('Error saving company data:', error);
+                showAlert('error', 'เกิดข้อผิดพลาดในการบันทึก: ' + error.message);
+            }
+        }
+        
+        // ปิด modal เมื่อคลิกนอก
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('databaseModal');
+            if (e.target === modal) {
+                closeDatabaseModal();
+            }
+        });
         
         async function startAudit() {
             const taxMonth = document.getElementById('taxMonth').value;
@@ -2285,6 +2956,11 @@
             const status = document.getElementById('step5Status');
             const details = document.getElementById('step5Details');
             
+            // ล้าง HTML เดิมทั้งหมดก่อนเพื่อป้องกันการสร้างซ้ำ
+            if (details) {
+                details.innerHTML = '';
+            }
+            
             step.classList.add('active');
             status.textContent = 'กำลังตรวจสอบ...';
             status.className = 'step-status checking';
@@ -2318,13 +2994,11 @@
                 // เก็บ path ของโฟลเดอร์ VAT
                 if (data.vatFolderPath) {
                     vatFolderPath = data.vatFolderPath;
-                    console.log('📁 VAT Folder Path:', vatFolderPath);
                 }
                 
                 // เก็บ comparison results ไว้ในตัวแปร global
                 if (data.comparisons) {
                     window.comparisonResults = data.comparisons;
-                    console.log('📊 Stored comparison results:', data.comparisons.length, 'items');
                 }
                 
                 step.classList.remove('active');
@@ -2342,6 +3016,9 @@
                     
                     // Display comparison table
                     let html = '';
+                    
+                    // ประกาศตัวแปร uniqueComparisons ไว้ก่อนเพื่อให้ใช้ได้ใน setTimeout
+                    let uniqueComparisons = [];
                     
                     // แสดงข้อมูลไฟล์ที่ใช้
                     if (data.purchaseTaxFiles && data.purchaseTaxFiles.length > 0) {
@@ -2367,11 +3044,28 @@
                     }
                     
                     if (data.comparisons && data.comparisons.length > 0) {
-                        // แยกรายการตามสถานะ
-                        const allComparisons = data.comparisons;
-                        const fullMatchedComparisons = data.comparisons.filter(comp => comp.match_status === 'full_match');
-                        const partialMatchedComparisons = data.comparisons.filter(comp => comp.match_status === 'partial_match');
-                        const mismatchedComparisons = data.comparisons.filter(comp => comp.match_status === 'no_match');
+                        // ลบรายการซ้ำออกจาก comparisons ก่อนใช้งาน
+                        // ใช้ unique key จาก invoice_no หรือ document_no เพื่อตรวจสอบซ้ำ
+                        const seenKeys = new Set();
+                        uniqueComparisons = [];
+                        data.comparisons.forEach(comp => {
+                            // สร้าง unique key จาก invoice_no หรือ document_no
+                            const purchaseInvoiceNo = comp.purchase_data?.invoice_no || comp.invoice_no || '';
+                            const ocrDocumentNo = comp.ocr_data?.document_no || comp.document_no || '';
+                            const uniqueKey = `${purchaseInvoiceNo}_${ocrDocumentNo}_${comp.match_status || ''}`;
+                            
+                            if (!seenKeys.has(uniqueKey)) {
+                                seenKeys.add(uniqueKey);
+                                uniqueComparisons.push(comp);
+                            }
+                        });
+                        
+                        
+                        // แยกรายการตามสถานะ (ประกาศเป็น let เพื่อให้ใช้ได้ใน setTimeout)
+                        let allComparisons = uniqueComparisons;
+                        let fullMatchedComparisons = uniqueComparisons.filter(comp => comp.match_status === 'full_match');
+                        let partialMatchedComparisons = uniqueComparisons.filter(comp => comp.match_status === 'partial_match');
+                        let mismatchedComparisons = uniqueComparisons.filter(comp => comp.match_status === 'no_match');
                         
                         html += `<div style="margin-top: 15px;">`;
                         
@@ -2432,17 +3126,21 @@
                         
                         // Tab: ข้อมูลทั้งหมด
                         html += `<div class="comparison-tab-content active" id="comparison-tab-all">`;
+                        let allCount = 0;
                         allComparisons.forEach((comp, index) => {
-                            html += generateComparisonRowHTML(comp, index);
+                            html += generateComparisonRowHTML(comp, index, 'all');
+                            allCount++;
                         });
                         html += `</div>`;
                         
                         // Tab: ข้อมูลไม่ตรงกัน
                         html += `<div class="comparison-tab-content" id="comparison-tab-mismatch">`;
                         if (mismatchedComparisons.length > 0) {
+                            let mismatchCount = 0;
                             mismatchedComparisons.forEach((comp, index) => {
                                 const actualIndex = allComparisons.indexOf(comp);
-                                html += generateComparisonRowHTML(comp, actualIndex);
+                                html += generateComparisonRowHTML(comp, actualIndex, 'mismatch');
+                                mismatchCount++;
                             });
                         } else {
                             html += `<div style="text-align: center; padding: 40px; color: #94a3b8;">`;
@@ -2454,9 +3152,11 @@
                         // Tab: ตรงกันบางส่วน
                         html += `<div class="comparison-tab-content" id="comparison-tab-partial">`;
                         if (partialMatchedComparisons.length > 0) {
+                            let partialCount = 0;
                             partialMatchedComparisons.forEach((comp, index) => {
                                 const actualIndex = allComparisons.indexOf(comp);
-                                html += generateComparisonRowHTML(comp, actualIndex);
+                                html += generateComparisonRowHTML(comp, actualIndex, 'partial');
+                                partialCount++;
                             });
                         } else {
                             html += `<div style="text-align: center; padding: 40px; color: #94a3b8;">`;
@@ -2468,15 +3168,40 @@
                         // Tab: ข้อมูลที่ตรงกัน
                         html += `<div class="comparison-tab-content" id="comparison-tab-match">`;
                         if (fullMatchedComparisons.length > 0) {
+                            let matchCount = 0;
                             fullMatchedComparisons.forEach((comp, index) => {
                                 const actualIndex = allComparisons.indexOf(comp);
-                                html += generateComparisonRowHTML(comp, actualIndex);
+                                html += generateComparisonRowHTML(comp, actualIndex, 'match');
+                                matchCount++;
                             });
                         } else {
                             html += `<div style="text-align: center; padding: 40px; color: #94a3b8;">`;
                             html += `❌ ไม่มีข้อมูลที่ตรงกัน`;
                             html += `</div>`;
                         }
+                        html += `</div>`;
+                        
+                        // Pagination Controls
+                        html += `<div class="comparison-pagination-container" style="margin-top: 20px; padding: 15px; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">`;
+                        
+                        // ตัวเลือกแสดงรายการต่อหน้า
+                        html += `<div style="display: flex; align-items: center; gap: 10px;">`;
+                        html += `<span style="color: #cbd5e1; font-size: 0.9em;">แสดงรายการ:</span>`;
+                        html += `<select id="comparisonItemsPerPage" onchange="changeComparisonItemsPerPage(this.value)" style="padding: 6px 12px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: #fafafa; font-size: 0.9em; cursor: pointer;">`;
+                        html += `<option value="10" ${comparisonPagination.itemsPerPage === 10 ? 'selected' : ''}>10</option>`;
+                        html += `<option value="25" ${comparisonPagination.itemsPerPage === 25 ? 'selected' : ''}>25</option>`;
+                        html += `<option value="50" ${comparisonPagination.itemsPerPage === 50 ? 'selected' : ''}>50</option>`;
+                        html += `<option value="100" ${comparisonPagination.itemsPerPage === 100 ? 'selected' : ''}>100</option>`;
+                        html += `</select>`;
+                        html += `<span style="color: #94a3b8; font-size: 0.85em;">รายการต่อหน้า</span>`;
+                        html += `</div>`;
+                        
+                        // Pagination Info และ Navigation
+                        html += `<div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">`;
+                        html += `<div id="comparisonPaginationInfo" style="color: #cbd5e1; font-size: 0.9em;"></div>`;
+                        html += `<div id="comparisonPaginationNav" style="display: flex; gap: 5px;"></div>`;
+                        html += `</div>`;
+                        
                         html += `</div>`;
                         
                         html += `</div>`;
@@ -2497,7 +3222,179 @@
                         }
                         html += `</div>`;
                     }
-                    details.innerHTML = html;
+                    
+                    // ล้าง HTML เดิมทั้งหมดก่อนเพื่อป้องกันการสร้างซ้ำ
+                    if (details) {
+                        // ลบ comparison elements ทั้งหมดก่อน (ใช้ data-index แทน id selector)
+                        const existingComparisonElements = details.querySelectorAll('.comparison-tabs, .comparison-tab-content, .comparison-row, [data-index]');
+                        existingComparisonElements.forEach(el => el.remove());
+                        
+                        // ใช้ innerHTML = '' เพื่อล้างทั้งหมดก่อน
+                        details.innerHTML = '';
+                        
+                        // รอให้ DOM อัปเดตก่อน
+                        await new Promise(resolve => setTimeout(resolve, 10));
+                        
+                        // ตั้งค่า HTML ใหม่
+                        details.innerHTML = html;
+                        
+                        // ลบ duplicates ทันทีหลังจาก set HTML (ไม่ต้องรอ setTimeout)
+                        const removeDuplicatesImmediately = () => {
+                            const allTab = document.getElementById('comparison-tab-all');
+                            if (allTab) {
+                                const rows = Array.from(allTab.querySelectorAll('.comparison-row'));
+                                
+                                if (rows.length === 0) {
+                                    return;
+                                }
+                                
+                                const seenIndices = new Map(); // Map<index, firstRowElement>
+                                const duplicatesToRemove = [];
+                                
+                                rows.forEach((row, idx) => {
+                                    let rowIndex = row.getAttribute('data-index');
+                                    
+                                    // ถ้าไม่มี data-index ให้ข้าม (ไม่ควรลบ)
+                                    if (rowIndex === null || rowIndex === undefined || rowIndex === '') {
+                                        return;
+                                    }
+                                    
+                                    if (seenIndices.has(rowIndex)) {
+                                        // พบ duplicate - เก็บไว้เพื่อลบ (เก็บเฉพาะตัวแรก)
+                                        duplicatesToRemove.push(row);
+                                    } else {
+                                        seenIndices.set(rowIndex, row);
+                                    }
+                                });
+                                
+                                // ตรวจสอบว่ามี duplicates จริงๆ และไม่ลบทุกอย่าง
+                                if (duplicatesToRemove.length > 0 && duplicatesToRemove.length < rows.length) {
+                                    duplicatesToRemove.forEach(row => row.remove());
+                                } else if (duplicatesToRemove.length > 0 && duplicatesToRemove.length >= rows.length) {
+                                    // ไม่ลบถ้าจะลบทุกอย่าง (ป้องกัน data loss)
+                                }
+                            }
+                        };
+                        
+                        // รอให้ DOM อัปเดตก่อนตรวจสอบ (เพิ่ม delay เพื่อให้แน่ใจว่า HTML ถูก render แล้ว)
+                        setTimeout(removeDuplicatesImmediately, 50);
+                        
+                        // ตรวจสอบและตั้งค่า active tab ให้ถูกต้อง
+                        setTimeout(() => {
+                            const allTab = document.getElementById('comparison-tab-all');
+                            if (allTab && !allTab.classList.contains('active')) {
+                                // ถ้า all tab ไม่ได้ active ให้ตั้งค่าเป็น active
+                                document.querySelectorAll('.comparison-tab-content').forEach(content => {
+                                    content.classList.remove('active');
+                                });
+                                    allTab.classList.add('active');
+                                    
+                                    // อัปเดต tab button
+                                    document.querySelectorAll('.comparison-tab').forEach(tab => tab.classList.remove('active'));
+                                    const allTabButton = document.querySelector('.comparison-tab[onclick*="switchComparisonTab(\'all\')"]');
+                                    if (allTabButton) {
+                                        allTabButton.classList.add('active');
+                                    }
+                                }
+                            
+                            // อัปเดต pagination หลังจากตั้งค่า tab
+                            comparisonPagination.currentTab = 'all';
+                            updateComparisonPagination();
+                        }, 50);
+                        
+                        // ตรวจสอบอีกครั้งหลังจาก set HTML
+                        setTimeout(() => {
+                            // ตรวจสอบและลบ duplicates จากทุก tab
+                            const allTabs = ['all', 'mismatch', 'partial', 'match'];
+                            allTabs.forEach(tabName => {
+                                const tabElement = document.getElementById(`comparison-tab-${tabName}`);
+                                if (!tabElement) return;
+                                
+                                const rows = Array.from(tabElement.querySelectorAll('.comparison-row'));
+                                if (rows.length === 0) return;
+                                
+                                // ตรวจสอบ duplicates โดยใช้ data-index
+                                const seenIndices = new Map(); // Map<index, firstRowElement>
+                                const duplicatesToRemove = [];
+                                
+                                rows.forEach((row, idx) => {
+                                    let rowIndex = row.getAttribute('data-index');
+                                    
+                                    // ถ้าไม่มี data-index ให้สร้างจาก index (แต่ต้องระวังว่าอาจทำให้ซ้ำได้)
+                                    if (rowIndex === null || rowIndex === undefined || rowIndex === '') {
+                                        // ใช้ index จากตำแหน่งใน DOM แทน
+                                        rowIndex = String(idx);
+                                        row.setAttribute('data-index', rowIndex);
+                                    }
+                                    
+                                    if (seenIndices.has(rowIndex)) {
+                                        // พบ duplicate - เก็บไว้เพื่อลบ (เก็บเฉพาะตัวแรก)
+                                        duplicatesToRemove.push(row);
+                                    } else {
+                                        seenIndices.set(rowIndex, row);
+                                    }
+                                });
+                                
+                                // ลบ duplicates เฉพาะถ้ามีจริงๆ และต้องไม่ลบทุกอย่าง
+                                if (duplicatesToRemove.length > 0 && duplicatesToRemove.length < rows.length) {
+                                    duplicatesToRemove.forEach(row => row.remove());
+                                }
+                            });
+                            
+                            // ตรวจสอบว่า tab content แสดงผลหรือไม่
+                            const activeTab = document.querySelector('.comparison-tab-content.active');
+                            if (!activeTab) {
+                                const allTab = document.getElementById('comparison-tab-all');
+                                if (allTab) {
+                                    allTab.classList.add('active');
+                                    // อัปเดต tab button
+                                    document.querySelectorAll('.comparison-tab').forEach(tab => tab.classList.remove('active'));
+                                    const allTabButton = document.querySelector('.comparison-tab[onclick*="switchComparisonTab(\'all\')"]');
+                                    if (allTabButton) {
+                                        allTabButton.classList.add('active');
+                                    }
+                                }
+                            }
+                            
+                            // อัปเดต pagination หลังจากตรวจสอบ duplicates
+                            updateComparisonPagination();
+                        }, 100);
+                    }
+                    
+                    // ตรวจสอบว่าข้อมูลแสดงผลหรือไม่หลังจาก 1 วินาที
+                    setTimeout(() => {
+                        const activeTab = document.querySelector('.comparison-tab-content.active');
+                        const visibleRows = activeTab ? Array.from(activeTab.querySelectorAll('.comparison-row')) : [];
+                        
+                        if (!activeTab) {
+                            // พยายามตั้งค่า all tab เป็น active อีกครั้ง
+                            const allTab = document.getElementById('comparison-tab-all');
+                            if (allTab) {
+                                document.querySelectorAll('.comparison-tab-content').forEach(content => {
+                                    content.classList.remove('active');
+                                });
+                                allTab.classList.add('active');
+                                document.querySelectorAll('.comparison-tab').forEach(tab => tab.classList.remove('active'));
+                                const allTabButton = document.querySelector('.comparison-tab[onclick*="switchComparisonTab(\'all\')"]');
+                                if (allTabButton) {
+                                    allTabButton.classList.add('active');
+                                }
+                            }
+                        } else if (visibleRows.length === 0 && data.comparisons && data.comparisons.length > 0) {
+                            // ตรวจสอบว่า rows ถูกซ่อนหรือไม่
+                            const allRowsInTab = Array.from(activeTab.querySelectorAll('.comparison-row'));
+                            if (allRowsInTab.length > 0) {
+                                // พยายามแสดง rows ที่ถูกซ่อน
+                                allRowsInTab.forEach((row) => {
+                                    const style = window.getComputedStyle(row);
+                                    if (style.display === 'none' || style.visibility === 'hidden') {
+                                        row.style.display = 'block';
+                                        row.style.visibility = 'visible';
+                                    }
+                                });
+                            }
+                        }
+                    }, 1000);
                     
                     // แสดงปุ่มส่งออก Excel เมื่อมีข้อมูล
                     const exportBtn = document.getElementById('exportExcelBtn');
@@ -2519,35 +3416,194 @@
             }
         }
         
-        function generateComparisonRowHTML(comp, index) {
-            // กำหนด match_status จาก comp.match_status หรือคำนวณจาก comp.match
-            const matchStatus = comp.match_status || (comp.match ? 'full_match' : 'no_match');
-            const matchedCount = comp.matched_count || 0;
-            const totalCount = comp.total_count || 0;
-            
-            // กำหนดสีและข้อความตาม match_status
-            let matchClass, matchText, matchColor;
-            if (matchStatus === 'full_match') {
-                matchClass = 'match';
-                matchText = 'ตรงกัน';
-                matchColor = '#10b981'; // สีเขียว
-            } else if (matchStatus === 'partial_match') {
-                matchClass = 'partial-match';
-                matchText = `ตรงกันบางส่วน (${matchedCount}/${totalCount})`;
-                matchColor = '#fbbf24'; // สีเหลือง
-            } else {
-                matchClass = 'mismatch';
-                matchText = 'ไม่ตรงกัน';
-                matchColor = '#ef4444'; // สีแดง
-            }
-            
+        function generateComparisonRowHTML(comp, index, tabName = 'all') {
             const purchaseData = comp.purchase_data || {};
             const ocrData = comp.ocr_data || {};
             const matchDetails = comp.match_details || {};
             
+            // ดึงข้อมูลบริษัทจากระบบ
+            const companyName = (document.getElementById('companyName')?.textContent || '').trim();
+            const companyTaxId = (document.getElementById('companyTaxId')?.textContent || '').trim();
+            const companyAddress = (document.getElementById('companyAddress')?.textContent || '').trim();
+            
+            const buyerName = (ocrData.buyer_name || '').trim();
+            const buyerTaxId = (ocrData.buyer_tax_id || '').trim();
+            const buyerAddress = (ocrData.buyer_address || '').trim();
+            
+            // ฟังก์ชัน normalize สำหรับเปรียบเทียบ
+            function normalizeText(text) {
+                if (!text) return '';
+                return text
+                    .toLowerCase()
+                    .replace(/\s+/g, '')
+                    .replace(/[.,\-_()]/g, '')
+                    .replace(/บริษัท|จำกัด|co\.?|ltd\.?/gi, '')
+                    .trim();
+            }
+            
+            function normalizeAddress(address) {
+                if (!address) return '';
+                return address
+                    .toLowerCase()
+                    .replace(/ห้องเลขที่\s*-\s*|ชั้นที่\s*-\s*|ถนน\s*-\s*/g, '')
+                    .replace(/ห้องเลขที่|ชั้นที่|เลขที่|หมู่ที่|ตำบล|อำเภอ|จังหวัด|หมู่บ้าน/g, '')
+                    .replace(/\s+/g, '')
+                    .replace(/[.,\-_]/g, '')
+                    .trim();
+            }
+            
+            // คำนวณผลการเปรียบเทียบข้อมูลบริษัท
+            let companyDataMatches = 0;
+            let companyDataTotal = 0;
+            let companyNameMatch = false;
+            let companyTaxIdMatch = false;
+            let companyAddressMatch = false;
+            
+            // เปรียบเทียบชื่อ
+            if (buyerName && buyerName !== '-' && companyName && companyName !== '-') {
+                companyDataTotal++;
+                const normalizedBuyerName = normalizeText(buyerName);
+                const normalizedCompanyName = normalizeText(companyName);
+                
+                if (normalizedBuyerName === normalizedCompanyName || 
+                    normalizedBuyerName.includes(normalizedCompanyName) || 
+                    normalizedCompanyName.includes(normalizedBuyerName)) {
+                    companyNameMatch = true;
+                    companyDataMatches++;
+                } else {
+                    const minLength = Math.min(normalizedBuyerName.length, normalizedCompanyName.length);
+                    const maxLength = Math.max(normalizedBuyerName.length, normalizedCompanyName.length);
+                    if (minLength > 0) {
+                        let matchingChars = 0;
+                        for (let i = 0; i < minLength; i++) {
+                            if (normalizedBuyerName[i] === normalizedCompanyName[i]) {
+                                matchingChars++;
+                            }
+                        }
+                        const similarity = matchingChars / maxLength;
+                        if (similarity >= 0.8) {
+                            companyNameMatch = true;
+                            companyDataMatches++;
+                        }
+                    }
+                }
+            }
+            
+            // เปรียบเทียบเลขประจำตัวผู้เสียภาษี
+            if (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') {
+                companyDataTotal++;
+                const normalizedBuyerTaxId = buyerTaxId.replace(/\s+/g, '').replace(/[-\s]/g, '');
+                const normalizedCompanyTaxId = companyTaxId.replace(/\s+/g, '').replace(/[-\s]/g, '');
+                if (normalizedBuyerTaxId === normalizedCompanyTaxId) {
+                    companyTaxIdMatch = true;
+                    companyDataMatches++;
+                }
+            }
+            
+            // เปรียบเทียบที่อยู่
+            if (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-') {
+                companyDataTotal++;
+                const normalizedBuyerAddress = normalizeAddress(buyerAddress);
+                const normalizedCompanyAddress = normalizeAddress(companyAddress);
+                
+                if (normalizedBuyerAddress === normalizedCompanyAddress) {
+                    companyAddressMatch = true;
+                    companyDataMatches++;
+                } else {
+                    const extractKeyParts = (addr) => {
+                        const parts = [];
+                        const houseNo = addr.match(/\d+\/\d+|\d+/g);
+                        if (houseNo) parts.push(...houseNo);
+                        const postalCode = addr.match(/\b\d{5}\b/g);
+                        if (postalCode) parts.push(...postalCode);
+                        const keywords = ['หมู่บ้าน', 'ตำบล', 'อำเภอ', 'จังหวัด', 'นนทบุรี', 'มหาสวัสดิ์', 'บางกรวย', 'อัยย์', 'ราชพฤกษ์'];
+                        keywords.forEach(keyword => {
+                            if (addr.toLowerCase().includes(keyword.toLowerCase())) {
+                                parts.push(keyword.toLowerCase());
+                            }
+                        });
+                        return parts;
+                    };
+                    
+                    const buyerKeyParts = extractKeyParts(buyerAddress);
+                    const companyKeyParts = extractKeyParts(companyAddress);
+                    const matchingParts = buyerKeyParts.filter(part => 
+                        companyKeyParts.some(cp => cp === part || cp.includes(part) || part.includes(cp))
+                    );
+                    const matchRatio = buyerKeyParts.length > 0 ? matchingParts.length / Math.max(buyerKeyParts.length, companyKeyParts.length) : 0;
+                    
+                    if (matchRatio >= 0.7 || (matchingParts.length >= 3 && buyerKeyParts.length > 0)) {
+                        companyAddressMatch = true;
+                        companyDataMatches++;
+                    }
+                }
+                
+                // ตรวจสอบว่าถูกอนุมัติแล้วหรือไม่
+                const addressApprovalKey = `${index}-address_match`;
+                const isAddressApproved = comparisonApprovals[addressApprovalKey] || false;
+                if (isAddressApproved && !companyAddressMatch) {
+                    companyDataMatches++; // ถ้าถูกอนุมัติแล้วให้นับเป็น match
+                }
+            }
+            
+            // คำนวณสถานะเอกสาร (เดิม) - แยกจากข้อมูลบริษัท
+            const documentMatchedCount = comp.matched_count || 0;
+            const documentTotalCount = comp.total_count || 0;
+            
+            // กำหนด match_status ของเอกสาร
+            let documentMatchStatus = comp.match_status || (comp.match ? 'full_match' : 'no_match');
+            
+            // คำนวณสถานะข้อมูลบริษัท (ใหม่) - แยกจากเอกสาร
+            let companyDataMatchStatus = 'no_match';
+            if (companyDataTotal > 0) {
+                if (companyDataMatches === companyDataTotal) {
+                    companyDataMatchStatus = 'full_match';
+                } else if (companyDataMatches > 0) {
+                    companyDataMatchStatus = 'partial_match';
+                } else {
+                    companyDataMatchStatus = 'no_match';
+                }
+            }
+            
+            // กำหนดสีและข้อความตาม match_status ของเอกสาร
+            let documentMatchClass, documentMatchText, documentMatchColor;
+            if (documentMatchStatus === 'full_match') {
+                documentMatchClass = 'match';
+                documentMatchText = 'ตรงกัน';
+                documentMatchColor = '#10b981'; // สีเขียว
+            } else if (documentMatchStatus === 'partial_match') {
+                documentMatchClass = 'partial-match';
+                documentMatchText = `ตรงกันบางส่วน (${documentMatchedCount}/${documentTotalCount})`;
+                documentMatchColor = '#fbbf24'; // สีเหลือง
+            } else {
+                documentMatchClass = 'mismatch';
+                documentMatchText = 'ไม่ตรงกัน';
+                documentMatchColor = '#ef4444'; // สีแดง
+            }
+            
+            // กำหนดสีและข้อความตาม match_status ของข้อมูลบริษัท
+            let companyDataMatchClass, companyDataMatchText, companyDataMatchColor;
+            if (companyDataTotal > 0) {
+                if (companyDataMatchStatus === 'full_match') {
+                    companyDataMatchClass = 'match';
+                    companyDataMatchText = `ตรงกัน (${companyDataMatches}/${companyDataTotal})`;
+                    companyDataMatchColor = '#10b981'; // สีเขียว
+                } else if (companyDataMatchStatus === 'partial_match') {
+                    companyDataMatchClass = 'partial-match';
+                    companyDataMatchText = `ตรงกันบางส่วน (${companyDataMatches}/${companyDataTotal})`;
+                    companyDataMatchColor = '#fbbf24'; // สีเหลือง
+                } else {
+                    companyDataMatchClass = 'mismatch';
+                    companyDataMatchText = `ไม่ตรงกัน (${companyDataMatches}/${companyDataTotal})`;
+                    companyDataMatchColor = '#ef4444'; // สีแดง
+                }
+            }
+            
             let html = '';
             
-            html += `<div class="comparison-row" id="comparison-row-${index}">`;
+            // ใช้ tabName และ index เพื่อสร้าง unique ID สำหรับแต่ละ tab (แก้ปัญหา duplicate IDs)
+            const uniqueId = `comparison-row-${tabName}-${index}`;
+            html += `<div class="comparison-row" id="${uniqueId}" data-index="${index}" data-tab="${tabName}">`;
             
             // Header (คลิกได้)
             html += `<div class="comparison-row-header" onclick="toggleComparisonRow(${index})">`;
@@ -2555,9 +3611,9 @@
             html += `<div class="comparison-row-number">${index + 1}</div>`;
             html += `<div class="comparison-row-title">`;
             // แสดงชื่อบริษัทและเลขที่อ้างอิงจากรายงานภาษีซื้อ
-            const companyName = purchaseData?.contact || ocrData?.company_name || '-';
+            const contactCompanyName = purchaseData?.contact || ocrData?.company_name || '-';
             const referenceNo = purchaseData?.reference_no || comp.invoice_no || ocrData?.document_no || `รายการที่ ${index + 1}`;
-            html += `<div class="comparison-row-title-main">${companyName}</div>`;
+            html += `<div class="comparison-row-title-main">${contactCompanyName}</div>`;
             html += `<div class="comparison-row-title-sub" style="color: #94a3b8; font-size: 0.85em; margin-top: 2px;">เลขที่อ้างอิง: ${referenceNo}</div>`;
             // แสดงชื่อไฟล์ OCR (ถ้ามี)
             const ocrFilename = ocrData?.filename || ocrData?.old_filename || null;
@@ -2575,7 +3631,18 @@
             html += `</div>`;
             html += `</div>`;
             html += `</div>`;
-            html += `<div class="comparison-row-status ${matchClass}" style="color: ${matchColor}; background-color: ${matchColor}20; border: 1px solid ${matchColor};">${matchText}</div>`;
+            
+            // แสดงสถานะเอกสาร (เดิม)
+            html += `<div class="comparison-row-status ${documentMatchClass}" style="color: ${documentMatchColor}; background-color: ${documentMatchColor}20; border: 1px solid ${documentMatchColor}; margin-right: 8px;">${documentMatchText}</div>`;
+            
+            // แสดงสถานะข้อมูลบริษัท (ใหม่) - ถ้ามีข้อมูลบริษัท
+            if (companyDataTotal > 0) {
+                html += `<div class="comparison-row-status ${companyDataMatchClass}" style="color: ${companyDataMatchColor}; background-color: ${companyDataMatchColor}20; border: 1px solid ${companyDataMatchColor}; margin-right: 8px;" title="สถานะข้อมูลบริษัท (ชื่อ, เลขประจำตัวผู้เสียภาษี, ที่อยู่)">`;
+                html += `<span style="font-size: 0.9em;">🏢</span> `;
+                html += `${companyDataMatchText}`;
+                html += `</div>`;
+            }
+            
             html += `<div class="comparison-row-toggle">▼</div>`;
             html += `</div>`;
             
@@ -2585,6 +3652,9 @@
             
             // ตรวจสอบว่า row นี้อยู่ในโหมด "ตรวจด้วยตัวเอง" หรือไม่
             const isSelfCheckMode = selfCheckMode[index] || false;
+            
+            // Container สำหรับฝั่งภาษีซื้อและไฟล์ OCR
+            html += `<div class="comparison-sides-container">`;
             
             // ฝั่งภาษีซื้อ (เพิ่ม class self-check-mode ถ้าอยู่ในโหมด "ตรวจด้วยตัวเอง")
             html += `<div class="comparison-side purchase-tax${isSelfCheckMode ? ' self-check-mode' : ''}">`;
@@ -2707,9 +3777,9 @@
                 html += `<div style="color: #ef4444; text-align: center; padding: 20px;">ไม่พบข้อมูล</div>`;
             }
             
-            html += `</div>`;
+            html += `</div>`; // ปิดฝั่งภาษีซื้อ
             
-            // ฝั่ง OCR
+            // ฝั่ง OCR (ย้ายมาด้านขวาบน)
             html += `<div class="comparison-side ocr">`;
             html += `<div class="comparison-side-header">🤖 ไฟล์ OCR</div>`;
             
@@ -2783,22 +3853,8 @@
                 html += `<span class="comparison-field-value">${ocrData.document_status || '-'}</span>`;
                 html += `</div>`;
                 
-                html += `<div class="comparison-field">`;
-                html += `<span class="comparison-field-label">ชื่อผู้ซื้อ:</span>`;
-                html += `<span class="comparison-field-value">${ocrData.buyer_name || '-'}</span>`;
-                html += `</div>`;
                 
-                html += `<div class="comparison-field">`;
-                html += `<span class="comparison-field-label">เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ:</span>`;
-                html += `<span class="comparison-field-value">${ocrData.buyer_tax_id || '-'}</span>`;
-                html += `</div>`;
-                
-                html += `<div class="comparison-field">`;
-                html += `<span class="comparison-field-label">ที่อยู่ผู้ซื้อ:</span>`;
-                html += `<span class="comparison-field-value" style="word-break: break-word;">${ocrData.buyer_address || '-'}</span>`;
-                html += `</div>`;
-                
-                // แสดงรายการสินค้า (ถ้ามี) - ย้ายมาหลังที่อยู่ผู้ซื้อ
+                // แสดงรายการสินค้า (ถ้ามี)
                 if (ocrData.items && Array.isArray(ocrData.items) && ocrData.items.length > 0) {
                     html += `<div class="comparison-field" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #334155;">`;
                     html += `<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 15px;">`;
@@ -2882,10 +3938,197 @@
                 html += `<div style="color: #ef4444; text-align: center; padding: 20px;">ไม่พบข้อมูล</div>`;
             }
             
-            html += `</div>`;
-            html += `</div>`;
-            html += `</div>`;
-            html += `</div>`;
+            html += `</div>`; // ปิดฝั่ง OCR
+            
+            html += `</div>`; // ปิด comparison-sides-container
+            
+            // ส่วนข้อมูลบริษัท (แนวนอน) - วางไว้ด้านล่าง
+            // ตรวจสอบว่ามีข้อมูลบริษัทในระบบหรือไม่
+            const hasCompanyDataInSystem = (companyName && companyName !== '-') ||
+                                          (companyTaxId && companyTaxId !== '-') ||
+                                          (companyAddress && companyAddress !== '-');
+            
+            // ตรวจสอบว่ามีข้อมูลบริษัทที่ต้องเปรียบเทียบหรือไม่
+            const hasCompanyDataToCompare = (buyerName && buyerName !== '-' && companyName && companyName !== '-') ||
+                                            (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') ||
+                                            (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-');
+            
+            // ตรวจสอบว่าถูกอนุมัติข้อมูลบริษัททั้งหมดแล้วหรือไม่
+            const companyDataApprovalKey = `${index}-company_data_all`;
+            const isCompanyDataApproved = comparisonApprovals[companyDataApprovalKey] || false;
+            
+            // ตรวจสอบว่ามีข้อมูลที่ไม่ตรงกันหรือไม่
+            const hasMismatch = (!companyNameMatch && buyerName && buyerName !== '-' && companyName && companyName !== '-') ||
+                               (!companyTaxIdMatch && buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') ||
+                               (!companyAddressMatch && buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-');
+            
+            // แสดงสถานะ "ไม่มีข้อมูลบริษัท" ถ้าไม่มีข้อมูลบริษัทในระบบเลย
+            if (!hasCompanyDataInSystem) {
+                html += `<div class="company-data-section" style="width: 100%; margin: 20px 0; padding: 15px; background: linear-gradient(135deg, #fbbf2415 0%, #f59e0b15 100%); border-radius: 10px; border: 2px solid #fbbf24; border-left: 5px solid #fbbf24;">`;
+                html += `<div style="display: flex; align-items: center; gap: 12px;">`;
+                html += `<span style="font-size: 1.8em;">⚠️</span>`;
+                html += `<div style="flex: 1;">`;
+                html += `<div style="font-weight: 700; color: #fbbf24; font-size: 1.1em; margin-bottom: 4px;">ไม่มีข้อมูลบริษัท</div>`;
+                html += `<div style="color: #94a3b8; font-size: 0.9em;">ระบบไม่พบข้อมูลบริษัทในระบบ กรุณาเพิ่มข้อมูลบริษัทก่อนทำการตรวจสอบ</div>`;
+                html += `</div>`;
+                html += `</div>`;
+                html += `</div>`;
+            } else if (hasCompanyDataToCompare) {
+                // แสดงข้อมูลบริษัทแบบแนวนอน
+                html += `<div class="company-data-section" style="width: 100%; margin: 20px 0; padding: 15px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 10px; border: 2px solid #334155; border-left: 5px solid #60a5fa;">`;
+                
+                // ส่วนหัว
+                html += `<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">`;
+                html += `<div style="display: flex; align-items: center; gap: 10px;">`;
+                html += `<span style="font-size: 1.5em;">🏢</span>`;
+                html += `<div>`;
+                html += `<div style="font-weight: 700; color: #60a5fa; font-size: 1.1em; margin-bottom: 4px;">ข้อมูลบริษัท</div>`;
+                html += `<div style="color: #94a3b8; font-size: 0.85em;">เปรียบเทียบข้อมูลจาก OCR กับข้อมูลบริษัท</div>`;
+                html += `</div>`;
+                html += `</div>`;
+                
+                // ปุ่มอนุมัติข้อมูลบริษัททั้งหมด
+                if (hasMismatch && !isCompanyDataApproved) {
+                    html += `<button onclick="approveCompanyData(${index})" data-field-key="company_data_all" data-field-index="${index}" style="padding: 10px 20px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9em; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.3s; white-space: nowrap; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)';" title="อนุมัติข้อมูลบริษัททั้งหมด (ชื่อ, เลขประจำตัวผู้เสียภาษี, ที่อยู่)">`;
+                    html += `<span style="font-size: 1.2em;">✓</span>`;
+                    html += `<span>อนุมัติข้อมูลบริษัท</span>`;
+                    html += `</button>`;
+                } else if (isCompanyDataApproved) {
+                    html += `<button onclick="cancelCompanyDataApproval(${index})" data-field-key="company_data_all" data-field-index="${index}" style="padding: 10px 20px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9em; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.3s; white-space: nowrap; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(239, 68, 68, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(239, 68, 68, 0.3)';" title="ยกเลิกการอนุมัติข้อมูลบริษัท">`;
+                    html += `<span style="font-size: 1.2em;">✕</span>`;
+                    html += `<span>ยกเลิกการอนุมัติ</span>`;
+                    html += `</button>`;
+                }
+                
+                html += `</div>`;
+                
+                // ส่วนแสดงผลการเปรียบเทียบแบบแนวนอน (3 คอลัมน์)
+                html += `<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 15px;">`;
+                
+                // คอลัมน์ที่ 1: ชื่อ
+                if (buyerName && buyerName !== '-' && companyName && companyName !== '-') {
+                    const nameApprovalKey = `${index}-company_name_match`;
+                    const isNameApproved = comparisonApprovals[nameApprovalKey] || false;
+                    const nameMatchColor = isNameApproved ? '#10b981' : (companyNameMatch ? '#10b981' : '#ef4444');
+                    const nameMatchText = isNameApproved ? '✅ อนุมัติแล้ว' : (companyNameMatch ? '✅ ตรงกัน' : '❌ ไม่ตรงกัน');
+                    
+                    html += `<div style="padding: 12px; background: ${nameMatchColor}15; border-radius: 8px; border-left: 4px solid ${nameMatchColor}; flex: 1;">`;
+                    html += `<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">`;
+                    html += `<div style="display: flex; align-items: center; gap: 8px;">`;
+                    html += `<span style="font-size: 1.1em;">🏢</span>`;
+                    html += `<span style="font-weight: 600; color: ${nameMatchColor}; font-size: 0.95em;">ผลการเปรียบเทียบชื่อ: ${nameMatchText}</span>`;
+                    html += `</div>`;
+                    
+                    // ปุ่มอนุมัติชื่อ (แสดงเฉพาะเมื่อไม่ตรงกันหรือยังไม่ได้อนุมัติ)
+                    if (!isNameApproved && !companyNameMatch) {
+                        html += `<button onclick="approveField(${index}, 'company_name_match', 'ชื่อบริษัท')" data-field-key="company_name_match" data-field-index="${index}" style="padding: 6px 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="อนุมัติความไม่ตรงกันของชื่อ">`;
+                        html += `<span style="font-size: 1em;">✓</span> อนุมัติ`;
+                        html += `</button>`;
+                    } else if (isNameApproved) {
+                        html += `<button onclick="cancelApproval(${index}, 'company_name_match', 'ชื่อบริษัท')" data-field-key="company_name_match" data-field-index="${index}" style="padding: 6px 12px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(239, 68, 68, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="ยกเลิกการอนุมัติ">`;
+                        html += `<span style="font-size: 1em;">✕</span> ยกเลิก`;
+                        html += `</button>`;
+                    }
+                    
+                    html += `</div>`;
+                    html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ชื่อจาก OCR:</div>`;
+                    html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${buyerName}</div>`;
+                    html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ชื่อบริษัท:</div>`;
+                    html += `<div style="color: #cbd5e1; font-size: 0.9em; word-break: break-word;">${companyName}</div>`;
+                    html += `</div>`;
+                } else {
+                    html += `<div style="padding: 12px; background: #33415515; border-radius: 8px; border-left: 4px solid #334155; flex: 1;">`;
+                    html += `<div style="color: #94a3b8; font-size: 0.9em;">ไม่มีข้อมูลชื่อ</div>`;
+                    html += `</div>`;
+                }
+                
+                // คอลัมน์ที่ 2: เลขประจำตัวผู้เสียภาษี
+                if (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') {
+                    const taxIdApprovalKey = `${index}-company_tax_id_match`;
+                    const isTaxIdApproved = comparisonApprovals[taxIdApprovalKey] || false;
+                    const taxIdMatchColor = isTaxIdApproved ? '#10b981' : (companyTaxIdMatch ? '#10b981' : '#ef4444');
+                    const taxIdMatchText = isTaxIdApproved ? '✅ อนุมัติแล้ว' : (companyTaxIdMatch ? '✅ ตรงกัน' : '❌ ไม่ตรงกัน');
+                    
+                    html += `<div style="padding: 12px; background: ${taxIdMatchColor}15; border-radius: 8px; border-left: 4px solid ${taxIdMatchColor}; flex: 1;">`;
+                    html += `<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">`;
+                    html += `<div style="display: flex; align-items: center; gap: 8px;">`;
+                    html += `<span style="font-size: 1.1em;">🆔</span>`;
+                    html += `<span style="font-weight: 600; color: ${taxIdMatchColor}; font-size: 0.95em;">ผลการเปรียบเทียบเลขประจำตัวผู้เสียภาษี: ${taxIdMatchText}</span>`;
+                    html += `</div>`;
+                    
+                    // ปุ่มอนุมัติเลขประจำตัวผู้เสียภาษี (แสดงเฉพาะเมื่อไม่ตรงกันหรือยังไม่ได้อนุมัติ)
+                    if (!isTaxIdApproved && !companyTaxIdMatch) {
+                        html += `<button onclick="approveField(${index}, 'company_tax_id_match', 'เลขประจำตัวผู้เสียภาษี')" data-field-key="company_tax_id_match" data-field-index="${index}" style="padding: 6px 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="อนุมัติความไม่ตรงกันของเลขประจำตัวผู้เสียภาษี">`;
+                        html += `<span style="font-size: 1em;">✓</span> อนุมัติ`;
+                        html += `</button>`;
+                    } else if (isTaxIdApproved) {
+                        html += `<button onclick="cancelApproval(${index}, 'company_tax_id_match', 'เลขประจำตัวผู้เสียภาษี')" data-field-key="company_tax_id_match" data-field-index="${index}" style="padding: 6px 12px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(239, 68, 68, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="ยกเลิกการอนุมัติ">`;
+                        html += `<span style="font-size: 1em;">✕</span> ยกเลิก`;
+                        html += `</button>`;
+                    }
+                    
+                    html += `</div>`;
+                    html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">เลขจาก OCR:</div>`;
+                    html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px;">${buyerTaxId}</div>`;
+                    html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">เลขประจำตัวผู้เสียภาษี 13 หลัก:</div>`;
+                    html += `<div style="color: #cbd5e1; font-size: 0.9em;">${companyTaxId}</div>`;
+                    html += `</div>`;
+                } else {
+                    html += `<div style="padding: 12px; background: #33415515; border-radius: 8px; border-left: 4px solid #334155; flex: 1;">`;
+                    html += `<div style="color: #94a3b8; font-size: 0.9em;">ไม่มีข้อมูลเลขประจำตัวผู้เสียภาษี</div>`;
+                    html += `</div>`;
+                }
+                
+                // คอลัมน์ที่ 3: ที่อยู่
+                if (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-') {
+                    const addressApprovalKey = `${index}-address_match`;
+                    const isAddressApproved = comparisonApprovals[addressApprovalKey] || false;
+                    const addressMatchColor = isAddressApproved ? '#10b981' : (companyAddressMatch ? '#10b981' : '#ef4444');
+                    const addressMatchText = isAddressApproved ? '✅ อนุมัติแล้ว' : (companyAddressMatch ? '✅ ตรงกัน' : '❌ ไม่ตรงกัน');
+                    
+                    html += `<div style="padding: 12px; background: ${addressMatchColor}15; border-radius: 8px; border-left: 4px solid ${addressMatchColor}; flex: 1;">`;
+                    html += `<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">`;
+                    html += `<div style="display: flex; align-items: center; gap: 8px;">`;
+                    html += `<span style="font-size: 1.2em;">📍</span>`;
+                    html += `<span style="font-weight: 600; color: ${addressMatchColor}; font-size: 0.95em;">ผลการเปรียบเทียบที่อยู่: ${addressMatchText}</span>`;
+                    html += `</div>`;
+                    
+                    // ปุ่มอนุมัติที่อยู่ (แสดงเฉพาะเมื่อไม่ตรงกันหรือยังไม่ได้อนุมัติ)
+                    if (!isAddressApproved && !companyAddressMatch) {
+                        html += `<button onclick="approveField(${index}, 'address_match', 'ที่อยู่บริษัท')" data-field-key="address_match" data-field-index="${index}" style="padding: 6px 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="อนุมัติความไม่ตรงกันของที่อยู่">`;
+                        html += `<span style="font-size: 1em;">✓</span> อนุมัติ`;
+                        html += `</button>`;
+                    } else if (isAddressApproved) {
+                        html += `<button onclick="cancelApproval(${index}, 'address_match', 'ที่อยู่บริษัท')" data-field-key="address_match" data-field-index="${index}" style="padding: 6px 12px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(239, 68, 68, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="ยกเลิกการอนุมัติ">`;
+                        html += `<span style="font-size: 1em;">✕</span> ยกเลิก`;
+                        html += `</button>`;
+                    }
+                    
+                    html += `</div>`;
+                    html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ที่อยู่จาก OCR:</div>`;
+                    html += `<div style="color: #cbd5e1; font-size: 0.9em; padding: 8px; background: #0f172a; border-radius: 4px; word-break: break-word; max-height: 80px; overflow-y: auto;">${buyerAddress}</div>`;
+                    html += `</div>`;
+                } else if (buyerAddress && buyerAddress !== '-' && (!companyAddress || companyAddress === '-')) {
+                    html += `<div style="padding: 12px; background: #fbbf2415; border-radius: 8px; border-left: 4px solid #fbbf24; flex: 1;">`;
+                    html += `<div style="display: flex; align-items: center; gap: 8px;">`;
+                    html += `<span style="font-size: 1.2em;">⚠️</span>`;
+                    html += `<span style="color: #fbbf24; font-weight: 600; font-size: 0.9em;">ไม่สามารถเปรียบเทียบได้: ยังไม่มีข้อมูลที่อยู่บริษัท</span>`;
+                    html += `</div>`;
+                    html += `</div>`;
+                } else {
+                    html += `<div style="padding: 12px; background: #33415515; border-radius: 8px; border-left: 4px solid #334155; flex: 1;">`;
+                    html += `<div style="color: #94a3b8; font-size: 0.9em;">ไม่มีข้อมูลที่อยู่</div>`;
+                    html += `</div>`;
+                }
+                
+                html += `</div>`; // ปิด grid
+                html += `</div>`; // ปิด company-data-section
+            }
+            
+            // ปิด tag สำคัญทั้งหมด
+            html += `</div>`; // ปิด comparison-content-wrapper
+            html += `</div>`; // ปิด comparison-row-content
+            html += `</div>`; // ปิด comparison-row
             
             return html;
         }
@@ -2923,25 +4166,162 @@
             if (tabIndex >= 0 && tabs[tabIndex]) {
                 tabs[tabIndex].classList.add('active');
             }
+            
+            // อัปเดต pagination เมื่อเปลี่ยน tab
+            comparisonPagination.currentTab = tabName;
+            comparisonPagination.currentPage = 1; // รีเซ็ตหน้าเป็น 1 เมื่อเปลี่ยน tab
+            updateComparisonPagination();
+        }
+        
+        // ฟังก์ชันสำหรับเปลี่ยนจำนวนรายการต่อหน้า
+        function changeComparisonItemsPerPage(itemsPerPage) {
+            comparisonPagination.itemsPerPage = parseInt(itemsPerPage);
+            comparisonPagination.currentPage = 1; // รีเซ็ตหน้าเป็น 1 เมื่อเปลี่ยนจำนวนรายการต่อหน้า
+            updateComparisonPagination();
+        }
+        
+        // ฟังก์ชันสำหรับเปลี่ยนหน้า
+        function changeComparisonPage(page) {
+            comparisonPagination.currentPage = parseInt(page);
+            updateComparisonPagination();
+        }
+        
+        // ฟังก์ชันสำหรับอัปเดต pagination
+        function updateComparisonPagination() {
+            const activeTab = document.querySelector('.comparison-tab-content.active');
+            if (!activeTab) return;
+            
+            const allRows = Array.from(activeTab.querySelectorAll('.comparison-row'));
+            const totalItems = allRows.length;
+            const itemsPerPage = comparisonPagination.itemsPerPage;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const currentPage = Math.min(comparisonPagination.currentPage, totalPages || 1);
+            
+            // อัปเดต currentPage ถ้ามันเกิน totalPages
+            if (currentPage !== comparisonPagination.currentPage) {
+                comparisonPagination.currentPage = currentPage;
+            }
+            
+            // คำนวณ range ของรายการที่จะแสดง
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+            
+            // ซ่อน/แสดง rows ตาม pagination
+            allRows.forEach((row, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            // อัปเดต pagination info
+            const paginationInfo = document.getElementById('comparisonPaginationInfo');
+            if (paginationInfo) {
+                if (totalItems === 0) {
+                    paginationInfo.textContent = 'ไม่พบรายการ';
+                } else {
+                    paginationInfo.textContent = `แสดง ${startIndex + 1}-${endIndex} จาก ${totalItems} รายการ`;
+                }
+            }
+            
+            // อัปเดต pagination navigation
+            const paginationNav = document.getElementById('comparisonPaginationNav');
+            if (paginationNav && totalPages > 1) {
+                let navHtml = '';
+                
+                // ปุ่ม Previous
+                if (currentPage > 1) {
+                    navHtml += `<button onclick="changeComparisonPage(${currentPage - 1})" style="padding: 6px 12px; background: #334155; color: #fafafa; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">‹ ก่อนหน้า</button>`;
+                } else {
+                    navHtml += `<button disabled style="padding: 6px 12px; background: #1e293b; color: #64748b; border: 1px solid #334155; border-radius: 6px; font-size: 0.85em; cursor: not-allowed;">‹ ก่อนหน้า</button>`;
+                }
+                
+                // แสดงหมายเลขหน้า
+                const maxVisiblePages = 5;
+                let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+                let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+                
+                // ปรับ startPage ถ้า endPage ใกล้ totalPages
+                if (endPage - startPage < maxVisiblePages - 1) {
+                    startPage = Math.max(1, endPage - maxVisiblePages + 1);
+                }
+                
+                // ปุ่มหน้าแรก
+                if (startPage > 1) {
+                    navHtml += `<button onclick="changeComparisonPage(1)" style="padding: 6px 12px; background: #334155; color: #fafafa; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">1</button>`;
+                    if (startPage > 2) {
+                        navHtml += `<span style="color: #94a3b8; padding: 0 5px;">...</span>`;
+                    }
+                }
+                
+                // หมายเลขหน้า
+                for (let i = startPage; i <= endPage; i++) {
+                    if (i === currentPage) {
+                        navHtml += `<button disabled style="padding: 6px 12px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 6px; font-size: 0.85em; font-weight: 600; cursor: default;">${i}</button>`;
+                    } else {
+                        navHtml += `<button onclick="changeComparisonPage(${i})" style="padding: 6px 12px; background: #334155; color: #fafafa; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">${i}</button>`;
+                    }
+                }
+                
+                // ปุ่มหน้าสุดท้าย
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) {
+                        navHtml += `<span style="color: #94a3b8; padding: 0 5px;">...</span>`;
+                    }
+                    navHtml += `<button onclick="changeComparisonPage(${totalPages})" style="padding: 6px 12px; background: #334155; color: #fafafa; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">${totalPages}</button>`;
+                }
+                
+                // ปุ่ม Next
+                if (currentPage < totalPages) {
+                    navHtml += `<button onclick="changeComparisonPage(${currentPage + 1})" style="padding: 6px 12px; background: #334155; color: #fafafa; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">ถัดไป ›</button>`;
+                } else {
+                    navHtml += `<button disabled style="padding: 6px 12px; background: #1e293b; color: #64748b; border: 1px solid #334155; border-radius: 6px; font-size: 0.85em; cursor: not-allowed;">ถัดไป ›</button>`;
+                }
+                
+                paginationNav.innerHTML = navHtml;
+            } else if (paginationNav) {
+                paginationNav.innerHTML = '';
+            }
         }
         
         // Helper function: หา row element ใน tab ที่ active อยู่
         function findRowInActiveTab(index) {
             const activeTabContent = document.querySelector('.comparison-tab-content.active');
             if (activeTabContent) {
+                // หา row ที่มี index ตรงกันใน active tab โดยใช้ data-index attribute
+                const rows = activeTabContent.querySelectorAll('.comparison-row');
+                for (let row of rows) {
+                    const rowIndex = parseInt(row.getAttribute('data-index'));
+                    if (rowIndex === index) {
+                        return row;
+                    }
+                }
+                // Fallback: หาโดยใช้ ID (ถ้ายังมี)
                 const row = activeTabContent.querySelector(`#comparison-row-${index}`);
                 if (row) {
                     return row;
                 }
             }
             // Fallback: หา row แรกที่เจอ (สำหรับกรณีที่ไม่มี active tab)
-            return document.getElementById(`comparison-row-${index}`);
+            return document.querySelector(`[data-index="${index}"]`);
         }
         
         function toggleComparisonRow(index) {
             const row = findRowInActiveTab(index);
             if (row) {
+                // ปิด rows อื่นๆ ที่เปิดอยู่ (optional - ถ้าต้องการให้เปิดได้ทีละ row เดียว)
+                // const allExpandedRows = document.querySelectorAll('.comparison-row.expanded');
+                // allExpandedRows.forEach(r => {
+                //     if (r !== row) {
+                //         r.classList.remove('expanded');
+                //     }
+                // });
+                
                 row.classList.toggle('expanded');
+                console.log(`🔄 Toggled row ${index}, expanded: ${row.classList.contains('expanded')}`);
+            } else {
+                console.warn(`⚠️ Row ${index} not found in active tab`);
             }
         }
         
@@ -3117,6 +4497,13 @@
         
         // เก็บข้อมูล comparisons ทั้งหมดเพื่อใช้ในฟังก์ชัน markAllDocumentsAsInvalid
         let allComparisonsData = [];
+        
+        // ตัวแปรสำหรับ pagination
+        let comparisonPagination = {
+            currentPage: 1,
+            itemsPerPage: 25, // ค่าเริ่มต้น
+            currentTab: 'all'
+        };
         
         // ========== ระบบบันทึกสถานะการตรวจสอบ (Auto-save/Auto-restore) ==========
         
@@ -3640,6 +5027,103 @@
         }
         
         // ฟังก์ชันยกเลิกการอนุมัติฟิลด์เฉพาะจุด
+        // ฟังก์ชันอนุมัติข้อมูลบริษัททั้งหมด (ชื่อ, เลขประจำตัวผู้เสียภาษี, ที่อยู่)
+        function approveCompanyData(index) {
+            const approvalKey = `${index}-company_data_all`;
+            
+            // อนุมัติข้อมูลบริษัททั้งหมด
+            comparisonApprovals[approvalKey] = true;
+            
+            // อนุมัติแต่ละส่วนของข้อมูลบริษัทด้วย (ถ้ายังไม่ตรงกัน)
+            const nameApprovalKey = `${index}-company_name_match`;
+            const taxIdApprovalKey = `${index}-company_tax_id_match`;
+            const addressApprovalKey = `${index}-address_match`;
+            
+            // ตรวจสอบว่ามีข้อมูลที่ต้องอนุมัติหรือไม่
+            const row = findRowInActiveTab(index);
+            if (row) {
+                // อนุมัติชื่อ (ถ้ามีและไม่ตรงกัน)
+                const nameField = row.querySelector('.comparison-field:has(.comparison-field-label:contains("ชื่อผู้ซื้อ"))');
+                if (nameField && !comparisonApprovals[nameApprovalKey]) {
+                    comparisonApprovals[nameApprovalKey] = true;
+                }
+                
+                // อนุมัติเลขประจำตัวผู้เสียภาษี (ถ้ามีและไม่ตรงกัน)
+                const taxIdField = row.querySelector('.comparison-field:has(.comparison-field-label:contains("เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ"))');
+                if (taxIdField && !comparisonApprovals[taxIdApprovalKey]) {
+                    comparisonApprovals[taxIdApprovalKey] = true;
+                }
+                
+                // อนุมัติที่อยู่ (ถ้ามีและไม่ตรงกัน)
+                if (!comparisonApprovals[addressApprovalKey]) {
+                    comparisonApprovals[addressApprovalKey] = true;
+                }
+            }
+            
+            console.log('✅ Company data approved:', approvalKey);
+            triggerAutoSave();
+            
+            // รีเฟรชการแสดงผล
+            refreshComparisonRow(index);
+        }
+        
+        // ฟังก์ชันยกเลิกการอนุมัติข้อมูลบริษัททั้งหมด
+        function cancelCompanyDataApproval(index) {
+            const approvalKey = `${index}-company_data_all`;
+            
+            // ยกเลิกการอนุมัติข้อมูลบริษัททั้งหมด
+            delete comparisonApprovals[approvalKey];
+            
+            // ยกเลิกการอนุมัติแต่ละส่วนด้วย (ถ้าถูกอนุมัติผ่านปุ่มนี้)
+            const nameApprovalKey = `${index}-company_name_match`;
+            const taxIdApprovalKey = `${index}-company_tax_id_match`;
+            const addressApprovalKey = `${index}-address_match`;
+            
+            // ตรวจสอบว่าถูกอนุมัติผ่านปุ่มนี้หรือไม่ (อาจจะต้องเก็บข้อมูลเพิ่มเติม)
+            // สำหรับตอนนี้ให้ยกเลิกทั้งหมด
+            delete comparisonApprovals[nameApprovalKey];
+            delete comparisonApprovals[taxIdApprovalKey];
+            delete comparisonApprovals[addressApprovalKey];
+            
+            console.log('❌ Company data approval cancelled:', approvalKey);
+            triggerAutoSave();
+            
+            // รีเฟรชการแสดงผล
+            refreshComparisonRow(index);
+        }
+        
+        // ฟังก์ชันรีเฟรช comparison row
+        function refreshComparisonRow(index) {
+            const row = findRowInActiveTab(index);
+            if (!row) {
+                console.warn(`⚠️ Cannot find row with index: ${index}`);
+                return;
+            }
+            
+            // หา tab name จาก row element
+            const tabName = row.getAttribute('data-tab') || 'all';
+            
+            // หา comp data จาก allComparisonsData (ถ้ามี)
+            if (typeof allComparisonsData !== 'undefined' && allComparisonsData && allComparisonsData[index]) {
+                const comp = allComparisonsData[index];
+                const newRowHTML = generateComparisonRowHTML(comp, index, tabName);
+                
+                // แทนที่ row เดิม
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = newRowHTML;
+                const newRow = tempDiv.firstElementChild;
+                
+                if (newRow) {
+                    row.replaceWith(newRow);
+                    console.log(`✅ Refreshed comparison row ${index} in tab ${tabName}`);
+                }
+            } else {
+                // ถ้าไม่มี allComparisonsData ให้รีโหลดหน้าใหม่
+                console.log('⚠️ allComparisonsData not found, reloading page...');
+                location.reload();
+            }
+        }
+        
         function cancelApproval(index, fieldKey, fieldLabel) {
             const approvalKey = `${index}-${fieldKey}`;
             
@@ -4055,19 +5539,20 @@
                 return;
             }
             
-            // สร้าง HTML ใหม่สำหรับ row นี้
-            const newRowHTML = generateComparisonRowHTML(comp, index);
-            
             // หา tab content ที่ active อยู่
             const activeTabContent = document.querySelector('.comparison-tab-content.active');
             
             if (activeTabContent) {
-                // หา row element เฉพาะใน tab ที่ active อยู่
-                const rowElement = activeTabContent.querySelector(`#comparison-row-${index}`);
+                // หา row element เฉพาะใน tab ที่ active อยู่โดยใช้ data-index
+                const rowElement = findRowInActiveTab(index);
                 
                 if (rowElement) {
-                    // เก็บ expanded state ก่อน replace
+                    // เก็บ expanded state และ tab name ก่อน replace
                     const wasExpanded = rowElement.classList.contains('expanded');
+                    const tabName = rowElement.getAttribute('data-tab') || 'all';
+                    
+                    // สร้าง HTML ใหม่สำหรับ row นี้โดยใช้ tabName ที่ถูกต้อง
+                    const newRowHTML = generateComparisonRowHTML(comp, index, tabName);
                     
                     // สร้าง temporary container เพื่อแปลง HTML string เป็น DOM
                     const tempDiv = document.createElement('div');
@@ -4083,18 +5568,22 @@
                             newRowElement.classList.add('expanded');
                         }
                         
-                        console.log(`✅ Re-rendered row ${index} in active tab`);
                     }
                 } else {
                     console.warn(`⚠️ ไม่พบ row element สำหรับ index ${index} ใน tab ที่ active`);
                 }
             } else {
-                // ถ้าไม่พบ active tab ให้ re-render ในทุก tab (fallback)
-                const rowElements = document.querySelectorAll(`#comparison-row-${index}`);
+                // ถ้าไม่พบ active tab ให้ re-render ในทุก tab ที่มี row นี้ (fallback)
+                const rowElements = document.querySelectorAll(`[data-index="${index}"]`);
                 
                 if (rowElements.length > 0) {
                     rowElements.forEach(rowElement => {
                         const wasExpanded = rowElement.classList.contains('expanded');
+                        const tabName = rowElement.getAttribute('data-tab') || 'all';
+                        
+                        // สร้าง HTML ใหม่สำหรับ row นี้โดยใช้ tabName ที่ถูกต้อง
+                        const newRowHTML = generateComparisonRowHTML(comp, index, tabName);
+                        
                         const tempDiv = document.createElement('div');
                         tempDiv.innerHTML = newRowHTML.trim();
                         const newRowElement = tempDiv.firstElementChild;
@@ -4202,6 +5691,25 @@
                 return;
             }
             
+            // ลบรายการซ้ำออกก่อนใช้งาน (ป้องกัน duplicates)
+            const seenKeys = new Set();
+            const uniqueComparisons = [];
+            allComparisonsData.forEach(comp => {
+                const purchaseInvoiceNo = comp.purchase_data?.invoice_no || comp.invoice_no || '';
+                const ocrDocumentNo = comp.ocr_data?.document_no || comp.document_no || '';
+                const uniqueKey = `${purchaseInvoiceNo}_${ocrDocumentNo}_${comp.match_status || ''}`;
+                
+                if (!seenKeys.has(uniqueKey)) {
+                    seenKeys.add(uniqueKey);
+                    uniqueComparisons.push(comp);
+                }
+            });
+            
+            // อัปเดต allComparisonsData ให้เป็น unique
+            if (uniqueComparisons.length !== allComparisonsData.length) {
+                allComparisonsData = uniqueComparisons;
+            }
+            
             // แยกรายการตามสถานะ
             const fullMatchedComparisons = allComparisonsData.filter(comp => comp.match_status === 'full_match');
             const partialMatchedComparisons = allComparisonsData.filter(comp => comp.match_status === 'partial_match');
@@ -4254,7 +5762,7 @@
                 // Tab: ข้อมูลทั้งหมด
                 html += `<div class="comparison-tab-content active" id="comparison-tab-all">`;
                 allComparisonsData.forEach((comp, index) => {
-                    html += generateComparisonRowHTML(comp, index);
+                    html += generateComparisonRowHTML(comp, index, 'all');
                 });
                 html += `</div>`;
                 
@@ -4263,7 +5771,7 @@
                 if (mismatchedComparisons.length > 0) {
                     mismatchedComparisons.forEach((comp) => {
                         const actualIndex = allComparisonsData.indexOf(comp);
-                        html += generateComparisonRowHTML(comp, actualIndex);
+                        html += generateComparisonRowHTML(comp, actualIndex, 'mismatch');
                     });
                 } else {
                     html += `<div style="text-align: center; padding: 40px; color: #94a3b8;">`;
@@ -4277,7 +5785,7 @@
                 if (partialMatchedComparisons.length > 0) {
                     partialMatchedComparisons.forEach((comp) => {
                         const actualIndex = allComparisonsData.indexOf(comp);
-                        html += generateComparisonRowHTML(comp, actualIndex);
+                        html += generateComparisonRowHTML(comp, actualIndex, 'partial');
                     });
                 } else {
                     html += `<div style="text-align: center; padding: 40px; color: #94a3b8;">`;
@@ -4291,13 +5799,36 @@
                 if (fullMatchedComparisons.length > 0) {
                     fullMatchedComparisons.forEach((comp) => {
                         const actualIndex = allComparisonsData.indexOf(comp);
-                        html += generateComparisonRowHTML(comp, actualIndex);
+                        html += generateComparisonRowHTML(comp, actualIndex, 'match');
                     });
                 } else {
                     html += `<div style="text-align: center; padding: 40px; color: #94a3b8;">`;
                     html += `❌ ไม่มีข้อมูลที่ตรงกัน`;
                     html += `</div>`;
                 }
+                html += `</div>`;
+                
+                // Pagination Controls
+                html += `<div class="comparison-pagination-container" style="margin-top: 20px; padding: 15px; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">`;
+                
+                // ตัวเลือกแสดงรายการต่อหน้า
+                html += `<div style="display: flex; align-items: center; gap: 10px;">`;
+                html += `<span style="color: #cbd5e1; font-size: 0.9em;">แสดงรายการ:</span>`;
+                html += `<select id="comparisonItemsPerPage" onchange="changeComparisonItemsPerPage(this.value)" style="padding: 6px 12px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: #fafafa; font-size: 0.9em; cursor: pointer;">`;
+                html += `<option value="10" ${comparisonPagination.itemsPerPage === 10 ? 'selected' : ''}>10</option>`;
+                html += `<option value="25" ${comparisonPagination.itemsPerPage === 25 ? 'selected' : ''}>25</option>`;
+                html += `<option value="50" ${comparisonPagination.itemsPerPage === 50 ? 'selected' : ''}>50</option>`;
+                html += `<option value="100" ${comparisonPagination.itemsPerPage === 100 ? 'selected' : ''}>100</option>`;
+                html += `</select>`;
+                html += `<span style="color: #94a3b8; font-size: 0.85em;">รายการต่อหน้า</span>`;
+                html += `</div>`;
+                
+                // Pagination Info และ Navigation
+                html += `<div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">`;
+                html += `<div id="comparisonPaginationInfo" style="color: #cbd5e1; font-size: 0.9em;"></div>`;
+                html += `<div id="comparisonPaginationNav" style="display: flex; gap: 5px;"></div>`;
+                html += `</div>`;
+                
                 html += `</div>`;
                 
                 html += `</div>`;
@@ -4310,33 +5841,97 @@
             // อัปเดต HTML ใน details element
             const step5Details = document.getElementById('step5Details');
             if (step5Details) {
-                // หา element ที่มี comparison-tabs
+                // ลบ comparison-tabs และ tab-content ทั้งหมดก่อนเพื่อป้องกันการสร้างซ้ำ (ใช้ data-index แทน id selector)
+                const existingComparisonElements = step5Details.querySelectorAll('.comparison-tabs, .comparison-tab-content, .comparison-row, [data-index], [style*="margin-top: 15px"]');
+                existingComparisonElements.forEach(el => el.remove());
+                
+                // หา element ที่มี comparison-tabs เพื่อแทนที่เฉพาะส่วนนั้น
                 const comparisonSection = step5Details.querySelector('[style*="margin-top: 15px"]');
                 if (comparisonSection) {
-                    // แทนที่ทั้งหมดตั้งแต่ comparisonSection ไปจนถึง comparison-tab-content ทั้งหมด
-                    const allTabContents = step5Details.querySelectorAll('.comparison-tab-content');
-                    let endElement = comparisonSection;
-                    if (allTabContents.length > 0) {
-                        endElement = allTabContents[allTabContents.length - 1];
-                    }
-                    
-                    // ลบทุกอย่างตั้งแต่ comparisonSection ไปจนถึง endElement
+                    // ถ้ายังมี comparisonSection อยู่ ให้ลบทั้งหมดก่อน
                     let current = comparisonSection;
-                    while (current && current !== endElement.nextSibling) {
+                    let removedCount = 0;
+                    while (current && current.nextSibling) {
                         const next = current.nextSibling;
-                        current.remove();
+                        // หยุดถ้าเจอ element ที่ไม่ใช่ comparison-related
+                        if (!next.classList.contains('comparison-tabs') && 
+                            !next.classList.contains('comparison-tab-content') && 
+                            !next.classList.contains('comparison-row') &&
+                            !next.querySelector('.comparison-tabs')) {
+                            break;
+                        }
                         current = next;
                     }
-                    
-                    // เพิ่ม HTML ใหม่
-                    const parent = comparisonSection.parentElement;
-                    if (parent) {
-                        parent.insertAdjacentHTML('beforeend', html);
+                    // ลบทุกอย่างตั้งแต่ comparisonSection ไปจนถึง current
+                    let toRemove = comparisonSection;
+                    while (toRemove && toRemove !== current?.nextSibling) {
+                        const next = toRemove.nextSibling;
+                        toRemove.remove();
+                        removedCount++;
+                        toRemove = next;
                     }
-                } else {
-                    // ถ้าไม่มี comparisonSection ให้แทนที่ทั้งหมดใน step5Details
-                    step5Details.innerHTML = html;
+                    console.log(`🗑️ Removed ${removedCount} elements before re-rendering`);
                 }
+                
+                // เพิ่ม HTML ใหม่ทั้งหมด (แทนที่ทั้งหมด)
+                step5Details.innerHTML = html;
+                
+                // ลบ duplicates ทันทีหลังจาก set HTML
+                const removeDuplicatesImmediately = () => {
+                    const allTabs = ['all', 'mismatch', 'partial', 'match'];
+                    allTabs.forEach(tabName => {
+                        const tabElement = document.getElementById(`comparison-tab-${tabName}`);
+                        if (!tabElement) return;
+                        
+                        const rows = Array.from(tabElement.querySelectorAll('.comparison-row'));
+                        if (rows.length === 0) return;
+                        
+                        const seenIndices = new Set();
+                        const duplicatesToRemove = [];
+                        
+                        rows.forEach(row => {
+                            const rowIndex = row.getAttribute('data-index');
+                            if (rowIndex !== null && rowIndex !== undefined) {
+                                if (seenIndices.has(rowIndex)) {
+                                    duplicatesToRemove.push(row);
+                                } else {
+                                    seenIndices.add(rowIndex);
+                                }
+                            }
+                        });
+                        
+                        if (duplicatesToRemove.length > 0) {
+                            duplicatesToRemove.forEach(row => row.remove());
+                        }
+                    });
+                };
+                
+                // รอให้ DOM อัปเดตก่อนตรวจสอบ
+                setTimeout(removeDuplicatesImmediately, 10);
+                
+                // ตรวจสอบและตั้งค่า active tab ให้ถูกต้อง
+                setTimeout(() => {
+                    const allTab = document.getElementById('comparison-tab-all');
+                    if (allTab && !allTab.classList.contains('active')) {
+                        // ถ้า all tab ไม่ได้ active ให้ตั้งค่าเป็น active
+                        document.querySelectorAll('.comparison-tab-content').forEach(content => {
+                            content.classList.remove('active');
+                        });
+                        allTab.classList.add('active');
+                        
+                        // อัปเดต tab button
+                        document.querySelectorAll('.comparison-tab').forEach(tab => tab.classList.remove('active'));
+                        const allTabButton = document.querySelector('.comparison-tab[onclick*="switchComparisonTab(\'all\')"]');
+                        if (allTabButton) {
+                            allTabButton.classList.add('active');
+                        }
+                        console.log('✅ Set "all" tab as active after re-render');
+                    }
+                    
+                    // อัปเดต pagination หลังจากตั้งค่า tab
+                    comparisonPagination.currentTab = 'all';
+                    updateComparisonPagination();
+                }, 50);
             }
         }
         
@@ -4359,8 +5954,8 @@
                     comparisonNotes[noteKey] = currentNote.replace(/\n?เอกสารใช้ไม่ได้ให้เอาออก/g, '').trim();
                 }
                 
-                // อัปเดต UI
-                const row = document.getElementById(`comparison-row-${index}`);
+                // อัปเดต UI (ใช้ findRowInActiveTab เพื่อหา row ใน tab ที่ active)
+                const row = findRowInActiveTab(index);
                 if (row) {
                     row.style.opacity = '1';
                     row.style.border = '';
@@ -4457,8 +6052,8 @@
                     const existingNote = comparisonNotes[noteKey] || '';
                     comparisonNotes[noteKey] = existingNote ? existingNote + '\nเอกสารใช้ไม่ได้ให้เอาออก' : 'เอกสารใช้ไม่ได้ให้เอาออก';
                     
-                    // อัปเดต UI
-                    const row = document.getElementById(`comparison-row-${index}`);
+                    // อัปเดต UI (ใช้ findRowInActiveTab เพื่อหา row ใน tab ที่ active)
+                    const row = findRowInActiveTab(index);
                     if (row) {
                         row.style.opacity = '0.6';
                         row.style.border = '2px solid #ef4444';

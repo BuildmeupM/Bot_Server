@@ -6129,9 +6129,13 @@ def list_folders_api():
 
 
 # ===== API: ระบบตรวจภาษี =====
+@app.route('/api/auditcheck/companies/list', methods=['GET'])
 @app.route('/api/auditcheck/companies', methods=['GET'])
 def get_auditcheck_companies():
     """ดึงรายชื่อบริษัทจากโฟลเดอร์หลัก"""
+    # ถ้ามี parameters build, company_name, หรือ customer ให้ redirect ไปที่ get_auditcheck_company
+    if request.args.get('build') or request.args.get('company_name') or request.args.get('customer'):
+        return get_auditcheck_company()
     try:
         base_paths = [
             Path("V:/A.โฟร์เดอร์หลัก"),
@@ -6185,6 +6189,495 @@ def get_auditcheck_companies():
     
     except Exception as e:
         logger.error(f"❌ เกิดข้อผิดพลาดในการดึงรายชื่อบริษัท: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/databases', methods=['GET'])
+def get_auditcheck_databases():
+    """ดึงรายการฐานข้อมูลทั้งหมดและฐานข้อมูลที่เชื่อมโยงกับบริษัท"""
+    try:
+        import json
+        from pathlib import Path
+        
+        db_config_file = Path('cache') / 'auditcheck_databases.json'
+        company_db_mapping_file = Path('cache') / 'auditcheck_company_database.json'
+        
+        # โหลดฐานข้อมูลทั้งหมด
+        databases = []
+        if db_config_file.exists():
+            try:
+                with open(db_config_file, 'r', encoding='utf-8') as f:
+                    databases = json.load(f)
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ฐานข้อมูล: {e}")
+        
+        # โหลดการเชื่อมโยงบริษัท-ฐานข้อมูล
+        company_database = None
+        company = request.args.get('company', '')
+        
+        if company and company_db_mapping_file.exists():
+            try:
+                with open(company_db_mapping_file, 'r', encoding='utf-8') as f:
+                    mappings = json.load(f)
+                    company_database = mappings.get(company)
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์การเชื่อมโยง: {e}")
+        
+        return jsonify({
+            'success': True,
+            'databases': databases,
+            'companyDatabase': company_database
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการดึงฐานข้อมูล: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/databases', methods=['POST'])
+def save_auditcheck_database():
+    """บันทึกหรือแก้ไขฐานข้อมูล"""
+    try:
+        import json
+        from pathlib import Path
+        import uuid
+        from datetime import datetime
+        
+        data = request.json
+        if not data:
+            return jsonify({
+                'success': False,
+                'error': 'ไม่มีข้อมูลส่งมา'
+            }), 400
+        
+        db_config_file = Path('cache') / 'auditcheck_databases.json'
+        cache_dir = Path('cache')
+        cache_dir.mkdir(exist_ok=True)
+        
+        # โหลดฐานข้อมูลที่มีอยู่
+        databases = []
+        if db_config_file.exists():
+            try:
+                with open(db_config_file, 'r', encoding='utf-8') as f:
+                    databases = json.load(f)
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ฐานข้อมูล: {e}")
+        
+        db_id = data.get('id')
+        db_type = data.get('type', '')
+        
+        # สร้าง object ฐานข้อมูล
+        db_config = {
+            'id': db_id or str(uuid.uuid4()),
+            'name': data.get('name', ''),
+            'type': db_type,
+            'host': data.get('host', '') if db_type != 'sqlite' else '',
+            'port': data.get('port', '') if db_type != 'sqlite' else '',
+            'database': data.get('database', '') if db_type != 'sqlite' else '',
+            'username': data.get('username', '') if db_type != 'sqlite' else '',
+            'password': data.get('password', ''),  # เก็บ password (ควรเข้ารหัสในอนาคต)
+            'sqlite_path': data.get('sqlite_path', '') if db_type == 'sqlite' else '',
+            'description': data.get('description', ''),
+            'created_at': datetime.now().isoformat(),
+            'updated_at': datetime.now().isoformat()
+        }
+        
+        # ถ้ามี id แสดงว่าเป็นการแก้ไข
+        if db_id:
+            index = next((i for i, db in enumerate(databases) if db.get('id') == db_id), -1)
+            if index >= 0:
+                # เก็บ created_at เดิม
+                db_config['created_at'] = databases[index].get('created_at', db_config['created_at'])
+                databases[index] = db_config
+            else:
+                return jsonify({
+                    'success': False,
+                    'error': 'ไม่พบฐานข้อมูลที่ต้องการแก้ไข'
+                }), 404
+        else:
+            # เพิ่มใหม่
+            databases.append(db_config)
+        
+        # บันทึกไฟล์
+        with open(db_config_file, 'w', encoding='utf-8') as f:
+            json.dump(databases, f, ensure_ascii=False, indent=2)
+        
+        return jsonify({
+            'success': True,
+            'database': db_config
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการบันทึกฐานข้อมูล: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/company-database', methods=['POST'])
+def save_company_database_mapping():
+    """บันทึกการเชื่อมโยงบริษัทกับฐานข้อมูล"""
+    try:
+        import json
+        from pathlib import Path
+        
+        data = request.json
+        if not data:
+            return jsonify({
+                'success': False,
+                'error': 'ไม่มีข้อมูลส่งมา'
+            }), 400
+        
+        company = data.get('company', '')
+        database_id = data.get('database_id', '')
+        
+        if not company:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุบริษัท'
+            }), 400
+        
+        mapping_file = Path('cache') / 'auditcheck_company_database.json'
+        cache_dir = Path('cache')
+        cache_dir.mkdir(exist_ok=True)
+        
+        # โหลดการเชื่อมโยงที่มีอยู่
+        mappings = {}
+        if mapping_file.exists():
+            try:
+                with open(mapping_file, 'r', encoding='utf-8') as f:
+                    mappings = json.load(f)
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์การเชื่อมโยง: {e}")
+        
+        # อัพเดทการเชื่อมโยง
+        if database_id:
+            mappings[company] = database_id
+        else:
+            # ถ้าไม่มี database_id ให้ลบการเชื่อมโยง
+            mappings.pop(company, None)
+        
+        # บันทึกไฟล์
+        with open(mapping_file, 'w', encoding='utf-8') as f:
+            json.dump(mappings, f, ensure_ascii=False, indent=2)
+        
+        return jsonify({
+            'success': True
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการบันทึกการเชื่อมโยง: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/databases/<db_id>', methods=['DELETE'])
+def delete_auditcheck_database(db_id):
+    """ลบฐานข้อมูล"""
+    try:
+        import json
+        from pathlib import Path
+        
+        db_config_file = Path('cache') / 'auditcheck_databases.json'
+        company_db_mapping_file = Path('cache') / 'auditcheck_company_database.json'
+        
+        if not db_config_file.exists():
+            return jsonify({
+                'success': False,
+                'error': 'ไม่พบไฟล์ฐานข้อมูล'
+            }), 404
+        
+        # โหลดฐานข้อมูล
+        try:
+            with open(db_config_file, 'r', encoding='utf-8') as f:
+                databases = json.load(f)
+        except Exception as e:
+            return jsonify({
+                'success': False,
+                'error': f'ไม่สามารถอ่านไฟล์ฐานข้อมูล: {e}'
+            }), 500
+        
+        # หาและลบฐานข้อมูล
+        original_count = len(databases)
+        databases = [db for db in databases if db.get('id') != db_id]
+        
+        if len(databases) == original_count:
+            return jsonify({
+                'success': False,
+                'error': 'ไม่พบฐานข้อมูลที่ต้องการลบ'
+            }), 404
+        
+        # ลบการเชื่อมโยงบริษัท-ฐานข้อมูลที่ใช้ฐานข้อมูลนี้
+        if company_db_mapping_file.exists():
+            try:
+                with open(company_db_mapping_file, 'r', encoding='utf-8') as f:
+                    mappings = json.load(f)
+                
+                # ลบการเชื่อมโยงที่ใช้ฐานข้อมูลนี้
+                mappings = {company: mapped_db_id for company, mapped_db_id in mappings.items() if mapped_db_id != db_id}
+                
+                with open(company_db_mapping_file, 'w', encoding='utf-8') as f:
+                    json.dump(mappings, f, ensure_ascii=False, indent=2)
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอัพเดทการเชื่อมโยง: {e}")
+        
+        # บันทึกไฟล์ฐานข้อมูล
+        with open(db_config_file, 'w', encoding='utf-8') as f:
+            json.dump(databases, f, ensure_ascii=False, indent=2)
+        
+        return jsonify({
+            'success': True
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการลบฐานข้อมูล: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/company', methods=['GET'])
+def get_auditcheck_company():
+    """ดึงข้อมูลบริษัทตาม Build หรือชื่อบริษัท"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        
+        build = request.args.get('build', '').strip()
+        company_name = request.args.get('company_name', '').strip()
+        customer = request.args.get('customer', '').strip()
+        
+        # ถ้าไม่มี customer ให้ใช้ company_name แทน
+        if not customer and company_name:
+            customer = company_name
+        
+        logger.info(f"📥 รับ request: build={build}, company_name={company_name}, customer={customer}")
+        
+        # Sanitize customer name สำหรับใช้เป็นชื่อไฟล์
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            # ลบอักขระพิเศษและแทนที่ด้วย underscore
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            # จำกัดความยาว
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        customer_sanitized = sanitize_filename(customer)
+        logger.info(f"🔤 Customer sanitized: {customer_sanitized}")
+        
+        customer_data_dir = Path('Customer_data')
+        customer_data_dir.mkdir(exist_ok=True)
+        
+        # ลองอ่านไฟล์แยกตาม customer ก่อน
+        companies_file = customer_data_dir / f'auditcheck_companies_{customer_sanitized}.json'
+        
+        logger.info(f"📁 กำลังหาไฟล์: {companies_file}")
+        logger.info(f"📁 ไฟล์มีอยู่หรือไม่: {companies_file.exists()}")
+        
+        # ถ้าไม่มีไฟล์แยกตาม customer ให้ลองอ่านไฟล์เก่า (fallback)
+        if not companies_file.exists():
+            # ลองอ่านไฟล์เก่าจาก Customer_data (ไฟล์ที่ย้ายมา)
+            old_file = customer_data_dir / 'auditcheck_companies.json'
+            logger.info(f"📁 กำลังหาไฟล์เก่า: {old_file}")
+            logger.info(f"📁 ไฟล์เก่ามีอยู่หรือไม่: {old_file.exists()}")
+            
+            if old_file.exists():
+                companies_file = old_file
+                logger.info(f"📂 ใช้ไฟล์เก่า: {companies_file}")
+            else:
+                logger.warning(f"⚠️ ไม่พบไฟล์ข้อมูลบริษัท: {companies_file} หรือ {old_file}")
+                return jsonify({
+                    'success': False,
+                    'company': None
+                }), 200
+        else:
+            logger.info(f"📂 ใช้ไฟล์แยกตาม customer: {companies_file}")
+        
+        try:
+            with open(companies_file, 'r', encoding='utf-8') as f:
+                companies = json.load(f)
+        except Exception as e:
+            logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูลบริษัท: {e}")
+            return jsonify({
+                'success': False,
+                'company': None
+            }), 200
+        
+        # ค้นหาบริษัทตาม Build หรือชื่อบริษัท
+        found_company = None
+        
+        # ตรวจสอบว่า companies เป็น list หรือไม่
+        if not isinstance(companies, list):
+            companies = [companies] if companies else []
+        
+        logger.info(f"🔍 ค้นหาบริษัท: build={build}, company_name={company_name}, จำนวนข้อมูล={len(companies)}")
+        
+        if build:
+            # ค้นหาตาม Build
+            found_company = next((comp for comp in companies if comp.get('build', '').strip() == build), None)
+            if found_company:
+                logger.info(f"✅ พบบริษัทตาม Build: {build}")
+        
+        if not found_company and company_name:
+            # ถ้าไม่พบตาม Build ให้ค้นหาตามชื่อบริษัท (ใช้ partial match)
+            company_name_lower = company_name.lower().strip()
+            for comp in companies:
+                comp_name = comp.get('company_name', '').strip()
+                comp_name_lower = comp_name.lower()
+                
+                # ลองหลายวิธีในการ match
+                if (company_name_lower in comp_name_lower or 
+                    comp_name_lower in company_name_lower or
+                    company_name_lower.replace(' ', '') in comp_name_lower.replace(' ', '') or
+                    comp_name_lower.replace(' ', '') in company_name_lower.replace(' ', '')):
+                    found_company = comp
+                    logger.info(f"✅ พบบริษัทตามชื่อ: {comp_name} (ค้นหา: {company_name})")
+                    break
+        
+        if not found_company:
+            logger.warning(f"⚠️ ไม่พบข้อมูลบริษัท: build={build}, company_name={company_name}")
+            # แสดงข้อมูลที่มีในไฟล์เพื่อ debug
+            if companies:
+                logger.info(f"📋 ข้อมูลที่มีในไฟล์: {[comp.get('build', '') + ' - ' + comp.get('company_name', '') for comp in companies]}")
+        
+        return jsonify({
+            'success': True,
+            'company': found_company
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการดึงข้อมูลบริษัท: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/companies', methods=['POST'])
+def save_auditcheck_company():
+    """บันทึกข้อมูลบริษัท"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        from datetime import datetime
+        
+        data = request.json
+        if not data:
+            return jsonify({
+                'success': False,
+                'error': 'ไม่มีข้อมูลส่งมา'
+            }), 400
+        
+        # ดึง customer จาก data หรือใช้ company_name แทน
+        customer = data.get('customer', '').strip()
+        company_name = data.get('company_name', '').strip()
+        if not customer and company_name:
+            customer = company_name
+        
+        # Sanitize customer name สำหรับใช้เป็นชื่อไฟล์
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            # ลบอักขระพิเศษและแทนที่ด้วย underscore
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            # จำกัดความยาว
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        customer_sanitized = sanitize_filename(customer)
+        customer_data_dir = Path('Customer_data')
+        customer_data_dir.mkdir(exist_ok=True)
+        companies_file = customer_data_dir / f'auditcheck_companies_{customer_sanitized}.json'
+        
+        # โหลดข้อมูลบริษัทที่มีอยู่
+        companies = []
+        if companies_file.exists():
+            try:
+                with open(companies_file, 'r', encoding='utf-8') as f:
+                    companies = json.load(f)
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูลบริษัท: {e}")
+        
+        # ตรวจสอบว่ามี Build นี้อยู่แล้วหรือไม่
+        build = data.get('build', '').strip()
+        if not build:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุ Build'
+            }), 400
+        
+        # หาว่ามี Build นี้อยู่แล้วหรือไม่
+        existing_index = next((i for i, comp in enumerate(companies) if comp.get('build') == build), -1)
+        
+        # สร้าง object ข้อมูลบริษัท
+        company_data = {
+            'build': build,
+            'company_name': data.get('company_name', '').strip(),
+            'tax_id': data.get('tax_id', '').strip(),
+            'vat_status': data.get('vat_status', '').strip(),
+            'vat_registration_date': data.get('vat_registration_date', '').strip(),
+            'company_address': data.get('company_address', '').strip(),
+            'updated_at': datetime.now().isoformat()
+        }
+        
+        # Validation
+        if not company_data['company_name']:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุชื่อบริษัท'
+            }), 400
+        
+        if not company_data['vat_status']:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุสถานะบริษัทจดภาษีมูลค่าเพิ่ม'
+            }), 400
+        
+        if not company_data['company_address']:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุที่อยู่บริษัท'
+            }), 400
+        
+        # ถ้ามี Build นี้อยู่แล้ว ให้อัพเดท
+        if existing_index >= 0:
+            # เก็บ created_at เดิม
+            company_data['created_at'] = companies[existing_index].get('created_at', datetime.now().isoformat())
+            companies[existing_index] = company_data
+            action = 'อัพเดท'
+        else:
+            # เพิ่มใหม่
+            company_data['created_at'] = datetime.now().isoformat()
+            companies.append(company_data)
+            action = 'เพิ่ม'
+        
+        # บันทึกไฟล์
+        with open(companies_file, 'w', encoding='utf-8') as f:
+            json.dump(companies, f, ensure_ascii=False, indent=2)
+        
+        logger.info(f"✅ {action}ข้อมูลบริษัท: {build} - {company_data['company_name']}")
+        
+        return jsonify({
+            'success': True,
+            'message': f'{action}ข้อมูลบริษัทสำเร็จ',
+            'company': company_data
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการบันทึกข้อมูลบริษัท: {e}", exc_info=True)
         return jsonify({
             'success': False,
             'error': str(e)
