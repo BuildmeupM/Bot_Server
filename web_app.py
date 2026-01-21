@@ -6474,36 +6474,21 @@ def get_auditcheck_company():
             # จำกัดความยาว
             return sanitized[:100] if len(sanitized) > 100 else sanitized
         
-        customer_sanitized = sanitize_filename(customer)
-        logger.info(f"🔤 Customer sanitized: {customer_sanitized}")
-        
         customer_data_dir = Path('Customer_data')
         customer_data_dir.mkdir(exist_ok=True)
         
-        # ลองอ่านไฟล์แยกตาม customer ก่อน
-        companies_file = customer_data_dir / f'auditcheck_companies_{customer_sanitized}.json'
+        # ใช้ไฟล์เดียวเสมอ: auditcheck_companies.json
+        companies_file = customer_data_dir / 'auditcheck_companies.json'
         
         logger.info(f"📁 กำลังหาไฟล์: {companies_file}")
         logger.info(f"📁 ไฟล์มีอยู่หรือไม่: {companies_file.exists()}")
         
-        # ถ้าไม่มีไฟล์แยกตาม customer ให้ลองอ่านไฟล์เก่า (fallback)
         if not companies_file.exists():
-            # ลองอ่านไฟล์เก่าจาก Customer_data (ไฟล์ที่ย้ายมา)
-            old_file = customer_data_dir / 'auditcheck_companies.json'
-            logger.info(f"📁 กำลังหาไฟล์เก่า: {old_file}")
-            logger.info(f"📁 ไฟล์เก่ามีอยู่หรือไม่: {old_file.exists()}")
-            
-            if old_file.exists():
-                companies_file = old_file
-                logger.info(f"📂 ใช้ไฟล์เก่า: {companies_file}")
-            else:
-                logger.warning(f"⚠️ ไม่พบไฟล์ข้อมูลบริษัท: {companies_file} หรือ {old_file}")
-                return jsonify({
-                    'success': False,
-                    'company': None
-                }), 200
-        else:
-            logger.info(f"📂 ใช้ไฟล์แยกตาม customer: {companies_file}")
+            logger.warning(f"⚠️ ไม่พบไฟล์ข้อมูลบริษัท: {companies_file}")
+            return jsonify({
+                'success': False,
+                'company': None
+            }), 200
         
         try:
             with open(companies_file, 'r', encoding='utf-8') as f:
@@ -6581,26 +6566,11 @@ def save_auditcheck_company():
                 'error': 'ไม่มีข้อมูลส่งมา'
             }), 400
         
-        # ดึง customer จาก data หรือใช้ company_name แทน
-        customer = data.get('customer', '').strip()
-        company_name = data.get('company_name', '').strip()
-        if not customer and company_name:
-            customer = company_name
-        
-        # Sanitize customer name สำหรับใช้เป็นชื่อไฟล์
-        def sanitize_filename(name):
-            if not name:
-                return 'default'
-            # ลบอักขระพิเศษและแทนที่ด้วย underscore
-            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
-            sanitized = re.sub(r'\s+', '_', sanitized)
-            # จำกัดความยาว
-            return sanitized[:100] if len(sanitized) > 100 else sanitized
-        
-        customer_sanitized = sanitize_filename(customer)
         customer_data_dir = Path('Customer_data')
         customer_data_dir.mkdir(exist_ok=True)
-        companies_file = customer_data_dir / f'auditcheck_companies_{customer_sanitized}.json'
+        
+        # ใช้ไฟล์เดียวเสมอ: auditcheck_companies.json
+        companies_file = customer_data_dir / 'auditcheck_companies.json'
         
         # โหลดข้อมูลบริษัทที่มีอยู่
         companies = []
@@ -6610,6 +6580,10 @@ def save_auditcheck_company():
                     companies = json.load(f)
             except Exception as e:
                 logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูลบริษัท: {e}")
+        
+        # ตรวจสอบว่า companies เป็น list หรือไม่
+        if not isinstance(companies, list):
+            companies = [companies] if companies else []
         
         # ตรวจสอบว่ามี Build นี้อยู่แล้วหรือไม่
         build = data.get('build', '').strip()

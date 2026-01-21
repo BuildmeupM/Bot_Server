@@ -3093,6 +3093,16 @@
                         html += `</button>`;
                         html += `</div>`;
                         
+                        // Search Box สำหรับค้นหาเลขที่เอกสารอ้างอิง
+                        html += `<div style="margin: 15px 0; padding: 12px; background: #1e293b; border-radius: 8px; border: 1px solid #334155;">`;
+                        html += `<div style="display: flex; align-items: center; gap: 10px;">`;
+                        html += `<span style="color: #cbd5e1; font-size: 0.95em; font-weight: 600;">🔍 ค้นหาเลขที่เอกสารอ้างอิง:</span>`;
+                        html += `<input type="text" id="comparisonReferenceSearch" placeholder="พิมพ์เลขที่เอกสารอ้างอิง..." oninput="filterComparisonByReference(this.value)" style="flex: 1; padding: 8px 12px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: #fafafa; font-size: 0.9em; transition: all 0.3s;" onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';" onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';" />`;
+                        html += `<button onclick="clearComparisonSearch()" id="clearSearchBtn" style="padding: 8px 16px; background: #334155; color: #cbd5e1; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: all 0.3s; display: none;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">ล้าง</button>`;
+                        html += `</div>`;
+                        html += `<div id="comparisonSearchResult" style="margin-top: 8px; color: #94a3b8; font-size: 0.85em; display: none;"></div>`;
+                        html += `</div>`;
+                        
                         // ปุ่มย้ายเอกสารทั้งหมดที่ไม่ตรงกัน
                         const mismatchedCount = mismatchedComparisons.length + partialMatchedComparisons.length;
                         if (mismatchedCount > 0) {
@@ -3603,7 +3613,9 @@
             
             // ใช้ tabName และ index เพื่อสร้าง unique ID สำหรับแต่ละ tab (แก้ปัญหา duplicate IDs)
             const uniqueId = `comparison-row-${tabName}-${index}`;
-            html += `<div class="comparison-row" id="${uniqueId}" data-index="${index}" data-tab="${tabName}">`;
+            // ดึง reference number สำหรับใช้ในการค้นหา
+            const referenceNoForSearch = purchaseData?.reference_no || comp.invoice_no || ocrData?.document_no || '';
+            html += `<div class="comparison-row" id="${uniqueId}" data-index="${index}" data-tab="${tabName}" data-reference="${referenceNoForSearch.toLowerCase()}">`;
             
             // Header (คลิกได้)
             html += `<div class="comparison-row-header" onclick="toggleComparisonRow(${index})">`;
@@ -4034,7 +4046,19 @@
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ชื่อจาก OCR:</div>`;
                     html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${buyerName}</div>`;
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ชื่อบริษัท:</div>`;
-                    html += `<div style="color: #cbd5e1; font-size: 0.9em; word-break: break-word;">${companyName}</div>`;
+                    html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${companyName}</div>`;
+                    
+                    // ปุ่มวิเคราะห์ความคล้ายคลึง (แสดงเฉพาะเมื่อไม่ตรงกัน)
+                    if (!isNameApproved && !companyNameMatch) {
+                        // Escape HTML และ quotes สำหรับชื่อบริษัท
+                        const escapedBuyerName = buyerName.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, '\\n');
+                        const escapedCompanyName = companyName.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, '\\n');
+                        html += `<button onclick="analyzeCompanyNameSimilarity(${index}, '${escapedBuyerName}', '${escapedCompanyName}')" style="width: 100%; padding: 8px 12px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.3s; margin-top: 8px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';" title="วิเคราะห์ความคล้ายคลึงของชื่อบริษัท">`;
+                        html += `<span style="font-size: 1em;">🔍</span>`;
+                        html += `<span>วิเคราะห์ความคล้ายคลึง</span>`;
+                        html += `</button>`;
+                    }
+                    
                     html += `</div>`;
                 } else {
                     html += `<div style="padding: 12px; background: #33415515; border-radius: 8px; border-left: 4px solid #334155; flex: 1;">`;
@@ -4170,6 +4194,16 @@
             // อัปเดต pagination เมื่อเปลี่ยน tab
             comparisonPagination.currentTab = tabName;
             comparisonPagination.currentPage = 1; // รีเซ็ตหน้าเป็น 1 เมื่อเปลี่ยน tab
+            
+            // รีเซ็ต search เมื่อเปลี่ยน tab (optional - ถ้าต้องการให้ search ค้างไว้ให้ comment บรรทัดนี้)
+            // comparisonSearchTerm = '';
+            // const searchInput = document.getElementById('comparisonReferenceSearch');
+            // const clearBtn = document.getElementById('clearSearchBtn');
+            // const searchResult = document.getElementById('comparisonSearchResult');
+            // if (searchInput) searchInput.value = '';
+            // if (clearBtn) clearBtn.style.display = 'none';
+            // if (searchResult) searchResult.style.display = 'none';
+            
             updateComparisonPagination();
         }
         
@@ -4192,8 +4226,18 @@
             if (!activeTab) return;
             
             const allRows = Array.from(activeTab.querySelectorAll('.comparison-row'));
-            const totalItems = allRows.length;
             const itemsPerPage = comparisonPagination.itemsPerPage;
+            
+            // ถ้ามี search term ให้ filter rows ก่อน
+            let visibleRows = allRows;
+            if (comparisonSearchTerm) {
+                visibleRows = allRows.filter(row => {
+                    const referenceNo = row.getAttribute('data-reference') || '';
+                    return referenceNo.includes(comparisonSearchTerm);
+                });
+            }
+            
+            const totalItems = visibleRows.length;
             const totalPages = Math.ceil(totalItems / itemsPerPage);
             const currentPage = Math.min(comparisonPagination.currentPage, totalPages || 1);
             
@@ -4206,12 +4250,15 @@
             const startIndex = (currentPage - 1) * itemsPerPage;
             const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
             
-            // ซ่อน/แสดง rows ตาม pagination
-            allRows.forEach((row, index) => {
-                if (index >= startIndex && index < endIndex) {
+            // ซ่อน rows ทั้งหมดก่อน
+            allRows.forEach(row => {
+                row.style.display = 'none';
+            });
+            
+            // แสดงเฉพาะ rows ที่อยู่ในหน้าที่เลือก
+            visibleRows.forEach((row, visibleIndex) => {
+                if (visibleIndex >= startIndex && visibleIndex < endIndex) {
                     row.style.display = '';
-                } else {
-                    row.style.display = 'none';
                 }
             });
             
@@ -4219,9 +4266,10 @@
             const paginationInfo = document.getElementById('comparisonPaginationInfo');
             if (paginationInfo) {
                 if (totalItems === 0) {
-                    paginationInfo.textContent = 'ไม่พบรายการ';
+                    paginationInfo.textContent = comparisonSearchTerm ? `ไม่พบรายการที่ตรงกับ "${comparisonSearchTerm}"` : 'ไม่พบรายการ';
                 } else {
-                    paginationInfo.textContent = `แสดง ${startIndex + 1}-${endIndex} จาก ${totalItems} รายการ`;
+                    const searchText = comparisonSearchTerm ? ` (ค้นหา: "${comparisonSearchTerm}")` : '';
+                    paginationInfo.textContent = `แสดง ${startIndex + 1}-${endIndex} จาก ${totalItems} รายการ${searchText}`;
                 }
             }
             
@@ -4285,6 +4333,281 @@
             }
         }
         
+        // ตัวแปรสำหรับเก็บ search term
+        let comparisonSearchTerm = '';
+        
+        // ฟังก์ชันสำหรับค้นหาเลขที่เอกสารอ้างอิง
+        function filterComparisonByReference(searchTerm) {
+            comparisonSearchTerm = searchTerm.trim().toLowerCase();
+            const clearBtn = document.getElementById('clearSearchBtn');
+            const searchResult = document.getElementById('comparisonSearchResult');
+            
+            // แสดง/ซ่อนปุ่มล้าง
+            if (comparisonSearchTerm) {
+                clearBtn.style.display = 'block';
+            } else {
+                clearBtn.style.display = 'none';
+                searchResult.style.display = 'none';
+            }
+            
+            // รีเซ็ตหน้าเป็น 1 เมื่อค้นหา
+            comparisonPagination.currentPage = 1;
+            
+            // อัปเดต pagination (จะ filter และแสดงผลให้อัตโนมัติ)
+            updateComparisonPagination();
+            
+            // แสดงผลการค้นหา
+            const activeTab = document.querySelector('.comparison-tab-content.active');
+            if (comparisonSearchTerm && activeTab) {
+                const allRows = Array.from(activeTab.querySelectorAll('.comparison-row'));
+                const visibleCount = allRows.filter(row => {
+                    const referenceNo = row.getAttribute('data-reference') || '';
+                    return referenceNo.includes(comparisonSearchTerm);
+                }).length;
+                
+                searchResult.style.display = 'block';
+                if (visibleCount === 0) {
+                    searchResult.textContent = `ไม่พบรายการที่ตรงกับ "${searchTerm}"`;
+                    searchResult.style.color = '#ef4444';
+                } else {
+                    searchResult.textContent = `พบ ${visibleCount} รายการที่ตรงกับ "${searchTerm}"`;
+                    searchResult.style.color = '#10b981';
+                }
+            } else {
+                searchResult.style.display = 'none';
+            }
+        }
+        
+        // ฟังก์ชันสำหรับล้างการค้นหา
+        function clearComparisonSearch() {
+            const searchInput = document.getElementById('comparisonReferenceSearch');
+            if (searchInput) {
+                searchInput.value = '';
+                filterComparisonByReference('');
+            }
+        }
+        
+        // ฟังก์ชันสำหรับ normalize ชื่อบริษัท (แปลงรูปแบบต่างๆ ให้เป็นรูปแบบมาตรฐาน)
+        function normalizeCompanyNameForComparison(name) {
+            if (!name) return '';
+            
+            let normalized = name.trim();
+            
+            // แปลง "บจก." เป็น "บริษัท ... จำกัด"
+            normalized = normalized.replace(/^บจก\.\s*/i, 'บริษัท ');
+            normalized = normalized.replace(/^บจก\s*/i, 'บริษัท ');
+            
+            // ถ้ายังไม่มี "จำกัด" ให้เพิ่ม
+            if (!normalized.includes('จำกัด') && !normalized.includes('จํากัด')) {
+                // ถ้าไม่มี "บริษัท" อยู่แล้ว ให้เพิ่ม
+                if (!normalized.includes('บริษัท')) {
+                    normalized = 'บริษัท ' + normalized;
+                }
+                normalized = normalized + ' จำกัด';
+            }
+            
+            // ลบช่องว่างซ้ำ
+            normalized = normalized.replace(/\s+/g, ' ').trim();
+            
+            // แปลงเป็นตัวพิมพ์เล็กสำหรับการเปรียบเทียบ
+            normalized = normalized.toLowerCase();
+            
+            // ลบอักขระพิเศษ
+            normalized = normalized.replace(/[.,\-_()]/g, '');
+            
+            return normalized;
+        }
+        
+        // ฟังก์ชันคำนวณความคล้ายคลึงระหว่างสองข้อความ (Levenshtein distance)
+        function calculateSimilarity(str1, str2) {
+            if (!str1 || !str2) return 0;
+            
+            const len1 = str1.length;
+            const len2 = str2.length;
+            
+            if (len1 === 0) return len2 === 0 ? 1 : 0;
+            if (len2 === 0) return 0;
+            
+            // สร้าง matrix สำหรับ Levenshtein distance
+            const matrix = [];
+            for (let i = 0; i <= len1; i++) {
+                matrix[i] = [i];
+            }
+            for (let j = 0; j <= len2; j++) {
+                matrix[0][j] = j;
+            }
+            
+            // คำนวณ distance
+            for (let i = 1; i <= len1; i++) {
+                for (let j = 1; j <= len2; j++) {
+                    const cost = str1[i - 1] === str2[j - 1] ? 0 : 1;
+                    matrix[i][j] = Math.min(
+                        matrix[i - 1][j] + 1,      // deletion
+                        matrix[i][j - 1] + 1,      // insertion
+                        matrix[i - 1][j - 1] + cost // substitution
+                    );
+                }
+            }
+            
+            const distance = matrix[len1][len2];
+            const maxLen = Math.max(len1, len2);
+            const similarity = 1 - (distance / maxLen);
+            
+            return similarity;
+        }
+        
+        // ฟังก์ชันวิเคราะห์ความคล้ายคลึงของชื่อบริษัท
+        function analyzeCompanyNameSimilarity(index, ocrName, companyName) {
+            // Escape HTML เพื่อป้องกัน XSS
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+            
+            const safeOcrName = escapeHtml(ocrName);
+            const safeCompanyName = escapeHtml(companyName);
+            
+            // Normalize ชื่อทั้งสอง
+            const normalizedOcr = normalizeCompanyNameForComparison(ocrName);
+            const normalizedCompany = normalizeCompanyNameForComparison(companyName);
+            
+            // คำนวณความคล้ายคลึง
+            const similarity = calculateSimilarity(normalizedOcr, normalizedCompany);
+            const similarityPercent = Math.round(similarity * 100);
+            
+            // ตรวจสอบว่ามีคำสำคัญที่เหมือนกันหรือไม่
+            const ocrWords = normalizedOcr.split(/\s+/).filter(w => w.length > 2);
+            const companyWords = normalizedCompany.split(/\s+/).filter(w => w.length > 2);
+            const commonWords = ocrWords.filter(w => companyWords.includes(w));
+            const commonWordsPercent = ocrWords.length > 0 ? Math.round((commonWords.length / Math.max(ocrWords.length, companyWords.length)) * 100) : 0;
+            
+            // ตรวจสอบรูปแบบพิเศษ
+            const patterns = {
+                'บจก_แปลงเป็น_บริษัท': ocrName.includes('บจก') && companyName.includes('บริษัท') && companyName.includes('จำกัด'),
+                'บริษัท_แปลงเป็น_บจก': companyName.includes('บริษัท') && ocrName.includes('บจก'),
+                'คำสำคัญเหมือนกัน': commonWords.length >= Math.min(ocrWords.length, companyWords.length) * 0.7
+            };
+            
+            // สร้างข้อความวิเคราะห์
+            let analysisHtml = `
+                <div style="max-width: 600px; padding: 20px;">
+                    <h3 style="color: #fafafa; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 1.5em;">🔍</span>
+                        <span>ผลการวิเคราะห์ความคล้ายคลึง</span>
+                    </h3>
+                    
+                    <div style="background: #1e293b; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="color: #94a3b8; font-size: 0.9em; margin-bottom: 8px;">ชื่อจาก OCR:</div>
+                        <div style="color: #cbd5e1; font-size: 1em; font-weight: 500; margin-bottom: 15px;">${safeOcrName}</div>
+                        <div style="color: #94a3b8; font-size: 0.9em; margin-bottom: 8px;">ชื่อบริษัท:</div>
+                        <div style="color: #cbd5e1; font-size: 1em; font-weight: 500;">${safeCompanyName}</div>
+                    </div>
+                    
+                    <div style="background: #1e293b; padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="color: #94a3b8; font-size: 0.9em; margin-bottom: 8px;">ชื่อที่ Normalize แล้ว:</div>
+                        <div style="color: #60a5fa; font-size: 0.9em; margin-bottom: 8px; font-family: monospace;">${normalizedOcr}</div>
+                        <div style="color: #60a5fa; font-size: 0.9em; font-family: monospace;">${normalizedCompany}</div>
+                    </div>
+                    
+                    <div style="background: ${similarity >= 0.8 ? '#10b98115' : similarity >= 0.6 ? '#fbbf2415' : '#ef444415'}; padding: 15px; border-radius: 8px; border-left: 4px solid ${similarity >= 0.8 ? '#10b981' : similarity >= 0.6 ? '#fbbf24' : '#ef4444'}; margin-bottom: 15px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                            <span style="color: #cbd5e1; font-weight: 600;">ระดับความคล้ายคลึง:</span>
+                            <span style="color: ${similarity >= 0.8 ? '#10b981' : similarity >= 0.6 ? '#fbbf24' : '#ef4444'}; font-weight: 700; font-size: 1.2em;">${similarityPercent}%</span>
+                        </div>
+                        <div style="background: #0f172a; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 10px;">
+                            <div style="background: linear-gradient(90deg, ${similarity >= 0.8 ? '#10b981' : similarity >= 0.6 ? '#fbbf24' : '#ef4444'} 0%, ${similarity >= 0.8 ? '#059669' : similarity >= 0.6 ? '#d97706' : '#dc2626'} 100%); height: 100%; width: ${similarityPercent}%; transition: width 0.3s;"></div>
+                        </div>
+                        <div style="color: #94a3b8; font-size: 0.85em;">
+                            ${similarity >= 0.8 ? '✅ คล้ายคลึงกันมาก - น่าจะเป็นบริษัทเดียวกัน' : 
+                              similarity >= 0.6 ? '⚠️ คล้ายคลึงกันปานกลาง - อาจเป็นบริษัทเดียวกัน' : 
+                              '❌ คล้ายคลึงกันน้อย - อาจไม่ใช่บริษัทเดียวกัน'}
+                        </div>
+                    </div>
+            `;
+            
+            // แสดงรูปแบบที่พบ
+            if (patterns['บจก_แปลงเป็น_บริษัท'] || patterns['บริษัท_แปลงเป็น_บจก']) {
+                analysisHtml += `
+                    <div style="background: #10b98115; padding: 12px; border-radius: 8px; border-left: 4px solid #10b981; margin-bottom: 15px;">
+                        <div style="color: #10b981; font-weight: 600; margin-bottom: 5px;">✓ พบรูปแบบที่คล้ายกัน:</div>
+                        <div style="color: #cbd5e1; font-size: 0.9em;">
+                            ${patterns['บจก_แปลงเป็น_บริษัท'] ? '• "บจก." ถูกแปลงเป็น "บริษัท ... จำกัด" (เป็นรูปแบบมาตรฐานเดียวกัน)' : ''}
+                            ${patterns['บริษัท_แปลงเป็น_บจก'] ? '• "บริษัท ... จำกัด" ถูกแปลงเป็น "บจก." (เป็นรูปแบบมาตรฐานเดียวกัน)' : ''}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // แสดงคำที่เหมือนกัน
+            if (commonWords.length > 0) {
+                analysisHtml += `
+                    <div style="background: #1e293b; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
+                        <div style="color: #94a3b8; font-size: 0.9em; margin-bottom: 8px;">คำที่เหมือนกัน (${commonWords.length} คำ):</div>
+                        <div style="color: #60a5fa; font-size: 0.9em;">
+                            ${commonWords.map(w => `<span style="background: #3b82f615; padding: 2px 6px; border-radius: 4px; margin-right: 4px;">${w}</span>`).join('')}
+                        </div>
+                        <div style="color: #94a3b8; font-size: 0.85em; margin-top: 8px;">
+                            ความเหมือนของคำ: ${commonWordsPercent}%
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // คำแนะนำ
+            let recommendation = '';
+            let recommendationColor = '';
+            if (similarity >= 0.8 || patterns['บจก_แปลงเป็น_บริษัท'] || patterns['บริษัท_แปลงเป็น_บจก']) {
+                recommendation = '✅ แนะนำให้อนุมัติ: ชื่อบริษัทคล้ายคลึงกันมาก และเป็นรูปแบบมาตรฐานเดียวกัน (บจก. = บริษัท ... จำกัด)';
+                recommendationColor = '#10b981';
+            } else if (similarity >= 0.6 && commonWordsPercent >= 50) {
+                recommendation = '⚠️ พิจารณาอนุมัติ: ชื่อบริษัทคล้ายคลึงกันปานกลาง แต่มีคำสำคัญที่เหมือนกัน';
+                recommendationColor = '#fbbf24';
+            } else {
+                recommendation = '❌ ไม่แนะนำให้อนุมัติ: ชื่อบริษัทคล้ายคลึงกันน้อย อาจไม่ใช่บริษัทเดียวกัน';
+                recommendationColor = '#ef4444';
+            }
+            
+            analysisHtml += `
+                    <div style="background: ${recommendationColor}15; padding: 15px; border-radius: 8px; border-left: 4px solid ${recommendationColor}; margin-bottom: 15px;">
+                        <div style="color: ${recommendationColor}; font-weight: 600; margin-bottom: 8px;">💡 คำแนะนำ:</div>
+                        <div style="color: #cbd5e1; font-size: 0.95em; line-height: 1.6;">${recommendation}</div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button onclick="approveField(${index}, 'company_name_match', 'ชื่อบริษัท'); closeAnalysisModal();" style="flex: 1; padding: 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">✓ อนุมัติ</button>
+                        <button onclick="closeAnalysisModal();" style="flex: 1; padding: 12px; background: #334155; color: #cbd5e1; border: 1px solid #475569; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">ปิด</button>
+                    </div>
+                </div>
+            `;
+            
+            // สร้าง modal
+            const modal = document.createElement('div');
+            modal.id = 'companyNameAnalysisModal';
+            modal.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;';
+            modal.innerHTML = `
+                <div style="background: #0f172a; border-radius: 12px; max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);">
+                    ${analysisHtml}
+                </div>
+            `;
+            
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    closeAnalysisModal();
+                }
+            };
+            
+            document.body.appendChild(modal);
+            
+            // ฟังก์ชันปิด modal
+            window.closeAnalysisModal = function() {
+                const modal = document.getElementById('companyNameAnalysisModal');
+                if (modal) {
+                    modal.remove();
+                }
+            };
+        }
+        
         // Helper function: หา row element ใน tab ที่ active อยู่
         function findRowInActiveTab(index) {
             const activeTabContent = document.querySelector('.comparison-tab-content.active');
@@ -4325,20 +4648,9 @@
             }
         }
         
-        // ฟังก์ชันสำหรับแสดง PDF Preview
+        // ฟังก์ชันสำหรับแสดง PDF Preview (เปิดในแท็บใหม่)
         async function viewPdfPreview(referenceNo, index) {
             console.log('📄 viewPdfPreview called:', referenceNo);
-            
-            // แสดง loading
-            const loadingHtml = `
-                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;" id="pdfLoadingOverlay">
-                    <div style="background: #1e293b; padding: 30px; border-radius: 12px; text-align: center;">
-                        <div class="spinner" style="border: 4px solid #334155; border-top: 4px solid #3b82f6; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 15px;"></div>
-                        <div style="color: #fafafa; font-size: 1.1em;">กำลังค้นหาไฟล์ (PDF/JPG/PNG)...</div>
-                    </div>
-                </div>
-            `;
-            document.body.insertAdjacentHTML('beforeend', loadingHtml);
             
             try {
                 // ดึงค่าจาก form
@@ -4348,8 +4660,6 @@
                 
                 // ตรวจสอบว่ามีค่าครบถ้วนหรือไม่
                 if (!taxMonth || !taxYear || !company) {
-                    console.error('❌ Missing required data:', { taxMonth, taxYear, company });
-                    document.getElementById('pdfLoadingOverlay')?.remove();
                     alert('ไม่พบข้อมูลเดือนภาษีหรือบริษัท กรุณาเลือกข้อมูลก่อนดู PDF');
                     return;
                 }
@@ -4379,18 +4689,15 @@
                 const result = await response.json();
                 console.log('📊 API Response:', result);
                 
-                // ลบ loading
-                document.getElementById('pdfLoadingOverlay')?.remove();
-                
                 if (result.success && result.found) {
-                    // แสดง PDF Modal
-                    showPdfModal(result.pdfPath, result.filename, referenceNo);
+                    // เปิดไฟล์ในแท็บใหม่
+                    const fileUrl = `/api/auditcheck/view-pdf/${encodeURIComponent(result.pdfPath)}`;
+                    window.open(fileUrl, '_blank', 'noopener,noreferrer');
                 } else {
                     alert(result.message || result.error || 'ไม่พบไฟล์ (PDF/JPG/PNG) สำหรับเลขที่อ้างอิงนี้');
                 }
             } catch (error) {
                 console.error('❌ Error finding file:', error);
-                document.getElementById('pdfLoadingOverlay')?.remove();
                 alert('เกิดข้อผิดพลาดในการค้นหาไฟล์: ' + error.message);
             }
         }
@@ -5742,6 +6049,16 @@
                 html += `<button class="comparison-tab" onclick="switchComparisonTab('match')">`;
                 html += `ข้อมูลที่ตรงกัน <span class="comparison-tab-badge match">${fullMatchedComparisons.length}</span>`;
                 html += `</button>`;
+                html += `</div>`;
+                
+                // Search Box สำหรับค้นหาเลขที่เอกสารอ้างอิง
+                html += `<div style="margin: 15px 0; padding: 12px; background: #1e293b; border-radius: 8px; border: 1px solid #334155;">`;
+                html += `<div style="display: flex; align-items: center; gap: 10px;">`;
+                html += `<span style="color: #cbd5e1; font-size: 0.95em; font-weight: 600;">🔍 ค้นหาเลขที่เอกสารอ้างอิง:</span>`;
+                html += `<input type="text" id="comparisonReferenceSearch" placeholder="พิมพ์เลขที่เอกสารอ้างอิง..." oninput="filterComparisonByReference(this.value)" style="flex: 1; padding: 8px 12px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: #fafafa; font-size: 0.9em; transition: all 0.3s;" onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';" onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';" />`;
+                html += `<button onclick="clearComparisonSearch()" id="clearSearchBtn" style="padding: 8px 16px; background: #334155; color: #cbd5e1; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: all 0.3s; display: none;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">ล้าง</button>`;
+                html += `</div>`;
+                html += `<div id="comparisonSearchResult" style="margin-top: 8px; color: #94a3b8; font-size: 0.85em; display: none;"></div>`;
                 html += `</div>`;
                 
                 // ปุ่มย้ายเอกสารทั้งหมดที่ไม่ตรงกัน
