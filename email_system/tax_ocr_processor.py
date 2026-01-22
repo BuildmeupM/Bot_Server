@@ -1351,17 +1351,19 @@ def _get_pp30_custom_fields() -> List[Dict[str, str]]:
 def extract_text_from_aksonocr(
     image_path: str,
     api_key: str,
-    ocr_mode: str = 'v2/upload'
+    ocr_mode: str = 'v2/upload',
+    fallback_api_keys: list = None
 ) -> Dict[str, Any]:
     """
     Extract text from image/PDF using AksonOCR API.
     
     Args:
         image_path: Path to image/PDF file
-        api_key: AksonOCR API key
+        api_key: AksonOCR API key (primary)
         ocr_mode: OCR mode to use
             - 'key-extract': ใช้ /api/v1/key-extract (สำหรับหน้า ประมวลผล PDF)
             - 'v2/upload': ใช้ /api/v2/upload (สำหรับหน้า ส่งเมลล์) - default
+        fallback_api_keys: List of fallback API keys to try when primary fails with 500 error
         
     Returns:
         Dictionary containing:
@@ -1370,6 +1372,11 @@ def extract_text_from_aksonocr(
         - 'numbers': List of extracted numbers (if any)
         - 'raw_content': Raw API response content
     """
+    if fallback_api_keys is None:
+        fallback_api_keys = []
+    
+    # รวม primary key และ fallback keys เป็น list
+    api_keys_to_try = [api_key] + fallback_api_keys
     # เลือก endpoint ตาม ocr_mode
     if ocr_mode == 'key-extract':
         # ใช้ endpoint /api/v1/key-extract (ตาม test_aksonocr.py)
@@ -1622,14 +1629,14 @@ def extract_text_from_aksonocr(
                 files = {
                     "file": (filename, file, mime_type)
                 }
-                # Header: X-API-Key (ตาม test_aksonocr.py)
+                # Header จะถูกอัปเดตใน loop ตาม API key ที่ใช้
                 headers = {
-                    "X-API-Key": api_key
+                    "X-API-Key": api_keys_to_try[0]  # ใช้ API key แรกเป็นค่าเริ่มต้น
                 }
                 
                 logger.info(f"📤 [AksonOCR] ส่งไฟล์: {filename} (size: {file_path.stat().st_size} bytes) - Mode: key-extract")
                 logger.debug(f"📤 [AksonOCR] API URL: {url}")
-                logger.debug(f"📤 [AksonOCR] Headers: X-API-Key {api_key[:10]}...")
+                logger.debug(f"📤 [AksonOCR] Headers: X-API-Key {api_keys_to_try[0][:10]}...")
                 logger.debug(f"📤 [AksonOCR] Payload: model={payload['model']}, customFields={len(custom_fields)} fields")
                 logger.debug(f"📤 [AksonOCR] Files: file={filename}, mime_type={mime_type}")
             else:
@@ -1640,100 +1647,143 @@ def extract_text_from_aksonocr(
                 }
                 # Data: {"model": "aksonocr-1.0"} (ตาม test_aksonocr_v2.py)
                 data = {"model": "aksonocr-1.0"}
-                # Header: X-API-Key (ตาม test_aksonocr_v2.py)
+                # Header จะถูกอัปเดตใน loop ตาม API key ที่ใช้
                 headers = {
-                    "X-API-Key": api_key
+                    "X-API-Key": api_keys_to_try[0]  # ใช้ API key แรกเป็นค่าเริ่มต้น
                 }
                 
                 logger.info(f"📤 [AksonOCR] ส่งไฟล์: {filename} (size: {file_path.stat().st_size} bytes) - Mode: v2/upload")
                 logger.debug(f"📤 [AksonOCR] API URL: {url}")
-                logger.debug(f"📤 [AksonOCR] Headers: X-API-Key {api_key[:10]}...")
+                logger.debug(f"📤 [AksonOCR] Headers: X-API-Key {api_keys_to_try[0][:10]}...")
                 logger.debug(f"📤 [AksonOCR] Data: model={data['model']}")
                 logger.debug(f"📤 [AksonOCR] Files: file={filename}, mime_type={mime_type}")
             
-            # Retry logic สำหรับ rate limiting (429)
+            # Retry logic สำหรับ rate limiting (429) และ fallback API keys สำหรับ error 500
             max_retries = 3
             retry_delay = 2  # เริ่มต้นที่ 2 วินาที
             response = None
+            current_api_key_index = 0
+            last_500_error = None
             
             try:
-                for attempt in range(max_retries):
-                    try:
-                        # เพิ่ม delay ระหว่าง requests เพื่อลดโอกาสเกิด rate limit
-                        if attempt > 0:
-                            wait_time = retry_delay * (2 ** (attempt - 1))  # Exponential backoff: 2s, 4s, 8s
-                            logger.warning(f"⏳ [AksonOCR] รอ {wait_time} วินาที ก่อน retry (ครั้งที่ {attempt + 1}/{max_retries})...")
-                            time.sleep(wait_time)
-                        else:
-                            # เพิ่ม delay เล็กน้อยก่อน request แรกเพื่อลดโอกาสเกิด rate limit
-                            time.sleep(0.5)
-                        
-                        # กำหนด timeout ตาม ocr_mode
-                        # key-extract อาจใช้เวลานานกว่าเพราะต้อง extract ข้อมูลหลาย field
-                        request_timeout = 180 if use_key_extract else 120  # key-extract: 180s, v2/upload: 120s
-                        logger.info(f"⏱️ [AksonOCR] ตั้งค่า timeout: {request_timeout} วินาที (mode: {ocr_mode}, attempt: {attempt + 1}/{max_retries})")
-                        
-                        if use_key_extract:
-                            # สำหรับ key-extract ใช้ data=payload แทน data=data
-                            response = requests.post(url, headers=headers, files=files, data=payload, timeout=request_timeout)
-                        else:
-                            # สำหรับ v2/upload ใช้ data=data
-                            response = requests.post(url, headers=headers, files=files, data=data, timeout=request_timeout)
-                        
-                        logger.info(f"✅ [AksonOCR] API response received: {response.status_code}")
-                        
-                        # ถ้าเป็น 200 หรือ 201 ให้ออกจาก retry loop (สำเร็จ)
-                        if response.status_code in [200, 201]:
-                            break
-                        
-                        # ถ้าเป็น 429 (Rate Limit) หรือ 500 (Server Error) และยังมี retry ครั้งเหลือ ให้ retry
-                        if (response.status_code == 429 or response.status_code == 500) and attempt < max_retries - 1:
-                            try:
-                                error_data = response.json()
-                                if response.status_code == 429:
-                                    error_message = error_data.get('error', {}).get('message', '') if isinstance(error_data, dict) else ''
-                                    logger.warning(f"⚠️ [AksonOCR] Rate limit exceeded (429): {error_message} - จะ retry ในครั้งถัดไป")
-                                elif response.status_code == 500:
+                # วนลูปผ่าน API keys ทั้งหมด
+                for api_key_index, current_api_key in enumerate(api_keys_to_try):
+                    if api_key_index > 0:
+                        logger.info(f"🔄 [AksonOCR] สลับไปใช้ API key สำรอง (ตัวที่ {api_key_index + 1}/{len(api_keys_to_try)})")
+                        # อัปเดต headers ด้วย API key ใหม่
+                        headers = {"X-API-Key": current_api_key}
+                    
+                    # Retry loop สำหรับ API key นี้
+                    for attempt in range(max_retries):
+                        try:
+                            # เพิ่ม delay ระหว่าง requests เพื่อลดโอกาสเกิด rate limit
+                            if attempt > 0:
+                                wait_time = retry_delay * (2 ** (attempt - 1))  # Exponential backoff: 2s, 4s, 8s
+                                logger.warning(f"⏳ [AksonOCR] รอ {wait_time} วินาที ก่อน retry (ครั้งที่ {attempt + 1}/{max_retries})...")
+                                time.sleep(wait_time)
+                            else:
+                                # เพิ่ม delay เล็กน้อยก่อน request แรกเพื่อลดโอกาสเกิด rate limit
+                                time.sleep(0.5)
+                            
+                            # กำหนด timeout ตาม ocr_mode
+                            # key-extract อาจใช้เวลานานกว่าเพราะต้อง extract ข้อมูลหลาย field
+                            request_timeout = 180 if use_key_extract else 120  # key-extract: 180s, v2/upload: 120s
+                            logger.info(f"⏱️ [AksonOCR] ตั้งค่า timeout: {request_timeout} วินาที (mode: {ocr_mode}, API key: {api_key_index + 1}/{len(api_keys_to_try)}, attempt: {attempt + 1}/{max_retries})")
+                            
+                            if use_key_extract:
+                                # สำหรับ key-extract ใช้ data=payload แทน data=data
+                                response = requests.post(url, headers=headers, files=files, data=payload, timeout=request_timeout)
+                            else:
+                                # สำหรับ v2/upload ใช้ data=data
+                                response = requests.post(url, headers=headers, files=files, data=data, timeout=request_timeout)
+                            
+                            logger.info(f"✅ [AksonOCR] API response received: {response.status_code} (API key: {api_key_index + 1}/{len(api_keys_to_try)})")
+                            
+                            # ถ้าเป็น 200 หรือ 201 ให้ออกจาก loop ทั้งหมด (สำเร็จ)
+                            if response.status_code in [200, 201]:
+                                current_api_key_index = api_key_index
+                                break
+                            
+                            # ถ้าเป็น 500 (Server Error) และยังมี API key สำรอง ให้ลอง API key ถัดไป
+                            if response.status_code == 500:
+                                try:
+                                    error_data = response.json()
                                     error_code = error_data.get('error', {}).get('code', 'UNKNOWN') if isinstance(error_data, dict) else 'UNKNOWN'
                                     error_message = error_data.get('error', {}).get('message', '') if isinstance(error_data, dict) else ''
-                                    logger.warning(f"⚠️ [AksonOCR] Server error (500): [{error_code}] {error_message} - จะ retry ในครั้งถัดไป")
-                            except:
-                                if response.status_code == 429:
+                                    last_500_error = f"[{error_code}] {error_message}"
+                                    logger.warning(f"⚠️ [AksonOCR] Server error (500): {last_500_error} - API key: {api_key_index + 1}/{len(api_keys_to_try)}")
+                                except:
+                                    last_500_error = "Unknown error"
+                                    logger.warning(f"⚠️ [AksonOCR] Server error (500) - API key: {api_key_index + 1}/{len(api_keys_to_try)}")
+                                
+                                # ถ้ายังมี API key สำรอง ให้ลอง API key ถัดไป
+                                if api_key_index < len(api_keys_to_try) - 1:
+                                    logger.info(f"🔄 [AksonOCR] จะลองใช้ API key สำรองตัวถัดไป...")
+                                    break  # ออกจาก retry loop เพื่อลอง API key ถัดไป
+                                else:
+                                    # ไม่มี API key สำรองแล้ว ให้ retry ด้วย API key เดิม
+                                    if attempt < max_retries - 1:
+                                        logger.warning(f"⚠️ [AksonOCR] Server error (500) - จะ retry ในครั้งถัดไป")
+                                        continue
+                                    else:
+                                        # ไม่มี retry ครั้งเหลือแล้ว
+                                        break
+                            
+                            # ถ้าเป็น 429 (Rate Limit) และยังมี retry ครั้งเหลือ ให้ retry
+                            if response.status_code == 429 and attempt < max_retries - 1:
+                                try:
+                                    error_data = response.json()
+                                    error_message = error_data.get('error', {}).get('message', '') if isinstance(error_data, dict) else ''
+                                    logger.warning(f"⚠️ [AksonOCR] Rate limit exceeded (429): {error_message} - จะ retry ในครั้งถัดไป")
+                                except:
                                     logger.warning(f"⚠️ [AksonOCR] Rate limit exceeded (429) - จะ retry ในครั้งถัดไป")
-                                elif response.status_code == 500:
-                                    logger.warning(f"⚠️ [AksonOCR] Server error (500) - จะ retry ในครั้งถัดไป")
-                            continue
-                        else:
-                            # ไม่มี retry ครั้งเหลือแล้ว หรือเป็น error อื่นๆ
-                            break
-                    except requests.exceptions.Timeout as e:
-                        if attempt < max_retries - 1:
-                            logger.warning(f"⚠️ [AksonOCR] Request timeout - จะ retry ในครั้งถัดไป")
-                            continue
-                        else:
-                            logger.error(f"❌ [AksonOCR] Request timeout หลังจาก {request_timeout} วินาที: {e}")
-                            logger.warning(f"⚠️ [AksonOCR] จะ fallback ไปใช้ TYPHOON OCR")
-                            return {
-                                'text': None,
-                                'tables': [],
-                                'numbers': [],
-                                'raw_content': None,
-                                'error': f'AksonOCR timeout after {request_timeout}s'
-                            }
-                    except requests.exceptions.RequestException as e:
-                        if attempt < max_retries - 1:
-                            logger.warning(f"⚠️ [AksonOCR] Network error - จะ retry ในครั้งถัดไป: {e}")
-                            continue
-                        else:
-                            logger.error(f"❌ [AksonOCR] Network error: {e}")
-                            logger.warning(f"⚠️ [AksonOCR] จะ fallback ไปใช้ TYPHOON OCR")
-                            return {
-                                'text': None,
-                                'tables': [],
-                                'numbers': [],
-                                'raw_content': None,
-                                'error': f'AksonOCR network error: {e}'
-                            }
+                                continue
+                            else:
+                                # ไม่มี retry ครั้งเหลือแล้ว หรือเป็น error อื่นๆ
+                                break
+                        
+                        except requests.exceptions.Timeout as e:
+                            if attempt < max_retries - 1:
+                                logger.warning(f"⚠️ [AksonOCR] Request timeout - จะ retry ในครั้งถัดไป")
+                                continue
+                            else:
+                                # ถ้ายังมี API key สำรอง ให้ลอง API key ถัดไป
+                                if api_key_index < len(api_keys_to_try) - 1:
+                                    logger.warning(f"⚠️ [AksonOCR] Request timeout - จะลองใช้ API key สำรองตัวถัดไป")
+                                    break  # ออกจาก retry loop เพื่อลอง API key ถัดไป
+                                else:
+                                    logger.error(f"❌ [AksonOCR] Request timeout หลังจาก {request_timeout} วินาที: {e}")
+                                    logger.warning(f"⚠️ [AksonOCR] จะ fallback ไปใช้ TYPHOON OCR")
+                                    return {
+                                        'text': None,
+                                        'tables': [],
+                                        'numbers': [],
+                                        'raw_content': None,
+                                        'error': f'AksonOCR timeout after {request_timeout}s'
+                                    }
+                        except requests.exceptions.RequestException as e:
+                            if attempt < max_retries - 1:
+                                logger.warning(f"⚠️ [AksonOCR] Network error - จะ retry ในครั้งถัดไป: {e}")
+                                continue
+                            else:
+                                # ถ้ายังมี API key สำรอง ให้ลอง API key ถัดไป
+                                if api_key_index < len(api_keys_to_try) - 1:
+                                    logger.warning(f"⚠️ [AksonOCR] Network error - จะลองใช้ API key สำรองตัวถัดไป")
+                                    break  # ออกจาก retry loop เพื่อลอง API key ถัดไป
+                                else:
+                                    logger.error(f"❌ [AksonOCR] Network error: {e}")
+                                    logger.warning(f"⚠️ [AksonOCR] จะ fallback ไปใช้ TYPHOON OCR")
+                                    return {
+                                        'text': None,
+                                        'tables': [],
+                                        'numbers': [],
+                                        'raw_content': None,
+                                        'error': f'AksonOCR network error: {e}'
+                                    }
+                    
+                    # ถ้าสำเร็จแล้ว (status 200/201) ให้ออกจาก API key loop
+                    if response and response.status_code in [200, 201]:
+                        break
             except Exception as e:
                 logger.error(f"❌ [AksonOCR] Unexpected error: {e}")
                 logger.warning(f"⚠️ [AksonOCR] จะ fallback ไปใช้ TYPHOON OCR")
@@ -1746,11 +1796,11 @@ def extract_text_from_aksonocr(
                 }
             
             # รองรับ status code 200 และ 201 (201 Created = สำเร็จ)
-            if response.status_code not in [200, 201]:
+            if response and response.status_code not in [200, 201]:
                 # จัดการ 429 Rate Limit Error
                 if response.status_code == 429:
                     error_message = 'เกินจำนวน request ที่อนุญาต กรุณาลองใหม่ในภายหลัง'
-                    logger.error(f"❌ [AksonOCR] Rate limit exceeded (429): {error_message}")
+                    logger.error(f"❌ [AksonOCR] Rate limit exceeded (429): {error_message} (ลอง API keys ทั้งหมดแล้ว)")
                     return {
                         'text': None,
                         'tables': [],
@@ -1758,6 +1808,19 @@ def extract_text_from_aksonocr(
                         'raw_content': None,
                         'error': error_message,
                         'error_code': 429
+                    }
+                
+                # จัดการ 500 Server Error (ลอง API keys ทั้งหมดแล้ว)
+                if response.status_code == 500:
+                    error_details = last_500_error or 'Server error (500)'
+                    logger.error(f"❌ [AksonOCR] Server error (500): {error_details} (ลอง API keys ทั้งหมดแล้ว: {len(api_keys_to_try)} ตัว)")
+                    return {
+                        'text': None,
+                        'tables': [],
+                        'numbers': [],
+                        'raw_content': None,
+                        'error': f'AksonOCR API failed (500): {error_details} - ลอง API keys ทั้งหมดแล้ว',
+                        'error_code': 500
                     }
                 
                 # พยายาม parse error response สำหรับ error อื่นๆ
@@ -1792,6 +1855,17 @@ def extract_text_from_aksonocr(
                     'numbers': [],
                     'raw_content': None,
                     'error': f'AksonOCR API failed: {response.status_code} - {error_details}'
+                }
+            
+            # ถ้าไม่มี response (ไม่ควรเกิดขึ้น แต่ป้องกันไว้)
+            if not response:
+                logger.error(f"❌ [AksonOCR] ไม่มี response จาก API (ลอง API keys ทั้งหมดแล้ว: {len(api_keys_to_try)} ตัว)")
+                return {
+                    'text': None,
+                    'tables': [],
+                    'numbers': [],
+                    'raw_content': None,
+                    'error': 'AksonOCR API ไม่มี response (ลอง API keys ทั้งหมดแล้ว)'
                 }
         
         # ประมวลผล response จาก /api/v2/upload (รองรับทั้ง 200 และ 201)
@@ -2545,7 +2619,16 @@ class TaxOCRResult:
 class TaxOCRProcessor:
     """คลาสสำหรับประมวลผล OCR จากไฟล์แบบยื่นภาษี"""
     
-    def __init__(self):
+    def __init__(self, page_context: str = None):
+        """
+        Initialize TaxOCRProcessor
+        
+        Args:
+            page_context: Context ของหน้า ('pdf_processing' หรือ 'auditcheck')
+                          ถ้าไม่ระบุจะใช้ API key เก่า (backward compatibility)
+        """
+        self.page_context = page_context
+        
         # Import config สำหรับ API key
         try:
             from config import Config
@@ -2553,6 +2636,21 @@ class TaxOCRProcessor:
             self.akson_api_key = getattr(Config, 'AKSON_API_KEY', '')
             self.akson_api_url = getattr(Config, 'AKSON_API_URL', 'https://backend.aksonocr.com/api/v2/upload')
             self.akson_enabled = getattr(Config, 'AKSON_ENABLED', True)
+            
+            # Fallback API keys ตาม context
+            if page_context == 'pdf_processing':
+                self.akson_api_key = getattr(Config, 'AKSON_API_KEY_PDF_PROCESSING', self.akson_api_key)
+                self.akson_fallback_keys = [getattr(Config, 'AKSON_API_KEY_PDF_PROCESSING_FALLBACK', '')]
+            elif page_context == 'auditcheck':
+                self.akson_api_key = getattr(Config, 'AKSON_API_KEY_AUDITCHECK', self.akson_api_key)
+                self.akson_fallback_keys = [getattr(Config, 'AKSON_API_KEY_AUDITCHECK_FALLBACK', '')]
+            else:
+                # สำหรับ backward compatibility
+                self.akson_fallback_keys = []
+            
+            # กรอง fallback keys ที่ว่างออก
+            self.akson_fallback_keys = [key for key in self.akson_fallback_keys if key]
+            
             # TYPHOON OCR Settings (Fallback)
             self.typhoon_api_key = getattr(Config, 'TYPHOON_API_KEY', '')
             self.typhoon_api_url = getattr(Config, 'TYPHOON_API_URL', 'https://api.opentyphoon.ai/v1/ocr')
@@ -2561,6 +2659,7 @@ class TaxOCRProcessor:
             self.akson_api_key = ''
             self.akson_api_url = 'https://backend.aksonocr.com/api/v2/upload'
             self.akson_enabled = True
+            self.akson_fallback_keys = []
             self.typhoon_api_key = ''
             self.typhoon_api_url = 'https://api.opentyphoon.ai/v1/ocr'
             self.typhoon_enabled = True
@@ -2724,7 +2823,8 @@ class TaxOCRProcessor:
                 ocr_result = extract_text_from_aksonocr(
                     str(pdf_path),
                     self.akson_api_key,
-                    ocr_mode='key-extract'  # ใช้ key-extract สำหรับหน้า "ประมวลผล PDF"
+                    ocr_mode='key-extract',  # ใช้ key-extract สำหรับหน้า "ประมวลผล PDF"
+                    fallback_api_keys=self.akson_fallback_keys  # ส่ง fallback API keys
                 )
                 
                 if ocr_result.get('text') or ocr_result.get('raw_content'):
@@ -2814,11 +2914,12 @@ class TaxOCRProcessor:
                     'error': 'AksonOCR API key ไม่ได้ตั้งค่า'
                 }
             
-            # เรียกใช้ extract_text_from_aksonocr function
+            # เรียกใช้ extract_text_from_aksonocr function พร้อม fallback API keys
             ocr_result = extract_text_from_aksonocr(
                 str(pdf_path),
                 self.akson_api_key,
-                ocr_mode=ocr_mode  # ส่ง ocr_mode ไปยัง extract_text_from_aksonocr
+                ocr_mode=ocr_mode,  # ส่ง ocr_mode ไปยัง extract_text_from_aksonocr
+                fallback_api_keys=self.akson_fallback_keys  # ส่ง fallback API keys
             )
             
             if ocr_result.get('error'):

@@ -1720,7 +1720,8 @@ def upload_email_attachment():
             if not specialized_processor_used or (ocr_result and not ocr_result.get('success')):
                 try:
                     from email_system.tax_ocr_processor import TaxOCRProcessor
-                    processor = TaxOCRProcessor()
+                    # ใช้ context 'pdf_processing' สำหรับหน้า pdf_processing.html
+                    processor = TaxOCRProcessor(page_context='pdf_processing')
                     ocr_result = processor.extract_tax_amounts(temp_file_path)
                     # ส่งข้อมูลดิบไปแสดงผล (ไม่รวม raw_text ใน full_result เพื่อไม่ให้ซ้ำ)
                     full_result_copy = {k: v for k, v in ocr_result.items() if k != 'raw_text'}
@@ -1734,7 +1735,8 @@ def upload_email_attachment():
                     # ลอง import จาก root directory
                     try:
                         from tax_ocr_processor import TaxOCRProcessor
-                        processor = TaxOCRProcessor()
+                        # ใช้ context 'pdf_processing' สำหรับหน้า pdf_processing.html
+                        processor = TaxOCRProcessor(page_context='pdf_processing')
                         ocr_result = processor.extract_tax_amounts(temp_file_path)
                         # ส่งข้อมูลดิบไปแสดงผล (ไม่รวม raw_text ใน full_result เพื่อไม่ให้ซ้ำ)
                         full_result_copy = {k: v for k, v in ocr_result.items() if k != 'raw_text'}
@@ -7546,7 +7548,8 @@ def run_ocr_for_audit():
         }
         
         # รัน OCR สำหรับแต่ละไฟล์ PDF
-        processor = TaxOCRProcessor()
+        # ใช้ context 'auditcheck' สำหรับหน้า auditcheck.html
+        processor = TaxOCRProcessor(page_context='auditcheck')
         processed_files = []
         ocr_data_list = []
         cache_hits = 0  # นับจำนวนไฟล์ที่ใช้ cache

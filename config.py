@@ -125,6 +125,16 @@ class Config:
     # หมายเหตุ: ต้องติดตั้ง mistralai library: pip install mistralai
     
     # AKSON OCR Settings (Primary OCR Service)
+    # API Keys สำหรับแต่ละหน้า (พร้อม fallback)
+    # สำหรับหน้า pdf_processing.html
+    AKSON_API_KEY_PDF_PROCESSING = "ak_3541afc2d10848edbae590d71ab2b4e4"  # ตัวหลัก
+    AKSON_API_KEY_PDF_PROCESSING_FALLBACK = "ak_16f88f300b364359a34d12991e779fb1"  # ตัวสำรอง
+    
+    # สำหรับหน้า auditcheck.html
+    AKSON_API_KEY_AUDITCHECK = "ak_1be116ec09c64afc97310ff213151f86"  # ตัวหลัก
+    AKSON_API_KEY_AUDITCHECK_FALLBACK = "ak_6cc87c35a43040d289d09247d5da11d9"  # ตัวสำรอง
+    
+    # API Key เก่า (สำหรับ backward compatibility)
     AKSON_API_KEY = "ak_3541afc2d10848edbae590d71ab2b4e4"  # ใส่ API key สำหรับ AksonOCR ที่นี่
     AKSON_API_URL = "https://backend.aksonocr.com/api/v2/upload"  # ใส่ API endpoint URL
     AKSON_ENABLED = True  # เปิด/ปิดการใช้งาน AksonOCR

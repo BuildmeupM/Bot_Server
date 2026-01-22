@@ -33,7 +33,8 @@ class OCRReaderService:
         # Import TaxOCRProcessor
         try:
             from email_system.tax_ocr_processor import TaxOCRProcessor
-            self.ocr_processor = TaxOCRProcessor()
+            # ใช้ context 'pdf_processing' สำหรับหน้า pdf_processing.html
+            self.ocr_processor = TaxOCRProcessor(page_context='pdf_processing')
         except ImportError:
             logger.warning("⚠️ ไม่สามารถ import TaxOCRProcessor ได้ - จะใช้ PyPDF2 แทน")
             self.ocr_processor = None
