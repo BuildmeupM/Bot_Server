@@ -986,6 +986,7 @@
         <div class="tabs">
             <button class="tab-button" onclick="switchTab('withholding')">ตรวจภาษีหัก ณ ที่จ่าย</button>
             <button class="tab-button active" onclick="switchTab('vat')">ตรวจภาษีมูลค่าเพิ่ม</button>
+            <button class="tab-button" onclick="switchTab('ocr-queue')">ระบบฝากอ่านข้อมูล</button>
         </div>
         
         <!-- Tab: ตรวจภาษีหัก ณ ที่จ่าย -->
@@ -993,6 +994,118 @@
             <div class="development-notice">
                 <h2>🚧 กำลังพัฒนา</h2>
                 <p>ฟีเจอร์นี้กำลังอยู่ในขั้นตอนการพัฒนา</p>
+            </div>
+        </div>
+        
+        <!-- Tab: ระบบฝากอ่านข้อมูล -->
+        <div id="ocr-queue-tab" class="tab-content">
+            <div class="form-section">
+                <h2 style="color: #fafafa; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.5em;">📥</span>
+                    <span>ระบบฝากอ่านข้อมูล OCR</span>
+                </h2>
+                
+                <div style="background: #0f172a; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                            <span>📁</span>
+                            <span>ที่อยู่ไฟล์หรือโฟลเดอร์</span>
+                        </label>
+                        <input type="text" id="ocrQueuePath" class="form-control" placeholder="ตัวอย่าง: V:/A.โฟร์เดอร์หลัก/บริษัท ABC/2025-01" style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;" onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';" onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';" />
+                        <div style="color: #94a3b8; font-size: 0.85em; margin-top: 8px;">
+                            💡 สามารถระบุที่อยู่ไฟล์หรือโฟลเดอร์ที่ต้องการอ่านข้อมูล OCR
+                        </div>
+                    </div>
+                    
+                    <button type="button" onclick="submitOCRQueue()" id="submitOCRQueueBtn" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1em; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(139, 92, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(139, 92, 246, 0.3)';">
+                        <span style="font-size: 1.2em;">🚀</span>
+                        <span>เริ่มอ่านข้อมูล OCR</span>
+                    </button>
+                </div>
+                
+                <!-- แสดงคิวที่กำลังทำงาน -->
+                <div id="ocrQueueList" style="margin-top: 20px;">
+                    <!-- คิวจะถูกแสดงที่นี่ -->
+                </div>
+            </div>
+            
+            <!-- Modal สำหรับยืนยันการส่งคิว OCR -->
+            <div class="modal-overlay" id="ocrQueueConfirmModal" style="display: none; backdrop-filter: blur(4px);">
+                <div class="modal-content" style="max-width: 600px;">
+                    <div class="modal-header" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-bottom: 2px solid rgba(139, 92, 246, 0.2); padding: 24px;">
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);">
+                                📥
+                            </div>
+                            <div>
+                                <h3 style="color: #fafafa; font-size: 1.3em; font-weight: 700; margin: 0;">ยืนยันการส่งคิว OCR</h3>
+                                <p style="color: #94a3b8; font-size: 0.9em; margin: 5px 0 0 0;">ตรวจสอบข้อมูลก่อนเริ่มอ่านข้อมูล OCR</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding: 24px; background: #1e293b;">
+                        <div style="background: #0f172a; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                            <div class="modal-info-item" style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <span class="modal-info-item-icon">📁</span>
+                                <div style="flex: 1;">
+                                    <span class="modal-info-item-label" style="color: #94a3b8; font-size: 0.9em;">ที่อยู่ไฟล์/โฟลเดอร์:</span>
+                                    <div class="modal-info-item-value" id="ocrQueueConfirmPath" style="color: #fafafa; font-size: 1em; font-weight: 500; word-break: break-all; margin-top: 5px;">-</div>
+                                </div>
+                            </div>
+                            <div class="modal-info-item" style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <span class="modal-info-item-icon">📄</span>
+                                <div style="flex: 1;">
+                                    <span class="modal-info-item-label" style="color: #94a3b8; font-size: 0.9em;">จำนวนไฟล์ทั้งหมด:</span>
+                                    <div class="modal-info-item-value" id="ocrQueueConfirmTotalFiles" style="color: #60a5fa; font-size: 1.2em; font-weight: 700; margin-top: 5px;">-</div>
+                                </div>
+                            </div>
+                            <div class="modal-info-item" style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+                                <span class="modal-info-item-icon">⏱️</span>
+                                <div style="flex: 1;">
+                                    <span class="modal-info-item-label" style="color: #94a3b8; font-size: 0.9em;">เวลาที่คาดว่าจะใช้:</span>
+                                    <div class="modal-info-item-value" id="ocrQueueConfirmEstimatedTime" style="color: #fbbf24; font-size: 1.2em; font-weight: 700; margin-top: 5px;">-</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- เลือกวิธีการรัน OCR - แสดงใน modal -->
+                        <div style="margin-bottom: 20px; padding: 12px; background: #0f172a; border-radius: 8px; border: 2px solid #3b82f6;">
+                            <div style="color: #60a5fa; font-weight: 600; margin-bottom: 10px;">💡 เลือกวิธีการรัน OCR:</div>
+                            <div style="display: flex; gap: 10px; flex-direction: row; flex-wrap: wrap;">
+                                <label style="display: flex; align-items: center; cursor: pointer; padding: 10px; background: #1e293b; border-radius: 5px; border: 2px solid #334155; flex: 1; min-width: 250px;">
+                                    <input type="radio" name="ocrQueueMode" value="new" checked style="margin-right: 10px; cursor: pointer; flex-shrink: 0;" id="ocrQueueModeNew">
+                                    <div style="flex: 1;">
+                                        <div style="color: #fafafa; font-weight: 600; font-size: 0.9em;">🔄 อ่านใหม่ทั้งหมด</div>
+                                        <div style="color: #94a3b8; font-size: 0.8em; margin-top: 3px;">รัน OCR ใหม่ทั้งหมด (ไม่ใช้ cache)</div>
+                                    </div>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer; padding: 10px; background: #1e293b; border-radius: 5px; border: 2px solid #334155; flex: 1; min-width: 250px;">
+                                    <input type="radio" name="ocrQueueMode" value="continue" style="margin-right: 10px; cursor: pointer; flex-shrink: 0;" id="ocrQueueModeContinue">
+                                    <div style="flex: 1;">
+                                        <div style="color: #fafafa; font-weight: 600; font-size: 0.9em;">▶️ อ่านต่อจากที่ค้าง</div>
+                                        <div style="color: #94a3b8; font-size: 0.8em; margin-top: 3px;">ใช้ cache ที่มีอยู่แล้ว และอ่านต่อจากไฟล์ที่ยังไม่ได้อ่าน</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div style="background: #fbbf2415; border-left: 4px solid #fbbf24; padding: 12px; border-radius: 8px; margin-bottom: 20px;">
+                            <div style="color: #fbbf24; font-weight: 600; margin-bottom: 5px;">💡 หมายเหตุ:</div>
+                            <div style="color: #cbd5e1; font-size: 0.9em; line-height: 1.6;">
+                                • ระบบจะประมวลผลสูงสุด 3 คิวพร้อมกัน<br>
+                                • หากคิวเต็มแล้ว กรุณารอให้คิวใดคิวหนึ่งเสร็จก่อน<br>
+                                • เวลาที่แสดงเป็นค่าประมาณ (1 รายการ/30 วินาที)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="padding: 20px 24px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-top: 1px solid rgba(51, 65, 85, 0.5); display: flex; justify-content: flex-end; gap: 12px;">
+                        <button class="modal-btn modal-btn-secondary" onclick="closeOCRQueueConfirmModal()" style="padding: 10px 24px; border-radius: 8px; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-1px)';" onmouseout="this.style.transform='translateY(0)';">
+                            ยกเลิก
+                        </button>
+                        <button class="modal-btn modal-btn-primary" id="ocrQueueConfirmBtn" onclick="confirmOCRQueueSubmit()" style="padding: 10px 24px; border-radius: 8px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(139, 92, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(139, 92, 246, 0.3)';">
+                            ✅ ยืนยันและเริ่มอ่าน
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -1577,6 +1690,722 @@
             
             // Add active class to clicked button
             event.target.classList.add('active');
+            
+            // ถ้าเป็น OCR queue tab ให้โหลดคิว
+            if (tabName === 'ocr-queue') {
+                loadOCRQueue();
+                startOCRQueuePolling();
+            } else {
+                stopOCRQueuePolling();
+            }
+        }
+        
+        // ========== OCR Queue System ==========
+        let ocrQueuePollingInterval = null;
+        
+        // ตัวแปรสำหรับเก็บข้อมูลคิวที่กำลังจะส่ง
+        let pendingOCRQueueData = null;
+        
+        // ฟังก์ชันสำหรับส่งคิว OCR (แสดง modal ยืนยันก่อน)
+        async function submitOCRQueue() {
+            const pathInput = document.getElementById('ocrQueuePath');
+            const path = pathInput.value.trim();
+            
+            if (!path) {
+                alert('กรุณาระบุที่อยู่ไฟล์หรือโฟลเดอร์');
+                return;
+            }
+            
+            const submitBtn = document.getElementById('submitOCRQueueBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span style="font-size: 1.2em;">⏳</span><span>กำลังตรวจสอบ...</span>';
+            
+            try {
+                // เรียก API เพื่อนับไฟล์และคำนวณเวลา
+                const checkResponse = await fetch('/api/auditcheck/ocr-queue/check', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        path: path
+                    })
+                });
+                
+                const checkData = await checkResponse.json();
+                
+                if (!checkData.success) {
+                    alert('เกิดข้อผิดพลาด: ' + (checkData.error || 'ไม่ทราบสาเหตุ'));
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span style="font-size: 1.2em;">🚀</span><span>เริ่มอ่านข้อมูล OCR</span>';
+                    return;
+                }
+                
+                // เก็บข้อมูลไว้สำหรับยืนยัน (ยังไม่เก็บ ocr_mode เพราะจะให้เลือกใน modal)
+                pendingOCRQueueData = {
+                    path: path,
+                    total_files: checkData.total_files || 0,
+                    estimated_time: checkData.estimated_time || 0
+                };
+                
+                // แสดง modal ยืนยัน
+                showOCRQueueConfirmModal(checkData.total_files || 0, checkData.estimated_time || 0, path);
+                
+            } catch (error) {
+                console.error('Error checking OCR queue:', error);
+                alert('เกิดข้อผิดพลาดในการตรวจสอบ: ' + error.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span style="font-size: 1.2em;">🚀</span><span>เริ่มอ่านข้อมูล OCR</span>';
+            }
+        }
+        
+        // ฟังก์ชันสำหรับแสดง modal ยืนยัน
+        function showOCRQueueConfirmModal(totalFiles, estimatedTime, path) {
+            const modal = document.getElementById('ocrQueueConfirmModal');
+            const pathElement = document.getElementById('ocrQueueConfirmPath');
+            const totalFilesElement = document.getElementById('ocrQueueConfirmTotalFiles');
+            const estimatedTimeElement = document.getElementById('ocrQueueConfirmEstimatedTime');
+            
+            pathElement.textContent = path;
+            totalFilesElement.textContent = `${totalFiles.toLocaleString('th-TH')} ไฟล์`;
+            estimatedTimeElement.textContent = formatEstimatedTime(estimatedTime);
+            
+            // รีเซ็ต radio button เป็น "อ่านใหม่ทั้งหมด"
+            const newModeRadio = document.getElementById('ocrQueueModeNew');
+            if (newModeRadio) {
+                newModeRadio.checked = true;
+            }
+            
+            modal.style.display = 'flex';
+        }
+        
+        // ฟังก์ชันสำหรับปิด modal ยืนยัน
+        function closeOCRQueueConfirmModal() {
+            const modal = document.getElementById('ocrQueueConfirmModal');
+            modal.style.display = 'none';
+            pendingOCRQueueData = null;
+        }
+        
+        // ฟังก์ชันสำหรับยืนยันและส่งคิวจริงๆ
+        async function confirmOCRQueueSubmit() {
+            if (!pendingOCRQueueData) {
+                alert('ไม่พบข้อมูลคิว กรุณาลองอีกครั้ง');
+                return;
+            }
+            
+            // ดึงค่า OCR mode ที่เลือกใน modal
+            const ocrModeRadio = document.querySelector('input[name="ocrQueueMode"]:checked');
+            const ocrMode = ocrModeRadio ? ocrModeRadio.value : 'new';
+            
+            const confirmBtn = document.getElementById('ocrQueueConfirmBtn');
+            confirmBtn.disabled = true;
+            confirmBtn.innerHTML = '<span>⏳ กำลังส่งคิว...</span>';
+            
+            try {
+                const response = await fetch('/api/auditcheck/ocr-queue/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        path: pendingOCRQueueData.path,
+                        ocr_mode: ocrMode
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // ปิด modal
+                    closeOCRQueueConfirmModal();
+                    
+                    // ล้าง input
+                    document.getElementById('ocrQueuePath').value = '';
+                    
+                    // แสดง toast
+                    showToast('success', `✅ ส่งคิวสำเร็จ! คิว ID: ${data.queue_id}`);
+                    
+                    // โหลดคิวใหม่
+                    loadOCRQueue();
+                } else {
+                    alert('เกิดข้อผิดพลาด: ' + (data.error || 'ไม่ทราบสาเหตุ'));
+                }
+            } catch (error) {
+                console.error('Error submitting OCR queue:', error);
+                alert('เกิดข้อผิดพลาดในการส่งคิว: ' + error.message);
+            } finally {
+                confirmBtn.disabled = false;
+                confirmBtn.innerHTML = '✅ ยืนยันและเริ่มอ่าน';
+            }
+        }
+        
+        // ฟังก์ชันสำหรับโหลดคิวทั้งหมด
+        async function loadOCRQueue() {
+            try {
+                const response = await fetch('/api/auditcheck/ocr-queue/list');
+                const data = await response.json();
+                
+                if (data.success) {
+                    renderOCRQueueList(data.queues || []);
+                }
+            } catch (error) {
+                console.error('Error loading OCR queue:', error);
+            }
+        }
+        
+        // ฟังก์ชันสำหรับแสดงคิวทั้งหมด (แยกตามสถานะ)
+        function renderOCRQueueList(queues) {
+            const queueList = document.getElementById('ocrQueueList');
+            
+            if (!queues || queues.length === 0) {
+                queueList.innerHTML = `
+                    <div style="background: #1e293b; padding: 30px; border-radius: 10px; text-align: center; color: #94a3b8;">
+                        <div style="font-size: 3em; margin-bottom: 10px;">📭</div>
+                        <div>ยังไม่มีคิวที่กำลังทำงาน</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            // กรองรายการที่หมดเวลาแล้ว (30 นาทีหลังจากเสร็จ)
+            const now = new Date();
+            const validQueues = queues.filter(queue => {
+                if (queue.status === 'completed' && queue.auto_remove_at) {
+                    const removeTime = new Date(queue.auto_remove_at);
+                    return now < removeTime;
+                }
+                return true; // แสดงรายการที่ยังไม่เสร็จหรือไม่มี auto_remove_at
+            });
+            
+            // แยกตามสถานะ
+            const processingQueues = validQueues.filter(q => q.status === 'processing');
+            const pendingQueues = validQueues.filter(q => q.status === 'pending');
+            const completedQueues = validQueues.filter(q => q.status === 'completed');
+            const failedQueues = validQueues.filter(q => q.status === 'failed');
+            
+            let html = '';
+            
+            // ส่วนที่กำลังประมวลผล
+            if (processingQueues.length > 0) {
+                html += `<h3 style="color: #3b82f6; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;"><span>🔄</span><span>ข้อมูลที่กำลังอ่าน (${processingQueues.length})</span></h3>`;
+                processingQueues.forEach(queue => {
+                    html += renderQueueItem(queue);
+                });
+            }
+            
+            // ส่วนที่รอคิว
+            if (pendingQueues.length > 0) {
+                html += `<h3 style="color: #fbbf24; margin-top: 30px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;"><span>⏳</span><span>คิวที่กำลังรอ (${pendingQueues.length})</span></h3>`;
+                pendingQueues.forEach(queue => {
+                    html += renderQueueItem(queue);
+                });
+            }
+            
+            // ส่วนที่เสร็จแล้ว (แสดงชื่อบริษัท)
+            if (completedQueues.length > 0) {
+                // จัดกลุ่มตามชื่อบริษัท
+                const groupedByCompany = {};
+                completedQueues.forEach(queue => {
+                    const companyName = extractCompanyNameFromPath(queue.path);
+                    if (!groupedByCompany[companyName]) {
+                        groupedByCompany[companyName] = [];
+                    }
+                    groupedByCompany[companyName].push(queue);
+                });
+                
+                // แสดงแต่ละกลุ่มบริษัท
+                Object.keys(groupedByCompany).forEach(companyName => {
+                    const companyQueues = groupedByCompany[companyName];
+                    html += `<h3 style="color: #10b981; margin-top: 30px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;"><span>✅</span><span>รายการที่เสร็จแล้ว ${companyName} (${companyQueues.length})</span></h3>`;
+                    companyQueues.forEach(queue => {
+                        html += renderQueueItem(queue);
+                    });
+                });
+            }
+            
+            // ส่วนที่ล้มเหลว
+            if (failedQueues.length > 0) {
+                html += `<h3 style="color: #ef4444; margin-top: 30px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;"><span>❌</span><span>รายการที่ล้มเหลว (${failedQueues.length})</span></h3>`;
+                failedQueues.forEach(queue => {
+                    html += renderQueueItem(queue);
+                });
+            }
+            
+            if (html === '') {
+                html = `
+                    <div style="background: #1e293b; padding: 30px; border-radius: 10px; text-align: center; color: #94a3b8;">
+                        <div style="font-size: 3em; margin-bottom: 10px;">📭</div>
+                        <div>ยังไม่มีคิวที่กำลังทำงาน</div>
+                    </div>
+                `;
+            }
+            
+            queueList.innerHTML = html;
+        }
+        
+        // ฟังก์ชันสำหรับ escape HTML
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // ฟังก์ชันสำหรับแสดงรายการคิวแต่ละรายการ
+        function renderQueueItem(queue) {
+            const status = queue.status || 'pending';
+            const statusColors = {
+                'pending': { bg: '#fbbf2415', border: '#fbbf24', text: '⏳ รอคิว' },
+                'processing': { bg: '#3b82f615', border: '#3b82f6', text: '🔄 กำลังประมวลผล' },
+                'completed': { bg: '#10b98115', border: '#10b981', text: '✅ เสร็จสิ้น' },
+                'failed': { bg: '#ef444415', border: '#ef4444', text: '❌ ล้มเหลว' }
+            };
+            
+            const statusInfo = statusColors[status] || statusColors['pending'];
+            const progress = queue.progress || 0;
+            const total = queue.total || 0;
+            const completed = queue.completed || 0;
+            const estimatedTime = queue.estimated_time || 0;
+            
+            // คำนวณเวลาที่เหลือก่อนถอดออก (สำหรับรายการที่เสร็จแล้ว)
+            let autoRemoveInfo = '';
+            if (status === 'completed' && queue.auto_remove_at) {
+                const now = new Date();
+                const removeTime = new Date(queue.auto_remove_at);
+                const remainingMs = removeTime - now;
+                
+                if (remainingMs > 0) {
+                    const remainingMinutes = Math.floor(remainingMs / 60000);
+                    const remainingSeconds = Math.floor((remainingMs % 60000) / 1000);
+                    autoRemoveInfo = `
+                        <div style="color: #94a3b8; font-size: 0.85em; margin-top: 8px;">
+                            ⏰ รายการนี้จะถูกถอดออกจากหน้าเว็บอีก ${remainingMinutes} นาที ${remainingSeconds > 0 ? remainingSeconds + ' วินาที' : ''}
+                        </div>
+                    `;
+                }
+            }
+            
+            // สร้าง HTML สำหรับแสดงข้อมูลที่ OCR อ่านได้
+            let ocrResultsHtml = '';
+            if (status === 'completed') {
+                if (queue.ocr_results && queue.ocr_results.length > 0) {
+                    ocrResultsHtml = `
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155;">
+                            <button onclick="toggleOCRResults('${queue.queue_id}')" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); color: #ffffff; border: 1px solid #3b82f6; border-radius: 8px; cursor: pointer; font-size: 0.95em; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s; box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);" onmouseover="this.style.background='linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.background='linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(59, 130, 246, 0.3)';">
+                                <span style="font-size: 1.1em;">📊</span>
+                                <span id="ocrResultsIcon-${queue.queue_id}">▼</span>
+                                <span>ดูข้อมูลที่อ่านได้ (${queue.ocr_results.length} ไฟล์)</span>
+                            </button>
+                            <div id="ocrResults-${queue.queue_id}" style="display: none; margin-top: 10px; padding: 15px; background: #0f172a; border-radius: 8px; border: 1px solid #334155;">
+                    `;
+                
+                queue.ocr_results.forEach((result, idx) => {
+                    const filename = escapeHtml(result.filename || '');
+                    const taxFormType = escapeHtml(result.tax_form_type || '');
+                    const companyName = escapeHtml(result.company_name || '');
+                    const taxId = escapeHtml(result.tax_id || '');
+                    const branch = escapeHtml(result.branch || '');
+                    const date = escapeHtml(result.date || '');
+                    const documentNumber = escapeHtml(result.document_number || '');
+                    const referenceNumber = escapeHtml(result.reference_number || '');
+                    
+                    ocrResultsHtml += `
+                        <div style="margin-bottom: ${idx < queue.ocr_results.length - 1 ? '20px' : '0'}; padding-bottom: ${idx < queue.ocr_results.length - 1 ? '20px' : '0'}; border-bottom: ${idx < queue.ocr_results.length - 1 ? '1px solid #334155' : 'none'};">
+                            <div style="color: #60a5fa; font-weight: 600; margin-bottom: 15px; font-size: 1em; display: flex; align-items: center; gap: 8px;">
+                                <span>🤖</span>
+                                <span>ไฟล์ OCR</span>
+                            </div>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                    `;
+                    
+                    // แสดงข้อมูลแบบรายการแนวตั้ง
+                    if (documentNumber && documentNumber !== 'ไม่พบ') {
+                        ocrResultsHtml += `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">เลขที่เอกสาร:</span>
+                                <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${documentNumber}</span>
+                            </div>
+                        `;
+                    }
+                    
+                    if (date && date !== 'ไม่พบ') {
+                        ocrResultsHtml += `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">วันที่:</span>
+                                <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${date}</span>
+                            </div>
+                        `;
+                    }
+                    
+                    if (companyName && companyName !== 'ไม่พบ') {
+                        ocrResultsHtml += `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">ชื่อบริษัท:</span>
+                                <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${companyName}</span>
+                            </div>
+                        `;
+                    }
+                    
+                    if (taxId && taxId !== 'ไม่พบ') {
+                        ocrResultsHtml += `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">เลขประจำตัวผู้เสียภาษี:</span>
+                                <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${taxId}</span>
+                            </div>
+                        `;
+                    }
+                    
+                    if (branch && branch !== 'ไม่พบ') {
+                        ocrResultsHtml += `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">สาขา:</span>
+                                <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${branch}</span>
+                            </div>
+                        `;
+                    }
+                    
+                    if (referenceNumber && referenceNumber !== 'ไม่พบ') {
+                        ocrResultsHtml += `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">เลขที่เอกสารอ้างอิง (จากชื่อไฟล์):</span>
+                                <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${referenceNumber}</span>
+                            </div>
+                        `;
+                    }
+                    
+                    // แสดงข้อมูลยอดเงิน
+                    const amountBeforeVat = result.amount_before_vat || (result.amounts && result.amounts['ยอดก่อนภาษี']) || 0;
+                    const vatAmount = result.vat_amount || (result.amounts && result.amounts['ภาษีมูลค่าเพิ่ม']) || 0;
+                    const totalAmount = result.total_amount || (result.amounts && result.amounts['ยอดรวม']) || 0;
+                    
+                    if (amountBeforeVat > 0 || vatAmount > 0 || totalAmount > 0) {
+                        if (amountBeforeVat > 0) {
+                            const amountValue = typeof amountBeforeVat === 'number' 
+                                ? amountBeforeVat.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+                                : escapeHtml(String(amountBeforeVat));
+                            ocrResultsHtml += `
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">ยอดก่อนภาษีมูลค่าเพิ่ม:</span>
+                                    <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${amountValue}</span>
+                                </div>
+                            `;
+                        }
+                        
+                        if (vatAmount > 0) {
+                            const amountValue = typeof vatAmount === 'number' 
+                                ? vatAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+                                : escapeHtml(String(vatAmount));
+                            ocrResultsHtml += `
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">ยอดภาษีมูลค่าเพิ่ม:</span>
+                                    <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${amountValue}</span>
+                                </div>
+                            `;
+                        }
+                        
+                        if (totalAmount > 0) {
+                            const amountValue = typeof totalAmount === 'number' 
+                                ? totalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+                                : escapeHtml(String(totalAmount));
+                            ocrResultsHtml += `
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">ยอดหลังบวกภาษีมูลค่าเพิ่ม:</span>
+                                    <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${amountValue}</span>
+                                </div>
+                            `;
+                        }
+                    }
+                    
+                    if (taxFormType && taxFormType !== 'ไม่ระบุ' && taxFormType !== 'ไม่พบ') {
+                        ocrResultsHtml += `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">ประเภทเอกสาร:</span>
+                                <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${taxFormType}</span>
+                            </div>
+                        `;
+                    }
+                    
+                    const documentStatus = escapeHtml(result.document_status || '');
+                    if (documentStatus && documentStatus !== 'ไม่พบ') {
+                        ocrResultsHtml += `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">สถานะเอกสาร:</span>
+                                <span style="color: #cbd5e1; font-size: 0.9em;">${documentStatus}</span>
+                            </div>
+                        `;
+                    }
+                    
+                    ocrResultsHtml += `</div>`;
+                    
+                    // แสดงรายการสินค้า
+                    const items = result.items || [];
+                    if (items && Array.isArray(items) && items.length > 0) {
+                        ocrResultsHtml += `
+                            <div style="margin-top: 20px;">
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                                    <span style="color: #94a3b8; font-size: 0.9em;">📦 รายการสินค้า:</span>
+                                    <span style="color: #64748b; font-size: 0.85em;">(${items.length} รายการ)</span>
+                                </div>
+                                <div style="max-height: 300px; overflow-y: auto; padding-right: 5px;">
+                        `;
+                        
+                        items.forEach((item, itemIdx) => {
+                            // รองรับทั้ง key ภาษาไทยและอังกฤษ
+                            const itemName = escapeHtml(item['รายการ'] || item.name || item.product_name || item.description || 'ไม่ระบุ');
+                            
+                            // ดึงจำนวน (รองรับทั้งภาษาไทยและอังกฤษ)
+                            let quantity = 0;
+                            const quantityStr = item['จำนวน'] || item.quantity || item.qty || '0';
+                            try {
+                                // ลบหน่วยออก (เช่น "2 ใบ" -> "2")
+                                const quantityClean = typeof quantityStr === 'string' ? quantityStr.split()[0] : String(quantityStr);
+                                quantity = parseFloat(quantityClean.replace(/,/g, '')) || 0;
+                            } catch {
+                                quantity = 0;
+                            }
+                            
+                            // ดึงราคา (รองรับทั้งภาษาไทยและอังกฤษ)
+                            let price = 0;
+                            const priceStr = item['ราคาต่อหน่วย'] || item.price || item.unit_price || '0';
+                            try {
+                                price = parseFloat(String(priceStr).replace(/,/g, '').replace('฿', '').trim()) || 0;
+                            } catch {
+                                price = 0;
+                            }
+                            
+                            // ดึงยอดรวม (รองรับทั้งภาษาไทยและอังกฤษ)
+                            let subtotal = 0;
+                            const subtotalStr = item['จำนวนเงิน'] || item.subtotal || item.total || '0';
+                            try {
+                                subtotal = parseFloat(String(subtotalStr).replace(/,/g, '').replace('฿', '').trim()) || 0;
+                            } catch {
+                                // ถ้าไม่มียอดรวม ให้คำนวณจากจำนวน x ราคา
+                                subtotal = quantity * price;
+                            }
+                            
+                            ocrResultsHtml += `
+                                <div style="background: #1e293b; border-left: 4px solid #3b82f6; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                        <div style="width: 28px; height: 28px; border-radius: 50%; background: #334155; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                                            <span style="color: #cbd5e1; font-size: 0.85em; font-weight: 600;">${itemIdx + 1}</span>
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <div style="color: #cbd5e1; font-size: 0.9em; font-weight: 600; margin-bottom: 8px;">${itemName}</div>
+                                            <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 4px;">
+                                                จำนวน: <span style="color: #cbd5e1;">${typeof quantity === 'number' ? quantity.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : quantity}</span> 
+                                                ราคา: <span style="color: #cbd5e1;">${typeof price === 'number' ? price.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : price}</span>
+                                            </div>
+                                            <div style="color: #10b981; font-size: 0.9em; font-weight: 600;">
+                                                ยอดรวม: ${typeof subtotal === 'number' ? subtotal.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : subtotal} บาท
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        
+                        ocrResultsHtml += `</div></div>`;
+                    }
+                    
+                    ocrResultsHtml += `</div>`;
+                });
+                
+                    ocrResultsHtml += `</div></div>`;
+                } else {
+                    // แสดงข้อความแจ้งเตือนถ้ายังไม่มีข้อมูล
+                    ocrResultsHtml = `
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155;">
+                            <div style="padding: 12px; background: #1e293b; border-radius: 8px; border: 1px solid #475569; text-align: center;">
+                                <div style="color: #94a3b8; font-size: 0.9em;">
+                                    <span style="font-size: 1.2em; margin-right: 8px;">ℹ️</span>
+                                    ข้อมูลที่อ่านได้จะแสดงที่นี่ (รายการนี้ประมวลผลก่อนการอัปเดตระบบ)
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            return `
+                <div style="background: ${statusInfo.bg}; border-left: 4px solid ${statusInfo.border}; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                <span style="font-weight: 600; color: ${statusInfo.border};">${statusInfo.text}</span>
+                                <span style="color: #94a3b8; font-size: 0.85em;">ID: ${queue.queue_id}</span>
+                            </div>
+                            <div style="color: #cbd5e1; font-size: 0.9em; word-break: break-all; margin-bottom: 10px;">
+                                📁 ${queue.path}
+                            </div>
+                        </div>
+                        ${status === 'processing' || status === 'pending' ? `
+                            <button onclick="cancelOCRQueue('${queue.queue_id}')" style="padding: 8px 16px; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; transition: all 0.3s;" onmouseover="this.style.background='#dc2626';" onmouseout="this.style.background='#ef4444';">ยกเลิก</button>
+                        ` : ''}
+                    </div>
+                    
+                    ${status === 'processing' || status === 'pending' ? `
+                        <div style="margin-bottom: 10px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                                <span style="color: #cbd5e1; font-size: 0.9em;">ความคืบหน้า</span>
+                                <span style="color: #cbd5e1; font-size: 0.9em; font-weight: 600;">${completed}/${total} ไฟล์ (${progress.toFixed(1)}%)</span>
+                            </div>
+                            <div style="background: #0f172a; height: 12px; border-radius: 6px; overflow: hidden;">
+                                <div style="background: linear-gradient(90deg, ${statusInfo.border} 0%, ${statusInfo.border}dd 100%); height: 100%; width: ${progress}%; transition: width 0.3s;"></div>
+                            </div>
+                        </div>
+                        ${estimatedTime > 0 ? `
+                            <div style="color: #94a3b8; font-size: 0.85em; margin-top: 8px;">
+                                ⏱️ เวลาที่คาดว่าจะใช้: ${formatEstimatedTime(estimatedTime)}
+                            </div>
+                        ` : ''}
+                        ${queue.current_file ? `
+                            <div style="color: #60a5fa; font-size: 0.85em; margin-top: 8px;">
+                                📄 กำลังอ่าน: ${queue.current_file}
+                            </div>
+                        ` : ''}
+                    ` : ''}
+                    
+                    ${status === 'completed' ? `
+                        <div style="color: #10b981; font-size: 0.9em; margin-top: 10px;">
+                            ✅ ประมวลผลเสร็จสิ้น: ${completed} ไฟล์
+                        </div>
+                        ${autoRemoveInfo}
+                        ${ocrResultsHtml}
+                    ` : ''}
+                    
+                    ${status === 'failed' ? `
+                        <div style="color: #ef4444; font-size: 0.9em; margin-top: 10px;">
+                            ❌ ${queue.error || 'เกิดข้อผิดพลาด'}
+                        </div>
+                    ` : ''}
+                    
+                    <div style="color: #64748b; font-size: 0.8em; margin-top: 10px;">
+                        🕐 สร้างเมื่อ: ${formatDateTime(queue.created_at)}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // ฟังก์ชันสำหรับยกเลิกคิว
+        async function cancelOCRQueue(queueId) {
+            if (!confirm('ต้องการยกเลิกคิวนี้หรือไม่?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/auditcheck/ocr-queue/cancel/${queueId}`, {
+                    method: 'POST'
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showToast('success', '✅ ยกเลิกคิวสำเร็จ');
+                    loadOCRQueue();
+                } else {
+                    alert('เกิดข้อผิดพลาด: ' + (data.error || 'ไม่ทราบสาเหตุ'));
+                }
+            } catch (error) {
+                console.error('Error canceling OCR queue:', error);
+                alert('เกิดข้อผิดพลาดในการยกเลิกคิว: ' + error.message);
+            }
+        }
+        
+        // ฟังก์ชันสำหรับ format เวลาที่คาดว่าจะใช้
+        function formatEstimatedTime(seconds) {
+            if (seconds < 60) {
+                return `${Math.ceil(seconds)} วินาที`;
+            } else if (seconds < 3600) {
+                const minutes = Math.floor(seconds / 60);
+                const secs = Math.ceil(seconds % 60);
+                return `${minutes} นาที ${secs > 0 ? secs + ' วินาที' : ''}`;
+            } else {
+                const hours = Math.floor(seconds / 3600);
+                const minutes = Math.floor((seconds % 3600) / 60);
+                return `${hours} ชั่วโมง ${minutes} นาที`;
+            }
+        }
+        
+        // ฟังก์ชันสำหรับดึงชื่อบริษัทจาก path
+        function extractCompanyNameFromPath(path) {
+            if (!path) return 'ไม่ระบุ';
+            
+            // แปลง path เป็น array ของส่วนต่างๆ
+            const pathParts = path.split(/[/\\]/).filter(p => p.trim() !== '');
+            
+            // หา "Build" หรือชื่อบริษัท (มักจะอยู่หลัง "A.โฟร์เดอร์หลัก" หรือ "AA.โฟรเดอร์หลัก" หรือ "AAA.โฟรเดอร์หลัก")
+            for (let i = 0; i < pathParts.length; i++) {
+                const part = pathParts[i];
+                
+                // ถ้าเจอ Build ให้ใช้ส่วนนั้น (เช่น "Build000 ทดสอบระบบ")
+                if (part && part.includes('Build')) {
+                    return part;
+                }
+                
+                // ถ้าเจอส่วนที่อยู่หลัง "โฟร์เดอร์หลัก" หรือ "โฟรเดอร์หลัก" และไม่ใช่ส่วนสุดท้าย
+                if (i > 0 && (pathParts[i-1].includes('โฟร์เดอร์หลัก') || pathParts[i-1].includes('โฟรเดอร์หลัก'))) {
+                    if (part && part.trim() !== '' && !part.includes('โฟร์เดอร์') && !part.includes('โฟรเดอร์')) {
+                        return part;
+                    }
+                }
+            }
+            
+            // ถ้าหาไม่เจอ ให้ใช้ส่วนที่ 2 หรือ 3 (มักจะเป็นชื่อบริษัท)
+            if (pathParts.length >= 2) {
+                return pathParts[1] || 'ไม่ระบุ';
+            }
+            
+            // ถ้ายังหาไม่เจอ ให้ใช้ส่วนสุดท้ายของ path
+            const lastPart = pathParts[pathParts.length - 1];
+            return lastPart || 'ไม่ระบุ';
+        }
+        
+        // ฟังก์ชันสำหรับแสดง/ซ่อนข้อมูลที่ OCR อ่านได้
+        function toggleOCRResults(queueId) {
+            const resultsDiv = document.getElementById(`ocrResults-${queueId}`);
+            const iconSpan = document.getElementById(`ocrResultsIcon-${queueId}`);
+            
+            if (resultsDiv.style.display === 'none') {
+                resultsDiv.style.display = 'block';
+                iconSpan.textContent = '▲';
+            } else {
+                resultsDiv.style.display = 'none';
+                iconSpan.textContent = '▼';
+            }
+        }
+        
+        // ฟังก์ชันสำหรับ format วันที่เวลา
+        function formatDateTime(dateString) {
+            if (!dateString) return '-';
+            const date = new Date(dateString);
+            return date.toLocaleString('th-TH', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+        
+        // ฟังก์ชันสำหรับเริ่ม polling
+        function startOCRQueuePolling() {
+            if (ocrQueuePollingInterval) {
+                return; // กำลัง polling อยู่แล้ว
+            }
+            
+            ocrQueuePollingInterval = setInterval(() => {
+                loadOCRQueue();
+            }, 30000); // อัพเดททุก 30 วินาที (30000ms)
+        }
+        
+        // ฟังก์ชันสำหรับหยุด polling
+        function stopOCRQueuePolling() {
+            if (ocrQueuePollingInterval) {
+                clearInterval(ocrQueuePollingInterval);
+                ocrQueuePollingInterval = null;
+            }
         }
         
         let allCompanies = [];

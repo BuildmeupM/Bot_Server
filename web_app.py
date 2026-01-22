@@ -4484,6 +4484,11 @@ ocr_progress_store = {}
 # Global dict สำหรับเก็บ progress ของ auditcheck OCR
 auditcheck_ocr_progress = {}
 
+# Global dict สำหรับเก็บคิว OCR (สูงสุด 3 คิวพร้อมกัน)
+ocr_queue_storage = {}
+ocr_queue_lock = threading.Lock()
+MAX_CONCURRENT_QUEUES = 3
+
 @app.route('/api/ocr/read-raw', methods=['POST'])
 @rate_limit(max_requests=10, window=60)
 def api_read_ocr_raw():
@@ -8473,6 +8478,594 @@ def run_ocr_for_audit():
     
     except Exception as e:
         logger.error(f"❌ เกิดข้อผิดพลาดในการรัน OCR: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+# ===== OCR Queue System =====
+def process_ocr_queue(queue_id: str, file_path: str, ocr_mode: str = 'new'):
+    """ฟังก์ชันสำหรับประมวลผล OCR queue ใน background thread"""
+    try:
+        with ocr_queue_lock:
+            if queue_id not in ocr_queue_storage:
+                return
+            
+            queue = ocr_queue_storage[queue_id]
+            queue['status'] = 'processing'
+            queue['started_at'] = datetime.now().isoformat()
+        
+        # Import required modules
+        from email_system.tax_ocr_processor import TaxOCRProcessor
+        from invoice_data_extractor import extract_invoice_data
+        from ocr_cache_manager import OCRCacheManager
+        
+        # สร้าง Cache Manager
+        cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name="default")
+        processor = TaxOCRProcessor(page_context='auditcheck')
+        
+        # ค้นหาไฟล์ PDF ใน path
+        path_obj = Path(file_path)
+        pdf_files = []
+        
+        if path_obj.is_file() and path_obj.suffix.lower() == '.pdf':
+            pdf_files = [path_obj]
+        elif path_obj.is_dir():
+            pdf_files = list(path_obj.glob('**/*.pdf'))
+        else:
+            with ocr_queue_lock:
+                ocr_queue_storage[queue_id]['status'] = 'failed'
+                ocr_queue_storage[queue_id]['error'] = 'ไม่พบไฟล์หรือโฟลเดอร์ที่ระบุ'
+            return
+        
+        total_files = len(pdf_files)
+        
+        with ocr_queue_lock:
+            ocr_queue_storage[queue_id]['total'] = total_files
+            ocr_queue_storage[queue_id]['completed'] = 0
+            ocr_queue_storage[queue_id]['progress'] = 0
+            # ประเมินเวลา: 1 รายการ/30 วินาที
+            ocr_queue_storage[queue_id]['estimated_time'] = total_files * 30
+            # เก็บข้อมูลที่อ่านได้
+            ocr_queue_storage[queue_id]['ocr_results'] = []
+        
+        processed_count = 0
+        
+        for idx, pdf_file in enumerate(pdf_files, 1):
+            # ตรวจสอบว่าถูกยกเลิกหรือไม่
+            with ocr_queue_lock:
+                if queue_id not in ocr_queue_storage or ocr_queue_storage[queue_id].get('cancelled'):
+                    return
+            
+            try:
+                # อัพเดท progress
+                progress = (idx / total_files) * 100 if total_files > 0 else 0
+                remaining_files = total_files - idx
+                estimated_remaining = remaining_files * 30  # วินาที
+                
+                with ocr_queue_lock:
+                    if queue_id in ocr_queue_storage:
+                        ocr_queue_storage[queue_id]['current_file'] = pdf_file.name
+                        ocr_queue_storage[queue_id]['completed'] = idx
+                        ocr_queue_storage[queue_id]['progress'] = progress
+                        ocr_queue_storage[queue_id]['estimated_time'] = estimated_remaining
+                
+                # ตรวจสอบ cache (ถ้า ocr_mode เป็น 'new' ให้ข้าม cache)
+                cached_data = None
+                if ocr_mode != 'new':
+                    cached_data = cache_manager.get(pdf_file.name, str(pdf_file))
+                
+                if not cached_data:
+                    # เรียก OCR โดยใช้ get_ocr_raw_data (เหมือนหน้า auditcheck)
+                    logger.info(f"📖 [OCR Queue {queue_id}] กำลังอ่านไฟล์: {pdf_file.name} ({idx}/{total_files})")
+                    ocr_result = processor.get_ocr_raw_data(pdf_file)
+                    
+                    if ocr_result.get('success'):
+                        raw_text = ocr_result.get('raw_text', '') or ocr_result.get('text', '')
+                        raw_content = ocr_result.get('raw_content', '')
+                        
+                        # Extract ข้อมูลจาก OCR (เหมือนหน้า auditcheck)
+                        extracted_data = {}
+                        
+                        # ถ้า raw_content เป็น JSON (key-extract response) ให้ parse
+                        if raw_content and ('"success"' in raw_content or '"data"' in raw_content):
+                            try:
+                                import json
+                                parsed_json = json.loads(raw_content)
+                                if isinstance(parsed_json, dict) and 'data' in parsed_json:
+                                    key_extract_data = parsed_json.get('data', {})
+                                    
+                                    # แปลงข้อมูลจาก key-extract
+                                    extracted_data['company_name'] = key_extract_data.get('ชื่อผู้ขาย', '') or key_extract_data.get('ชื่อบริษัท', '')
+                                    extracted_data['tax_id'] = key_extract_data.get('เลขประจำตัวผู้เสียภาษี - ผู้ขาย', '')
+                                    extracted_data['branch'] = key_extract_data.get('สาขา - ผู้ขาย', '').replace('HQ (', '').replace(')', '').strip()
+                                    extracted_data['date'] = key_extract_data.get('วันที่', '')
+                                    extracted_data['document_number'] = key_extract_data.get('เลขที่ใบกำกับภาษี', '')
+                                    extracted_data['document_type'] = key_extract_data.get('ประเภทเอกสาร', '')
+                                    
+                                    # ยอดเงิน
+                                    amount_before_vat_str = key_extract_data.get('ยอดรวมก่อนภาษี', '0') or '0'
+                                    vat_amount_str = key_extract_data.get('ภาษีมูลค่าเพิ่ม', '0') or '0'
+                                    total_amount_str = key_extract_data.get('ยอดรวมสุทธิ', '0') or '0'
+                                    
+                                    try:
+                                        extracted_data['amount_before_vat'] = float(amount_before_vat_str.replace(',', '').replace('฿', '').strip())
+                                    except:
+                                        extracted_data['amount_before_vat'] = 0.0
+                                    
+                                    try:
+                                        extracted_data['vat_amount'] = float(vat_amount_str.replace(',', '').replace('฿', '').strip())
+                                    except:
+                                        extracted_data['vat_amount'] = 0.0
+                                    
+                                    try:
+                                        extracted_data['total_amount'] = float(total_amount_str.replace(',', '').replace('฿', '').strip())
+                                    except:
+                                        extracted_data['total_amount'] = 0.0
+                                    
+                                    # รายการสินค้า
+                                    items_raw = key_extract_data.get('รายการสินค้า', [])
+                                    extracted_data['items'] = items_raw if isinstance(items_raw, list) else []
+                            except Exception as e:
+                                logger.warning(f"⚠️ Cannot parse key-extract data: {e}, falling back to extract_invoice_data")
+                                if raw_text:
+                                    extracted_data = extract_invoice_data(raw_text, pdf_file.name, str(pdf_file))
+                                else:
+                                    extracted_data = {}
+                        else:
+                            # ถ้าไม่ใช่ key-extract ให้ใช้ extract_invoice_data
+                            if raw_text:
+                                extracted_data = extract_invoice_data(raw_text, pdf_file.name, str(pdf_file))
+                            else:
+                                extracted_data = {}
+                        
+                        # ดึงข้อมูลที่อ่านได้
+                        company_name = extracted_data.get('company_name', '') or 'ไม่พบ'
+                        tax_id = extracted_data.get('tax_id', '') or 'ไม่พบ'
+                        branch = extracted_data.get('branch', '') or 'ไม่พบ'
+                        date = extracted_data.get('date', '') or 'ไม่พบ'
+                        document_number = extracted_data.get('document_number', '') or 'ไม่พบ'
+                        amount_before_vat = extracted_data.get('amount_before_vat', 0)
+                        vat_amount = extracted_data.get('vat_amount', 0)
+                        total_amount = extracted_data.get('total_amount', 0)
+                        document_type = extracted_data.get('document_type', '') or 'ไม่ระบุ'
+                        
+                        # ดึง reference number จากชื่อไฟล์
+                        reference_number = None
+                        import re
+                        ref_patterns = [
+                            r'\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',
+                            r'^\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',
+                            r'_([A-Z]+-\d+)_',
+                            r'([A-Z]{2,}-\d{8,})',
+                        ]
+                        for pattern in ref_patterns:
+                            match = re.search(pattern, pdf_file.name)
+                            if match:
+                                reference_number = match.group(1)
+                                break
+                        
+                        # ดึงข้อมูลรายการสินค้า
+                        items = extracted_data.get('items', [])
+                        document_status = extracted_data.get('document_status', '')
+                        
+                        # แสดงข้อมูลที่อ่านได้ (เรียงลำดับเหมือนหน้า auditcheck)
+                        logger.info("=" * 80)
+                        logger.info(f"📄 ไฟล์: {pdf_file.name} ({idx}/{total_files})")
+                        logger.info(f"   ✅ อ่านข้อมูลสำเร็จ")
+                        logger.info(f"   🏢 ชื่อบริษัท: {company_name}")
+                        logger.info(f"   🆔 เลขประจำตัวผู้เสียภาษี: {tax_id}")
+                        logger.info(f"   📍 สาขา: {branch}")
+                        logger.info(f"   📅 วันที่: {date}")
+                        logger.info(f"   📄 เลขที่เอกสาร: {document_number}")
+                        logger.info(f"   🔖 เลขที่เอกสารอ้างอิง: {reference_number or 'ไม่พบ'}")
+                        logger.info(f"   💰 ยอดก่อนภาษี: {amount_before_vat:,.2f} บาท")
+                        logger.info(f"   💵 ยอดภาษีมูลค่าเพิ่ม: {vat_amount:,.2f} บาท")
+                        logger.info(f"   💵 ยอดรวม: {total_amount:,.2f} บาท")
+                        
+                        # แสดงรายการสินค้า
+                        if items and isinstance(items, list) and len(items) > 0:
+                            logger.info(f"   📦 รายการสินค้า: ({len(items)} รายการ)")
+                            for item_idx, item in enumerate(items, 1):
+                                # รองรับทั้ง key ภาษาไทยและอังกฤษ
+                                item_name = (item.get('รายการ') or item.get('name') or 
+                                           item.get('product_name') or item.get('description') or 'ไม่ระบุ')
+                                
+                                # ดึงจำนวน (รองรับทั้งภาษาไทยและอังกฤษ)
+                                quantity_str = item.get('จำนวน') or item.get('quantity') or item.get('qty') or '0'
+                                # แปลง string ที่มี "ใบ" หรือหน่วยอื่นๆ เป็นตัวเลข
+                                try:
+                                    # ลบหน่วยออก (เช่น "2 ใบ" -> "2")
+                                    quantity_clean = str(quantity_str).split()[0] if isinstance(quantity_str, str) else str(quantity_str)
+                                    quantity = float(quantity_clean.replace(',', ''))
+                                except:
+                                    quantity = 0.0
+                                
+                                # ดึงราคา (รองรับทั้งภาษาไทยและอังกฤษ)
+                                price_str = item.get('ราคาต่อหน่วย') or item.get('price') or item.get('unit_price') or '0'
+                                try:
+                                    price = float(str(price_str).replace(',', '').replace('฿', '').strip())
+                                except:
+                                    price = 0.0
+                                
+                                # ดึงยอดรวม (รองรับทั้งภาษาไทยและอังกฤษ)
+                                subtotal_str = item.get('จำนวนเงิน') or item.get('subtotal') or item.get('total') or '0'
+                                try:
+                                    subtotal = float(str(subtotal_str).replace(',', '').replace('฿', '').strip())
+                                except:
+                                    # ถ้าไม่มียอดรวม ให้คำนวณจากจำนวน x ราคา
+                                    subtotal = quantity * price
+                                
+                                logger.info(f"      {item_idx}. {item_name}")
+                                logger.info(f"         จำนวน: {quantity:,.2f} ราคา: {price:,.2f} ยอดรวม: {subtotal:,.2f} บาท")
+                        else:
+                            logger.info(f"   📦 รายการสินค้า: ไม่พบ")
+                        
+                        logger.info("=" * 80)
+                        
+                        # เก็บข้อมูลที่อ่านได้ไว้ใน queue storage
+                        with ocr_queue_lock:
+                            if queue_id in ocr_queue_storage:
+                                if 'ocr_results' not in ocr_queue_storage[queue_id]:
+                                    ocr_queue_storage[queue_id]['ocr_results'] = []
+                                
+                                ocr_queue_storage[queue_id]['ocr_results'].append({
+                                    'filename': pdf_file.name,
+                                    'tax_form_type': document_type,
+                                    'company_name': company_name,
+                                    'tax_id': tax_id,
+                                    'branch': branch,
+                                    'date': date,
+                                    'document_number': document_number,
+                                    'reference_number': reference_number,
+                                    'document_status': document_status,
+                                    'amounts': {
+                                        'ยอดก่อนภาษี': amount_before_vat,
+                                        'ภาษีมูลค่าเพิ่ม': vat_amount,
+                                        'ยอดรวม': total_amount
+                                    },
+                                    'amount_before_vat': amount_before_vat,
+                                    'vat_amount': vat_amount,
+                                    'total_amount': total_amount,
+                                    'items': items
+                                })
+                        
+                        # เก็บ cache (เก็บข้อมูลที่ extract แล้ว)
+                        cache_manager.set(
+                            pdf_file.name,
+                            str(pdf_file),
+                            {
+                                'raw_text': raw_text,
+                                'raw_text_preview': raw_text[:500] if raw_text else '',
+                                'company_name': company_name,
+                                'tax_id': tax_id,
+                                'branch': branch,
+                                'date': date,
+                                'document_number': document_number,
+                                'reference_number': reference_number,
+                                'document_status': document_status,
+                                'amount_before_vat': amount_before_vat,
+                                'vat_amount': vat_amount,
+                                'total_amount': total_amount,
+                                'document_type': document_type,
+                                'items': items,
+                                'success': True
+                            }
+                        )
+                    else:
+                        error_msg = ocr_result.get('error', 'ไม่ทราบสาเหตุ')
+                        logger.warning(f"⚠️ [OCR Queue {queue_id}] อ่านไฟล์ไม่สำเร็จ: {pdf_file.name} - {error_msg}")
+                else:
+                    # แสดงข้อมูลจาก cache (เหมือนหน้า auditcheck)
+                    company_name = cached_data.get('company_name', '') or 'ไม่พบ'
+                    tax_id = cached_data.get('tax_id', '') or 'ไม่พบ'
+                    branch = cached_data.get('branch', '') or 'ไม่พบ'
+                    date = cached_data.get('date', '') or 'ไม่พบ'
+                    document_number = cached_data.get('document_number', '') or 'ไม่พบ'
+                    amount_before_vat = cached_data.get('amount_before_vat', 0)
+                    vat_amount = cached_data.get('vat_amount', 0)
+                    total_amount = cached_data.get('total_amount', 0)
+                    items = cached_data.get('items', [])
+                    
+                    # ดึง reference number จาก cache หรือจากชื่อไฟล์
+                    reference_number = cached_data.get('reference_number')
+                    if not reference_number:
+                        import re
+                        ref_patterns = [
+                            r'\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',
+                            r'^\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',
+                            r'_([A-Z]+-\d+)_',
+                            r'([A-Z]{2,}-\d{8,})',
+                        ]
+                        for pattern in ref_patterns:
+                            match = re.search(pattern, pdf_file.name)
+                            if match:
+                                reference_number = match.group(1)
+                                break
+                    
+                    # แสดงข้อมูลจาก cache (เรียงลำดับเหมือนหน้า auditcheck)
+                    logger.info("=" * 80)
+                    logger.info(f"📄 ไฟล์: {pdf_file.name} ({idx}/{total_files}) (จาก cache)")
+                    logger.info(f"   ✅ อ่านข้อมูลสำเร็จ (จาก cache)")
+                    logger.info(f"   🏢 ชื่อบริษัท: {company_name}")
+                    logger.info(f"   🆔 เลขประจำตัวผู้เสียภาษี: {tax_id}")
+                    logger.info(f"   📍 สาขา: {branch}")
+                    logger.info(f"   📅 วันที่: {date}")
+                    logger.info(f"   📄 เลขที่เอกสาร: {document_number}")
+                    logger.info(f"   🔖 เลขที่เอกสารอ้างอิง: {reference_number or 'ไม่พบ'}")
+                    logger.info(f"   💰 ยอดก่อนภาษี: {amount_before_vat:,.2f} บาท")
+                    logger.info(f"   💵 ยอดภาษีมูลค่าเพิ่ม: {vat_amount:,.2f} บาท")
+                    logger.info(f"   💵 ยอดรวม: {total_amount:,.2f} บาท")
+                    
+                    # แสดงรายการสินค้า
+                    if items and isinstance(items, list) and len(items) > 0:
+                        logger.info(f"   📦 รายการสินค้า: ({len(items)} รายการ)")
+                        for item_idx, item in enumerate(items, 1):
+                            # รองรับทั้ง key ภาษาไทยและอังกฤษ
+                            item_name = (item.get('รายการ') or item.get('name') or 
+                                       item.get('product_name') or item.get('description') or 'ไม่ระบุ')
+                            
+                            # ดึงจำนวน (รองรับทั้งภาษาไทยและอังกฤษ)
+                            quantity_str = item.get('จำนวน') or item.get('quantity') or item.get('qty') or '0'
+                            # แปลง string ที่มี "ใบ" หรือหน่วยอื่นๆ เป็นตัวเลข
+                            try:
+                                # ลบหน่วยออก (เช่น "2 ใบ" -> "2")
+                                quantity_clean = str(quantity_str).split()[0] if isinstance(quantity_str, str) else str(quantity_str)
+                                quantity = float(quantity_clean.replace(',', ''))
+                            except:
+                                quantity = 0.0
+                            
+                            # ดึงราคา (รองรับทั้งภาษาไทยและอังกฤษ)
+                            price_str = item.get('ราคาต่อหน่วย') or item.get('price') or item.get('unit_price') or '0'
+                            try:
+                                price = float(str(price_str).replace(',', '').replace('฿', '').strip())
+                            except:
+                                price = 0.0
+                            
+                            # ดึงยอดรวม (รองรับทั้งภาษาไทยและอังกฤษ)
+                            subtotal_str = item.get('จำนวนเงิน') or item.get('subtotal') or item.get('total') or '0'
+                            try:
+                                subtotal = float(str(subtotal_str).replace(',', '').replace('฿', '').strip())
+                            except:
+                                # ถ้าไม่มียอดรวม ให้คำนวณจากจำนวน x ราคา
+                                subtotal = quantity * price
+                            
+                            logger.info(f"      {item_idx}. {item_name}")
+                            logger.info(f"         จำนวน: {quantity:,.2f} ราคา: {price:,.2f} ยอดรวม: {subtotal:,.2f} บาท")
+                    else:
+                        logger.info(f"   📦 รายการสินค้า: ไม่พบ")
+                    
+                    logger.info("=" * 80)
+                
+                processed_count += 1
+                
+            except Exception as e:
+                logger.error(f"❌ Error processing file {pdf_file.name}: {e}", exc_info=True)
+                continue
+        
+        # อัพเดทสถานะเป็น completed
+        with ocr_queue_lock:
+            if queue_id in ocr_queue_storage:
+                completed_time = datetime.now()
+                # กำหนดเวลาที่จะถอดออกจากหน้าเว็บ (30 นาทีหลังจากเสร็จ)
+                auto_remove_at = completed_time + timedelta(minutes=30)
+                
+                ocr_queue_storage[queue_id]['status'] = 'completed'
+                ocr_queue_storage[queue_id]['completed'] = processed_count
+                ocr_queue_storage[queue_id]['progress'] = 100
+                ocr_queue_storage[queue_id]['estimated_time'] = 0
+                ocr_queue_storage[queue_id]['current_file'] = None
+                ocr_queue_storage[queue_id]['completed_at'] = completed_time.isoformat()
+                ocr_queue_storage[queue_id]['auto_remove_at'] = auto_remove_at.isoformat()
+        
+    except Exception as e:
+        logger.error(f"❌ Error processing OCR queue {queue_id}: {e}", exc_info=True)
+        with ocr_queue_lock:
+            if queue_id in ocr_queue_storage:
+                ocr_queue_storage[queue_id]['status'] = 'failed'
+                ocr_queue_storage[queue_id]['error'] = str(e)
+
+
+@app.route('/api/auditcheck/ocr-queue/submit', methods=['POST'])
+def submit_ocr_queue():
+    """ส่งคิว OCR ใหม่"""
+    try:
+        data = request.json
+        file_path = data.get('path', '').strip()
+        ocr_mode = data.get('ocr_mode', 'new')  # 'new' หรือ 'continue'
+        
+        if not file_path:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุที่อยู่ไฟล์หรือโฟลเดอร์'
+            }), 400
+        
+        # ตรวจสอบว่า path มีอยู่จริงหรือไม่
+        path_obj = Path(file_path)
+        if not path_obj.exists():
+            return jsonify({
+                'success': False,
+                'error': 'ไม่พบไฟล์หรือโฟลเดอร์ที่ระบุ'
+            }), 400
+        
+        # นับจำนวนคิวที่กำลังทำงาน
+        with ocr_queue_lock:
+            active_queues = [q for q in ocr_queue_storage.values() 
+                           if q.get('status') in ['pending', 'processing']]
+            
+            if len(active_queues) >= MAX_CONCURRENT_QUEUES:
+                return jsonify({
+                    'success': False,
+                    'error': f'คิวเต็มแล้ว (สูงสุด {MAX_CONCURRENT_QUEUES} คิวพร้อมกัน) กรุณารอสักครู่'
+                }), 400
+            
+            # สร้างคิวใหม่
+            queue_id = str(uuid.uuid4())
+            ocr_queue_storage[queue_id] = {
+                'queue_id': queue_id,
+                'path': file_path,
+                'status': 'pending',
+                'ocr_mode': ocr_mode,
+                'total': 0,
+                'completed': 0,
+                'progress': 0,
+                'estimated_time': 0,
+                'current_file': None,
+                'created_at': datetime.now().isoformat(),
+                'started_at': None,
+                'completed_at': None,
+                'error': None,
+                'cancelled': False
+            }
+        
+        # เริ่มประมวลผลใน background thread
+        thread = threading.Thread(target=process_ocr_queue, args=(queue_id, file_path, ocr_mode))
+        thread.daemon = True
+        thread.start()
+        
+        return jsonify({
+            'success': True,
+            'queue_id': queue_id
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ Error submitting OCR queue: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/ocr-queue/check', methods=['POST'])
+def check_ocr_queue_path():
+    """ตรวจสอบ path และนับจำนวนไฟล์ PDF พร้อมคำนวณเวลาที่คาดว่าจะใช้"""
+    try:
+        data = request.json
+        file_path = data.get('path', '').strip()
+        
+        if not file_path:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุที่อยู่ไฟล์หรือโฟลเดอร์'
+            }), 400
+        
+        # ตรวจสอบว่า path มีอยู่จริงหรือไม่
+        path_obj = Path(file_path)
+        if not path_obj.exists():
+            return jsonify({
+                'success': False,
+                'error': 'ไม่พบไฟล์หรือโฟลเดอร์ที่ระบุ'
+            }), 400
+        
+        # นับจำนวนไฟล์ PDF
+        pdf_files = []
+        if path_obj.is_file() and path_obj.suffix.lower() == '.pdf':
+            pdf_files = [path_obj]
+        elif path_obj.is_dir():
+            pdf_files = list(path_obj.glob('**/*.pdf'))
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'ไม่พบไฟล์ PDF ใน path ที่ระบุ'
+            }), 400
+        
+        total_files = len(pdf_files)
+        # คำนวณเวลาที่คาดว่าจะใช้ (1 รายการ/30 วินาที)
+        estimated_time = total_files * 30
+        
+        return jsonify({
+            'success': True,
+            'total_files': total_files,
+            'estimated_time': estimated_time  # วินาที
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ Error checking OCR queue path: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/ocr-queue/list', methods=['GET'])
+def list_ocr_queues():
+    """ดึงรายการคิวทั้งหมด (กรองรายการที่หมดเวลาแล้ว)"""
+    try:
+        now = datetime.now()
+        
+        with ocr_queue_lock:
+            queues = list(ocr_queue_storage.values())
+            
+            # ลบรายการที่หมดเวลาแล้ว (30 นาทีหลังจากเสร็จ)
+            queues_to_remove = []
+            for queue_id, queue in ocr_queue_storage.items():
+                if queue.get('status') == 'completed' and queue.get('auto_remove_at'):
+                    remove_time = datetime.fromisoformat(queue['auto_remove_at'].replace('Z', '+00:00'))
+                    if now >= remove_time:
+                        queues_to_remove.append(queue_id)
+            
+            # ลบรายการที่หมดเวลาแล้ว
+            for queue_id in queues_to_remove:
+                del ocr_queue_storage[queue_id]
+                logger.info(f"🗑️ ลบคิวที่หมดเวลาแล้ว: {queue_id}")
+            
+            # อัพเดท queues list ใหม่หลังจากลบ
+            queues = list(ocr_queue_storage.values())
+            
+            # เรียงตามสถานะและเวลา: processing > pending > completed > failed
+            def sort_key(x):
+                status_order = {'processing': 0, 'pending': 1, 'completed': 2, 'failed': 3}
+                status = x.get('status', 'pending')
+                created_at = x.get('created_at', '')
+                return (status_order.get(status, 99), created_at)
+            
+            queues.sort(key=sort_key)
+        
+        return jsonify({
+            'success': True,
+            'queues': queues
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ Error listing OCR queues: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/ocr-queue/cancel/<queue_id>', methods=['POST'])
+def cancel_ocr_queue(queue_id: str):
+    """ยกเลิกคิว"""
+    try:
+        with ocr_queue_lock:
+            if queue_id not in ocr_queue_storage:
+                return jsonify({
+                    'success': False,
+                    'error': 'ไม่พบคิวที่ระบุ'
+                }), 404
+            
+            queue = ocr_queue_storage[queue_id]
+            
+            # ถ้าคิวเสร็จแล้วหรือล้มเหลวแล้ว ไม่สามารถยกเลิกได้
+            if queue.get('status') in ['completed', 'failed']:
+                return jsonify({
+                    'success': False,
+                    'error': 'ไม่สามารถยกเลิกคิวที่เสร็จสิ้นแล้วได้'
+                }), 400
+            
+            # ทำเครื่องหมายว่าถูกยกเลิก
+            queue['status'] = 'failed'
+            queue['cancelled'] = True
+            queue['error'] = 'ถูกยกเลิกโดยผู้ใช้'
+        
+        return jsonify({
+            'success': True
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ Error canceling OCR queue: {e}")
         return jsonify({
             'success': False,
             'error': str(e)
