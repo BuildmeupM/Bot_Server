@@ -3450,27 +3450,7 @@
             const buyerTaxId = (ocrData.buyer_tax_id || '').trim();
             const buyerAddress = (ocrData.buyer_address || '').trim();
             
-            // ฟังก์ชัน normalize สำหรับเปรียบเทียบ
-            function normalizeText(text) {
-                if (!text) return '';
-                return text
-                    .toLowerCase()
-                    .replace(/\s+/g, '')
-                    .replace(/[.,\-_()]/g, '')
-                    .replace(/บริษัท|จำกัด|co\.?|ltd\.?/gi, '')
-                    .trim();
-            }
-            
-            function normalizeAddress(address) {
-                if (!address) return '';
-                return address
-                    .toLowerCase()
-                    .replace(/ห้องเลขที่\s*-\s*|ชั้นที่\s*-\s*|ถนน\s*-\s*/g, '')
-                    .replace(/ห้องเลขที่|ชั้นที่|เลขที่|หมู่ที่|ตำบล|อำเภอ|จังหวัด|หมู่บ้าน/g, '')
-                    .replace(/\s+/g, '')
-                    .replace(/[.,\-_]/g, '')
-                    .trim();
-            }
+            // ใช้ global functions normalizeText และ normalizeAddress ที่กำหนดไว้แล้ว
             
             // คำนวณผลการเปรียบเทียบข้อมูลบริษัท
             let companyDataMatches = 0;
@@ -3507,6 +3487,13 @@
                         }
                     }
                 }
+                
+                // ตรวจสอบว่าถูกอนุมัติแล้วหรือไม่
+                const companyNameApprovalKey = `${index}-company_name_match`;
+                const isCompanyNameApproved = comparisonApprovals[companyNameApprovalKey] || false;
+                if (isCompanyNameApproved && !companyNameMatch) {
+                    companyDataMatches++; // ถ้าถูกอนุมัติแล้วให้นับเป็น match
+                }
             }
             
             // เปรียบเทียบเลขประจำตัวผู้เสียภาษี
@@ -3517,6 +3504,13 @@
                 if (normalizedBuyerTaxId === normalizedCompanyTaxId) {
                     companyTaxIdMatch = true;
                     companyDataMatches++;
+                }
+                
+                // ตรวจสอบว่าถูกอนุมัติแล้วหรือไม่
+                const taxIdApprovalKey = `${index}-tax_id_match`;
+                const isTaxIdApproved = comparisonApprovals[taxIdApprovalKey] || false;
+                if (isTaxIdApproved && !companyTaxIdMatch) {
+                    companyDataMatches++; // ถ้าถูกอนุมัติแล้วให้นับเป็น match
                 }
             }
             
@@ -3606,7 +3600,8 @@
             if (companyDataTotal > 0) {
                 if (companyDataMatchStatus === 'full_match') {
                     companyDataMatchClass = 'match';
-                    companyDataMatchText = `ตรงกัน (${companyDataMatches}/${companyDataTotal})`;
+                    // ถ้าตรงกันหมดแล้ว ให้แสดงแค่ "ตรงกัน" โดยไม่ต้องแสดงตัวเลข
+                    companyDataMatchText = `ตรงกัน`;
                     companyDataMatchColor = '#10b981'; // สีเขียว
                 } else if (companyDataMatchStatus === 'partial_match') {
                     companyDataMatchClass = 'partial-match';
@@ -4330,9 +4325,9 @@
                     
                     html += `</div>`;
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ชื่อจาก OCR:</div>`;
-                    html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${buyerName}</div>`;
+                    html += `<div style="color: ${isNameApproved || companyNameMatch ? '#10b981' : '#cbd5e1'}; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${buyerName}</div>`;
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ชื่อบริษัท:</div>`;
-                    html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${companyName}</div>`;
+                    html += `<div style="color: ${isNameApproved || companyNameMatch ? '#10b981' : '#cbd5e1'}; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${companyName}</div>`;
                     
                     // ปุ่มวิเคราะห์ความคล้ายคลึง (แสดงเฉพาะเมื่อไม่ตรงกัน)
                     if (!isNameApproved && !companyNameMatch) {
@@ -4415,8 +4410,23 @@
                     }
                     
                     html += `</div>`;
+                    
+                    // แสดงที่อยู่ทั้งสองฝั่งเพื่อเปรียบเทียบ (แสดงเป็น 2 แถว)
+                    html += `<div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">`;
+                    
+                    // แถวที่ 1: ที่อยู่บริษัท
+                    html += `<div>`;
+                    html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ที่อยู่บริษัท:</div>`;
+                    html += `<div style="color: ${companyAddressMatch || isAddressApproved ? '#10b981' : '#ef4444'}; font-size: 0.9em; padding: 8px; background: #0f172a; border-radius: 4px; word-break: break-word; min-height: 40px; border: 1px solid ${companyAddressMatch || isAddressApproved ? '#10b981' : '#ef4444'}40;">${companyAddress}</div>`;
+                    html += `</div>`;
+                    
+                    // แถวที่ 2: ที่อยู่จาก OCR
+                    html += `<div>`;
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ที่อยู่จาก OCR:</div>`;
-                    html += `<div style="color: #cbd5e1; font-size: 0.9em; padding: 8px; background: #0f172a; border-radius: 4px; word-break: break-word; max-height: 80px; overflow-y: auto;">${buyerAddress}</div>`;
+                    html += `<div style="color: ${companyAddressMatch || isAddressApproved ? '#10b981' : '#ef4444'}; font-size: 0.9em; padding: 8px; background: #0f172a; border-radius: 4px; word-break: break-word; min-height: 40px; border: 1px solid ${companyAddressMatch || isAddressApproved ? '#10b981' : '#ef4444'}40;">${buyerAddress}</div>`;
+                    html += `</div>`;
+                    
+                    html += `</div>`; // ปิด flex container
                     html += `</div>`;
                 } else if (buyerAddress && buyerAddress !== '-' && (!companyAddress || companyAddress === '-')) {
                     html += `<div style="padding: 12px; background: #fbbf2415; border-radius: 8px; border-left: 4px solid #fbbf24; flex: 1;">`;
@@ -4671,6 +4681,29 @@
                 searchInput.value = '';
                 filterComparisonByReference('');
             }
+        }
+        
+        // ฟังก์ชัน normalize สำหรับเปรียบเทียบข้อความ (global function)
+        function normalizeText(text) {
+            if (!text) return '';
+            return text
+                .toLowerCase()
+                .replace(/\s+/g, '')
+                .replace(/[.,\-_()]/g, '')
+                .replace(/บริษัท|จำกัด|co\.?|ltd\.?/gi, '')
+                .trim();
+        }
+        
+        // ฟังก์ชัน normalize สำหรับเปรียบเทียบที่อยู่ (global function)
+        function normalizeAddress(address) {
+            if (!address) return '';
+            return address
+                .toLowerCase()
+                .replace(/ห้องเลขที่\s*-\s*|ชั้นที่\s*-\s*|ถนน\s*-\s*/g, '')
+                .replace(/ห้องเลขที่|ชั้นที่|เลขที่|หมู่ที่|ตำบล|อำเภอ|จังหวัด|หมู่บ้าน/g, '')
+                .replace(/\s+/g, '')
+                .replace(/[.,\-_]/g, '')
+                .trim();
         }
         
         // ฟังก์ชันสำหรับ normalize ชื่อบริษัท (แปลงรูปแบบต่างๆ ให้เป็นรูปแบบมาตรฐาน)
@@ -5369,12 +5402,13 @@
             // บันทึกสถานะการอนุมัติ (ไม่ต้องยืนยัน)
             comparisonApprovals[approvalKey] = true;
             console.log('✅ Field approved:', approvalKey, fieldLabel);
+            console.log(`🔍 [Debug] comparisonApprovals หลังอนุมัติ:`, Object.keys(comparisonApprovals).filter(k => k.startsWith(`${index}-`)));
             
             // รีเฟรชการแสดงผล (หา row ใน tab ที่ active อยู่)
             const row = findRowInActiveTab(index);
             if (row) {
                 // หาปุ่มอนุมัติที่ตรงกับ fieldKey โดยใช้ data attributes เป็นหลัก
-                // วิธีที่ 1: หาจาก data-field-key และ data-field-index และตรวจสอบว่าเป็นปุ่มอนุมัติ
+                // วิธีที่ 1: หาจาก data-field-key และ data-field-index และตรวจสอบว่าเป็นปุ่มอนุมัติ (รวมทั้งใน company-data-section)
                 let approveButtons = Array.from(row.querySelectorAll(`button[data-field-key="${fieldKey}"][data-field-index="${index}"]`)).filter(btn => 
                     btn.textContent && (btn.textContent.includes('อนุมัติ') || btn.textContent.includes('✓'))
                 );
@@ -5395,13 +5429,34 @@
                     }
                 }
                 
+                // วิธีที่ 4: หาจาก company-data-section (สำหรับข้อมูลบริษัท)
+                if (approveButtons.length === 0 && (fieldKey === 'company_name_match' || fieldKey === 'tax_id_match' || fieldKey === 'address_match')) {
+                    const companyDataSection = row.querySelector('.company-data-section');
+                    if (companyDataSection) {
+                        const companyButtons = Array.from(companyDataSection.querySelectorAll(`button[data-field-key="${fieldKey}"][data-field-index="${index}"]`)).filter(btn => 
+                            btn.textContent && (btn.textContent.includes('อนุมัติ') || btn.textContent.includes('✓'))
+                        );
+                        if (companyButtons.length > 0) {
+                            approveButtons = companyButtons;
+                        }
+                    }
+                }
+                
                 console.log(`🔍 Found ${approveButtons.length} approve buttons for field ${fieldKey} at index ${index}`);
                 
                 approveButtons.forEach(approveButton => {
-                    // หา fieldContainer
-                    const fieldContainer = approveButton.closest('.comparison-field');
+                    // หา fieldContainer (อาจอยู่ใน comparison-field หรือ company-data-section)
+                    let fieldContainer = approveButton.closest('.comparison-field');
+                    if (!fieldContainer) {
+                        // ถ้าไม่เจอใน comparison-field ให้หาจาก company-data-section
+                        const companyDataSection = approveButton.closest('.company-data-section');
+                        if (companyDataSection) {
+                            fieldContainer = companyDataSection;
+                        }
+                    }
+                    
                     if (fieldContainer) {
-                        // หา fieldValue ทั้งสองฝั่ง (ภาษีซื้อและ OCR)
+                        // หา fieldValue ทั้งสองฝั่ง (ภาษีซื้อและ OCR) - สำหรับ comparison-field เท่านั้น
                         const fieldValue = fieldContainer.querySelector('.comparison-field-value');
                         if (fieldValue) {
                             // เปลี่ยนสีของ fieldValue
@@ -5416,12 +5471,21 @@
                         cancelButton.onclick = () => cancelApproval(index, fieldKey, fieldLabel);
                         cancelButton.setAttribute('data-field-key', fieldKey);
                         cancelButton.setAttribute('data-field-index', String(index));
-                        cancelButton.style.cssText = 'padding: 4px 10px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: 600; display: flex; align-items: center; gap: 4px; transition: all 0.3s; white-space: nowrap;';
+                        
+                        // กำหนด style ตามตำแหน่งของปุ่ม (company-data-section หรือ comparison-field)
+                        const isInCompanyData = approveButton.closest('.company-data-section') !== null;
+                        if (isInCompanyData) {
+                            cancelButton.style.cssText = 'padding: 6px 12px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;';
+                        } else {
+                            cancelButton.style.cssText = 'padding: 4px 10px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: 600; display: flex; align-items: center; gap: 4px; transition: all 0.3s; white-space: nowrap;';
+                        }
+                        
                         cancelButton.setAttribute('onmouseover', "this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(239, 68, 68, 0.4)';");
                         cancelButton.setAttribute('onmouseout', "this.style.transform='scale(1)'; this.style.boxShadow='none';");
                         cancelButton.setAttribute('title', 'ยกเลิกการอนุมัติ');
                         cancelButton.innerHTML = '<span style="font-size: 1em;">✕</span> ยกเลิก';
                         approveButton.replaceWith(cancelButton);
+                        console.log(`✅ เปลี่ยนปุ่มอนุมัติเป็นปุ่มยกเลิก: ${fieldKey} (ใน ${isInCompanyData ? 'company-data-section' : 'comparison-field'})`);
                     }
                 });
                 
@@ -5468,10 +5532,155 @@
                         }
                     });
                 }
+                
+                // อัพเดท UI ในส่วนข้อมูลบริษัท (company_name_match, tax_id_match, address_match)
+                const companyDataSection = row.querySelector('.company-data-section');
+                if (companyDataSection) {
+                    // อัพเดทสถานะชื่อบริษัท
+                    if (fieldKey === 'company_name_match') {
+                        // หา span ที่มีข้อความ "ผลการเปรียบเทียบชื่อ"
+                        const allSpans = companyDataSection.querySelectorAll('span');
+                        allSpans.forEach(span => {
+                            if (span.textContent && span.textContent.includes('ผลการเปรียบเทียบชื่อ')) {
+                                span.textContent = 'ผลการเปรียบเทียบชื่อ: ✅ อนุมัติแล้ว';
+                                span.style.color = '#10b981';
+                            }
+                        });
+                        
+                        // อัพเดทสีของชื่อทั้งสองฝั่ง (ใช้วิธีที่แม่นยำกว่า)
+                        const allDivs = companyDataSection.querySelectorAll('div');
+                        allDivs.forEach(div => {
+                            const divText = div.textContent || '';
+                            // หา div ที่มี label "ชื่อจาก OCR:" หรือ "ชื่อบริษัท:"
+                            if (divText.trim() === 'ชื่อจาก OCR:' || divText.trim() === 'ชื่อบริษัท:') {
+                                // หา div ถัดไปที่เป็น name value box
+                                let nextDiv = div.nextElementSibling;
+                                // ข้าม element อื่นๆ จนกว่าจะเจอ div
+                                while (nextDiv && (nextDiv.tagName !== 'DIV' || nextDiv.textContent.trim() === '')) {
+                                    nextDiv = nextDiv.nextElementSibling;
+                                }
+                                if (nextDiv && nextDiv.tagName === 'DIV' && nextDiv.textContent.trim() !== '') {
+                                    nextDiv.style.color = '#10b981';
+                                    nextDiv.style.fontWeight = '600';
+                                    console.log(`✅ อัพเดทสีชื่อ: ${divText.trim()} -> ${nextDiv.textContent.substring(0, 20)}...`);
+                                }
+                            }
+                        });
+                        
+                        // อัพเดทสีของ container
+                        const containers = companyDataSection.querySelectorAll('div[style*="border-left"]');
+                        containers.forEach(container => {
+                            if (container.textContent && container.textContent.includes('ผลการเปรียบเทียบชื่อ')) {
+                                container.style.background = '#10b98115';
+                                container.style.borderLeftColor = '#10b981';
+                            }
+                        });
+                    }
+                    
+                    // อัพเดทสถานะเลขประจำตัวผู้เสียภาษี
+                    if (fieldKey === 'tax_id_match') {
+                        // หา span ที่มีข้อความ "ผลการเปรียบเทียบเลขประจำตัวผู้เสียภาษี"
+                        const allSpans = companyDataSection.querySelectorAll('span');
+                        allSpans.forEach(span => {
+                            if (span.textContent && span.textContent.includes('ผลการเปรียบเทียบเลขประจำตัวผู้เสียภาษี')) {
+                                span.textContent = 'ผลการเปรียบเทียบเลขประจำตัวผู้เสียภาษี: ✅ อนุมัติแล้ว';
+                                span.style.color = '#10b981';
+                            }
+                        });
+                        
+                        // อัพเดทสีของเลขประจำตัวผู้เสียภาษีทั้งสองฝั่ง
+                        const taxIdLabels = companyDataSection.querySelectorAll('div');
+                        taxIdLabels.forEach(div => {
+                            const divText = div.textContent || '';
+                            if (divText.includes('เลขจาก OCR:') || divText.includes('เลขประจำตัวผู้เสียภาษี')) {
+                                // หา div ถัดไปที่เป็น tax id box
+                                let nextDiv = div.nextElementSibling;
+                                while (nextDiv && nextDiv.tagName !== 'DIV') {
+                                    nextDiv = nextDiv.nextElementSibling;
+                                }
+                                if (nextDiv && nextDiv.tagName === 'DIV') {
+                                    nextDiv.style.color = '#10b981';
+                                }
+                            }
+                        });
+                        
+                        // อัพเดทสีของ container
+                        const containers = companyDataSection.querySelectorAll('div[style*="border-left"]');
+                        containers.forEach(container => {
+                            if (container.textContent && container.textContent.includes('ผลการเปรียบเทียบเลขประจำตัวผู้เสียภาษี')) {
+                                container.style.background = '#10b98115';
+                                container.style.borderLeftColor = '#10b981';
+                            }
+                        });
+                    }
+                    
+                    // อัพเดทสถานะที่อยู่
+                    if (fieldKey === 'address_match') {
+                        // หา span ที่มีข้อความ "ผลการเปรียบเทียบที่อยู่"
+                        const allSpans = companyDataSection.querySelectorAll('span');
+                        allSpans.forEach(span => {
+                            if (span.textContent && span.textContent.includes('ผลการเปรียบเทียบที่อยู่')) {
+                                span.textContent = 'ผลการเปรียบเทียบที่อยู่: ✅ อนุมัติแล้ว';
+                                span.style.color = '#10b981';
+                            }
+                        });
+                        
+                        // อัพเดทสีของที่อยู่ทั้งสองฝั่ง
+                        const addressLabels = companyDataSection.querySelectorAll('div');
+                        addressLabels.forEach(div => {
+                            const divText = div.textContent || '';
+                            if (divText.includes('ที่อยู่บริษัท:') || divText.includes('ที่อยู่จาก OCR:')) {
+                                // หา div ถัดไปที่เป็น address box
+                                let nextDiv = div.nextElementSibling;
+                                while (nextDiv && nextDiv.tagName !== 'DIV') {
+                                    nextDiv = nextDiv.nextElementSibling;
+                                }
+                                if (nextDiv && nextDiv.tagName === 'DIV') {
+                                    nextDiv.style.color = '#10b981';
+                                    nextDiv.style.borderColor = '#10b98140';
+                                }
+                            }
+                        });
+                        
+                        // อัพเดทสีของ container
+                        const containers = companyDataSection.querySelectorAll('div[style*="border-left"]');
+                        containers.forEach(container => {
+                            if (container.textContent && container.textContent.includes('ผลการเปรียบเทียบที่อยู่')) {
+                                container.style.background = '#10b98115';
+                                container.style.borderLeftColor = '#10b981';
+                            }
+                        });
+                    }
+                    
+                    // อัพเดทปุ่มอนุมัติในส่วนข้อมูลบริษัท (หาจาก company-data-section)
+                    if (fieldKey === 'company_name_match' || fieldKey === 'tax_id_match' || fieldKey === 'address_match') {
+                        // หาปุ่มอนุมัติในส่วนข้อมูลบริษัท
+                        const companyDataButtons = companyDataSection.querySelectorAll(`button[data-field-key="${fieldKey}"][data-field-index="${index}"]`);
+                        companyDataButtons.forEach(button => {
+                            if (button.textContent && (button.textContent.includes('อนุมัติ') || button.textContent.includes('✓'))) {
+                                // เปลี่ยนปุ่มเป็นปุ่ม "ยกเลิก"
+                                const cancelButton = document.createElement('button');
+                                cancelButton.onclick = () => cancelApproval(index, fieldKey, fieldLabel);
+                                cancelButton.setAttribute('data-field-key', fieldKey);
+                                cancelButton.setAttribute('data-field-index', String(index));
+                                cancelButton.style.cssText = 'padding: 6px 12px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;';
+                                cancelButton.setAttribute('onmouseover', "this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(239, 68, 68, 0.4)';");
+                                cancelButton.setAttribute('onmouseout', "this.style.transform='scale(1)'; this.style.boxShadow='none';");
+                                cancelButton.setAttribute('title', 'ยกเลิกการอนุมัติ');
+                                cancelButton.innerHTML = '<span style="font-size: 1em;">✕</span> ยกเลิก';
+                                button.replaceWith(cancelButton);
+                                console.log(`✅ อัพเดทปุ่มอนุมัติในส่วนข้อมูลบริษัท: ${fieldKey}`);
+                            }
+                        });
+                    }
+                }
             }
             
             // ตรวจสอบว่าทุก field ที่ไม่ match ถูก approve แล้วหรือไม่
+            console.log(`🔍 [Debug] ก่อนเรียก checkAndUpdateRowStatus: comparisonApprovals[${approvalKey}]=${comparisonApprovals[approvalKey]}`);
+            console.log(`🔍 [Debug] comparisonApprovals object ก่อนเรียก checkAndUpdateRowStatus:`, comparisonApprovals);
             checkAndUpdateRowStatus(index);
+            console.log(`🔍 [Debug] หลังเรียก checkAndUpdateRowStatus: comparisonApprovals[${approvalKey}]=${comparisonApprovals[approvalKey]}`);
             
             // แสดง toast notification
             showToast('success', `✅ อนุมัติ "${fieldLabel}" เรียบร้อยแล้ว`);
@@ -5498,7 +5707,7 @@
             
             const matchDetails = comp.match_details || {};
             
-            // รายการ fields ที่สามารถอนุมัติได้
+            // รายการ fields ที่สามารถอนุมัติได้ (รวม address_match ด้วย)
             const approvableFieldKeys = [
                 'document_no_match',
                 'date_match',
@@ -5509,7 +5718,8 @@
                 'amount_before_vat_match',
                 'vat_amount_match',
                 'total_amount_match',
-                'document_type_match'
+                'document_type_match',
+                'address_match'
             ];
             
             // ตรวจสอบว่าทุก field ที่ไม่ match ถูก approve แล้วหรือไม่
@@ -5527,19 +5737,302 @@
                 }
             });
             
+            // อัพเดทสถานะข้อมูลบริษัท badge ทุกครั้ง (ไม่ต้องรอให้ approve ทั้งหมด)
+            // ตรวจสอบสถานะจาก UI ด้านล่าง (ผลการเปรียบเทียบ) แทนที่จะคำนวณจากข้อมูลดิบ
+            const companyDataSection = row.querySelector('.company-data-section');
+            let companyDataMatches = 0;
+            let companyDataTotal = 0;
+            
+            if (companyDataSection) {
+                // ตรวจสอบสถานะจาก UI elements ด้านล่าง
+                const allSpans = companyDataSection.querySelectorAll('span');
+                
+                // ตรวจสอบชื่อบริษัท
+                const nameSpan = Array.from(allSpans).find(span => 
+                    span.textContent && span.textContent.includes('ผลการเปรียบเทียบชื่อ')
+                );
+                if (nameSpan) {
+                    companyDataTotal++;
+                    const nameText = nameSpan.textContent || '';
+                    // ตรวจสอบว่ามี "✅ อนุมัติแล้ว" หรือ "✅ ตรงกัน" หรือไม่
+                    if (nameText.includes('✅ อนุมัติแล้ว') || nameText.includes('✅ ตรงกัน')) {
+                        companyDataMatches++;
+                        console.log(`✅ [Debug] ชื่อบริษัท: ตรงกันหรืออนุมัติแล้ว (จาก UI)`);
+                    } else {
+                        console.log(`⚠️ [Debug] ชื่อบริษัท: ไม่ตรงกัน (จาก UI)`);
+                    }
+                }
+                
+                // ตรวจสอบเลขประจำตัวผู้เสียภาษี
+                const taxIdSpan = Array.from(allSpans).find(span => 
+                    span.textContent && span.textContent.includes('ผลการเปรียบเทียบเลขประจำตัวผู้เสียภาษี')
+                );
+                if (taxIdSpan) {
+                    companyDataTotal++;
+                    const taxIdText = taxIdSpan.textContent || '';
+                    // ตรวจสอบว่ามี "✅ อนุมัติแล้ว" หรือ "✅ ตรงกัน" หรือไม่
+                    if (taxIdText.includes('✅ อนุมัติแล้ว') || taxIdText.includes('✅ ตรงกัน')) {
+                        companyDataMatches++;
+                        console.log(`✅ [Debug] เลขประจำตัวผู้เสียภาษี: ตรงกันหรืออนุมัติแล้ว (จาก UI)`);
+                    } else {
+                        console.log(`⚠️ [Debug] เลขประจำตัวผู้เสียภาษี: ไม่ตรงกัน (จาก UI)`);
+                    }
+                }
+                
+                // ตรวจสอบที่อยู่
+                const addressSpan = Array.from(allSpans).find(span => 
+                    span.textContent && span.textContent.includes('ผลการเปรียบเทียบที่อยู่')
+                );
+                if (addressSpan) {
+                    companyDataTotal++;
+                    const addressText = addressSpan.textContent || '';
+                    // ตรวจสอบว่ามี "✅ อนุมัติแล้ว" หรือ "✅ ตรงกัน" หรือไม่
+                    if (addressText.includes('✅ อนุมัติแล้ว') || addressText.includes('✅ ตรงกัน')) {
+                        companyDataMatches++;
+                        console.log(`✅ [Debug] ที่อยู่: ตรงกันหรืออนุมัติแล้ว (จาก UI)`);
+                    } else {
+                        console.log(`⚠️ [Debug] ที่อยู่: ไม่ตรงกัน (จาก UI)`);
+                    }
+                }
+            } else {
+                // ถ้าไม่มี company-data-section ให้ใช้วิธีเดิม (คำนวณจากข้อมูลดิบ)
+                const companyName = (document.getElementById('companyName')?.textContent || '').trim();
+                const companyTaxId = (document.getElementById('companyTaxId')?.textContent || '').trim();
+                const companyAddress = (document.getElementById('companyAddress')?.textContent || '').trim();
+                
+                const ocrData = comp.ocr_data || {};
+                const buyerName = (ocrData.buyer_name || '').trim();
+                const buyerTaxId = (ocrData.buyer_tax_id || '').trim();
+                const buyerAddress = (ocrData.buyer_address || '').trim();
+                
+                // ตรวจสอบชื่อบริษัท
+                if (buyerName && buyerName !== '-' && companyName && companyName !== '-') {
+                    companyDataTotal++;
+                    const companyNameApprovalKey = `${index}-company_name_match`;
+                    const isCompanyNameApproved = comparisonApprovals[companyNameApprovalKey] || false;
+                    const normalizedBuyerName = normalizeText(buyerName);
+                    const normalizedCompanyName = normalizeText(companyName);
+                    const companyNameMatch = normalizedBuyerName === normalizedCompanyName || 
+                        normalizedBuyerName.includes(normalizedCompanyName) || 
+                        normalizedCompanyName.includes(normalizedBuyerName);
+                    
+                    if (companyNameMatch || isCompanyNameApproved) {
+                        companyDataMatches++;
+                    }
+                }
+                
+                // ตรวจสอบเลขประจำตัวผู้เสียภาษี
+                if (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') {
+                    companyDataTotal++;
+                    const taxIdApprovalKey = `${index}-tax_id_match`;
+                    const isTaxIdApproved = comparisonApprovals[taxIdApprovalKey] || false;
+                    const normalizedBuyerTaxId = buyerTaxId.replace(/\s+/g, '').replace(/[-\s]/g, '');
+                    const normalizedCompanyTaxId = companyTaxId.replace(/\s+/g, '').replace(/[-\s]/g, '');
+                    const taxIdMatch = normalizedBuyerTaxId === normalizedCompanyTaxId;
+                    
+                    if (taxIdMatch || isTaxIdApproved) {
+                        companyDataMatches++;
+                    }
+                }
+                
+                // ตรวจสอบที่อยู่
+                if (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-') {
+                    companyDataTotal++;
+                    const addressApprovalKey = `${index}-address_match`;
+                    const isAddressApproved = comparisonApprovals[addressApprovalKey] || false;
+                    const normalizedBuyerAddress = normalizeAddress(buyerAddress);
+                    const normalizedCompanyAddress = normalizeAddress(companyAddress);
+                    const addressMatch = normalizedBuyerAddress === normalizedCompanyAddress;
+                    
+                    if (addressMatch || isAddressApproved) {
+                        companyDataMatches++;
+                    }
+                }
+            }
+            
+            console.log(`🔍 [Debug] สรุป: companyDataMatches=${companyDataMatches}/${companyDataTotal} (ตรวจสอบจาก UI)`);
+            
+            // ตรวจสอบว่าทุก field ตรงกันหรือถูกอนุมัติหมดแล้วหรือไม่
+            const allCompanyDataMatched = companyDataMatches === companyDataTotal;
+            console.log(`🔍 [Debug] ทุก field ตรงกันหรือถูกอนุมัติหมดแล้ว: ${allCompanyDataMatched} (${companyDataMatches} === ${companyDataTotal})`);
+            
+            // อัพเดทสถานะข้อมูลบริษัท badge ทันที
+            const statusElements = row.querySelectorAll('.comparison-row-status');
+            console.log(`🔍 [Debug] หา status badge: พบ ${statusElements.length} elements`);
+            console.log(`🔍 [Debug] companyDataMatches: ${companyDataMatches}, companyDataTotal: ${companyDataTotal}`);
+            console.log(`🔍 [Debug] comparisonApprovals สำหรับ index ${index}:`, Object.keys(comparisonApprovals).filter(k => k.startsWith(`${index}-`)));
+            console.log(`🔍 [Debug] comparisonApprovals object:`, comparisonApprovals);
+            
+            let foundCompanyDataBadge = false;
+            statusElements.forEach((statusElement, idx) => {
+                const elementText = statusElement.textContent || '';
+                console.log(`🔍 [Debug] Status element ${idx}: "${elementText.substring(0, 50)}..."`);
+                
+                if (elementText.includes('🏢')) {
+                    foundCompanyDataBadge = true;
+                    console.log(`🔍 [Debug] พบ badge ข้อมูลบริษัท!`);
+                    if (companyDataTotal > 0) {
+                        const oldText = statusElement.textContent;
+                        let newStatusText = '';
+                        let newClassName = '';
+                        let newColor = '';
+                        let newBgColor = '';
+                        let newBorderColor = '';
+                        
+                        // ตรวจสอบว่าทุก field ตรงกันหรือถูกอนุมัติหมดแล้วหรือไม่
+                        const isAllMatched = companyDataMatches === companyDataTotal;
+                        console.log(`🔍 [Debug] ตรวจสอบสถานะ: companyDataMatches=${companyDataMatches}, companyDataTotal=${companyDataTotal}, isAllMatched=${isAllMatched}`);
+                        
+                        if (isAllMatched) {
+                            newClassName = 'comparison-row-status match';
+                            newColor = '#10b981';
+                            newBgColor = 'rgba(16, 185, 129, 0.2)';
+                            newBorderColor = '#10b981';
+                            // ถ้าตรงกันหมดแล้ว ให้แสดงแค่ "ตรงกัน" โดยไม่ต้องแสดงตัวเลข
+                            newStatusText = `ตรงกัน`;
+                            console.log(`✅ อัพเดทสถานะข้อมูลบริษัท: "${oldText}" -> "🏢 ${newStatusText}" (${companyDataMatches}/${companyDataTotal})`);
+                        } else if (companyDataMatches > 0) {
+                            newClassName = 'comparison-row-status partial-match';
+                            newColor = '#fbbf24';
+                            newBgColor = 'rgba(251, 191, 36, 0.2)';
+                            newBorderColor = '#fbbf24';
+                            newStatusText = `ตรงกันบางส่วน (${companyDataMatches}/${companyDataTotal})`;
+                            console.log(`✅ อัพเดทสถานะข้อมูลบริษัท: "${oldText}" -> "🏢 ${newStatusText}"`);
+                        } else {
+                            newClassName = 'comparison-row-status mismatch';
+                            newColor = '#ef4444';
+                            newBgColor = 'rgba(239, 68, 68, 0.2)';
+                            newBorderColor = '#ef4444';
+                            newStatusText = `ไม่ตรงกัน (${companyDataMatches}/${companyDataTotal})`;
+                            console.log(`✅ อัพเดทสถานะข้อมูลบริษัท: "${oldText}" -> "🏢 ${newStatusText}"`);
+                        }
+                        
+                        // อัพเดท className
+                        statusElement.className = newClassName;
+                        
+                        // อัพเดท styles
+                        statusElement.style.color = newColor;
+                        statusElement.style.backgroundColor = newBgColor;
+                        statusElement.style.border = `1px solid ${newBorderColor}`;
+                        
+                        // อัพเดท innerHTML โดยเก็บ span 🏢 ไว้
+                        // หา span ที่มี emoji 🏢
+                        const emojiSpan = statusElement.querySelector('span[style*="font-size"]');
+                        if (emojiSpan) {
+                            // ถ้ามี span อยู่แล้ว ให้เก็บไว้และอัพเดทเฉพาะ text
+                            statusElement.innerHTML = `<span style="font-size: 0.9em;">🏢</span> ${newStatusText}`;
+                        } else {
+                            // ถ้าไม่มี span ให้สร้างใหม่
+                            statusElement.innerHTML = `<span style="font-size: 0.9em;">🏢</span> ${newStatusText}`;
+                        }
+                        
+                        // Force reflow เพื่อให้ browser render ใหม่
+                        statusElement.offsetHeight;
+                        
+                        console.log(`✅ [Debug] อัพเดท badge สำเร็จ: "${oldText}" -> "${statusElement.textContent}"`);
+                    } else {
+                        console.warn(`⚠️ [Debug] companyDataTotal = 0 ไม่สามารถอัพเดทสถานะได้`);
+                    }
+                }
+            });
+            
+            if (!foundCompanyDataBadge) {
+                console.warn(`⚠️ [Debug] ไม่พบ badge ข้อมูลบริษัท (🏢) ใน row ${index}`);
+            }
+            
             // ถ้ามี field ที่ไม่ match และทุก field ถูก approve แล้ว
             if (hasMismatchedFields && allMismatchedFieldsApproved) {
                 // เปลี่ยนสถานะจาก "ตรงกันบางส่วน" เป็น "ตรงกัน"
-                const statusElement = row.querySelector('.comparison-row-status');
-                if (statusElement) {
+                const statusElements = row.querySelectorAll('.comparison-row-status');
+                statusElements.forEach(statusElement => {
                     statusElement.className = 'comparison-row-status match';
                     statusElement.style.color = '#10b981';
                     statusElement.style.backgroundColor = 'rgba(16, 185, 129, 0.2)';
                     statusElement.style.border = '1px solid #10b981';
-                    statusElement.textContent = 'ตรงกัน';
+                    // ตรวจสอบว่าเป็นสถานะข้อมูลบริษัทหรือไม่ (มี emoji 🏢)
+                    if (statusElement.textContent.includes('🏢')) {
+                        // คำนวณสถานะข้อมูลบริษัทใหม่
+                        const purchaseData = comp.purchase_data || {};
+                        const ocrData = comp.ocr_data || {};
+                        const buyerName = purchaseData.contact || purchaseData.company_name || '';
+                        const companyName = ocrData.company_name || '';
+                        const buyerTaxId = purchaseData.tax_id || '';
+                        const companyTaxId = ocrData.tax_id || '';
+                        const buyerAddress = purchaseData.address || '';
+                        const companyAddress = ocrData.address || '';
+                        
+                        let companyDataMatches = 0;
+                        let companyDataTotal = 0;
+                        
+                        // ตรวจสอบชื่อบริษัท
+                        if (buyerName && buyerName !== '-' && companyName && companyName !== '-') {
+                            companyDataTotal++;
+                            const normalizedBuyerName = normalizeText(buyerName);
+                            const normalizedCompanyName = normalizeText(companyName);
+                            const companyNameMatch = normalizedBuyerName === normalizedCompanyName || 
+                                normalizedBuyerName.includes(normalizedCompanyName) || 
+                                normalizedCompanyName.includes(normalizedBuyerName);
+                            if (companyNameMatch) {
+                                companyDataMatches++;
+                            } else {
+                                const companyNameApprovalKey = `${index}-company_name_match`;
+                                const isCompanyNameApproved = comparisonApprovals[companyNameApprovalKey] || false;
+                                if (isCompanyNameApproved) {
+                                    companyDataMatches++;
+                                }
+                            }
+                        }
+                        
+                        // ตรวจสอบเลขประจำตัวผู้เสียภาษี
+                        if (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') {
+                            companyDataTotal++;
+                            const normalizedBuyerTaxId = buyerTaxId.replace(/\s+/g, '').replace(/[-\s]/g, '');
+                            const normalizedCompanyTaxId = companyTaxId.replace(/\s+/g, '').replace(/[-\s]/g, '');
+                            const taxIdMatch = normalizedBuyerTaxId === normalizedCompanyTaxId;
+                            if (taxIdMatch) {
+                                companyDataMatches++;
+                            } else {
+                                const taxIdApprovalKey = `${index}-tax_id_match`;
+                                const isTaxIdApproved = comparisonApprovals[taxIdApprovalKey] || false;
+                                if (isTaxIdApproved) {
+                                    companyDataMatches++;
+                                }
+                            }
+                        }
+                        
+                        // ตรวจสอบที่อยู่
+                        if (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-') {
+                            companyDataTotal++;
+                            const normalizedBuyerAddress = normalizeAddress(buyerAddress);
+                            const normalizedCompanyAddress = normalizeAddress(companyAddress);
+                            const addressMatch = normalizedBuyerAddress === normalizedCompanyAddress;
+                            if (addressMatch) {
+                                companyDataMatches++;
+                            } else {
+                                const addressApprovalKey = `${index}-address_match`;
+                                const isAddressApproved = comparisonApprovals[addressApprovalKey] || false;
+                                if (isAddressApproved) {
+                                    companyDataMatches++;
+                                }
+                            }
+                        }
+                        
+                        if (companyDataTotal > 0) {
+                            if (companyDataMatches === companyDataTotal) {
+                                statusElement.textContent = `🏢 ตรงกัน (${companyDataMatches}/${companyDataTotal})`;
+                            } else if (companyDataMatches > 0) {
+                                statusElement.textContent = `🏢 ตรงกันบางส่วน (${companyDataMatches}/${companyDataTotal})`;
+                            } else {
+                                statusElement.textContent = `🏢 ไม่ตรงกัน (${companyDataMatches}/${companyDataTotal})`;
+                            }
+                        }
+                    } else {
+                        // สถานะเอกสาร
+                        statusElement.textContent = 'ตรงกัน';
+                    }
                     
                     console.log(`✅ เปลี่ยนสถานะ row ${index} จาก "ตรงกันบางส่วน" เป็น "ตรงกัน"`);
-                }
+                });
                 
                 // ซ่อนหมายเหตุในหน้าเว็บ แต่เก็บหมายเหตุไว้เพื่อ Excel export
                 const noteKey = String(index);
@@ -5561,6 +6054,7 @@
                     console.log(`✅ ซ่อนหมายเหตุในหน้าเว็บสำหรับ row ${index} (เก็บไว้สำหรับ Excel export: "${noteToKeep.substring(0, 50)}...")`);
                 }
             }
+            // หมายเหตุ: สถานะข้อมูลบริษัท badge ถูกอัพเดททุกครั้งที่เรียกฟังก์ชันนี้ (ไม่ต้องรอให้ approve ทั้งหมด)
         }
         
         /**

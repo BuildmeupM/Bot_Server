@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "timestamp": "2026-01-22T06:49:10.625Z",
-  "last_saved": "2026-01-22T13:49:12.626399",
+  "timestamp": "2026-01-22T07:45:39.931Z",
+  "last_saved": "2026-01-22T14:45:39.939670",
   "company": "Build505 ซอส คอมแพเนียน",
   "taxMonth": "2025-12",
   "taxYear": "2025",
@@ -105,67 +105,7 @@
     "124": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอลเอ็นดับเบิ้ลยู จำกัด' แต่ OCR='บริษัท แอทเอ็นดับเบิ้ลยู จำกัด'"
   },
   "comparisonApprovals": {
-    "0-company_name_match": true,
-    "0-company_data_all": true,
-    "1-company_name_match": true,
-    "2-company_name_match": true,
-    "3-company_name_match": true,
-    "4-company_name_match": true,
-    "6-company_name_match": true,
-    "7-company_name_match": true,
-    "9-company_name_match": true,
-    "11-company_name_match": true,
-    "14-company_name_match": true,
-    "19-company_name_match": true,
-    "22-company_name_match": true,
-    "25-company_name_match": true,
-    "26-date_match": true,
-    "26-company_name_match": true,
-    "29-company_name_match": true,
-    "30-company_name_match": true,
-    "32-date_match": true,
-    "32-company_name_match": true,
-    "36-date_match": true,
-    "38-company_name_match": true,
-    "39-company_name_match": true,
-    "45-company_name_match": true,
-    "48-company_name_match": true,
-    "49-company_name_match": true,
-    "53-date_match": true,
-    "53-company_name_match": true,
-    "54-date_match": true,
-    "54-company_name_match": true,
-    "55-company_name_match": true,
-    "55-tax_id_match": true,
-    "55-branch_match": true,
-    "55-total_amount_match": true,
-    "55-document_type_match": true,
-    "56-company_name_match": true,
-    "59-date_match": true,
-    "59-company_name_match": true,
-    "60-company_name_match": true,
-    "61-date_match": true,
-    "61-company_name_match": true,
-    "63-date_match": true,
-    "63-company_name_match": true,
-    "66-company_name_match": true,
-    "68-company_name_match": true,
-    "68-total_amount_match": true,
-    "78-company_name_match": true,
-    "81-document_no_match": true,
-    "86-date_match": true,
-    "86-company_name_match": true,
-    "93-company_name_match": true,
-    "95-document_no_match": true,
-    "95-date_match": true,
-    "94-company_name_match": true,
-    "100-document_no_match": true,
-    "103-company_name_match": true,
-    "110-company_name_match": true,
-    "116-company_name_match": true,
-    "118-company_name_match": true,
-    "119-document_no_match": true,
-    "124-company_name_match": true
+    "0-company_name_match": true
   },
   "invalidDocuments": {},
   "selfCheckMode": {},
@@ -174,180 +114,236 @@
     "count": 125,
     "metadata": [
       {
-        "filename": "12.12.2025_EXP-20251200021_ภาพแบบ ภพ.36 เดือน 11.2025 GG Work_VAT.pdf",
-        "company_name": "Google Asia Pacific Pte.Ltd."
-      },
-      {
-        "filename": "01.12.2025_EXP-20251200025_01.12 aroma_VAT.pdf",
-        "company_name": "บริษัท เค.วี.เอ็น.เอิมปอร์ดเอกซ์ปอร์ต (1991) จำกัด"
-      },
-      {
-        "filename": "02.12.2025_EXP-20251200026_02.12 วัตถุดิบร้านกาแฟ_VAT.pdf",
-        "company_name": "บริษัท ฮา-ยัง จำกัด"
-      },
-      {
-        "filename": "03.12.2025_EXP-20251200027_03.12 coffee beans_VAT.pdf",
-        "company_name": "บริษัท ชำนาญการคั่วมากมาย จำกัด"
-      },
-      {
-        "filename": "12.12.2025_EXP-20251200028_12.12 เมล็ดกาแฟ_VAT.pdf",
-        "company_name": "บริษัท ชำนาญการค้ามากมาย จำกัด"
-      },
-      {
-        "filename": "19.12.2025_EXP-20251200031_19.12 น้ำดอกมะพร้าว_VAT.pdf",
-        "company_name": "บริษัท ฮา-ยัง จำกัด"
-      },
-      {
-        "filename": "24.12.2025_EXP-20251200032_24.12 Matcha _VAT.pdf",
-        "company_name": "บริษัท เอสเพรสโซแมน ซัพพลาย จำกัด"
-      },
-      {
-        "filename": "24.12.2025_EXP-20251200033_24.12 เมล็ดกาแฟ_VAT.pdf",
-        "company_name": "บริษัท ชำนาญการค้ามากมาย จำกัด"
-      },
-      {
-        "filename": "27.12.2025_EXP-20251200034_27.12 เมล็ดกาแฟ_VAT.pdf",
-        "company_name": "บริษัท ชำนาญการคั่วมากมาย จำกัด"
-      },
-      {
-        "filename": "23.12.2025_EXP-20251200035_23.12 ingredient_VAT.pdf",
-        "company_name": "บริษัท บี เอส เจ โปรดักชั่น จำกัด"
-      },
-      {
-        "filename": "03.12.2025_EXP-20251200036_03.12 ถุงกระดาษ_VAT.pdf",
-        "company_name": "บริษัท เกษมอนันต์ พริ้นติ้ง จำกัด"
-      },
-      {
-        "filename": "06.12.2025_EXP-20251200037_06.12 ถุง_VAT.pdf",
-        "company_name": "บริษัท พรประเสริฐบรรจุภัณฑ์ จำกัด"
-      },
-      {
-        "filename": "08.12.2025_EXP-20251200038_08.12 แก้ว 2_VAT.pdf",
-        "company_name": "บริษัท บราวนี่ พอยท์ จำกัด"
-      },
-      {
-        "filename": "08.12.2025_EXP-20251200039_08.12 แก้ว_VAT.pdf",
-        "company_name": "บริษัท บราวนี่ พ้อยท์ จำกัด"
-      },
-      {
-        "filename": "08.12.2025_EXP-20251200040_08.12 ฝา_VAT.pdf",
-        "company_name": "บริษัท กู๊ดวิลล์ อีโค จำกัด"
-      },
-      {
-        "filename": "15.12.2025_EXP-20251200041_15.12 ถุงซีลเครื่องดื่ม_VAT.pdf",
-        "company_name": "AC Plus Global Co., Ltd."
-      },
-      {
-        "filename": "17.12.2025_EXP-20251200042_17.12 ถุงใส่สินค้า_VAT.pdf",
-        "company_name": "บริษัท พรประเสริฐบรรจุภัณฑ์ จำกัด"
-      },
-      {
-        "filename": "25.12.2025_EXP-20251200043_25.12 ใบกำกับภาษี ใบเสร็จรับเงิน TBP2512-429_VAT.pdf",
-        "company_name": "บริษัท ศิริวัฒนาอินเตอร์พริ้นท์ จำกัด (มหาชน)"
-      },
-      {
-        "filename": "25.12.2025_EXP-20251200044_25.12 ใบกำกับภาษี ใบเสร็จรับเงิน TBP2512-430_VAT.pdf",
-        "company_name": "บริษัท ศิริวัฒนาอินเตอร์พริ้นท์ จำกัด (มหาชน)"
-      },
-      {
-        "filename": "27.12.2025_EXP-20251200045_27.12 ถุงใส่สินค้า_VAT.pdf",
-        "company_name": "บริษัท พรประเสริฐบรรจุภัณฑ์ จำกัด"
+        "filename": "16.12.2025_EXP-20251200088_Doc039_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
       },
       {
         "filename": "01.12.2025_EXP-20251200046_01.12 อุปกรณ์แพ็คสินค้า_VAT.pdf",
         "company_name": "บริษัท ถนัดพิมพ์ จำกัด"
       },
       {
-        "filename": "02.12.2025_EXP-20251200047_02.12 packing stuffs_VAT.pdf",
-        "company_name": "ห้างหุ้นส่วนจำกัด เอสเอสพี โปรอินดัสตรรี"
+        "filename": "22.12.2025_EXP-20251200127_Doc054_VAT.pdf",
+        "company_name": "บริษัท โรงพยาบาลสัตว์ทองหล่อ จำกัด"
       },
       {
-        "filename": "02.12.2025_EXP-20251200048_02.12 ถุงฟอย บริษัท เพลินพิณ จำกัด_INV2025120024_Saus Companion Co. Ltd_VAT.pdf",
-        "company_name": "บริษัท เพลินพิณ จำกัด"
+        "filename": "24.12.2025_EXP-20251200032_24.12 Matcha _VAT.pdf",
+        "company_name": "บริษัท เอสเพรสโซแมน ซัพพลาย จำกัด"
       },
       {
-        "filename": "18.12.2025_EXP-20251200050_18.12 Bread Partner_VAT.pdf",
-        "company_name": "บริษัท บี.เอ็ม.เค. อินเตอร์เทรด จำกัด"
+        "filename": "05.12.2025_EXP-20251200072_Doc010_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
       },
       {
-        "filename": "02.12.2025_EXP-20251200051_02.12 กระดาษรองหลังสินค้า ร้านต้นบุญการพิมพ์_CA202512020006_Saus Companion Co. Ltd._VAT.pdf",
-        "company_name": "ร้านต้นบุญการพิมพ์"
+        "filename": "19.12.2025_EXP-20251200093_Doc045_VAT.pdf",
+        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
       },
       {
         "filename": "06.12.2025_EXP-20251200053_06.12 Sticker RT-20251200002_VAT.pdf",
         "company_name": "บริษัท เฮย์ โปรดักส์ จำกัด"
       },
       {
-        "filename": "08.12.2025_EXP-20251200052_04.12 Card Sauschestra IV6812-0074_ซอส คอมพาเนียน จำกัด_VAT.pdf",
-        "company_name": "บริษัท ยูนิตี้ พริ้นติ้ง จำกัด"
+        "filename": "19.12.2025_EXP-20251200031_19.12 น้ำดอกมะพร้าว_VAT.pdf",
+        "company_name": "บริษัท ฮา-ยัง จำกัด"
       },
       {
-        "filename": "29.12.2025_EXP-20251200054_29.12 Sticker_RT-20251200022_VAT.pdf",
-        "company_name": "บริษัท เอส โปรดักส์ จำกัด"
-      },
-      {
-        "filename": "29.12.2025_EXP-20251200055_29.12 ร้านต้นบุญการพิมพ์_CA202512290003_Saus Companion Co. Ltd._VAT.pdf",
-        "company_name": "ร้านต้นบุญการพิมพ์"
-      },
-      {
-        "filename": "18.12.2025_EXP-20251200056_18.12 cup _VAT.pdf",
-        "company_name": "บริษัท บราวนี่ พ้อยท์ จำกัด"
-      },
-      {
-        "filename": "18.12.2025_EXP-20251200057_18.12 cup lid_VAT.pdf",
-        "company_name": "บริษัท กู๊ดวิลล์ อีโค จำกัด"
-      },
-      {
-        "filename": "03.12.2025_EXP-20251200058_1.1_VAT.pdf",
-        "company_name": "บริษัทไทยนิยมวัสดุภัณฑ์ จำกัด"
-      },
-      {
-        "filename": "03.12.2025_EXP-20251200059_1.7_VAT.pdf",
-        "company_name": "บริษัท ไทยนิยมวัสดุภัณฑ์ จำกัด"
-      },
-      {
-        "filename": "03.12.2025_EXP-20251200060_2.0_VAT.pdf",
-        "company_name": "บริษัท ไทยนิยมวัสดุภัณฑ์ จำกัด"
-      },
-      {
-        "filename": "04.12.2025_EXP-20251200062_04.12 1_VAT.pdf",
-        "company_name": "บริษัท บุญถาวร รีเทล คอร์ปอเรชั่น จำกัด (มหาชน)"
-      },
-      {
-        "filename": "04.12.2025_EXP-20251200063_04.12 2_VAT.pdf",
-        "company_name": "บริษัท บุญถาวร รีเทล คอร์ปอเรชั่น จำกัด (มหาชน)"
-      },
-      {
-        "filename": "05.12.2025_EXP-20251200064_05.12_VAT.pdf",
-        "company_name": "บริษัท บุญถาวร รีเทล คอร์ปอเรชั่น จำกัด (มหาชน)"
-      },
-      {
-        "filename": "06.12.2025_EXP-20251200061_2.1_VAT.pdf",
-        "company_name": "บริษัทไทยนิยามวัสดุภัณฑ์ จำกัด"
-      },
-      {
-        "filename": "20.11.2025_EXP-20251100131_20.11 ถังบำบัด_VAT.pdf",
-        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขานวมินทร์)"
-      },
-      {
-        "filename": "23.11.2025_EXP-20251100127_1.5_VAT.pdf",
-        "company_name": "บริษัทไทยวิทยวัสดุภัณฑ์ จำกัด"
-      },
-      {
-        "filename": "23.11.2025_EXP-20251100128_1.6_VAT.pdf",
-        "company_name": "บริษัทไทยนิยมวัสดุภัณฑ์ จำกัด"
-      },
-      {
-        "filename": "28.11.2025_EXP-20251100125_1.3_VAT.pdf",
-        "company_name": "บริษัท ไทยนิยมวัสดุภัณฑ์ จำกัด"
+        "filename": "01.12.2025_EXP-20251200025_01.12 aroma_VAT.pdf",
+        "company_name": "บริษัท เค.วี.เอ็น.เอิมปอร์ดเอกซ์ปอร์ต (1991) จำกัด"
       },
       {
         "filename": "28.11.2025_EXP-20251100129_1.8_VAT.pdf",
         "company_name": "บริษัทไทยนิยมวัสดุภัณฑ์ จำกัด"
       },
       {
+        "filename": "04.12.2025_WHT_EXP-20251200006_ PP pro design บจก.ซอส คอมแพเนียน_VAT.pdf",
+        "company_name": "บริษัท พีพี โปร ดีไซน์ จำกัด (สำนักงานใหญ่)"
+      },
+      {
+        "filename": "25.12.2025_EXP-20251200043_25.12 ใบกำกับภาษี ใบเสร็จรับเงิน TBP2512-429_VAT.pdf",
+        "company_name": "บริษัท ศิริวัฒนาอินเตอร์พริ้นท์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "22.12.2025_EXP-20251200098_Doc062_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
+      },
+      {
+        "filename": "12.12.2025_EXP-20251200085_Doc034_VAT.pdf",
+        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
+      },
+      {
+        "filename": "05.12.2025_EXP-20251200074_Doc012_VAT.pdf",
+        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
+      },
+      {
+        "filename": "23.12.2025_WHT_EXP-20251200010_TS25681223_บริษัท ออซั่มโด จำกัด_INV202512230002_Saus Companion Co. Ltd. (สำนักงานใหญ่)_ li_VAT.pdf",
+        "company_name": "บริษัท ออซั่มโด จำกัด"
+      },
+      {
+        "filename": "22.12.2025_EXP-20251200126_Doc053_VAT.pdf",
+        "company_name": "บริษัท โรงพยาบาลสัตว์ทองหล่อ จำกัด"
+      },
+      {
+        "filename": "23.12.2025_EXP-20251200035_23.12 ingredient_VAT.pdf",
+        "company_name": "บริษัท บี เอส เจ โปรดักชั่น จำกัด"
+      },
+      {
+        "filename": "18.11.2025_EXP-20251100132_18.11 เมืองไฟฟ้า_VAT.pdf",
+        "company_name": "บริษัท เมืองไฟฟ้า จำกัด"
+      },
+      {
+        "filename": "30.12.2025_EXP-20251200117_Doc090_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
         "filename": "29.11.2025_EXP-20251100126_1.4_VAT.pdf",
         "company_name": "บริษัทไทยนิยมวัสดุภัณฑ์ จำกัด"
+      },
+      {
+        "filename": "29.12.2025_EXP-20251200114_Doc087_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "06.12.2025_EXP-20251200037_06.12 ถุง_VAT.pdf",
+        "company_name": "บริษัท พรประเสริฐบรรจุภัณฑ์ จำกัด"
+      },
+      {
+        "filename": "21.12.2025_EXP-20251200096_Doc059_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "03.12.2025_EXP-20251200068_Doc005_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "12.12.2025_EXP-20251200084_Doc033_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
+      },
+      {
+        "filename": "31.12.2025_EXP-20251200118_Doc094_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "25.12.2025_EXP-20251200105_Doc072_VAT.pdf",
+        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
+      },
+      {
+        "filename": "12.12.2025_EXP-20251200083_Doc032_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
+      },
+      {
+        "filename": "06.12.2025_EXP-20251200076_Doc014_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "28.12.2025_EXP-20251200113_Doc086_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "03.12.2025_EXP-20251200123_Doc003_VAT.pdf",
+        "company_name": "บริษัท ซอลท์ แอนด์ ไลท์ จำกัด"
+      },
+      {
+        "filename": "23.12.2025_EXP-20251200100_Doc064_VAT.pdf",
+        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
+      },
+      {
+        "filename": "31.12.2025_EXP-20251200133_31.12 inw shop IV-05-20251231-0075_VAT.pdf",
+        "company_name": "บริษัท แอทเอ็นดับเบิ้ลยู จำกัด"
+      },
+      {
+        "filename": "27.12.2025_EXP-20251200108_Doc077_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "10.12.2025_EXP-20251200124_Doc030_VAT.pdf",
+        "company_name": "บริษัท เอ็มเค เรสโตรองต์ กรุ๊ป จำกัด (มหาชน)"
+      },
+      {
+        "filename": "02.12.2025_EXP-20251200026_02.12 วัตถุดิบร้านกาแฟ_VAT.pdf",
+        "company_name": "บริษัท ฮา-ยัง จำกัด"
+      },
+      {
+        "filename": "28.11.2025_EXP-20251100124_1.2_VAT.pdf",
+        "company_name": "บริษัท ไทยนิยามวัสดุภัณฑ์ จำกัด"
+      },
+      {
+        "filename": "03.12.2025_EXP-20251200036_03.12 ถุงกระดาษ_VAT.pdf",
+        "company_name": "บริษัท เกษมอนันต์ พริ้นติ้ง จำกัด"
+      },
+      {
+        "filename": "29.12.2025_EXP-20251200054_29.12 Sticker_RT-20251200022_VAT.pdf",
+        "company_name": "บริษัท เอส โปรดักส์ จำกัด"
+      },
+      {
+        "filename": "08.12.2025_EXP-20251200039_08.12 แก้ว_VAT.pdf",
+        "company_name": "บริษัท บราวนี่ พ้อยท์ จำกัด"
+      },
+      {
+        "filename": "04.12.2025_EXP-20251200062_04.12 1_VAT.pdf",
+        "company_name": "บริษัท บุญถาวร รีเทล คอร์ปอเรชั่น จำกัด (มหาชน)"
+      },
+      {
+        "filename": "19.12.2025_EXP-20251200122_Doc044_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "30.12.2025_EXP-20251200116_Doc089_VAT.pdf",
+        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
+      },
+      {
+        "filename": "22.12.2025_EXP-20251200131_Doc069_VAT.pdf",
+        "company_name": "บริษัท พีเบอร์รี่ ไทย จำกัด"
+      },
+      {
+        "filename": "10.12.2025_EXP-20251200081_Doc026_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
+      },
+      {
+        "filename": "11.12.2025_WHT_EXP-20251200005_68-12-218_VAT.pdf",
+        "company_name": "บริษัท อินดี้ทีเชิ้ต จำกัด"
+      },
+      {
+        "filename": "27.12.2025_EXP-20251200111_Doc083_VAT.pdf",
+        "company_name": "บริษัท ออน ดีส เดย์ จำกัด"
+      },
+      {
+        "filename": "20.12.2025_EXP-20251200094_Doc048_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "02.12.2025_EXP-20251200051_02.12 กระดาษรองหลังสินค้า ร้านต้นบุญการพิมพ์_CA202512020006_Saus Companion Co. Ltd._VAT.pdf",
+        "company_name": "ร้านต้นบุญการพิมพ์"
+      },
+      {
+        "filename": "23.11.2025_EXP-20251100127_1.5_VAT.pdf",
+        "company_name": "บริษัทไทยวิทยวัสดุภัณฑ์ จำกัด"
+      },
+      {
+        "filename": "20.12.2025_EXP-20251200095_Doc050_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "30.12.2025_EXP-20251200115_Doc088_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "23.12.2025_WHT_EXP-20251200009_บริษัท ออซั่มโด จำกัด_INV202512230001_Saus Companion Co. Ltd.__VAT.pdf",
+        "company_name": "บริษัท ออซั่มโด จำกัด"
+      },
+      {
+        "filename": "03.12.2025_EXP-20251200059_1.7_VAT.pdf",
+        "company_name": "บริษัท ไทยนิยมวัสดุภัณฑ์ จำกัด"
+      },
+      {
+        "filename": "03.12.2025_EXP-20251200058_1.1_VAT.pdf",
+        "company_name": "บริษัทไทยนิยมวัสดุภัณฑ์ จำกัด"
+      },
+      {
+        "filename": "28.12.2025_EXP-20251200112_Doc085_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "17.12.2025_EXP-20251200042_17.12 ถุงใส่สินค้า_VAT.pdf",
+        "company_name": "บริษัท พรประเสริฐบรรจุภัณฑ์ จำกัด"
       },
       {
         "filename": "29.11.2025_EXP-20251100130_1.9_VAT.pdf",
@@ -358,175 +354,83 @@
         "company_name": "บริษัท ออน ดีส เดย์ จำกัด"
       },
       {
-        "filename": "27.12.2025_EXP-20251200066_Doc092_VAT.pdf",
-        "company_name": "บริษัท เมก้า อินโนฟู้ด จำกัด"
+        "filename": "27.12.2025_EXP-20251200034_27.12 เมล็ดกาแฟ_VAT.pdf",
+        "company_name": "บริษัท ชำนาญการคั่วมากมาย จำกัด"
       },
       {
-        "filename": "03.12.2025_EXP-20251200067_Doc004_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+        "filename": "22.12.2025_EXP-20251200129_Doc056_VAT.pdf",
+        "company_name": "บริษัท โรงพยาบาลสัตว์ทองหล่อ จำกัด"
       },
       {
-        "filename": "03.12.2025_EXP-20251200068_Doc005_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+        "filename": "12.12.2025_EXP-20251200021_ภาพแบบ ภพ.36 เดือน 11.2025 GG Work_VAT.pdf",
+        "company_name": "Google Asia Pacific Pte.Ltd."
       },
       {
-        "filename": "03.12.2025_EXP-20251200069_Doc006_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+        "filename": "02.12.2025_EXP-20251200047_02.12 packing stuffs_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด เอสเอสพี โปรอินดัสตรรี"
       },
       {
-        "filename": "04.12.2025_EXP-20251200070_Doc007_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด สาขาสุขุมวิท 41"
-      },
-      {
-        "filename": "04.12.2025_EXP-20251200071_Doc008_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ. สาขาสุขุมวิท 49"
-      },
-      {
-        "filename": "05.12.2025_EXP-20251200072_Doc010_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
-      },
-      {
-        "filename": "05.12.2025_EXP-20251200073_Doc011_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "05.12.2025_EXP-20251200074_Doc012_VAT.pdf",
-        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
-      },
-      {
-        "filename": "06.12.2025_EXP-20251200075_Doc013_VAT.pdf",
-        "company_name": "ห้างหุ้นส่วนจำกัด ฟลาเวอร์ ฟูด"
-      },
-      {
-        "filename": "06.12.2025_EXP-20251200076_Doc014_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "06.12.2025_EXP-20251200077_Doc015_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "07.12.2025_EXP-20251200078_Doc018_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "08.12.2025_EXP-20251200079_Doc020_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "09.12.2025_EXP-20251200080_Doc025_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
-      },
-      {
-        "filename": "10.12.2025_EXP-20251200081_Doc026_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
-      },
-      {
-        "filename": "11.12.2025_EXP-20251200082_Doc029_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "12.12.2025_EXP-20251200083_Doc032_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
-      },
-      {
-        "filename": "12.12.2025_EXP-20251200084_Doc033_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
-      },
-      {
-        "filename": "12.12.2025_EXP-20251200085_Doc034_VAT.pdf",
-        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
-      },
-      {
-        "filename": "13.12.2025_EXP-20251200086_Doc035_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "13.12.2025_EXP-20251200087_Doc036_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
-      },
-      {
-        "filename": "16.12.2025_EXP-20251200088_Doc039_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
-      },
-      {
-        "filename": "17.12.2025_EXP-20251200089_Doc040_VAT.pdf",
-        "company_name": "เซ็นทรัล ฟู้ด รีเทล บจ."
-      },
-      {
-        "filename": "17.12.2025_EXP-20251200090_Doc041_VAT.pdf",
-        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
-      },
-      {
-        "filename": "18.12.2025_EXP-20251200091_Doc042_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด (มหาชน)"
-      },
-      {
-        "filename": "18.12.2025_EXP-20251200092_Doc043_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "19.12.2025_EXP-20251200093_Doc045_VAT.pdf",
-        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
-      },
-      {
-        "filename": "20.12.2025_EXP-20251200094_Doc048_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "20.12.2025_EXP-20251200095_Doc050_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "21.12.2025_EXP-20251200096_Doc059_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "22.12.2025_EXP-20251200097_Doc061_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
-      },
-      {
-        "filename": "22.12.2025_EXP-20251200098_Doc062_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
-      },
-      {
-        "filename": "23.12.2025_EXP-20251200099_Doc063_VAT.pdf",
-        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
-      },
-      {
-        "filename": "23.12.2025_EXP-20251200100_Doc064_VAT.pdf",
-        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
-      },
-      {
-        "filename": "24.12.2025_EXP-20251200101_Doc065_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+        "filename": "20.11.2025_EXP-20251100131_20.11 ถังบำบัด_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขานวมินทร์)"
       },
       {
         "filename": "24.12.2025_EXP-20251200102_Doc066_VAT.pdf",
         "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
       },
       {
-        "filename": "24.12.2025_EXP-20251200103_Doc067_VAT.pdf",
-        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
+        "filename": "04.12.2025_EXP-20251200071_Doc008_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ. สาขาสุขุมวิท 49"
       },
       {
-        "filename": "25.12.2025_EXP-20251200104_Doc070_VAT.pdf",
+        "filename": "27.12.2025_EXP-20251200110_Doc082_VAT.pdf",
+        "company_name": "บริษัท ออน ดีส เดย์ จำกัด"
+      },
+      {
+        "filename": "04.12.2025_EXP-20251200120_Doc023_VAT.pdf",
+        "company_name": "บริษัท สมดุล คอฟฟี่ จำกัด (Samadool Coffee Co.,Ltd.)"
+      },
+      {
+        "filename": "17.12.2025_EXP-20251200089_Doc040_VAT.pdf",
+        "company_name": "เซ็นทรัล ฟู้ด รีเทล บจ."
+      },
+      {
+        "filename": "05.12.2025_EXP-20251200064_05.12_VAT.pdf",
+        "company_name": "บริษัท บุญถาวร รีเทล คอร์ปอเรชั่น จำกัด (มหาชน)"
+      },
+      {
+        "filename": "24.12.2025_WHT_EXP-20251200013_IV6800694บจก.ซอส คอมแพเนียน_VAT.pdf",
+        "company_name": "บริษัท พีพี โปร ดีไซน์ จำกัด"
+      },
+      {
+        "filename": "18.12.2025_EXP-20251200091_Doc042_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด (มหาชน)"
+      },
+      {
+        "filename": "27.12.2025_EXP-20251200045_27.12 ถุงใส่สินค้า_VAT.pdf",
+        "company_name": "บริษัท พรประเสริฐบรรจุภัณฑ์ จำกัด"
+      },
+      {
+        "filename": "13.12.2025_EXP-20251200087_Doc036_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
+      },
+      {
+        "filename": "03.12.2025_EXP-20251200067_Doc004_VAT.pdf",
         "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
       },
       {
-        "filename": "25.12.2025_EXP-20251200105_Doc072_VAT.pdf",
-        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
+        "filename": "18.12.2025_EXP-20251200057_18.12 cup lid_VAT.pdf",
+        "company_name": "บริษัท กู๊ดวิลล์ อีโค จำกัด"
       },
       {
-        "filename": "26.12.2025_EXP-20251200106_Doc074_VAT.pdf",
+        "filename": "03.12.2025_EXP-20251200069_Doc006_VAT.pdf",
         "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
       },
       {
-        "filename": "27.12.2025_EXP-20251200107_Doc076_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+        "filename": "15.12.2025_EXP-20251200041_15.12 ถุงซีลเครื่องดื่ม_VAT.pdf",
+        "company_name": "AC Plus Global Co., Ltd."
       },
       {
-        "filename": "27.12.2025_EXP-20251200108_Doc077_VAT.pdf",
+        "filename": "08.12.2025_EXP-20251200079_Doc020_VAT.pdf",
         "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
       },
       {
@@ -534,39 +438,87 @@
         "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
       },
       {
-        "filename": "27.12.2025_EXP-20251200110_Doc082_VAT.pdf",
-        "company_name": "บริษัท ออน ดีส เดย์ จำกัด"
+        "filename": "08.12.2025_EXP-20251200052_04.12 Card Sauschestra IV6812-0074_ซอส คอมพาเนียน จำกัด_VAT.pdf",
+        "company_name": "บริษัท ยูนิตี้ พริ้นติ้ง จำกัด"
       },
       {
-        "filename": "27.12.2025_EXP-20251200111_Doc083_VAT.pdf",
-        "company_name": "บริษัท ออน ดีส เดย์ จำกัด"
+        "filename": "27.12.2025_EXP-20251200066_Doc092_VAT.pdf",
+        "company_name": "บริษัท เมก้า อินโนฟู้ด จำกัด"
       },
       {
-        "filename": "28.12.2025_EXP-20251200112_Doc085_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+        "filename": "06.12.2025_EXP-20251200075_Doc013_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ฟลาเวอร์ ฟูด"
       },
       {
-        "filename": "28.12.2025_EXP-20251200113_Doc086_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+        "filename": "28.11.2025_EXP-20251100125_1.3_VAT.pdf",
+        "company_name": "บริษัท ไทยนิยมวัสดุภัณฑ์ จำกัด"
       },
       {
-        "filename": "29.12.2025_EXP-20251200114_Doc087_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "30.12.2025_EXP-20251200115_Doc088_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "30.12.2025_EXP-20251200116_Doc089_VAT.pdf",
+        "filename": "17.12.2025_EXP-20251200090_Doc041_VAT.pdf",
         "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
       },
       {
-        "filename": "30.12.2025_EXP-20251200117_Doc090_VAT.pdf",
+        "filename": "29.12.2025_EXP-20251200049_29.12 bag_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด เอสเอสพี โปรอินดัสตรี้"
+      },
+      {
+        "filename": "09.12.2025_EXP-20251200080_Doc025_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
+      },
+      {
+        "filename": "16.12.2025_WHT_EXP-20251200007_บจก.ซอส คอมแพเนียน-1_VAT.pdf",
+        "company_name": "บริษัท พีพี โปร ดีไซน์ จำกัด"
+      },
+      {
+        "filename": "03.12.2025_EXP-20251200027_03.12 coffee beans_VAT.pdf",
+        "company_name": "บริษัท ชำนาญการคั่วมากมาย จำกัด"
+      },
+      {
+        "filename": "18.12.2025_EXP-20251200050_18.12 Bread Partner_VAT.pdf",
+        "company_name": "บริษัท บี.เอ็ม.เค. อินเตอร์เทรด จำกัด"
+      },
+      {
+        "filename": "03.12.2025_EXP-20251200060_2.0_VAT.pdf",
+        "company_name": "บริษัท ไทยนิยมวัสดุภัณฑ์ จำกัด"
+      },
+      {
+        "filename": "29.12.2025_EXP-20251200055_29.12 ร้านต้นบุญการพิมพ์_CA202512290003_Saus Companion Co. Ltd._VAT.pdf",
+        "company_name": "ร้านต้นบุญการพิมพ์"
+      },
+      {
+        "filename": "06.12.2025_EXP-20251200077_Doc015_VAT.pdf",
         "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
       },
       {
-        "filename": "31.12.2025_EXP-20251200118_Doc094_VAT.pdf",
+        "filename": "24.12.2025_EXP-20251200033_24.12 เมล็ดกาแฟ_VAT.pdf",
+        "company_name": "บริษัท ชำนาญการค้ามากมาย จำกัด"
+      },
+      {
+        "filename": "26.12.2025_EXP-20251200106_Doc074_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "04.12.2025_EXP-20251200070_Doc007_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด สาขาสุขุมวิท 41"
+      },
+      {
+        "filename": "25.12.2025_EXP-20251200104_Doc070_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "24.12.2025_EXP-20251200103_Doc067_VAT.pdf",
+        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
+      },
+      {
+        "filename": "18.12.2025_EXP-20251200056_18.12 cup _VAT.pdf",
+        "company_name": "บริษัท บราวนี่ พ้อยท์ จำกัด"
+      },
+      {
+        "filename": "08.12.2025_EXP-20251200040_08.12 ฝา_VAT.pdf",
+        "company_name": "บริษัท กู๊ดวิลล์ อีโค จำกัด"
+      },
+      {
+        "filename": "27.12.2025_EXP-20251200107_Doc076_VAT.pdf",
         "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
       },
       {
@@ -574,104 +526,92 @@
         "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
       },
       {
-        "filename": "04.12.2025_EXP-20251200120_Doc023_VAT.pdf",
-        "company_name": "บริษัท สมดุล คอฟฟี่ จำกัด (Samadool Coffee Co.,Ltd.)"
+        "filename": "13.12.2025_EXP-20251200086_Doc035_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "18.12.2025_EXP-20251200092_Doc043_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "24.12.2025_EXP-20251200101_Doc065_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
       },
       {
         "filename": "19.12.2025_EXP-20251200121_Doc046_VAT.pdf",
         "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
       },
       {
-        "filename": "19.12.2025_EXP-20251200122_Doc044_VAT.pdf",
-        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
-      },
-      {
-        "filename": "03.12.2025_EXP-20251200123_Doc003_VAT.pdf",
-        "company_name": "บริษัท ซอลท์ แอนด์ ไลท์ จำกัด"
-      },
-      {
-        "filename": "10.12.2025_EXP-20251200124_Doc030_VAT.pdf",
-        "company_name": "บริษัท เอ็มเค เรสโตรองต์ กรุ๊ป จำกัด (มหาชน)"
-      },
-      {
-        "filename": "26.12.2025_EXP-20251200132_Doc078_VAT.pdf",
-        "company_name": "บริษัท คอมเซเว่น จํากัด (มหาชน)"
-      },
-      {
-        "filename": "03.12.2025_EXP-20251200125_Doc002_VAT.pdf",
-        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
-      },
-      {
-        "filename": "18.11.2025_EXP-20251100132_18.11 เมืองไฟฟ้า_VAT.pdf",
-        "company_name": "บริษัท เมืองไฟฟ้า จำกัด"
-      },
-      {
-        "filename": "22.12.2025_EXP-20251200126_Doc053_VAT.pdf",
-        "company_name": "บริษัท โรงพยาบาลสัตว์ทองหล่อ จำกัด"
-      },
-      {
-        "filename": "22.12.2025_EXP-20251200127_Doc054_VAT.pdf",
-        "company_name": "บริษัท โรงพยาบาลสัตว์ทองหล่อ จำกัด"
-      },
-      {
-        "filename": "22.12.2025_EXP-20251200128_Doc055_VAT.pdf",
-        "company_name": "บริษัท โรงพยาบาลสัตว์ทองหล่อ จำกัด"
-      },
-      {
-        "filename": "22.12.2025_EXP-20251200129_Doc056_VAT.pdf",
-        "company_name": "บริษัท โรงพยาบาลสัตว์ทองหล่อ จำกัด"
-      },
-      {
-        "filename": "22.12.2025_EXP-20251200130_Doc068_VAT.pdf",
-        "company_name": "บริษัท ออน ดีส เดย์ จำกัด"
-      },
-      {
-        "filename": "22.12.2025_EXP-20251200131_Doc069_VAT.pdf",
-        "company_name": "บริษัท พีเบอร์รี่ ไทย จำกัด"
-      },
-      {
-        "filename": "31.12.2025_EXP-20251200133_31.12 inw shop IV-05-20251231-0075_VAT.pdf",
-        "company_name": "บริษัท แอทเอ็นดับเบิ้ลยู จำกัด"
-      },
-      {
-        "filename": "29.12.2025_EXP-20251200049_29.12 bag_VAT.pdf",
-        "company_name": "ห้างหุ้นส่วนจำกัด เอสเอสพี โปรอินดัสตรี้"
-      },
-      {
-        "filename": "24.12.2025_WHT_EXP-20251200013_IV6800694บจก.ซอส คอมแพเนียน_VAT.pdf",
+        "filename": "24.12.2025_WHT_EXP-20251200012_IV6800693บจก.ซอส คอมแพเนียน_VAT.pdf",
         "company_name": "บริษัท พีพี โปร ดีไซน์ จำกัด"
       },
       {
-        "filename": "04.12.2025_WHT_EXP-20251200006_ PP pro design บจก.ซอส คอมแพเนียน_VAT.pdf",
-        "company_name": "บริษัท พีพี โปร ดีไซน์ จำกัด (สำนักงานใหญ่)"
+        "filename": "23.11.2025_EXP-20251100128_1.6_VAT.pdf",
+        "company_name": "บริษัทไทยนิยมวัสดุภัณฑ์ จำกัด"
       },
       {
         "filename": "07.12.2025_WHT_EXP-20251200024_07.12 ค่าทำบัญชี RT-20251200082_VAT.pdf",
         "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
       },
       {
-        "filename": "11.12.2025_WHT_EXP-20251200005_68-12-218_VAT.pdf",
-        "company_name": "บริษัท อินดี้ทีเชิ้ต จำกัด"
+        "filename": "22.12.2025_EXP-20251200130_Doc068_VAT.pdf",
+        "company_name": "บริษัท ออน ดีส เดย์ จำกัด"
       },
       {
-        "filename": "16.12.2025_WHT_EXP-20251200007_บจก.ซอส คอมแพเนียน-1_VAT.pdf",
-        "company_name": "บริษัท พีพี โปร ดีไซน์ จำกัด"
+        "filename": "12.12.2025_EXP-20251200028_12.12 เมล็ดกาแฟ_VAT.pdf",
+        "company_name": "บริษัท ชำนาญการค้ามากมาย จำกัด"
       },
       {
-        "filename": "23.12.2025_WHT_EXP-20251200009_บริษัท ออซั่มโด จำกัด_INV202512230001_Saus Companion Co. Ltd.__VAT.pdf",
-        "company_name": "บริษัท ออซั่มโด จำกัด"
+        "filename": "11.12.2025_EXP-20251200082_Doc029_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
       },
       {
-        "filename": "24.12.2025_WHT_EXP-20251200012_IV6800693บจก.ซอส คอมแพเนียน_VAT.pdf",
-        "company_name": "บริษัท พีพี โปร ดีไซน์ จำกัด"
+        "filename": "25.12.2025_EXP-20251200044_25.12 ใบกำกับภาษี ใบเสร็จรับเงิน TBP2512-430_VAT.pdf",
+        "company_name": "บริษัท ศิริวัฒนาอินเตอร์พริ้นท์ จำกัด (มหาชน)"
       },
       {
-        "filename": "28.11.2025_EXP-20251100124_1.2_VAT.pdf",
-        "company_name": "บริษัท ไทยนิยามวัสดุภัณฑ์ จำกัด"
+        "filename": "04.12.2025_EXP-20251200063_04.12 2_VAT.pdf",
+        "company_name": "บริษัท บุญถาวร รีเทล คอร์ปอเรชั่น จำกัด (มหาชน)"
       },
       {
-        "filename": "23.12.2025_WHT_EXP-20251200010_TS25681223_บริษัท ออซั่มโด จำกัด_INV202512230002_Saus Companion Co. Ltd. (สำนักงานใหญ่)_ li_VAT.pdf",
-        "company_name": "บริษัท ออซั่มโด จำกัด"
+        "filename": "23.12.2025_EXP-20251200099_Doc063_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
+      },
+      {
+        "filename": "03.12.2025_EXP-20251200125_Doc002_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "02.12.2025_EXP-20251200048_02.12 ถุงฟอย บริษัท เพลินพิณ จำกัด_INV2025120024_Saus Companion Co. Ltd_VAT.pdf",
+        "company_name": "บริษัท เพลินพิณ จำกัด"
+      },
+      {
+        "filename": "07.12.2025_EXP-20251200078_Doc018_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "06.12.2025_EXP-20251200061_2.1_VAT.pdf",
+        "company_name": "บริษัทไทยนิยามวัสดุภัณฑ์ จำกัด"
+      },
+      {
+        "filename": "05.12.2025_EXP-20251200073_Doc011_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "22.12.2025_EXP-20251200097_Doc061_VAT.pdf",
+        "company_name": "เซ็นทรัลฟู้ดรีเทล บจ."
+      },
+      {
+        "filename": "26.12.2025_EXP-20251200132_Doc078_VAT.pdf",
+        "company_name": "บริษัท คอมเซเว่น จํากัด (มหาชน)"
+      },
+      {
+        "filename": "22.12.2025_EXP-20251200128_Doc055_VAT.pdf",
+        "company_name": "บริษัท โรงพยาบาลสัตว์ทองหล่อ จำกัด"
+      },
+      {
+        "filename": "08.12.2025_EXP-20251200038_08.12 แก้ว 2_VAT.pdf",
+        "company_name": "บริษัท บราวนี่ พอยท์ จำกัด"
       }
     ]
   },
