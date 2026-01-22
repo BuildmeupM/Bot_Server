@@ -3132,6 +3132,16 @@
                                     comparisonNotes[noteKey] = comp.initial_note;
                                 }
                             }
+                            
+                            // ตรวจสอบว่า OCR อ่านไม่ได้หรือไม่ (ไม่มีข้อมูล OCR หรือ ocr_data เป็น null/empty)
+                            const hasOcrData = comp.ocr_data && Object.keys(comp.ocr_data).length > 0 && comp.ocr_data.document_no;
+                            const ocrReadFailed = !hasOcrData;
+                            
+                            // ถ้า OCR อ่านไม่ได้ ให้เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ
+                            if (ocrReadFailed && !selfCheckMode[index]) {
+                                selfCheckMode[index] = true;
+                                console.log(`🔍 [Debug] OCR อ่านไม่ได้สำหรับรายการที่ ${index + 1} (เลขที่ใบกำกับ: ${comp.purchase_data?.invoice_no || comp.invoice_no || 'N/A'}) - เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ`);
+                            }
                         });
                         
                         // Tab: ข้อมูลทั้งหมด
@@ -3662,6 +3672,27 @@
             html += `<div class="comparison-row-content">`;
             html += `<div class="comparison-content-wrapper">`;
             
+            // ตรวจสอบว่า OCR อ่านไม่ได้หรือไม่ (ไม่มีข้อมูล OCR หรือ ocr_data เป็น null/empty)
+            // ตรวจสอบหลายเงื่อนไข:
+            // 1. comp.ocr_data เป็น null หรือ undefined
+            // 2. comp.ocr_data เป็น object ว่างเปล่า
+            // 3. comp.ocr_data ไม่มี document_no (เลขที่เอกสาร)
+            // 4. comp.match_status === 'no_match' และไม่มี ocr_data
+            const hasOcrData = comp.ocr_data && 
+                               typeof comp.ocr_data === 'object' && 
+                               Object.keys(comp.ocr_data).length > 0 && 
+                               (comp.ocr_data.document_no || comp.ocr_data.filename);
+            const ocrReadFailed = !hasOcrData || comp.match_status === 'no_match';
+            
+            // ถ้า OCR อ่านไม่ได้ ให้เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ
+            if (ocrReadFailed && !selfCheckMode[index]) {
+                selfCheckMode[index] = true;
+                const invoiceNo = comp.purchase_data?.invoice_no || comp.invoice_no || 'N/A';
+                console.log(`🔍 [Debug] OCR อ่านไม่ได้สำหรับรายการที่ ${index + 1} (เลขที่ใบกำกับ: ${invoiceNo}) - เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ`);
+                console.log(`   - ocr_data:`, comp.ocr_data);
+                console.log(`   - match_status:`, comp.match_status);
+            }
+            
             // ตรวจสอบว่า row นี้อยู่ในโหมด "ตรวจด้วยตัวเอง" หรือไม่
             const isSelfCheckMode = selfCheckMode[index] || false;
             
@@ -3696,16 +3727,39 @@
                     html += `<span class="comparison-field-label">${field.label}:</span>`;
                     html += `<div style="display: flex; align-items: center; gap: 8px;">`;
                     
-                    // ถ้าอยู่ในโหมด "ตรวจด้วยตัวเอง" ให้แสดงค่าเป็นสีแดงทั้งหมด
-                    const valueColor = isSelfCheckMode ? '#ef4444' : (isMatch ? '#10b981' : (!isMatch && !isApproved ? '#ef4444' : '#10b981'));
-                    const valueFontWeight = isSelfCheckMode ? '600' : (!isMatch && !isApproved ? '600' : '400');
+                    // ถ้าอยู่ในโหมด "ตรวจด้วยตัวเอง":
+                    // - เลขที่ใบกำกับภาษี (document_no_match) ให้แสดงเป็นสีเขียว
+                    // - รายการอื่นๆ ให้แสดงเป็นสีแดง
+                    let valueColor, valueFontWeight;
+                    if (isSelfCheckMode) {
+                        if (field.key === 'document_no_match') {
+                            // เลขที่ใบกำกับภาษี: สีเขียว
+                            valueColor = '#10b981';
+                            valueFontWeight = '400';
+                        } else {
+                            // รายการอื่นๆ: สีแดง
+                            valueColor = '#ef4444';
+                            valueFontWeight = '600';
+                        }
+                    } else {
+                        // โหมดปกติ: ใช้ logic เดิม
+                        valueColor = isMatch ? '#10b981' : (!isMatch && !isApproved ? '#ef4444' : '#10b981');
+                        valueFontWeight = (!isMatch && !isApproved ? '600' : '400');
+                    }
                     
                     html += `<span class="comparison-field-value ${isMatch ? 'match' : (isApproved ? 'approved' : 'mismatch')}" style="color: ${valueColor}; font-weight: ${valueFontWeight};">${field.value}</span>`;
                     
                     // ปุ่มอนุมัติ: ถ้าอยู่ในโหมด "ตรวจด้วยตัวเอง" ให้แสดงทุก field (ไม่ว่าจะ match หรือไม่ match), ถ้าไม่ใช่ให้แสดงเฉพาะ field ที่ไม่ match
                     const shouldShowApproveButton = isSelfCheckMode ? true : (!isMatch && !isApproved);
                     
-                    if (shouldShowApproveButton && !isApproved) {
+                    // ในโหมด "ตรวจด้วยตัวเอง": เลขที่ใบกำกับภาษีไม่ต้องแสดงปุ่มอนุมัติ (เพราะเป็นสีเขียวอยู่แล้ว)
+                    // แต่รายการอื่นๆ ให้แสดงปุ่มอนุมัติ
+                    let shouldShowButton = shouldShowApproveButton && !isApproved;
+                    if (isSelfCheckMode && field.key === 'document_no_match') {
+                        shouldShowButton = false; // ไม่แสดงปุ่มอนุมัติสำหรับเลขที่ใบกำกับภาษี
+                    }
+                    
+                    if (shouldShowButton) {
                         html += `<button onclick="approveField(${index}, '${field.key}', '${field.label}')" data-field-key="${field.key}" data-field-index="${index}" style="padding: 4px 10px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: 600; display: flex; align-items: center; gap: 4px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="อนุมัติความไม่ตรงกันนี้">`;
                         html += `<span style="font-size: 1em;">✓</span> อนุมัติ`;
                         html += `</button>`;
@@ -3795,7 +3849,13 @@
             html += `<div class="comparison-side ocr">`;
             html += `<div class="comparison-side-header">🤖 ไฟล์ OCR</div>`;
             
-            if (comp.ocr_data) {
+            // ตรวจสอบอีกครั้งว่า OCR อ่านได้หรือไม่ (สำหรับแสดงผล)
+            const hasOcrDataForDisplay = comp.ocr_data && 
+                                         typeof comp.ocr_data === 'object' && 
+                                         Object.keys(comp.ocr_data).length > 0 && 
+                                         (comp.ocr_data.document_no || comp.ocr_data.filename || comp.ocr_data.company_name);
+            
+            if (hasOcrDataForDisplay) {
                 // ตรวจสอบว่าชื่อบริษัทเป็น "บมจ.ธนาคารกสิกรไทย" หรือไม่
                 const isKasikornBank = ocrData.company_name && (
                     ocrData.company_name.includes('บมจ.ธนาคารกสิกรไทย') || 
@@ -7201,7 +7261,14 @@
                             <div style="color: #fbbf24; font-size: 2em; font-weight: bold; font-family: 'Courier New', monospace;" id="ocrCountdownTimer">${formatTime(countdownSeconds)}</div>
                             <div style="color: #94a3b8; font-size: 0.9em; margin-top: 5px;">เวลาที่เหลือ</div>
                         </div>
+                        <!-- Pause Status (แสดงเมื่อระบบกำลังพัก) -->
+                        <div id="ocrPauseStatus" style="display: none; margin-bottom: 15px; padding: 15px; background: #1e293b; border-radius: 8px; border-left: 4px solid #fbbf24;">
+                            <div style="color: #fbbf24; font-weight: 600; margin-bottom: 8px;">⏸️ ระบบกำลังพัก</div>
+                            <div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 5px;" id="ocrPauseCountdown">รออีก <span id="ocrPauseSeconds">0</span> วินาที</div>
+                            <div style="color: #94a3b8; font-size: 0.85em;" id="ocrRemainingInfo">เอกสารที่เหลือ: <span id="ocrRemainingFiles">0</span> ไฟล์, เวลาที่ต้องรอประมาณ: <span id="ocrRemainingMinutes">0</span> นาที</div>
+                        </div>
                         <div style="color: #94a3b8; font-size: 0.9em; margin-top: 10px;" id="ocrCurrentFile">กำลังเริ่มต้น...</div>
+                        <div style="color: #60a5fa; font-size: 0.85em; margin-top: 10px;" id="ocrCurrentStep"></div>
                     </div>
                 </div>
             `;
@@ -7241,8 +7308,8 @@
                     requestBody.selectedFolders = selectedFolders;
                 }
                 
-                // ส่ง request
-                const response = await fetch('/api/auditcheck/run-ocr', {
+                // ส่ง request (ไม่รอ response ทันที เพื่อให้สามารถ polling ได้ทันที)
+                const responsePromise = fetch('/api/auditcheck/run-ocr', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -7250,6 +7317,12 @@
                     body: JSON.stringify(requestBody)
                 });
                 
+                // เริ่ม polling ทันที (ไม่ต้องรอ response) โดยใช้ sessionId ที่จะได้จาก response
+                // แต่เราจะต้องรอ response ก่อนเพื่อให้ได้ sessionId
+                // ดังนั้นเราจะเริ่ม polling หลังจากได้ sessionId แล้ว
+                
+                // รอ response
+                const response = await responsePromise;
                 console.log('📥 OCR response status:', response.status);
                 
                 if (!response.ok) {
@@ -7262,12 +7335,22 @@
                         countdownInterval = null;
                     }
                     
+                    // หยุด progress polling
+                    if (window.ocrProgressPollInterval) {
+                        clearInterval(window.ocrProgressPollInterval);
+                        window.ocrProgressPollInterval = null;
+                    }
+                    
                     throw new Error(`HTTP ${response.status}: ${errorText}`);
                 }
                 
                 // อ่าน response
                 const data = await response.json();
                 console.log('📊 OCR response data:', data);
+                
+                // เก็บ sessionId สำหรับ polling progress
+                let sessionId = data.sessionId || null;
+                let progressPollInterval = null;
                 
                 // อัพเดท totalFiles จาก response (ถ้ามี) เพื่อให้ตรงกับจำนวนไฟล์จริงที่ OCR จะทำงาน
                 if (data.totalFiles !== undefined) {
@@ -7295,6 +7378,102 @@
                     }
                 }
                 
+                // ถ้ามี sessionId ให้เริ่ม polling progress
+                if (sessionId) {
+                    console.log('🔄 Starting progress polling for session:', sessionId);
+                    
+                    // ฟังก์ชันสำหรับ polling progress
+                    const pollProgress = async () => {
+                        try {
+                            const progressResponse = await fetch(`/api/auditcheck/ocr-progress/${sessionId}`);
+                            if (!progressResponse.ok) {
+                                console.warn('⚠️ Failed to fetch progress:', progressResponse.status);
+                                return;
+                            }
+                            
+                            const progressData = await progressResponse.json();
+                            console.log('📊 Progress data:', progressData);
+                            
+                            // อัปเดตข้อมูล progress
+                            if (progressData.current !== undefined && progressData.total !== undefined) {
+                                const currentFileEl = document.getElementById('ocrCurrentFile');
+                                if (currentFileEl) {
+                                    currentFileEl.textContent = `กำลังประมวลผล: ${progressData.current}/${progressData.total} ไฟล์${progressData.filename ? ` - ${progressData.filename}` : ''}`;
+                                }
+                            }
+                            
+                            // อัปเดต current_step และ step_details
+                            if (progressData.current_step) {
+                                const currentStepEl = document.getElementById('ocrCurrentStep');
+                                if (currentStepEl) {
+                                    currentStepEl.textContent = progressData.current_step;
+                                    if (progressData.step_details) {
+                                        currentStepEl.textContent += ` - ${progressData.step_details}`;
+                                    }
+                                }
+                            }
+                            
+                            // แสดงข้อมูลการพัก (ถ้ากำลังพักอยู่)
+                            const pauseStatusEl = document.getElementById('ocrPauseStatus');
+                            const isPaused = progressData.is_paused === true;
+                            
+                            if (isPaused && pauseStatusEl) {
+                                pauseStatusEl.style.display = 'block';
+                                
+                                // อัปเดตเวลาที่เหลือในการพัก
+                                const pauseSecondsEl = document.getElementById('ocrPauseSeconds');
+                                const pauseCountdownEl = document.getElementById('ocrPauseCountdown');
+                                if (pauseSecondsEl && progressData.pause_remaining_seconds !== undefined) {
+                                    const remainingSeconds = progressData.pause_remaining_seconds;
+                                    pauseSecondsEl.textContent = remainingSeconds;
+                                    
+                                    // แสดงเป็นนาที:วินาที หรือวินาที
+                                    if (pauseCountdownEl) {
+                                        if (remainingSeconds >= 60) {
+                                            const mins = Math.floor(remainingSeconds / 60);
+                                            const secs = remainingSeconds % 60;
+                                            pauseCountdownEl.innerHTML = `รออีก <span id="ocrPauseSeconds">${mins}:${secs.toString().padStart(2, '0')}</span> นาที`;
+                                        } else {
+                                            pauseCountdownEl.innerHTML = `รออีก <span id="ocrPauseSeconds">${remainingSeconds}</span> วินาที`;
+                                        }
+                                    }
+                                }
+                                
+                                // อัปเดตข้อมูลเอกสารที่เหลือและเวลาที่ต้องรอ
+                                const remainingFilesEl = document.getElementById('ocrRemainingFiles');
+                                const remainingMinutesEl = document.getElementById('ocrRemainingMinutes');
+                                if (remainingFilesEl && progressData.remaining_files !== undefined) {
+                                    remainingFilesEl.textContent = progressData.remaining_files;
+                                }
+                                if (remainingMinutesEl && progressData.estimated_remaining_minutes !== undefined) {
+                                    remainingMinutesEl.textContent = progressData.estimated_remaining_minutes.toFixed(1);
+                                }
+                            } else if (pauseStatusEl) {
+                                pauseStatusEl.style.display = 'none';
+                            }
+                            
+                            // ถ้าเสร็จแล้ว ให้หยุด polling
+                            if (progressData.status === 'completed' || progressData.status === 'error') {
+                                if (progressPollInterval) {
+                                    clearInterval(progressPollInterval);
+                                    progressPollInterval = null;
+                                }
+                            }
+                        } catch (error) {
+                            console.error('❌ Error polling progress:', error);
+                        }
+                    };
+                    
+                    // เริ่ม polling ทันทีครั้งแรก
+                    pollProgress();
+                    
+                    // Poll ทุก 1 วินาที (เพื่อให้เห็นการนับถอยหลังของการพัก)
+                    progressPollInterval = setInterval(pollProgress, 1000);
+                    
+                    // เก็บ reference เพื่อสามารถหยุดได้เมื่อเสร็จ
+                    window.ocrProgressPollInterval = progressPollInterval;
+                }
+                
                 // ถ้ามี ocrData แสดงว่า OCR เสร็จแล้ว
                 if (data.ocrData && Array.isArray(data.ocrData)) {
                     console.log('📊 OCR completed');
@@ -7303,6 +7482,12 @@
                     if (countdownInterval) {
                         clearInterval(countdownInterval);
                         countdownInterval = null;
+                    }
+                    
+                    // หยุด progress polling
+                    if (window.ocrProgressPollInterval) {
+                        clearInterval(window.ocrProgressPollInterval);
+                        window.ocrProgressPollInterval = null;
                     }
                     
                     // ซ่อน progress container ทันที
@@ -7327,6 +7512,12 @@
                         if (countdownInterval) {
                             clearInterval(countdownInterval);
                             countdownInterval = null;
+                        }
+                        
+                        // หยุด progress polling
+                        if (window.ocrProgressPollInterval) {
+                            clearInterval(window.ocrProgressPollInterval);
+                            window.ocrProgressPollInterval = null;
                         }
                         
                         const progressContainer = document.getElementById('ocrProgressContainer');

@@ -8135,18 +8135,48 @@ def run_ocr_for_audit():
                 pause_duration = 90  # พัก 90 วินาที (1.5 นาที) - ระหว่าง 1-2 นาทีตามที่ผู้ใช้ต้องการ
                 
                 if idx > 0 and idx % batch_size == 0 and idx < total_pdf_count:
+                    # คำนวณเอกสารที่เหลือ
+                    remaining_files = total_pdf_count - idx
+                    
+                    # คำนวณจำนวนรอบที่ต้องพักที่เหลือ (ถ้ามีการพักหลายรอบ)
+                    remaining_batches = (remaining_files + batch_size - 1) // batch_size  # ปัดขึ้น
+                    
+                    # คำนวณเวลาที่ต้องรอ (นาที)
+                    # เวลาพักครั้งนี้ (1.5 นาที) + เวลาพักครั้งถัดไป (ถ้ามี)
+                    estimated_remaining_minutes = 1.5  # เวลาพักครั้งนี้
+                    if remaining_batches > 1:
+                        # ถ้ามีการพักหลายรอบ ให้คำนวณเวลารวม
+                        estimated_remaining_minutes = remaining_batches * 1.5
+                    
                     logger.info(f"⏸️  พัก {pause_duration} วินาที (1.5 นาที) หลังจากประมวลผล {idx} ไฟล์...")
-                    # อัพเดท progress เพื่อแสดงสถานะการพัก
+                    logger.info(f"📊 เอกสารที่เหลือ: {remaining_files} ไฟล์, เวลาที่ต้องรอประมาณ: {estimated_remaining_minutes:.1f} นาที")
+                    
+                    # อัพเดท progress เพื่อแสดงสถานะการพักพร้อมข้อมูลเอกสารที่เหลือและเวลาที่ต้องรอ
                     auditcheck_ocr_progress[session_id].update({
                         'current_step': f'⏸️  กำลังพัก {pause_duration} วินาที (1.5 นาที)',
-                        'step_details': f'ประมวลผลเสร็จแล้ว {idx}/{total_pdf_count} ไฟล์ - จะเริ่มต่อในอีก {pause_duration} วินาที...'
+                        'step_details': f'ประมวลผลเสร็จแล้ว {idx}/{total_pdf_count} ไฟล์ - จะเริ่มต่อในอีก {pause_duration} วินาที...',
+                        'remaining_files': remaining_files,  # จำนวนไฟล์ที่เหลือ
+                        'estimated_remaining_minutes': round(estimated_remaining_minutes, 1),  # เวลาที่ต้องรอ (นาที)
+                        'is_paused': True  # สถานะว่ากำลังพักอยู่
                     })
-                    time.sleep(pause_duration)
+                    
+                    # Countdown timer สำหรับการพัก (อัปเดตทุกวินาที)
+                    for remaining_seconds in range(pause_duration, 0, -1):
+                        # อัปเดต progress ทุกวินาทีเพื่อให้ frontend สามารถดึงข้อมูลได้
+                        auditcheck_ocr_progress[session_id].update({
+                            'pause_remaining_seconds': remaining_seconds,  # วินาทีที่เหลือในการพัก
+                            'pause_remaining_minutes': round(remaining_seconds / 60, 1)  # นาทีที่เหลือในการพัก
+                        })
+                        time.sleep(1)
+                    
                     logger.info(f"✅ พักเสร็จแล้ว เริ่มประมวลผลต่อ...")
                     # อัพเดท progress หลังจากพักเสร็จ
                     auditcheck_ocr_progress[session_id].update({
                         'current_step': f'🔄 เริ่มประมวลผลต่อ...',
-                        'step_details': f'ไฟล์ถัดไป: {pdf_files[idx].name if idx < len(pdf_files) else "เสร็จสิ้น"}'
+                        'step_details': f'ไฟล์ถัดไป: {pdf_files[idx].name if idx < len(pdf_files) else "เสร็จสิ้น"}',
+                        'is_paused': False,  # ไม่ได้พักแล้ว
+                        'pause_remaining_seconds': 0,
+                        'pause_remaining_minutes': 0
                     })
                 
             except Exception as e:
@@ -8168,10 +8198,234 @@ def run_ocr_for_audit():
                 'error': 'ไม่สามารถประมวลผลไฟล์ PDF ได้'
             }), 500
         
-        # นับจำนวนไฟล์ที่สำเร็จ
-        success_count = sum(1 for item in ocr_data_list if item.get('success'))
+        # แสดงสถิติ cache
+        logger.info(f"📊 Cache Statistics: Hits={cache_hits}, Misses={cache_misses}, Total={cache_hits + cache_misses}")
         
-        # อัปเดต progress เป็น completed
+        # ตรวจสอบไฟล์ที่ยังไม่อ่าน (ไม่มีใน cache) และวนกลับไปอ่านอีก 1 รอบ
+        logger.info(f"🔄 กำลังตรวจสอบไฟล์ที่ยังไม่อ่าน...")
+        auditcheck_ocr_progress[session_id].update({
+            'current_step': '🔄 กำลังตรวจสอบไฟล์ที่ยังไม่อ่าน',
+            'step_details': 'เทียบ cache กับไฟล์ในโฟลเดอร์ VAT...'
+        })
+        
+        # ดึงชื่อบริษัทจาก folder path
+        company_name = OCRCacheManager._extract_company_name_from_path(str(vat_folder))
+        company_cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name=company_name)
+        
+        # หาไฟล์ที่ยังไม่อ่าน (ไม่มีใน cache หรืออ่านไม่สำเร็จ)
+        unread_files = []
+        processed_filenames = {item.get('filename') for item in ocr_data_list if item.get('success')}
+        
+        for pdf_file in pdf_files:
+            # ตรวจสอบว่าไฟล์นี้อ่านสำเร็จแล้วหรือไม่
+            if pdf_file.name in processed_filenames:
+                continue  # ข้ามไฟล์ที่อ่านสำเร็จแล้ว
+            
+            # ตรวจสอบ cache
+            cached_data = company_cache_manager.get(pdf_file.name, str(pdf_file))
+            if not cached_data:
+                # ไม่มี cache และยังไม่อ่านสำเร็จ → เพิ่มเข้า unread_files
+                unread_files.append(pdf_file)
+                logger.info(f"📋 พบไฟล์ที่ยังไม่อ่าน: {pdf_file.name}")
+        
+        # ถ้ามีไฟล์ที่ยังไม่อ่าน ให้วนกลับไปอ่านอีก 1 รอบ
+        if unread_files:
+            logger.info(f"📋 พบไฟล์ที่ยังไม่อ่าน: {len(unread_files)} ไฟล์ - จะวนกลับไปอ่านอีก 1 รอบ")
+            auditcheck_ocr_progress[session_id].update({
+                'current_step': f'🔄 กำลังอ่านไฟล์ที่ยังไม่อ่าน (รอบที่ 2)',
+                'step_details': f'พบ {len(unread_files)} ไฟล์ที่ยังไม่อ่าน - กำลังอ่าน...'
+            })
+            
+            # อ่านไฟล์ที่ยังไม่อ่านอีก 1 รอบ
+            second_round_cache_misses = 0
+            second_round_success = 0
+            
+            for idx, pdf_file in enumerate(unread_files, 1):
+                try:
+                    logger.info(f"🔄 [รอบที่ 2] กำลังรัน OCR สำหรับ: {pdf_file.name} ({idx}/{len(unread_files)})")
+                    
+                    auditcheck_ocr_progress[session_id].update({
+                        'current_step': f'🔄 [รอบที่ 2] กำลังอ่านไฟล์ที่ {idx}/{len(unread_files)}',
+                        'step_details': f'ไฟล์: {pdf_file.name}'
+                    })
+                    
+                    # เรียก OCR
+                    second_round_cache_misses += 1
+                    ocr_result = processor.get_ocr_raw_data(pdf_file)
+                    
+                    if not ocr_result.get('success'):
+                        logger.warning(f"⚠️ [รอบที่ 2] OCR ไม่สำเร็จสำหรับ {pdf_file.name}: {ocr_result.get('error')}")
+                        continue
+                    
+                    raw_text = ocr_result.get('raw_text', '') or ocr_result.get('text', '')
+                    raw_content = ocr_result.get('raw_content', '')
+                    
+                    # Extract ข้อมูล
+                    if raw_content and ('"success"' in raw_content or '"data"' in raw_content):
+                        # ใช้ key-extract response
+                        try:
+                            import json
+                            key_extract_data = json.loads(raw_content) if isinstance(raw_content, str) else raw_content
+                            if isinstance(key_extract_data, dict) and 'data' in key_extract_data:
+                                key_extract_data = key_extract_data['data']
+                            
+                            # Extract ข้อมูลจาก key-extract
+                            extracted_data = {
+                                'company_name': key_extract_data.get('ชื่อผู้ขาย', ''),
+                                'tax_id': key_extract_data.get('เลขประจำตัวผู้เสียภาษี - ผู้ขาย', ''),
+                                'branch': key_extract_data.get('สาขา - ผู้ขาย', ''),
+                                'date': key_extract_data.get('วันที่', ''),
+                                'document_number': key_extract_data.get('เลขที่ใบกำกับภาษี', ''),
+                                'amount_before_vat': 0,
+                                'vat_amount': 0,
+                                'total_amount': 0,
+                                'buyer_name': key_extract_data.get('ชื่อผู้ซื้อ', ''),
+                                'buyer_tax_id': key_extract_data.get('เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ', ''),
+                                'buyer_address': key_extract_data.get('ที่อยู่ผู้ซื้อ', ''),
+                                'document_type': key_extract_data.get('ประเภทเอกสาร', ''),
+                                'document_status': key_extract_data.get('สถานะเอกสาร', ''),
+                                'items': key_extract_data.get('รายการสินค้า', [])
+                            }
+                            
+                            # แปลงยอดเงิน
+                            amount_before_vat_str = key_extract_data.get('ยอดรวมก่อนภาษี', '0') or '0'
+                            vat_amount_str = key_extract_data.get('ภาษีมูลค่าเพิ่ม', '0') or '0'
+                            total_amount_str = key_extract_data.get('ยอดรวมสุทธิ', '0') or '0'
+                            
+                            try:
+                                extracted_data['amount_before_vat'] = float(amount_before_vat_str.replace(',', '').replace('฿', '').strip())
+                            except:
+                                extracted_data['amount_before_vat'] = 0.0
+                            try:
+                                extracted_data['vat_amount'] = float(vat_amount_str.replace(',', '').replace('฿', '').strip())
+                            except:
+                                extracted_data['vat_amount'] = 0.0
+                            try:
+                                extracted_data['total_amount'] = float(total_amount_str.replace(',', '').replace('฿', '').strip())
+                            except:
+                                extracted_data['total_amount'] = 0.0
+                            
+                            # คำนวณยอดรวมอัตโนมัติถ้ายอดรวมเป็น 0 และมียอดก่อนภาษีกับภาษีมูลค่าเพิ่ม
+                            if extracted_data['total_amount'] == 0.0 and extracted_data['amount_before_vat'] > 0 and extracted_data['vat_amount'] > 0:
+                                extracted_data['total_amount'] = extracted_data['amount_before_vat'] + extracted_data['vat_amount']
+                                logger.info(f"💰 [รอบที่ 2] คำนวณยอดรวมอัตโนมัติ: {extracted_data['amount_before_vat']:,.2f} + {extracted_data['vat_amount']:,.2f} = {extracted_data['total_amount']:,.2f}")
+                        except Exception as e:
+                            logger.warning(f"⚠️ [รอบที่ 2] Cannot parse key-extract data: {e}, falling back to extract_invoice_data")
+                            if raw_text:
+                                extracted_data = extract_invoice_data(raw_text, pdf_file.name, str(pdf_file))
+                            else:
+                                extracted_data = {}
+                    else:
+                        # ใช้ extract_invoice_data แบบเดิม
+                        if not raw_text:
+                            logger.warning(f"⚠️ [รอบที่ 2] ไม่พบข้อความจาก OCR สำหรับ {pdf_file.name}")
+                            continue
+                        extracted_data = extract_invoice_data(raw_text, pdf_file.name, str(pdf_file))
+                    
+                    # ดึง reference number จากชื่อไฟล์
+                    import re
+                    reference_number = None
+                    ref_patterns = [
+                        r'\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',
+                        r'^\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',
+                        r'_([A-Z]+-\d+)_',
+                        r'([A-Z]{2,}-\d{8,})',
+                    ]
+                    for pattern in ref_patterns:
+                        match = re.search(pattern, pdf_file.name)
+                        if match:
+                            reference_number = match.group(1)
+                            break
+                    
+                    # สร้าง ocr_data
+                    ocr_data = {
+                        'filename': pdf_file.name,
+                        'filepath': str(pdf_file),
+                        'success': True,
+                        'company_name': extracted_data.get('company_name', ''),
+                        'tax_id': extracted_data.get('tax_id', ''),
+                        'branch': extracted_data.get('branch', ''),
+                        'date': extracted_data.get('date', ''),
+                        'document_number': extracted_data.get('document_number', ''),
+                        'reference_number': reference_number,
+                        'amount_before_vat': extracted_data.get('amount_before_vat', 0),
+                        'vat_amount': extracted_data.get('vat_amount', 0),
+                        'total_amount': extracted_data.get('total_amount', 0),
+                        'buyer_name': extracted_data.get('buyer_name', ''),
+                        'buyer_tax_id': extracted_data.get('buyer_tax_id', ''),
+                        'buyer_address': extracted_data.get('buyer_address', ''),
+                        'document_type': extracted_data.get('document_type', ''),
+                        'document_status': extracted_data.get('document_status', ''),
+                        'items': extracted_data.get('items', []),
+                        'customs_duty': extracted_data.get('customs_duty', 0),
+                        'has_customs_duty': extracted_data.get('has_customs_duty', False),
+                        'is_customs_department': extracted_data.get('company_name', '').find('กรมศุลกากร') != -1 or extracted_data.get('company_name', '').find('กรมศุล') != -1,
+                        'raw_text_preview': raw_text[:500] if raw_text else '',
+                        'method': 'aksonocr'
+                    }
+                    
+                    # เก็บ cache
+                    try:
+                        cache_data = {
+                            'company_name': ocr_data['company_name'],
+                            'tax_id': ocr_data['tax_id'],
+                            'branch': ocr_data['branch'],
+                            'date': ocr_data['date'],
+                            'document_number': ocr_data['document_number'],
+                            'reference_number': ocr_data['reference_number'],
+                            'amount_before_vat': ocr_data['amount_before_vat'],
+                            'vat_amount': ocr_data['vat_amount'],
+                            'total_amount': ocr_data['total_amount'],
+                            'buyer_name': ocr_data['buyer_name'],
+                            'buyer_tax_id': ocr_data['buyer_tax_id'],
+                            'buyer_address': ocr_data['buyer_address'],
+                            'document_type': ocr_data['document_type'],
+                            'document_status': ocr_data['document_status'],
+                            'items': ocr_data['items'],
+                            'customs_duty': ocr_data['customs_duty'],
+                            'has_customs_duty': ocr_data['has_customs_duty'],
+                            'raw_text': raw_content if raw_content else raw_text,
+                            'raw_text_preview': ocr_data['raw_text_preview'],
+                            'method': ocr_data['method']
+                        }
+                        company_cache_manager.set(pdf_file.name, str(pdf_file), cache_data)
+                        logger.info(f"💾 [รอบที่ 2] เก็บ cache สำหรับ {pdf_file.name} สำเร็จ")
+                    except Exception as cache_error:
+                        logger.warning(f"⚠️ [รอบที่ 2] ไม่สามารถเก็บ cache สำหรับ {pdf_file.name}: {cache_error}")
+                    
+                    # เพิ่มเข้า ocr_data_list
+                    ocr_data_list.append(ocr_data)
+                    processed_files.append(pdf_file.name)
+                    second_round_success += 1
+                    
+                    logger.info(f"✅ [รอบที่ 2] อ่านข้อมูลสำเร็จ: {pdf_file.name}")
+                    
+                except Exception as e:
+                    logger.error(f"❌ [รอบที่ 2] เกิดข้อผิดพลาดในการประมวลผล {pdf_file.name}: {e}", exc_info=True)
+                    ocr_data_list.append({
+                        'filename': pdf_file.name,
+                        'filepath': str(pdf_file),
+                        'success': False,
+                        'error': str(e)
+                    })
+                    continue
+            
+            logger.info(f"📊 [รอบที่ 2] สรุป: อ่านสำเร็จ {second_round_success}/{len(unread_files)} ไฟล์")
+            cache_misses += second_round_cache_misses
+            
+            # อัปเดต success_count ใหม่
+            success_count = sum(1 for item in ocr_data_list if item.get('success'))
+            
+            # อัปเดต progress หลังจากอ่านรอบที่ 2 เสร็จ
+            auditcheck_ocr_progress[session_id].update({
+                'current_step': '✅ อ่านรอบที่ 2 เสร็จสิ้น',
+                'step_details': f'อ่านสำเร็จ {second_round_success}/{len(unread_files)} ไฟล์ที่ยังไม่อ่าน'
+            })
+        else:
+            logger.info(f"✅ ไฟล์ทั้งหมดถูกอ่านแล้ว - ไม่มีไฟล์ที่ต้องอ่านเพิ่ม")
+        
+        # อัปเดต progress เป็น completed (หลังจากอ่านรอบที่ 2 เสร็จแล้ว)
+        success_count = sum(1 for item in ocr_data_list if item.get('success'))
         auditcheck_ocr_progress[session_id].update({
             'status': 'completed',
             'current': total_pdf_count,
@@ -8182,9 +8436,6 @@ def run_ocr_for_audit():
             'current_step': '✅ ประมวลผลเสร็จสิ้น',
             'step_details': f'สำเร็จ: {success_count} ไฟล์, ไม่สำเร็จ: {len(ocr_data_list) - success_count} ไฟล์, Cache Hits: {cache_hits}, Cache Misses: {cache_misses}'
         })
-        
-        # แสดงสถิติ cache
-        logger.info(f"📊 Cache Statistics: Hits={cache_hits}, Misses={cache_misses}, Total={cache_hits + cache_misses}")
         
         # คำนวณเวลาที่คาดว่าจะใช้ (1 ไฟล์ใช้เวลา 30 วินาที) - ใช้จำนวนไฟล์จริงที่ถูกกรองแล้ว
         actual_total_files = len(pdf_files)
@@ -11070,6 +11321,7 @@ def export_audit_report_to_excel():
         yellow_light_fill = PatternFill(start_color="FFF9E6", end_color="FFF9E6", fill_type="solid")  # เหลืองอ่อน (ข้อมูลตรงกัน)
         red_light_fill = PatternFill(start_color="FFE8E8", end_color="FFE8E8", fill_type="solid")  # แดงอ่อน (ข้อมูลไม่ตรงกัน, เอกสารใช้ไม่ได้)
         orange_light_fill = PatternFill(start_color="FFEBD6", end_color="FFEBD6", fill_type="solid")  # ส้มอ่อน (ตรวจสอบเพิ่ม)
+        green_approved_fill = PatternFill(start_color="E8F5E9", end_color="E8F5E9", fill_type="solid")  # เขียวอ่อน (จุดที่อนุมัติแล้ว)
         
         border = Border(
             left=Side(style='thin'),
@@ -11165,20 +11417,52 @@ def export_audit_report_to_excel():
                 is_self_check = self_check_mode.get(str(idx), False) if isinstance(self_check_mode, dict) else False
             
             # สร้าง match_details ที่ปรับตามการอนุมัติ (ถ้าฟิลด์ถูกอนุมัติแล้ว ให้ถือว่า match)
+            # แต่ถ้าฟิลด์ถูกยกเลิกการอนุมัติแล้ว ให้ใช้ค่าเดิมจาก match_details
             adjusted_match_details = match_details.copy() if match_details else {}
+            
+            # ตรวจสอบว่ามี match_details หรือไม่ (ถ้าไม่มีแสดงว่าไม่พบข้อมูล OCR)
+            if not match_details:
+                # ถ้าไม่พบข้อมูล OCR ให้ตั้งค่า match_details เป็น False ทั้งหมด
+                adjusted_match_details = {
+                    'company_name_match': False,
+                    'tax_id_match': False,
+                    'branch_match': False,
+                    'document_no_match': False,
+                    'date_match': False,
+                    'amount_before_vat_match': False,
+                    'vat_amount_match': False,
+                    'total_amount_match': False,
+                    'document_type_match': False,
+                    'reference_no_match': False
+                }
+            
+            # ตรวจสอบการอนุมัติของแต่ละฟิลด์
             for field_key in ['company_name_match', 'tax_id_match', 'branch_match', 'document_no_match', 
                             'date_match', 'amount_before_vat_match', 'vat_amount_match', 'total_amount_match', 
                             'document_type_match', 'reference_no_match']:
                 approval_key = f"{idx}-{field_key}"
-                if isinstance(approvals, dict) and approvals.get(approval_key, False):
-                    # ถ้าฟิลด์นี้ถูกอนุมัติแล้ว ให้ถือว่า match
-                    adjusted_match_details[field_key] = True
+                
+                # ตรวจสอบว่าฟิลด์นี้ถูกอนุมัติจริงๆ หรือไม่
+                # ถ้า key มีอยู่ใน approvals และค่าเป็น True แสดงว่าถูกอนุมัติแล้ว
+                # ถ้า key ไม่มีอยู่หรือค่าเป็น False แสดงว่าไม่ถูกอนุมัติ (ใช้ค่าเดิมจาก match_details)
+                if isinstance(approvals, dict):
+                    is_approved = approvals.get(approval_key, False)
+                    if is_approved:
+                        # ถ้าฟิลด์นี้ถูกอนุมัติแล้ว ให้ถือว่า match
+                        adjusted_match_details[field_key] = True
+                    # ถ้าไม่ถูกอนุมัติ ให้ใช้ค่าเดิมจาก match_details (ไม่ต้องทำอะไร)
+                    # แต่ถ้า match_details ไม่มี field_key นี้ ให้ตั้งเป็น False
+                    elif field_key not in adjusted_match_details:
+                        adjusted_match_details[field_key] = False
             
             # อัปเดต match_status ตาม adjusted_match_details
             if adjusted_match_details:
-                matched_count = sum(1 for v in adjusted_match_details.values() if v)
-                total_count = len(adjusted_match_details)
-                if matched_count == total_count:
+                # นับเฉพาะฟิลด์ที่สำคัญ (ไม่รวม reference_no_match)
+                match_fields_without_ref = {k: v for k, v in adjusted_match_details.items() if k != 'reference_no_match'}
+                matched_count = sum(1 for v in match_fields_without_ref.values() if v)
+                total_count = len(match_fields_without_ref)
+                
+                if matched_count == total_count and total_count > 0:
                     match_status = 'full_match'
                 elif matched_count > 0:
                     match_status = 'partial_match'
@@ -11253,54 +11537,85 @@ def export_audit_report_to_excel():
                     note_text = comp.get('initial_note', '') if isinstance(comp, dict) else ''
                 ws.cell(row=row, column=15, value=note_text).font = data_font
                 
-                # ตรวจสอบว่าเอกสารใช้ไม่ได้หรือไม่ - ถ้าใช่ให้ไฮไลท์สีแดงอ่อนทั้งแถบ (ยกเว้นช่องหมายเหตุ)
+                # ไฮไลท์เฉพาะจุดที่ถูกอนุมัติในรายการปกติ (ก่อนการไฮไลท์ทั้งแถว)
+                # Mapping ระหว่าง field_key กับ column number
+                field_to_column = {
+                    'company_name_match': 3,      # ชื่อบริษัท
+                    'document_no_match': 4,       # เลขที่ใบกำกับ
+                    'date_match': 5,              # วันที่
+                    'tax_id_match': 6,            # เลขทะเบียนผู้เสียภาษี
+                    'branch_match': 7,            # สาขา
+                    'amount_before_vat_match': 8, # รายการ 7%
+                    'vat_amount_match': 9,        # ภาษี 7%
+                    'total_amount_match': 10,      # มูลค่ารวม
+                    'reference_no_match': 2,      # เลขที่อ้างอิง
+                    'document_type_match': 4       # ประเภทใบกำกับ (ใช้คอลัมน์เดียวกับเลขที่ใบกำกับ)
+                }
+                
+                # เก็บคอลัมน์ที่ถูกอนุมัติแล้วเพื่อไม่ให้ทับสีเมื่อไฮไลท์ทั้งแถว
+                approved_columns = set()
+                
+                # ตรวจสอบการอนุมัติของแต่ละฟิลด์และไฮไลท์เฉพาะจุด
+                if isinstance(approvals, dict):
+                    for field_key, column_num in field_to_column.items():
+                        approval_key = f"{idx}-{field_key}"
+                        if approvals.get(approval_key, False):
+                            # ถ้าฟิลด์นี้ถูกอนุมัติแล้ว ให้ไฮไลท์เซลล์ด้วยสีเขียวอ่อน
+                            approved_cell = ws.cell(row=row, column=column_num)
+                            approved_cell.fill = green_approved_fill
+                            approved_cell.border = border
+                            if not approved_cell.font:
+                                approved_cell.font = data_font
+                            approved_columns.add(column_num)
+                
+                # ตรวจสอบว่าเอกสารใช้ไม่ได้หรือไม่ - ถ้าใช่ให้ไฮไลท์สีแดงอ่อนทั้งแถบ (ยกเว้นช่องหมายเหตุและจุดที่อนุมัติแล้ว)
                 if is_invalid:
                     for col in range(1, 16):
-                        if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
+                        if col != 15 and col not in approved_columns:  # ไม่ใส่สีในช่องหมายเหตุและจุดที่อนุมัติแล้ว
                             cell = ws.cell(row=row, column=col)
                             cell.fill = red_light_fill  # แดงอ่อน
                             cell.border = border
                             cell.font = data_font
-                        else:
+                        elif col == 15:
                             # ช่องหมายเหตุไม่ใส่สี
                             cell = ws.cell(row=row, column=col)
                             cell.border = border
                             cell.font = data_font
-                # ถ้ากดปุ่ม "ตรวจสอบเพิ่ม" → ไฮไลท์สีส้มอ่อนทั้งแถว (ยกเว้นช่องหมายเหตุ)
+                # ถ้ากดปุ่ม "ตรวจสอบเพิ่ม" → ไฮไลท์สีส้มอ่อนทั้งแถว (ยกเว้นช่องหมายเหตุและจุดที่อนุมัติแล้ว)
                 elif is_self_check:
                     for col in range(1, 16):
-                        if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
+                        if col != 15 and col not in approved_columns:  # ไม่ใส่สีในช่องหมายเหตุและจุดที่อนุมัติแล้ว
                             cell = ws.cell(row=row, column=col)
                             cell.fill = orange_light_fill  # ส้มอ่อน
                             cell.border = border
                             cell.font = data_font
-                        else:
+                        elif col == 15:
                             # ช่องหมายเหตุไม่ใส่สี
                             cell = ws.cell(row=row, column=col)
                             cell.border = border
                             cell.font = data_font
-                # ถ้า full_match → ไฮไลท์เหลืองอ่อนทั้งแถว (ยกเว้นช่องหมายเหตุ)
+                # ถ้า full_match → ไฮไลท์เหลืองอ่อนทั้งแถว (ยกเว้นช่องหมายเหตุและจุดที่อนุมัติแล้ว)
                 elif match_status == 'full_match':
                     for col in range(1, 16):
-                        if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
+                        if col != 15 and col not in approved_columns:  # ไม่ใส่สีในช่องหมายเหตุและจุดที่อนุมัติแล้ว
                             cell = ws.cell(row=row, column=col)
                             cell.fill = yellow_light_fill  # เหลืองอ่อน
                             cell.border = border
                             cell.font = data_font
-                        else:
+                        elif col == 15:
                             # ช่องหมายเหตุไม่ใส่สี
                             cell = ws.cell(row=row, column=col)
                             cell.border = border
                             cell.font = data_font
-                # ถ้า no_match → ไฮไลท์แดงอ่อนทั้งแถว (ยกเว้นช่องหมายเหตุ)
+                # ถ้า no_match → ไฮไลท์แดงอ่อนทั้งแถว (ยกเว้นช่องหมายเหตุและจุดที่อนุมัติแล้ว)
                 elif match_status == 'no_match':
                     for col in range(1, 16):
-                        if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
+                        if col != 15 and col not in approved_columns:  # ไม่ใส่สีในช่องหมายเหตุและจุดที่อนุมัติแล้ว
                             cell = ws.cell(row=row, column=col)
                             cell.fill = red_light_fill  # แดงอ่อน
                             cell.border = border
                             cell.font = data_font
-                        else:
+                        elif col == 15:
                             # ช่องหมายเหตุไม่ใส่สี
                             cell = ws.cell(row=row, column=col)
                             cell.border = border
@@ -11308,38 +11623,39 @@ def export_audit_report_to_excel():
                 else:
                     # สำหรับ partial_match: ขีดสีแดงอ่อนที่ช่องข้อมูลที่ไม่ตรงกัน (เฉพาะช่องที่ไม่ตรงกัน)
                     # แต่ถ้าเอกสารใช้ไม่ได้หรือกดตรวจสอบเพิ่มแล้วจะไม่ทำเพราะไฮไลท์ทั้งแถบแล้ว
+                    # และไม่ทับสีเขียวที่ไฮไลท์เฉพาะจุดที่อนุมัติแล้ว
                     if not is_invalid and not is_self_check and match_status == 'partial_match' and ocr_data:
                         if match_details:
                             # Column 3: ชื่อบริษัท
-                            if not match_details.get('company_name_match', True):
+                            if not match_details.get('company_name_match', True) and 3 not in approved_columns:
                                 ws.cell(row=row, column=3).fill = red_light_fill
                             
                             # Column 4: เลขที่ใบกำกับ
-                            if not match_details.get('document_no_match', True):
+                            if not match_details.get('document_no_match', True) and 4 not in approved_columns:
                                 ws.cell(row=row, column=4).fill = red_light_fill
                             
                             # Column 5: วันที่
-                            if not match_details.get('date_match', True):
+                            if not match_details.get('date_match', True) and 5 not in approved_columns:
                                 ws.cell(row=row, column=5).fill = red_light_fill
                             
                             # Column 6: เลขทะเบียนผู้เสียภาษี
-                            if not match_details.get('tax_id_match', True):
+                            if not match_details.get('tax_id_match', True) and 6 not in approved_columns:
                                 ws.cell(row=row, column=6).fill = red_light_fill
                             
                             # Column 7: สาขา
-                            if not match_details.get('branch_match', True):
+                            if not match_details.get('branch_match', True) and 7 not in approved_columns:
                                 ws.cell(row=row, column=7).fill = red_light_fill
                             
                             # Column 8: รายการ 7%
-                            if not match_details.get('amount_before_vat_match', True):
+                            if not match_details.get('amount_before_vat_match', True) and 8 not in approved_columns:
                                 ws.cell(row=row, column=8).fill = red_light_fill
                             
                             # Column 9: ภาษี 7%
-                            if not match_details.get('vat_amount_match', True):
+                            if not match_details.get('vat_amount_match', True) and 9 not in approved_columns:
                                 ws.cell(row=row, column=9).fill = red_light_fill
                             
                             # Column 10: มูลค่ารวม
-                            if not match_details.get('total_amount_match', True):
+                            if not match_details.get('total_amount_match', True) and 10 not in approved_columns:
                                 ws.cell(row=row, column=10).fill = red_light_fill
                     
                     # ใส่ border และ font ทุกเซลล์
@@ -11503,7 +11819,7 @@ def export_audit_report_to_excel():
                             cell.font = data_font
                 
                     # ใส่ border และ font ทุกเซลล์
-                    for col in range(1, 14):
+                    for col in range(1, 16):
                         cell = ws.cell(row=row, column=col)
                         cell.border = border
                         if not cell.font:  # ถ้ายังไม่ได้ตั้งค่า font ให้ตั้งค่า
@@ -11542,7 +11858,7 @@ def export_audit_report_to_excel():
         ws.cell(row=summary_row, column=10).font = subheader_font
         
         # ใส่ border
-        for col in range(1, 13):
+        for col in range(1, 16):
             ws.cell(row=summary_row, column=col).border = border
         
         # สร้างชื่อไฟล์
