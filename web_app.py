@@ -7865,27 +7865,57 @@ def run_ocr_for_audit():
                                     extracted_data['customs_duty'] = 0.0
                                     extracted_data['has_customs_duty'] = False
                             else:
-                                # กรณีปกติ: ใช้ข้อมูลจาก OCR โดยตรง
-                                # ยอดรวมก่อนภาษี -> amount_before_vat (แปลง string เป็น float)
-                                amount_before_vat_str = key_extract_data.get('ยอดรวมก่อนภาษี', '0') or '0'
-                                try:
-                                    extracted_data['amount_before_vat'] = float(amount_before_vat_str.replace(',', '').replace('฿', '').strip())
-                                except:
-                                    extracted_data['amount_before_vat'] = 0.0
-                                # ภาษีมูลค่าเพิ่ม -> vat_amount
-                                vat_amount_str = key_extract_data.get('ภาษีมูลค่าเพิ่ม', '0') or '0'
-                                try:
-                                    extracted_data['vat_amount'] = float(vat_amount_str.replace(',', '').replace('฿', '').strip())
-                                except:
-                                    extracted_data['vat_amount'] = 0.0
-                                # ยอดรวมสุทธิ -> total_amount
-                                total_amount_str = key_extract_data.get('ยอดรวมสุทธิ', '0') or '0'
-                                try:
-                                    extracted_data['total_amount'] = float(total_amount_str.replace(',', '').replace('฿', '').strip())
-                                except:
-                                    extracted_data['total_amount'] = 0.0
-                                extracted_data['customs_duty'] = 0.0
-                                extracted_data['has_customs_duty'] = False
+                                # ตรวจสอบว่าชื่อผู้ขายเป็น "บมจ.ธนาคารกสิกรไทย" หรือไม่
+                                is_kasikorn_bank = seller_name and ('บมจ.ธนาคารกสิกรไทย' in seller_name or 'ธนาคารกสิกรไทย' in seller_name or 'กสิกรไทย' in seller_name)
+                                
+                                if is_kasikorn_bank:
+                                    # สำหรับบมจ.ธนาคารกสิกรไทย: ดึงค่าธรรมเนียมมาเป็นยอดก่อนภาษีมูลค่าเพิ่ม
+                                    commission_str = key_extract_data.get('ค่าธรรมเนียม', '0') or '0'
+                                    try:
+                                        extracted_data['amount_before_vat'] = float(commission_str.replace(',', '').replace('฿', '').strip())
+                                    except:
+                                        extracted_data['amount_before_vat'] = 0.0
+                                    
+                                    # ภาษีมูลค่าเพิ่ม -> vat_amount
+                                    vat_amount_str = key_extract_data.get('ภาษีมูลค่าเพิ่ม', '0') or '0'
+                                    try:
+                                        extracted_data['vat_amount'] = float(vat_amount_str.replace(',', '').replace('฿', '').strip())
+                                    except:
+                                        extracted_data['vat_amount'] = 0.0
+                                    
+                                    # คำนวณยอดหลังบวกภาษีมูลค่าเพิ่ม: ยอดก่อนภาษี + ภาษีมูลค่าเพิ่ม
+                                    extracted_data['total_amount'] = extracted_data['amount_before_vat'] + extracted_data['vat_amount']
+                                    
+                                    logger.info(f"🏦 บมจ.ธนาคารกสิกรไทย - ดึงค่าธรรมเนียม: {extracted_data['amount_before_vat']:,.2f}, ภาษี={extracted_data['vat_amount']:,.2f}, รวม={extracted_data['total_amount']:,.2f}")
+                                    extracted_data['customs_duty'] = 0.0
+                                    extracted_data['has_customs_duty'] = False
+                                    extracted_data['is_kasikorn_bank'] = True  # เพิ่ม flag สำหรับดีบัค
+                                else:
+                                    # กรณีปกติ: ใช้ข้อมูลจาก OCR โดยตรง
+                                    # ยอดรวมก่อนภาษี -> amount_before_vat (แปลง string เป็น float)
+                                    amount_before_vat_str = key_extract_data.get('ยอดรวมก่อนภาษี', '0') or '0'
+                                    try:
+                                        extracted_data['amount_before_vat'] = float(amount_before_vat_str.replace(',', '').replace('฿', '').strip())
+                                    except:
+                                        extracted_data['amount_before_vat'] = 0.0
+                                    # ภาษีมูลค่าเพิ่ม -> vat_amount
+                                    vat_amount_str = key_extract_data.get('ภาษีมูลค่าเพิ่ม', '0') or '0'
+                                    try:
+                                        extracted_data['vat_amount'] = float(vat_amount_str.replace(',', '').replace('฿', '').strip())
+                                    except:
+                                        extracted_data['vat_amount'] = 0.0
+                                    # ยอดรวมสุทธิ -> total_amount
+                                    total_amount_str = key_extract_data.get('ยอดรวมสุทธิ', '0') or '0'
+                                    try:
+                                        extracted_data['total_amount'] = float(total_amount_str.replace(',', '').replace('฿', '').strip())
+                                    except:
+                                        extracted_data['total_amount'] = 0.0
+                                    
+                                    # ไม่คำนวณอัตโนมัติสำหรับกรณีปกติ (ใช้เฉพาะบริษัทที่กำหนดเท่านั้น)
+                                    
+                                    extracted_data['customs_duty'] = 0.0
+                                    extracted_data['has_customs_duty'] = False
+                                    extracted_data['is_kasikorn_bank'] = False
                             # ชื่อผู้ซื้อ -> buyer_name
                             extracted_data['buyer_name'] = key_extract_data.get('ชื่อผู้ซื้อ', '')
                             # เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ -> buyer_tax_id
@@ -7896,6 +7926,50 @@ def run_ocr_for_audit():
                             extracted_data['document_type'] = key_extract_data.get('ประเภทเอกสาร', '')
                             # สถานะเอกสาร -> document_status
                             extracted_data['document_status'] = key_extract_data.get('สถานะเอกสาร', '')
+                            
+                            # ตรวจสอบว่าเป็นเอกสาร ภ.พ.36 หรือไม่
+                            is_pp36 = extracted_data.get('document_type') and (
+                                'ภ.พ.36' in extracted_data['document_type'] or 
+                                'ภพ.36' in extracted_data['document_type'] or 
+                                'PP36' in extracted_data['document_type'].upper() or
+                                'pp36' in extracted_data['document_type'].lower()
+                            )
+                            
+                            # สำหรับ ภ.พ.36: แปลงข้อมูลจาก amounts ให้เป็น amount_before_vat, vat_amount, total_amount
+                            if is_pp36:
+                                logger.info(f"📋 ตรวจพบเอกสาร ภ.พ.36 - กำลังแปลงข้อมูล")
+                                
+                                # ดึงข้อมูลจาก amounts (ถ้ามี)
+                                # สำหรับ ภ.พ.36: ข้อมูลอาจอยู่ใน key-extract หรือใน ocr_result
+                                # ตรวจสอบว่ามีข้อมูล amounts ใน key_extract_data หรือไม่
+                                amount_paid = key_extract_data.get('1. จำนวนที่จ่ายเงิน', '0') or key_extract_data.get('จำนวนที่จ่ายเงิน', '0') or '0'
+                                vat_to_pay = key_extract_data.get('2. จำนวนเงินภาษีมูลค่าเพิ่มที่ต้องนำส่ง', '0') or key_extract_data.get('จำนวนเงินภาษีมูลค่าเพิ่มที่ต้องนำส่ง', '0') or '0'
+                                total_vat = key_extract_data.get('5.  รวมภาษีมูลค่าเพิ่มที่ต้องนำส่ง เงินเพิ่ม และเบี้ยปรับ (2. + 3. + 4.)', '0') or key_extract_data.get('รวมภาษีมูลค่าเพิ่มที่ต้องนำส่ง เงินเพิ่ม และเบี้ยปรับ', '0') or '0'
+                                
+                                try:
+                                    # แปลง string เป็น float (ลบ comma และ whitespace)
+                                    amount_paid_float = float(str(amount_paid).replace(',', '').replace(' ', '').strip())
+                                    vat_to_pay_float = float(str(vat_to_pay).replace(',', '').replace(' ', '').strip())
+                                    total_vat_float = float(str(total_vat).replace(',', '').replace(' ', '').strip())
+                                    
+                                    # สำหรับ ภ.พ.36:
+                                    # amount_before_vat = จำนวนที่จ่ายเงิน (1.)
+                                    # vat_amount = จำนวนเงินภาษีมูลค่าเพิ่มที่ต้องนำส่ง (2.)
+                                    # total_amount = รวมภาษีมูลค่าเพิ่มที่ต้องนำส่ง เงินเพิ่ม และเบี้ยปรับ (5.) หรือ amount_before_vat + vat_amount
+                                    extracted_data['amount_before_vat'] = amount_paid_float
+                                    extracted_data['vat_amount'] = vat_to_pay_float
+                                    
+                                    # ถ้ามี total_vat ให้ใช้ ถ้าไม่มีให้คำนวณ
+                                    if total_vat_float > 0:
+                                        extracted_data['total_amount'] = total_vat_float
+                                    else:
+                                        # คำนวณยอดหลังบวกภาษีมูลค่าเพิ่ม: ยอดก่อนภาษี + ภาษีมูลค่าเพิ่ม
+                                        extracted_data['total_amount'] = amount_paid_float + vat_to_pay_float
+                                    
+                                    logger.info(f"📋 ภ.พ.36 - แปลงข้อมูล: ยอดก่อนภาษี={extracted_data['amount_before_vat']:,.2f}, ภาษี={extracted_data['vat_amount']:,.2f}, รวม={extracted_data['total_amount']:,.2f}")
+                                except (ValueError, AttributeError) as e:
+                                    logger.warning(f"⚠️ ไม่สามารถแปลงข้อมูล ภ.พ.36: {e}")
+                                    # ถ้าแปลงไม่ได้ ให้ใช้ค่าเดิม
                             
                             # รายการสินค้า -> items
                             items_raw = key_extract_data.get('รายการสินค้า', [])
@@ -7927,6 +8001,36 @@ def run_ocr_for_audit():
                     logger.info(f"🔄 กำลัง extract invoice data จาก raw_text...")
                     extracted_data = extract_invoice_data(raw_text, pdf_file.name, str(pdf_file))
                     logger.info(f"📊 Extracted Data: {extracted_data}")
+                
+                # ตรวจสอบว่าเป็นเอกสาร ภ.พ.36 จาก specialized OCR processor หรือไม่
+                is_pp36_from_specialized = False
+                if ocr_result.get('tax_form_type') == 'ภ.พ.36' or (extracted_data.get('document_type') and ('ภ.พ.36' in extracted_data['document_type'] or 'ภพ.36' in extracted_data['document_type'])):
+                    is_pp36_from_specialized = True
+                    logger.info(f"📋 ตรวจพบเอกสาร ภ.พ.36 จาก specialized OCR processor - กำลังแปลงข้อมูล")
+                    
+                    # ดึงข้อมูลจาก ocr_result (ถ้ามี amounts)
+                    if ocr_result.get('amounts'):
+                        amounts = ocr_result.get('amounts', {})
+                        amount_paid = amounts.get('จำนวนที่จ่ายเงิน (ภ.พ.36)', 0) or 0
+                        vat_to_pay = amounts.get('จำนวนเงินภาษีมูลค่าเพิ่มที่ต้องนำส่ง (ภ.พ.36)', 0) or 0
+                        total_vat = amounts.get('รวมภาษีมูลค่าเพิ่มที่ต้องนำส่ง เงินเพิ่ม และเบี้ยปรับ (ภ.พ.36)', 0) or 0
+                        
+                        # แปลงข้อมูลสำหรับ ภ.พ.36
+                        extracted_data['amount_before_vat'] = amount_paid
+                        extracted_data['vat_amount'] = vat_to_pay
+                        
+                        # ถ้ามี total_vat ให้ใช้ ถ้าไม่มีให้คำนวณ
+                        if total_vat > 0:
+                            extracted_data['total_amount'] = total_vat
+                        else:
+                            # คำนวณยอดหลังบวกภาษีมูลค่าเพิ่ม: ยอดก่อนภาษี + ภาษีมูลค่าเพิ่ม
+                            extracted_data['total_amount'] = amount_paid + vat_to_pay
+                        
+                        logger.info(f"📋 ภ.พ.36 (specialized) - แปลงข้อมูล: ยอดก่อนภาษี={extracted_data['amount_before_vat']:,.2f}, ภาษี={extracted_data['vat_amount']:,.2f}, รวม={extracted_data['total_amount']:,.2f}")
+                    
+                    # อัปเดต document_type ถ้ายังไม่มี
+                    if not extracted_data.get('document_type'):
+                        extracted_data['document_type'] = 'ภ.พ.36'
                 
                 # เตรียมข้อมูล OCR
                 ocr_data = {
@@ -8356,6 +8460,7 @@ def check_purchase_tax():
                         # Pattern สำหรับชื่อไฟล์ภาษีซื้อ (ต้องมีคำว่า "ภาษีซื้อ" และไม่ใช่ "ภาษีขาย")
                         purchase_tax_patterns = [
                             f"*ภาษีซื้อ*",
+                            f"*รายงานภาษีซื้อ*",
                             f"*Purchase Tax*",
                             f"*purchase tax*",
                             f"*VAT Purchase*",
@@ -9115,7 +9220,9 @@ def compare_purchase_tax_ocr():
         purchase_tax_files = []
         purchase_tax_patterns = [
             f"*ภาษีซื้อ*{year}*{month}*",
+            f"*รายงานภาษีซื้อ*{year}*{month}*",
             f"*ภาษีซื้อ*{thai_year}*{month}*",
+            f"*รายงานภาษีซื้อ*{thai_year}*{month}*",
             f"*Purchase Tax*{year}*{month}*",
             f"*purchase tax*{year}*{month}*",
             f"*VAT Purchase*{year}*{month}*",
@@ -10844,6 +10951,7 @@ def export_audit_report_to_excel():
         ocr_data_from_step2 = data.get('ocrDataFromStep2', [])  # ข้อมูล OCR จาก Step 2
         invalid_documents = data.get('invalidDocuments', {})  # สถานะเอกสารใช้ไม่ได้ (key = index, value = true/false)
         approvals = data.get('approvals', {})  # ข้อมูลการอนุมัติฟิลด์ (key = "index-fieldKey", value = true/false)
+        comparisons_from_frontend = data.get('comparisons', [])  # ข้อมูล comparisons จาก frontend (รวมรายการที่ลบออกแล้ว)
         
         # ตรวจสอบว่า notes, invalid_documents, approvals เป็น dict หรือไม่
         if not isinstance(notes, dict):
@@ -10854,6 +10962,8 @@ def export_audit_report_to_excel():
             approvals = {}
         if not isinstance(ocr_data_from_step2, list):
             ocr_data_from_step2 = []
+        if not isinstance(comparisons_from_frontend, list):
+            comparisons_from_frontend = []
         
         if not tax_month or not company:
             return jsonify({
@@ -10866,64 +10976,72 @@ def export_audit_report_to_excel():
             logger.info(f"📁 โฟลเดอร์ VAT ที่ได้รับ: {vat_folder_path}")
         if ocr_data_from_step2:
             logger.info(f"📊 ข้อมูล OCR จาก Step 2: {len(ocr_data_from_step2)} รายการ")
+        if comparisons_from_frontend:
+            logger.info(f"📊 ข้อมูล Comparisons จาก Frontend: {len(comparisons_from_frontend)} รายการ")
         
         # แปลงเดือนจาก YYYY-MM
         year, month = tax_month.split('-')
         year_int = int(year)
         month_int = int(month)
         
-        # ====== ดึงข้อมูลจริงจากระบบ (ใช้โค้ดเดียวกับ compare-purchase-tax-ocr) ======
-        # เรียก internal function เพื่อดึงข้อมูล
-        request_body = {'taxMonth': tax_month, 'company': company}
-        if ocr_data_from_step2:
-            request_body['ocrDataFromStep2'] = ocr_data_from_step2
-        
-        with app.test_client() as client:
-            response = client.post('/api/auditcheck/compare-purchase-tax-ocr',
-                                 json=request_body,
-                                 content_type='application/json')
+        # ====== ใช้ข้อมูลจาก frontend ถ้ามี (รวมรายการที่ลบออกแล้ว) ======
+        if comparisons_from_frontend and len(comparisons_from_frontend) > 0:
+            # ใช้ข้อมูลจาก frontend โดยตรง (รวมรายการที่ผู้ใช้ลบออกแล้ว)
+            comparisons = comparisons_from_frontend
+            logger.info(f"✅ ใช้ข้อมูล Comparisons จาก Frontend: {len(comparisons)} รายการ")
+        else:
+            # ====== ดึงข้อมูลจริงจากระบบ (ใช้โค้ดเดียวกับ compare-purchase-tax-ocr) ======
+            # เรียก internal function เพื่อดึงข้อมูล
+            request_body = {'taxMonth': tax_month, 'company': company}
+            if ocr_data_from_step2:
+                request_body['ocrDataFromStep2'] = ocr_data_from_step2
             
-            if response.status_code != 200:
-                logger.error(f"❌ ไม่สามารถดึงข้อมูลได้: {response.status_code}")
-                return jsonify({
-                    'success': False,
-                    'error': 'ไม่สามารถดึงข้อมูลจากระบบได้'
-                }), 500
+            with app.test_client() as client:
+                response = client.post('/api/auditcheck/compare-purchase-tax-ocr',
+                                     json=request_body,
+                                     content_type='application/json')
+                
+                if response.status_code != 200:
+                    logger.error(f"❌ ไม่สามารถดึงข้อมูลได้: {response.status_code}")
+                    return jsonify({
+                        'success': False,
+                        'error': 'ไม่สามารถดึงข้อมูลจากระบบได้'
+                    }), 500
+                
+                comparison_data = response.get_json()
+                
+                # ตรวจสอบว่า comparison_data ไม่เป็น None หรือไม่ใช่ dict
+                if comparison_data is None:
+                    logger.error(f"❌ ไม่สามารถดึงข้อมูลได้: response.get_json() คืนค่า None")
+                    return jsonify({
+                        'success': False,
+                        'error': 'ไม่สามารถดึงข้อมูลจากระบบได้ (response is None)'
+                    }), 500
+                
+                if not isinstance(comparison_data, dict):
+                    logger.error(f"❌ ข้อมูลไม่ถูกต้อง: comparison_data ไม่ใช่ dict (type: {type(comparison_data)})")
+                    return jsonify({
+                        'success': False,
+                        'error': 'ไม่สามารถดึงข้อมูลจากระบบได้ (response format is invalid)'
+                    }), 500
+                
+                if not comparison_data.get('success'):
+                    logger.error(f"❌ ข้อมูลไม่ถูกต้อง: comparison_data.get('success') = {comparison_data.get('success')}")
+                    return jsonify({
+                        'success': False,
+                        'error': 'ไม่พบข้อมูลสำหรับสร้างรายงาน'
+                    }), 500
+                
+                comparisons = comparison_data.get('comparisons', [])
+                
+                if not comparisons:
+                    logger.warning(f"⚠️ ไม่มีข้อมูลเปรียบเทียบ")
+                    return jsonify({
+                        'success': False,
+                        'error': 'ไม่มีข้อมูลสำหรับสร้างรายงาน'
+                    }), 400
             
-            comparison_data = response.get_json()
-            
-            # ตรวจสอบว่า comparison_data ไม่เป็น None หรือไม่ใช่ dict
-            if comparison_data is None:
-                logger.error(f"❌ ไม่สามารถดึงข้อมูลได้: response.get_json() คืนค่า None")
-                return jsonify({
-                    'success': False,
-                    'error': 'ไม่สามารถดึงข้อมูลจากระบบได้ (response is None)'
-                }), 500
-            
-            if not isinstance(comparison_data, dict):
-                logger.error(f"❌ ข้อมูลไม่ถูกต้อง: comparison_data ไม่ใช่ dict (type: {type(comparison_data)})")
-                return jsonify({
-                    'success': False,
-                    'error': 'ไม่สามารถดึงข้อมูลจากระบบได้ (response format is invalid)'
-                }), 500
-            
-            if not comparison_data.get('success'):
-                logger.error(f"❌ ข้อมูลไม่ถูกต้อง: comparison_data.get('success') = {comparison_data.get('success')}")
-                return jsonify({
-                    'success': False,
-                    'error': 'ไม่พบข้อมูลสำหรับสร้างรายงาน'
-                }), 500
-            
-            comparisons = comparison_data.get('comparisons', [])
-            
-            if not comparisons:
-                logger.warning(f"⚠️ ไม่มีข้อมูลเปรียบเทียบ")
-                return jsonify({
-                    'success': False,
-                    'error': 'ไม่มีข้อมูลสำหรับสร้างรายงาน'
-                }), 400
-        
-        logger.info(f"✅ ดึงข้อมูลได้ {len(comparisons)} รายการ")
+            logger.info(f"✅ ดึงข้อมูลได้ {len(comparisons)} รายการ")
         
         # สร้าง Workbook
         wb = openpyxl.Workbook()
@@ -10940,9 +11058,15 @@ def export_audit_report_to_excel():
         # ฟอนต์สำหรับข้อมูลในตาราง (ใช้ขนาดเดียวกันทุกเซลล์)
         data_font = Font(name='TH Sarabun New', size=11, bold=False, italic=False)
         
-        match_fill = PatternFill(start_color="D5F4E6", end_color="D5F4E6", fill_type="solid")  # เขียว
-        partial_fill = PatternFill(start_color="FFF4E6", end_color="FFF4E6", fill_type="solid")  # เหลือง
-        mismatch_fill = PatternFill(start_color="FFE6E6", end_color="FFE6E6", fill_type="solid")  # แดง
+        # สีสำหรับสถานะ (ปรับเป็นสีอ่อนตามที่ผู้ใช้ต้องการ)
+        match_fill = PatternFill(start_color="FFF9E6", end_color="FFF9E6", fill_type="solid")  # เหลืองอ่อน (ข้อมูลตรงกัน)
+        partial_fill = PatternFill(start_color="FFF4E6", end_color="FFF4E6", fill_type="solid")  # เหลือง (ตรงกันบางส่วน)
+        mismatch_fill = PatternFill(start_color="FFE8E8", end_color="FFE8E8", fill_type="solid")  # แดงอ่อน (ข้อมูลไม่ตรงกัน)
+        
+        # สีสำหรับไฮไลท์
+        yellow_light_fill = PatternFill(start_color="FFF9E6", end_color="FFF9E6", fill_type="solid")  # เหลืองอ่อน (ข้อมูลตรงกัน)
+        red_light_fill = PatternFill(start_color="FFE8E8", end_color="FFE8E8", fill_type="solid")  # แดงอ่อน (ข้อมูลไม่ตรงกัน, เอกสารใช้ไม่ได้)
+        orange_light_fill = PatternFill(start_color="FFEBD6", end_color="FFEBD6", fill_type="solid")  # ส้มอ่อน (ตรวจสอบเพิ่ม)
         
         border = Border(
             left=Side(style='thin'),
@@ -10999,9 +11123,10 @@ def export_audit_report_to_excel():
         row = 7
         item_no = 1
         
-        # สีสำหรับไฮไลท์
-        red_fill = PatternFill(start_color="FB1919", end_color="FB1919", fill_type="solid")  # สีแดง (#FB1919)
-        green_fill = PatternFill(start_color="D5F4E6", end_color="D5F4E6", fill_type="solid")  # สีเขียวอ่อน
+        # รับข้อมูล selfCheckMode จาก frontend (สถานะการกดปุ่ม "ตรวจสอบเพิ่ม")
+        self_check_mode = data.get('selfCheckMode', {})  # key = index, value = true/false
+        if not isinstance(self_check_mode, dict):
+            self_check_mode = {}
         
         for idx, comp in enumerate(comparisons):
             # ตรวจสอบว่า comp ไม่เป็น None และเป็น dict
@@ -11023,7 +11148,18 @@ def export_audit_report_to_excel():
                 match_details = {}
             
             # ตรวจสอบว่าเอกสารนี้ใช้ไม่ได้หรือไม่
-            is_invalid = invalid_documents.get(str(idx), False) if isinstance(invalid_documents, dict) else False
+            # ใช้ idx เป็น key เพราะ comparisons array ที่ส่งมาจาก frontend มี index ตรงกับ allComparisonsData
+            is_invalid = invalid_documents.get(idx, False) if isinstance(invalid_documents, dict) else False
+            if not is_invalid:
+                # ลองใช้ string key ด้วย (รองรับทั้ง number และ string)
+                is_invalid = invalid_documents.get(str(idx), False) if isinstance(invalid_documents, dict) else False
+            
+            # ตรวจสอบว่ากดปุ่ม "ตรวจสอบเพิ่ม" หรือไม่
+            # ใช้ idx เป็น key เพราะ comparisons array ที่ส่งมาจาก frontend มี index ตรงกับ allComparisonsData
+            is_self_check = self_check_mode.get(idx, False) if isinstance(self_check_mode, dict) else False
+            if not is_self_check:
+                # ลองใช้ string key ด้วย (รองรับทั้ง number และ string)
+                is_self_check = self_check_mode.get(str(idx), False) if isinstance(self_check_mode, dict) else False
             
             # สร้าง match_details ที่ปรับตามการอนุมัติ (ถ้าฟิลด์ถูกอนุมัติแล้ว ให้ถือว่า match)
             adjusted_match_details = match_details.copy() if match_details else {}
@@ -11114,12 +11250,12 @@ def export_audit_report_to_excel():
                     note_text = comp.get('initial_note', '') if isinstance(comp, dict) else ''
                 ws.cell(row=row, column=15, value=note_text).font = data_font
                 
-                # ตรวจสอบว่าเอกสารใช้ไม่ได้หรือไม่ - ถ้าใช่ให้ไฮไลท์สีแดงทั้งแถบ (ยกเว้นช่องหมายเหตุ)
+                # ตรวจสอบว่าเอกสารใช้ไม่ได้หรือไม่ - ถ้าใช่ให้ไฮไลท์สีแดงอ่อนทั้งแถบ (ยกเว้นช่องหมายเหตุ)
                 if is_invalid:
                     for col in range(1, 16):
                         if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
                             cell = ws.cell(row=row, column=col)
-                            cell.fill = red_fill
+                            cell.fill = red_light_fill  # แดงอ่อน
                             cell.border = border
                             cell.font = data_font
                         else:
@@ -11127,12 +11263,38 @@ def export_audit_report_to_excel():
                             cell = ws.cell(row=row, column=col)
                             cell.border = border
                             cell.font = data_font
-                # ถ้า full_match และไม่ใช่เอกสารใช้ไม่ได้ → ไฮไลท์เขียวทั้งแถว (ยกเว้นช่องหมายเหตุ)
+                # ถ้ากดปุ่ม "ตรวจสอบเพิ่ม" → ไฮไลท์สีส้มอ่อนทั้งแถว (ยกเว้นช่องหมายเหตุ)
+                elif is_self_check:
+                    for col in range(1, 16):
+                        if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
+                            cell = ws.cell(row=row, column=col)
+                            cell.fill = orange_light_fill  # ส้มอ่อน
+                            cell.border = border
+                            cell.font = data_font
+                        else:
+                            # ช่องหมายเหตุไม่ใส่สี
+                            cell = ws.cell(row=row, column=col)
+                            cell.border = border
+                            cell.font = data_font
+                # ถ้า full_match → ไฮไลท์เหลืองอ่อนทั้งแถว (ยกเว้นช่องหมายเหตุ)
                 elif match_status == 'full_match':
                     for col in range(1, 16):
                         if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
                             cell = ws.cell(row=row, column=col)
-                            cell.fill = green_fill
+                            cell.fill = yellow_light_fill  # เหลืองอ่อน
+                            cell.border = border
+                            cell.font = data_font
+                        else:
+                            # ช่องหมายเหตุไม่ใส่สี
+                            cell = ws.cell(row=row, column=col)
+                            cell.border = border
+                            cell.font = data_font
+                # ถ้า no_match → ไฮไลท์แดงอ่อนทั้งแถว (ยกเว้นช่องหมายเหตุ)
+                elif match_status == 'no_match':
+                    for col in range(1, 16):
+                        if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
+                            cell = ws.cell(row=row, column=col)
+                            cell.fill = red_light_fill  # แดงอ่อน
                             cell.border = border
                             cell.font = data_font
                         else:
@@ -11141,45 +11303,41 @@ def export_audit_report_to_excel():
                             cell.border = border
                             cell.font = data_font
                 else:
-                    # ขีดสีแดงที่ช่องข้อมูลที่ไม่ตรงกัน (เฉพาะช่องที่ไม่ตรงกัน) - แต่ถ้าเอกสารใช้ไม่ได้แล้วจะไม่ทำเพราะไฮไลท์ทั้งแถบแล้ว
-                    if not is_invalid and ocr_data:
+                    # สำหรับ partial_match: ขีดสีแดงอ่อนที่ช่องข้อมูลที่ไม่ตรงกัน (เฉพาะช่องที่ไม่ตรงกัน)
+                    # แต่ถ้าเอกสารใช้ไม่ได้หรือกดตรวจสอบเพิ่มแล้วจะไม่ทำเพราะไฮไลท์ทั้งแถบแล้ว
+                    if not is_invalid and not is_self_check and match_status == 'partial_match' and ocr_data:
                         if match_details:
                             # Column 3: ชื่อบริษัท
                             if not match_details.get('company_name_match', True):
-                                ws.cell(row=row, column=3).fill = red_fill
+                                ws.cell(row=row, column=3).fill = red_light_fill
                             
                             # Column 4: เลขที่ใบกำกับ
                             if not match_details.get('document_no_match', True):
-                                ws.cell(row=row, column=4).fill = red_fill
+                                ws.cell(row=row, column=4).fill = red_light_fill
                             
                             # Column 5: วันที่
                             if not match_details.get('date_match', True):
-                                ws.cell(row=row, column=5).fill = red_fill
+                                ws.cell(row=row, column=5).fill = red_light_fill
                             
                             # Column 6: เลขทะเบียนผู้เสียภาษี
                             if not match_details.get('tax_id_match', True):
-                                ws.cell(row=row, column=6).fill = red_fill
+                                ws.cell(row=row, column=6).fill = red_light_fill
                             
                             # Column 7: สาขา
                             if not match_details.get('branch_match', True):
-                                ws.cell(row=row, column=7).fill = red_fill
+                                ws.cell(row=row, column=7).fill = red_light_fill
                             
                             # Column 8: รายการ 7%
                             if not match_details.get('amount_before_vat_match', True):
-                                ws.cell(row=row, column=8).fill = red_fill
+                                ws.cell(row=row, column=8).fill = red_light_fill
                             
                             # Column 9: ภาษี 7%
                             if not match_details.get('vat_amount_match', True):
-                                ws.cell(row=row, column=9).fill = red_fill
+                                ws.cell(row=row, column=9).fill = red_light_fill
                             
                             # Column 10: มูลค่ารวม
                             if not match_details.get('total_amount_match', True):
-                                ws.cell(row=row, column=10).fill = red_fill
-                        else:
-                            # ถ้าไม่มี match_details ให้ไฮไลท์ทุกช่องเป็นสีแดง (กรณี no_match)
-                            logger.warning(f"⚠️ ไม่พบ match_details สำหรับรายการที่ {item_no}")
-                            for col in range(3, 13):  # ไฮไลท์เฉพาะคอลัมน์ข้อมูล (ไม่รวมลำดับ, เลขที่อ้างอิง, ชื่อไฟล์ OCR, สถานะ, หมายเหตุ)
-                                ws.cell(row=row, column=col).fill = red_fill
+                                ws.cell(row=row, column=10).fill = red_light_fill
                     
                     # ใส่ border และ font ทุกเซลล์
                     for col in range(1, 16):
@@ -11237,12 +11395,12 @@ def export_audit_report_to_excel():
             ws.cell(row=row, column=14).font = data_font
             ws.cell(row=row, column=15, value='').font = data_font
             
-            # ตรวจสอบว่าเอกสารใช้ไม่ได้หรือไม่ - ถ้าใช่ให้ไฮไลท์สีแดงทั้งแถบ (ยกเว้นช่องหมายเหตุ)
+            # ตรวจสอบว่าเอกสารใช้ไม่ได้หรือไม่ - ถ้าใช่ให้ไฮไลท์สีแดงอ่อนทั้งแถบ (ยกเว้นช่องหมายเหตุ)
             if is_invalid:
                 for col in range(1, 16):
                     if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
                         cell = ws.cell(row=row, column=col)
-                        cell.fill = red_fill
+                        cell.fill = red_light_fill  # แดงอ่อน
                         cell.border = border
                         cell.font = data_font
                     else:
@@ -11250,12 +11408,38 @@ def export_audit_report_to_excel():
                         cell = ws.cell(row=row, column=col)
                         cell.border = border
                         cell.font = data_font
-            # ถ้า full_match และไม่ใช่เอกสารใช้ไม่ได้ → ไฮไลท์เขียวทั้งแถว OCR ด้วย (ยกเว้นช่องหมายเหตุ)
+            # ถ้ากดปุ่ม "ตรวจสอบเพิ่ม" → ไฮไลท์สีส้มอ่อนทั้งแถว OCR (ยกเว้นช่องหมายเหตุ)
+            elif is_self_check:
+                for col in range(1, 16):
+                    if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
+                        cell = ws.cell(row=row, column=col)
+                        cell.fill = orange_light_fill  # ส้มอ่อน
+                        cell.border = border
+                        cell.font = data_font
+                    else:
+                        # ช่องหมายเหตุไม่ใส่สี
+                        cell = ws.cell(row=row, column=col)
+                        cell.border = border
+                        cell.font = data_font
+            # ถ้า full_match → ไฮไลท์เหลืองอ่อนทั้งแถว OCR (ยกเว้นช่องหมายเหตุ)
             elif match_status == 'full_match':
                 for col in range(1, 16):
                     if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
                         cell = ws.cell(row=row, column=col)
-                        cell.fill = green_fill
+                        cell.fill = yellow_light_fill  # เหลืองอ่อน
+                        cell.border = border
+                        cell.font = data_font
+                    else:
+                        # ช่องหมายเหตุไม่ใส่สี
+                        cell = ws.cell(row=row, column=col)
+                        cell.border = border
+                        cell.font = data_font
+            # ถ้า no_match → ไฮไลท์แดงอ่อนทั้งแถว OCR (ยกเว้นช่องหมายเหตุ)
+            elif match_status == 'no_match':
+                for col in range(1, 16):
+                    if col != 15:  # ไม่ใส่สีในช่องหมายเหตุ (column 15)
+                        cell = ws.cell(row=row, column=col)
+                        cell.fill = red_light_fill  # แดงอ่อน
                         cell.border = border
                         cell.font = data_font
                     else:
@@ -11264,61 +11448,55 @@ def export_audit_report_to_excel():
                         cell.border = border
                         cell.font = data_font
             else:
-                # ขีดสีแดงที่ช่องข้อมูลที่ไม่ตรงกัน (เฉพาะช่องที่ไม่ตรงกัน) สำหรับแถว OCR
-                if purchase_data and ocr_data:
+                # สำหรับ partial_match: ขีดสีแดงอ่อนที่ช่องข้อมูลที่ไม่ตรงกัน (เฉพาะช่องที่ไม่ตรงกัน) สำหรับแถว OCR
+                if purchase_data and ocr_data and match_status == 'partial_match':
                     if match_details:
                         # Column 3: ชื่อบริษัท
                         if not match_details.get('company_name_match', True):
                             cell = ws.cell(row=row, column=3)
-                            cell.fill = red_fill
+                            cell.fill = red_light_fill
                             cell.font = data_font
                         
                         # Column 4: เลขที่ใบกำกับ
                         if not match_details.get('document_no_match', True):
                             cell = ws.cell(row=row, column=4)
-                            cell.fill = red_fill
+                            cell.fill = red_light_fill
                             cell.font = data_font
                         
                         # Column 5: วันที่
                         if not match_details.get('date_match', True):
                             cell = ws.cell(row=row, column=5)
-                            cell.fill = red_fill
+                            cell.fill = red_light_fill
                             cell.font = data_font
                         
                         # Column 6: เลขทะเบียนผู้เสียภาษี
                         if not match_details.get('tax_id_match', True):
                             cell = ws.cell(row=row, column=6)
-                            cell.fill = red_fill
+                            cell.fill = red_light_fill
                             cell.font = data_font
                         
                         # Column 7: สาขา
                         if not match_details.get('branch_match', True):
                             cell = ws.cell(row=row, column=7)
-                            cell.fill = red_fill
+                            cell.fill = red_light_fill
                             cell.font = data_font
                         
                         # Column 8: รายการ 7%
                         if not match_details.get('amount_before_vat_match', True):
                             cell = ws.cell(row=row, column=8)
-                            cell.fill = red_fill
+                            cell.fill = red_light_fill
                             cell.font = data_font
                         
                         # Column 9: ภาษี 7%
                         if not match_details.get('vat_amount_match', True):
                             cell = ws.cell(row=row, column=9)
-                            cell.fill = red_fill
+                            cell.fill = red_light_fill
                             cell.font = data_font
                         
                         # Column 10: มูลค่ารวม
                         if not match_details.get('total_amount_match', True):
                             cell = ws.cell(row=row, column=10)
-                            cell.fill = red_fill
-                            cell.font = data_font
-                    else:
-                        # ถ้าไม่มี match_details ให้ไฮไลท์ทุกช่องเป็นสีแดง (กรณี no_match)
-                        for col in range(3, 11):  # ไฮไลท์เฉพาะคอลัมน์ข้อมูล
-                            cell = ws.cell(row=row, column=col)
-                            cell.fill = red_fill
+                            cell.fill = red_light_fill
                             cell.font = data_font
                 
                     # ใส่ border และ font ทุกเซลล์
@@ -11372,34 +11550,103 @@ def export_audit_report_to_excel():
         wb.save(excel_file)
         excel_file.seek(0)
         
-        # ====== บันทึกไฟล์ลงโฟลเดอร์ VAT ======
+        # ====== บันทึกไฟล์ลงโฟลเดอร์ ภ.พ.30 ======
         saved_file_path = None
-        if vat_folder_path:
+        
+        # หา path ของโฟลเดอร์ ภ.พ.30 แทนโฟลเดอร์ VAT
+        # โครงสร้าง: บัญชี > 003-ภาษี > ภ.พ.30 > [Year] > [Month-Year]
+        base_paths = [
+            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
+            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
+            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
+        ]
+        
+        pph30_folder_path = None
+        month_year_patterns = [
+            f"{year_int}-{month_int:02d}",   # 2025-10 (ปี-เดือน)
+            f"{year_int}-{month_int}",       # 2025-10 (ปี-เดือน)
+            f"{month_int:02d}-{year_int}",   # 10-2025 (เดือน-ปี)
+            f"{month_int}-{year_int}",       # 10-2025 (เดือน-ปี)
+        ]
+        
+        for base_path in base_paths:
+            if not base_path.exists():
+                continue
+            
             try:
-                vat_folder = Path(vat_folder_path)
-                if vat_folder.exists() and vat_folder.is_dir():
-                    file_path = vat_folder / filename
+                # โครงสร้าง: บัญชี > 003-ภาษี > ภ.พ.30 > ปี > เดือน-ปี
+                account_folder = base_path / "บัญชี"
+                if not account_folder.exists():
+                    continue
+                
+                tax_folder = account_folder / "003-ภาษี"
+                if not tax_folder.exists():
+                    continue
+                
+                pph30_folder = tax_folder / "ภ.พ.30"
+                if not pph30_folder.exists():
+                    continue
+                
+                year_folder = pph30_folder / year
+                if not year_folder.exists():
+                    continue
+                
+                # ค้นหาโฟลเดอร์เดือน-ปี
+                month_year_folder = None
+                for pattern in month_year_patterns:
+                    potential_folder = year_folder / pattern
+                    if potential_folder.exists():
+                        month_year_folder = potential_folder
+                        break
+                
+                # ถ้าไม่เจอโฟลเดอร์เดือน-ปี ให้ลองค้นหาในโฟลเดอร์ปีโดยตรง
+                if not month_year_folder:
+                    try:
+                        for item in year_folder.iterdir():
+                            if item.is_dir():
+                                for pattern in month_year_patterns:
+                                    if pattern in item.name or item.name == pattern:
+                                        month_year_folder = item
+                                        break
+                                if month_year_folder:
+                                    break
+                    except Exception as e:
+                        logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์เดือน-ปีใน {year_folder}: {e}")
+                
+                if month_year_folder:
+                    pph30_folder_path = month_year_folder
+                    logger.info(f"✅ พบโฟลเดอร์ ภ.พ.30: {pph30_folder_path}")
+                    break
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์ ภ.พ.30 ใน {base_path}: {e}")
+                continue
+        
+        # บันทึกไฟล์ลงโฟลเดอร์ ภ.พ.30
+        if pph30_folder_path:
+            try:
+                if pph30_folder_path.exists() and pph30_folder_path.is_dir():
+                    file_path = pph30_folder_path / filename
                     with open(file_path, 'wb') as f:
                         f.write(excel_file.getvalue())
                     saved_file_path = str(file_path)
-                    logger.info(f"💾 บันทึกไฟล์ Excel ลงโฟลเดอร์ VAT: {file_path}")
+                    logger.info(f"💾 บันทึกไฟล์ Excel ลงโฟลเดอร์ ภ.พ.30: {file_path}")
                 else:
-                    logger.warning(f"⚠️ โฟลเดอร์ VAT ไม่มีอยู่: {vat_folder_path}")
+                    logger.warning(f"⚠️ โฟลเดอร์ ภ.พ.30 ไม่มีอยู่: {pph30_folder_path}")
                     return jsonify({
                         'success': False,
-                        'error': f'ไม่พบโฟลเดอร์ VAT: {vat_folder_path}'
+                        'error': f'ไม่พบโฟลเดอร์ ภ.พ.30: {pph30_folder_path}'
                     }), 400
             except Exception as e:
-                logger.error(f"❌ ไม่สามารถบันทึกไฟล์ลงโฟลเดอร์ VAT: {e}")
+                logger.error(f"❌ ไม่สามารถบันทึกไฟล์ลงโฟลเดอร์ ภ.พ.30: {e}")
                 return jsonify({
                     'success': False,
                     'error': f'ไม่สามารถบันทึกไฟล์ได้: {str(e)}'
                 }), 500
         else:
-            logger.warning(f"⚠️ ไม่มี path ของโฟลเดอร์ VAT")
+            logger.warning(f"⚠️ ไม่พบโฟลเดอร์ ภ.พ.30 สำหรับ {company} เดือน {tax_month}")
             return jsonify({
                 'success': False,
-                'error': 'ไม่พบ path ของโฟลเดอร์ VAT'
+                'error': f'ไม่พบโฟลเดอร์ ภ.พ.30 สำหรับ {company} เดือน {tax_month}'
             }), 400
         
         # ส่งข้อมูลกลับไปบอกว่าบันทึกสำเร็จ (ไม่ส่งไฟล์ให้ดาวน์โหลด)
@@ -11408,7 +11655,8 @@ def export_audit_report_to_excel():
             'message': 'บันทึกรายงานสำเร็จ',
             'filePath': saved_file_path,
             'fileName': filename,
-            'vatFolderPath': vat_folder_path
+            'pph30FolderPath': str(pph30_folder_path) if pph30_folder_path else None,
+            'vatFolderPath': vat_folder_path  # เก็บไว้เพื่อ backward compatibility
         }), 200
     
     except Exception as e:

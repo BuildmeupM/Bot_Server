@@ -3796,10 +3796,168 @@
             html += `<div class="comparison-side-header">🤖 ไฟล์ OCR</div>`;
             
             if (comp.ocr_data) {
-                // คำนวณยอดหลังบวกภาษี (ถ้าไม่มีให้คำนวณ)
-                let ocrTotalAmount = ocrData.total_amount || 0;
-                if (ocrTotalAmount === 0 && ocrData.amount_before_vat && ocrData.vat_amount) {
-                    ocrTotalAmount = (ocrData.amount_before_vat || 0) + (ocrData.vat_amount || 0);
+                // ตรวจสอบว่าชื่อบริษัทเป็น "บมจ.ธนาคารกสิกรไทย" หรือไม่
+                const isKasikornBank = ocrData.company_name && (
+                    ocrData.company_name.includes('บมจ.ธนาคารกสิกรไทย') || 
+                    ocrData.company_name.includes('ธนาคารกสิกรไทย') || 
+                    ocrData.company_name.includes('กสิกรไทย')
+                );
+                
+                // ตรวจสอบว่าชื่อบริษัทเป็น "มายออเดอร์ อินเทลลิเจนซ์" หรือไม่
+                const isMyOrderIntelligence = ocrData.company_name && (
+                    ocrData.company_name.includes('มายออเดอร์') || 
+                    ocrData.company_name.includes('MyOrder') || 
+                    ocrData.company_name.includes('MYORDER')
+                );
+                
+                // สำหรับบมจ.ธนาคารกสิกรไทย: ดึงค่าธรรมเนียมมาเป็นยอดก่อนภาษีมูลค่าเพิ่ม (ถ้ายังไม่มี)
+                if (isKasikornBank && (!ocrData.amount_before_vat || ocrData.amount_before_vat === 0)) {
+                    // ค้นหาค่าธรรมเนียมจากรายการสินค้าหรือข้อมูลอื่นๆ
+                    if (ocrData.items && Array.isArray(ocrData.items) && ocrData.items.length > 0) {
+                        // ลองหาค่าธรรมเนียมจากรายการสินค้า
+                        for (const item of ocrData.items) {
+                            const itemName = (item['รายการ'] || item['description'] || item['รายการสินค้า'] || '').toLowerCase();
+                            if (itemName.includes('ค่าธรรมเนียม') || itemName.includes('commission') || itemName.includes('fee')) {
+                                const itemAmount = parseFloat((item['จำนวนเงิน'] || item['amount'] || '0').toString().replace(/,/g, '')) || 0;
+                                if (itemAmount > 0) {
+                                    ocrData.amount_before_vat = itemAmount;
+                                    console.log(`🏦 [ดีบัค บมจ.ธนาคารกสิกรไทย] พบค่าธรรมเนียมจากรายการสินค้า: ${itemAmount}`);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                // สำหรับมายออเดอร์ อินเทลลิเจนซ์: แปลงรายการสินค้าเป็น 2 บรรทัด
+                let myOrderLine1 = null, myOrderLine2 = null, hasMyOrderSplit = false;
+                if (isMyOrderIntelligence && ocrData.items && Array.isArray(ocrData.items) && ocrData.items.length > 0) {
+                    // หารายการ "ค่าบริการเรียกเก็บเงินปลายทาง" (มีภาษีมูลค่าเพิ่ม)
+                    const serviceItem = ocrData.items.find(item => {
+                        const itemName = (item['รายการ'] || item['description'] || item['รายการสินค้า'] || '').toLowerCase();
+                        return itemName.includes('ค่าบริการเรียกเก็บเงินปลายทาง') || itemName.includes('cod');
+                    });
+                    
+                    // หารายการ "ค่าขนส่งภายในประเทศ" (ไม่มีภาษีมูลค่าเพิ่ม)
+                    const shippingItem = ocrData.items.find(item => {
+                        const itemName = (item['รายการ'] || item['description'] || item['รายการสินค้า'] || '').toLowerCase();
+                        return itemName.includes('ค่าขนส่งภายในประเทศ') || itemName.includes('shipping');
+                    });
+                    
+                    if (serviceItem && shippingItem) {
+                        // รายการที่ 1: ค่าบริการเรียกเก็บเงินปลายทาง (มีภาษีมูลค่าเพิ่ม)
+                        // ยอดก่อนภาษี = ราคาต่อหน่วย
+                        // ยอดภาษี = ภาษีมูลค่าเพิ่มจาก OCR
+                        // ยอดรวม = จำนวนเงิน
+                        const serviceBeforeVat = parseFloat((serviceItem['ราคาต่อหน่วย'] || serviceItem['unit_price'] || serviceItem['ราคา'] || serviceItem['price'] || '0').toString().replace(/,/g, '')) || 0;
+                        const vatAmountFromOCR = ocrData.vat_amount || 0;
+                        const serviceTotal = parseFloat((serviceItem['จำนวนเงิน'] || serviceItem['amount'] || '0').toString().replace(/,/g, '')) || 0;
+                        
+                        myOrderLine1 = {
+                            amount_before_vat: serviceBeforeVat,
+                            vat_amount: vatAmountFromOCR,
+                            total_amount: serviceTotal
+                        };
+                        
+                        // รายการที่ 2: ค่าขนส่งภายในประเทศ (ไม่มีภาษีมูลค่าเพิ่ม)
+                        // ยอดก่อนภาษี = จำนวนเงิน
+                        // ยอดภาษี = 0
+                        // ยอดรวม = จำนวนเงิน
+                        const shippingAmount = parseFloat((shippingItem['จำนวนเงิน'] || shippingItem['amount'] || '0').toString().replace(/,/g, '')) || 0;
+                        
+                        myOrderLine2 = {
+                            amount_before_vat: shippingAmount,
+                            vat_amount: 0,
+                            total_amount: shippingAmount
+                        };
+                        
+                        hasMyOrderSplit = true;
+                        console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] รายการที่ 1: ${serviceBeforeVat} + ${vatAmountFromOCR} = ${serviceTotal}`);
+                        console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] รายการที่ 2: ${shippingAmount} (ไม่มีภาษี)`);
+                    }
+                }
+                
+                // คำนวณยอดหลังบวกภาษีมูลค่าเพิ่มเสมอ (ไม่ใช้ค่าจาก OCR สำหรับกรณีปกติ)
+                const amountBeforeVat = ocrData.amount_before_vat || 0;
+                const vatAmount = ocrData.vat_amount || 0;
+                
+                // ตรวจสอบกรณีพิเศษ
+                const isCustomsDepartment = ocrData.company_name && (ocrData.company_name.includes('กรมศุลกากร') || ocrData.company_name.includes('กรมศุล'));
+                
+                let ocrTotalAmount = 0;
+                let isAutoCalculated = false;
+                
+                // รายชื่อบริษัทที่อนุญาตให้คำนวณอัตโนมัติ
+                const allowedCompaniesForAutoCalc = [
+                    'บมจ.ธนาคารกสิกรไทย',
+                    'ธนาคารกสิกรไทย',
+                    'กสิกรไทย',
+                    'มายออเดอร์ อินเทลลิเจนซ์',
+                    'มายออเดอร์ อินเทลลิเจนซ์ จำกัด',
+                    'MyOrder Intelligence',
+                    'MYORDER INTELLIGENCE',
+                    'MyOrder'
+                ];
+                
+                // รายชื่อประเภทเอกสารที่อนุญาตให้คำนวณอัตโนมัติ
+                const allowedDocumentTypesForAutoCalc = [
+                    'ภ.พ.36',
+                    'ภพ.36',
+                    'PP36',
+                    'pp36'
+                ];
+                
+                // ตรวจสอบว่าบริษัทนี้อยู่ในรายชื่อที่อนุญาตหรือไม่
+                const isAllowedCompany = ocrData.company_name && allowedCompaniesForAutoCalc.some(company => 
+                    ocrData.company_name.includes(company)
+                );
+                
+                // ตรวจสอบว่าประเภทเอกสารนี้อยู่ในรายชื่อที่อนุญาตหรือไม่ (สำหรับ ภ.พ.36)
+                const isAllowedDocumentType = ocrData.document_type && allowedDocumentTypesForAutoCalc.some(docType => 
+                    ocrData.document_type.includes(docType)
+                );
+                
+                // สำหรับมายออเดอร์ อินเทลลิเจนซ์: คำนวณยอดรวมทั้งสิ้นจาก line1 + line2
+                if (hasMyOrderSplit && myOrderLine1 && myOrderLine2) {
+                    ocrTotalAmount = myOrderLine1.total_amount + myOrderLine2.total_amount;
+                    isAutoCalculated = true;
+                    console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] ยอดรวมทั้งสิ้น: ${myOrderLine1.total_amount} + ${myOrderLine2.total_amount} = ${ocrTotalAmount}`);
+                } else if (isAllowedCompany || isKasikornBank || isMyOrderIntelligence || isAllowedDocumentType) {
+                    // สำหรับบริษัทหรือประเภทเอกสารที่กำหนดเท่านั้น: คำนวณยอดรวมจากยอดก่อนภาษี + ภาษี (เฉพาะที่อนุญาต)
+                    ocrTotalAmount = ocrData.total_amount || 0;
+                    if (ocrTotalAmount === 0 || !ocrData.total_amount) {
+                        if (amountBeforeVat > 0 && vatAmount > 0) {
+                            ocrTotalAmount = amountBeforeVat + vatAmount;
+                            isAutoCalculated = true;
+                            const identifier = ocrData.company_name || ocrData.document_type || 'Unknown';
+                            console.log(`💰 [ดีบัค] คำนวณยอดหลังบวกภาษีอัตโนมัติ (${identifier}): ${amountBeforeVat} + ${vatAmount} = ${ocrTotalAmount}`);
+                        } else if (amountBeforeVat > 0) {
+                            ocrTotalAmount = amountBeforeVat;
+                            isAutoCalculated = true;
+                            const identifier = ocrData.company_name || ocrData.document_type || 'Unknown';
+                            console.log(`💰 [ดีบัค] ใช้ยอดก่อนภาษีเป็นยอดรวม (${identifier}): ${ocrTotalAmount}`);
+                        }
+                    }
+                } else {
+                    // สำหรับกรณีปกติ: ใช้ค่าจาก OCR โดยตรง (ไม่คำนวณอัตโนมัติ)
+                    ocrTotalAmount = ocrData.total_amount || 0;
+                }
+                
+                // ดีบัคสำหรับบมจ.ธนาคารกสิกรไทย
+                if (isKasikornBank) {
+                    console.log(`🏦 [ดีบัค บมจ.ธนาคารกสิกรไทย] ชื่อบริษัท: ${ocrData.company_name}`);
+                    console.log(`🏦 [ดีบัค บมจ.ธนาคารกสิกรไทย] ยอดก่อนภาษีมูลค่าเพิ่ม: ${amountBeforeVat}`);
+                    console.log(`🏦 [ดีบัค บมจ.ธนาคารกสิกรไทย] ยอดภาษีมูลค่าเพิ่ม: ${vatAmount}`);
+                    console.log(`🏦 [ดีบัค บมจ.ธนาคารกสิกรไทย] ยอดหลังบวกภาษีมูลค่าเพิ่ม: ${ocrTotalAmount}`);
+                    console.log(`🏦 [ดีบัค บมจ.ธนาคารกสิกรไทย] รายการสินค้า:`, ocrData.items);
+                }
+                
+                // ดีบัคสำหรับมายออเดอร์ อินเทลลิเจนซ์
+                if (hasMyOrderSplit && myOrderLine1 && myOrderLine2) {
+                    console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] ชื่อบริษัท: ${ocrData.company_name}`);
+                    console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] รายการที่ 1 - ยอดก่อนภาษี: ${myOrderLine1.amount_before_vat}, ยอดภาษี: ${myOrderLine1.vat_amount}, ยอดรวม: ${myOrderLine1.total_amount}`);
+                    console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] รายการที่ 2 - ยอดก่อนภาษี: ${myOrderLine2.amount_before_vat}, ยอดภาษี: ${myOrderLine2.vat_amount}, ยอดรวม: ${myOrderLine2.total_amount}`);
+                    console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] ยอดรวมทั้งสิ้น: ${ocrTotalAmount}`);
                 }
                 
                 html += `<div class="comparison-field">`;
@@ -3812,8 +3970,7 @@
                 html += `<span class="comparison-field-value ${matchDetails?.date_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.date_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.date_match ? '400' : '600'};">${ocrData.date || '-'}</span>`;
                 html += `</div>`;
                 
-                // ตรวจสอบว่าชื่อผู้ขายเป็น "กรมศุลกากร" หรือไม่
-                const isCustomsDepartment = ocrData.company_name && (ocrData.company_name.includes('กรมศุลกากร') || ocrData.company_name.includes('กรมศุล'));
+                // หมายเหตุ: isCustomsDepartment ถูกประกาศไว้แล้วในส่วนการคำนวณยอดรวมด้านบน
                 
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">ชื่อบริษัท:</span>`;
@@ -3839,20 +3996,89 @@
                 html += `<span class="comparison-field-value ${matchDetails?.reference_no_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.reference_no_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.reference_no_match ? '400' : '600'};">${ocrData.reference_number || '-'}</span>`;
                 html += `</div>`;
                 
-                html += `<div class="comparison-field">`;
-                html += `<span class="comparison-field-label">ยอดก่อนภาษีมูลค่าเพิ่ม:</span>`;
-                html += `<span class="comparison-field-value ${matchDetails?.amount_before_vat_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.amount_before_vat_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.amount_before_vat_match ? '400' : '600'};">${(ocrData.amount_before_vat || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
-                html += `</div>`;
+                // สำหรับมายออเดอร์ อินเทลลิเจนซ์: แสดง 2 บรรทัดแยกกัน
+                if (hasMyOrderSplit && myOrderLine1 && myOrderLine2) {
+                    html += `<div class="comparison-field" style="background: #1e3a5f; padding: 12px; border-radius: 5px; border-left: 3px solid #3b82f6; margin-bottom: 10px;">`;
+                    html += `<div style="color: #60a5fa; font-weight: bold; margin-bottom: 8px;">📋 รายการที่ 1: ค่าบริการเรียกเก็บเงินปลายทาง</div>`;
+                    html += `<div class="comparison-field" style="margin-left: 10px; margin-bottom: 5px;">`;
+                    html += `<span class="comparison-field-label">ยอดก่อนภาษี:</span>`;
+                    html += `<span class="comparison-field-value ${matchDetails?.amount_before_vat_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.amount_before_vat_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.amount_before_vat_match ? '400' : '600'};">${myOrderLine1.amount_before_vat.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
+                    html += `</div>`;
+                    html += `<div class="comparison-field" style="margin-left: 10px; margin-bottom: 5px;">`;
+                    html += `<span class="comparison-field-label">ยอดภาษี:</span>`;
+                    html += `<span class="comparison-field-value ${matchDetails?.vat_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.vat_amount_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.vat_amount_match ? '400' : '600'};">${myOrderLine1.vat_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
+                    html += `</div>`;
+                    html += `<div class="comparison-field" style="margin-left: 10px; margin-top: 8px; padding-top: 8px; border-top: 1px solid #475569;">`;
+                    html += `<span class="comparison-field-label" style="font-weight: 600;">ยอดรวม:</span>`;
+                    html += `<span class="comparison-field-value" style="color: #10b981; font-weight: 600; font-size: 1.05em;">${myOrderLine1.total_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
+                    html += `</div>`;
+                    html += `</div>`;
+                    
+                    html += `<div class="comparison-field" style="background: #1e3a5f; padding: 12px; border-radius: 5px; border-left: 3px solid #3b82f6; margin-bottom: 10px;">`;
+                    html += `<div style="color: #60a5fa; font-weight: bold; margin-bottom: 8px;">📋 รายการที่ 2: ค่าขนส่งภายในประเทศ (ไม่มีภาษีมูลค่าเพิ่ม)</div>`;
+                    html += `<div class="comparison-field" style="margin-left: 10px; margin-bottom: 5px;">`;
+                    html += `<span class="comparison-field-label">ยอดก่อนภาษี:</span>`;
+                    html += `<span class="comparison-field-value ${matchDetails?.amount_before_vat_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.amount_before_vat_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.amount_before_vat_match ? '400' : '600'};">${myOrderLine2.amount_before_vat.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
+                    html += `</div>`;
+                    html += `<div class="comparison-field" style="margin-left: 10px; margin-top: 8px; padding-top: 8px; border-top: 1px solid #475569;">`;
+                    html += `<span class="comparison-field-label" style="font-weight: 600;">ยอดรวม:</span>`;
+                    html += `<span class="comparison-field-value" style="color: #10b981; font-weight: 600; font-size: 1.05em;">${myOrderLine2.total_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
+                    html += `</div>`;
+                    html += `</div>`;
+                    
+                    html += `<div class="comparison-field" style="margin-top: 12px; padding-top: 12px; border-top: 2px solid #475569;">`;
+                    html += `<span class="comparison-field-label" style="font-weight: 600; font-size: 1.1em;">ยอดรวมทั้งสิ้น:</span>`;
+                    const totalAmountDisplay = ocrTotalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                    html += `<span class="comparison-field-value ${matchDetails?.total_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.total_amount_match ? '#10b981' : '#ef4444'}; font-weight: 600; font-size: 1.1em;">
+                        ${totalAmountDisplay}
+                        ${isAutoCalculated ? ' <span style="color: #60a5fa; font-size: 0.85em;">(คำนวณอัตโนมัติ)</span>' : ''}
+                    </span>`;
+                    html += `</div>`;
+                } else {
+                    // กรณีปกติ: แสดงยอดเงินแบบปกติ
+                    html += `<div class="comparison-field">`;
+                    html += `<span class="comparison-field-label">ยอดก่อนภาษีมูลค่าเพิ่ม:</span>`;
+                    html += `<span class="comparison-field-value ${matchDetails?.amount_before_vat_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.amount_before_vat_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.amount_before_vat_match ? '400' : '600'};">${(ocrData.amount_before_vat || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
+                    html += `</div>`;
+                    
+                    html += `<div class="comparison-field">`;
+                    html += `<span class="comparison-field-label">ยอดภาษีมูลค่าเพิ่ม:</span>`;
+                    html += `<span class="comparison-field-value ${matchDetails?.vat_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.vat_amount_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.vat_amount_match ? '400' : '600'};">${(ocrData.vat_amount || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
+                    html += `</div>`;
+                    
+                    html += `<div class="comparison-field">`;
+                    html += `<span class="comparison-field-label">ยอดหลังบวกภาษีมูลค่าเพิ่ม:</span>`;
+                    const totalAmountDisplay = ocrTotalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                    html += `<span class="comparison-field-value ${matchDetails?.total_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.total_amount_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.total_amount_match ? '400' : '600'};">
+                        ${totalAmountDisplay}
+                        ${isAutoCalculated ? ' <span style="color: #60a5fa; font-size: 0.85em;">(คำนวณอัตโนมัติ)</span>' : ''}
+                    </span>`;
+                    html += `</div>`;
+                }
                 
-                html += `<div class="comparison-field">`;
-                html += `<span class="comparison-field-label">ยอดภาษีมูลค่าเพิ่ม:</span>`;
-                html += `<span class="comparison-field-value ${matchDetails?.vat_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.vat_amount_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.vat_amount_match ? '400' : '600'};">${(ocrData.vat_amount || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
-                html += `</div>`;
+                // แสดงข้อมูลดีบัคสำหรับบมจ.ธนาคารกสิกรไทย
+                if (isKasikornBank) {
+                    html += `<div class="comparison-field" style="background: #1e293b; padding: 10px; border-radius: 5px; border-left: 4px solid #60a5fa; margin-top: 10px;">`;
+                    html += `<span class="comparison-field-label" style="color: #60a5fa; font-weight: 600;">🏦 ดีบัค - บมจ.ธนาคารกสิกรไทย:</span>`;
+                    html += `<div style="margin-top: 5px; font-size: 0.9em; color: #cbd5e1;">`;
+                    html += `<div>• ยอดก่อนภาษีมูลค่าเพิ่ม (จากค่าธรรมเนียม): ${(ocrData.amount_before_vat || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>`;
+                    html += `<div>• ยอดภาษีมูลค่าเพิ่ม: ${(ocrData.vat_amount || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>`;
+                    html += `<div>• ยอดหลังบวกภาษีมูลค่าเพิ่ม: ${ocrTotalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${isAutoCalculated ? '(คำนวณอัตโนมัติ)' : ''}</div>`;
+                    html += `</div>`;
+                    html += `</div>`;
+                }
                 
-                html += `<div class="comparison-field">`;
-                html += `<span class="comparison-field-label">ยอดหลังบวกภาษีมูลค่าเพิ่ม:</span>`;
-                html += `<span class="comparison-field-value ${matchDetails?.total_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.total_amount_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.total_amount_match ? '400' : '600'};">${ocrTotalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
-                html += `</div>`;
+                // แสดงข้อมูลดีบัคสำหรับมายออเดอร์ อินเทลลิเจนซ์
+                if (hasMyOrderSplit && myOrderLine1 && myOrderLine2) {
+                    html += `<div class="comparison-field" style="background: #1e293b; padding: 10px; border-radius: 5px; border-left: 4px solid #3b82f6; margin-top: 10px;">`;
+                    html += `<span class="comparison-field-label" style="color: #3b82f6; font-weight: 600;">📦 ดีบัค - มายออเดอร์ อินเทลลิเจนซ์:</span>`;
+                    html += `<div style="margin-top: 5px; font-size: 0.9em; color: #cbd5e1;">`;
+                    html += `<div style="margin-bottom: 5px;"><strong>รายการที่ 1:</strong> ยอดก่อนภาษี: ${myOrderLine1.amount_before_vat.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}, ยอดภาษี: ${myOrderLine1.vat_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}, ยอดรวม: ${myOrderLine1.total_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>`;
+                    html += `<div style="margin-bottom: 5px;"><strong>รายการที่ 2:</strong> ยอดก่อนภาษี: ${myOrderLine2.amount_before_vat.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}, ยอดภาษี: ${myOrderLine2.vat_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}, ยอดรวม: ${myOrderLine2.total_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>`;
+                    html += `<div><strong>ยอดรวมทั้งสิ้น:</strong> ${ocrTotalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${isAutoCalculated ? '(คำนวณอัตโนมัติ)' : ''}</div>`;
+                    html += `</div>`;
+                    html += `</div>`;
+                }
                 
                 // ย้ายประเภทเอกสารและสถานะเอกสารมาหลังยอดหลังบวกภาษีมูลค่าเพิ่ม
                 html += `<div class="comparison-field">`;
@@ -5923,10 +6149,11 @@
                 if (allComparisonsData && Array.isArray(allComparisonsData)) {
                     allComparisonsData.splice(index, 1);
                     
-                    // ลบข้อมูลที่เกี่ยวข้องออกจาก comparisonNotes และ invalidDocuments
+                    // ลบข้อมูลที่เกี่ยวข้องออกจาก comparisonNotes, invalidDocuments, และ selfCheckMode
                     // ต้องปรับ index ทั้งหมดที่มากกว่า index ที่ลบ
                     const newComparisonNotes = {};
                     const newInvalidDocuments = {};
+                    const newSelfCheckMode = {};
                     
                     for (let i = 0; i < allComparisonsData.length; i++) {
                         const oldIndex = i < index ? i : i + 1;
@@ -5936,10 +6163,14 @@
                         if (invalidDocuments[oldIndex] !== undefined) {
                             newInvalidDocuments[i] = invalidDocuments[oldIndex];
                         }
+                        if (selfCheckMode[oldIndex] !== undefined) {
+                            newSelfCheckMode[i] = selfCheckMode[oldIndex];
+                        }
                     }
                     
                     comparisonNotes = newComparisonNotes;
                     invalidDocuments = newInvalidDocuments;
+                    selfCheckMode = newSelfCheckMode;
                     
                     // Re-render หน้าใหม่
                     await reRenderComparisonResults();
@@ -6574,7 +6805,9 @@
                     vatFolderPath: vatFolderPath,  // ส่ง path ของโฟลเดอร์ VAT
                     ocrDataFromStep2: step4OCRData || [],  // ส่งข้อมูล OCR จาก Step 2
                     invalidDocuments: invalidDocuments,  // ส่งสถานะเอกสารใช้ไม่ได้
-                    approvals: comparisonApprovals  // ส่งข้อมูลการอนุมัติฟิลด์
+                    approvals: comparisonApprovals,  // ส่งข้อมูลการอนุมัติฟิลด์
+                    comparisons: allComparisonsData || [],  // ส่งข้อมูล comparisons ที่ถูกกรองแล้ว (รวมรายการที่ลบออกแล้ว)
+                    selfCheckMode: selfCheckMode || {}  // ส่งสถานะการกดปุ่ม "ตรวจสอบเพิ่ม"
                 };
                 
                 console.log('📊 Sending export request:', {
@@ -6602,9 +6835,10 @@
                 document.getElementById('exportLoadingOverlay')?.remove();
                 
                 if (result.success) {
-                    // แสดงข้อความแจ้งเตือนว่าบันทึกไว้ในโฟลเดอร์ VAT แล้ว
-                    const filePath = result.filePath || result.vatFolderPath || '';
+                    // แสดงข้อความแจ้งเตือนว่าบันทึกไว้ในโฟลเดอร์ ภ.พ.30 แล้ว
+                    const filePath = result.filePath || result.pph30FolderPath || result.vatFolderPath || '';
                     const fileName = result.fileName || `รายงานตรวจภาษี_${company}_${taxMonthFormatted}.xlsx`;
+                    const pph30FolderPath = result.pph30FolderPath || result.vatFolderPath || '';
                     
                     // แสดง modal แจ้งเตือน
                     const alertHtml = `
@@ -6616,8 +6850,8 @@
                                 </div>
                                 <div style="background: #0f172a; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #334155;">
                                     <div style="color: #cbd5e1; margin-bottom: 10px;">
-                                        <strong style="color: #60a5fa;">📁 โฟลเดอร์ VAT:</strong><br>
-                                        <span style="color: #fafafa; word-break: break-all;">${filePath ? filePath.replace(/\\/g, '/') : vatFolderPath || 'ไม่พบ path'}</span>
+                                        <strong style="color: #60a5fa;">📁 โฟลเดอร์ ภ.พ.30:</strong><br>
+                                        <span style="color: #fafafa; word-break: break-all;">${pph30FolderPath ? pph30FolderPath.replace(/\\/g, '/') : (filePath ? filePath.replace(/\\/g, '/') : 'ไม่พบ path')}</span>
                                     </div>
                                     <div style="color: #cbd5e1; margin-top: 15px;">
                                         <strong style="color: #60a5fa;">📄 ชื่อไฟล์:</strong><br>

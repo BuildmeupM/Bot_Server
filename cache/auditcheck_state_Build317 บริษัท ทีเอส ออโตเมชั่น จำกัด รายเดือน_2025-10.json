@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-01-22T02:51:48.497Z",
+  "last_saved": "2026-01-22T09:51:48.510433",
+  "company": "Build317 บริษัท ทีเอส ออโตเมชั่น จำกัด รายเดือน",
+  "taxMonth": "2025-10",
+  "taxYear": "2025",
+  "taxMonthValue": "10",
+  "comparisonNotes": {
+    "0": ""
+  },
+  "initialNotes": {
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไทยคณา เอ็นจิเนียริ่ง จำกัด' แต่ OCR='บริษัท ฮาร์ดแวร์เฮาส์ คอร์ปอเรชั่น จำกัด'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0115544003318' แต่ OCR='0115565022583'"
+  },
+  "comparisonApprovals": {
+    "0-document_type_match": true,
+    "0-total_amount_match": true,
+    "0-amount_before_vat_match": true,
+    "0-vat_amount_match": true,
+    "0-reference_no_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {
+    "0": true
+  },
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build317 บริษัท ทีเอส ออโตเมชั่น จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2025\\2025-10\\Vat",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "16.10.2025_EXP-20251000003_510103_Kbank 8163-7(17.10.68)_ค่าตู้ไฟ งาน VNC_VAT.pdf",
+        "company_name": "บริษัท ไทยคณา เอ็นจิเนียริ่ง จำกัด"
+      },
+      {
+        "filename": "16.10.2025_EXP-20251000004_530117_สำรองจ่าย_ค่าเสื้อเซฟตี้ผู้รับเหมา สำรองจ่าย1_VAT.pdf",
+        "company_name": "บริษัท ฮาร์ดแวร์เฮาส์ คอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "ปกภาษาไทย.png",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 2,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251000003",
+        "ocr_document_no": "34815",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251000004",
+        "ocr_document_no": "CS1681016-0454",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": false,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

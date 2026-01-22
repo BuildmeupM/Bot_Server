@@ -3702,7 +3702,8 @@
                                         } else {
                                             amountBeforeVat = ocrJsonData['ยอดรวมก่อนภาษี'] || '0.00';
                                             vatAmount = ocrJsonData['ภาษีมูลค่าเพิ่ม'] || '0.00';
-                                            totalAmount = ocrJsonData['ยอดรวมสุทธิ'] || '0.00';
+                                            // ไม่ใช้ค่าจาก OCR สำหรับยอดรวม แต่จะคำนวณจากยอดก่อนภาษี + ภาษี
+                                            totalAmount = '0.00'; // ตั้งค่าเป็น 0 เพื่อให้คำนวณใหม่
                                         }
                                         
                                         const discount = ocrJsonData['ส่วนลด'] || '0.00';
@@ -3722,9 +3723,16 @@
                                         const withholdingTaxAmountNum = parseAmount(withholdingTaxAmount);
                                         const customsDutyNum = parseAmount(customsDuty);
                                         
-                                        // คำนวณยอดรวมอัตโนมัติถ้ายอดรวมเป็น 0.00 และมียอดก่อนภาษี
+                                        // สำหรับกรณีปกติ: คำนวณยอดรวมอัตโนมัติจากยอดก่อนภาษี + ภาษี (ไม่ใช้ค่าจาก OCR)
                                         let isAutoCalculated = false;
-                                        if (totalAmountNum === 0 && amountBeforeVatNum > 0) {
+                                        // ถ้าไม่ใช่กรณีพิเศษ (MyOrder, Customs, Ksher) ให้คำนวณยอดรวมเสมอ
+                                        if (!hasMyOrderSplit && !isCustomsDepartment && !isKsherPayment) {
+                                            if (amountBeforeVatNum >= 0 && vatAmountNum >= 0) {
+                                                totalAmountNum = amountBeforeVatNum + vatAmountNum;
+                                                isAutoCalculated = true;
+                                            }
+                                        } else if (totalAmountNum === 0 && amountBeforeVatNum > 0) {
+                                            // สำหรับกรณีพิเศษ: คำนวณถ้ายอดรวมเป็น 0
                                             totalAmountNum = amountBeforeVatNum + vatAmountNum;
                                             isAutoCalculated = true;
                                         }
@@ -3773,22 +3781,29 @@
                                                 file.amount_validation_error = null;
                                             }
                                         } else {
-                                            // กรณีปกติ: ตรวจสอบยอดก่อนภาษี + ภาษี - ส่วนลด = ยอดรวม
-                                            const calculatedTotal = amountBeforeVatNum + vatAmountNum - discountNum;
-                                            const difference = Math.abs(totalAmountNum - calculatedTotal);
-                                            const tolerance = 0.01; // อนุญาตให้ต่างกันได้ 0.01 บาท (เพื่อรองรับการปัดเศษ)
-                                            
-                                            if (totalAmountNum > 0 && amountBeforeVatNum >= 0 && vatAmountNum >= 0) {
-                                                if (difference > tolerance) {
-                                                    amountValidationError = {
-                                                        expected: calculatedTotal,
-                                                        actual: totalAmountNum,
-                                                        difference: difference,
-                                                        message: `ยอดรวมที่อ่านได้ (${totalAmountNum.toLocaleString('th-TH', {minimumFractionDigits: 2})}) ไม่ตรงกับยอดก่อนภาษี (${amountBeforeVatNum.toLocaleString('th-TH', {minimumFractionDigits: 2})}) + ภาษี (${vatAmountNum.toLocaleString('th-TH', {minimumFractionDigits: 2})})${discountNum > 0 ? ` - ส่วนลด (${discountNum.toLocaleString('th-TH', {minimumFractionDigits: 2})})` : ''} = ${calculatedTotal.toLocaleString('th-TH', {minimumFractionDigits: 2})}`
-                                                    };
-                                                    file.amount_validation_error = amountValidationError;
-                                                } else {
-                                                    file.amount_validation_error = null;
+                                            // กรณีปกติ: ถ้าระบบคำนวณยอดรวมอัตโนมัติแล้ว ไม่ต้องตรวจสอบความถูกต้อง
+                                            // เพราะยอดรวมถูกคำนวณจากยอดก่อนภาษี + ภาษี แล้ว
+                                            if (isAutoCalculated) {
+                                                // ไม่ต้องตรวจสอบ เพราะยอดรวมถูกคำนวณอัตโนมัติแล้ว
+                                                file.amount_validation_error = null;
+                                            } else {
+                                                // สำหรับกรณีที่ไม่ได้คำนวณอัตโนมัติ (กรณีพิเศษอื่นๆ) ยังคงตรวจสอบตามปกติ
+                                                const calculatedTotal = amountBeforeVatNum + vatAmountNum - discountNum;
+                                                const difference = Math.abs(totalAmountNum - calculatedTotal);
+                                                const tolerance = 0.01; // อนุญาตให้ต่างกันได้ 0.01 บาท (เพื่อรองรับการปัดเศษ)
+                                                
+                                                if (totalAmountNum > 0 && amountBeforeVatNum >= 0 && vatAmountNum >= 0) {
+                                                    if (difference > tolerance) {
+                                                        amountValidationError = {
+                                                            expected: calculatedTotal,
+                                                            actual: totalAmountNum,
+                                                            difference: difference,
+                                                            message: `ยอดรวมที่อ่านได้ (${totalAmountNum.toLocaleString('th-TH', {minimumFractionDigits: 2})}) ไม่ตรงกับยอดก่อนภาษี (${amountBeforeVatNum.toLocaleString('th-TH', {minimumFractionDigits: 2})}) + ภาษี (${vatAmountNum.toLocaleString('th-TH', {minimumFractionDigits: 2})})${discountNum > 0 ? ` - ส่วนลด (${discountNum.toLocaleString('th-TH', {minimumFractionDigits: 2})})` : ''} = ${calculatedTotal.toLocaleString('th-TH', {minimumFractionDigits: 2})}`
+                                                        };
+                                                        file.amount_validation_error = amountValidationError;
+                                                    } else {
+                                                        file.amount_validation_error = null;
+                                                    }
                                                 }
                                             }
                                         }
