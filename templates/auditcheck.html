@@ -641,6 +641,11 @@
             color: #ef4444;
         }
         
+        .comparison-tab-badge.no-ocr-data {
+            background: rgba(139, 92, 246, 0.2);
+            color: #a855f7;
+        }
+        
         .comparison-tab-badge.partial {
             background: rgba(251, 191, 36, 0.2);
             color: #fbbf24;
@@ -1220,6 +1225,29 @@
                             </button>
                         </div>
                     </div>
+                    
+                    <!-- ส่วนแสดงข้อมูลภายในสาขา (สำหรับบริษัทพิเศษที่มีสาขา) -->
+                    <div id="branchInfoSection" style="display: none; margin-top: 20px; padding: 20px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 12px; border: 1px solid #334155;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="font-size: 1.5em;">📁</span>
+                                <div>
+                                    <div style="color: #fafafa; font-size: 1.1em; font-weight: 600;" id="branchInfoTitle">ข้อมูลภายในสาขา</div>
+                                    <div style="color: #94a3b8; font-size: 0.85em; margin-top: 4px;" id="branchInfoPath">-</div>
+                                </div>
+                            </div>
+                            <button onclick="loadBranchInfo()" style="padding: 8px 16px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; gap: 6px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                                <span>🔄</span>
+                                <span>รีเฟรช</span>
+                            </button>
+                        </div>
+                        <div id="branchInfoContent" style="min-height: 100px;">
+                            <div style="padding: 20px; text-align: center; color: #94a3b8;">
+                                <div style="font-size: 1.2em; margin-bottom: 10px;">📂</div>
+                                <div>กดปุ่ม "รีเฟรช" เพื่อดูข้อมูลภายในสาขา</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <button class="btn" onclick="startAudit()">🚀 เริ่มตรวจสอบ</button>
@@ -1419,6 +1447,43 @@
                         </button>
                         <button class="modal-btn modal-btn-primary" id="saveDatabaseBtn" onclick="saveCompanyConfigForm()" style="padding: 10px 24px; border-radius: 8px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.3)';">
                             💾 บันทึก
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal เลือกสาขา -->
+            <div class="modal-overlay" id="branchSelectionModal" style="display: none; backdrop-filter: blur(4px);">
+                <div class="modal-content" style="max-width: 800px;">
+                    <div class="modal-header" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-bottom: 2px solid rgba(59, 130, 246, 0.2); padding: 24px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 16px;">
+                                <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                                    🏢
+                                </div>
+                                <div>
+                                    <div class="modal-title" style="font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #fafafa 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">เลือกสาขา</div>
+                                    <div style="color: #94a3b8; font-size: 0.85em; margin-top: 4px;" id="branchModalCompanyName">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body" style="padding: 24px; background: #0f172a; max-height: 60vh; overflow-y: auto;">
+                        <div id="branchLoading" style="text-align: center; padding: 40px; color: #94a3b8;">
+                            <div style="font-size: 1.2em; margin-bottom: 10px;">⏳</div>
+                            <div>กำลังโหลดรายการสาขา...</div>
+                        </div>
+                        <div id="branchList" style="display: none;">
+                            <!-- รายการสาขาจะถูกสร้างโดย JavaScript -->
+                        </div>
+                        <div id="branchError" style="display: none; text-align: center; padding: 40px; color: #ef4444;">
+                            <div style="font-size: 1.2em; margin-bottom: 10px;">❌</div>
+                            <div id="branchErrorMessage">เกิดข้อผิดพลาดในการโหลดรายการสาขา</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="padding: 20px 24px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-top: 1px solid rgba(51, 65, 85, 0.5); display: flex; justify-content: flex-end; gap: 12px;">
+                        <button class="modal-btn modal-btn-secondary" onclick="closeBranchSelectionModal()" style="padding: 10px 24px; border-radius: 8px; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-1px)';" onmouseout="this.style.transform='translateY(0)';">
+                            ยกเลิก
                         </button>
                     </div>
                 </div>
@@ -2016,6 +2081,10 @@
                                 <span>🤖</span>
                                 <span>ไฟล์ OCR</span>
                             </div>
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding: 8px; background: #1e293b; border-radius: 6px; border-left: 3px solid #60a5fa;">
+                                <span style="color: #94a3b8; font-size: 0.9em; min-width: 120px;">📄 ชื่อไฟล์:</span>
+                                <span style="color: #cbd5e1; font-size: 0.9em; font-weight: 600; word-break: break-all;">${filename}</span>
+                            </div>
                             
                             <div style="display: flex; flex-direction: column; gap: 10px;">
                     `;
@@ -2273,6 +2342,13 @@
                         </div>
                         ${autoRemoveInfo}
                         ${ocrResultsHtml}
+                        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155;">
+                            <button onclick="checkUnreadFiles('${queue.queue_id}', '${escapeHtml(queue.path)}')" style="width: 100%; padding: 12px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #ffffff; border: 1px solid #f59e0b; border-radius: 8px; cursor: pointer; font-size: 0.95em; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s; box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);" onmouseover="this.style.background='linear-gradient(135deg, #d97706 0%, #b45309 100%)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(245, 158, 11, 0.4)';" onmouseout="this.style.background='linear-gradient(135deg, #f59e0b 0%, #d97706 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(245, 158, 11, 0.3)';">
+                                <span style="font-size: 1.1em;">🔍</span>
+                                <span>รีเช็คไฟล์ที่ยังไม่ได้อ่าน</span>
+                            </button>
+                            <div id="unreadFiles-${queue.queue_id}" style="display: none; margin-top: 10px;"></div>
+                        </div>
                     ` : ''}
                     
                     ${status === 'failed' ? `
@@ -2325,6 +2401,131 @@
                 const hours = Math.floor(seconds / 3600);
                 const minutes = Math.floor((seconds % 3600) / 60);
                 return `${hours} ชั่วโมง ${minutes} นาที`;
+            }
+        }
+        
+        // ฟังก์ชันรีเช็คไฟล์ที่ยังไม่ได้อ่าน
+        async function checkUnreadFiles(queueId, folderPath) {
+            const unreadFilesDiv = document.getElementById(`unreadFiles-${queueId}`);
+            unreadFilesDiv.style.display = 'block';
+            unreadFilesDiv.innerHTML = '<div style="padding: 15px; text-align: center; color: #94a3b8;">⏳ กำลังตรวจสอบไฟล์ที่ยังไม่ได้อ่าน...</div>';
+            
+            try {
+                const response = await fetch('/api/auditcheck/ocr-queue/check-unread', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        folder_path: folderPath
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    const unreadFiles = data.unread_files || [];
+                    const allFiles = data.all_files || [];
+                    const readFiles = data.read_files || [];
+                    
+                    let html = '';
+                    
+                    if (unreadFiles.length === 0) {
+                        html = `
+                            <div style="padding: 15px; background: #10b98115; border-radius: 8px; border: 1px solid #10b981; text-align: center;">
+                                <div style="color: #10b981; font-size: 1em; font-weight: 600; margin-bottom: 5px;">
+                                    ✅ ครบทุกไฟล์แล้ว
+                                </div>
+                                <div style="color: #94a3b8; font-size: 0.85em;">
+                                    อ่านครบทั้งหมด ${allFiles.length} ไฟล์
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        html = `
+                            <div style="padding: 15px; background: #f59e0b15; border-radius: 8px; border: 1px solid #f59e0b; margin-bottom: 15px;">
+                                <div style="color: #f59e0b; font-size: 1em; font-weight: 600; margin-bottom: 10px;">
+                                    ⚠️ พบไฟล์ที่ยังไม่ได้อ่าน: ${unreadFiles.length} ไฟล์
+                                </div>
+                                <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 10px;">
+                                    อ่านแล้ว: ${readFiles.length} ไฟล์ | ทั้งหมด: ${allFiles.length} ไฟล์
+                                </div>
+                                <div style="max-height: 300px; overflow-y: auto; background: #0f172a; border-radius: 6px; padding: 10px; margin-top: 10px;">
+                                    <div style="color: #cbd5e1; font-size: 0.9em; font-weight: 600; margin-bottom: 8px;">รายชื่อไฟล์ที่ยังไม่ได้อ่าน:</div>
+                        `;
+                        
+                        unreadFiles.forEach((filename, idx) => {
+                            html += `
+                                <div style="padding: 8px; margin-bottom: 5px; background: #1e293b; border-radius: 4px; border-left: 3px solid #f59e0b; color: #cbd5e1; font-size: 0.85em;">
+                                    ${idx + 1}. ${escapeHtml(filename)}
+                                </div>
+                            `;
+                        });
+                        
+                        html += `
+                                </div>
+                                <button onclick="rerunOCRForUnreadFiles('${queueId}', '${escapeHtml(folderPath)}')" style="width: 100%; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #ffffff; border: 1px solid #10b981; border-radius: 8px; cursor: pointer; font-size: 0.95em; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s; box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);" onmouseover="this.style.background='linear-gradient(135deg, #059669 0%, #047857 100%)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.background='linear-gradient(135deg, #10b981 0%, #059669 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(16, 185, 129, 0.3)';">
+                                    <span style="font-size: 1.1em;">🔄</span>
+                                    <span>อ่านใหม่รอบที่ 2 (${unreadFiles.length} ไฟล์)</span>
+                                </button>
+                            </div>
+                        `;
+                    }
+                    
+                    unreadFilesDiv.innerHTML = html;
+                } else {
+                    unreadFilesDiv.innerHTML = `
+                        <div style="padding: 15px; background: #ef444415; border-radius: 8px; border: 1px solid #ef4444; text-align: center;">
+                            <div style="color: #ef4444; font-size: 0.9em;">
+                                ❌ ${data.error || 'เกิดข้อผิดพลาดในการตรวจสอบ'}
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error checking unread files:', error);
+                unreadFilesDiv.innerHTML = `
+                    <div style="padding: 15px; background: #ef444415; border-radius: 8px; border: 1px solid #ef4444; text-align: center;">
+                        <div style="color: #ef4444; font-size: 0.9em;">
+                            ❌ เกิดข้อผิดพลาด: ${error.message}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // ฟังก์ชันอ่านใหม่รอบที่ 2 สำหรับไฟล์ที่ยังไม่ได้อ่าน
+        async function rerunOCRForUnreadFiles(queueId, folderPath) {
+            if (!confirm(`ต้องการอ่านไฟล์ที่ยังไม่ได้อ่านใหม่หรือไม่?`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/auditcheck/ocr-queue/rerun-unread', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        folder_path: folderPath,
+                        original_queue_id: queueId
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showToast('success', `✅ เริ่มอ่านไฟล์ที่ยังไม่ได้อ่านแล้ว (${data.unread_count || 0} ไฟล์)`);
+                    // รีโหลดรายการคิว
+                    setTimeout(() => {
+                        loadOCRQueue();
+                    }, 1000);
+                } else {
+                    alert('เกิดข้อผิดพลาด: ' + (data.error || 'ไม่ทราบสาเหตุ'));
+                }
+            } catch (error) {
+                console.error('Error rerunning OCR for unread files:', error);
+                alert('เกิดข้อผิดพลาดในการอ่านใหม่: ' + error.message);
             }
         }
         
@@ -2546,22 +2747,315 @@
             });
         }
         
-        function selectCompany(company) {
+        // ตัวแปรเก็บข้อมูลสาขาที่เลือก
+        let selectedBranch = null;
+        let selectedCompanyForBranch = null;
+        let baseCompanyName = null; // เก็บชื่อบริษัทหลัก (ไม่รวมสาขา) สำหรับบริษัทพิเศษ
+        
+        async function selectCompany(company) {
             const input = document.getElementById('companySelect');
             const dropdown = document.getElementById('companyDropdown');
             const clearBtn = document.getElementById('clearCompany');
             
+            dropdown.classList.remove('show');
+            selectedCompanyIndex = -1;
+            
+            // ตรวจสอบว่าเป็นบริษัทพิเศษที่ต้องเลือกสาขาหรือไม่
+            const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
+            if (company === specialCompany) {
+                // แสดง modal เลือกสาขา
+                selectedCompanyForBranch = company;
+                await showBranchSelectionModal(company);
+                return;
+            }
+            
+            // สำหรับบริษัทปกติ ให้ทำงานตามเดิม
             input.value = company;
             document.getElementById('companyValue').value = company;
-            dropdown.classList.remove('show');
             clearBtn.style.display = 'block';
-            selectedCompanyIndex = -1;
+            selectedBranch = null; // รีเซ็ตสาขา
+            baseCompanyName = null; // รีเซ็ตชื่อบริษัทหลัก
+            
+            // ซ่อนส่วนข้อมูลภายในสาขา (สำหรับบริษัทปกติ)
+            const branchInfoSection = document.getElementById('branchInfoSection');
+            if (branchInfoSection) {
+                branchInfoSection.style.display = 'none';
+            }
             
             // แสดงส่วนข้อมูลบริษัท
             document.getElementById('companyInfoGroup').style.display = 'block';
             
             // โหลดข้อมูลบริษัทที่บันทึกไว้
             loadCompanyInfo(company);
+        }
+        
+        // แสดง modal เลือกสาขา
+        async function showBranchSelectionModal(company) {
+            const modal = document.getElementById('branchSelectionModal');
+            const loadingDiv = document.getElementById('branchLoading');
+            const branchListDiv = document.getElementById('branchList');
+            const errorDiv = document.getElementById('branchError');
+            const companyNameDiv = document.getElementById('branchModalCompanyName');
+            
+            // แสดง modal
+            modal.style.display = 'flex';
+            companyNameDiv.textContent = company;
+            
+            // ซ่อนส่วนอื่นๆ และแสดง loading
+            loadingDiv.style.display = 'block';
+            branchListDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+            
+            try {
+                // เรียก API เพื่อดึงรายการสาขา
+                const response = await fetch(`/api/auditcheck/company-branches?company=${encodeURIComponent(company)}`);
+                const data = await response.json();
+                
+                if (!data.success) {
+                    throw new Error(data.error || 'ไม่สามารถโหลดรายการสาขาได้');
+                }
+                
+                const branches = data.branches || [];
+                
+                if (branches.length === 0) {
+                    throw new Error('ไม่พบสาขาในบริษัทนี้');
+                }
+                
+                // สร้างรายการสาขา
+                branchListDiv.innerHTML = '';
+                branches.forEach((branch, index) => {
+                    const branchItem = document.createElement('div');
+                    branchItem.style.cssText = `
+                        padding: 16px 20px;
+                        margin-bottom: 12px;
+                        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+                        border: 2px solid #334155;
+                        border-radius: 12px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        gap: 16px;
+                    `;
+                    branchItem.onmouseover = function() {
+                        this.style.borderColor = '#10b981';
+                        this.style.background = 'linear-gradient(135deg, #1e293b 0%, #1e293b 100%)';
+                        this.style.transform = 'translateX(4px)';
+                        this.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.2)';
+                    };
+                    branchItem.onmouseout = function() {
+                        this.style.borderColor = '#334155';
+                        this.style.background = 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)';
+                        this.style.transform = 'translateX(0)';
+                        this.style.boxShadow = 'none';
+                    };
+                    branchItem.onclick = function() {
+                        selectBranch(branch, company);
+                    };
+                    
+                    branchItem.innerHTML = `
+                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
+                            📁
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="color: #fafafa; font-size: 1.1em; font-weight: 600; margin-bottom: 4px;">${escapeHtml(branch.name)}</div>
+                            <div style="color: #94a3b8; font-size: 0.85em; word-break: break-all;">${escapeHtml(branch.path)}</div>
+                        </div>
+                        <div style="color: #10b981; font-size: 1.5em;">→</div>
+                    `;
+                    
+                    branchListDiv.appendChild(branchItem);
+                });
+                
+                // แสดงรายการสาขา
+                loadingDiv.style.display = 'none';
+                branchListDiv.style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error loading branches:', error);
+                loadingDiv.style.display = 'none';
+                errorDiv.style.display = 'block';
+                document.getElementById('branchErrorMessage').textContent = error.message || 'เกิดข้อผิดพลาดในการโหลดรายการสาขา';
+            }
+        }
+        
+        // เลือกสาขา
+        function selectBranch(branch, company) {
+            selectedBranch = branch;
+            baseCompanyName = company; // เก็บชื่อบริษัทหลักไว้สำหรับใช้ใน modal
+            
+            // อัปเดต company value ให้รวมสาขา (ใช้ path ของสาขา)
+            // แต่เก็บชื่อบริษัทเดิมไว้ใน companySelect
+            const input = document.getElementById('companySelect');
+            const companyValue = branch.path; // ใช้ path ของสาขาเป็น company value
+            
+            input.value = `${company} - ${branch.name}`;
+            document.getElementById('companyValue').value = companyValue;
+            
+            // ปิด modal
+            closeBranchSelectionModal();
+            
+            // แสดงปุ่ม clear
+            document.getElementById('clearCompany').style.display = 'block';
+            
+            // แสดงส่วนข้อมูลบริษัท
+            document.getElementById('companyInfoGroup').style.display = 'block';
+            
+            // แสดงส่วนข้อมูลภายในสาขา
+            const branchInfoSection = document.getElementById('branchInfoSection');
+            const branchInfoTitle = document.getElementById('branchInfoTitle');
+            const branchInfoPath = document.getElementById('branchInfoPath');
+            if (branchInfoSection && branchInfoTitle && branchInfoPath) {
+                branchInfoSection.style.display = 'block';
+                branchInfoTitle.textContent = `ข้อมูลภายในสาขา: ${branch.name}`;
+                branchInfoPath.textContent = branch.path;
+            }
+            
+            // โหลดข้อมูลบริษัท (ใช้ชื่อบริษัทเดิม)
+            loadCompanyInfo(company);
+            
+            // โหลดข้อมูลภายในสาขา
+            loadBranchInfo();
+            
+            // เริ่มทำงานตามระบบที่ตั้งไว้ทันที (สำหรับบริษัทพิเศษที่มีสาขา)
+            // ตรวจสอบว่ามีเดือนภาษีและปีภาษีเลือกไว้แล้วหรือไม่
+            const taxMonth = document.getElementById('taxMonth')?.value;
+            const taxYear = document.getElementById('taxYear')?.value;
+            
+            if (taxMonth && taxYear) {
+                // ถ้ามีเดือนและปีภาษีแล้ว ให้เริ่มทำงานทันที
+                setTimeout(() => {
+                    startAudit();
+                }, 500); // รอสักครู่เพื่อให้ UI อัปเดตเสร็จก่อน
+            } else {
+                // ถ้ายังไม่มีเดือนและปีภาษี ให้แสดงข้อความแจ้งเตือน
+                showAlert('info', 'กรุณาเลือกเดือนและปีภาษีก่อนเริ่มตรวจสอบ');
+            }
+        }
+        
+        // โหลดข้อมูลภายในสาขา
+        async function loadBranchInfo() {
+            if (!selectedBranch) {
+                return;
+            }
+            
+            const branchInfoContent = document.getElementById('branchInfoContent');
+            if (!branchInfoContent) {
+                return;
+            }
+            
+            branchInfoContent.innerHTML = '<div style="padding: 20px; text-align: center; color: #94a3b8;"><div style="font-size: 1.2em; margin-bottom: 10px;">⏳</div><div>กำลังโหลดข้อมูล...</div></div>';
+            
+            try {
+                const response = await fetch('/api/auditcheck/branch-info', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        branch_path: selectedBranch.path
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    let html = '';
+                    
+                    // แสดงโครงสร้างโฟลเดอร์
+                    if (data.folders && data.folders.length > 0) {
+                        html += '<div style="margin-bottom: 20px;">';
+                        html += '<div style="color: #60a5fa; font-size: 1em; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">';
+                        html += '<span>📁</span>';
+                        html += `<span>โฟลเดอร์ย่อย (${data.folders.length})</span>`;
+                        html += '</div>';
+                        html += '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px;">';
+                        
+                        data.folders.forEach((folder, idx) => {
+                            html += `
+                                <div style="padding: 12px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; transition: all 0.3s;" onmouseover="this.style.borderColor='#3b82f6'; this.style.background='#1e293b';" onmouseout="this.style.borderColor='#334155'; this.style.background='#0f172a';">
+                                    <div style="color: #cbd5e1; font-size: 0.9em; font-weight: 600; margin-bottom: 5px; word-break: break-word;">📁 ${escapeHtml(folder.name)}</div>
+                                    <div style="color: #94a3b8; font-size: 0.8em; word-break: break-all;">${escapeHtml(folder.path)}</div>
+                                </div>
+                            `;
+                        });
+                        
+                        html += '</div>';
+                        html += '</div>';
+                    }
+                    
+                    // แสดงไฟล์ PDF
+                    if (data.pdf_files && data.pdf_files.length > 0) {
+                        html += '<div style="margin-bottom: 20px;">';
+                        html += '<div style="color: #10b981; font-size: 1em; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">';
+                        html += '<span>📄</span>';
+                        html += `<span>ไฟล์ PDF (${data.pdf_files.length})</span>`;
+                        html += '</div>';
+                        html += '<div style="max-height: 400px; overflow-y: auto; background: #0f172a; border-radius: 8px; padding: 10px;">';
+                        
+                        data.pdf_files.forEach((file, idx) => {
+                            const fileSizeKB = (file.size / 1024).toFixed(2);
+                            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                            const sizeDisplay = file.size > 1024 * 1024 ? `${fileSizeMB} MB` : `${fileSizeKB} KB`;
+                            
+                            html += `
+                                <div style="padding: 10px; margin-bottom: 8px; background: #1e293b; border-radius: 6px; border-left: 3px solid #10b981; display: flex; align-items: center; justify-content: space-between;">
+                                    <div style="flex: 1; min-width: 0;">
+                                        <div style="color: #cbd5e1; font-size: 0.9em; font-weight: 600; margin-bottom: 4px; word-break: break-word;">📄 ${escapeHtml(file.name)}</div>
+                                        <div style="color: #94a3b8; font-size: 0.8em; word-break: break-all;">${escapeHtml(file.path)}</div>
+                                    </div>
+                                    <div style="color: #94a3b8; font-size: 0.85em; margin-left: 10px; flex-shrink: 0;">${sizeDisplay}</div>
+                                </div>
+                            `;
+                        });
+                        
+                        html += '</div>';
+                        html += '</div>';
+                    }
+                    
+                    if (!data.folders || data.folders.length === 0) {
+                        if (!data.pdf_files || data.pdf_files.length === 0) {
+                            html = '<div style="padding: 20px; text-align: center; color: #94a3b8;"><div style="font-size: 1.2em; margin-bottom: 10px;">📭</div><div>ไม่พบโฟลเดอร์หรือไฟล์ในสาขานี้</div></div>';
+                        }
+                    }
+                    
+                    branchInfoContent.innerHTML = html;
+                } else {
+                    branchInfoContent.innerHTML = `
+                        <div style="padding: 20px; background: #ef444415; border-radius: 8px; border: 1px solid #ef4444; text-align: center;">
+                            <div style="color: #ef4444; font-size: 0.9em;">
+                                ❌ ${data.error || 'เกิดข้อผิดพลาดในการโหลดข้อมูล'}
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading branch info:', error);
+                branchInfoContent.innerHTML = `
+                    <div style="padding: 20px; background: #ef444415; border-radius: 8px; border: 1px solid #ef4444; text-align: center;">
+                        <div style="color: #ef4444; font-size: 0.9em;">
+                            ❌ เกิดข้อผิดพลาด: ${error.message}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // ปิด modal เลือกสาขา
+        function closeBranchSelectionModal() {
+            const modal = document.getElementById('branchSelectionModal');
+            modal.style.display = 'none';
+            
+            // ถ้ายังไม่ได้เลือกสาขา ให้รีเซ็ต
+            if (!selectedBranch && selectedCompanyForBranch) {
+                const input = document.getElementById('companySelect');
+                input.value = '';
+                document.getElementById('companyValue').value = '';
+                document.getElementById('clearCompany').style.display = 'none';
+                document.getElementById('companyInfoGroup').style.display = 'none';
+            }
+            
+            selectedCompanyForBranch = null;
         }
         
         function clearCompany() {
@@ -2574,9 +3068,18 @@
             dropdown.classList.remove('show');
             clearBtn.style.display = 'none';
             selectedCompanyIndex = -1;
+            selectedBranch = null; // รีเซ็ตสาขา
+            selectedCompanyForBranch = null;
+            baseCompanyName = null; // รีเซ็ตชื่อบริษัทหลัก
             
             // ซ่อนส่วนข้อมูลบริษัทเมื่อล้างบริษัท
             document.getElementById('companyInfoGroup').style.display = 'none';
+            
+            // ซ่อนส่วนข้อมูลภายในสาขา
+            const branchInfoSection = document.getElementById('branchInfoSection');
+            if (branchInfoSection) {
+                branchInfoSection.style.display = 'none';
+            }
         }
         
         // ฟังก์ชันแปลงวันที่จาก YYYY-MM-DD เป็น dd/mm/yyyy
@@ -2764,7 +3267,30 @@
             await loadDatabasesForCompany();
             
             // ถ้าเป็นการแก้ไข ให้โหลดข้อมูลบริษัทที่เลือกอยู่
-            const company = document.getElementById('companyValue').value || document.getElementById('companySelect').value;
+            // สำหรับบริษัทพิเศษที่มีสาขา ให้ใช้ชื่อบริษัทหลัก (ไม่รวมสาขา)
+            let company = null;
+            
+            // ถ้ามี baseCompanyName (บริษัทพิเศษที่มีสาขา) ให้ใช้ชื่อนั้น
+            if (baseCompanyName) {
+                company = baseCompanyName;
+            } else {
+                // สำหรับบริษัทปกติ
+                const companySelectValue = document.getElementById('companySelect')?.value || '';
+                const companyValueValue = document.getElementById('companyValue')?.value || '';
+                
+                // ถ้า companySelect มี " - " แสดงว่ามีสาขา ให้ตัดส่วนสาขาออก
+                const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
+                if (companySelectValue.includes(' - ') && companySelectValue.startsWith(specialCompany)) {
+                    company = specialCompany;
+                } else if (companyValueValue && !companyValueValue.startsWith('V:/')) {
+                    // ถ้า companyValue ไม่ใช่ path ให้ใช้ companyValue
+                    company = companyValueValue;
+                } else {
+                    // ใช้ companySelect
+                    company = companySelectValue;
+                }
+            }
+            
             if (company) {
                 try {
                     // แยก Build และชื่อบริษัท
@@ -3047,10 +3573,17 @@
                 return;
             }
             
-            // ตรวจสอบว่าชื่อบริษัทที่เลือกอยู่ในรายการหรือไม่
-            if (!allCompanies.includes(company)) {
-                showAlert('warning', 'กรุณาเลือกบริษัทจากรายการที่แสดง');
-                return;
+            // ตรวจสอบว่าชื่อบริษัทที่เลือกอยู่ในรายการหรือไม่ (ข้ามการตรวจสอบสำหรับบริษัทพิเศษที่มีสาขา)
+            // สำหรับบริษัทพิเศษที่มีสาขา companyValue จะเป็น path ของสาขา ไม่ใช่ชื่อบริษัท
+            const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
+            const isSpecialCompanyWithBranch = baseCompanyName === specialCompany && selectedBranch !== null;
+            
+            if (!isSpecialCompanyWithBranch && !allCompanies.includes(company)) {
+                // ตรวจสอบว่า company เป็น path หรือไม่ (สำหรับสาขา)
+                if (!company.startsWith('V:/') && !company.startsWith('V:\\')) {
+                    showAlert('warning', 'กรุณาเลือกบริษัทจากรายการที่แสดง');
+                    return;
+                }
             }
             
             // Show steps container
@@ -3340,6 +3873,33 @@
                     }
                     html += `</div>`;
                     
+                    // แสดงข้อมูลโฟลเดอร์ VAT เหมือน Step 4
+                    if (data.vatFolderInfo) {
+                        html += `<div style="margin-top: 15px; padding: 15px; background: #1e293b; border-radius: 5px; border-left: 4px solid #3b82f6;">`;
+                        html += `<div style="color: #60a5fa; font-weight: 600; margin-bottom: 10px;">📂 ข้อมูลโฟลเดอร์ VAT:</div>`;
+                        
+                        if (data.vatFolderInfo.month_year_folder) {
+                            html += `<div style="margin-left: 20px; margin-top: 5px; color: #cbd5e1; font-size: 0.9em;">`;
+                            html += `โฟลเดอร์เดือน-ปี: ${data.vatFolderInfo.month_year_folder}`;
+                            html += `</div>`;
+                        }
+                        
+                        if (data.vatFolderInfo.found) {
+                            html += `<div style="margin-left: 20px; margin-top: 10px; color: #10b981;">✅ พบโฟลเดอร์ VAT:</div>`;
+                            if (data.vatFolderInfo.folders && data.vatFolderInfo.folders.length > 0) {
+                                data.vatFolderInfo.folders.forEach(vatFolder => {
+                                    html += `<div style="margin-left: 30px; margin-top: 5px; color: #cbd5e1; font-size: 0.9em;">📂 ${vatFolder.name} (${vatFolder.path})</div>`;
+                                    if (vatFolder.pdf_files_count !== undefined) {
+                                        html += `<div style="margin-left: 35px; color: #6ee7b7; font-size: 0.85em;">📄 พบไฟล์ PDF/JPG/PNG: ${vatFolder.pdf_files_count} ไฟล์</div>`;
+                                    }
+                                });
+                            }
+                        } else {
+                            html += `<div style="margin-left: 20px; margin-top: 10px; color: #ef4444;">❌ ไม่พบโฟลเดอร์ VAT/vat/Vat</div>`;
+                        }
+                        html += `</div>`;
+                    }
+                    
                     // แสดงการเปรียบเทียบจำนวนรายการกับไฟล์ PDF
                     if (data.purchaseTaxRowCount !== undefined && data.pdfFilesCount !== undefined) {
                         html += `<div style="margin-top: 15px; padding: 15px; background: ${data.countMatch ? '#0f172a' : '#1e293b'}; border-radius: 5px; border-left: 4px solid ${data.countMatch ? '#10b981' : '#ef4444'};">`;
@@ -3350,9 +3910,6 @@
                         html += `📊 จำนวนรายการในไฟล์ภาษีซื้อ: <strong style="color: #60a5fa;">${data.purchaseTaxRowCount || 0}</strong> รายการ</div>`;
                         html += `<div style="color: #cbd5e1; margin-bottom: 5px;">`;
                         html += `📁 จำนวนไฟล์ที่รองรับ OCR (PDF/JPG/PNG) ในโฟลเดอร์ VAT: <strong style="color: #60a5fa;">${data.pdfFilesCount || 0}</strong> ไฟล์</div>`;
-                        if (data.vatFolderPath) {
-                            html += `<div style="color: #94a3b8; font-size: 0.9em; margin-top: 5px;">📂 โฟลเดอร์ VAT: ${data.vatFolderPath}</div>`;
-                        }
                         html += `<div style="color: ${data.countMatch ? '#10b981' : '#ef4444'}; font-weight: 600; margin-top: 10px;">`;
                         html += data.countMatch ? '✅ จำนวนรายการตรงกัน' : '❌ จำนวนรายการไม่ตรงกัน';
                         html += `</div>`;
@@ -3753,14 +4310,17 @@
                     html += `<div style="color: #60a5fa; font-weight: 600; margin-bottom: 15px; font-size: 1.1em;">💡 ตัวเลือกการดำเนินการ:</div>`;
                     html += `<div style="display: flex; gap: 15px; flex-wrap: wrap;">`;
                     
-                    // ปุ่ม "ใช้ระบบ OCR"
-                    html += `<button onclick="runOCRForStep4('${taxMonth}', '${company}')" class="btn" style="flex: 1; min-width: 200px; background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);">`;
+                    // ปุ่ม "ใช้ระบบ OCR" - ใช้ companyValue.value โดยตรงเพื่อหลีกเลี่ยงปัญหา escape
+                    const currentCompany = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company || '';
+                    // Escape สำหรับใช้ใน onclick attribute
+                    const currentCompanyEscaped = currentCompany.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                    html += `<button onclick="runOCRForStep4('${taxMonth}', '${currentCompanyEscaped}')" class="btn" style="flex: 1; min-width: 200px; background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);">`;
                     html += `🤖 ใช้ระบบ OCR<br>`;
                     html += `<span style="font-size: 0.85em; opacity: 0.9;">รัน OCR จากไฟล์ PDF และสร้าง Excel</span>`;
                     html += `</button>`;
                     
                     // ปุ่ม "เลือกไฟล์ Excel"
-                    html += `<button onclick="uploadExcelForStep4('${taxMonth}', '${company}')" class="btn" style="flex: 1; min-width: 200px; background: linear-gradient(90deg, #10b981 0%, #059669 100%);">`;
+                    html += `<button onclick="uploadExcelForStep4('${taxMonth}', '${currentCompanyEscaped}')" class="btn" style="flex: 1; min-width: 200px; background: linear-gradient(90deg, #10b981 0%, #059669 100%);">`;
                     html += `📁 เลือกไฟล์ Excel<br>`;
                     html += `<span style="font-size: 0.85em; opacity: 0.9;">เลือกไฟล์ Excel ที่มีอยู่แล้ว</span>`;
                     html += `</button>`;
@@ -3895,6 +4455,7 @@
                         let fullMatchedComparisons = uniqueComparisons.filter(comp => comp.match_status === 'full_match');
                         let partialMatchedComparisons = uniqueComparisons.filter(comp => comp.match_status === 'partial_match');
                         let mismatchedComparisons = uniqueComparisons.filter(comp => comp.match_status === 'no_match');
+                        let noOcrDataComparisons = uniqueComparisons.filter(comp => comp.match_status === 'no_ocr_data'); // ไม่มี OCR ใน cache
                         
                         html += `<div style="margin-top: 15px;">`;
                         
@@ -3913,6 +4474,9 @@
                         html += `</button>`;
                         html += `<button class="comparison-tab" onclick="switchComparisonTab('mismatch')">`;
                         html += `ข้อมูลไม่ตรงกัน <span class="comparison-tab-badge mismatch">${mismatchedComparisons.length}</span>`;
+                        html += `</button>`;
+                        html += `<button class="comparison-tab" onclick="switchComparisonTab('no_ocr_data')">`;
+                        html += `ไม่มีข้อมูล OCR <span class="comparison-tab-badge no-ocr-data">${noOcrDataComparisons.length}</span>`;
                         html += `</button>`;
                         html += `<button class="comparison-tab" onclick="switchComparisonTab('partial')">`;
                         html += `ตรงกันบางส่วน <span class="comparison-tab-badge partial">${partialMatchedComparisons.length}</span>`;
@@ -3994,6 +4558,22 @@
                         } else {
                             html += `<div style="text-align: center; padding: 40px; color: #94a3b8;">`;
                             html += `✅ ไม่มีข้อมูลที่ไม่ตรงกัน`;
+                            html += `</div>`;
+                        }
+                        html += `</div>`;
+                        
+                        // Tab: ไม่มีข้อมูล OCR
+                        html += `<div class="comparison-tab-content" id="comparison-tab-no_ocr_data">`;
+                        if (noOcrDataComparisons.length > 0) {
+                            let noOcrDataCount = 0;
+                            noOcrDataComparisons.forEach((comp, index) => {
+                                const actualIndex = allComparisons.indexOf(comp);
+                                html += generateComparisonRowHTML(comp, actualIndex, 'no_ocr_data');
+                                noOcrDataCount++;
+                            });
+                        } else {
+                            html += `<div style="text-align: center; padding: 40px; color: #94a3b8;">`;
+                            html += `✅ ไม่มีรายการที่ไม่มีข้อมูล OCR`;
                             html += `</div>`;
                         }
                         html += `</div>`;
@@ -4353,31 +4933,130 @@
                     companyAddressMatch = true;
                     companyDataMatches++;
                 } else {
+                    // ฟังก์ชันสำหรับแปลงคำภาษาอังกฤษเป็นภาษาไทย
+                    const transliterateToThai = (text) => {
+                        const map = {
+                            'klongsong': 'คลองสอง',
+                            'klong song': 'คลองสอง',
+                            'klongluang': 'คลองหลวง',
+                            'klong luang': 'คลองหลวง',
+                            'pathumthani': 'ปทุมธานี',
+                            'pathum thani': 'ปทุมธานี'
+                        };
+                        let result = text.toLowerCase();
+                        for (const [eng, thai] of Object.entries(map)) {
+                            result = result.replace(new RegExp(eng, 'gi'), thai);
+                        }
+                        return result;
+                    };
+                    
                     const extractKeyParts = (addr) => {
                         const parts = [];
-                        const houseNo = addr.match(/\d+\/\d+|\d+/g);
-                        if (houseNo) parts.push(...houseNo);
+                        const addrLower = addr.toLowerCase();
+                        
+                        // หาเลขที่บ้าน (ต้องตรงกันเป๊ะ)
+                        const houseNoPatterns = [
+                            /\d+\/\d+/,  // เช่น 5/29
+                            /\b\d{2,}\b/  // เช่น 129 (เลขที่บ้าน 2 หลักขึ้นไป)
+                        ];
+                        for (const pattern of houseNoPatterns) {
+                            const matches = addr.match(pattern);
+                            if (matches) {
+                                parts.push(...matches.map(m => m.trim()));
+                                break; // หาแค่ตัวแรก
+                            }
+                        }
+                        
+                        // หาเลขไปรษณีย์
                         const postalCode = addr.match(/\b\d{5}\b/g);
                         if (postalCode) parts.push(...postalCode);
-                        const keywords = ['หมู่บ้าน', 'ตำบล', 'อำเภอ', 'จังหวัด', 'นนทบุรี', 'มหาสวัสดิ์', 'บางกรวย', 'อัยย์', 'ราชพฤกษ์'];
-                        keywords.forEach(keyword => {
-                            if (addr.toLowerCase().includes(keyword.toLowerCase())) {
-                                parts.push(keyword.toLowerCase());
+                        
+                        // หาหมู่ที่ (รองรับทั้ง M0015, M15, หมู่ที่ 15)
+                        const mooMatch = addr.match(/(?:m0*|หมู่ที่\s*)(\d+)/i);
+                        if (mooMatch) {
+                            parts.push(`หมู่${mooMatch[1]}`);
+                        }
+                        
+                        // หาตำบล อำเภอ จังหวัด (รองรับทั้งไทยและอังกฤษ)
+                        const locations = {
+                            'ตำบล': addrLower.match(/ตำบล\s*([^\s,]+)/i),
+                            'อำเภอ': addrLower.match(/อำเภอ\s*([^\s,]+)/i),
+                            'จังหวัด': addrLower.match(/จังหวัด\s*([^\s,]+)/i),
+                            'tambon': addrLower.match(/tambon\s*([^\s,]+)/i),
+                            'amphoe': addrLower.match(/amphoe\s*([^\s,]+)/i),
+                            'province': addrLower.match(/province\s*([^\s,]+)/i)
+                        };
+                        
+                        // หาชื่อตำบล อำเภอ จังหวัด (โดยตรง)
+                        const locationNames = [
+                            'คลองสอง', 'klongsong', 'klong song',
+                            'คลองหลวง', 'klongluang', 'klong luang',
+                            'ปทุมธานี', 'pathumthani', 'pathum thani'
+                        ];
+                        
+                        locationNames.forEach(name => {
+                            const thaiName = transliterateToThai(name);
+                            if (addrLower.includes(name.toLowerCase()) || addrLower.includes(thaiName)) {
+                                parts.push(thaiName);
                             }
                         });
+                        
                         return parts;
                     };
                     
                     const buyerKeyParts = extractKeyParts(buyerAddress);
                     const companyKeyParts = extractKeyParts(companyAddress);
-                    const matchingParts = buyerKeyParts.filter(part => 
-                        companyKeyParts.some(cp => cp === part || cp.includes(part) || part.includes(cp))
-                    );
-                    const matchRatio = buyerKeyParts.length > 0 ? matchingParts.length / Math.max(buyerKeyParts.length, companyKeyParts.length) : 0;
                     
-                    if (matchRatio >= 0.7 || (matchingParts.length >= 3 && buyerKeyParts.length > 0)) {
-                        companyAddressMatch = true;
-                        companyDataMatches++;
+                    // แยกเลขที่บ้านออกมาเปรียบเทียบแยก
+                    const buyerHouseNo = buyerKeyParts.find(p => /^\d+/.test(p));
+                    const companyHouseNo = companyKeyParts.find(p => /^\d+/.test(p));
+                    
+                    // ถ้าเลขที่บ้านไม่ตรงกัน ให้ถือว่าไม่ตรงกัน (ยกเว้นกรณีที่ไม่มีเลขที่บ้าน)
+                    if (buyerHouseNo && companyHouseNo) {
+                        // แปลง 5/29 เป็น 529 สำหรับเปรียบเทียบ
+                        const normalizeHouseNo = (no) => no.replace(/\//g, '').replace(/\D/g, '');
+                        const buyerNoNorm = normalizeHouseNo(buyerHouseNo);
+                        const companyNoNorm = normalizeHouseNo(companyHouseNo);
+                        
+                        // ถ้าเลขที่บ้านไม่ตรงกันเลย ให้ถือว่าไม่ตรงกัน
+                        if (buyerNoNorm !== companyNoNorm && 
+                            !buyerNoNorm.includes(companyNoNorm) && 
+                            !companyNoNorm.includes(buyerNoNorm)) {
+                            // ไม่ตรงกัน - ไม่ต้องทำอะไร (companyAddressMatch ยังเป็น false)
+                        } else {
+                            // เลขที่บ้านตรงกันหรือคล้ายกัน - เปรียบเทียบส่วนอื่นต่อ
+                            const otherBuyerParts = buyerKeyParts.filter(p => p !== buyerHouseNo);
+                            const otherCompanyParts = companyKeyParts.filter(p => p !== companyHouseNo);
+                            const matchingParts = otherBuyerParts.filter(part => 
+                                otherCompanyParts.some(cp => {
+                                    const partNorm = transliterateToThai(part);
+                                    const cpNorm = transliterateToThai(cp);
+                                    return cpNorm === partNorm || cpNorm.includes(partNorm) || partNorm.includes(cpNorm);
+                                })
+                            );
+                            
+                            // ต้องมีส่วนอื่นๆ ตรงกันอย่างน้อย 3 ส่วน (เช่น หมู่ที่, ตำบล, อำเภอ, จังหวัด, รหัสไปรษณีย์)
+                            if (matchingParts.length >= 3) {
+                                companyAddressMatch = true;
+                                companyDataMatches++;
+                            }
+                        }
+                    } else {
+                        // ไม่มีเลขที่บ้าน - เปรียบเทียบส่วนอื่น
+                        const matchingParts = buyerKeyParts.filter(part => 
+                            companyKeyParts.some(cp => {
+                                const partNorm = transliterateToThai(part);
+                                const cpNorm = transliterateToThai(cp);
+                                return cpNorm === partNorm || cpNorm.includes(partNorm) || partNorm.includes(cpNorm);
+                            })
+                        );
+                        const matchRatio = buyerKeyParts.length > 0 ? matchingParts.length / Math.max(buyerKeyParts.length, companyKeyParts.length) : 0;
+                        
+                        // ต้องมีส่วนที่ตรงกันอย่างน้อย 70% หรืออย่างน้อย 3 ส่วน
+                        if (matchRatio >= 0.7 || (matchingParts.length >= 3 && buyerKeyParts.length > 0)) {
+                            companyAddressMatch = true;
+                            companyDataMatches++;
+                        }
                     }
                 }
                 
@@ -5306,10 +5985,12 @@
                 tabIndex = 0;
             } else if (tabName === 'mismatch') {
                 tabIndex = 1;
-            } else if (tabName === 'partial') {
+            } else if (tabName === 'no_ocr_data') {
                 tabIndex = 2;
-            } else if (tabName === 'match') {
+            } else if (tabName === 'partial') {
                 tabIndex = 3;
+            } else if (tabName === 'match') {
+                tabIndex = 4;
             }
             
             if (tabIndex >= 0 && tabs[tabIndex]) {
@@ -5526,13 +6207,43 @@
         // ฟังก์ชัน normalize สำหรับเปรียบเทียบที่อยู่ (global function)
         function normalizeAddress(address) {
             if (!address) return '';
-            return address
-                .toLowerCase()
-                .replace(/ห้องเลขที่\s*-\s*|ชั้นที่\s*-\s*|ถนน\s*-\s*/g, '')
-                .replace(/ห้องเลขที่|ชั้นที่|เลขที่|หมู่ที่|ตำบล|อำเภอ|จังหวัด|หมู่บ้าน/g, '')
-                .replace(/\s+/g, '')
-                .replace(/[.,\-_]/g, '')
-                .trim();
+            // แปลงเป็นตัวพิมพ์เล็ก
+            let normalized = address.toLowerCase();
+            
+            // แปลงคำภาษาอังกฤษเป็นภาษาไทย (สำหรับ OCR ที่อ่านเป็นภาษาอังกฤษ)
+            const transliterationMap = {
+                'klongsong': 'คลองสอง',
+                'klongsong': 'คลองสอง',
+                'klongluang': 'คลองหลวง',
+                'klong luang': 'คลองหลวง',
+                'pathumthani': 'ปทุมธานี',
+                'pathum thani': 'ปทุมธานี',
+                'moo': 'หมู่',
+                'm': 'หมู่',
+                'tambon': 'ตำบล',
+                'amphoe': 'อำเภอ',
+                'changwat': 'จังหวัด',
+                'province': 'จังหวัด'
+            };
+            
+            // แทนที่คำภาษาอังกฤษด้วยภาษาไทย
+            for (const [eng, thai] of Object.entries(transliterationMap)) {
+                normalized = normalized.replace(new RegExp(eng, 'gi'), thai);
+            }
+            
+            // แปลงรูปแบบ M0015, M015, M15 เป็น หมู่ที่ 15
+            normalized = normalized.replace(/m0*(\d+)/gi, 'หมู่ที่$1');
+            normalized = normalized.replace(/m\s*(\d+)/gi, 'หมู่ที่$1');
+            
+            // ลบคำนำหน้าที่ไม่จำเป็น (แต่เก็บเลขที่บ้านไว้)
+            normalized = normalized.replace(/ห้องเลขที่\s*-\s*|ชั้นที่\s*-\s*|ถนน\s*-\s*/g, '');
+            normalized = normalized.replace(/ห้องเลขที่|ชั้นที่/g, '');
+            
+            // ลบช่องว่างซ้ำและเครื่องหมาย
+            normalized = normalized.replace(/\s+/g, ' ');
+            normalized = normalized.replace(/[.,\-_]/g, '');
+            
+            return normalized.trim();
         }
         
         // ฟังก์ชันสำหรับ normalize ชื่อบริษัท (แปลงรูปแบบต่างๆ ให้เป็นรูปแบบมาตรฐาน)
@@ -5968,9 +6679,21 @@
         
         /**
          * สร้าง key สำหรับเก็บสถานะใน LocalStorage
+         * รองรับการแยกสาขาสำหรับบริษัทพิเศษ
          */
         function getStateKey(company, taxMonth) {
             if (!company || !taxMonth) return null;
+            
+            // สำหรับบริษัทพิเศษที่มีสาขา ให้รวมสาขาเข้าไปใน key
+            if (selectedBranch && baseCompanyName) {
+                const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
+                if (baseCompanyName === specialCompany) {
+                    // ใช้ชื่อสาขาใน key เพื่อแยกข้อมูลตามสาขา
+                    const branchName = selectedBranch.name.replace(/[\/\\:]/g, '_');
+                    return `auditcheck_state_${baseCompanyName}_${branchName}_${taxMonth}`;
+                }
+            }
+            
             return `auditcheck_state_${company}_${taxMonth}`;
         }
         
@@ -5997,11 +6720,27 @@
             
             // รวบรวมข้อมูลสถานะทั้งหมด
             const now = new Date();
+            
+            // สำหรับบริษัทพิเศษที่มีสาขา ให้เก็บข้อมูลสาขาด้วย
+            let branchInfo = null;
+            if (selectedBranch && baseCompanyName) {
+                const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
+                if (baseCompanyName === specialCompany) {
+                    branchInfo = {
+                        branch_name: selectedBranch.name,
+                        branch_path: selectedBranch.path,
+                        base_company: baseCompanyName
+                    };
+                }
+            }
+            
             const auditState = {
-                version: '1.0', // เวอร์ชันของ state format
+                version: '1.1', // เพิ่มเวอร์ชันเพื่อรองรับสาขา
                 timestamp: now.toISOString(),
                 last_saved: now.toISOString(), // วันที่และเวลาล่าสุดที่บันทึก
                 company: company,
+                base_company: baseCompanyName || company, // เก็บชื่อบริษัทหลักด้วย
+                branch_info: branchInfo, // ข้อมูลสาขา (ถ้ามี)
                 taxMonth: taxMonthFormatted,
                 taxYear: taxYear,
                 taxMonthValue: taxMonth,
@@ -6086,9 +6825,21 @@
         
         /**
          * โหลดสถานะการตรวจสอบจาก LocalStorage และ Backend
+         * รองรับการแยกสาขาสำหรับบริษัทพิเศษ
          */
         async function loadAuditState(company, taxMonthFormatted) {
-            const stateKey = getStateKey(company, taxMonthFormatted);
+            // สำหรับบริษัทพิเศษที่มีสาขา ให้ใช้ baseCompanyName สำหรับสร้าง stateKey
+            // แต่ใช้ company (path) สำหรับการเรียก API
+            let companyForStateKey = company;
+            if (selectedBranch && baseCompanyName) {
+                const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
+                if (baseCompanyName === specialCompany) {
+                    // ใช้ baseCompanyName สำหรับสร้าง stateKey เพื่อให้ตรงกับที่บันทึกไว้
+                    companyForStateKey = baseCompanyName;
+                }
+            }
+            
+            const stateKey = getStateKey(companyForStateKey, taxMonthFormatted);
             
             if (!stateKey) {
                 console.log('⚠️ ไม่สามารถโหลดสถานะ: ไม่มี company หรือ taxMonth');
@@ -6109,7 +6860,16 @@
             
             // ลองโหลดจาก Backend (ถ้า LocalStorage ไม่มีหรือเก่าเกินไป)
             try {
-                const response = await fetch(`/api/auditcheck/load-state?company=${encodeURIComponent(company)}&taxMonth=${encodeURIComponent(taxMonthFormatted)}`);
+                // สำหรับบริษัทพิเศษที่มีสาขา ให้ส่งข้อมูลสาขาไปด้วย
+                let loadUrl = `/api/auditcheck/load-state?company=${encodeURIComponent(company)}&taxMonth=${encodeURIComponent(taxMonthFormatted)}`;
+                if (selectedBranch && baseCompanyName) {
+                    const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
+                    if (baseCompanyName === specialCompany) {
+                        loadUrl += `&branch_name=${encodeURIComponent(selectedBranch.name)}&base_company=${encodeURIComponent(baseCompanyName)}`;
+                    }
+                }
+                
+                const response = await fetch(loadUrl);
                 if (response.ok) {
                     const backendState = await response.json();
                     if (backendState.success && backendState.state) {
@@ -8366,11 +9126,14 @@
                 // ใช้ closure เพื่อเก็บค่าพารามิเตอร์
                 (function(confirmTaxMonth, confirmCompany, confirmTotalFiles, confirmEstimatedTime) {
                     confirmBtn.onclick = async function() {
+                        // ใช้ companyValue.value โดยตรงเพื่อให้แน่ใจว่าได้ค่า path ที่ถูกต้อง
+                        const actualCompanyForConfirm = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || confirmCompany;
                         console.log('✅ Confirm button clicked');
                         console.log('📊 ocrConfirmData:', ocrConfirmData);
                         console.log('📊 Using parameters:', {
                             taxMonth: confirmTaxMonth,
                             company: confirmCompany,
+                            actualCompanyForConfirm: actualCompanyForConfirm,
                             totalFiles: confirmTotalFiles,
                             estimatedTime: confirmEstimatedTime
                         });
@@ -8395,7 +9158,7 @@
                         // เก็บข้อมูลก่อนปิด modal
                         const confirmData = {
                             taxMonth: confirmTaxMonth,
-                            company: confirmCompany,
+                            company: actualCompanyForConfirm,  // ใช้ actualCompanyForConfirm แทน confirmCompany
                             totalFiles: confirmTotalFiles,
                             estimatedTime: confirmEstimatedTime,
                             ocrMode: ocrMode,  // เพิ่ม OCR mode
@@ -8497,14 +9260,17 @@
             html += `<div style="color: #60a5fa; font-weight: 600; margin-bottom: 15px; font-size: 1.1em;">💡 ตัวเลือกการดำเนินการ:</div>`;
             html += `<div style="display: flex; gap: 15px; flex-wrap: wrap;">`;
             
-            // ปุ่ม "ใช้ระบบ OCR"
-            html += `<button onclick="runOCRForStep4('${taxMonth}', '${company}')" class="btn" style="flex: 1; min-width: 200px; background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);">`;
+            // ปุ่ม "ใช้ระบบ OCR" - ใช้ companyValue.value โดยตรงเพื่อหลีกเลี่ยงปัญหา escape
+            const currentCompany = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company || '';
+            // Escape สำหรับใช้ใน onclick attribute
+            const currentCompanyEscaped = currentCompany.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+            html += `<button onclick="runOCRForStep4('${taxMonth}', '${currentCompanyEscaped}')" class="btn" style="flex: 1; min-width: 200px; background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);">`;
             html += `🤖 ใช้ระบบ OCR<br>`;
             html += `<span style="font-size: 0.85em; opacity: 0.9;">รัน OCR จากไฟล์ PDF และสร้าง Excel</span>`;
             html += `</button>`;
             
             // ปุ่ม "เลือกไฟล์ Excel"
-            html += `<button onclick="uploadExcelForStep4('${taxMonth}', '${company}')" class="btn" style="flex: 1; min-width: 200px; background: linear-gradient(90deg, #10b981 0%, #059669 100%);">`;
+            html += `<button onclick="uploadExcelForStep4('${taxMonth}', '${currentCompanyEscaped}')" class="btn" style="flex: 1; min-width: 200px; background: linear-gradient(90deg, #10b981 0%, #059669 100%);">`;
             html += `📁 เลือกไฟล์ Excel<br>`;
             html += `<span style="font-size: 0.85em; opacity: 0.9;">เลือกไฟล์ Excel ที่มีอยู่แล้ว</span>`;
             html += `</button>`;
@@ -8518,7 +9284,9 @@
         }
         
         async function runOCRAfterConfirm(taxMonth, company, totalFiles, estimatedTime, ocrMode = 'new', selectedFolders = null) {
-            console.log('🚀 runOCRAfterConfirm called with:', { taxMonth, company, totalFiles, estimatedTime, ocrMode, selectedFolders });
+            // ใช้ companyValue.value โดยตรงเพื่อให้แน่ใจว่าได้ค่า path ที่ถูกต้อง
+            const actualCompany = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company;
+            console.log('🚀 runOCRAfterConfirm called with:', { taxMonth, company, actualCompany, totalFiles, estimatedTime, ocrMode, selectedFolders });
             
             const step = document.getElementById('step4');
             const status = document.getElementById('step4Status');
@@ -8616,11 +9384,11 @@
             }, 1000);
             
             try {
-                console.log('📤 Sending OCR request:', { taxMonth, company });
+                console.log('📤 Sending OCR request:', { taxMonth, company: actualCompany });
                 
                 const requestBody = {
                     taxMonth: taxMonth,
-                    company: company,
+                    company: actualCompany,  // ใช้ actualCompany แทน company
                     checkOnly: false,  // รัน OCR จริงๆ
                     ocrMode: ocrMode || 'new',  // ส่ง OCR mode (new หรือ continue)
                     include_subfolders: true  // อ่านไฟล์ PDF จากโฟลเดอร์ย่อยด้วย
@@ -8988,7 +9756,9 @@
         });
         
         async function runOCRForStep4(taxMonth, company) {
-            console.log('🚀 runOCRForStep4 called with:', { taxMonth, company });
+            // ใช้ companyValue.value โดยตรงเพื่อให้แน่ใจว่าได้ค่า path ที่ถูกต้อง
+            const actualCompany = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company;
+            console.log('🚀 runOCRForStep4 called with:', { taxMonth, company, actualCompany });
             
             const step = document.getElementById('step4');
             const status = document.getElementById('step4Status');
@@ -9003,7 +9773,7 @@
             // เก็บข้อมูล Step 4 สำหรับใช้เมื่อกดยกเลิก
             step4Data = {
                 taxMonth: taxMonth,
-                company: company
+                company: actualCompany
             };
             
             // ขั้นแรก: ตรวจสอบจำนวนไฟล์ PDF และคำนวณเวลา
@@ -9013,7 +9783,7 @@
             details.innerHTML = '⏳ กำลังตรวจสอบไฟล์ PDF และคำนวณเวลา...';
             
             try {
-                console.log('📤 Sending check request:', { taxMonth, company, checkOnly: true });
+                console.log('📤 Sending check request:', { taxMonth, company: actualCompany, checkOnly: true });
                 
                 // ตรวจสอบจำนวนไฟล์ PDF และคำนวณเวลา
                 const checkResponse = await fetch('/api/auditcheck/run-ocr', {
@@ -9023,7 +9793,7 @@
                     },
                     body: JSON.stringify({
                         taxMonth: taxMonth,
-                        company: company,
+                        company: actualCompany,  // ใช้ actualCompany แทน company
                         checkOnly: true,  // เพิ่ม flag เพื่อตรวจสอบเท่านั้น
                         include_subfolders: true  // อ่านไฟล์ PDF จากโฟลเดอร์ย่อยด้วย
                     })
@@ -9063,8 +9833,11 @@
                 
                 // แสดง modal/popup แทน confirm dialog
                 console.log('📊 Showing OCR Confirm Modal...');
+                // ใช้ companyValue.value โดยตรงเพื่อให้แน่ใจว่าได้ค่า path ที่ถูกต้อง
+                const actualCompanyForModal = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company;
+                console.log('📊 Using actualCompanyForModal:', actualCompanyForModal);
                 const subfolders = checkData.subfolders || [];
-                showOCRConfirmModal(taxMonth, companyName, totalFiles, estimatedTime, taxMonth, company, subfolders);
+                showOCRConfirmModal(taxMonth, companyName, totalFiles, estimatedTime, taxMonth, actualCompanyForModal, subfolders);
                 
                 // หยุดการทำงานที่นี่ รอให้ผู้ใช้ยืนยันใน modal
                 return;
@@ -9078,6 +9851,10 @@
         }
         
         function uploadExcelForStep4(taxMonth, company) {
+            // ใช้ companyValue.value โดยตรงเพื่อให้แน่ใจว่าได้ค่า path ที่ถูกต้อง
+            const actualCompany = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company;
+            console.log('📤 uploadExcelForStep4 called with:', { taxMonth, company, actualCompany });
+            
             // สร้าง input element สำหรับเลือกไฟล์
             const input = document.createElement('input');
             input.type = 'file';
@@ -9103,7 +9880,7 @@
                     const formData = new FormData();
                     formData.append('file', file);
                     formData.append('taxMonth', taxMonth);
-                    formData.append('company', company);
+                    formData.append('company', actualCompany);  // ใช้ actualCompany แทน company
                     
                     const response = await fetch('/api/auditcheck/upload-excel', {
                         method: 'POST',

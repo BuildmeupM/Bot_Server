@@ -16,10 +16,15 @@ import json
 import time
 import hashlib
 import re
+import threading
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 
 logger = logging.getLogger(__name__)
+
+# File locks สำหรับป้องกัน race condition เมื่อบันทึก cache
+_cache_file_locks: Dict[str, threading.Lock] = {}
+_cache_locks_lock = threading.Lock()
 
 
 class OCRCacheManager:
@@ -186,62 +191,112 @@ class OCRCacheManager:
             logger.error(f"❌ ไม่สามารถโหลด cache: {e}", exc_info=True)
             self.cache_data = {}
     
+    def _get_file_lock(self) -> threading.Lock:
+        """Get or create a file lock for this cache file"""
+        cache_file_str = str(self.cache_file)
+        with _cache_locks_lock:
+            if cache_file_str not in _cache_file_locks:
+                _cache_file_locks[cache_file_str] = threading.Lock()
+            return _cache_file_locks[cache_file_str]
+    
     def _save_cache(self):
-        """บันทึกข้อมูล cache ลงไฟล์ (แยกไฟล์ถ้าข้อมูลใหญ่เกินไป)"""
-        try:
-            total_entries = len(self.cache_data)
-            
-            # ถ้าข้อมูลไม่มาก ให้บันทึกลงไฟล์เดียว
-            if total_entries <= self.MAX_ENTRIES_PER_FILE:
-                # ตรวจสอบขนาดไฟล์ก่อนบันทึก
-                import io
-                test_buffer = io.StringIO()
-                json.dump(self.cache_data, test_buffer, ensure_ascii=False, indent=2)
-                test_size = len(test_buffer.getvalue().encode('utf-8'))
+        """บันทึกข้อมูล cache ลงไฟล์ (แยกไฟล์ถ้าข้อมูลใหญ่เกินไป) - มี file locking เพื่อป้องกัน race condition"""
+        file_lock = self._get_file_lock()
+        
+        with file_lock:
+            try:
+                # Reload cache ก่อนบันทึกเพื่อ merge ข้อมูลใหม่กับข้อมูลเก่า (ป้องกัน race condition)
+                # แต่เก็บข้อมูลใหม่ที่เพิ่งเพิ่มไว้ก่อน
+                new_cache_data = self.cache_data.copy()
                 
-                if test_size <= self.MAX_FILE_SIZE:
-                    # บันทึกลงไฟล์เดียว
-                    with open(self.cache_file, 'w', encoding='utf-8') as f:
-                        json.dump(self.cache_data, f, ensure_ascii=False, indent=2)
+                # โหลด cache ใหม่จากไฟล์ (อาจมีข้อมูลที่ถูกเพิ่มโดย thread อื่น)
+                try:
+                    # หาไฟล์ cache ทั้งหมดที่เกี่ยวข้อง
+                    cache_files = []
+                    if self.cache_file.exists():
+                        cache_files.append(self.cache_file)
                     
-                    # ลบไฟล์ part ทั้งหมด (ถ้ามี)
-                    self._delete_part_files()
+                    part_index = 1
+                    while True:
+                        part_file = self.cache_dir / f"{self.cache_file_base.name}_part{part_index}.json"
+                        if part_file.exists():
+                            cache_files.append(part_file)
+                            part_index += 1
+                        else:
+                            break
                     
-                    logger.debug(f"💾 บันทึก cache สำเร็จ: {total_entries} รายการ (ไฟล์เดียว)")
-                    return
-            
-            # ถ้าข้อมูลมากเกินไป ให้แยกไฟล์
-            logger.info(f"📦 ข้อมูล cache มีขนาดใหญ่ ({total_entries} รายการ) - จะแยกเป็นหลายไฟล์")
-            
-            # แบ่งข้อมูลออกเป็น chunks
-            entries_list = list(self.cache_data.items())
-            num_parts = (total_entries + self.MAX_ENTRIES_PER_FILE - 1) // self.MAX_ENTRIES_PER_FILE
-            
-            # ลบไฟล์ part เก่าทั้งหมดก่อน
-            self._delete_part_files()
-            
-            # บันทึกแต่ละ part
-            for part_index in range(num_parts):
-                start_idx = part_index * self.MAX_ENTRIES_PER_FILE
-                end_idx = min(start_idx + self.MAX_ENTRIES_PER_FILE, total_entries)
-                part_data = dict(entries_list[start_idx:end_idx])
+                    # โหลดข้อมูลจากไฟล์ทั้งหมด
+                    loaded_data = {}
+                    for cache_file in cache_files:
+                        try:
+                            with open(cache_file, 'r', encoding='utf-8') as f:
+                                file_data = json.load(f)
+                                if isinstance(file_data, dict):
+                                    loaded_data.update(file_data)
+                        except (json.JSONDecodeError, Exception) as e:
+                            logger.warning(f"⚠️ ไม่สามารถโหลด cache จาก {cache_file.name}: {e}")
+                    
+                    # Merge: ข้อมูลใหม่จะทับข้อมูลเก่า (ข้อมูลใหม่สำคัญกว่า)
+                    merged_data = {**loaded_data, **new_cache_data}
+                    self.cache_data = merged_data
+                    
+                except Exception as reload_error:
+                    logger.warning(f"⚠️ ไม่สามารถ reload cache ก่อนบันทึก: {reload_error} - จะใช้ข้อมูลปัจจุบันแทน")
+                    # ถ้า reload ไม่ได้ ให้ใช้ข้อมูลปัจจุบัน
                 
-                if part_index == 0:
-                    # Part แรกบันทึกลงไฟล์หลัก
-                    with open(self.cache_file, 'w', encoding='utf-8') as f:
-                        json.dump(part_data, f, ensure_ascii=False, indent=2)
-                    logger.debug(f"💾 บันทึก cache part 1: {len(part_data)} รายการ (ไฟล์หลัก)")
-                else:
-                    # Part ถัดไปบันทึกลงไฟล์ part
-                    part_file = self.cache_dir / f"{self.cache_file_base.name}_part{part_index}.json"
-                    with open(part_file, 'w', encoding='utf-8') as f:
-                        json.dump(part_data, f, ensure_ascii=False, indent=2)
-                    logger.debug(f"💾 บันทึก cache part {part_index + 1}: {len(part_data)} รายการ ({part_file.name})")
+                total_entries = len(self.cache_data)
+                
+                # ถ้าข้อมูลไม่มาก ให้บันทึกลงไฟล์เดียว
+                if total_entries <= self.MAX_ENTRIES_PER_FILE:
+                    # ตรวจสอบขนาดไฟล์ก่อนบันทึก
+                    import io
+                    test_buffer = io.StringIO()
+                    json.dump(self.cache_data, test_buffer, ensure_ascii=False, indent=2)
+                    test_size = len(test_buffer.getvalue().encode('utf-8'))
+                    
+                    if test_size <= self.MAX_FILE_SIZE:
+                        # บันทึกลงไฟล์เดียว
+                        with open(self.cache_file, 'w', encoding='utf-8') as f:
+                            json.dump(self.cache_data, f, ensure_ascii=False, indent=2)
+                        
+                        # ลบไฟล์ part ทั้งหมด (ถ้ามี)
+                        self._delete_part_files()
+                        
+                        logger.debug(f"💾 บันทึก cache สำเร็จ: {total_entries} รายการ (ไฟล์เดียว)")
+                        return
+                
+                # ถ้าข้อมูลมากเกินไป ให้แยกไฟล์
+                logger.info(f"📦 ข้อมูล cache มีขนาดใหญ่ ({total_entries} รายการ) - จะแยกเป็นหลายไฟล์")
+                
+                # แบ่งข้อมูลออกเป็น chunks
+                entries_list = list(self.cache_data.items())
+                num_parts = (total_entries + self.MAX_ENTRIES_PER_FILE - 1) // self.MAX_ENTRIES_PER_FILE
+                
+                # ลบไฟล์ part เก่าทั้งหมดก่อน
+                self._delete_part_files()
+                
+                # บันทึกแต่ละ part
+                for part_index in range(num_parts):
+                    start_idx = part_index * self.MAX_ENTRIES_PER_FILE
+                    end_idx = min(start_idx + self.MAX_ENTRIES_PER_FILE, total_entries)
+                    part_data = dict(entries_list[start_idx:end_idx])
+                    
+                    if part_index == 0:
+                        # Part แรกบันทึกลงไฟล์หลัก
+                        with open(self.cache_file, 'w', encoding='utf-8') as f:
+                            json.dump(part_data, f, ensure_ascii=False, indent=2)
+                        logger.debug(f"💾 บันทึก cache part 1: {len(part_data)} รายการ (ไฟล์หลัก)")
+                    else:
+                        # Part ถัดไปบันทึกลงไฟล์ part
+                        part_file = self.cache_dir / f"{self.cache_file_base.name}_part{part_index}.json"
+                        with open(part_file, 'w', encoding='utf-8') as f:
+                            json.dump(part_data, f, ensure_ascii=False, indent=2)
+                        logger.debug(f"💾 บันทึก cache part {part_index + 1}: {len(part_data)} รายการ ({part_file.name})")
+                
+                logger.info(f"✅ บันทึก cache สำเร็จ: {total_entries} รายการ แยกเป็น {num_parts} ไฟล์")
             
-            logger.info(f"✅ บันทึก cache สำเร็จ: {total_entries} รายการ แยกเป็น {num_parts} ไฟล์")
-            
-        except Exception as e:
-            logger.error(f"❌ ไม่สามารถบันทึก cache: {e}", exc_info=True)
+            except Exception as e:
+                logger.error(f"❌ ไม่สามารถบันทึก cache: {e}", exc_info=True)
     
     def _delete_part_files(self):
         """ลบไฟล์ part ทั้งหมด (part1, part2, ...)"""

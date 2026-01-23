@@ -6202,6 +6202,160 @@ def get_auditcheck_companies():
         }), 500
 
 
+@app.route('/api/auditcheck/company-branches', methods=['GET'])
+def get_company_branches():
+    """ดึงรายการสาขาในบริษัท Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน"""
+    try:
+        company = request.args.get('company', '').strip()
+        
+        if not company:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุชื่อบริษัท'
+            }), 400
+        
+        # ตรวจสอบว่าเป็นบริษัทพิเศษที่ต้องเลือกสาขาหรือไม่
+        special_company = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน"
+        if company != special_company:
+            return jsonify({
+                'success': False,
+                'error': 'บริษัทนี้ไม่รองรับการเลือกสาขา'
+            }), 400
+        
+        # ค้นหาโฟลเดอร์บริษัท
+        base_paths = [
+            Path("V:/A.โฟร์เดอร์หลัก") / company,
+            Path("V:/AA.โฟรเดอร์หลัก") / company,
+            Path("V:/AAA.โฟรเดอร์หลัก") / company
+        ]
+        
+        company_folder = None
+        for base_path in base_paths:
+            if base_path.exists() and base_path.is_dir():
+                company_folder = base_path
+                break
+        
+        if not company_folder:
+            return jsonify({
+                'success': False,
+                'error': f'ไม่พบโฟลเดอร์บริษัท: {company}'
+            }), 404
+        
+        # อ่านรายการโฟลเดอร์สาขา
+        branches = []
+        try:
+            for item in company_folder.iterdir():
+                if item.is_dir():
+                    # กรองโฟลเดอร์ที่ไม่ใช่สาขา (เช่น .git, .vscode, etc.)
+                    if item.name.startswith('.'):
+                        continue
+                    branches.append({
+                        'name': item.name,
+                        'path': str(item)
+                    })
+        except Exception as e:
+            logger.error(f"❌ ไม่สามารถอ่านโฟลเดอร์สาขา: {e}", exc_info=True)
+            return jsonify({
+                'success': False,
+                'error': f'ไม่สามารถอ่านโฟลเดอร์สาขา: {str(e)}'
+            }), 500
+        
+        # เรียงลำดับตามชื่อ
+        branches.sort(key=lambda x: x['name'])
+        
+        return jsonify({
+            'success': True,
+            'branches': branches,
+            'company_path': str(company_folder)
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการดึงรายการสาขา: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/branch-info', methods=['POST'])
+def get_branch_info():
+    """ดึงข้อมูลภายในสาขา (โฟลเดอร์ย่อยและไฟล์ PDF)"""
+    try:
+        data = request.json
+        branch_path = data.get('branch_path', '').strip()
+        
+        if not branch_path:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุ path ของสาขา'
+            }), 400
+        
+        branch_folder = Path(branch_path)
+        
+        if not branch_folder.exists():
+            return jsonify({
+                'success': False,
+                'error': f'ไม่พบโฟลเดอร์สาขา: {branch_path}'
+            }), 404
+        
+        if not branch_folder.is_dir():
+            return jsonify({
+                'success': False,
+                'error': f'Path ที่ระบุไม่ใช่โฟลเดอร์: {branch_path}'
+            }), 400
+        
+        folders = []
+        pdf_files = []
+        
+        try:
+            # อ่านโฟลเดอร์ย่อยและไฟล์ PDF
+            for item in branch_folder.iterdir():
+                try:
+                    if item.is_dir():
+                        # ข้ามโฟลเดอร์ที่ซ่อน
+                        if item.name.startswith('.'):
+                            continue
+                        folders.append({
+                            'name': item.name,
+                            'path': str(item)
+                        })
+                    elif item.is_file() and item.suffix.lower() == '.pdf':
+                        pdf_files.append({
+                            'name': item.name,
+                            'path': str(item),
+                            'size': item.stat().st_size
+                        })
+                except (OSError, PermissionError) as e:
+                    logger.warning(f"⚠️ ข้าม item ที่เข้าถึงไม่ได้: {item} - {e}")
+                    continue
+            
+            # เรียงตามชื่อ
+            folders.sort(key=lambda x: x['name'])
+            pdf_files.sort(key=lambda x: x['name'])
+            
+            return jsonify({
+                'success': True,
+                'folders': folders,
+                'pdf_files': pdf_files,
+                'folder_count': len(folders),
+                'pdf_count': len(pdf_files)
+            }), 200
+        
+        except Exception as e:
+            logger.error(f"❌ เกิดข้อผิดพลาดในการอ่านโฟลเดอร์สาขา: {e}", exc_info=True)
+            return jsonify({
+                'success': False,
+                'error': f'ไม่สามารถอ่านโฟลเดอร์สาขาได้: {str(e)}'
+            }), 500
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการดึงข้อมูลสาขา: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
 @app.route('/api/auditcheck/databases', methods=['GET'])
 def get_auditcheck_databases():
     """ดึงรายการฐานข้อมูลทั้งหมดและฐานข้อมูลที่เชื่อมโยงกับบริษัท"""
@@ -6712,12 +6866,8 @@ def check_audit_files():
             f"{year_int}-{month_int}",       # 2026-1 (ปี-เดือน)
         ]
         
-        # ค้นหาในโฟลเดอร์ต่างๆ
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        # ค้นหาในโฟลเดอร์ต่างๆ (รองรับทั้งชื่อบริษัทและ full path)
+        base_paths = get_company_base_paths(company)
         
         found_files = []
         missing_files = []
@@ -6887,45 +7037,123 @@ def check_trial_balance():
                 'error': 'กรุณาระบุเดือนภาษีและชื่อบริษัท'
             }), 400
         
-        # ใช้ API ใหม่ที่ตรวจสอบตามโครงสร้างโฟลเดอร์
-        # โครงสร้าง: บัญชี > 003-ภาษี > ภ.พ.30 > ปี > เดือน-ปี
+        # แปลงเดือนจาก YYYY-MM
         year, month = tax_month.split('-')
         year_int = int(year)
         month_int = int(month)
         
+        # สร้างรูปแบบปี-เดือน (รองรับหลายรูปแบบ)
         month_year_patterns = [
-            f"{month_int:02d}-{year_int}",  # 01-2026
-            f"{month_int}-{year_int}",       # 1-2026
+            f"{year_int}-{month_int:02d}",   # 2025-12 (ปี-เดือน)
+            f"{year_int}-{month_int}",       # 2025-12 (ปี-เดือน)
+            f"{month_int:02d}-{year_int}",   # 12-2025 (เดือน-ปี)
+            f"{month_int}-{year_int}",       # 12-2025 (เดือน-ปี)
         ]
         
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        base_paths = get_company_base_paths(company)
         
         trial_balance_files = []
+        vat_folder_info = {
+            'found': False,
+            'folders': [],
+            'month_year_folder': None
+        }
         
         for base_path in base_paths:
             if not base_path.exists():
                 continue
             
             try:
-                month_year_folder = None
-                year_folder = base_path / "บัญชี" / "003-ภาษี" / "ภ.พ.30" / year
+                # โครงสร้าง: บัญชี > 002-รายจ่าย > PV > [Year] > [Year-Month] > VAT
+                account_folder = base_path / "บัญชี"
+                if not account_folder.exists():
+                    continue
                 
-                if year_folder.exists():
-                    for pattern in month_year_patterns:
-                        potential_folder = year_folder / pattern
-                        if potential_folder.exists():
-                            month_year_folder = potential_folder
-                            break
+                expense_folder = account_folder / "002-รายจ่าย"
+                if not expense_folder.exists():
+                    continue
+                
+                pv_folder = expense_folder / "PV"
+                if not pv_folder.exists():
+                    continue
+                
+                # ค้นหาโฟลเดอร์เดือน-ปี
+                month_year_folder = None
+                
+                # ขั้นตอนที่ 1: มองหาโฟลเดอร์ ปี-เดือน โดยตรงใน PV (เช่น PV > 2025-12)
+                for pattern in month_year_patterns:
+                    potential_folder = pv_folder / pattern
+                    if potential_folder.exists():
+                        month_year_folder = potential_folder
+                        logger.info(f"✅ พบโฟลเดอร์ปี-เดือนโดยตรง: {month_year_folder}")
+                        break
+                
+                # ขั้นตอนที่ 2: ถ้าไม่เจอ ให้มองหาโฟลเดอร์ปีก่อน แล้วเข้าไปมองหาโฟลเดอร์ ปี-เดือน (เช่น PV > 2025 > 2025-12)
+                if not month_year_folder:
+                    try:
+                        # ค้นหาโฟลเดอร์ปี (เช่น 2025)
+                        year_folder = pv_folder / year
+                        if year_folder.exists():
+                            logger.info(f"✅ พบโฟลเดอร์ปี: {year_folder} - กำลังค้นหาโฟลเดอร์ปี-เดือนภายใน...")
+                            # ค้นหาโฟลเดอร์ปี-เดือนภายในโฟลเดอร์ปี (เช่น 2025-12)
+                            # ตรวจสอบเฉพาะโฟลเดอร์ที่ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                            for sub_item in year_folder.iterdir():
+                                if sub_item.is_dir():
+                                    folder_name = sub_item.name
+                                    for pattern in month_year_patterns:
+                                        # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                        if folder_name == pattern:
+                                            month_year_folder = sub_item
+                                            logger.info(f"✅ พบโฟลเดอร์ปี-เดือนภายในปี: {month_year_folder}")
+                                            break
+                                    if month_year_folder:
+                                        break
+                        else:
+                            logger.debug(f"⚠️ ไม่พบโฟลเดอร์ปี {year} ใน {pv_folder}")
+                    except Exception as e:
+                        logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์เดือน-ปี: {e}")
+                
+                # เก็บข้อมูล month_year_folder สำหรับ response
+                if month_year_folder:
+                    vat_folder_info['month_year_folder'] = str(month_year_folder)
                     
-                    if month_year_folder:
-                        # ค้นหาไฟล์งบทดลอง
-                        for file_path in month_year_folder.rglob("*งบทดลอง*"):
-                            if file_path.is_file() and file_path.suffix.lower() in ['.xlsx', '.xls', '.pdf']:
-                                trial_balance_files.append(str(file_path))
+                    # ค้นหาโฟลเดอร์ VAT/vat/Vat และไฟล์ Excel ที่มีคำว่า "งบทดลอง"
+                    vat_folders = []
+                    try:
+                        for item in month_year_folder.iterdir():
+                            if item.is_dir() and item.name.lower() == "vat":
+                                vat_folders.append(item)
+                                vat_folder_info['folders'].append({
+                                    'name': item.name,
+                                    'path': str(item)
+                                })
+                    except Exception as e:
+                        logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์ VAT ใน {month_year_folder}: {e}")
+                    
+                    vat_folder_info['found'] = len(vat_folders) > 0
+                    
+                    # ค้นหาไฟล์ Excel ที่มีคำว่า "งบทดลอง" ในโฟลเดอร์ VAT
+                    if vat_folders:
+                        for vat_folder in vat_folders:
+                            try:
+                                for excel_file in vat_folder.glob("*.xlsx"):
+                                    if excel_file.is_file():
+                                        filename_lower = excel_file.name.lower()
+                                        # ตรวจสอบว่าชื่อไฟล์มีคำว่า "งบทดลอง"
+                                        if "งบทดลอง" in excel_file.name:
+                                            trial_balance_files.append(str(excel_file))
+                            except Exception as e:
+                                logger.warning(f"⚠️ ไม่สามารถค้นหาไฟล์งบทดลองใน {vat_folder}: {e}")
+                    else:
+                        # ถ้าไม่พบโฟลเดอร์ VAT ให้ค้นหาในโฟลเดอร์เดือน-ปีโดยตรง
+                        try:
+                            for excel_file in month_year_folder.glob("*.xlsx"):
+                                if excel_file.is_file():
+                                    # ตรวจสอบว่าชื่อไฟล์มีคำว่า "งบทดลอง"
+                                    if "งบทดลอง" in excel_file.name:
+                                        trial_balance_files.append(str(excel_file))
+                        except Exception as e:
+                            logger.warning(f"⚠️ ไม่สามารถค้นหาไฟล์งบทดลองใน {month_year_folder}: {e}")
             except Exception as e:
                 logger.warning(f"⚠️ ไม่สามารถค้นหาไฟล์งบทดลองใน {base_path}: {e}")
                 continue
@@ -6934,7 +7162,8 @@ def check_trial_balance():
             'success': True,
             'exists': len(trial_balance_files) > 0,
             'fileCount': len(trial_balance_files),
-            'files': trial_balance_files
+            'files': trial_balance_files,
+            'vatFolderInfo': vat_folder_info  # เพิ่มข้อมูลโฟลเดอร์ VAT เหมือน Step 2 และ Step 4
         }), 200
     
     except Exception as e:
@@ -6991,15 +7220,11 @@ def check_excel_files():
             f"{month_int}-{year_int}",       # 10-2025 (เดือน-ปี)
         ]
         
-        # ค้นหาไฟล์ Excel ในโครงสร้าง: บัญชี > 002-รายจ่าย > PV > ปี-เดือน
+        # ค้นหาไฟล์ Excel ในโครงสร้าง: บัญชี > 002-รายจ่าย > PV > ปี-เดือน (รองรับทั้งชื่อบริษัทและ full path)
         excel_file_paths = []
         search_results = []
         
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        base_paths = get_company_base_paths(company)
         
         for base_path in base_paths:
             if not base_path.exists():
@@ -7058,8 +7283,10 @@ def check_excel_files():
                             for item in year_folder.iterdir():
                                 if item.is_dir():
                                     year_folder_subfolders.append(item.name)
+                                    folder_name = item.name
                                     for pattern in month_year_patterns:
-                                        if pattern in item.name or item.name == pattern:
+                                        # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                        if folder_name == pattern:
                                             potential_folder = year_folder / item.name
                                             if potential_folder.exists():
                                                 month_year_folder = potential_folder
@@ -7215,6 +7442,124 @@ def check_excel_files():
         }), 500
 
 
+def get_company_base_paths(company):
+    """
+    แปลง company เป็น base paths สำหรับค้นหาโฟลเดอร์บริษัท
+    รองรับทั้งชื่อบริษัทปกติและ full path (สำหรับสาขา)
+    รองรับรูปแบบ: 
+    - V:A. โฟร์เดอร์หลัก...|branch_name
+    - V:/A.โฟร์เดอร์หลัก.../branch_name
+    - V:/A.โฟร์เดอร์หลัก...|branch_name
+    """
+    logger.info(f"🔍 [get_company_base_paths] Input company: '{company}'")
+    # ถ้า company เป็น full path (เริ่มต้นด้วย V:/ หรือ V:\\) ให้ใช้โดยตรง
+    if company.startswith('V:/') or company.startswith('V:\\'):
+        # ตรวจสอบว่ามี | คั่นหรือไม่ (base_path|branch_name)
+        if '|' in company:
+            parts = company.split('|', 1)
+            base_path_str = parts[0].strip()
+            branch_name = parts[1].strip() if len(parts) > 1 else None
+            
+            base_path = Path(base_path_str)
+            if branch_name:
+                # ลบ x01. หรือ prefix อื่นๆ ออกถ้ามี
+                branch_name_clean = branch_name
+                if branch_name_clean.startswith('x'):
+                    dot_index = branch_name_clean.find('.')
+                    if dot_index > 0:
+                        branch_name_clean = branch_name_clean[dot_index + 1:]
+                base_path = base_path / branch_name_clean
+            
+            return [base_path]
+        return [Path(company)]
+    
+    # ถ้า company เป็น path ที่เริ่มต้นด้วย V: (ไม่มี / หรือ \\) และมี | หรือ \ คั่น (base_path|branch_name หรือ base_path\branch_name)
+    if company.startswith('V:') and ('|' in company or ('\\' in company and not company.startswith('V:/') and not company.startswith('V:\\'))):
+        # แยก base path และ branch name (รองรับทั้ง | และ \)
+        import re
+        if '|' in company:
+            parts = company.split('|', 1)
+        else:
+            # หา backslash แรกที่แยก base path กับ branch name
+            # เช่น V:A.โฟร์เดอร์หลักBuild214...\1.สำนักงานใหญ่...
+            # เราต้องหา backslash ที่แยกชื่อบริษัทกับสาขา
+            # โดยปกติจะเป็น pattern: ...Build214...\1.หรือ...Build214...\x01.
+            # หา pattern ที่มี backslash ตามด้วยตัวเลขหรือ x แล้วตามด้วยจุด
+            match = re.search(r'\\([0-9]+\.|x[0-9]+\.)', company)
+            if match:
+                split_pos = match.start()
+                parts = [company[:split_pos], company[split_pos+1:]]
+            else:
+                # ถ้าไม่เจอ pattern ให้ใช้ backslash แรกที่เจอหลังจาก Build214
+                build214_pos = company.find('Build214')
+                if build214_pos >= 0:
+                    # หา backslash แรกหลังจาก Build214
+                    backslash_pos = company.find('\\', build214_pos)
+                    if backslash_pos >= 0:
+                        parts = [company[:backslash_pos], company[backslash_pos+1:]]
+                    else:
+                        parts = [company, None]
+                else:
+                    parts = [company, None]
+        
+        base_path_str = parts[0].strip()
+        branch_name = parts[1].strip() if len(parts) > 1 and parts[1] else None
+        
+        logger.info(f"🔍 [get_company_base_paths] Parsing V: path with separator")
+        logger.info(f"🔍 [get_company_base_paths] Base path string: '{base_path_str}'")
+        logger.info(f"🔍 [get_company_base_paths] Branch name: '{branch_name}'")
+        
+        # แก้ไข path ให้ถูกต้อง (V:A. โฟร์เดอร์หลัก... -> V:/A.โฟร์เดอร์หลัก...)
+        if base_path_str.startswith('V:'):
+            # แทนที่ V: ด้วย V:/ 
+            base_path_str = base_path_str.replace('V:', 'V:/', 1)
+            logger.info(f"🔍 [get_company_base_paths] After V: -> V:/: '{base_path_str}'")
+            
+            # แก้ไขช่องว่างระหว่าง A. กับ โฟร์เดอร์หลัก (เช่น V:/A. โฟร์เดอร์หลัก -> V:/A.โฟร์เดอร์หลัก)
+            # ใช้ regex เพื่อหาทุก pattern ที่มี A. ตามด้วยช่องว่างและโฟร?เดอร์หลัก
+            # แทนที่ A. ตามด้วยช่องว่างและโฟร?เดอร์หลัก ด้วย A.โฟร์เดอร์หลัก
+            base_path_str = re.sub(r'(V:/A{1,3}\.)\s+(โฟร?เดอร์หลัก)', r'\1\2', base_path_str)
+            logger.info(f"🔍 [get_company_base_paths] After regex fix: '{base_path_str}'")
+        
+        # สร้าง path
+        base_path = Path(base_path_str)
+        logger.info(f"🔍 [get_company_base_paths] Created base_path: {base_path} (exists: {base_path.exists()})")
+        
+        # ถ้ามี branch name ให้เพิ่มเข้าไปใน path
+        if branch_name:
+            # ลบ x01. หรือ prefix อื่นๆ ออกถ้ามี (เช่น \x01. หรือ x01.)
+            branch_name_clean = branch_name
+            # ลบ backslash นำหน้าถ้ามี
+            if branch_name_clean.startswith('\\'):
+                branch_name_clean = branch_name_clean[1:]
+            # ลบ x01. หรือ prefix อื่นๆ ออกถ้ามี
+            if branch_name_clean.startswith('x'):
+                # หา index ของจุดแรก
+                dot_index = branch_name_clean.find('.')
+                if dot_index > 0:
+                    branch_name_clean = branch_name_clean[dot_index + 1:]
+                    logger.info(f"🔍 [get_company_base_paths] Cleaned branch name (x prefix): '{branch_name}' -> '{branch_name_clean}'")
+            # ลบตัวเลขนำหน้าถ้ามี (เช่น 1.สำนักงานใหญ่ -> สำนักงานใหญ่)
+            elif re.match(r'^\d+\.', branch_name_clean):
+                branch_name_clean = re.sub(r'^\d+\.', '', branch_name_clean)
+                logger.info(f"🔍 [get_company_base_paths] Cleaned branch name (number prefix): '{branch_name}' -> '{branch_name_clean}'")
+            
+            base_path = base_path / branch_name_clean
+            logger.info(f"🔍 [get_company_base_paths] Final path with branch: {base_path} (exists: {base_path.exists()})")
+        
+        logger.info(f"🔍 [get_company_base_paths] Generated path (V: with separator): {base_path}")
+        return [base_path]
+    
+    # ถ้าเป็นชื่อบริษัทปกติ ให้สร้าง paths ตามปกติ
+    paths = [
+        Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
+        Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
+        Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
+    ]
+    logger.info(f"🔍 [get_company_base_paths] Generated paths (normal): {[str(p) for p in paths]}")
+    return paths
+
+
 @app.route('/api/auditcheck/run-ocr', methods=['POST'])
 def run_ocr_for_audit():
     """รัน OCR จากไฟล์ PDF ในโฟลเดอร์ VAT และ return ข้อมูล OCR (ไม่สร้าง Excel)"""
@@ -7224,6 +7569,8 @@ def run_ocr_for_audit():
         company = data.get('company', '')
         check_only = data.get('checkOnly', False)  # ถ้าเป็น True จะตรวจสอบเท่านั้น ไม่รัน OCR
         ocr_mode = data.get('ocrMode', 'new')  # 'new' = อ่านใหม่ทั้งหมด, 'continue' = อ่านต่อจากที่ค้าง
+        
+        logger.info(f"🔍 [run-ocr] Received request - tax_month: '{tax_month}', company: '{company}', check_only: {check_only}")
         
         if not tax_month or not company:
             return jsonify({
@@ -7250,59 +7597,87 @@ def run_ocr_for_audit():
             f"{month_int}-{year_int}",
         ]
         
-        # ค้นหาโฟลเดอร์ VAT
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        # ค้นหาโฟลเดอร์ VAT (รองรับทั้งชื่อบริษัทและ full path)
+        logger.info(f"🔍 [run-ocr] Company parameter: '{company}'")
+        base_paths = get_company_base_paths(company)
+        logger.info(f"🔍 [run-ocr] Base paths: {[str(p) for p in base_paths]}")
         
         vat_folder = None
         for base_path in base_paths:
+            logger.info(f"🔍 [run-ocr] Checking base_path: {base_path} (exists: {base_path.exists()})")
             if not base_path.exists():
+                logger.warning(f"⚠️ [run-ocr] Base path does not exist: {base_path}")
                 continue
             
             try:
                 account_folder = base_path / "บัญชี" / "002-รายจ่าย" / "PV"
+                logger.info(f"🔍 [run-ocr] Checking account_folder: {account_folder} (exists: {account_folder.exists()})")
                 if not account_folder.exists():
+                    logger.warning(f"⚠️ [run-ocr] Account folder does not exist: {account_folder}")
                     continue
                 
                 # ค้นหาโฟลเดอร์เดือน-ปี
                 month_year_folder = None
+                
+                # ขั้นตอนที่ 1: มองหาโฟลเดอร์ ปี-เดือน โดยตรงใน PV (เช่น PV > 2025-12)
                 for pattern in month_year_patterns:
                     potential_folder = account_folder / pattern
                     if potential_folder.exists():
                         month_year_folder = potential_folder
+                        logger.info(f"✅ [run-ocr] พบโฟลเดอร์ปี-เดือนโดยตรง: {month_year_folder}")
                         break
                 
+                # ขั้นตอนที่ 2: ถ้าไม่เจอ ให้มองหาโฟลเดอร์ปีก่อน แล้วเข้าไปมองหาโฟลเดอร์ ปี-เดือน (เช่น PV > 2025 > 2025-12)
                 if not month_year_folder:
-                    # ค้นหาในโฟลเดอร์ปี
-                    for item in account_folder.iterdir():
-                        if item.is_dir() and (year in item.name or str(year_int + 543) in item.name):
-                            for pattern in month_year_patterns:
-                                potential_folder = item / pattern
-                                if potential_folder.exists():
-                                    month_year_folder = potential_folder
-                                    break
-                            if month_year_folder:
-                                break
+                    try:
+                        # ค้นหาโฟลเดอร์ปี (เช่น 2025)
+                        year_folder = account_folder / year
+                        logger.info(f"🔍 [run-ocr] Checking year_folder: {year_folder} (exists: {year_folder.exists()})")
+                        if year_folder.exists():
+                            logger.info(f"✅ [run-ocr] พบโฟลเดอร์ปี: {year_folder} - กำลังค้นหาโฟลเดอร์ปี-เดือนภายใน...")
+                            # ค้นหาโฟลเดอร์ปี-เดือนภายในโฟลเดอร์ปี (เช่น 2025-12)
+                            # ตรวจสอบเฉพาะโฟลเดอร์ที่ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                            for sub_item in year_folder.iterdir():
+                                if sub_item.is_dir():
+                                    folder_name = sub_item.name
+                                    logger.debug(f"🔍 [run-ocr] Checking subfolder: {folder_name}")
+                                    for pattern in month_year_patterns:
+                                        # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                        if folder_name == pattern:
+                                            month_year_folder = sub_item
+                                            logger.info(f"✅ [run-ocr] พบโฟลเดอร์ปี-เดือนภายในปี: {month_year_folder}")
+                                            break
+                                    if month_year_folder:
+                                        break
+                        else:
+                            logger.debug(f"⚠️ [run-ocr] ไม่พบโฟลเดอร์ปี {year} ใน {account_folder}")
+                    except Exception as e:
+                        logger.warning(f"⚠️ [run-ocr] ไม่สามารถค้นหาโฟลเดอร์เดือน-ปี: {e}", exc_info=True)
                 
                 if month_year_folder:
+                    logger.info(f"🔍 [run-ocr] Found month_year_folder: {month_year_folder}")
                     # ค้นหาโฟลเดอร์ VAT
                     for item in month_year_folder.iterdir():
                         if item.is_dir() and item.name.lower() == "vat":
                             vat_folder = item
+                            logger.info(f"✅ [run-ocr] พบโฟลเดอร์ VAT: {vat_folder}")
                             break
                     
                     if not vat_folder:
                         vat_folder = month_year_folder
+                        logger.info(f"⚠️ [run-ocr] ไม่พบโฟลเดอร์ VAT ใน {month_year_folder} ใช้โฟลเดอร์เดือน-ปีแทน")
                     
                     break
+                else:
+                    logger.warning(f"⚠️ [run-ocr] ไม่พบ month_year_folder ใน {account_folder}")
             except Exception as e:
-                logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์ VAT ใน {base_path}: {e}")
+                logger.warning(f"⚠️ [run-ocr] ไม่สามารถค้นหาโฟลเดอร์ VAT ใน {base_path}: {e}", exc_info=True)
                 continue
         
         if not vat_folder:
+            logger.error(f"❌ [run-ocr] ไม่พบโฟลเดอร์ VAT สำหรับเดือน {tax_month}")
+            logger.error(f"❌ [run-ocr] Company: '{company}'")
+            logger.error(f"❌ [run-ocr] Base paths checked: {[str(p) for p in base_paths]}")
             return jsonify({
                 'success': False,
                 'error': f'ไม่พบโฟลเดอร์ VAT สำหรับเดือน {tax_month}'
@@ -7517,9 +7892,13 @@ def run_ocr_for_audit():
                 'error': f'ไม่สามารถ import modules ที่จำเป็น: {e}'
             }), 500
         
+        # ดึงชื่อบริษัทจาก path และแยกตามสาขาสำหรับ Build214
+        # สำหรับ run_ocr_for_audit ใช้ vat_folder path
+        company_name = get_company_name_for_cache(str(vat_folder)) if vat_folder else "default"
+        
         # สร้าง Cache Manager สำหรับบริษัทนี้
-        cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name="default")  # 30 วัน
-        logger.info(f"✅ เริ่มต้น OCR Cache Manager สำหรับบริษัท: {company}")
+        cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name=company_name)  # 30 วัน
+        logger.info(f"✅ เริ่มต้น OCR Cache Manager สำหรับบริษัท: {company_name}")
         
         # สร้าง session ID สำหรับ track progress
         import uuid
@@ -7628,16 +8007,21 @@ def run_ocr_for_audit():
                     if not reference_number:
                         # ดึง reference number จากชื่อไฟล์
                         import re
+                        # Pattern: วันที่_REF-NUMBER_...
+                        # ตัวอย่าง: 16.10.2025_EXP-20251000004_530117_... หรือ 09.12.2025_EXPSU202512090002_12-60-1100608...
                         ref_patterns = [
-                            r'\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',
-                            r'^\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',
-                            r'_([A-Z]+-\d+)_',
-                            r'([A-Z]{2,}-\d{8,})',
+                            r'\d{2}\.\d{2}\.\d{4}_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # 16.10.2025_EXP-20251000004_ หรือ 09.12.2025_EXPSU202512090002_
+                            r'^\d{2}\.\d{2}\.\d{4}_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # เริ่มต้นด้วยวันที่
+                            r'_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # รูปแบบ _EXP-20251000004_ หรือ _EXPSU202512090002_
+                            r'([A-Z]{2,}-\d{8,})',  # รูปแบบ EXP-20251000004 (fallback - มี hyphen)
+                            r'([A-Z]{2,}\d{10,})',  # รูปแบบ EXPSU202512090002 (fallback - ไม่มี hyphen, อย่างน้อย 10 หลัก)
+                            r'([A-Z]{4,}\d{8,})',  # รูปแบบ EXPSU202512090002 (fallback - ตัวอักษรอย่างน้อย 4 ตัว)
                         ]
                         for pattern in ref_patterns:
                             match = re.search(pattern, pdf_file.name)
                             if match:
                                 reference_number = match.group(1)
+                                logger.info(f"✅ ดึง reference number จากชื่อไฟล์ (fallback): {reference_number} (จาก {pdf_file.name})")
                                 break
                     
                     # สร้าง ocr_data จาก cache
@@ -7774,12 +8158,14 @@ def run_ocr_for_audit():
                 reference_number = None
                 import re
                 # Pattern: วันที่_REF-NUMBER_...
-                # ตัวอย่าง: 16.10.2025_EXP-20251000004_530117_...
+                # ตัวอย่าง: 16.10.2025_EXP-20251000004_530117_... หรือ 22.12.2025_EXPSU202512220005_... หรือ 09.12.2025_EXPSU202512090002_12-60-1100608...
                 ref_patterns = [
-                    r'\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',  # 16.10.2025_EXP-20251000004_
-                    r'^\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',  # เริ่มต้นด้วยวันที่
-                    r'_([A-Z]+-\d+)_',  # รูปแบบ _EXP-20251000004_
-                    r'([A-Z]{2,}-\d{8,})',  # รูปแบบ EXP-20251000004 (fallback)
+                    r'\d{2}\.\d{2}\.\d{4}_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # 16.10.2025_EXP-20251000004_ หรือ 09.12.2025_EXPSU202512090002_
+                    r'^\d{2}\.\d{2}\.\d{4}_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # เริ่มต้นด้วยวันที่
+                    r'_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # รูปแบบ _EXP-20251000004_ หรือ _EXPSU202512090002_
+                    r'([A-Z]{2,}-\d{8,})',  # รูปแบบ EXP-20251000004 (fallback - มี hyphen)
+                    r'([A-Z]{2,}\d{10,})',  # รูปแบบ EXPSU202512090002 (fallback - ไม่มี hyphen, อย่างน้อย 10 หลัก)
+                    r'([A-Z]{4,}\d{8,})',  # รูปแบบ EXPSU202512090002 (fallback - ตัวอักษรอย่างน้อย 4 ตัว)
                 ]
                 
                 for pattern in ref_patterns:
@@ -8213,8 +8599,10 @@ def run_ocr_for_audit():
             'step_details': 'เทียบ cache กับไฟล์ในโฟลเดอร์ VAT...'
         })
         
-        # ดึงชื่อบริษัทจาก folder path
-        company_name = OCRCacheManager._extract_company_name_from_path(str(vat_folder))
+        # ดึงชื่อบริษัทจาก folder path และแยกตามสาขาสำหรับ Build214
+        company_name = get_company_name_for_cache(str(vat_folder))
+        
+        # สร้าง Cache Manager แยกตามบริษัท/สาขา
         company_cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name=company_name)
         
         # หาไฟล์ที่ยังไม่อ่าน (ไม่มีใน cache หรืออ่านไม่สำเร็จ)
@@ -8485,6 +8873,43 @@ def run_ocr_for_audit():
 
 
 # ===== OCR Queue System =====
+def get_company_name_for_cache(file_path: str) -> str:
+    """
+    ดึงชื่อบริษัทจาก path สำหรับใช้ใน cache
+    รองรับการแยกสาขาสำหรับ Build214
+    
+    Args:
+        file_path: path ของไฟล์หรือโฟลเดอร์
+        
+    Returns:
+        ชื่อบริษัทพร้อมสาขา (ถ้ามี) สำหรับใช้ใน cache
+    """
+    from ocr_cache_manager import OCRCacheManager
+    from pathlib import Path
+    
+    # ดึงชื่อบริษัทจาก path
+    company_name = OCRCacheManager._extract_company_name_from_path(file_path)
+    
+    # สำหรับ Build214 ที่มีสาขา ให้รวมชื่อสาขาเข้าไปใน company_name
+    if company_name and "Build214" in company_name:
+        # หาชื่อสาขาจาก path (folder ที่อยู่ใน Build214)
+        path_obj = Path(file_path)
+        parts = path_obj.parts
+        # หา folder ที่อยู่ใน Build214 (สาขา)
+        build214_index = -1
+        for i, part in enumerate(parts):
+            if "Build214" in str(part):
+                build214_index = i
+                break
+        
+        if build214_index >= 0 and build214_index + 1 < len(parts):
+            # มีสาขา (folder ถัดจาก Build214)
+            branch_name = parts[build214_index + 1]
+            # รวมชื่อสาขาเข้าไปใน company_name
+            company_name = f"{company_name}_{branch_name}"
+    
+    return company_name
+
 def process_ocr_queue(queue_id: str, file_path: str, ocr_mode: str = 'new'):
     """ฟังก์ชันสำหรับประมวลผล OCR queue ใน background thread"""
     try:
@@ -8501,8 +8926,11 @@ def process_ocr_queue(queue_id: str, file_path: str, ocr_mode: str = 'new'):
         from invoice_data_extractor import extract_invoice_data
         from ocr_cache_manager import OCRCacheManager
         
-        # สร้าง Cache Manager
-        cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name="default")
+        # ดึงชื่อบริษัทจาก path และแยกตามสาขาสำหรับ Build214
+        company_name = get_company_name_for_cache(file_path)
+        
+        # สร้าง Cache Manager แยกตามบริษัท/สาขา
+        cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name=company_name)
         processor = TaxOCRProcessor(page_context='auditcheck')
         
         # ค้นหาไฟล์ PDF ใน path
@@ -8772,16 +9200,21 @@ def process_ocr_queue(queue_id: str, file_path: str, ocr_mode: str = 'new'):
                     reference_number = cached_data.get('reference_number')
                     if not reference_number:
                         import re
+                        # Pattern: วันที่_REF-NUMBER_...
+                        # ตัวอย่าง: 16.10.2025_EXP-20251000004_530117_... หรือ 09.12.2025_EXPSU202512090002_12-60-1100608...
                         ref_patterns = [
-                            r'\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',
-                            r'^\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',
-                            r'_([A-Z]+-\d+)_',
-                            r'([A-Z]{2,}-\d{8,})',
+                            r'\d{2}\.\d{2}\.\d{4}_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # 16.10.2025_EXP-20251000004_ หรือ 09.12.2025_EXPSU202512090002_
+                            r'^\d{2}\.\d{2}\.\d{4}_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # เริ่มต้นด้วยวันที่
+                            r'_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # รูปแบบ _EXP-20251000004_ หรือ _EXPSU202512090002_
+                            r'([A-Z]{2,}-\d{8,})',  # รูปแบบ EXP-20251000004 (fallback - มี hyphen)
+                            r'([A-Z]{2,}\d{10,})',  # รูปแบบ EXPSU202512090002 (fallback - ไม่มี hyphen, อย่างน้อย 10 หลัก)
+                            r'([A-Z]{4,}\d{8,})',  # รูปแบบ EXPSU202512090002 (fallback - ตัวอักษรอย่างน้อย 4 ตัว)
                         ]
                         for pattern in ref_patterns:
                             match = re.search(pattern, pdf_file.name)
                             if match:
                                 reference_number = match.group(1)
+                                logger.info(f"✅ ดึง reference number จากชื่อไฟล์ (OCR queue): {reference_number} (จาก {pdf_file.name})")
                                 break
                     
                     # แสดงข้อมูลจาก cache (เรียงลำดับเหมือนหน้า auditcheck)
@@ -9035,6 +9468,255 @@ def list_ocr_queues():
         }), 500
 
 
+@app.route('/api/auditcheck/ocr-queue/check-unread', methods=['POST'])
+def check_unread_files():
+    """ตรวจสอบไฟล์ที่ยังไม่ได้อ่านจาก cache"""
+    try:
+        data = request.json
+        folder_path = data.get('folder_path', '')
+        
+        if not folder_path:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุ path ของโฟลเดอร์'
+            }), 400
+        
+        from ocr_cache_manager import OCRCacheManager
+        from pathlib import Path
+        
+        path_obj = Path(folder_path)
+        if not path_obj.exists():
+            return jsonify({
+                'success': False,
+                'error': 'ไม่พบโฟลเดอร์ที่ระบุ'
+            }), 404
+        
+        # หาไฟล์ PDF ทั้งหมด
+        pdf_files = []
+        if path_obj.is_file() and path_obj.suffix.lower() == '.pdf':
+            pdf_files = [path_obj]
+        elif path_obj.is_dir():
+            pdf_files = list(path_obj.glob('**/*.pdf'))
+        
+        # ดึงชื่อบริษัทจาก path
+        company_name = get_company_name_for_cache(str(path_obj))
+        cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name=company_name)
+        
+        # ตรวจสอบไฟล์ที่อ่านแล้วและยังไม่ได้อ่าน
+        read_files = []
+        unread_files = []
+        
+        for pdf_file in pdf_files:
+            cached_data = cache_manager.get(pdf_file.name, str(pdf_file))
+            if cached_data:
+                read_files.append(pdf_file.name)
+            else:
+                unread_files.append(pdf_file.name)
+        
+        return jsonify({
+            'success': True,
+            'all_files': [f.name for f in pdf_files],
+            'read_files': read_files,
+            'unread_files': unread_files,
+            'total_files': len(pdf_files),
+            'read_count': len(read_files),
+            'unread_count': len(unread_files)
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ Error checking unread files: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/auditcheck/ocr-queue/rerun-unread', methods=['POST'])
+def rerun_ocr_for_unread():
+    """อ่านใหม่รอบที่ 2 สำหรับไฟล์ที่ยังไม่ได้อ่าน"""
+    try:
+        data = request.json
+        folder_path = data.get('folder_path', '')
+        original_queue_id = data.get('original_queue_id', '')
+        
+        if not folder_path:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุ path ของโฟลเดอร์'
+            }), 400
+        
+        from ocr_cache_manager import OCRCacheManager
+        from pathlib import Path
+        
+        path_obj = Path(folder_path)
+        if not path_obj.exists():
+            return jsonify({
+                'success': False,
+                'error': 'ไม่พบโฟลเดอร์ที่ระบุ'
+            }), 404
+        
+        # หาไฟล์ PDF ทั้งหมด
+        pdf_files = []
+        if path_obj.is_file() and path_obj.suffix.lower() == '.pdf':
+            pdf_files = [path_obj]
+        elif path_obj.is_dir():
+            pdf_files = list(path_obj.glob('**/*.pdf'))
+        
+        # ดึงชื่อบริษัทจาก path
+        company_name = get_company_name_for_cache(str(path_obj))
+        cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name=company_name)
+        
+        # หาไฟล์ที่ยังไม่ได้อ่าน
+        unread_files = []
+        for pdf_file in pdf_files:
+            cached_data = cache_manager.get(pdf_file.name, str(pdf_file))
+            if not cached_data:
+                unread_files.append(pdf_file)
+        
+        if len(unread_files) == 0:
+            return jsonify({
+                'success': False,
+                'error': 'ไม่พบไฟล์ที่ยังไม่ได้อ่าน'
+            }), 400
+        
+        # สร้างคิวใหม่สำหรับอ่านไฟล์ที่ยังไม่ได้อ่าน
+        import uuid
+        import threading
+        new_queue_id = str(uuid.uuid4())
+        
+        with ocr_queue_lock:
+            ocr_queue_storage[new_queue_id] = {
+                'queue_id': new_queue_id,
+                'path': folder_path,
+                'status': 'pending',
+                'total': len(unread_files),
+                'completed': 0,
+                'progress': 0,
+                'created_at': datetime.now().isoformat(),
+                'ocr_mode': 'continue',  # ใช้ cache และอ่านต่อ
+                'original_queue_id': original_queue_id,
+                'is_rerun': True
+            }
+        
+        # เริ่มประมวลผลใน background thread
+        thread = threading.Thread(
+            target=process_ocr_queue_rerun,
+            args=(new_queue_id, folder_path, unread_files),
+            daemon=True
+        )
+        thread.start()
+        
+        return jsonify({
+            'success': True,
+            'queue_id': new_queue_id,
+            'unread_count': len(unread_files),
+            'message': f'เริ่มอ่านไฟล์ที่ยังไม่ได้อ่านแล้ว ({len(unread_files)} ไฟล์)'
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ Error rerunning OCR for unread files: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+def process_ocr_queue_rerun(queue_id: str, folder_path: str, unread_files: list):
+    """ฟังก์ชันสำหรับประมวลผล OCR queue รอบที่ 2 สำหรับไฟล์ที่ยังไม่ได้อ่าน"""
+    try:
+        with ocr_queue_lock:
+            if queue_id not in ocr_queue_storage:
+                return
+            
+            queue = ocr_queue_storage[queue_id]
+            queue['status'] = 'processing'
+            queue['started_at'] = datetime.now().isoformat()
+        
+        # Import required modules
+        from email_system.tax_ocr_processor import TaxOCRProcessor
+        from invoice_data_extractor import extract_invoice_data
+        from ocr_cache_manager import OCRCacheManager
+        
+        # ดึงชื่อบริษัทจาก path และแยกตามสาขาสำหรับ Build214
+        company_name = get_company_name_for_cache(folder_path)
+        
+        # สร้าง Cache Manager แยกตามบริษัท/สาขา
+        cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name=company_name)
+        processor = TaxOCRProcessor(page_context='auditcheck')
+        
+        total_files = len(unread_files)
+        ocr_results = []
+        
+        for idx, pdf_file in enumerate(unread_files, 1):
+            try:
+                # อัพเดท progress
+                progress = (idx / total_files) * 100 if total_files > 0 else 0
+                remaining_files = total_files - idx
+                estimated_remaining = remaining_files * 30  # วินาที
+                
+                with ocr_queue_lock:
+                    if queue_id in ocr_queue_storage:
+                        ocr_queue_storage[queue_id]['current_file'] = pdf_file.name
+                        ocr_queue_storage[queue_id]['completed'] = idx
+                        ocr_queue_storage[queue_id]['progress'] = progress
+                        ocr_queue_storage[queue_id]['estimated_time'] = estimated_remaining
+                
+                # อ่าน OCR (ใช้ cache mode 'continue' เพื่ออ่านเฉพาะไฟล์ที่ยังไม่มี cache)
+                ocr_result = processor.get_ocr_raw_data(pdf_file)
+                
+                if ocr_result.get('success'):
+                    # Extract invoice data
+                    invoice_data = extract_invoice_data(
+                        str(pdf_file),
+                        ocr_result.get('text', ''),
+                        pdf_file.name
+                    )
+                    
+                    # รวมข้อมูล
+                    result_data = {
+                        'filename': pdf_file.name,
+                        'success': True,
+                        **ocr_result,
+                        **invoice_data
+                    }
+                    ocr_results.append(result_data)
+                else:
+                    ocr_results.append({
+                        'filename': pdf_file.name,
+                        'success': False,
+                        'error': ocr_result.get('error', 'Unknown error')
+                    })
+                    
+            except Exception as e:
+                logger.error(f"❌ Error processing file {pdf_file.name}: {e}", exc_info=True)
+                ocr_results.append({
+                    'filename': pdf_file.name,
+                    'success': False,
+                    'error': str(e)
+                })
+        
+        # อัพเดทสถานะเป็นเสร็จสิ้น
+        with ocr_queue_lock:
+            if queue_id in ocr_queue_storage:
+                ocr_queue_storage[queue_id]['status'] = 'completed'
+                ocr_queue_storage[queue_id]['completed'] = total_files
+                ocr_queue_storage[queue_id]['progress'] = 100
+                ocr_queue_storage[queue_id]['ocr_results'] = ocr_results
+                ocr_queue_storage[queue_id]['completed_at'] = datetime.now().isoformat()
+                # ตั้งเวลาลบอัตโนมัติ 30 นาทีหลังจากเสร็จ
+                remove_time = datetime.now() + timedelta(minutes=30)
+                ocr_queue_storage[queue_id]['auto_remove_at'] = remove_time.isoformat()
+        
+        logger.info(f"✅ OCR queue rerun completed: {queue_id} ({total_files} files)")
+    
+    except Exception as e:
+        logger.error(f"❌ Error in process_ocr_queue_rerun: {e}", exc_info=True)
+        with ocr_queue_lock:
+            if queue_id in ocr_queue_storage:
+                ocr_queue_storage[queue_id]['status'] = 'failed'
+                ocr_queue_storage[queue_id]['error'] = str(e)
+
+
 @app.route('/api/auditcheck/ocr-queue/cancel/<queue_id>', methods=['POST'])
 def cancel_ocr_queue(queue_id: str):
     """ยกเลิกคิว"""
@@ -9124,12 +9806,8 @@ def upload_excel_for_audit():
             f"{month_int}-{year_int}",
         ]
         
-        # ค้นหาโฟลเดอร์ VAT
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        # ค้นหาโฟลเดอร์ VAT (รองรับทั้งชื่อบริษัทและ full path)
+        base_paths = get_company_base_paths(company)
         
         vat_folder = None
         for base_path in base_paths:
@@ -9143,33 +9821,51 @@ def upload_excel_for_audit():
                 
                 # ค้นหาโฟลเดอร์เดือน-ปี
                 month_year_folder = None
+                
+                # ขั้นตอนที่ 1: มองหาโฟลเดอร์ ปี-เดือน โดยตรงใน PV (เช่น PV > 2025-12)
                 for pattern in month_year_patterns:
                     potential_folder = account_folder / pattern
                     if potential_folder.exists():
                         month_year_folder = potential_folder
+                        logger.info(f"✅ พบโฟลเดอร์ปี-เดือนโดยตรง: {month_year_folder}")
                         break
                 
+                # ขั้นตอนที่ 2: ถ้าไม่เจอ ให้มองหาโฟลเดอร์ปีก่อน แล้วเข้าไปมองหาโฟลเดอร์ ปี-เดือน (เช่น PV > 2025 > 2025-12)
                 if not month_year_folder:
-                    # ค้นหาในโฟลเดอร์ปี
-                    for item in account_folder.iterdir():
-                        if item.is_dir() and (year in item.name or str(year_int + 543) in item.name):
-                            for pattern in month_year_patterns:
-                                potential_folder = item / pattern
-                                if potential_folder.exists():
-                                    month_year_folder = potential_folder
-                                    break
-                            if month_year_folder:
-                                break
+                    try:
+                        # ค้นหาโฟลเดอร์ปี (เช่น 2025)
+                        year_folder = account_folder / year
+                        if year_folder.exists():
+                            logger.info(f"✅ พบโฟลเดอร์ปี: {year_folder} - กำลังค้นหาโฟลเดอร์ปี-เดือนภายใน...")
+                            # ค้นหาโฟลเดอร์ปี-เดือนภายในโฟลเดอร์ปี (เช่น 2025-12)
+                            # ตรวจสอบเฉพาะโฟลเดอร์ที่ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                            for sub_item in year_folder.iterdir():
+                                if sub_item.is_dir():
+                                    folder_name = sub_item.name
+                                    for pattern in month_year_patterns:
+                                        # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                        if folder_name == pattern:
+                                            month_year_folder = sub_item
+                                            logger.info(f"✅ พบโฟลเดอร์ปี-เดือนภายในปี: {month_year_folder}")
+                                            break
+                                    if month_year_folder:
+                                        break
+                        else:
+                            logger.debug(f"⚠️ ไม่พบโฟลเดอร์ปี {year} ใน {account_folder}")
+                    except Exception as e:
+                        logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์เดือน-ปี: {e}")
                 
                 if month_year_folder:
                     # ค้นหาโฟลเดอร์ VAT
                     for item in month_year_folder.iterdir():
                         if item.is_dir() and item.name.lower() == "vat":
                             vat_folder = item
+                            logger.info(f"✅ พบโฟลเดอร์ VAT: {vat_folder}")
                             break
                     
                     if not vat_folder:
                         vat_folder = month_year_folder
+                        logger.info(f"⚠️ ไม่พบโฟลเดอร์ VAT ใน {month_year_folder} ใช้โฟลเดอร์เดือน-ปีแทน")
                     
                     break
             except Exception as e:
@@ -9246,16 +9942,169 @@ def check_purchase_tax():
         ]
         
         # ค้นหาไฟล์ภาษีซื้อในโฟลเดอร์ต่างๆ
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        base_paths = get_company_base_paths(company)
         
         purchase_tax_files = []
         purchase_tax_row_count = 0
         
-        # 1. ค้นหาไฟล์ภาษีซื้อในโครงสร้างโฟลเดอร์ที่เฉพาะเจาะจง: บัญชี > 003-ภาษี > ภ.พ.30 > [Year] > [Month-Year]
+        # 1. ค้นหาไฟล์ภาษีซื้อในโครงสร้าง: บัญชี > 002-รายจ่าย > PV > [Year] > [Year-Month] > VAT
+        for base_path in base_paths:
+            if not base_path.exists():
+                continue
+            
+            try:
+                # โครงสร้าง: บัญชี > 002-รายจ่าย > PV > ปี > ปี-เดือน > VAT
+                account_folder = base_path / "บัญชี"
+                if not account_folder.exists():
+                    continue
+                
+                expense_folder = account_folder / "002-รายจ่าย"
+                if not expense_folder.exists():
+                    continue
+                
+                pv_folder = expense_folder / "PV"
+                if not pv_folder.exists():
+                    continue
+                
+                # ค้นหาโฟลเดอร์ปี-เดือน
+                month_year_folder = None
+                
+                # ขั้นตอนที่ 1: มองหาโฟลเดอร์ ปี-เดือน โดยตรงใน PV (เช่น PV > 2025-12)
+                for pattern in month_year_patterns:
+                    potential_folder = pv_folder / pattern
+                    if potential_folder.exists():
+                        month_year_folder = potential_folder
+                        logger.info(f"✅ พบโฟลเดอร์ปี-เดือนโดยตรง: {month_year_folder}")
+                        break
+                
+                # ขั้นตอนที่ 2: ถ้าไม่เจอ ให้มองหาโฟลเดอร์ปีก่อน แล้วเข้าไปมองหาโฟลเดอร์ ปี-เดือน (เช่น PV > 2025 > 2025-12)
+                if not month_year_folder:
+                    try:
+                        # ค้นหาโฟลเดอร์ปี (เช่น 2025)
+                        year_folder = pv_folder / year
+                        if year_folder.exists():
+                            logger.info(f"✅ พบโฟลเดอร์ปี: {year_folder} - กำลังค้นหาโฟลเดอร์ปี-เดือนภายใน...")
+                            # ค้นหาโฟลเดอร์ปี-เดือนภายในโฟลเดอร์ปี (เช่น 2025-12)
+                            # ตรวจสอบเฉพาะโฟลเดอร์ที่ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                            for sub_item in year_folder.iterdir():
+                                if sub_item.is_dir():
+                                    folder_name = sub_item.name
+                                    for pattern in month_year_patterns:
+                                        # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                        if folder_name == pattern:
+                                            month_year_folder = sub_item
+                                            logger.info(f"✅ พบโฟลเดอร์ปี-เดือนภายในปี: {month_year_folder}")
+                                            break
+                                    if month_year_folder:
+                                        break
+                        else:
+                            logger.debug(f"⚠️ ไม่พบโฟลเดอร์ปี {year} ใน {pv_folder}")
+                    except Exception as e:
+                        logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์เดือน-ปี: {e}")
+                
+                # ถ้าไม่เจอโฟลเดอร์ปี-เดือน ให้ลองค้นหาในโฟลเดอร์ปีโดยตรง
+                search_folders = []
+                if month_year_folder:
+                    # ค้นหาในโฟลเดอร์ VAT ภายในปี-เดือน
+                    vat_folder = month_year_folder / "VAT"
+                    if vat_folder.exists():
+                        search_folders.append(vat_folder)
+                        logger.info(f"✅ พบโฟลเดอร์ VAT ภายในปี-เดือน: {vat_folder}")
+                    # ค้นหาในโฟลเดอร์ปี-เดือนโดยตรง
+                    search_folders.append(month_year_folder)
+                else:
+                    # ค้นหาในโฟลเดอร์ปีโดยตรง (fallback)
+                    year_folder = pv_folder / year
+                    if year_folder.exists():
+                        search_folders.append(year_folder)
+                        logger.info(f"⚠️ ไม่พบโฟลเดอร์ปี-เดือน ใช้โฟลเดอร์ปีแทน: {year_folder}")
+                    
+                    # ค้นหาไฟล์ภาษีซื้อในโฟลเดอร์ที่พบ
+                    for search_folder in search_folders:
+                        try:
+                            # Pattern สำหรับชื่อไฟล์ภาษีซื้อ (ต้องมีคำว่า "ภาษีซื้อ" และไม่ใช่ "ภาษีขาย")
+                            purchase_tax_patterns = [
+                                f"*ภาษีซื้อ*",
+                                f"*รายงานภาษีซื้อ*",
+                                f"*Purchase Tax*",
+                                f"*purchase tax*",
+                                f"*VAT Purchase*",
+                            ]
+                            
+                            # ค้นหาไฟล์ Excel ทั้งหมดในโฟลเดอร์
+                            all_excel_files = list(search_folder.glob("*.xlsx")) + list(search_folder.glob("*.xls"))
+                            
+                            for file_path in all_excel_files:
+                                if not file_path.is_file():
+                                    continue
+                                
+                                filename = file_path.name
+                                filename_lower = filename.lower()
+                                
+                                # ตรวจสอบว่าเป็นไฟล์ภาษีซื้อหรือไม่ (ต้องมีคำว่า "ภาษีซื้อ" และไม่ใช่ "ภาษีขาย")
+                                is_purchase_tax = False
+                                
+                                # ตรวจสอบว่ามีคำว่า "ภาษีซื้อ" หรือ pattern ที่เกี่ยวข้อง
+                                if any(pattern.replace('*', '').lower() in filename_lower for pattern in purchase_tax_patterns):
+                                    is_purchase_tax = True
+                                
+                                # ตรวจสอบว่าไม่ใช่ไฟล์ภาษีขาย
+                                if 'ภาษีขาย' in filename or 'sales tax' in filename_lower or 'vat sales' in filename_lower:
+                                    is_purchase_tax = False
+                                    logger.debug(f"⏭️ ข้ามไฟล์ภาษีขาย: {filename}")
+                                
+                                if not is_purchase_tax:
+                                    continue
+                                
+                                # ตรวจสอบว่าไฟล์ตรงกับเดือนภาษีที่เลือกหรือไม่ (2025-12)
+                                file_month_match = False
+                                
+                                # รูปแบบ 1: PP30-YYYYMM หรือ YYYYMM
+                                year_month_patterns_check = [
+                                    f"{year_int}{month_int:02d}",  # 202512
+                                    f"{year_int}-{month_int:02d}",  # 2025-12
+                                    f"{year_int}-{month_int}",      # 2025-12
+                                    f"{month_int:02d}-{year_int}",  # 12-2025
+                                    f"{month_int}-{year_int}",      # 12-2025
+                                ]
+                                
+                                for ymp in year_month_patterns_check:
+                                    if ymp in filename_lower or ymp in filename:
+                                        file_month_match = True
+                                        break
+                                
+                                # รูปแบบ 2: ตรวจสอบในชื่อไฟล์ว่ามีปีและเดือนที่ตรงกัน
+                                if not file_month_match:
+                                    # หา pattern YYYYMM หรือ YYYY-MM ในชื่อไฟล์
+                                    year_month_matches = re.findall(r'(\d{4})[-]?(\d{1,2})', filename)
+                                    for y, m in year_month_matches:
+                                        try:
+                                            y_int = int(y)
+                                            m_int = int(m)
+                                            if y_int == year_int and m_int == month_int:
+                                                file_month_match = True
+                                                break
+                                        except ValueError:
+                                            pass
+                                
+                                # ถ้าอยู่ในโฟลเดอร์ปี-เดือน (2025-12) หรือ VAT ภายในปี-เดือน ให้ยอมรับไฟล์โดยไม่ต้องตรวจสอบชื่อไฟล์
+                                if month_year_folder:
+                                    if search_folder == month_year_folder or search_folder.name == "VAT":
+                                        file_month_match = True
+                                
+                                if file_month_match:
+                                    purchase_tax_files.append(str(file_path))
+                                    logger.info(f"✅ พบไฟล์ภาษีซื้อที่ตรงกับเดือน {tax_month} ในโฟลเดอร์ {search_folder}: {filename}")
+                                else:
+                                    logger.debug(f"⏭️ ข้ามไฟล์ภาษีซื้อที่ไม่ตรงกับเดือน {tax_month}: {filename}")
+                        except Exception as e:
+                            logger.warning(f"⚠️ ไม่สามารถค้นหาไฟล์ภาษีซื้อใน {search_folder}: {e}")
+            
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถค้นหาไฟล์ภาษีซื้อใน PV folder ของ {base_path}: {e}")
+                continue
+        
+        # 2. ค้นหาไฟล์ภาษีซื้อในโครงสร้างโฟลเดอร์ที่เฉพาะเจาะจง: บัญชี > 003-ภาษี > ภ.พ.30 > [Year] > [Month-Year]
         for base_path in base_paths:
             if not base_path.exists():
                 continue
@@ -9289,11 +10138,143 @@ def check_purchase_tax():
                 # ถ้าไม่เจอโฟลเดอร์เดือน-ปี ให้ลองค้นหาในโฟลเดอร์ปีโดยตรง
                 if not month_year_folder:
                     # ลองค้นหาโฟลเดอร์ที่มีรูปแบบเดือน-ปีในชื่อ
+                    # ตรวจสอบเฉพาะโฟลเดอร์ที่ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
                     try:
                         for item in year_folder.iterdir():
                             if item.is_dir():
+                                folder_name = item.name
                                 for pattern in month_year_patterns:
-                                    if pattern in item.name or item.name == pattern:
+                                    # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                    if folder_name == pattern:
+                                        month_year_folder = item
+                                        break
+                                if month_year_folder:
+                                    break
+                    except Exception as e:
+                        logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์เดือน-ปีใน {year_folder}: {e}")
+                
+                # ค้นหาไฟล์ภาษีซื้อในโฟลเดอร์เดือน-ปี
+                if month_year_folder:
+                    try:
+                        # Pattern สำหรับชื่อไฟล์ภาษีซื้อ (ต้องมีคำว่า "ภาษีซื้อ" และไม่ใช่ "ภาษีขาย")
+                        purchase_tax_patterns = [
+                            f"*ภาษีซื้อ*",
+                            f"*รายงานภาษีซื้อ*",
+                            f"*Purchase Tax*",
+                            f"*purchase tax*",
+                            f"*VAT Purchase*",
+                        ]
+                        
+                        # ค้นหาไฟล์ Excel ทั้งหมดในโฟลเดอร์เดือน-ปี
+                        all_excel_files = list(month_year_folder.glob("*.xlsx")) + list(month_year_folder.glob("*.xls"))
+                        
+                        for file_path in all_excel_files:
+                            if not file_path.is_file():
+                                continue
+                            
+                            filename = file_path.name
+                            filename_lower = filename.lower()
+                            
+                            # ตรวจสอบว่าเป็นไฟล์ภาษีซื้อหรือไม่ (ต้องมีคำว่า "ภาษีซื้อ" และไม่ใช่ "ภาษีขาย")
+                            is_purchase_tax = False
+                            
+                            # ตรวจสอบว่ามีคำว่า "ภาษีซื้อ" หรือ pattern ที่เกี่ยวข้อง
+                            if any(pattern.replace('*', '').lower() in filename_lower for pattern in purchase_tax_patterns):
+                                is_purchase_tax = True
+                            
+                            # ตรวจสอบว่าไม่ใช่ไฟล์ภาษีขาย
+                            if 'ภาษีขาย' in filename or 'sales tax' in filename_lower or 'vat sales' in filename_lower:
+                                is_purchase_tax = False
+                                logger.debug(f"⏭️ ข้ามไฟล์ภาษีขาย: {filename}")
+                            
+                            if not is_purchase_tax:
+                                continue
+                            
+                            # ตรวจสอบว่าไฟล์ตรงกับเดือนภาษีที่เลือกหรือไม่
+                            file_month_match = False
+                            
+                            # รูปแบบ 1: PP30-YYYYMM หรือ YYYYMM
+                            year_month_patterns = [
+                                f"{year_int}{month_int:02d}",  # 202510
+                                f"{year_int}-{month_int:02d}",  # 2025-10
+                                f"{year_int}-{month_int}",      # 2025-10
+                                f"{month_int:02d}-{year_int}",  # 10-2025
+                                f"{month_int}-{year_int}",      # 10-2025
+                            ]
+                            
+                            for ymp in year_month_patterns:
+                                if ymp in filename_lower or ymp in filename:
+                                    file_month_match = True
+                                    break
+                            
+                            # รูปแบบ 2: ตรวจสอบในชื่อไฟล์ว่ามีปีและเดือนที่ตรงกัน
+                            if not file_month_match:
+                                # หา pattern YYYYMM หรือ YYYY-MM ในชื่อไฟล์
+                                year_month_matches = re.findall(r'(\d{4})[-]?(\d{1,2})', filename)
+                                for y, m in year_month_matches:
+                                    try:
+                                        y_int = int(y)
+                                        m_int = int(m)
+                                        if y_int == year_int and m_int == month_int:
+                                            file_month_match = True
+                                            break
+                                    except ValueError:
+                                        pass
+                            
+                            if file_month_match:
+                                purchase_tax_files.append(str(file_path))
+                                logger.info(f"✅ พบไฟล์ภาษีซื้อที่ตรงกับเดือน {tax_month}: {filename}")
+                            else:
+                                logger.debug(f"⏭️ ข้ามไฟล์ภาษีซื้อที่ไม่ตรงกับเดือน {tax_month}: {filename}")
+                    except Exception as e:
+                        logger.warning(f"⚠️ ไม่สามารถค้นหาไฟล์ภาษีซื้อใน {month_year_folder}: {e}")
+            
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถค้นหาไฟล์ภาษีซื้อใน {base_path}: {e}")
+                continue
+        
+        # 3. ค้นหาไฟล์ภาษีซื้อในโครงสร้างโฟลเดอร์ที่เฉพาะเจาะจง: บัญชี > 003-ภาษี > ภ.พ.30 > [Year] > [Month-Year]
+        for base_path in base_paths:
+            if not base_path.exists():
+                continue
+            
+            try:
+                # โครงสร้าง: บัญชี > 003-ภาษี > ภ.พ.30 > ปี > เดือน-ปี
+                account_folder = base_path / "บัญชี"
+                if not account_folder.exists():
+                    continue
+                
+                tax_folder = account_folder / "003-ภาษี"
+                if not tax_folder.exists():
+                    continue
+                
+                pph30_folder = tax_folder / "ภ.พ.30"
+                if not pph30_folder.exists():
+                    continue
+                
+                year_folder = pph30_folder / year
+                if not year_folder.exists():
+                    continue
+                
+                # ค้นหาโฟลเดอร์เดือน-ปี
+                month_year_folder = None
+                for pattern in month_year_patterns:
+                    potential_folder = year_folder / pattern
+                    if potential_folder.exists():
+                        month_year_folder = potential_folder
+                        break
+                
+                # ถ้าไม่เจอโฟลเดอร์เดือน-ปี ให้ลองค้นหาในโฟลเดอร์ปีโดยตรง
+                if not month_year_folder:
+                    # ลองค้นหาโฟลเดอร์ที่มีรูปแบบเดือน-ปีในชื่อ
+                    # ตรวจสอบเฉพาะโฟลเดอร์ที่ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                    try:
+                        for item in year_folder.iterdir():
+                            if item.is_dir():
+                                folder_name = item.name
+                                for pattern in month_year_patterns:
+                                    # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                    if folder_name == pattern:
                                         month_year_folder = item
                                         break
                                 if month_year_folder:
@@ -9384,7 +10365,7 @@ def check_purchase_tax():
         # ลบไฟล์ซ้ำ
         purchase_tax_files = list(set(purchase_tax_files))
         
-        # 2. อ่านรายการทั้งหมดจากไฟล์ภาษีซื้อ
+        # 3. อ่านรายการทั้งหมดจากไฟล์ภาษีซื้อ
         purchase_tax_items = []  # เก็บรายการทั้งหมด
         purchase_tax_row_count = 0
         
@@ -9515,13 +10496,18 @@ def check_purchase_tax():
         # 3. ค้นหาไฟล์ PDF ในโฟลเดอร์ VAT และดึงเลขที่เอกสารจากชื่อไฟล์
         pdf_files_list = []  # เก็บรายการไฟล์ PDF ทั้งหมด
         vat_folder_path = None
+        vat_folder_info_for_response = {
+            'found': False,
+            'folders': [],
+            'month_year_folder': None
+        }
         
         for base_path in base_paths:
             if not base_path.exists():
                 continue
             
             try:
-                # โครงสร้าง: บัญชี > 002-รายจ่าย > PV > [Year-Month] > VAT/vat/Vat
+                # โครงสร้าง: บัญชี > 002-รายจ่าย > PV > [Year] > [Year-Month] > VAT/vat/Vat
                 account_folder = base_path / "บัญชี"
                 if not account_folder.exists():
                     continue
@@ -9537,35 +10523,42 @@ def check_purchase_tax():
                 # ค้นหาโฟลเดอร์เดือน-ปี
                 month_year_folder = None
                 
-                # ขั้นตอนที่ 1: มองหาโฟลเดอร์ ปี-เดือน โดยตรง
+                # ขั้นตอนที่ 1: มองหาโฟลเดอร์ ปี-เดือน โดยตรงใน PV (เช่น PV > 2025-12)
                 for pattern in month_year_patterns:
                     potential_folder = pv_folder / pattern
                     if potential_folder.exists():
                         month_year_folder = potential_folder
+                        logger.info(f"✅ พบโฟลเดอร์ปี-เดือนโดยตรง: {month_year_folder}")
                         break
                 
-                # ขั้นตอนที่ 2: ถ้าไม่เจอ ให้มองหาโฟลเดอร์ปีก่อน แล้วเข้าไปมองหาโฟลเดอร์ ปี-เดือน
+                # ขั้นตอนที่ 2: ถ้าไม่เจอ ให้มองหาโฟลเดอร์ปีก่อน แล้วเข้าไปมองหาโฟลเดอร์ ปี-เดือน (เช่น PV > 2025 > 2025-12)
                 if not month_year_folder:
                     try:
-                        for item in pv_folder.iterdir():
-                            if item.is_dir():
-                                folder_name = item.name
-                                if (year in folder_name or 
-                                    str(year_int + 543) in folder_name or  # ปี พ.ศ.
-                                    folder_name.isdigit()):
-                                    # ค้นหาโฟลเดอร์เดือน-ปีภายในโฟลเดอร์ปี
-                                    for sub_item in item.iterdir():
-                                        if sub_item.is_dir():
-                                            for pattern in month_year_patterns:
-                                                if pattern in sub_item.name or sub_item.name == pattern:
-                                                    month_year_folder = sub_item
-                                                    break
-                                            if month_year_folder:
-                                                break
-                                if month_year_folder:
-                                    break
+                        # ค้นหาโฟลเดอร์ปี (เช่น 2025)
+                        year_folder = pv_folder / year
+                        if year_folder.exists():
+                            logger.info(f"✅ พบโฟลเดอร์ปี: {year_folder} - กำลังค้นหาโฟลเดอร์ปี-เดือนภายใน...")
+                            # ค้นหาโฟลเดอร์ปี-เดือนภายในโฟลเดอร์ปี (เช่น 2025-12)
+                            # ตรวจสอบเฉพาะโฟลเดอร์ที่ตรงกับ pattern โดยตรงเท่านั้น (ไม่รวมข้อความต่อท้าย)
+                            for sub_item in year_folder.iterdir():
+                                if sub_item.is_dir():
+                                    folder_name = sub_item.name
+                                    for pattern in month_year_patterns:
+                                        # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                        if folder_name == pattern:
+                                            month_year_folder = sub_item
+                                            logger.info(f"✅ พบโฟลเดอร์ปี-เดือนภายในปี: {month_year_folder}")
+                                            break
+                                    if month_year_folder:
+                                        break
+                        else:
+                            logger.debug(f"⚠️ ไม่พบโฟลเดอร์ปี {year} ใน {pv_folder}")
                     except Exception as e:
                         logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์เดือน-ปี: {e}")
+                
+                # เก็บข้อมูล month_year_folder สำหรับ response
+                if month_year_folder:
+                    vat_folder_info_for_response['month_year_folder'] = str(month_year_folder)
                 
                 # ค้นหาโฟลเดอร์ VAT/vat/Vat และไฟล์ PDF
                 if month_year_folder:
@@ -9575,8 +10568,16 @@ def check_purchase_tax():
                             if item.is_dir() and item.name.lower() == "vat":
                                 vat_folders.append(item)
                                 vat_folder_path = str(item)
+                                logger.info(f"✅ พบโฟลเดอร์ VAT: {vat_folder_path}")
+                                # เพิ่มข้อมูลโฟลเดอร์ VAT สำหรับ response
+                                vat_folder_info_for_response['folders'].append({
+                                    'name': item.name,
+                                    'path': str(item)
+                                })
                     except Exception as e:
                         logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์ VAT ใน {month_year_folder}: {e}")
+                    
+                    vat_folder_info_for_response['found'] = len(vat_folders) > 0
                     
                     # อ่านไฟล์ที่รองรับ OCR ทั้งหมดในโฟลเดอร์ VAT (รวมโฟลเดอร์ย่อยด้วย)
                     # รายการนามสกุลไฟล์ที่รองรับ OCR (ไม่รวม Excel)
@@ -9698,6 +10699,11 @@ def check_purchase_tax():
         count_match = purchase_tax_row_count == pdf_files_count
         all_match = count_match
         
+        # อัปเดตข้อมูลโฟลเดอร์ VAT ด้วยจำนวนไฟล์ PDF ที่พบ
+        if vat_folder_info_for_response and vat_folder_info_for_response.get('found') and vat_folder_info_for_response.get('folders'):
+            for folder_info in vat_folder_info_for_response['folders']:
+                folder_info['pdf_files_count'] = pdf_files_count
+        
         return jsonify({
             'success': True,
             'exists': len(purchase_tax_files) > 0,
@@ -9706,6 +10712,7 @@ def check_purchase_tax():
             'purchaseTaxRowCount': purchase_tax_row_count,
             'pdfFilesCount': pdf_files_count,
             'vatFolderPath': vat_folder_path,
+            'vatFolderInfo': vat_folder_info_for_response,  # เพิ่มข้อมูลโฟลเดอร์ VAT เหมือน Step 4
             'countMatch': count_match,
             'allMatch': all_match,
             'message': f'จำนวนรายการในไฟล์ภาษีซื้อ ({purchase_tax_row_count}) {"ตรงกับ" if count_match else "ไม่ตรงกับ"} จำนวนไฟล์ที่รองรับ OCR (PDF/JPG/PNG) ในโฟลเดอร์ VAT ({pdf_files_count}) - ไม่รวมไฟล์ Excel'
@@ -9763,18 +10770,14 @@ def compare_trial_balance_files():
         trial_balance_files = []
         trial_balance_count = 0
         
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        base_paths = get_company_base_paths(company)
         
         for base_path in base_paths:
             if not base_path.exists():
                 continue
             
             try:
-                # โครงสร้าง: บัญชี > 002-รายจ่าย > PV
+                # โครงสร้าง: บัญชี > 002-รายจ่าย > PV > ปี > ปี-เดือน > VAT
                 account_folder = base_path / "บัญชี"
                 if not account_folder.exists():
                     continue
@@ -9789,34 +10792,37 @@ def compare_trial_balance_files():
                 
                 # ค้นหาโฟลเดอร์เดือน-ปี
                 month_year_folder = None
+                vat_folder = None
                 
-                # ขั้นตอนที่ 1: มองหาโฟลเดอร์ ปี-เดือน โดยตรง
+                # ขั้นตอนที่ 1: มองหาโฟลเดอร์ ปี-เดือน โดยตรงใน PV
                 for pattern in month_year_patterns:
                     potential_folder = pv_folder / pattern
                     if potential_folder.exists():
                         month_year_folder = potential_folder
                         break
                 
-                # ขั้นตอนที่ 2: ถ้าไม่เจอ ให้มองหาโฟลเดอร์ปีก่อน แล้วเข้าไปมองหาโฟลเดอร์ ปี-เดือน
+                # ขั้นตอนที่ 2: ถ้าไม่เจอ ให้มองหาโฟลเดอร์ปีก่อน แล้วเข้าไปมองหาโฟลเดอร์ ปี-เดือน (เช่น PV > 2025 > 2025-12)
                 if not month_year_folder:
                     try:
-                        for item in pv_folder.iterdir():
-                            if item.is_dir():
-                                folder_name = item.name
-                                if (year in folder_name or 
-                                    str(year_int + 543) in folder_name or  # ปี พ.ศ.
-                                    folder_name.isdigit()):
-                                    # ค้นหาโฟลเดอร์เดือน-ปีภายในโฟลเดอร์ปี
-                                    for sub_item in item.iterdir():
-                                        if sub_item.is_dir():
-                                            for pattern in month_year_patterns:
-                                                if pattern in sub_item.name or sub_item.name == pattern:
-                                                    month_year_folder = sub_item
-                                                    break
-                                            if month_year_folder:
-                                                break
-                                if month_year_folder:
-                                    break
+                        # ค้นหาโฟลเดอร์ปี (เช่น 2025)
+                        year_folder = pv_folder / year
+                        if year_folder.exists():
+                            logger.info(f"✅ พบโฟลเดอร์ปี: {year_folder} - กำลังค้นหาโฟลเดอร์ปี-เดือนภายใน...")
+                            # ค้นหาโฟลเดอร์ปี-เดือนภายในโฟลเดอร์ปี (เช่น 2025-12)
+                            # ตรวจสอบเฉพาะโฟลเดอร์ที่ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                            for sub_item in year_folder.iterdir():
+                                if sub_item.is_dir():
+                                    folder_name = sub_item.name
+                                    for pattern in month_year_patterns:
+                                        # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                        if folder_name == pattern:
+                                            month_year_folder = sub_item
+                                            logger.info(f"✅ พบโฟลเดอร์ปี-เดือนภายในปี: {month_year_folder}")
+                                            break
+                                    if month_year_folder:
+                                        break
+                        else:
+                            logger.debug(f"⚠️ ไม่พบโฟลเดอร์ปี {year} ใน {pv_folder}")
                     except Exception as e:
                         logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์เดือน-ปี: {e}")
                 
@@ -10057,11 +11063,8 @@ def compare_purchase_tax_ocr():
         month_int = int(month)
         thai_year = year_int + 543  # แปลงเป็นปี พ.ศ.
         
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        # ค้นหาโฟลเดอร์ VAT (รองรับทั้งชื่อบริษัทและ full path)
+        base_paths = get_company_base_paths(company)
         
         # 1. ค้นหาไฟล์ภาษีซื้อเฉพาะเดือนภาษีที่เลือก
         purchase_tax_files = []
@@ -10191,28 +11194,37 @@ def compare_purchase_tax_ocr():
                 
                 # ค้นหาโฟลเดอร์เดือน-ปี
                 month_year_folder = None
+                
+                # ขั้นตอนที่ 1: มองหาโฟลเดอร์ ปี-เดือน โดยตรงใน PV (เช่น PV > 2025-12)
                 for pattern in month_year_patterns:
                     potential_folder = pv_folder / pattern
                     if potential_folder.exists():
                         month_year_folder = potential_folder
+                        logger.info(f"✅ พบโฟลเดอร์ปี-เดือนโดยตรง: {month_year_folder}")
                         break
                 
+                # ขั้นตอนที่ 2: ถ้าไม่เจอ ให้มองหาโฟลเดอร์ปีก่อน แล้วเข้าไปมองหาโฟลเดอร์ ปี-เดือน (เช่น PV > 2025 > 2025-12)
                 if not month_year_folder:
                     try:
-                        for item in pv_folder.iterdir():
-                            if item.is_dir():
-                                folder_name = item.name
-                                if (year in folder_name or str(year_int + 543) in folder_name or folder_name.isdigit()):
-                                    for sub_item in item.iterdir():
-                                        if sub_item.is_dir():
-                                            for pattern in month_year_patterns:
-                                                if pattern in sub_item.name or sub_item.name == pattern:
-                                                    month_year_folder = sub_item
-                                                    break
-                                            if month_year_folder:
-                                                break
-                                if month_year_folder:
-                                    break
+                        # ค้นหาโฟลเดอร์ปี (เช่น 2025)
+                        year_folder = pv_folder / year
+                        if year_folder.exists():
+                            logger.info(f"✅ พบโฟลเดอร์ปี: {year_folder} - กำลังค้นหาโฟลเดอร์ปี-เดือนภายใน...")
+                            # ค้นหาโฟลเดอร์ปี-เดือนภายในโฟลเดอร์ปี (เช่น 2025-12)
+                            # ตรวจสอบเฉพาะโฟลเดอร์ที่ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                            for sub_item in year_folder.iterdir():
+                                if sub_item.is_dir():
+                                    folder_name = sub_item.name
+                                    for pattern in month_year_patterns:
+                                        # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                        if folder_name == pattern:
+                                            month_year_folder = sub_item
+                                            logger.info(f"✅ พบโฟลเดอร์ปี-เดือนภายในปี: {month_year_folder}")
+                                            break
+                                    if month_year_folder:
+                                        break
+                        else:
+                            logger.debug(f"⚠️ ไม่พบโฟลเดอร์ปี {year} ใน {pv_folder}")
                     except Exception as e:
                         logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์เดือน-ปี: {e}")
                 
@@ -10551,12 +11563,14 @@ def compare_purchase_tax_ocr():
                                 import re
                                 old_filename = row_data['old_filename']
                                 # Pattern: วันที่_REF-NUMBER_...
-                                # ตัวอย่าง: 16.10.2025_EXP-20251000004_530117_...
+                                # ตัวอย่าง: 16.10.2025_EXP-20251000004_530117_... หรือ 22.12.2025_EXPSU202512220005_... หรือ 09.12.2025_EXPSU202512090002_12-60-1100608...
                                 ref_patterns = [
-                                    r'\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',  # 16.10.2025_EXP-20251000004_
-                                    r'^\d{2}\.\d{2}\.\d{4}_([A-Z]+-\d+)_',  # เริ่มต้นด้วยวันที่
-                                    r'_([A-Z]+-\d+)_',  # รูปแบบ _EXP-20251000004_
-                                    r'([A-Z]{2,}-\d{8,})',  # รูปแบบ EXP-20251000004 (fallback)
+                                    r'\d{2}\.\d{2}\.\d{4}_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # 16.10.2025_EXP-20251000004_ หรือ 09.12.2025_EXPSU202512090002_
+                                    r'^\d{2}\.\d{2}\.\d{4}_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # เริ่มต้นด้วยวันที่
+                                    r'_([A-Z]{2,}(?:-\d+|\d{10,}))_',  # รูปแบบ _EXP-20251000004_ หรือ _EXPSU202512090002_
+                                    r'([A-Z]{2,}-\d{8,})',  # รูปแบบ EXP-20251000004 (fallback - มี hyphen)
+                                    r'([A-Z]{2,}\d{10,})',  # รูปแบบ EXPSU202512090002 (fallback - ไม่มี hyphen, อย่างน้อย 10 หลัก)
+                                    r'([A-Z]{4,}\d{8,})',  # รูปแบบ EXPSU202512090002 (fallback - ตัวอักษรอย่างน้อย 4 ตัว)
                                 ]
                                 
                                 for pattern in ref_patterns:
@@ -10597,8 +11611,15 @@ def compare_purchase_tax_ocr():
             # เก็บ reference number สำหรับการเปรียบเทียบ (สำหรับหน้า auditcheck)
             reference_no = ocr_item.get('reference_number', '').strip() if ocr_item.get('reference_number') else None
             if reference_no:
+                # เก็บแบบปกติ
                 ocr_dict_by_reference[reference_no] = ocr_item
                 logger.info(f"📋 เก็บ reference number: {reference_no} สำหรับการเปรียบเทียบ")
+                
+                # เก็บแบบ normalize (ลบ hyphen เพื่อรองรับทั้ง EXP-20251000004 และ EXPSU202512220005)
+                reference_no_normalized = reference_no.replace('-', '').replace('_', '').replace(' ', '')
+                if reference_no_normalized != reference_no:
+                    ocr_dict_by_reference[reference_no_normalized] = ocr_item
+                    logger.info(f"📋 เก็บ reference number (normalized): {reference_no_normalized} สำหรับการเปรียบเทียบ")
             
             ocr_list.append(ocr_item)
         
@@ -10617,13 +11638,22 @@ def compare_purchase_tax_ocr():
             
             # ใช้ reference number เป็นหลักในการเทียบเท่านั้น
             ocr_item = None
+            has_reference_no = False
             if reference_no:
-                # ค้นหาโดยใช้ reference number จากชื่อไฟล์ OCR
+                has_reference_no = True
+                # ค้นหาโดยใช้ reference number จากชื่อไฟล์ OCR (ลองทั้งแบบปกติและ normalized)
                 ocr_item = ocr_dict_by_reference.get(reference_no, None)
-                if ocr_item:
-                    logger.info(f"✅ พบ OCR โดยใช้ reference number: {reference_no} -> {ocr_item.get('document_no', '')}")
+                if not ocr_item:
+                    # ลอง normalized version (ลบ hyphen เพื่อรองรับทั้ง EXP-20251000004 และ EXPSU202512220005)
+                    reference_no_normalized = reference_no.replace('-', '').replace('_', '').replace(' ', '')
+                    ocr_item = ocr_dict_by_reference.get(reference_no_normalized, None)
+                    if ocr_item:
+                        logger.info(f"✅ พบ OCR โดยใช้ reference number (normalized): {reference_no} -> {reference_no_normalized} -> {ocr_item.get('document_no', '')}")
                 else:
-                    logger.info(f"⚠️ ไม่พบ OCR ที่มี reference number: {reference_no}")
+                    logger.info(f"✅ พบ OCR โดยใช้ reference number: {reference_no} -> {ocr_item.get('document_no', '')}")
+                
+                if not ocr_item:
+                    logger.info(f"⚠️ ไม่พบ OCR ที่มี reference number: {reference_no} (ลองทั้งแบบปกติและ normalized: {reference_no.replace('-', '').replace('_', '').replace(' ', '')})")
             else:
                 logger.info(f"⚠️ ไม่พบ reference number ในข้อมูลภาษีซื้อ: invoice_no={invoice_no}")
             
@@ -10973,17 +12003,24 @@ def compare_purchase_tax_ocr():
                 if purchase_total == 0:
                     purchase_total = purchase_item.get('tax_7', 0) + purchase_item.get('vat', 0)
                 
-                initial_note = f"ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: {invoice_no}"
+                # แยกกรณี: ไม่มี OCR ใน cache vs ไม่มี OCR ที่ตรงกัน
+                if has_reference_no:
+                    # มี reference_no แต่ไม่พบ OCR ใน cache
+                    initial_note = f"ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: {reference_no} (เลขที่ใบกำกับ: {invoice_no})"
+                else:
+                    # ไม่มี reference_no ในข้อมูลภาษีซื้อ
+                    initial_note = f"ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: {invoice_no} (ไม่มีเลขที่เอกสารอ้างอิงในข้อมูลภาษีซื้อ)"
                 
                 comparisons.append({
                     'item': f'รายการที่ {idx}',
                     'purchaseTax': f'{purchase_total:,.2f}',
                     'ocrFile': '0.00',
                     'match': False,
-                    'match_status': 'no_match',  # ไม่พบข้อมูล OCR
+                    'match_status': 'no_ocr_data' if has_reference_no else 'no_match',  # แยกสถานะ: no_ocr_data = ไม่มี OCR ใน cache, no_match = ไม่มี OCR ที่ตรงกัน
                     'matched_count': 0,
                     'total_count': 0,
                     'invoice_no': invoice_no,
+                    'reference_no': reference_no if has_reference_no else None,  # เพิ่ม reference_no เพื่อให้ frontend แสดงได้
                     'match_details': None,
                     'purchase_data': purchase_item,
                     'ocr_data': None,
@@ -11108,11 +12145,9 @@ def find_pdf_by_reference():
         year_int = int(year)
         month_int = int(month)
         
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        # ใช้ get_company_base_paths เพื่อรองรับทั้งชื่อบริษัทปกติและ full path (สำหรับสาขา)
+        base_paths = get_company_base_paths(company)
+        logger.info(f"🔍 [find-pdf-by-reference] Base paths: {base_paths}")
         
         month_year_patterns = [
             f"{year_int}-{month_int:02d}",
@@ -11125,16 +12160,20 @@ def find_pdf_by_reference():
         pdf_files = []
         for base_path in base_paths:
             if not base_path.exists():
+                logger.warning(f"⚠️ [find-pdf-by-reference] Base path does not exist: {base_path}")
                 continue
             try:
                 account_folder = base_path / "บัญชี"
                 if not account_folder.exists():
+                    logger.debug(f"⚠️ [find-pdf-by-reference] Account folder does not exist: {account_folder}")
                     continue
                 expense_folder = account_folder / "002-รายจ่าย"
                 if not expense_folder.exists():
+                    logger.debug(f"⚠️ [find-pdf-by-reference] Expense folder does not exist: {expense_folder}")
                     continue
                 pv_folder = expense_folder / "PV"
                 if not pv_folder.exists():
+                    logger.debug(f"⚠️ [find-pdf-by-reference] PV folder does not exist: {pv_folder}")
                     continue
                 
                 # ค้นหาโฟลเดอร์เดือน-ปี
@@ -11143,19 +12182,27 @@ def find_pdf_by_reference():
                     potential_folder = pv_folder / pattern
                     if potential_folder.exists():
                         month_year_folder = potential_folder
+                        logger.info(f"✅ [find-pdf-by-reference] Found month-year folder: {month_year_folder}")
                         break
                 
                 if not month_year_folder:
                     try:
+                        # ค้นหาโฟลเดอร์ปีก่อน แล้วค้นหาโฟลเดอร์เดือน-ปีภายใน
                         for item in pv_folder.iterdir():
                             if item.is_dir():
                                 folder_name = item.name
-                                if (str(year_int) in folder_name or str(year_int + 543) in folder_name):
+                                # ตรวจสอบว่าเป็นโฟลเดอร์ปีหรือไม่
+                                if folder_name == str(year_int) or folder_name == str(year_int + 543):
+                                    logger.info(f"✅ [find-pdf-by-reference] Found year folder: {item}")
+                                    # ค้นหาโฟลเดอร์ปี-เดือนภายในโฟลเดอร์ปี
                                     for sub_item in item.iterdir():
                                         if sub_item.is_dir():
+                                            folder_name = sub_item.name
                                             for pattern in month_year_patterns:
-                                                if pattern in sub_item.name or sub_item.name == pattern:
+                                                # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
+                                                if folder_name == pattern:
                                                     month_year_folder = sub_item
+                                                    logger.info(f"✅ [find-pdf-by-reference] Found month-year folder within year: {month_year_folder}")
                                                     break
                                             if month_year_folder:
                                                 break
@@ -11184,11 +12231,12 @@ def find_pdf_by_reference():
                                 reference_no_normalized = reference_no.replace(' ', '').replace('-', '').replace('_', '').upper()
                                 logger.info(f"🔍 เลขอ้างอิงที่ normalize แล้ว: '{reference_no_normalized}'")
                                 
-                                # สร้างรูปแบบการค้นหาที่หลากหลาย
+                                # สร้างรูปแบบการค้นหาที่หลากหลาย (รองรับทั้ง EXP- และ EXPSU)
                                 search_patterns = [
-                                    reference_no,  # รูปแบบเดิม (เช่น EXP-20251000003)
-                                    reference_no.replace('-', ''),  # ลบ dash (เช่น EXP20251000003)
+                                    reference_no,  # รูปแบบเดิม (เช่น EXP-20251000003 หรือ EXPSU202512090002)
+                                    reference_no.replace('-', ''),  # ลบ dash (เช่น EXP20251000003 หรือ EXPSU202512090002)
                                     reference_no.replace('EXP-', ''),  # ลบ EXP- (เช่น 20251000003)
+                                    reference_no.replace('EXPSU', ''),  # ลบ EXPSU (เช่น 202512090002)
                                     reference_no_normalized,  # normalize เต็มรูปแบบ
                                 ]
                                 
@@ -11229,7 +12277,29 @@ def find_pdf_by_reference():
                                                     is_match = True
                                                     matched_pattern = f"{pattern} (normalized)"
                                                     logger.info(f"✅ Match found (normalized): '{pattern_normalized}' in normalized '{filename_normalized}'")
+                                                    logger.info(f"   📄 Full filename: {filename}")
+                                                    logger.info(f"   📄 Full path: {file_path}")
                                                     break
+                                            
+                                            # ถ้ายังไม่ match ให้ลองตรวจสอบอีกครั้งด้วยวิธีอื่น (fallback)
+                                            if not is_match:
+                                                # ลองหา reference number ในชื่อไฟล์โดยตรง (รองรับรูปแบบ วันที่_REF_...)
+                                                import re
+                                                # Pattern: หา EXPSU หรือ EXP ตามด้วยตัวเลข
+                                                ref_in_filename_patterns = [
+                                                    rf'{re.escape(reference_no)}',  # รูปแบบเดิม
+                                                    rf'{re.escape(reference_no_normalized)}',  # normalized
+                                                    rf'{re.escape(reference_no.replace("EXPSU", ""))}',  # ลบ EXPSU
+                                                    rf'{re.escape(reference_no.replace("EXP-", "").replace("EXP", ""))}',  # ลบ EXP-
+                                                ]
+                                                for ref_pattern in ref_in_filename_patterns:
+                                                    if re.search(ref_pattern, filename, re.IGNORECASE):
+                                                        is_match = True
+                                                        matched_pattern = f"{ref_pattern} (regex fallback)"
+                                                        logger.info(f"✅ Match found (regex fallback): pattern '{ref_pattern}' matches '{filename}'")
+                                                        logger.info(f"   📄 Full filename: {filename}")
+                                                        logger.info(f"   📄 Full path: {file_path}")
+                                                        break
                                             
                                             if is_match:
                                                 pdf_files.append({
@@ -11245,11 +12315,21 @@ def find_pdf_by_reference():
                                 # แสดงรายชื่อไฟล์ทั้งหมดในโฟลเดอร์ (สำหรับ debug)
                                 logger.info(f"📊 จำนวนไฟล์ที่รองรับ OCR ในโฟลเดอร์ (รวมโฟลเดอร์ย่อย): {file_count} ไฟล์")
                                 if file_count > 0:
-                                    logger.info(f"📋 รายชื่อไฟล์ทั้งหมด (5 ไฟล์แรก):")
-                                    for i, fname in enumerate(all_files_in_folder[:5]):
+                                    logger.info(f"📋 รายชื่อไฟล์ทั้งหมด (10 ไฟล์แรก):")
+                                    for i, fname in enumerate(all_files_in_folder[:10]):
                                         logger.info(f"   {i+1}. {fname}")
-                                    if len(all_files_in_folder) > 5:
-                                        logger.info(f"   ... และอีก {len(all_files_in_folder) - 5} ไฟล์")
+                                    if len(all_files_in_folder) > 10:
+                                        logger.info(f"   ... และอีก {len(all_files_in_folder) - 10} ไฟล์")
+                                
+                                # ถ้ายังไม่พบไฟล์ ให้แสดงรายชื่อไฟล์ที่อาจจะ match (สำหรับ debug)
+                                if len(pdf_files) == 0 and file_count > 0:
+                                    logger.warning(f"⚠️ ไม่พบไฟล์ที่ตรงกับ reference: {reference_no}")
+                                    logger.warning(f"⚠️ กำลังตรวจสอบไฟล์ที่อาจจะ match (5 ไฟล์แรก):")
+                                    for i, fname in enumerate(all_files_in_folder[:5]):
+                                        fname_normalized = fname.replace(' ', '').replace('-', '').replace('_', '').upper()
+                                        ref_normalized = reference_no.replace(' ', '').replace('-', '').replace('_', '').upper()
+                                        if ref_normalized in fname_normalized:
+                                            logger.warning(f"   ⚠️ {i+1}. {fname} (อาจจะ match แต่ไม่ผ่าน pattern matching)")
                                 
                                 logger.info(f"📊 จำนวนไฟล์ที่ตรงกัน: {len(pdf_files)} ไฟล์")
                             except Exception as e:
@@ -11357,11 +12437,8 @@ def move_document_to_review():
         year_int = int(year)
         month_int = int(month)
         
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        # ใช้ get_company_base_paths เพื่อรองรับทั้งชื่อบริษัทปกติและ full path (สำหรับสาขา)
+        base_paths = get_company_base_paths(company)
         
         month_year_patterns = [
             f"{year_int}-{month_int:02d}",
@@ -11428,30 +12505,49 @@ def move_document_to_review():
                     if vat_folders:
                         for vat_folder in vat_folders:
                             try:
-                                # Normalize เลขอ้างอิงสำหรับการค้นหา
+                                logger.info(f"🔍 กำลังค้นหาไฟล์ที่รองรับ OCR (PDF/JPG/PNG) ในโฟลเดอร์: {vat_folder} (รวมโฟลเดอร์ย่อย)")
+                                logger.info(f"🔍 เลขอ้างอิงที่ค้นหา (original): '{reference_no}'")
+                                
+                                # Normalize เลขอ้างอิงสำหรับการค้นหา (รองรับทั้ง EXP- และ EXPSU)
+                                reference_no_normalized = reference_no.replace(' ', '').replace('-', '').replace('_', '').upper()
+                                logger.info(f"🔍 เลขอ้างอิงที่ normalize แล้ว: '{reference_no_normalized}'")
+                                
                                 search_patterns = [
-                                    reference_no,
-                                    reference_no.replace('-', ''),
-                                    reference_no.replace('EXP-', ''),
-                                    reference_no.replace(' ', '').replace('-', '').replace('_', '').upper(),
+                                    reference_no,  # รูปแบบเดิม (เช่น EXP-20251000003 หรือ EXPSU202512090002)
+                                    reference_no.replace('-', ''),  # ลบ dash (เช่น EXP20251000003 หรือ EXPSU202512090002)
+                                    reference_no.replace('EXP-', ''),  # ลบ EXP- (เช่น 20251000003)
+                                    reference_no.replace('EXPSU', ''),  # ลบ EXPSU (เช่น 202512090002)
+                                    reference_no_normalized,  # normalize เต็มรูปแบบ
                                 ]
                                 
-                                for pdf_file in vat_folder.glob("*.pdf"):
-                                    if pdf_file.is_file():
-                                        filename = pdf_file.name
-                                        filename_normalized = filename.replace(' ', '').replace('-', '').replace('_', '').upper()
-                                        
-                                        # ตรวจสอบว่าชื่อไฟล์มีเลขอ้างอิงหรือไม่
-                                        for pattern in search_patterns:
-                                            pattern_normalized = pattern.replace(' ', '').replace('-', '').replace('_', '').upper()
-                                            if pattern in filename or pattern_normalized in filename_normalized:
-                                                source_pdf_path = pdf_file
-                                                source_vat_folder = vat_folder
-                                                logger.info(f"✅ พบไฟล์ที่จะย้าย: {filename}")
+                                logger.info(f"🔍 Search patterns: {search_patterns}")
+                                
+                                # รายการนามสกุลไฟล์ที่รองรับ (PDF, JPG, PNG)
+                                supported_extensions = ['*.pdf', '*.jpg', '*.jpeg', '*.png', '*.PDF', '*.JPG', '*.JPEG', '*.PNG']
+                                
+                                # ค้นหาไฟล์ที่รองรับ OCR (รวมโฟลเดอร์ย่อยด้วย) - ใช้ rglob() แทน glob()
+                                for ext_pattern in supported_extensions:
+                                    # ใช้ rglob() เพื่อค้นหาไฟล์ในโฟลเดอร์หลักและโฟลเดอร์ย่อยทั้งหมด
+                                    for pdf_file in vat_folder.rglob(ext_pattern):
+                                        if pdf_file.is_file():
+                                            filename = pdf_file.name
+                                            filename_normalized = filename.replace(' ', '').replace('-', '').replace('_', '').upper()
+                                            
+                                            # ตรวจสอบว่าชื่อไฟล์มีเลขอ้างอิงหรือไม่ (รองรับทั้ง EXP- และ EXPSU)
+                                            for pattern in search_patterns:
+                                                pattern_normalized = pattern.replace(' ', '').replace('-', '').replace('_', '').upper()
+                                                if pattern in filename or pattern_normalized in filename_normalized:
+                                                    source_pdf_path = pdf_file
+                                                    source_vat_folder = vat_folder
+                                                    logger.info(f"✅ พบไฟล์ที่จะย้าย: {filename} (reference: {reference_no})")
+                                                    logger.info(f"✅ Match pattern: {pattern}")
+                                                    logger.info(f"✅ Path: {pdf_file}")
+                                                    break
+                                            
+                                            if source_pdf_path:
                                                 break
-                                        
-                                        if source_pdf_path:
-                                            break
+                                    if source_pdf_path:
+                                        break
                                 
                                 if source_pdf_path:
                                     break
@@ -11467,7 +12563,7 @@ def move_document_to_review():
         if not source_pdf_path or not source_vat_folder:
             return jsonify({
                 'success': False,
-                'message': f'ไม่พบไฟล์ PDF สำหรับเลขที่อ้างอิง: {reference_no}'
+                'message': f'ไม่พบไฟล์ (PDF/JPG/PNG) สำหรับเลขที่อ้างอิง: {reference_no}'
             }), 200
         
         # สร้างโฟลเดอร์ "ไฟล์ที่ต้องตรวจสอบ" ภายใต้โฟลเดอร์ VAT
@@ -11573,11 +12669,8 @@ def move_all_mismatched_documents():
                 f"{month_int:02d}-{year_int}"
             ]
             
-            base_paths = [
-                Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-                Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-                Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-            ]
+            # ใช้ get_company_base_paths เพื่อรองรับทั้งชื่อบริษัทปกติและ full path (สำหรับสาขา)
+            base_paths = get_company_base_paths(company)
             
             source_vat_folder = None
             
@@ -11671,31 +12764,43 @@ def move_all_mismatched_documents():
             
             source_pdf_path = None
             
-            # Normalize เลขอ้างอิงสำหรับการค้นหา
+            # Normalize เลขอ้างอิงสำหรับการค้นหา (รองรับทั้ง EXP- และ EXPSU)
             reference_no_normalized = reference_no.replace(' ', '').replace('-', '').replace('_', '').upper()
             search_patterns = [
-                reference_no,
-                reference_no.replace('-', ''),
-                reference_no.replace('EXP-', ''),
-                reference_no_normalized,
+                reference_no,  # รูปแบบเดิม (เช่น EXP-20251000003 หรือ EXPSU202512090002)
+                reference_no.replace('-', ''),  # ลบ dash (เช่น EXP20251000003 หรือ EXPSU202512090002)
+                reference_no.replace('EXP-', ''),  # ลบ EXP- (เช่น 20251000003)
+                reference_no.replace('EXPSU', ''),  # ลบ EXPSU (เช่น 202512090002)
+                reference_no_normalized,  # normalize เต็มรูปแบบ
             ]
             
-            # ค้นหาไฟล์ PDF
+            # ค้นหาไฟล์ PDF/JPG/PNG (รวมโฟลเดอร์ย่อยด้วย) - ใช้ rglob() แทน glob()
             try:
-                for pdf_file in source_vat_folder.glob("*.pdf"):
-                    if pdf_file.is_file():
-                        filename = pdf_file.name
-                        filename_normalized = filename.replace(' ', '').replace('-', '').replace('_', '').upper()
-                        
-                        # ตรวจสอบว่าชื่อไฟล์มีเลขอ้างอิงหรือไม่
-                        for pattern in search_patterns:
-                            pattern_normalized = pattern.replace(' ', '').replace('-', '').replace('_', '').upper()
-                            if pattern in filename or pattern_normalized in filename_normalized:
-                                source_pdf_path = pdf_file
+                logger.info(f"🔍 กำลังค้นหาไฟล์สำหรับ reference: {reference_no} ในโฟลเดอร์: {source_vat_folder}")
+                logger.info(f"🔍 Search patterns: {search_patterns}")
+                
+                supported_extensions = ['*.pdf', '*.jpg', '*.jpeg', '*.png', '*.PDF', '*.JPG', '*.JPEG', '*.PNG']
+                for ext_pattern in supported_extensions:
+                    # ใช้ rglob() เพื่อค้นหาไฟล์ในโฟลเดอร์หลักและโฟลเดอร์ย่อยทั้งหมด
+                    for pdf_file in source_vat_folder.rglob(ext_pattern):
+                        if pdf_file.is_file():
+                            filename = pdf_file.name
+                            filename_normalized = filename.replace(' ', '').replace('-', '').replace('_', '').upper()
+                            
+                            # ตรวจสอบว่าชื่อไฟล์มีเลขอ้างอิงหรือไม่ (รองรับทั้ง EXP- และ EXPSU)
+                            for pattern in search_patterns:
+                                pattern_normalized = pattern.replace(' ', '').replace('-', '').replace('_', '').upper()
+                                if pattern in filename or pattern_normalized in filename_normalized:
+                                    source_pdf_path = pdf_file
+                                    logger.info(f"✅ พบไฟล์สำหรับ reference {reference_no}: {filename}")
+                                    logger.info(f"✅ Match pattern: {pattern}")
+                                    logger.info(f"✅ Path: {pdf_file}")
+                                    break
+                            
+                            if source_pdf_path:
                                 break
-                        
-                        if source_pdf_path:
-                            break
+                    if source_pdf_path:
+                        break
             except Exception as e:
                 logger.warning(f"⚠️ ไม่สามารถค้นหาไฟล์ PDF สำหรับ {reference_no}: {e}")
             
@@ -12454,8 +13559,60 @@ def export_audit_report_to_excel():
         for col in range(1, 16):
             ws.cell(row=summary_row, column=col).border = border
         
-        # สร้างชื่อไฟล์
-        filename = f"รายงานตรวจภาษี_{company}_{tax_month}.xlsx"
+        # สร้างชื่อไฟล์ - extract ชื่อบริษัทจาก company (อาจเป็น full path หรือชื่อบริษัท)
+        def extract_company_name_for_filename(company_param):
+            """Extract ชื่อบริษัทและสาขาจาก company parameter สำหรับใช้ในชื่อไฟล์"""
+            import re
+            from pathlib import Path
+            
+            # ถ้า company เป็น full path (เริ่มต้นด้วย V:/ หรือ V:\)
+            if company_param.startswith('V:/') or company_param.startswith('V:\\'):
+                try:
+                    path_obj = Path(company_param)
+                    parts = path_obj.parts
+                    
+                    # หา Build folder
+                    build_folder = None
+                    build_index = -1
+                    for i, part in enumerate(parts):
+                        if 'Build' in str(part) or part.startswith('Build'):
+                            build_folder = str(part)
+                            build_index = i
+                            break
+                    
+                    # หาสาขา (folder ถัดจาก Build folder)
+                    branch_name = None
+                    if build_index >= 0 and build_index + 1 < len(parts):
+                        branch_name = parts[build_index + 1]
+                        # ลบ prefix เช่น x01. หรือ 1. ออกถ้ามี
+                        branch_clean = re.sub(r'^x\d+\.', '', branch_name)  # ลบ x01.
+                        branch_clean = re.sub(r'^\d+\.', '', branch_clean)  # ลบ 1.
+                        branch_name = branch_clean if branch_clean else branch_name
+                    
+                    # สร้างชื่อไฟล์
+                    if build_folder and branch_name:
+                        # ลบอักขระที่ไม่เหมาะสมสำหรับชื่อไฟล์
+                        safe_build = re.sub(r'[<>:"/\\|?*]', '_', build_folder)
+                        safe_branch = re.sub(r'[<>:"/\\|?*]', '_', branch_name)
+                        return f"{safe_build}_{safe_branch}"
+                    elif build_folder:
+                        safe_build = re.sub(r'[<>:"/\\|?*]', '_', build_folder)
+                        return safe_build
+                    else:
+                        # ถ้าไม่เจอ Build folder ให้ใช้ชื่อโฟลเดอร์สุดท้าย
+                        last_part = parts[-1] if parts else company_param
+                        return re.sub(r'[<>:"/\\|?*]', '_', str(last_part))
+                except Exception as e:
+                    logger.warning(f"⚠️ [export-excel] ไม่สามารถ extract ชื่อบริษัทจาก path: {e}")
+                    # Fallback: ใช้ company parameter โดยลบอักขระที่ไม่เหมาะสม
+                    return re.sub(r'[<>:"/\\|?*]', '_', company_param)
+            else:
+                # ถ้าเป็นชื่อบริษัทปกติ ให้ใช้โดยตรง (ลบอักขระที่ไม่เหมาะสม)
+                return re.sub(r'[<>:"/\\|?*]', '_', company_param)
+        
+        company_name_for_file = extract_company_name_for_filename(company)
+        filename = f"รายงานตรวจภาษี_{company_name_for_file}_{tax_month}.xlsx"
+        logger.info(f"📝 [export-excel] Generated filename: {filename}")
         
         # บันทึกไฟล์ Excel
         excel_file = BytesIO()
@@ -12467,11 +13624,9 @@ def export_audit_report_to_excel():
         
         # หา path ของโฟลเดอร์ ภ.พ.30 แทนโฟลเดอร์ VAT
         # โครงสร้าง: บัญชี > 003-ภาษี > ภ.พ.30 > [Year] > [Month-Year]
-        base_paths = [
-            Path(f"V:/A.โฟร์เดอร์หลัก/{company}"),
-            Path(f"V:/AA.โฟรเดอร์หลัก/{company}"),
-            Path(f"V:/AAA.โฟรเดอร์หลัก/{company}")
-        ]
+        # ใช้ get_company_base_paths เพื่อรองรับทั้งชื่อบริษัทปกติและ full path (สำหรับสาขา)
+        base_paths = get_company_base_paths(company)
+        logger.info(f"🔍 [export-excel] Base paths: {base_paths}")
         
         pph30_folder_path = None
         month_year_patterns = [
@@ -12483,42 +13638,67 @@ def export_audit_report_to_excel():
         
         for base_path in base_paths:
             if not base_path.exists():
+                logger.warning(f"⚠️ [export-excel] Base path does not exist: {base_path}")
                 continue
             
             try:
+                logger.info(f"🔍 [export-excel] Checking base path: {base_path}")
                 # โครงสร้าง: บัญชี > 003-ภาษี > ภ.พ.30 > ปี > เดือน-ปี
                 account_folder = base_path / "บัญชี"
                 if not account_folder.exists():
+                    logger.debug(f"⚠️ [export-excel] Account folder does not exist: {account_folder}")
                     continue
                 
                 tax_folder = account_folder / "003-ภาษี"
                 if not tax_folder.exists():
+                    logger.debug(f"⚠️ [export-excel] Tax folder does not exist: {tax_folder}")
                     continue
                 
                 pph30_folder = tax_folder / "ภ.พ.30"
                 if not pph30_folder.exists():
+                    logger.debug(f"⚠️ [export-excel] PP30 folder does not exist: {pph30_folder}")
                     continue
                 
-                year_folder = pph30_folder / year
-                if not year_folder.exists():
+                logger.info(f"✅ [export-excel] Found PP30 folder: {pph30_folder}")
+                
+                # ค้นหาโฟลเดอร์ปี (ลองทั้งปี ค.ศ. และ พ.ศ.)
+                year_folder = None
+                year_candidates = [
+                    pph30_folder / str(year_int),  # 2025
+                    pph30_folder / str(year_int + 543),  # 2568
+                ]
+                
+                for year_candidate in year_candidates:
+                    if year_candidate.exists():
+                        year_folder = year_candidate
+                        logger.info(f"✅ [export-excel] Found year folder: {year_folder}")
+                        break
+                
+                if not year_folder:
+                    logger.warning(f"⚠️ [export-excel] Year folder does not exist in {pph30_folder}")
                     continue
                 
-                # ค้นหาโฟลเดอร์เดือน-ปี
+                # ค้นหาโฟลเดอร์เดือน-ปี (ใช้ strict matching - ต้องตรงกับ pattern โดยตรงเท่านั้น)
                 month_year_folder = None
                 for pattern in month_year_patterns:
                     potential_folder = year_folder / pattern
                     if potential_folder.exists():
                         month_year_folder = potential_folder
+                        logger.info(f"✅ [export-excel] Found month-year folder (direct): {month_year_folder}")
                         break
                 
-                # ถ้าไม่เจอโฟลเดอร์เดือน-ปี ให้ลองค้นหาในโฟลเดอร์ปีโดยตรง
+                # ถ้าไม่เจอโฟลเดอร์เดือน-ปี ให้ลองค้นหาในโฟลเดอร์ปีโดยตรง (ใช้ strict matching)
                 if not month_year_folder:
                     try:
+                        logger.info(f"🔍 [export-excel] Searching for month-year folder in: {year_folder}")
                         for item in year_folder.iterdir():
                             if item.is_dir():
+                                folder_name = item.name
+                                # ตรวจสอบว่าโฟลเดอร์ตรงกับ pattern โดยตรงเท่านั้น (ไม่อ่านนอกเหนือจากปีและเดือน)
                                 for pattern in month_year_patterns:
-                                    if pattern in item.name or item.name == pattern:
+                                    if folder_name == pattern:
                                         month_year_folder = item
+                                        logger.info(f"✅ [export-excel] Found month-year folder (strict match): {month_year_folder}")
                                         break
                                 if month_year_folder:
                                     break
@@ -12527,10 +13707,12 @@ def export_audit_report_to_excel():
                 
                 if month_year_folder:
                     pph30_folder_path = month_year_folder
-                    logger.info(f"✅ พบโฟลเดอร์ ภ.พ.30: {pph30_folder_path}")
+                    logger.info(f"✅ [export-excel] Final PP30 folder path: {pph30_folder_path}")
                     break
             except Exception as e:
                 logger.warning(f"⚠️ ไม่สามารถค้นหาโฟลเดอร์ ภ.พ.30 ใน {base_path}: {e}")
+                import traceback
+                logger.warning(f"⚠️ Traceback: {traceback.format_exc()}")
                 continue
         
         # บันทึกไฟล์ลงโฟลเดอร์ ภ.พ.30
@@ -12556,9 +13738,13 @@ def export_audit_report_to_excel():
                 }), 500
         else:
             logger.warning(f"⚠️ ไม่พบโฟลเดอร์ ภ.พ.30 สำหรับ {company} เดือน {tax_month}")
+            logger.warning(f"⚠️ Base paths ที่ตรวจสอบ: {base_paths}")
+            error_message = f'ไม่พบโฟลเดอร์ ภ.พ.30 สำหรับ {company} เดือน {tax_month}'
+            if len(base_paths) > 0:
+                error_message += f'\nตรวจสอบ path: {base_paths[0]}\\บัญชี\\003-ภาษี\\ภ.พ.30\\{year_int}\\{year_int}-{month_int:02d}'
             return jsonify({
                 'success': False,
-                'error': f'ไม่พบโฟลเดอร์ ภ.พ.30 สำหรับ {company} เดือน {tax_month}'
+                'error': error_message
             }), 400
         
         # ส่งข้อมูลกลับไปบอกว่าบันทึกสำเร็จ (ไม่ส่งไฟล์ให้ดาวน์โหลด)
@@ -12607,10 +13793,23 @@ def save_auditcheck_state():
         cache_dir = Path('cache')
         cache_dir.mkdir(exist_ok=True)
         
+        # สำหรับบริษัทพิเศษที่มีสาขา ให้แยกข้อมูลตามสาขา
+        branch_info = data.get('branch_info')
+        base_company = data.get('base_company', company)
+        
         # สร้างชื่อไฟล์ที่ปลอดภัย
-        safe_company = company.replace('/', '_').replace('\\', '_').replace(':', '_')
-        safe_tax_month = tax_month.replace('/', '_').replace('\\', '_').replace(':', '_')
-        state_filename = f"auditcheck_state_{safe_company}_{safe_tax_month}.json"
+        if branch_info and branch_info.get('branch_name'):
+            # สำหรับสาขา: ใช้ชื่อบริษัทหลัก + ชื่อสาขา
+            safe_base_company = base_company.replace('/', '_').replace('\\', '_').replace(':', '_')
+            safe_branch_name = branch_info['branch_name'].replace('/', '_').replace('\\', '_').replace(':', '_')
+            safe_tax_month = tax_month.replace('/', '_').replace('\\', '_').replace(':', '_')
+            state_filename = f"auditcheck_state_{safe_base_company}_{safe_branch_name}_{safe_tax_month}.json"
+        else:
+            # สำหรับบริษัทปกติ
+            safe_company = company.replace('/', '_').replace('\\', '_').replace(':', '_')
+            safe_tax_month = tax_month.replace('/', '_').replace('\\', '_').replace(':', '_')
+            state_filename = f"auditcheck_state_{safe_company}_{safe_tax_month}.json"
+        
         state_file_path = cache_dir / state_filename
         
         # อัพเดท timestamp
@@ -12652,6 +13851,8 @@ def load_auditcheck_state():
         
         company = request.args.get('company', '')
         tax_month = request.args.get('taxMonth', '')
+        branch_name = request.args.get('branch_name', '')  # สำหรับสาขา
+        base_company = request.args.get('base_company', '')  # ชื่อบริษัทหลัก
         
         if not company or not tax_month:
             return jsonify({
@@ -12659,10 +13860,19 @@ def load_auditcheck_state():
                 'error': 'กรุณาระบุบริษัทและเดือนภาษี'
             }), 400
         
-        # สร้างชื่อไฟล์ที่ปลอดภัย
-        safe_company = company.replace('/', '_').replace('\\', '_').replace(':', '_')
-        safe_tax_month = tax_month.replace('/', '_').replace('\\', '_').replace(':', '_')
-        state_filename = f"auditcheck_state_{safe_company}_{safe_tax_month}.json"
+        # สร้างชื่อไฟล์ที่ปลอดภัย (รองรับสาขา)
+        if branch_name and base_company:
+            # สำหรับสาขา: ใช้ชื่อบริษัทหลัก + ชื่อสาขา
+            safe_base_company = base_company.replace('/', '_').replace('\\', '_').replace(':', '_')
+            safe_branch_name = branch_name.replace('/', '_').replace('\\', '_').replace(':', '_')
+            safe_tax_month = tax_month.replace('/', '_').replace('\\', '_').replace(':', '_')
+            state_filename = f"auditcheck_state_{safe_base_company}_{safe_branch_name}_{safe_tax_month}.json"
+        else:
+            # สำหรับบริษัทปกติ
+            safe_company = company.replace('/', '_').replace('\\', '_').replace(':', '_')
+            safe_tax_month = tax_month.replace('/', '_').replace('\\', '_').replace(':', '_')
+            state_filename = f"auditcheck_state_{safe_company}_{safe_tax_month}.json"
+        
         state_file_path = Path('cache') / state_filename
         
         # ตรวจสอบว่าไฟล์มีอยู่หรือไม่
@@ -12780,6 +13990,147 @@ def mark_documents_invalid():
     
     except Exception as e:
         logger.error(f"❌ เกิดข้อผิดพลาดในการย้ายไฟล์: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
+@app.route('/api/ocr/test-api-status', methods=['GET'])
+def test_ocr_api_status():
+    """ทดสอบสถานะ AksonOCR API ทั้งหมด"""
+    try:
+        from config import Config
+        import requests
+        import time
+        from pathlib import Path
+        import tempfile
+        
+        results = {
+            'aksonocr': {},
+            'timestamp': time.time()
+        }
+        
+        # สร้างไฟล์ทดสอบเล็กๆ (ภาพ PNG ขาว 1x1 pixel)
+        test_image_data = b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x00\x01\x00\x00\x00\x01\x08\x06\x00\x00\x00\x1f\x15\xc4\x89\x00\x00\x00\nIDATx\x9cc\x00\x01\x00\x00\x05\x00\x01\r\n-\xdb\x00\x00\x00\x00IEND\xaeB`\x82'
+        
+        # ทดสอบ AksonOCR API keys
+        akson_keys = {
+            'pdf_processing_primary': getattr(Config, 'AKSON_API_KEY_PDF_PROCESSING', ''),
+            'pdf_processing_fallback': getattr(Config, 'AKSON_API_KEY_PDF_PROCESSING_FALLBACK', ''),
+            'auditcheck_primary': getattr(Config, 'AKSON_API_KEY_AUDITCHECK', ''),
+            'auditcheck_fallback': getattr(Config, 'AKSON_API_KEY_AUDITCHECK_FALLBACK', ''),
+            'legacy': getattr(Config, 'AKSON_API_KEY', '')
+        }
+        
+        results['aksonocr'] = {}
+        for key_name, api_key in akson_keys.items():
+            if not api_key:
+                results['aksonocr'][key_name] = {
+                    'status': 'skipped',
+                    'message': 'API key ไม่ได้ตั้งค่า'
+                }
+                continue
+            
+            try:
+                url = "https://backend.aksonocr.com/api/v2/upload"
+                headers = {"X-API-Key": api_key}
+                data = {"model": "aksonocr-1.0"}
+                
+                with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as tmp_file:
+                    tmp_file.write(test_image_data)
+                    tmp_file_path = tmp_file.name
+                
+                try:
+                    with open(tmp_file_path, 'rb') as f:
+                        files = {'file': ('test.png', f, 'image/png')}
+                        response = requests.post(
+                            url,
+                            headers=headers,
+                            data=data,
+                            files=files,
+                            timeout=10
+                        )
+                    
+                    if response.status_code in [200, 201]:
+                        results['aksonocr'][key_name] = {
+                            'status': 'success',
+                            'status_code': response.status_code,
+                            'message': 'API ใช้งานได้'
+                        }
+                    elif response.status_code == 400:
+                        try:
+                            error_data = response.json()
+                            error_msg = error_data.get('error', {}).get('message', 'Bad Request') if isinstance(error_data, dict) else str(error_data)
+                        except:
+                            error_msg = response.text[:200] if response.text else 'Bad Request'
+                        results['aksonocr'][key_name] = {
+                            'status': 'error',
+                            'status_code': response.status_code,
+                            'message': f'Bad Request: {error_msg}'
+                        }
+                    elif response.status_code == 401:
+                        results['aksonocr'][key_name] = {
+                            'status': 'error',
+                            'status_code': response.status_code,
+                            'message': 'Unauthorized - API key ไม่ถูกต้องหรือหมดอายุ'
+                        }
+                    elif response.status_code == 429:
+                        results['aksonocr'][key_name] = {
+                            'status': 'warning',
+                            'status_code': response.status_code,
+                            'message': 'Rate Limit - API ถูกจำกัดจำนวน request'
+                        }
+                    elif response.status_code == 500:
+                        results['aksonocr'][key_name] = {
+                            'status': 'error',
+                            'status_code': response.status_code,
+                            'message': 'Server Error - ปัญหาที่ฝั่ง server'
+                        }
+                    else:
+                        results['aksonocr'][key_name] = {
+                            'status': 'error',
+                            'status_code': response.status_code,
+                            'message': f'Error {response.status_code}: {response.text[:200] if response.text else "Unknown error"}'
+                        }
+                finally:
+                    try:
+                        Path(tmp_file_path).unlink()
+                    except:
+                        pass
+                        
+            except requests.exceptions.Timeout:
+                results['aksonocr'][key_name] = {
+                    'status': 'error',
+                    'message': 'Timeout - API ไม่ตอบสนองภายใน 10 วินาที'
+                }
+            except requests.exceptions.ConnectionError:
+                results['aksonocr'][key_name] = {
+                    'status': 'error',
+                    'message': 'Connection Error - ไม่สามารถเชื่อมต่อกับ API ได้'
+                }
+            except Exception as e:
+                results['aksonocr'][key_name] = {
+                    'status': 'error',
+                    'message': f'Error: {str(e)}'
+                }
+        
+        # สรุปผล
+        akson_success = sum(1 for v in results['aksonocr'].values() if v.get('status') == 'success')
+        akson_total = len([k for k, v in results['aksonocr'].items() if v.get('status') != 'skipped'])
+        
+        results['summary'] = {
+            'aksonocr_working': f'{akson_success}/{akson_total}',
+            'has_working_api': akson_success > 0
+        }
+        
+        return jsonify({
+            'success': True,
+            'results': results
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการทดสอบ API status: {e}", exc_info=True)
         return jsonify({
             'success': False,
             'error': str(e)
