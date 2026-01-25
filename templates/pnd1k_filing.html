@@ -487,6 +487,57 @@
             padding-left: 12px;
         }
         
+        /* Month Header Row Styles */
+        .month-header-row {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            transition: background-color 0.2s ease;
+        }
+        
+        .month-header-row:hover {
+            background-color: #1e293b !important;
+        }
+        
+        .month-toggle-icon {
+            display: inline-block;
+            font-size: 0.8em;
+            color: #10b981;
+            min-width: 20px;
+            font-weight: bold;
+        }
+        
+        .month-data-row {
+            display: table-row;
+        }
+        
+        /* Scrollable Table Container */
+        .table-container {
+            max-height: 600px;
+            overflow-y: auto;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: #1e293b;
+        }
+        
+        .table-container::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .table-container::-webkit-scrollbar-track {
+            background: #0f172a;
+            border-radius: 8px;
+        }
+        
+        .table-container::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 8px;
+        }
+        
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        
         .currency-cell {
             text-align: right;
             font-weight: 600;
@@ -566,7 +617,7 @@
             <a href="/pdf" class="nav-link">🤖 ระบบอัตโนมัติ</a>
             <a href="/email" class="nav-link">📧 ส่งอีเมลล์</a>
             <a href="/auditcheck" class="nav-link">🔍 ตรวจภาษี</a>
-            <a href="#" class="nav-link active">📋 ยื่น ภ.ง.ด.1ก/กท.20</a>
+            <a href="/pnd1k-filing" class="nav-link active">📋 ยื่น ภ.ง.ด.1ก/กท.20</a>
         </div>
         
         <div class="form-section">
@@ -614,6 +665,10 @@
                                 <div style="color: #fafafa; font-size: 1.05em; font-weight: 500; line-height: 1.5;" id="companyTaxId">-</div>
                             </div>
                         </div>
+                        <button type="button" onclick="openAddCompanyModal()" style="padding: 10px 20px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; display: flex; align-items: center; gap: 6px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.3)';">
+                            <span>✏️</span>
+                            <span>แก้ไขข้อมูล</span>
+                        </button>
                     </div>
                     
                     <div style="padding-top: 20px;">
@@ -640,6 +695,18 @@
                                 <div style="color: #cbd5e1; font-size: 0.95em;" id="companyVatDate">-</div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div id="noCompanyData" style="display: none; margin-top: 20px; padding: 20px; background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%); border-radius: 10px; border: 2px dashed rgba(251, 191, 36, 0.3);">
+                        <div style="display: flex; align-items: center; gap: 10px; color: #fbbf24; margin-bottom: 12px; font-weight: 600;">
+                            <span style="font-size: 1.5em;">⚠️</span>
+                            <span>ยังไม่มีข้อมูลบริษัท</span>
+                        </div>
+                        <div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 16px; line-height: 1.6;">กรุณาเพิ่มข้อมูลบริษัท (Build, ชื่อบริษัท, ที่อยู่, สถานะภาษี, วันที่จด) เพื่อเชื่อมโยงกับบริษัทนี้</div>
+                        <button type="button" onclick="openAddCompanyModal()" style="padding: 10px 20px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 6px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)';">
+                            <span>➕</span>
+                            <span>เพิ่มข้อมูลบริษัท</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -756,6 +823,29 @@
                 </div>
             </div>
             
+            <!-- อัพโหลดเอกสารบัตรประชาชน -->
+            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <div class="upload-card" style="max-width: 600px; width: 100%;">
+                    <h3>🆔 อัพโหลดเอกสารบัตรประชาชน</h3>
+                    <div class="file-drop-zone" 
+                         id="dropZone5"
+                         onclick="document.getElementById('fileInput5').click()"
+                         ondrop="handleFileDrop(event, 'fileInput5', 'dropZone5')"
+                         ondragover="handleDragOver(event)"
+                         ondragleave="handleDragLeave(event)">
+                        <div class="file-drop-zone-icon">🆔</div>
+                        <div class="file-drop-zone-text">ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์</div>
+                        <div class="file-drop-zone-hint">รองรับ PDF, DOC, DOCX, XLS, XLSX, JPG, PNG</div>
+                    </div>
+                    <input type="file" 
+                           id="fileInput5" 
+                           class="file-input" 
+                           accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
+                           onchange="handleFileSelect(event, 'fileInput5', 'dropZone5', 'fileInfo5')">
+                    <div id="fileInfo5" class="file-info" style="display: none;"></div>
+                </div>
+            </div>
+            
             <button class="btn btn-primary btn-full" id="submitBtn" onclick="submitFiles()" disabled>
                 📤 ส่งยื่นเอกสาร
             </button>
@@ -770,23 +860,100 @@
         <!-- ส่วนแสดงข้อมูลที่อัพโหลดเข้ามาแล้ว -->
         <div class="uploaded-data-section">
             <h2>📋 ข้อมูลที่เอกสารอัพโหลดเข้ามาแล้ว</h2>
-            <table class="uploaded-data-table">
-                <thead>
-                    <tr>
-                        <th style="width: 12%;">🆔 เลขบัตรประชาชน</th>
-                        <th style="width: 18%;">👤 ชื่อ - นามสกุล</th>
-                        <th style="width: 30%;">📍 ที่อยู่</th>
-                        <th style="width: 15%;">📄 ยื่นแบบประกันสังคม</th>
-                        <th style="width: 15%;">💰 จำนวนเงินนำส่งประกันสังคม</th>
-                        <th style="width: 10%;">💵 ได้รวมทั้งหมด</th>
-                    </tr>
-                </thead>
-                <tbody id="uploadedDataTableBody">
-                    <tr class="empty-row">
-                        <td colspan="6">ยังไม่มีข้อมูล กรุณาอัพโหลดไฟล์เพื่อแสดงข้อมูล</td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <!-- ตารางข้อมูล (scrollable) -->
+            <div class="table-container" style="max-height: 600px; overflow-y: auto; border: 1px solid #444; border-radius: 8px;">
+                <table class="uploaded-data-table">
+                    <thead style="position: sticky; top: 0; background: #1e1e1e; z-index: 10;">
+                        <tr>
+                            <th style="width: 12%;">🆔 เลขบัตรประชาชน</th>
+                            <th style="width: 18%;">👤 ชื่อ - นามสกุล</th>
+                            <th style="width: 25%;">📍 ที่อยู่</th>
+                            <th style="width: 10%;">📅 เดือน</th>
+                            <th style="width: 18%;">💵 รายได้นำส่งทั้งหมด</th>
+                            <th style="width: 17%;">💰 ยอดหัก ณ ที่จ่าย</th>
+                        </tr>
+                    </thead>
+                    <tbody id="uploadedDataTableBody">
+                        <tr class="empty-row">
+                            <td colspan="6">ยังไม่มีข้อมูล กรุณาอัพโหลดไฟล์เพื่อแสดงข้อมูล</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal สำหรับเพิ่ม/แก้ไขข้อมูลบริษัท -->
+    <div id="addCompanyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10000; align-items: center; justify-content: center;">
+        <div style="background: #1e293b; border-radius: 12px; padding: 30px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <h2 style="color: #10b981; font-size: 1.5em; margin: 0; display: flex; align-items: center; gap: 10px;">
+                    <span>➕</span>
+                    <span>เพิ่มข้อมูลบริษัท</span>
+                </h2>
+                <button onclick="closeAddCompanyModal()" style="background: none; border: none; color: #94a3b8; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 5px; transition: all 0.3s;" onmouseover="this.style.background='#334155'; this.style.color='#fafafa';" onmouseout="this.style.background='none'; this.style.color='#94a3b8';">×</button>
+            </div>
+            
+            <form id="addCompanyForm" onsubmit="saveCompanyData(event)">
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                        <span>🏷️</span>
+                        <span>Build <span style="color: #ef4444;">*</span></span>
+                    </label>
+                    <input type="text" id="companyBuildInput" class="autocomplete-input" placeholder="เช่น Build008" required style="width: 100%; padding: 12px; background: #0f172a; border: 2px solid #334155; border-radius: 8px; color: #fafafa; font-size: 14px;" />
+                </div>
+                
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                        <span>🏢</span>
+                        <span>ชื่อบริษัท <span style="color: #ef4444;">*</span></span>
+                    </label>
+                    <input type="text" id="companyNameInput" class="autocomplete-input" placeholder="กรอกชื่อบริษัท" required style="width: 100%; padding: 12px; background: #0f172a; border: 2px solid #334155; border-radius: 8px; color: #fafafa; font-size: 14px;" />
+                </div>
+                
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                        <span>🆔</span>
+                        <span>เลขประจำตัวผู้เสียภาษี 13 หลัก</span>
+                    </label>
+                    <input type="text" id="companyTaxIdInput" class="autocomplete-input" placeholder="กรอกเลขประจำตัวผู้เสียภาษี 13 หลัก" maxlength="13" pattern="[0-9]{13}" style="width: 100%; padding: 12px; background: #0f172a; border: 2px solid #334155; border-radius: 8px; color: #fafafa; font-size: 14px;" />
+                    <div style="color: #94a3b8; font-size: 0.85em; margin-top: 5px;">กรอกเฉพาะตัวเลข 13 หลัก (ถ้ามี)</div>
+                </div>
+                
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                        <span>📊</span>
+                        <span>สถานะภาษีมูลค่าเพิ่ม <span style="color: #ef4444;">*</span></span>
+                    </label>
+                    <select id="companyVatStatusInput" class="autocomplete-input" required style="width: 100%; padding: 12px; background: #0f172a; border: 2px solid #334155; border-radius: 8px; color: #fafafa; font-size: 14px;" onchange="handleVatStatusChange()">
+                        <option value="">-- เลือกสถานะ --</option>
+                        <option value="จดภาษีมูลค่าเพิ่ม">จดภาษีมูลค่าเพิ่ม</option>
+                        <option value="ไม่จดภาษีมูลค่าเพิ่ม">ไม่จดภาษีมูลค่าเพิ่ม</option>
+                    </select>
+                </div>
+                
+                <div class="form-group" id="vatDateGroup" style="display: none;">
+                    <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                        <span>📅</span>
+                        <span>วันที่จดภาษีมูลค่าเพิ่ม <span style="color: #ef4444;">*</span></span>
+                    </label>
+                    <input type="date" id="companyVatDateInput" class="autocomplete-input" style="width: 100%; padding: 12px; background: #0f172a; border: 2px solid #334155; border-radius: 8px; color: #fafafa; font-size: 14px;" />
+                </div>
+                
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
+                        <span>📍</span>
+                        <span>ที่อยู่บริษัท <span style="color: #ef4444;">*</span></span>
+                    </label>
+                    <textarea id="companyAddressInput" class="autocomplete-input" placeholder="กรอกที่อยู่บริษัท" required rows="4" style="width: 100%; padding: 12px; background: #0f172a; border: 2px solid #334155; border-radius: 8px; color: #fafafa; font-size: 14px; resize: vertical; font-family: inherit;"></textarea>
+                </div>
+                
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 25px;">
+                    <button type="button" onclick="closeAddCompanyModal()" style="padding: 12px 24px; background: #334155; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">ยกเลิก</button>
+                    <button type="submit" style="padding: 12px 24px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)';">บันทึก</button>
+                </div>
+            </form>
         </div>
     </div>
     
@@ -807,14 +974,17 @@
                 const response = await fetch('/api/auditcheck/companies');
                 const data = await response.json();
                 
-                if (data.success) {
-                    allCompanies = data.companies;
+                if (data.success && data.companies) {
+                    allCompanies = Array.isArray(data.companies) ? data.companies : [];
+                    console.log('โหลดข้อมูลบริษัทสำเร็จ:', allCompanies.length, 'บริษัท');
                     setupAutocomplete();
                 } else {
-                    console.error('ไม่สามารถโหลดรายชื่อบริษัทได้:', data.error);
+                    console.error('ไม่สามารถโหลดรายชื่อบริษัทได้:', data.error || 'ไม่พบข้อมูล');
+                    allCompanies = [];
                 }
             } catch (error) {
                 console.error('Error loading companies:', error);
+                allCompanies = [];
             }
         }
         
@@ -823,38 +993,97 @@
             const dropdown = document.getElementById('companyDropdown');
             const clearBtn = document.getElementById('clearCompany');
             
+            if (!input || !dropdown || !clearBtn) {
+                console.error('ไม่พบ elements ที่จำเป็นสำหรับ autocomplete');
+                return;
+            }
+            
             function showDropdown(searchTerm = '') {
                 selectedCompanyIndex = -1;
                 
-                if (!searchTerm.trim()) {
-                    dropdown.classList.remove('show');
+                if (allCompanies.length === 0) {
+                    dropdown.innerHTML = '<div class="autocomplete-item">กำลังโหลดข้อมูลบริษัท...</div>';
+                    dropdown.classList.add('show');
                     return;
                 }
                 
-                const filtered = allCompanies.filter(company => 
-                    company.toLowerCase().includes(searchTerm.toLowerCase())
-                ).slice(0, 10);
-                
-                if (filtered.length === 0) {
-                    dropdown.classList.remove('show');
-                    return;
+                if (searchTerm === '') {
+                    // แสดงรายการทั้งหมด
+                    dropdown.innerHTML = '';
+                    allCompanies.forEach((company, index) => {
+                        const item = document.createElement('div');
+                        item.className = 'autocomplete-item';
+                        item.textContent = company;
+                        item.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            selectCompany(company);
+                        });
+                        dropdown.appendChild(item);
+                    });
+                } else {
+                    // กรองบริษัทที่ตรงกับคำค้นหา
+                    const filtered = allCompanies.filter(company => 
+                        company.toLowerCase().includes(searchTerm.toLowerCase())
+                    );
+                    
+                    if (filtered.length === 0) {
+                        dropdown.innerHTML = '<div class="autocomplete-item">ไม่พบบริษัทที่ตรงกับคำค้นหา</div>';
+                    } else {
+                        dropdown.innerHTML = '';
+                        filtered.forEach((company, index) => {
+                            const item = document.createElement('div');
+                            item.className = 'autocomplete-item';
+                            item.textContent = company;
+                            item.addEventListener('click', function(e) {
+                                e.stopPropagation();
+                                selectCompany(company);
+                            });
+                            dropdown.appendChild(item);
+                        });
+                    }
                 }
-                
-                dropdown.innerHTML = filtered.map(company => 
-                    `<div class="autocomplete-item" onclick="selectCompany('${company.replace(/'/g, "\\'")}')">${company}</div>`
-                ).join('');
                 
                 dropdown.classList.add('show');
             }
             
-            input.addEventListener('input', function(e) {
-                const value = e.target.value;
-                if (value) {
-                    clearBtn.style.display = 'block';
-                } else {
-                    clearBtn.style.display = 'none';
+            // แสดง dropdown เมื่อคลิกที่ input
+            input.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (allCompanies.length === 0) {
+                    // ถ้ายังไม่มีข้อมูล ให้ลองโหลดใหม่
+                    loadCompanies();
+                    return;
                 }
-                showDropdown(value);
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                } else {
+                    showDropdown(input.value);
+                }
+            });
+            
+            // แสดง dropdown เมื่อ focus
+            input.addEventListener('focus', function(e) {
+                e.stopPropagation();
+                if (allCompanies.length === 0) {
+                    // ถ้ายังไม่มีข้อมูล ให้ลองโหลดใหม่
+                    loadCompanies();
+                    return;
+                }
+                showDropdown(input.value);
+            });
+            
+            input.addEventListener('input', function(e) {
+                const searchTerm = e.target.value;
+                selectedCompanyIndex = -1;
+                
+                if (searchTerm === '') {
+                    clearBtn.style.display = 'none';
+                    document.getElementById('companyValue').value = '';
+                } else {
+                    clearBtn.style.display = 'block';
+                }
+                
+                showDropdown(searchTerm);
             });
             
             input.addEventListener('keydown', function(e) {
@@ -863,25 +1092,46 @@
                 if (e.key === 'ArrowDown') {
                     e.preventDefault();
                     selectedCompanyIndex = Math.min(selectedCompanyIndex + 1, items.length - 1);
-                    updateSelection(Array.from(items));
+                    updateSelection(items);
                 } else if (e.key === 'ArrowUp') {
                     e.preventDefault();
                     selectedCompanyIndex = Math.max(selectedCompanyIndex - 1, -1);
-                    updateSelection(Array.from(items));
-                } else if (e.key === 'Enter' && selectedCompanyIndex >= 0) {
+                    updateSelection(items);
+                } else if (e.key === 'Enter') {
                     e.preventDefault();
-                    items[selectedCompanyIndex].click();
+                    if (selectedCompanyIndex >= 0 && items[selectedCompanyIndex]) {
+                        selectCompany(items[selectedCompanyIndex].textContent);
+                    }
                 } else if (e.key === 'Escape') {
                     dropdown.classList.remove('show');
-                    selectedCompanyIndex = -1;
                 }
             });
             
+            // ปิด dropdown เมื่อคลิกนอก (แต่ไม่ปิดเมื่อคลิกที่ input หรือ clear button)
             document.addEventListener('click', function(e) {
-                if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+                const target = e.target;
+                const autocompleteWrapper = input.closest('.autocomplete-wrapper');
+                
+                // ตรวจสอบว่าคลิกที่ไหน
+                const isClickOnInput = target === input;
+                const isClickOnDropdown = dropdown.contains(target);
+                const isClickOnClearBtn = target === clearBtn || clearBtn.contains(target);
+                const isClickOnWrapper = autocompleteWrapper && autocompleteWrapper.contains(target);
+                
+                // ถ้าคลิกนอก autocomplete wrapper ให้ปิด dropdown
+                if (!isClickOnWrapper && !isClickOnDropdown) {
                     dropdown.classList.remove('show');
-                    selectedCompanyIndex = -1;
                 }
+            });
+            
+            // ป้องกันการปิด dropdown เมื่อคลิกที่ clear button
+            clearBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            
+            // ป้องกันการปิด dropdown เมื่อคลิกที่ dropdown items
+            dropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
             });
         }
         
@@ -896,20 +1146,29 @@
             });
         }
         
-        function selectCompany(company) {
+        async function selectCompany(company) {
             const input = document.getElementById('companySelect');
             const dropdown = document.getElementById('companyDropdown');
             const clearBtn = document.getElementById('clearCompany');
             
-            input.value = company;
-            document.getElementById('companyValue').value = company;
             dropdown.classList.remove('show');
-            clearBtn.style.display = 'block';
             selectedCompanyIndex = -1;
             
+            input.value = company;
+            document.getElementById('companyValue').value = company;
+            clearBtn.style.display = 'block';
+            
+            // แสดงส่วนข้อมูลบริษัท
             document.getElementById('companyInfoGroup').style.display = 'block';
+            
+            // โหลดข้อมูลบริษัท
             loadCompanyInfo(company);
             loadMonthlyData();
+            
+            // โหลดข้อมูลบัตรประชาชนตามบริษัท
+            loadIdCards(company);
+            // โหลดข้อมูลใบแนบ ภ.ง.ด.1 ตามบริษัท
+            loadAttachments(company);
         }
         
         function clearCompany() {
@@ -924,6 +1183,12 @@
             selectedCompanyIndex = -1;
             
             document.getElementById('companyInfoGroup').style.display = 'none';
+            
+            // ล้างข้อมูลบัตรประชาชนและใบแนบ
+            idCardData = [];
+            attachmentData = [];
+            selectedMonth = 'all';
+            updateUploadedDataTable();
         }
         
         function formatDate(dateString) {
@@ -976,11 +1241,23 @@
                     document.getElementById('companyAddress').textContent = comp.company_address || '-';
                     document.getElementById('companyVatStatus').textContent = comp.vat_status || '-';
                     document.getElementById('companyVatDate').textContent = formatDate(comp.vat_registration_date);
+                    
+                    // ซ่อน warning box เมื่อมีข้อมูลบริษัท
+                    const noCompanyData = document.getElementById('noCompanyData');
+                    if (noCompanyData) {
+                        noCompanyData.style.display = 'none';
+                    }
                 } else {
                     document.getElementById('companyTaxId').textContent = '-';
                     document.getElementById('companyAddress').textContent = '-';
                     document.getElementById('companyVatStatus').textContent = '-';
                     document.getElementById('companyVatDate').textContent = '-';
+                    
+                    // แสดง warning box เมื่อยังไม่มีข้อมูลบริษัท
+                    const noCompanyData = document.getElementById('noCompanyData');
+                    if (noCompanyData) {
+                        noCompanyData.style.display = 'block';
+                    }
                 }
             } catch (error) {
                 console.error('Error loading company info:', error);
@@ -988,6 +1265,12 @@
                 document.getElementById('companyAddress').textContent = '-';
                 document.getElementById('companyVatStatus').textContent = '-';
                 document.getElementById('companyVatDate').textContent = '-';
+                
+                // แสดง warning box เมื่อเกิดข้อผิดพลาด
+                const noCompanyData = document.getElementById('noCompanyData');
+                if (noCompanyData) {
+                    noCompanyData.style.display = 'block';
+                }
             }
         }
         
@@ -996,7 +1279,8 @@
             file1: null,
             file2: null,
             file3: null,
-            file4: null
+            file4: null,
+            file5: null
         };
         
         function handleDragOver(event) {
@@ -1057,8 +1341,357 @@
                 </button>
             `;
             
+            // ถ้าเป็นไฟล์บัตรประชาชน (file5) ให้อ่านข้อมูลด้วย OCR
+            if (fileIndex === '5') {
+                processIdCardOCR(file);
+            }
+            
+            // ถ้าเป็นไฟล์แบบ ภ.ง.ด.1 (file1) ให้อ่านข้อมูลด้วย OCR
+            if (fileIndex === '1') {
+                processPnd1kFormOCR(file);
+            }
+            
+            // ถ้าเป็นไฟล์ใบแนบ ภ.ง.ด.1 (file2) ให้อ่านข้อมูลด้วย OCR
+            if (fileIndex === '2') {
+                processPnd1kAttachmentOCR(file);
+            }
+            
             checkAllFilesUploaded();
             updateSummary();
+        }
+        
+        // ===== ฟังก์ชันจัดการ OCR บัตรประชาชน =====
+        async function processIdCardOCR(file) {
+            const company = document.getElementById('companySelect')?.value || '';
+            if (!company) {
+                alert('กรุณาเลือกบริษัทก่อนอัพโหลดเอกสารบัตรประชาชน');
+                // ลบไฟล์ที่เลือก
+                const fileInput = document.getElementById('fileInput5');
+                fileInput.value = '';
+                fileData.file5 = null;
+                const dropZone = document.getElementById('dropZone5');
+                dropZone.classList.remove('has-file');
+                dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX, JPG, PNG';
+                const fileInfo = document.getElementById('fileInfo5');
+                fileInfo.style.display = 'none';
+                return;
+            }
+            
+            // แสดง loading
+            const dropZone = document.getElementById('dropZone5');
+            const originalText = dropZone.querySelector('.file-drop-zone-text').textContent;
+            dropZone.querySelector('.file-drop-zone-text').textContent = '⏳ กำลังอ่านข้อมูลด้วย OCR...';
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('company', company);
+            
+            try {
+                const response = await fetch('/api/pnd1k/ocr-id-card', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // แสดงข้อมูลที่อ่านได้
+                    displayIdCardData(result.data);
+                    // อัพเดทตารางข้อมูล
+                    updateUploadedDataTable();
+                    
+                    // แสดงข้อความสำเร็จ
+                    let successMessage = '✅ อ่านข้อมูลสำเร็จ: ' + file.name;
+                    
+                    // ตรวจสอบว่ามีข้อมูลซ้ำหรือไม่
+                    if (result.is_duplicate) {
+                        successMessage = '⚠️ พบข้อมูลซ้ำ - อัพเดทข้อมูลแล้ว: ' + file.name;
+                        
+                        // แสดงข้อมูลเดิมถ้ามี
+                        if (result.existing_data) {
+                            const existingInfo = `\n\nข้อมูลเดิม:\n- ชื่อ: ${result.existing_data.full_name}\n- สร้างเมื่อ: ${new Date(result.existing_data.created_at).toLocaleString('th-TH')}\n- ไฟล์เดิม: ${result.existing_data.file_name}`;
+                            successMessage += existingInfo;
+                            
+                            // แสดง alert แจ้งเตือน
+                            alert('⚠️ พบข้อมูลบัตรประชาชนซ้ำ!\n\n' +
+                                  'เลขบัตรประชาชน: ' + result.data.id_card_number + '\n' +
+                                  'ชื่อ: ' + result.data.full_name + '\n\n' +
+                                  'ระบบได้อัพเดทข้อมูลเดิมแล้ว' + existingInfo);
+                        }
+                    }
+                    
+                    dropZone.querySelector('.file-drop-zone-text').textContent = successMessage;
+                    setTimeout(() => {
+                        dropZone.querySelector('.file-drop-zone-text').textContent = file.name;
+                    }, result.is_duplicate ? 5000 : 3000);
+                } else {
+                    alert('เกิดข้อผิดพลาดในการอ่านข้อมูล: ' + (result.error || 'ไม่สามารถอ่านข้อมูลได้'));
+                    dropZone.querySelector('.file-drop-zone-text').textContent = originalText;
+                }
+            } catch (error) {
+                console.error('Error processing ID card OCR:', error);
+                alert('เกิดข้อผิดพลาดในการอ่านข้อมูล: ' + error.message);
+                dropZone.querySelector('.file-drop-zone-text').textContent = originalText;
+            }
+        }
+        
+        // ===== ฟังก์ชันจัดการ OCR แบบ ภ.ง.ด.1 =====
+        async function processPnd1kFormOCR(file) {
+            const company = document.getElementById('companySelect')?.value || '';
+            if (!company) {
+                alert('กรุณาเลือกบริษัทก่อนอัพโหลดเอกสารแบบ ภ.ง.ด.1');
+                // ลบไฟล์ที่เลือก
+                const fileInput = document.getElementById('fileInput1');
+                fileInput.value = '';
+                fileData.file1 = null;
+                const dropZone = document.getElementById('dropZone1');
+                dropZone.classList.remove('has-file');
+                dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX';
+                const fileInfo = document.getElementById('fileInfo1');
+                fileInfo.style.display = 'none';
+                return;
+            }
+            
+            // แสดง loading
+            const dropZone = document.getElementById('dropZone1');
+            const originalText = dropZone.querySelector('.file-drop-zone-text').textContent;
+            dropZone.querySelector('.file-drop-zone-text').textContent = '⏳ กำลังอ่านข้อมูลด้วย OCR...';
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('company', company);
+            
+            try {
+                const response = await fetch('/api/pnd1k/ocr-form', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // แสดงข้อมูลที่อ่านได้
+                    displayPnd1kFormData(result.data, result.income_type, result.validation);
+                    
+                    // แสดงข้อความสำเร็จ
+                    let successMessage = `✅ อ่านข้อมูลสำเร็จ: ${file.name}\nประเภทเงินได้: ${result.income_type}`;
+                    
+                    // แสดงผลการตรวจสอบยอดรวม
+                    if (result.validation) {
+                        if (result.validation.valid) {
+                            successMessage += '\n✅ ยอดรวมตรงกัน';
+                        } else {
+                            successMessage += '\n⚠️ พบความไม่ตรงกัน:';
+                            result.validation.errors.forEach(error => {
+                                successMessage += '\n- ' + error;
+                            });
+                        }
+                        if (result.validation.warnings && result.validation.warnings.length > 0) {
+                            result.validation.warnings.forEach(warning => {
+                                successMessage += '\n⚠️ ' + warning;
+                            });
+                        }
+                    }
+                    
+                    alert(successMessage);
+                    dropZone.querySelector('.file-drop-zone-text').textContent = `✅ ${file.name} (${result.income_type})`;
+                } else {
+                    alert('เกิดข้อผิดพลาดในการอ่านข้อมูล: ' + (result.error || 'ไม่สามารถอ่านข้อมูลได้'));
+                    dropZone.querySelector('.file-drop-zone-text').textContent = originalText;
+                }
+            } catch (error) {
+                console.error('Error processing PND1K form OCR:', error);
+                alert('เกิดข้อผิดพลาดในการอ่านข้อมูล: ' + error.message);
+                dropZone.querySelector('.file-drop-zone-text').textContent = originalText;
+            }
+        }
+        
+        function displayPnd1kFormData(formData, incomeType, validation) {
+            // สร้าง modal หรือแสดงข้อมูลในส่วนที่เหมาะสม
+            console.log('Form Data:', formData);
+            console.log('Income Type:', incomeType);
+            console.log('Validation:', validation);
+            
+            // สามารถแสดงข้อมูลใน modal หรือส่วนอื่นๆ ตามต้องการ
+            // ตอนนี้แค่ log ไว้ก่อน
+        }
+        
+        // ===== ฟังก์ชันจัดการ OCR แบบ ภ.ง.ด.1 =====
+        async function processPnd1kFormOCR(file) {
+            const company = document.getElementById('companySelect')?.value || '';
+            if (!company) {
+                alert('กรุณาเลือกบริษัทก่อนอัพโหลดเอกสารแบบ ภ.ง.ด.1');
+                // ลบไฟล์ที่เลือก
+                const fileInput = document.getElementById('fileInput1');
+                fileInput.value = '';
+                fileData.file1 = null;
+                const dropZone = document.getElementById('dropZone1');
+                dropZone.classList.remove('has-file');
+                dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX';
+                const fileInfo = document.getElementById('fileInfo1');
+                fileInfo.style.display = 'none';
+                return;
+            }
+            
+            // แสดง loading
+            const dropZone = document.getElementById('dropZone1');
+            const originalText = dropZone.querySelector('.file-drop-zone-text').textContent;
+            dropZone.querySelector('.file-drop-zone-text').textContent = '⏳ กำลังอ่านข้อมูลด้วย OCR...';
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('company', company);
+            
+            try {
+                const response = await fetch('/api/pnd1k/ocr-form', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // แสดงข้อมูลที่อ่านได้
+                    displayPnd1kFormData(result.data, result.income_type, result.validation);
+                    
+                    // แสดงข้อความสำเร็จ
+                    let successMessage = `✅ อ่านข้อมูลสำเร็จ: ${file.name}\nประเภทเงินได้: ${result.income_type}`;
+                    
+                    // แสดงผลการตรวจสอบยอดรวม
+                    if (result.validation) {
+                        if (result.validation.valid) {
+                            successMessage += '\n✅ ยอดรวมตรงกัน';
+                        } else {
+                            successMessage += '\n⚠️ พบความไม่ตรงกัน:';
+                            result.validation.errors.forEach(error => {
+                                successMessage += '\n- ' + error;
+                            });
+                        }
+                        if (result.validation.warnings && result.validation.warnings.length > 0) {
+                            result.validation.warnings.forEach(warning => {
+                                successMessage += '\n⚠️ ' + warning;
+                            });
+                        }
+                    }
+                    
+                    alert(successMessage);
+                    dropZone.querySelector('.file-drop-zone-text').textContent = `✅ ${file.name} (${result.income_type})`;
+                } else {
+                    alert('เกิดข้อผิดพลาดในการอ่านข้อมูล: ' + (result.error || 'ไม่สามารถอ่านข้อมูลได้'));
+                    dropZone.querySelector('.file-drop-zone-text').textContent = originalText;
+                }
+            } catch (error) {
+                console.error('Error processing PND1K form OCR:', error);
+                alert('เกิดข้อผิดพลาดในการอ่านข้อมูล: ' + error.message);
+                dropZone.querySelector('.file-drop-zone-text').textContent = originalText;
+            }
+        }
+        
+        function displayPnd1kFormData(formData, incomeType, validation) {
+            // สร้าง modal หรือแสดงข้อมูลในส่วนที่เหมาะสม
+            console.log('Form Data:', formData);
+            console.log('Income Type:', incomeType);
+            console.log('Validation:', validation);
+            
+            // สามารถแสดงข้อมูลใน modal หรือส่วนอื่นๆ ตามต้องการ
+            // ตอนนี้แค่ log ไว้ก่อน
+        }
+        
+        // ===== ฟังก์ชันจัดการ OCR ใบแนบ ภ.ง.ด.1 =====
+        async function processPnd1kAttachmentOCR(file) {
+            const company = document.getElementById('companySelect')?.value || '';
+            if (!company) {
+                alert('กรุณาเลือกบริษัทก่อนอัพโหลดเอกสารใบแนบ ภ.ง.ด.1');
+                // ลบไฟล์ที่เลือก
+                const fileInput = document.getElementById('fileInput2');
+                fileInput.value = '';
+                fileData.file2 = null;
+                const dropZone = document.getElementById('dropZone2');
+                dropZone.classList.remove('has-file');
+                dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX';
+                const fileInfo = document.getElementById('fileInfo2');
+                fileInfo.style.display = 'none';
+                return;
+            }
+            
+            // แสดง loading
+            const dropZone = document.getElementById('dropZone2');
+            const originalText = dropZone.querySelector('.file-drop-zone-text').textContent;
+            dropZone.querySelector('.file-drop-zone-text').textContent = '⏳ กำลังอ่านข้อมูลด้วย OCR...';
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('company', company);
+            
+            try {
+                const response = await fetch('/api/pnd1k/ocr-attachment', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // แสดงข้อมูลที่อ่านได้
+                    displayAttachmentData(result.data);
+                    // อัพเดทตารางข้อมูล
+                    updateUploadedDataTable();
+                    
+                    // แสดงข้อความสำเร็จ
+                    dropZone.querySelector('.file-drop-zone-text').textContent = '✅ อ่านข้อมูลสำเร็จ: ' + file.name;
+                    setTimeout(() => {
+                        dropZone.querySelector('.file-drop-zone-text').textContent = file.name;
+                    }, 3000);
+                } else {
+                    alert('เกิดข้อผิดพลาดในการอ่านข้อมูล: ' + (result.error || 'ไม่สามารถอ่านข้อมูลได้'));
+                    dropZone.querySelector('.file-drop-zone-text').textContent = originalText;
+                }
+            } catch (error) {
+                console.error('Error processing attachment OCR:', error);
+                alert('เกิดข้อผิดพลาดในการอ่านข้อมูล: ' + error.message);
+                dropZone.querySelector('.file-drop-zone-text').textContent = originalText;
+            }
+        }
+        
+        function displayAttachmentData(data) {
+            // data อาจเป็น array ของรายบุคคล หรือ object เดียว
+            const dataArray = Array.isArray(data) ? data : [data];
+            
+            // เพิ่มข้อมูลเข้าไปใน attachmentData และอัพเดทตาราง
+            dataArray.forEach(item => {
+                if (item && item.recipient_id_card) {
+                    // ตรวจสอบว่ามีข้อมูลนี้อยู่แล้วหรือไม่ (ตามเลขบัตรและเดือน)
+                    const existingIndex = attachmentData.findIndex(att => 
+                        att.recipient_id_card === item.recipient_id_card &&
+                        att.payment_month === item.payment_month &&
+                        att.payment_year === item.payment_year
+                    );
+                    if (existingIndex >= 0) {
+                        attachmentData[existingIndex] = item;
+                    } else {
+                        attachmentData.push(item);
+                    }
+                }
+            });
+            updateUploadedDataTable();
+        }
+        
+        function displayIdCardData(data) {
+            // เพิ่มข้อมูลเข้าไปใน idCardData และอัพเดทตาราง
+            if (data && data.id_card_number) {
+                // ตรวจสอบว่ามีข้อมูลนี้อยู่แล้วหรือไม่
+                const existingIndex = idCardData.findIndex(card => card.id_card_number === data.id_card_number);
+                if (existingIndex >= 0) {
+                    idCardData[existingIndex] = data;
+                } else {
+                    idCardData.push(data);
+                }
+                updateUploadedDataTable();
+            }
         }
         
         function removeFile(inputId, dropZoneId, fileInfoId, fileIndex) {
@@ -1071,7 +1704,13 @@
             
             dropZone.classList.remove('has-file');
             dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
-            dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX';
+            
+            // กำหนด hint text ตามประเภทไฟล์
+            if (fileIndex === '5') {
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX, JPG, PNG';
+            } else {
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX';
+            }
             
             fileInfo.style.display = 'none';
             
@@ -1219,26 +1858,295 @@
         
         // ===== ฟังก์ชันจัดการข้อมูลที่อัพโหลดเข้ามาแล้ว =====
         let uploadedData = [];
+        let idCardData = [];
+        let attachmentData = [];
+        let selectedMonth = 'all'; // 'all' หรือ '1'-'12'
+        
+        async function loadIdCards(company) {
+            if (!company) {
+                idCardData = [];
+                updateUploadedDataTable();
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/pnd1k/id-cards?company=${encodeURIComponent(company)}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    idCardData = result.id_cards || [];
+                    updateUploadedDataTable();
+                } else {
+                    idCardData = [];
+                    updateUploadedDataTable();
+                }
+            } catch (error) {
+                console.error('Error loading ID cards:', error);
+                idCardData = [];
+                updateUploadedDataTable();
+                updateMonthSelector();
+            }
+        }
+        
+        async function loadAttachments(company) {
+            if (!company) {
+                attachmentData = [];
+                updateUploadedDataTable();
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/pnd1k/attachments?company=${encodeURIComponent(company)}`);
+                const result = await response.json();
+                
+                if (result.success && result.attachments) {
+                    attachmentData = Array.isArray(result.attachments) ? result.attachments : [result.attachments];
+                    updateUploadedDataTable();
+                } else {
+                    attachmentData = [];
+                    updateUploadedDataTable();
+                }
+            } catch (error) {
+                console.error('Error loading attachments:', error);
+                attachmentData = [];
+                updateUploadedDataTable();
+            }
+        }
         
         function updateUploadedDataTable() {
             const tbody = document.getElementById('uploadedDataTableBody');
             
-            if (uploadedData.length === 0) {
+            // รวมข้อมูลจาก uploadedData, idCardData และ attachmentData
+            const allData = [];
+            
+            // เพิ่มข้อมูลจาก idCardData
+            idCardData.forEach(card => {
+                allData.push({
+                    idCard: card.id_card_number || '-',
+                    name: card.full_name || '-',
+                    address: card.address || '-',
+                    socialSecurityFiling: false,
+                    socialSecurityAmount: null,
+                    totalIncome: null
+                });
+            });
+            
+            // เพิ่มข้อมูลจาก attachmentData (ใบแนบ ภ.ง.ด.1) - แยกเป็นรายบุคคลและรายเดือน
+            attachmentData.forEach(att => {
+                // สร้าง key สำหรับแยกตามเลขบัตรและเดือน
+                const monthKey = att.payment_month && att.payment_year 
+                    ? `${att.payment_year}-${String(att.payment_month).padStart(2, '0')}` 
+                    : null;
+                
+                // ตรวจสอบว่ามีข้อมูลนี้อยู่แล้วหรือไม่ (ตามเลขบัตรและเดือน)
+                const existing = allData.find(d => 
+                    d.idCard === att.recipient_id_card && 
+                    att.recipient_id_card !== '-' &&
+                    d.monthKey === monthKey
+                );
+                
+                if (existing) {
+                    // อัพเดทข้อมูลเดิมด้วยข้อมูลจากใบแนบ
+                    // รวมจำนวนเงิน (ถ้ามีหลายรายการในเดือนเดียวกัน)
+                    const existingIncome = parseFloat(existing.totalIncome?.toString().replace(/,/g, '')) || 0;
+                    const newIncome = parseFloat(att.income_amount?.toString().replace(/,/g, '')) || 0;
+                    existing.totalIncome = (existingIncome + newIncome).toFixed(2);
+                    
+                    // รวมยอดหัก ณ ที่จ่าย
+                    const existingTax = parseFloat(existing.taxAmount?.toString().replace(/,/g, '')) || 0;
+                    const newTax = parseFloat(att.tax_amount?.toString().replace(/,/g, '')) || 0;
+                    existing.taxAmount = (existingTax + newTax).toFixed(2);
+                } else {
+                    // เพิ่มใหม่ (แยกตามเดือน)
+                    allData.push({
+                        idCard: att.recipient_id_card || '-',
+                        name: att.recipient_name || '-',
+                        address: '-',
+                        socialSecurityFiling: false,
+                        socialSecurityAmount: null,
+                        totalIncome: att.income_amount || null,
+                        taxAmount: att.tax_amount || null,
+                        paymentDate: att.payment_date || '-',
+                        paymentMonth: att.payment_month || null,
+                        paymentYear: att.payment_year || null,
+                        monthKey: monthKey
+                    });
+                }
+            });
+            
+            // เพิ่มข้อมูลจาก uploadedData (ถ้ามี)
+            uploadedData.forEach(person => {
+                // ตรวจสอบว่ามีข้อมูลนี้อยู่แล้วหรือไม่ (ตามเลขบัตร)
+                const existing = allData.find(d => d.idCard === person.idCard && person.idCard !== '-');
+                if (existing) {
+                    // อัพเดทข้อมูลเดิม
+                    existing.socialSecurityFiling = person.socialSecurityFiling || existing.socialSecurityFiling;
+                    existing.socialSecurityAmount = person.socialSecurityAmount || existing.socialSecurityAmount;
+                    existing.totalIncome = person.totalIncome || existing.totalIncome;
+                } else {
+                    // เพิ่มใหม่
+                    allData.push(person);
+                }
+            });
+            
+            if (allData.length === 0) {
                 tbody.innerHTML = '<tr class="empty-row"><td colspan="6">ยังไม่มีข้อมูล กรุณาอัพโหลดไฟล์เพื่อแสดงข้อมูล</td></tr>';
                 return;
             }
             
-            tbody.innerHTML = uploadedData.map(person => `
-                <tr>
-                    <td>${person.idCard || '-'}</td>
-                    <td>${person.name || '-'}</td>
-                    <td>${person.address || '-'}</td>
-                    <td>${person.socialSecurityFiling ? 'ยื่นแล้ว' : 'ยังไม่ยื่น'}</td>
-                    <td class="currency-cell">${person.socialSecurityAmount ? formatCurrency(person.socialSecurityAmount) : '-'}</td>
-                    <td class="currency-cell">${person.totalIncome ? formatCurrency(person.totalIncome) : '-'}</td>
-                </tr>
-            `).join('');
+            // เรียงข้อมูลตามเดือนและปี (ถ้ามี)
+            allData.sort((a, b) => {
+                if (a.monthKey && b.monthKey) {
+                    return a.monthKey.localeCompare(b.monthKey);
+                }
+                if (a.monthKey) return -1;
+                if (b.monthKey) return 1;
+                return 0;
+            });
+            
+            // จัดกลุ่มข้อมูลตามเดือน
+            const monthGroups = {};
+            const monthNames = {
+                '1': 'มกราคม', '2': 'กุมภาพันธ์', '3': 'มีนาคม', '4': 'เมษายน',
+                '5': 'พฤษภาคม', '6': 'มิถุนายน', '7': 'กรกฎาคม', '8': 'สิงหาคม',
+                '9': 'กันยายน', '10': 'ตุลาคม', '11': 'พฤศจิกายน', '12': 'ธันวาคม'
+            };
+            
+            allData.forEach(person => {
+                const monthKey = person.monthKey || 'no-month';
+                if (!monthGroups[monthKey]) {
+                    monthGroups[monthKey] = [];
+                }
+                monthGroups[monthKey].push(person);
+            });
+            
+            // สร้าง HTML แยกตามเดือน
+            let html = '';
+            const sortedMonthKeys = Object.keys(monthGroups).sort();
+            
+            sortedMonthKeys.forEach((monthKey, index) => {
+                const persons = monthGroups[monthKey];
+                const monthRowId = `month-row-${monthKey}`;
+                let monthHeader = '';
+                
+                // คำนวณรวมรายได้และยอดหัก ณ ที่จ่ายของเดือน
+                let totalIncome = 0;
+                let totalTax = 0;
+                persons.forEach(person => {
+                    const income = parseFloat(person.totalIncome?.toString().replace(/,/g, '')) || 0;
+                    totalIncome += income;
+                    
+                    const tax = parseFloat(person.taxAmount?.toString().replace(/,/g, '')) || 0;
+                    totalTax += tax;
+                });
+                
+                if (monthKey !== 'no-month' && persons.length > 0) {
+                    const firstPerson = persons[0];
+                    const month = firstPerson.paymentMonth;
+                    const year = firstPerson.paymentYear;
+                    const monthDisplay = `${String(month).padStart(2, '0')}/${year || ''}`;
+                    const monthName = monthNames[month] || `เดือน ${month}`;
+                    
+                    monthHeader = `
+                        <tr class="month-header-row" id="${monthRowId}" onclick="toggleMonthSection('${monthKey}')" style="cursor: pointer; user-select: none;">
+                            <td style="background: #0f172a; color: #10b981; font-weight: 600; padding: 15px; text-align: center;">
+                                <span class="month-toggle-icon" id="icon-${monthKey}" style="transition: transform 0.3s ease; display: inline-block; margin-right: 8px; font-size: 0.9em;">▼</span>
+                            </td>
+                            <td colspan="2" style="background: #0f172a; color: #10b981; font-weight: 600; font-size: 1.1em; padding: 15px; text-align: left;">
+                                📅 ${monthName} ${year || ''} (${persons.length} รายการ)
+                            </td>
+                            <td style="background: #0f172a; color: #10b981; font-weight: 600; font-size: 1em; padding: 15px; text-align: center;">
+                                ${monthDisplay}
+                            </td>
+                            <td class="currency-cell" style="background: #0f172a; color: #10b981; font-weight: 700; font-size: 1.1em; padding: 15px; text-align: right;">
+                                ${formatCurrency(totalIncome.toFixed(2))}
+                            </td>
+                            <td class="currency-cell" style="background: #0f172a; color: #10b981; font-weight: 700; font-size: 1.1em; padding: 15px; text-align: right;">
+                                ${formatCurrency(totalTax.toFixed(2))}
+                            </td>
+                        </tr>
+                    `;
+                } else {
+                    monthHeader = `
+                        <tr class="month-header-row" id="${monthRowId}" onclick="toggleMonthSection('${monthKey}')" style="cursor: pointer; user-select: none;">
+                            <td style="background: #0f172a; color: #10b981; font-weight: 600; padding: 15px; text-align: center;">
+                                <span class="month-toggle-icon" id="icon-${monthKey}" style="transition: transform 0.3s ease; display: inline-block; margin-right: 8px; font-size: 0.9em;">▼</span>
+                            </td>
+                            <td colspan="2" style="background: #0f172a; color: #10b981; font-weight: 600; font-size: 1.1em; padding: 15px; text-align: left;">
+                                📅 ข้อมูลทั่วไป (${persons.length} รายการ)
+                            </td>
+                            <td style="background: #0f172a; color: #10b981; font-weight: 600; font-size: 1em; padding: 15px; text-align: center;">
+                                -
+                            </td>
+                            <td class="currency-cell" style="background: #0f172a; color: #10b981; font-weight: 700; font-size: 1.1em; padding: 15px; text-align: right;">
+                                ${formatCurrency(totalIncome.toFixed(2))}
+                            </td>
+                            <td class="currency-cell" style="background: #0f172a; color: #10b981; font-weight: 700; font-size: 1.1em; padding: 15px; text-align: right;">
+                                ${formatCurrency(totalTax.toFixed(2))}
+                            </td>
+                        </tr>
+                    `;
+                }
+                
+                html += monthHeader;
+                
+                persons.forEach((person, personIndex) => {
+                    const monthDisplay = person.paymentMonth && person.paymentYear 
+                        ? `${String(person.paymentMonth).padStart(2, '0')}/${person.paymentYear}` 
+                        : '-';
+                    
+                    // ดึง income_amount และ tax_amount จากข้อมูล
+                    const incomeAmount = person.totalIncome || person.income_amount || '0';
+                    const incomeValue = parseFloat(incomeAmount.toString().replace(/,/g, '')) || 0;
+                    
+                    const taxAmount = person.taxAmount || person.tax_amount || '0';
+                    const taxValue = parseFloat(taxAmount.toString().replace(/,/g, '')) || 0;
+                    
+                    html += `
+                        <tr class="month-data-row" data-month-key="${monthKey}">
+                            <td>${person.idCard || '-'}</td>
+                            <td>${person.name || '-'}</td>
+                            <td>${person.address || '-'}</td>
+                            <td>${monthDisplay}</td>
+                            <td class="currency-cell">${formatCurrency(incomeValue.toFixed(2))}</td>
+                            <td class="currency-cell">${formatCurrency(taxValue.toFixed(2))}</td>
+                        </tr>
+                    `;
+                });
+            });
+            
+            tbody.innerHTML = html;
         }
+        
+        function toggleMonthSection(monthKey) {
+            const iconId = `icon-${monthKey}`;
+            const icon = document.getElementById(iconId);
+            const monthDataRows = document.querySelectorAll(`tr.month-data-row[data-month-key="${monthKey}"]`);
+            
+            if (!icon || monthDataRows.length === 0) return;
+            
+            // ตรวจสอบสถานะปัจจุบัน (ดูจากแถวแรก)
+            const isHidden = monthDataRows[0].style.display === 'none';
+            
+            // Toggle display
+            monthDataRows.forEach(row => {
+                if (isHidden) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            // อัพเดท icon
+            if (isHidden) {
+                icon.textContent = '▼';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                icon.textContent = '▶';
+                icon.style.transform = 'rotate(-90deg)';
+            }
+        }
+        
         
         async function processUploadedFiles() {
             // ตรวจสอบว่ามีไฟล์ครบหรือไม่
@@ -1299,6 +2207,9 @@
             formData.append('pnd1_attachment', fileData.file2);
             formData.append('social_security_form', fileData.file3);
             formData.append('social_security_attachment', fileData.file4);
+            if (fileData.file5) {
+                formData.append('id_card_document', fileData.file5);
+            }
             
             try {
                 progressFill.style.width = '60%';
@@ -1339,7 +2250,7 @@
         }
         
         function resetForm() {
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 5; i++) {
                 const inputId = `fileInput${i}`;
                 const dropZoneId = `dropZone${i}`;
                 const fileInfoId = `fileInfo${i}`;
@@ -1356,6 +2267,178 @@
             progressBar.classList.remove('active');
             progressFill.style.width = '0%';
         }
+        
+        // ===== ฟังก์ชันจัดการ Modal เพิ่มข้อมูลบริษัท =====
+        async function openAddCompanyModal() {
+            const modal = document.getElementById('addCompanyModal');
+            const form = document.getElementById('addCompanyForm');
+            
+            // รีเซ็ตฟอร์ม
+            form.reset();
+            document.getElementById('vatDateGroup').style.display = 'none';
+            
+            // ถ้ามีบริษัทที่เลือกอยู่ ให้โหลดข้อมูลมาแสดง
+            const company = document.getElementById('companySelect')?.value || '';
+            if (company) {
+                try {
+                    const parts = company.split(' ');
+                    const build = parts[0];
+                    const companyName = parts.slice(1).join(' ');
+                    
+                    const customer = companyName || company;
+                    const response = await fetch(`/api/auditcheck/company?build=${encodeURIComponent(build)}&company_name=${encodeURIComponent(companyName || company)}&customer=${encodeURIComponent(customer)}`);
+                    const data = await response.json();
+                    
+                    if (data.success && data.company) {
+                        const comp = data.company;
+                        document.getElementById('companyBuildInput').value = comp.build || '';
+                        document.getElementById('companyNameInput').value = comp.company_name || '';
+                        document.getElementById('companyTaxIdInput').value = comp.tax_id || '';
+                        document.getElementById('companyVatStatusInput').value = comp.vat_status || '';
+                        document.getElementById('companyVatDateInput').value = comp.vat_registration_date || '';
+                        document.getElementById('companyAddressInput').value = comp.company_address || '';
+                        
+                        handleVatStatusChange();
+                    } else {
+                        // ถ้ายังไม่มีข้อมูล ให้ใส่ Build และชื่อบริษัทจากที่เลือก
+                        document.getElementById('companyBuildInput').value = build;
+                        document.getElementById('companyNameInput').value = companyName || company;
+                    }
+                } catch (error) {
+                    console.error('Error loading company data:', error);
+                    // ถ้าโหลดไม่ได้ ให้ใส่ Build และชื่อบริษัทจากที่เลือก
+                    const parts = company.split(' ');
+                    const build = parts[0];
+                    const companyName = parts.slice(1).join(' ');
+                    document.getElementById('companyBuildInput').value = build;
+                    document.getElementById('companyNameInput').value = companyName || company;
+                }
+            }
+            
+            modal.style.display = 'flex';
+        }
+        
+        function closeAddCompanyModal() {
+            document.getElementById('addCompanyModal').style.display = 'none';
+            document.getElementById('addCompanyForm').reset();
+            document.getElementById('vatDateGroup').style.display = 'none';
+        }
+        
+        function handleVatStatusChange() {
+            const vatStatus = document.getElementById('companyVatStatusInput').value;
+            const vatDateGroup = document.getElementById('vatDateGroup');
+            const vatDateInput = document.getElementById('companyVatDateInput');
+            
+            if (vatStatus === 'จดภาษีมูลค่าเพิ่ม') {
+                vatDateGroup.style.display = 'block';
+                vatDateInput.required = true;
+            } else {
+                vatDateGroup.style.display = 'none';
+                vatDateInput.required = false;
+                vatDateInput.value = '';
+            }
+        }
+        
+        async function saveCompanyData(event) {
+            event.preventDefault();
+            
+            const build = document.getElementById('companyBuildInput').value.trim();
+            const companyName = document.getElementById('companyNameInput').value.trim();
+            const taxId = document.getElementById('companyTaxIdInput').value.trim();
+            const vatStatus = document.getElementById('companyVatStatusInput').value.trim();
+            const vatDate = document.getElementById('companyVatDateInput').value.trim();
+            const companyAddress = document.getElementById('companyAddressInput').value.trim();
+            
+            // Validation
+            if (!build) {
+                alert('กรุณากรอก Build');
+                document.getElementById('companyBuildInput').focus();
+                return;
+            }
+            
+            if (!companyName) {
+                alert('กรุณากรอกชื่อบริษัท');
+                document.getElementById('companyNameInput').focus();
+                return;
+            }
+            
+            if (!vatStatus) {
+                alert('กรุณาเลือกสถานะภาษีมูลค่าเพิ่ม');
+                document.getElementById('companyVatStatusInput').focus();
+                return;
+            }
+            
+            // ถ้าเลือก "จดภาษีมูลค่าเพิ่ม" ต้องบังคับกรอกวันที่
+            if (vatStatus === 'จดภาษีมูลค่าเพิ่ม' && !vatDate) {
+                alert('กรุณากรอกวันที่จดภาษีมูลค่าเพิ่ม (จำเป็นเมื่อเลือก "จดภาษีมูลค่าเพิ่ม")');
+                document.getElementById('companyVatDateInput').focus();
+                return;
+            }
+            
+            if (!companyAddress) {
+                alert('กรุณากรอกที่อยู่บริษัท');
+                document.getElementById('companyAddressInput').focus();
+                return;
+            }
+            
+            // ตรวจสอบ Tax ID ถ้ามีการกรอก ต้องเป็น 13 หลัก
+            if (taxId && taxId.length !== 13) {
+                alert('เลขประจำตัวผู้เสียภาษีต้องเป็น 13 หลัก');
+                document.getElementById('companyTaxIdInput').focus();
+                return;
+            }
+            
+            try {
+                // บันทึกข้อมูลบริษัท
+                const response = await fetch('/api/auditcheck/companies', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        build: build,
+                        company_name: companyName,
+                        customer: companyName,
+                        tax_id: taxId || '',
+                        vat_status: vatStatus,
+                        vat_registration_date: vatDate || '',
+                        company_address: companyAddress
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert(`บันทึกข้อมูลบริษัทสำเร็จ!\nBuild: ${build}\nชื่อบริษัท: ${companyName}`);
+                    
+                    // ปิด modal
+                    closeAddCompanyModal();
+                    
+                    // รีโหลดข้อมูลบริษัท
+                    const companySelect = document.getElementById('companySelect');
+                    if (companySelect && companySelect.value) {
+                        await loadCompanyInfo(companySelect.value);
+                    }
+                } else {
+                    alert('เกิดข้อผิดพลาด: ' + (result.error || 'ไม่สามารถบันทึกข้อมูลได้'));
+                }
+            } catch (error) {
+                console.error('Error saving company data:', error);
+                alert('เกิดข้อผิดพลาดในการบันทึกข้อมูล: ' + error.message);
+            }
+        }
+        
+        // ปิด modal เมื่อคลิกนอก
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('addCompanyModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeAddCompanyModal();
+                    }
+                });
+            }
+        });
     </script>
 </body>
 </html>
