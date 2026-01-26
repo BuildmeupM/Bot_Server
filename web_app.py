@@ -174,6 +174,39 @@ def cleanup_temp_files(max_age_minutes: int = 30):
         logger.error(f"เกิดข้อผิดพลาดในการลบไฟล์เก่า: {e}", exc_info=True)
         return 0
 
+def cleanup_temp_exports_files(id_card_filter: str = ''):
+    """
+    ลบไฟล์ Excel ใน temp_exports ที่เกี่ยวข้องกับ 50 ทวิ
+    
+    Args:
+        id_card_filter: เลขบัตรประชาชนสำหรับกรองไฟล์ (ถ้าไม่ระบุจะลบทั้งหมด)
+    """
+    try:
+        temp_exports_dir = Path('temp_exports')
+        if not temp_exports_dir.exists():
+            return
+        
+        deleted_count = 0
+        for excel_file in temp_exports_dir.glob('*.xlsx'):
+            try:
+                # ถ้ามี id_card_filter ให้ลบเฉพาะไฟล์ที่เกี่ยวข้อง
+                if id_card_filter and id_card_filter in excel_file.name:
+                    excel_file.unlink()
+                    deleted_count += 1
+                    logger.debug(f"🗑️ ลบไฟล์ Excel ใน temp_exports: {excel_file.name}")
+                # ถ้าไม่มี id_card_filter ให้ลบไฟล์ทั้งหมดที่เกี่ยวข้องกับ 50 ทวิ
+                elif not id_card_filter and ('50tawi' in excel_file.name.lower() or '50' in excel_file.name):
+                    excel_file.unlink()
+                    deleted_count += 1
+                    logger.debug(f"🗑️ ลบไฟล์ Excel ใน temp_exports: {excel_file.name}")
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถลบไฟล์ Excel ได้: {excel_file.name} - {e}")
+        
+        if deleted_count > 0:
+            logger.info(f"✅ [Cleanup] ลบไฟล์ Excel ใน temp_exports {deleted_count} ไฟล์สำเร็จ")
+    except Exception as e:
+        logger.warning(f"⚠️ ไม่สามารถ cleanup ไฟล์ Excel ใน temp_exports ได้: {e}")
+
 # สร้าง Flask app
 app = Flask(__name__, 
             template_folder='templates',
@@ -7539,6 +7572,149 @@ def get_id_cards():
         }), 500
 
 
+@app.route('/api/pnd1k/update-id-card', methods=['POST'])
+def update_id_card():
+    """อัปเดตเลขบัตรประชาชนและรวมข้อมูลที่ซ้ำกัน"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        from datetime import datetime
+        
+        data = request.get_json()
+        company = data.get('company', '').strip()
+        old_id_card = str(data.get('old_id_card', '')).strip().replace(' ', '').replace('-', '')
+        new_id_card = str(data.get('new_id_card', '')).strip().replace(' ', '').replace('-', '')
+        name = str(data.get('name', '')).strip()
+        address = str(data.get('address', '')).strip()
+        birth_date = str(data.get('birth_date', '')).strip()
+        issue_date = str(data.get('issue_date', '')).strip()
+        expiry_date = str(data.get('expiry_date', '')).strip()
+        
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+        
+        if not new_id_card or len(new_id_card) != 13:
+            return jsonify({'success': False, 'error': 'เลขบัตรประชาชนต้องเป็น 13 หลัก'}), 400
+        
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        if isinstance(company_name, list):
+            company_name = ' '.join(company_name)
+        if not isinstance(company_name, str):
+            company_name = str(company_name) if company_name else company
+        
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            if isinstance(name, list):
+                name = ' '.join(name)
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        safe_company_name = sanitize_filename(company_name or company)
+        pnd1k_data_dir = Path('data_pnd1k')
+        pnd1k_data_dir.mkdir(exist_ok=True)
+        
+        # 1) อัปเดต id_cards
+        id_card_file = pnd1k_data_dir / f"pnd1k_id_cards_{safe_company_name}.json"
+        id_cards = []
+        if id_card_file.exists():
+            try:
+                with open(id_card_file, 'r', encoding='utf-8') as f:
+                    id_cards = json.load(f)
+                if not isinstance(id_cards, list):
+                    id_cards = [id_cards] if id_cards else []
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์บัตรประชาชน: {e}")
+        
+        old_card_index = next((i for i, c in enumerate(id_cards) if str(c.get('id_card_number', '')).strip() == old_id_card), -1)
+        new_card_index = next((i for i, c in enumerate(id_cards) if str(c.get('id_card_number', '')).strip() == new_id_card), -1)
+        
+        if old_card_index >= 0:
+            if new_card_index >= 0:
+                # Merge: รวมข้อมูลจาก old_card ไป new_card
+                old_card = id_cards[old_card_index]
+                new_card = id_cards[new_card_index]
+                old_name = str(old_card.get('full_name', '')).strip()
+                if old_name and (not new_card.get('full_name') or str(new_card.get('full_name', '')).strip() == '-'):
+                    new_card['full_name'] = old_name
+                old_addr = str(old_card.get('address', '')).strip()
+                if old_addr and (not new_card.get('address') or str(new_card.get('address', '')).strip() == '-'):
+                    new_card['address'] = old_addr
+                old_birth = str(old_card.get('birth_date', '')).strip()
+                if old_birth and (not new_card.get('birth_date') or str(new_card.get('birth_date', '')).strip() == '-'):
+                    new_card['birth_date'] = old_birth
+                old_issue = str(old_card.get('issue_date', '')).strip()
+                if old_issue and (not new_card.get('issue_date') or str(new_card.get('issue_date', '')).strip() == '-'):
+                    new_card['issue_date'] = old_issue
+                old_expiry = str(old_card.get('expiry_date', '')).strip()
+                if old_expiry and (not new_card.get('expiry_date') or str(new_card.get('expiry_date', '')).strip() == '-'):
+                    new_card['expiry_date'] = old_expiry
+                id_cards.pop(old_card_index)
+                new_card_index = next((i for i, c in enumerate(id_cards) if str(c.get('id_card_number', '')).strip() == new_id_card), -1)
+            else:
+                # เปลี่ยนเลขบัตร
+                id_cards[old_card_index]['id_card_number'] = new_id_card
+                new_card_index = old_card_index
+        
+        # อัปเดตข้อมูลที่แก้ไข
+        if new_card_index >= 0:
+            card = id_cards[new_card_index]
+        else:
+            card = {'id_card_number': new_id_card, 'created_at': datetime.now().isoformat()}
+            id_cards.append(card)
+        
+        if name: card['full_name'] = name
+        if address: card['address'] = address
+        if birth_date: card['birth_date'] = birth_date
+        if issue_date: card['issue_date'] = issue_date
+        if expiry_date: card['expiry_date'] = expiry_date
+        card['updated_at'] = datetime.now().isoformat()
+        
+        with open(id_card_file, 'w', encoding='utf-8') as f:
+            json.dump(id_cards, f, ensure_ascii=False, indent=2)
+        
+        # 2) อัปเดต attachments: เปลี่ยน recipient_id_card จาก old_id_card เป็น new_id_card
+        attachment_file = pnd1k_data_dir / f"pnd1k_attachments_{safe_company_name}.json"
+        attachments = []
+        if attachment_file.exists():
+            try:
+                with open(attachment_file, 'r', encoding='utf-8') as f:
+                    attachments = json.load(f)
+                if not isinstance(attachments, list):
+                    attachments = [attachments] if attachments else []
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ใบแนบ: {e}")
+        
+        updated_count = 0
+        for att in attachments:
+            att_id_card = str(att.get('recipient_id_card', '')).strip().replace(' ', '').replace('-', '')
+            if att_id_card == old_id_card:
+                att['recipient_id_card'] = new_id_card
+                updated_count += 1
+        
+        if updated_count > 0:
+            with open(attachment_file, 'w', encoding='utf-8') as f:
+                json.dump(attachments, f, ensure_ascii=False, indent=2)
+            logger.info(f"✅ อัปเดตเลขบัตรในใบแนบ: {old_id_card} → {new_id_card} ({updated_count} รายการ)")
+        
+        logger.info(f"✅ อัปเดตเลขบัตรประชาชนสำเร็จ: {old_id_card} → {new_id_card}")
+        
+        return jsonify({
+            'success': True,
+            'message': f'อัปเดตเลขบัตรประชาชนสำเร็จ ({updated_count} รายการในใบแนบ)',
+            'updated_attachments': updated_count
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอัปเดตเลขบัตรประชาชน: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 @app.route('/api/pnd1k/ocr-attachment', methods=['POST'])
 def ocr_pnd1k_attachment():
     """อ่านข้อมูลใบแนบ ภ.ง.ด.1 ด้วย OCR และเก็บข้อมูลตามชื่อบริษัท"""
@@ -7607,8 +7783,13 @@ def ocr_pnd1k_attachment():
             
             # Extract ข้อมูลใบแนบ ภ.ง.ด.1
             if structured_data:
+                # Log ข้อมูลประเภทเงินได้ที่ OCR อ่านมา
+                income_type_from_ocr = structured_data.get('ประเภทเงินได้', '')
+                logger.info(f"🔍 ข้อมูลประเภทเงินได้จาก OCR: '{income_type_from_ocr}'")
+                
                 attachment_data = extract_pnd1k_attachment_from_structured_data(structured_data, raw_content, raw_text)
                 logger.info(f"📋 ใช้ structured_data จาก key-extract: {list(attachment_data.keys())}")
+                logger.info(f"📋 income_type ที่กำหนด: {attachment_data.get('income_type', 'None')}")
                 # Log ข้อมูลจำนวนเงินได้และภาษีที่พบ
                 logger.info(f"📋 income_amount: {attachment_data.get('income_amount', '')}, tax_amount: {attachment_data.get('tax_amount', '')}")
                 logger.info(f"📋 income_amounts_list: {attachment_data.get('income_amounts_list', [])}, tax_amounts_list: {attachment_data.get('tax_amounts_list', [])}")
@@ -7711,6 +7892,11 @@ def extract_pnd1k_attachment_with_custom_fields(file_path):
     # ปรับให้อ่านข้อมูลจากแต่ละแถว (แต่ละรายการ) แทนการรวมทั้งหมด
     custom_fields = [
         {
+            "key": "ประเภทเงินได้",
+            "description": "ดึงข้อมูลประเภทเงินได้จากด้านบนของใบแนบ ภ.ง.ด.1 โดยดูจาก checkbox ที่ถูกเลือกเท่านั้น ถ้า checkbox (1), (2), หรือ (3) ถูกเลือก ให้แสดง '(1)', '(2)', หรือ '(3)' ถ้า checkbox (4) หรือ (5) ถูกเลือก ให้แสดง '(4)' หรือ '(5)' ตามลำดับ กรุณาดึงเฉพาะเลขในวงเล็บที่ checkbox ถูกเลือกเท่านั้น (เช่น '(4)' หรือ '4' หรือ '40(2)')",
+            "example": "(4)"
+        },
+        {
             "key": "ชื่อผู้มีเงินได้",
             "description": "ให้ระบบดึงชื่อผู้มีเงินได้ทั้งหมดจากตารางในเอกสาร โดยแยกด้วยเครื่องหมายจุลภาค (,) หากมีหลายคน",
             "example": "นายเอ บีซีดี, นางสาวซี ดีอี"
@@ -7739,6 +7925,21 @@ def extract_pnd1k_attachment_with_custom_fields(file_path):
             "key": "เงื่อนไข *",
             "description": "ดึงข้อมูลตัวเลขเงื่อนไขการนำส่งภาษีจากตารางในเอกสาร คือตัวเลข 1 หรือ 2 หรือ 3 เท่านั้น",
             "example": "1"
+        },
+        {
+            "key": "จำนวนเงินได้ที่จ่าย รายบุคคล",
+            "description": "ให้ดึงจำนวนเงินได้ที่จ่ายในครั้งนี้จากแต่ละแถวในตาราง แยกด้วยเครื่องหมายจุลภาค (,) ตามลำดับรายบุคคล (เช่น 151,848.00, 120,000.00, 95,500.00)",
+            "example": "151,848.00, 120,000.00, 95,500.00"
+        },
+        {
+            "key": "จำนวนภาษีหักและนำส่ง รายบุคคล",
+            "description": "ให้ดึงจำนวนเงินภาษีที่หักและนำส่งจากแต่ละแถวในตาราง แยกด้วยเครื่องหมายจุลภาค (,) ตามลำดับรายบุคคล (เช่น 13,145.83, 10,000.00, 8,200.00)",
+            "example": "13,145.83, 10,000.00, 8,200.00"
+        },
+        {
+            "key": "เงื่อนไข * รายบุคคล",
+            "description": "ให้ดึงเงื่อนไขการนำส่งภาษี (1, 2 หรือ 3) จากแต่ละแถวในตาราง แยกด้วยเครื่องหมายจุลภาค (,) ตามลำดับรายบุคคล (เช่น 1, 2, 1)",
+            "example": "1, 2, 1"
         }
     ]
     
@@ -7752,7 +7953,7 @@ def extract_pnd1k_attachment_with_custom_fields(file_path):
     payload = {
         'customFields': json.dumps(custom_fields, ensure_ascii=False),
         'model': 'aksonocr-1.0',
-        'additionalInstructions': 'ดึงข้อมูลจากตารางใบแนบ ภ.ง.ด.1 ให้ถูกต้องตามที่กำหนด โดยให้อ่านข้อมูลจากแต่ละแถวในตาราง ไม่ใช่รวมทั้งหมด เน้นความถูกต้องของตัวเลขจำนวนเงินได้และจำนวนภาษี โดยต้องอ่านตัวเลขให้ถูกต้องตามที่แสดงในเอกสาร (เช่น 151,848.00 ไม่ใช่ 1,303,410.00)'
+        'additionalInstructions': 'ดึงข้อมูลจากตารางใบแนบ ภ.ง.ด.1 ให้ถูกต้องตามที่กำหนด โดยให้อ่านข้อมูลจากแต่ละแถวในตาราง ไม่ใช่รวมทั้งหมด เน้นความถูกต้องของตัวเลขจำนวนเงินได้และจำนวนภาษี โดยต้องอ่านตัวเลขให้ถูกต้องตามที่แสดงในเอกสาร (เช่น 151,848.00 ไม่ใช่ 1,303,410.00) กรุณาดึง จำนวนเงินได้ที่จ่าย รายบุคคล, จำนวนภาษีหักและนำส่ง รายบุคคล และ เงื่อนไข * รายบุคคล ให้ครบตามแต่ละแถวในตาราง'
     }
     
     url = "https://backend.aksonocr.com/api/v1/key-extract"
@@ -7843,6 +8044,12 @@ def extract_pnd1k_attachment_with_custom_fields(file_path):
                     text_parts.append(f"จำนวนภาษี: {data['จำนวนเงินภาษีหักและนำส่งในครั้งนี้']}")
                 if data.get('เงื่อนไข *'):
                     text_parts.append(f"เงื่อนไข: {data['เงื่อนไข *']}")
+                if data.get('จำนวนเงินได้ที่จ่าย รายบุคคล'):
+                    text_parts.append(f"จำนวนเงินได้ รายบุคคล: {data['จำนวนเงินได้ที่จ่าย รายบุคคล']}")
+                if data.get('จำนวนภาษีหักและนำส่ง รายบุคคล'):
+                    text_parts.append(f"จำนวนภาษี รายบุคคล: {data['จำนวนภาษีหักและนำส่ง รายบุคคล']}")
+                if data.get('เงื่อนไข * รายบุคคล'):
+                    text_parts.append(f"เงื่อนไข รายบุคคล: {data['เงื่อนไข * รายบุคคล']}")
                 
                 raw_text = '\n'.join(text_parts)
                 
@@ -7868,6 +8075,55 @@ def extract_pnd1k_attachment_with_custom_fields(file_path):
         return '', '', None
 
 
+def merge_split_amounts(amounts_list):
+    """
+    Merge จำนวนเงินที่ถูกแยกผิดเนื่องจาก comma ในตัวเลข
+    เช่น ['151', '848.00'] -> ['151,848.00']
+    หรือ ['13', '145.83'] -> ['13,145.83']
+    """
+    import re
+    
+    if not amounts_list:
+        return []
+    
+    merged = []
+    i = 0
+    merge_count = 0
+    
+    while i < len(amounts_list):
+        current = amounts_list[i].strip()
+        
+        # ตรวจสอบว่าค่าปัจจุบันเป็นตัวเลขที่ไม่มีจุดทศนิยมหรือไม่
+        # และค่าถัดไปมีจุดทศนิยมหรือไม่
+        if i + 1 < len(amounts_list):
+            next_val = amounts_list[i + 1].strip()
+            
+            # Pattern: ตัวเลขที่ไม่มีจุดทศนิยม ตามด้วยตัวเลขที่มีจุดทศนิยม 2 หลัก
+            # เช่น '151' + '848.00' หรือ '13' + '145.83'
+            # ตรวจสอบว่า current เป็นตัวเลขทั้งหมด (อาจมี comma สำหรับหลักพัน)
+            current_is_int = re.match(r'^[\d,]+$', current) and '.' not in current
+            # ตรวจสอบว่า next_val เป็นตัวเลขที่มีจุดทศนิยม 2 หลัก (อาจมี comma)
+            next_has_decimal = re.match(r'^[\d,.]+\.\d{2}$', next_val)
+            
+            if current_is_int and next_has_decimal:
+                # Merge: '151' + '848.00' -> '151,848.00'
+                # หรือ '13' + '145.83' -> '13,145.83'
+                merged_amount = f"{current},{next_val}"
+                merged.append(merged_amount)
+                merge_count += 1
+                i += 2  # Skip next value
+                continue
+        
+        # ถ้าไม่ต้อง merge ให้เพิ่มค่าปัจจุบัน
+        merged.append(current)
+        i += 1
+    
+    if merge_count > 0:
+        logger.debug(f"🔧 [Merge] รวมจำนวนเงินที่ถูกแยกผิด: {merge_count} คู่ จาก {len(amounts_list)} -> {len(merged)} รายการ")
+    
+    return merged
+
+
 def extract_pnd1k_attachment_from_structured_data(structured_data, raw_content=None, raw_text=None):
     """Extract ข้อมูลใบแนบ ภ.ง.ด.1 จาก structured data ที่ได้จาก key-extract API"""
     import json
@@ -7880,83 +8136,158 @@ def extract_pnd1k_attachment_from_structured_data(structured_data, raw_content=N
         'income_amount': '',
         'tax_amount': '',
         'condition': '',
+        'income_type': None,  # ประเภทเงินได้: 40(1) หรือ 40(2)
         'income_amounts_list': [],  # เก็บรายการจำนวนเงินได้ (comma-separated)
-        'tax_amounts_list': []  # เก็บรายการจำนวนภาษี (comma-separated)
+        'tax_amounts_list': [],  # เก็บรายการจำนวนภาษี (comma-separated)
+        'conditions_list': []  # เก็บเงื่อนไขรายบุคคล (comma-separated: 1, 2, 3)
     }
     
     if not structured_data:
         return data
+    
+    # ดึงประเภทเงินได้จากด้านบนของใบแนบ
+    income_type_raw = str(structured_data.get('ประเภทเงินได้', '') or '').strip()
+    logger.info(f"🔍 ดึงประเภทเงินได้จาก OCR: '{income_type_raw}'")
+    
+    if income_type_raw:
+        # แปลงเป็นรูปแบบ 40(1) หรือ 40(2)
+        # (1), (2), (3) = 40(1)
+        # (4), (5) = 40(2)
+        
+        # เช็ค 40(2) ก่อน เพราะอาจมีทั้ง (4) และ (1) ในข้อความเดียวกัน
+        # แต่ถ้ามี (4) หรือ (5) ให้ถือว่าเป็น 40(2)
+        if (re.search(r'\(4\)|\(5\)', income_type_raw, re.IGNORECASE) or 
+            re.search(r'\b4\b|\b5\b', income_type_raw) or
+            '40(2)' in income_type_raw or 
+            '40 (2)' in income_type_raw or
+            'มาตรา 40 (2)' in income_type_raw or
+            'มาตรา 40(2)' in income_type_raw or
+            '40-2' in income_type_raw):
+            data['income_type'] = '40(2)'
+            logger.info(f"✅ กำหนดประเภทเงินได้เป็น: 40(2) (จาก: '{income_type_raw}')")
+        elif (re.search(r'\(1\)|\(2\)|\(3\)', income_type_raw, re.IGNORECASE) or 
+              re.search(r'\b1\b|\b2\b|\b3\b', income_type_raw) or
+              '40(1)' in income_type_raw or 
+              '40 (1)' in income_type_raw or
+              'มาตรา 40 (1)' in income_type_raw or
+              'มาตรา 40(1)' in income_type_raw or
+              '40-1' in income_type_raw):
+            data['income_type'] = '40(1)'
+            logger.info(f"✅ กำหนดประเภทเงินได้เป็น: 40(1) (จาก: '{income_type_raw}')")
+        else:
+            # ถ้าไม่ตรงกับรูปแบบใดๆ ให้ลองหาเลขในวงเล็บ
+            match = re.search(r'\((\d+)\)', income_type_raw)
+            if match:
+                num = match.group(1)
+                if num in ['1', '2', '3']:
+                    data['income_type'] = '40(1)'
+                    logger.info(f"✅ กำหนดประเภทเงินได้เป็น: 40(1) (จากเลขในวงเล็บ: {num})")
+                elif num in ['4', '5']:
+                    data['income_type'] = '40(2)'
+                    logger.info(f"✅ กำหนดประเภทเงินได้เป็น: 40(2) (จากเลขในวงเล็บ: {num})")
+            else:
+                # ลองหาเลขเดี่ยวๆ (ไม่ใช่ในวงเล็บ)
+                num_match = re.search(r'\b([1-5])\b', income_type_raw)
+                if num_match:
+                    num = num_match.group(1)
+                    if num in ['1', '2', '3']:
+                        data['income_type'] = '40(1)'
+                        logger.info(f"✅ กำหนดประเภทเงินได้เป็น: 40(1) (จากเลขเดี่ยว: {num})")
+                    elif num in ['4', '5']:
+                        data['income_type'] = '40(2)'
+                        logger.info(f"✅ กำหนดประเภทเงินได้เป็น: 40(2) (จากเลขเดี่ยว: {num})")
+                else:
+                    logger.warning(f"⚠️ ไม่สามารถระบุประเภทเงินได้จาก: '{income_type_raw}'")
     
     # ดึงข้อมูลจาก structured data
     data['recipient_name'] = str(structured_data.get('ชื่อผู้มีเงินได้', '')).strip()
     data['recipient_id_card'] = str(structured_data.get('ดึงข้อมูลเลขบัตรประชาชนของชื่อผู้เงินได้', '')).strip()
     data['payment_date'] = str(structured_data.get('วัน เดือน ปี ที่จ่าย', '')).strip()
     
-    # Parse จำนวนเงินได้ - แก้ไขปัญหาช่องว่างระหว่างตัวเลข (เช่น "151,848 00" -> "151,848.00")
+    # Parse จำนวนเงินได้ - เลือกจาก "รายบุคคล" ก่อน ถ้าไม่มีใช้ field เดิม
+    income_raw_per = str(structured_data.get('จำนวนเงินได้ที่จ่าย รายบุคคล', '')).strip()
     income_raw = str(structured_data.get('จำนวนเงินได้ที่จ่ายในครั้งนี้', '')).strip()
-    if income_raw:
+    if income_raw_per:
+        income_list = [amount.strip() for amount in income_raw_per.split(',') if amount.strip()]
+        if income_list:
+            # Merge จำนวนเงินที่ถูกแยกผิด (เช่น '151' + '848.00' -> '151,848.00')
+            income_list = merge_split_amounts(income_list)
+            data['income_amounts_list'] = income_list
+            income_raw = income_list[0] if income_list else ''
+    elif income_raw:
         # ตรวจสอบว่ามีหลายค่า (comma-separated) หรือไม่
         if ',' in income_raw:
-            # แยกเป็นรายการ
             income_list = [amount.strip() for amount in income_raw.split(',') if amount.strip()]
+            # Merge จำนวนเงินที่ถูกแยกผิด
+            income_list = merge_split_amounts(income_list)
             data['income_amounts_list'] = income_list
-            # ใช้ค่าแรกเป็นค่าเริ่มต้น
             income_raw = income_list[0] if income_list else ''
         else:
             data['income_amounts_list'] = [income_raw] if income_raw else []
-        
-        if income_raw:
-            # แทนที่ช่องว่างระหว่างตัวเลขด้วยจุดทศนิยม (เช่น "151,848 00" -> "151,848.00")
-            income_raw = re.sub(r'(\d)\s+(\d{2})$', r'\1.\2', income_raw)
-            # ลบช่องว่างทั้งหมด
-            income_raw = income_raw.replace(' ', '')
-            # แปลงรูปแบบให้ถูกต้อง (เช่น "151848.00" -> "151,848.00")
-            try:
-                # ลบ comma และ whitespace แล้วแปลงเป็น float
-                income_clean = re.sub(r'[^\d.]', '', income_raw)
-                if income_clean:
-                    income_float = float(income_clean)
-                    data['income_amount'] = f"{income_float:,.2f}"
-                else:
-                    data['income_amount'] = income_raw
-            except:
+    if income_raw:
+        # แทนที่ช่องว่างระหว่างตัวเลขด้วยจุดทศนิยม (เช่น "151,848 00" -> "151,848.00")
+        income_raw = re.sub(r'(\d)\s+(\d{2})$', r'\1.\2', income_raw)
+        income_raw = income_raw.replace(' ', '')
+        try:
+            income_clean = re.sub(r'[^\d.]', '', income_raw)
+            if income_clean:
+                income_float = float(income_clean)
+                data['income_amount'] = f"{income_float:,.2f}"
+            else:
                 data['income_amount'] = income_raw
+        except Exception:
+            data['income_amount'] = income_raw
     else:
         data['income_amount'] = ''
     
-    # Parse จำนวนภาษี - แก้ไขปัญหาช่องว่างระหว่างตัวเลข (เช่น "13,145 83" -> "13,145.83")
+    # Parse จำนวนภาษี - เลือกจาก "รายบุคคล" ก่อน ถ้าไม่มีใช้ field เดิม
+    tax_raw_per = str(structured_data.get('จำนวนภาษีหักและนำส่ง รายบุคคล', '')).strip()
     tax_raw = str(structured_data.get('จำนวนเงินภาษีหักและนำส่งในครั้งนี้', '')).strip()
-    if tax_raw:
-        # ตรวจสอบว่ามีหลายค่า (comma-separated) หรือไม่
-        if ',' in tax_raw:
-            # แยกเป็นรายการ
-            tax_list = [amount.strip() for amount in tax_raw.split(',') if amount.strip()]
+    if tax_raw_per:
+        tax_list = [amount.strip() for amount in tax_raw_per.split(',') if amount.strip()]
+        if tax_list:
+            # Merge จำนวนภาษีที่ถูกแยกผิด (เช่น '13' + '145.83' -> '13,145.83')
+            tax_list = merge_split_amounts(tax_list)
             data['tax_amounts_list'] = tax_list
-            # ใช้ค่าแรกเป็นค่าเริ่มต้น
+            tax_raw = tax_list[0] if tax_list else ''
+    elif tax_raw:
+        if ',' in tax_raw:
+            tax_list = [amount.strip() for amount in tax_raw.split(',') if amount.strip()]
+            # Merge จำนวนภาษีที่ถูกแยกผิด
+            tax_list = merge_split_amounts(tax_list)
+            data['tax_amounts_list'] = tax_list
             tax_raw = tax_list[0] if tax_list else ''
         else:
             data['tax_amounts_list'] = [tax_raw] if tax_raw else []
-        
-        if tax_raw:
-            # แทนที่ช่องว่างระหว่างตัวเลขด้วยจุดทศนิยม (เช่น "13,145 83" -> "13,145.83")
-            tax_raw = re.sub(r'(\d)\s+(\d{2})$', r'\1.\2', tax_raw)
-            # ลบช่องว่างทั้งหมด
-            tax_raw = tax_raw.replace(' ', '')
-            # แปลงรูปแบบให้ถูกต้อง
-            try:
-                # ลบ comma และ whitespace แล้วแปลงเป็น float
-                tax_clean = re.sub(r'[^\d.]', '', tax_raw)
-                if tax_clean:
-                    tax_float = float(tax_clean)
-                    data['tax_amount'] = f"{tax_float:,.2f}"
-                else:
-                    data['tax_amount'] = tax_raw
-            except:
+    if tax_raw:
+        tax_raw = re.sub(r'(\d)\s+(\d{2})$', r'\1.\2', tax_raw)
+        tax_raw = tax_raw.replace(' ', '')
+        try:
+            tax_clean = re.sub(r'[^\d.]', '', tax_raw)
+            if tax_clean:
+                tax_float = float(tax_clean)
+                data['tax_amount'] = f"{tax_float:,.2f}"
+            else:
                 data['tax_amount'] = tax_raw
+        except Exception:
+            data['tax_amount'] = tax_raw
     else:
         data['tax_amount'] = ''
     
-    data['condition'] = str(structured_data.get('เงื่อนไข *', '')).strip()
+    # Parse เงื่อนไข - เลือกจาก "รายบุคคล" ก่อน ถ้าไม่มีใช้ field เดิม
+    cond_raw_per = str(structured_data.get('เงื่อนไข * รายบุคคล', '')).strip()
+    cond_raw = str(structured_data.get('เงื่อนไข *', '')).strip()
+    if cond_raw_per:
+        cond_list = [c.strip() for c in cond_raw_per.split(',') if c.strip()]
+        if cond_list:
+            data['conditions_list'] = cond_list
+            data['condition'] = cond_list[0] if cond_list else ''
+    else:
+        data['condition'] = cond_raw
+        if cond_raw and ',' in cond_raw:
+            data['conditions_list'] = [c.strip() for c in cond_raw.split(',') if c.strip()]
+        else:
+            data['conditions_list'] = [cond_raw] if cond_raw else []
     
     # ถ้ายังไม่มีข้อมูลจำนวนเงินได้หรือภาษี ให้ลองดึงจาก raw_text
     if (not data['income_amount'] or not data['tax_amount'] or not data['income_amounts_list'] or not data['tax_amounts_list']) and raw_text:
@@ -7968,6 +8299,8 @@ def extract_pnd1k_attachment_from_structured_data(structured_data, raw_content=N
             if ',' in income_text:
                 income_list = [amount.strip() for amount in income_text.split(',') if amount.strip()]
                 if income_list:
+                    # Merge จำนวนเงินที่ถูกแยกผิด
+                    income_list = merge_split_amounts(income_list)
                     data['income_amounts_list'] = income_list
                     if not data['income_amount']:
                         # ใช้ค่าแรก
@@ -8002,6 +8335,8 @@ def extract_pnd1k_attachment_from_structured_data(structured_data, raw_content=N
             # แยกเป็นรายการ (comma-separated)
             if ',' in tax_text:
                 tax_list = [amount.strip() for amount in tax_text.split(',') if amount.strip()]
+                # Merge จำนวนภาษีที่ถูกแยกผิด
+                tax_list = merge_split_amounts(tax_list)
                 data['tax_amounts_list'] = tax_list
                 if tax_list and not data['tax_amount']:
                     # ใช้ค่าแรก
@@ -8120,9 +8455,16 @@ def split_attachment_data_by_individual(attachment_data, raw_text, company, buil
     tax_amount_str = attachment_data.get('tax_amount', '').strip()
     condition = attachment_data.get('condition', '').strip()
     
-    # ดึงรายการจำนวนเงินได้และภาษี (ถ้ามี)
+    # ดึงรายการจำนวนเงินได้ ภาษี และเงื่อนไข (ถ้ามี)
     income_amounts_list = attachment_data.get('income_amounts_list', [])
     tax_amounts_list = attachment_data.get('tax_amounts_list', [])
+    conditions_list = attachment_data.get('conditions_list', [])
+    
+    # Merge จำนวนเงินที่อาจถูกแยกผิด (ป้องกันกรณีที่ยังไม่ได้ merge)
+    if income_amounts_list:
+        income_amounts_list = merge_split_amounts(income_amounts_list)
+    if tax_amounts_list:
+        tax_amounts_list = merge_split_amounts(tax_amounts_list)
     
     # ถ้ามีรายการจำนวนเงินได้และภาษี ให้ใช้รายการนั้น (จับคู่กับแต่ละคน)
     # ถ้าไม่มี ให้ใช้ค่าเดียวและแบ่งเท่าๆ กัน
@@ -8187,6 +8529,12 @@ def split_attachment_data_by_individual(attachment_data, raw_text, company, buil
     parsed_income_amounts = parsed_income_amounts[:person_count]
     parsed_tax_amounts = parsed_tax_amounts[:person_count]
     
+    # Parse รายการเงื่อนไข รายบุคคล
+    parsed_conditions = [str(c).strip() for c in conditions_list[:person_count]]
+    while len(parsed_conditions) < person_count:
+        parsed_conditions.append(condition or '')
+    parsed_conditions = parsed_conditions[:person_count]
+    
     # แยกเดือนจาก payment_date (รูปแบบ: dd/mm/yyyy หรือ dd/mm/yyyy)
     payment_month = None
     payment_year = None
@@ -8204,11 +8552,15 @@ def split_attachment_data_by_individual(attachment_data, raw_text, company, buil
             except:
                 pass
     
+    # ดึงประเภทเงินได้จาก attachment_data
+    attachment_income_type = attachment_data.get('income_type')
+    
     # สร้าง entry สำหรับแต่ละคน
     for i, (name, id_card) in enumerate(zip(recipient_names, recipient_id_cards)):
-        # ดึงจำนวนเงินได้และภาษีสำหรับคนนี้ (จากรายการหรือแบ่งเท่าๆ กัน)
+        # ดึงจำนวนเงินได้ ภาษี และเงื่อนไขสำหรับคนนี้ (จากรายการหรือแบ่งเท่าๆ กัน)
         individual_income = parsed_income_amounts[i] if i < len(parsed_income_amounts) else 0.0
         individual_tax = parsed_tax_amounts[i] if i < len(parsed_tax_amounts) else 0.0
+        individual_condition = parsed_conditions[i] if i < len(parsed_conditions) else (condition or '')
         
         entry = {
             'recipient_name': name,
@@ -8218,7 +8570,8 @@ def split_attachment_data_by_individual(attachment_data, raw_text, company, buil
             'payment_year': payment_year,
             'income_amount': f"{individual_income:,.2f}",
             'tax_amount': f"{individual_tax:,.2f}",
-            'condition': condition,
+            'condition': individual_condition,
+            'income_type': attachment_income_type,  # ประเภทเงินได้จากใบแนบ
             'raw_text': raw_text[:1000] if raw_text else '',
             'company': company,
             'build': build,
@@ -8269,6 +8622,16 @@ def extract_pnd1k_form_with_custom_fields(file_path):
             "key": "เดือนที่จ่ายเงินได้พึงประเมิน",
             "description": "ดึงข้อมูลของ พ.ศ. และ เดือนภาษีที่นำส่งออกมา",
             "example": ""
+        },
+        {
+            "key": "(1) ยื่นปกติ",
+            "description": "ดึงข้อมูลว่ามีการเลือก checkbox 'ยื่นปกติ' หรือไม่ (ถ้าเลือกให้แสดง 'ยื่นปกติ' ถ้าไม่เลือกให้แสดงว่าง)",
+            "example": "ยื่นปกติ"
+        },
+        {
+            "key": "(2) ยื่นเพิ่มเติมครั้งที่",
+            "description": "ดึงข้อมูลว่ามีการเลือก checkbox 'ยื่นเพิ่มเติมครั้งที่' หรือไม่ และดึงหมายเลขครั้งที่ (ถ้าเลือกให้แสดงหมายเลขครั้งที่ เช่น '2' หรือ 'ยื่นเพิ่มเติมครั้งที่ 2' ถ้าไม่เลือกให้แสดงว่าง)",
+            "example": "2"
         },
         # Section 40(1) - แยกเป็น key ต่างกันเพื่อให้ดึงข้อมูลได้ชัดเจน
         {
@@ -8443,6 +8806,29 @@ def extract_pnd1k_form_from_structured_data(structured_data, raw_content=None, r
     
     data['payment_month'] = payment_month
     data['payment_year'] = payment_year
+    
+    # ดึงข้อมูลการยื่นแบบ (ยื่นปกติ หรือ ยื่นเพิ่มเติม)
+    filing_type_normal = str(structured_data.get('(1) ยื่นปกติ', '') or '').strip()
+    filing_type_supplement = str(structured_data.get('(2) ยื่นเพิ่มเติมครั้งที่', '') or '').strip()
+    
+    filing_type = None
+    filing_type_display = None
+    
+    if filing_type_normal and filing_type_normal.lower() not in ['', 'null', 'none', 'false']:
+        filing_type = 'normal'
+        filing_type_display = 'ยื่นปกติ'
+    elif filing_type_supplement and filing_type_supplement.lower() not in ['', 'null', 'none', 'false']:
+        filing_type = 'additional'
+        # ดึงหมายเลขครั้งที่ (ถ้ามี)
+        supplement_num_match = re.search(r'(\d+)', filing_type_supplement)
+        if supplement_num_match:
+            supplement_num = supplement_num_match.group(1)
+            filing_type_display = f'ยื่นเพิ่มเติมครั้งที่ {supplement_num}'
+        else:
+            filing_type_display = 'ยื่นเพิ่มเติม'
+    
+    data['filing_type'] = filing_type  # 'normal' หรือ 'additional'
+    data['filing_type_display'] = filing_type_display  # 'ยื่นปกติ' หรือ 'ยื่นเพิ่มเติมครั้งที่ X'
     
     # ดึงข้อมูลมาตรา 40(1) - กรณีทั่วไป
     # รองรับทั้ง key เดิมและ key ใหม่ที่แยกกันชัดเจน
@@ -8713,7 +9099,7 @@ def determine_income_type(form_data):
 
 
 def validate_monthly_totals(form_data, attachments):
-    """ตรวจสอบยอดรวมของเดือนว่าตรงกันไหม"""
+    """ตรวจสอบยอดรวมภายในเดือนเดียวกันในรายละเอียดใบแนบ (ไม่เปรียบเทียบกับแบบ ภ.ง.ด.1)"""
     validation_results = {
         'valid': True,
         'errors': [],
@@ -8722,7 +9108,7 @@ def validate_monthly_totals(form_data, attachments):
     }
     
     if not attachments:
-        validation_results['warnings'].append('ไม่มีข้อมูลใบแนบสำหรับเปรียบเทียบ')
+        validation_results['warnings'].append('ไม่มีข้อมูลใบแนบสำหรับตรวจสอบ')
         return validation_results
     
     import re
@@ -8738,22 +9124,6 @@ def validate_monthly_totals(form_data, attachments):
         except:
             return 0
     
-    # ดึงข้อมูลรวมจากแบบ ภ.ง.ด.1
-    section_total = form_data.get('section_total', {})
-    form_total_income = section_total.get('total_income', '') or section_total.get('raw', '')
-    form_total_tax = section_total.get('total_tax', '') or section_total.get('raw', '')
-    
-    # ถ้ายังไม่มีข้อมูล ให้ลองดึงจาก section_40_1 หรือ section_40_2
-    if not form_total_income:
-        section_40_1 = form_data.get('section_40_1', {})
-        section_40_2 = form_data.get('section_40_2', {})
-        form_total_income = section_40_1.get('total_income', '') or section_40_1.get('raw', '') or section_40_2.get('total_income', '') or section_40_2.get('raw', '')
-        form_total_tax = section_40_1.get('total_tax', '') or section_40_1.get('raw', '') or section_40_2.get('total_tax', '') or section_40_2.get('raw', '')
-    
-    # แปลงเป็นตัวเลข
-    form_income_value = parse_amount(form_total_income)
-    form_tax_value = parse_amount(form_total_tax)
-    
     # จัดกลุ่มข้อมูลใบแนบตามเดือน
     monthly_attachments = {}
     for att in attachments:
@@ -8765,51 +9135,12 @@ def validate_monthly_totals(form_data, attachments):
                 monthly_attachments[month_key] = []
             monthly_attachments[month_key].append(att)
     
-    # ถ้าแบบ ภ.ง.ด.1 มีข้อมูลเดือน ให้เปรียบเทียบเฉพาะเดือนนั้น
-    payment_period = form_data.get('payment_period', '')
-    form_month = None
-    form_year = None
-    
-    # ลอง parse เดือนจาก payment_period (เช่น "มกราคม 2568")
-    if payment_period:
-        # หาเดือนไทย
-        thai_months = {
-            'มกราคม': 1, 'กุมภาพันธ์': 2, 'มีนาคม': 3, 'เมษายน': 4,
-            'พฤษภาคม': 5, 'มิถุนายน': 6, 'กรกฎาคม': 7, 'สิงหาคม': 8,
-            'กันยายน': 9, 'ตุลาคม': 10, 'พฤศจิกายน': 11, 'ธันวาคม': 12
-        }
-        for thai_month, month_num in thai_months.items():
-            if thai_month in payment_period:
-                form_month = month_num
-                break
-        
-        # หาปี (อาจเป็น พ.ศ. หรือ ค.ศ.)
-        year_match = re.search(r'(\d{4})', payment_period)
-        if year_match:
-            form_year = int(year_match.group(1))
-            # ถ้าเป็นปี พ.ศ. (มากกว่า 2500) ให้แปลงเป็น ค.ศ.
-            if form_year > 2500:
-                form_year = form_year - 543
-    
-    # เปรียบเทียบยอดรวมของแต่ละเดือน
-    has_valid_comparison = False
+    # ตรวจสอบความสอดคล้องภายในเดือนเดียวกันในใบแนบเท่านั้น (ไม่เปรียบเทียบกับแบบ ภ.ง.ด.1)
     for month_key, month_attachments in monthly_attachments.items():
-        # ถ้าแบบ ภ.ง.ด.1 มีข้อมูลเดือน ให้เปรียบเทียบเฉพาะเดือนที่ตรงกัน
-        if form_month and form_year:
-            month_year = month_key.split('-')
-            if len(month_year) == 2:
-                att_year = int(month_year[0])
-                att_month = int(month_year[1])
-                # ถ้าเดือนไม่ตรงกัน ให้ข้าม
-                if att_year != form_year or att_month != form_month:
-                    validation_results['warnings'].append(
-                        f"เดือน {month_key}: ไม่ตรงกับเดือนในแบบ ภ.ง.ด.1 ({form_month}/{form_year}) - ข้ามการเปรียบเทียบ"
-                    )
-                    continue
-        
-        # คำนวณยอดรวมจากใบแนบ
+        # คำนวณยอดรวมจากใบแนบของเดือนนี้ (รวมทุกรายการในเดือนเดียวกัน)
         attachment_total_income = 0
         attachment_total_tax = 0
+        individual_count = 0
         
         for att in month_attachments:
             income = att.get('income_amount', '0')
@@ -8819,48 +9150,21 @@ def validate_monthly_totals(form_data, attachments):
                 tax_value = float(str(tax).replace(',', '').replace(' ', '')) if tax else 0
                 attachment_total_income += income_value
                 attachment_total_tax += tax_value
+                if income_value > 0 or tax_value > 0:
+                    individual_count += 1
             except:
                 pass
         
-        # เปรียบเทียบ (ใช้ tolerance เล็กน้อยสำหรับ floating point)
-        tolerance = 0.01
-        income_match = abs(form_income_value - attachment_total_income) < tolerance
-        tax_match = abs(form_tax_value - attachment_total_tax) < tolerance
-        
+        # บันทึกข้อมูลยอดรวมของเดือนนี้ (ไม่เปรียบเทียบกับแบบ ภ.ง.ด.1)
         comparison = {
             'month': month_key,
-            'form_income': form_income_value,
             'attachment_income': attachment_total_income,
-            'income_match': income_match,
-            'form_tax': form_tax_value,
             'attachment_tax': attachment_total_tax,
-            'tax_match': tax_match
+            'count': len(month_attachments),
+            'individual_count': individual_count
         }
         
         validation_results['monthly_comparisons'].append(comparison)
-        has_valid_comparison = True
-        
-        if not income_match:
-            validation_results['valid'] = False
-            validation_results['errors'].append(
-                f"เดือน {month_key}: ยอดรวมรายได้ไม่ตรงกัน (แบบ: {form_income_value:,.2f}, ใบแนบ: {attachment_total_income:,.2f})"
-            )
-        
-        if not tax_match:
-            validation_results['valid'] = False
-            validation_results['errors'].append(
-                f"เดือน {month_key}: ยอดรวมภาษีไม่ตรงกัน (แบบ: {form_tax_value:,.2f}, ใบแนบ: {attachment_total_tax:,.2f})"
-            )
-        
-        # ถ้าตรงกัน ให้ตั้งค่า valid เป็น True สำหรับเดือนนี้
-        if income_match and tax_match:
-            # ถ้ายังไม่มี error อื่นๆ ให้ตั้ง valid เป็น True
-            if not validation_results['errors']:
-                validation_results['valid'] = True
-    
-    # ถ้าไม่มีข้อมูลเดือนในแบบ ภ.ง.ด.1 และมีหลายเดือนในใบแนบ ให้แจ้งเตือน
-    if not form_month and len(monthly_attachments) > 1:
-        validation_results['warnings'].append('แบบ ภ.ง.ด.1 ไม่ระบุเดือนที่ชัดเจน - เปรียบเทียบกับทุกเดือน')
     
     return validation_results
 
@@ -8967,7 +9271,7 @@ def ocr_pnd1k_form():
             if not isinstance(attachments, list):
                 attachments = [attachments] if attachments else []
             
-            # เก็บข้อมูลแบบ ภ.ง.ด.1
+            # เก็บข้อมูลแบบ ภ.ง.ด.1 (รองรับหลายเดือน - ไม่ทับกัน)
             form_file = pnd1k_data_dir / f"pnd1k_form_{safe_company_name}.json"
             form_data_to_save = {
                 **form_data,
@@ -8980,11 +9284,81 @@ def ocr_pnd1k_form():
                 'raw_content': raw_content[:5000] if raw_content else ''  # เก็บแค่ส่วนแรกเพื่อไม่ให้ไฟล์ใหญ่เกินไป
             }
             
-            # บันทึกข้อมูลแบบ ภ.ง.ด.1
+            # บันทึกข้อมูลแบบ ภ.ง.ด.1 (เก็บเป็น array หลายเดือน - ไม่ทับเดือนเก่า)
             try:
-                with open(form_file, 'w', encoding='utf-8') as f:
-                    json.dump(form_data_to_save, f, ensure_ascii=False, indent=2)
-                logger.info(f"✅ บันทึกข้อมูลแบบ ภ.ง.ด.1 สำเร็จ: {form_file}")
+                forms_list = []
+                if form_file.exists():
+                    try:
+                        with open(form_file, 'r', encoding='utf-8') as f:
+                            existing_data = json.load(f)
+                        if isinstance(existing_data, list):
+                            forms_list = existing_data
+                        elif isinstance(existing_data, dict):
+                            # รูปแบบเก่า (object เดียว) -> แปลงเป็น list แล้วเก็บต่อ ไม่ทิ้งข้อมูลเดิม
+                            forms_list = [existing_data]
+                            logger.info(f"📋 แปลงรูปแบบแบบ ภ.ง.ด.1 เดิม (object) เป็น list: 1 เดือน")
+                        else:
+                            forms_list = []
+                    except Exception as e:
+                        logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์แบบ ภ.ง.ด.1 เดิม: {e}")
+                
+                form_month = form_data.get('payment_month')
+                form_year = form_data.get('payment_year')
+                form_filing_type = form_data.get('filing_type')  # 'normal' หรือ 'additional'
+                form_filing_type_display = form_data.get('filing_type_display')  # 'ยื่นปกติ' หรือ 'ยื่นเพิ่มเติมครั้งที่ X'
+                
+                existing_index = -1
+                if form_month is not None and form_year is not None:
+                    for i, existing_form in enumerate(forms_list):
+                        existing_month = existing_form.get('payment_month')
+                        existing_year = existing_form.get('payment_year')
+                        existing_filing_type = existing_form.get('filing_type')
+                        existing_filing_type_display = existing_form.get('filing_type_display')
+                        
+                        # เช็คทั้งเดือน/ปี และ filing_type เพื่อแยก "ยื่นปกติ" กับ "ยื่นเพิ่มเติมครั้งที่ X" ออกจากกัน
+                        if (existing_month == form_month and 
+                            existing_year == form_year):
+                            # ถ้าเดือน/ปีตรงกัน ให้เช็ค filing_type
+                            # กรณี 1: ทั้งคู่เป็น "ยื่นปกติ" -> ทับกัน
+                            if form_filing_type == 'normal' and existing_filing_type == 'normal':
+                                existing_index = i
+                                break
+                            # กรณี 2: ทั้งคู่เป็น "ยื่นเพิ่มเติม" -> เช็คว่าเป็นครั้งที่เดียวกันหรือไม่
+                            elif form_filing_type == 'additional' and existing_filing_type == 'additional':
+                                # ถ้า filing_type_display ตรงกัน (เช่น "ยื่นเพิ่มเติมครั้งที่ 1" == "ยื่นเพิ่มเติมครั้งที่ 1") -> ทับกัน
+                                if form_filing_type_display == existing_filing_type_display:
+                                    existing_index = i
+                                    break
+                                # ถ้า filing_type_display ไม่ตรงกัน (เช่น "ยื่นเพิ่มเติมครั้งที่ 1" != "ยื่นเพิ่มเติมครั้งที่ 2") -> แยกกัน
+                            # กรณี 3: filing_type ไม่ตรงกัน (เช่น normal vs additional, หรือ None) -> แยกกัน เก็บแยกกัน
+                            # กรณี 4: ถ้าไม่มี filing_type ทั้งคู่ -> ถือว่าเป็นข้อมูลเดียวกัน (ทับกัน)
+                            elif (not form_filing_type and not existing_filing_type):
+                                existing_index = i
+                                break
+                
+                if existing_index >= 0:
+                    forms_list[existing_index] = form_data_to_save
+                    filing_info = f" ({form_filing_type_display or form_filing_type})" if form_filing_type_display or form_filing_type else ""
+                    logger.info(f"✅ อัปเดตข้อมูลแบบ ภ.ง.ด.1 เดือน {form_month}/{form_year}{filing_info} (รวม {len(forms_list)} รายการ)")
+                else:
+                    forms_list.append(form_data_to_save)
+                    filing_info = f" ({form_filing_type_display or form_filing_type})" if form_filing_type_display or form_filing_type else ""
+                    logger.info(f"✅ เพิ่มข้อมูลแบบ ภ.ง.ด.1 เดือน {form_month}/{form_year}{filing_info} ใหม่ (รวม {len(forms_list)} รายการ)")
+                
+                # เขียนแบบ atomic (tmp แล้ว rename) เพื่อไม่ให้ไฟล์เสียหากเขียนไม่ครบ
+                import tempfile
+                tmp_fd, tmp_path = tempfile.mkstemp(suffix='.json', dir=str(form_file.parent), prefix='.pnd1k_form_')
+                try:
+                    with os.fdopen(tmp_fd, 'w', encoding='utf-8') as f:
+                        json.dump(forms_list, f, ensure_ascii=False, indent=2)
+                    os.replace(tmp_path, form_file)
+                except Exception:
+                    try:
+                        os.unlink(tmp_path)
+                    except Exception:
+                        pass
+                    raise
+                logger.info(f"✅ บันทึกข้อมูลแบบ ภ.ง.ด.1 สำเร็จ: {form_file.name} ({len(forms_list)} เดือน)")
             except Exception as e:
                 logger.warning(f"⚠️ ไม่สามารถบันทึกข้อมูลแบบ ภ.ง.ด.1: {e}")
             
@@ -9019,6 +9393,1208 @@ def ocr_pnd1k_form():
             'success': False,
             'error': str(e)
         }), 500
+
+
+@app.route('/api/pnd1k/form', methods=['GET'])
+def get_pnd1k_form():
+    """ดึงข้อมูลแบบ ภ.ง.ด.1 ตามชื่อบริษัท (เดือนในแบบภาษี, ยอดรวม ฯลฯ)"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+
+        company = request.args.get('company', '').strip()
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        if isinstance(company_name, list):
+            company_name = ' '.join(company_name)
+        if not isinstance(company_name, str):
+            company_name = str(company_name) if company_name else company
+
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            if isinstance(name, list):
+                name = ' '.join(name)
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+
+        safe = sanitize_filename(company_name or company)
+        form_file = Path('data_pnd1k') / f"pnd1k_form_{safe}.json"
+
+        if not form_file.exists():
+            return jsonify({
+                'success': True,
+                'form': None,
+                'message': 'ยังไม่มีข้อมูลแบบ ภ.ง.ด.1 สำหรับบริษัทนี้'
+            }), 200
+
+        with open(form_file, 'r', encoding='utf-8') as f:
+            forms_data = json.load(f)
+        
+        # รองรับทั้งรูปแบบเก่า (object เดียว) และรูปแบบใหม่ (array)
+        forms_list = []
+        if isinstance(forms_data, list):
+            forms_list = forms_data
+        elif isinstance(forms_data, dict):
+            forms_list = [forms_data]
+        
+        # ถ้ามี query param month และ year ให้กรองเฉพาะเดือนนั้น
+        month_param = request.args.get('month')
+        year_param = request.args.get('year')
+        if month_param and year_param:
+            try:
+                month_filter = int(month_param)
+                year_filter = int(year_param)
+                forms_list = [f for f in forms_list 
+                             if f.get('payment_month') == month_filter and f.get('payment_year') == year_filter]
+            except:
+                pass
+        
+        if not forms_list:
+            return jsonify({
+                'success': True,
+                'forms': [],
+                'form': None,
+                'message': 'ยังไม่มีข้อมูลแบบ ภ.ง.ด.1 สำหรับบริษัทนี้' + (f' (เดือน {month_param}/{year_param})' if month_param and year_param else '')
+            }), 200
+        
+        # ถ้ามีแค่ 1 form และไม่ได้ระบุเดือน ให้ส่ง form เดียว (backward compatible)
+        if len(forms_list) == 1 and not month_param:
+            form = forms_list[0]
+            income_type = determine_income_type(form)
+            form_out = {
+                'payment_period': form.get('payment_period', ''),
+                'payment_month': form.get('payment_month'),
+                'payment_year': form.get('payment_year'),
+                'income_type': income_type,
+                'section_total': form.get('section_total', {}),
+                'section_40_1': form.get('section_40_1', {}),
+                'section_40_2': form.get('section_40_2', {}),
+                'tax_id': form.get('tax_id', ''),
+                'company_name': form.get('company_name', ''),
+                'address': form.get('address', ''),
+                'file_name': form.get('file_name', ''),
+                'filing_type': form.get('filing_type'),
+                'filing_type_display': form.get('filing_type_display'),
+            }
+            return jsonify({
+                'success': True,
+                'form': form_out,
+                'forms': [form_out],
+                'message': 'โหลดข้อมูลแบบ ภ.ง.ด.1 สำเร็จ'
+            }), 200
+        
+        # ถ้ามีหลายเดือน ให้ส่งทั้งหมด
+        forms_out = []
+        for form in forms_list:
+            income_type = determine_income_type(form)
+            forms_out.append({
+                'payment_period': form.get('payment_period', ''),
+                'payment_month': form.get('payment_month'),
+                'payment_year': form.get('payment_year'),
+                'income_type': income_type,
+                'section_total': form.get('section_total', {}),
+                'section_40_1': form.get('section_40_1', {}),
+                'section_40_2': form.get('section_40_2', {}),
+                'tax_id': form.get('tax_id', ''),
+                'company_name': form.get('company_name', ''),
+                'address': form.get('address', ''),
+                'file_name': form.get('file_name', ''),
+                'filing_type': form.get('filing_type'),
+                'filing_type_display': form.get('filing_type_display'),
+            })
+        
+        return jsonify({
+            'success': True,
+            'forms': forms_out,
+            'form': forms_out[0] if forms_out else None,
+            'message': f'โหลดข้อมูลแบบ ภ.ง.ด.1 สำเร็จ ({len(forms_out)} เดือน)'
+        }), 200
+
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการดึงข้อมูลแบบ ภ.ง.ด.1: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+def parse_thai_name(full_name):
+    """แยกชื่อไทยเป็นส่วนๆ: คำนำหน้าชื่อ, ชื่อ, ชื่อกลาง, ชื่อสกุล"""
+    import re
+    
+    if not full_name or not isinstance(full_name, str):
+        return {
+            'prefix': '',
+            'first_name': '',
+            'middle_name': '',
+            'last_name': ''
+        }
+    
+    full_name = full_name.strip()
+    if not full_name or full_name == '-':
+        return {
+            'prefix': '',
+            'first_name': '',
+            'middle_name': '',
+            'last_name': ''
+        }
+    
+    # คำนำหน้าชื่อไทย
+    thai_prefixes = ['นาย', 'นาง', 'นางสาว', 'ด.ช.', 'ด.ญ.', 'เด็กชาย', 'เด็กหญิง', 'พัน', 'ร้อย', 'สิบ', 'พล', 'จ่า', 'ส.ต.', 'ส.อ.', 'ร.ต.', 'ร.ท.', 'ร.อ.', 'พ.ต.', 'พ.ท.', 'พ.อ.', 'น.ต.', 'น.ท.', 'น.อ.', 'พล.ต.', 'พล.ท.', 'พล.อ.']
+    
+    prefix = ''
+    remaining_name = full_name
+    
+    # หาคำนำหน้าชื่อ
+    for p in sorted(thai_prefixes, key=len, reverse=True):  # เรียงตามความยาว (ยาวก่อน) เพื่อจับ "นางสาว" ก่อน "นาย"
+        if full_name.startswith(p):
+            prefix = p
+            remaining_name = full_name[len(p):].strip()
+            break
+    
+    # แยกชื่อและนามสกุล
+    name_parts = remaining_name.split()
+    
+    if len(name_parts) == 0:
+        return {
+            'prefix': prefix,
+            'first_name': '',
+            'middle_name': '',
+            'last_name': ''
+        }
+    elif len(name_parts) == 1:
+        # มีแค่ชื่อหรือนามสกุลเดียว
+        return {
+            'prefix': prefix,
+            'first_name': name_parts[0],
+            'middle_name': '',
+            'last_name': ''
+        }
+    elif len(name_parts) == 2:
+        # มีชื่อและนามสกุล
+        return {
+            'prefix': prefix,
+            'first_name': name_parts[0],
+            'middle_name': '',
+            'last_name': name_parts[1]
+        }
+    else:
+        # มีชื่อกลาง (ชื่อมากกว่า 2 ส่วน)
+        # โดยทั่วไปนามสกุลจะเป็นส่วนสุดท้าย
+        return {
+            'prefix': prefix,
+            'first_name': name_parts[0],
+            'middle_name': ' '.join(name_parts[1:-1]),
+            'last_name': name_parts[-1]
+        }
+
+
+def parse_thai_address(address_str):
+    """แยกที่อยู่ไทยเป็นส่วนๆ"""
+    import re
+    
+    if not address_str or not isinstance(address_str, str):
+        return {
+            'building': '',
+            'room_number': '',
+            'floor': '',
+            'village': '',
+            'house_number': '',
+            'moo': '',
+            'soi': '',
+            'intersection': '',
+            'road': '',
+            'province': '',
+            'district': '',
+            'subdistrict': '',
+            'postal_code': ''
+        }
+    
+    address_str = address_str.strip()
+    if not address_str or address_str == '-':
+        return {
+            'building': '',
+            'room_number': '',
+            'floor': '',
+            'village': '',
+            'house_number': '',
+            'moo': '',
+            'soi': '',
+            'intersection': '',
+            'road': '',
+            'province': '',
+            'postal_code': ''
+        }
+    
+    result = {
+        'building': '',
+        'room_number': '',
+        'floor': '',
+        'village': '',
+        'house_number': '',
+        'moo': '',
+        'soi': '',
+        'intersection': '',
+        'road': '',
+        'province': '',
+        'district': '',
+        'subdistrict': '',
+        'postal_code': ''
+    }
+    
+    # หารหัสไปรษณีย์ (5 หลัก)
+    postal_match = re.search(r'\b(\d{5})\b', address_str)
+    if postal_match:
+        result['postal_code'] = postal_match.group(1)
+        address_str = address_str.replace(postal_match.group(0), '').strip()
+    
+    # หาจังหวัด (มักอยู่ท้ายสุด)
+    province_patterns = [
+        r'จ\.\s*([^\s]+)',
+        r'จังหวัด\s*([^\s]+)',
+        r'กรุงเทพมหานคร',
+        r'กรุงเทพ'
+    ]
+    
+    for pattern in province_patterns:
+        match = re.search(pattern, address_str)
+        if match:
+            if 'กรุงเทพ' in pattern:
+                result['province'] = 'กรุงเทพมหานคร'
+            else:
+                result['province'] = match.group(1) if match.lastindex else match.group(0)
+            address_str = re.sub(pattern, '', address_str).strip()
+            break
+    
+    # หาอำเภอ/เขต
+    district_patterns = [
+        r'อ\.\s*([^\s]+)',
+        r'เขต\s*([^\s]+)',
+        r'อำเภอ\s*([^\s]+)'
+    ]
+    
+    for pattern in district_patterns:
+        match = re.search(pattern, address_str)
+        if match:
+            result['district'] = match.group(1) if match.lastindex else match.group(0).replace('อ.', '').replace('เขต', '').replace('อำเภอ', '').strip()
+            address_str = re.sub(pattern, '', address_str).strip()
+            break
+    
+    # หาตำบล/แขวง
+    subdistrict_patterns = [
+        r'ต\.\s*([^\s]+)',
+        r'แขวง\s*([^\s]+)',
+        r'ตำบล\s*([^\s]+)'
+    ]
+    
+    for pattern in subdistrict_patterns:
+        match = re.search(pattern, address_str)
+        if match:
+            result['subdistrict'] = match.group(1) if match.lastindex else match.group(0).replace('ต.', '').replace('แขวง', '').replace('ตำบล', '').strip()
+            address_str = re.sub(pattern, '', address_str).strip()
+            break
+    
+    # หาหมู่ที่
+    moo_match = re.search(r'หมู่ที่\s*(\d+)', address_str)
+    if moo_match:
+        result['moo'] = moo_match.group(1)
+        address_str = re.sub(r'หมู่ที่\s*\d+', '', address_str).strip()
+    
+    # หาหมู่บ้าน
+    village_match = re.search(r'หมู่บ้าน\s*([^\s]+)', address_str)
+    if village_match:
+        result['village'] = village_match.group(1)
+        address_str = re.sub(r'หมู่บ้าน\s*[^\s]+', '', address_str).strip()
+    
+    # หาซอย
+    soi_patterns = [
+        r'ซ\.\s*([^\s]+(?:\s+\d+)?)',
+        r'ซอย\s*([^\s]+(?:\s+\d+)?)'
+    ]
+    
+    for pattern in soi_patterns:
+        match = re.search(pattern, address_str)
+        if match:
+            result['soi'] = match.group(1).strip()
+            address_str = re.sub(pattern, '', address_str).strip()
+            break
+    
+    # หาแยก
+    intersection_match = re.search(r'แยก\s*([^\s]+)', address_str)
+    if intersection_match:
+        result['intersection'] = intersection_match.group(1)
+        address_str = re.sub(r'แยก\s*[^\s]+', '', address_str).strip()
+    
+    # หาถนน
+    road_patterns = [
+        r'ถ\.\s*([^\s]+)',
+        r'ถนน\s*([^\s]+)'
+    ]
+    
+    for pattern in road_patterns:
+        match = re.search(pattern, address_str)
+        if match:
+            result['road'] = match.group(1).strip()
+            address_str = re.sub(pattern, '', address_str).strip()
+            break
+    
+    # หาเลขที่ (มักอยู่ต้นสุด)
+    house_match = re.match(r'^(\d+(?:/\d+)?)', address_str)
+    if house_match:
+        result['house_number'] = house_match.group(1)
+        address_str = address_str[len(house_match.group(0)):].strip()
+    
+    # หาอาคาร (ถ้ามี)
+    building_match = re.search(r'อาคาร\s*([^\s]+)', address_str)
+    if building_match:
+        result['building'] = building_match.group(1)
+        address_str = re.sub(r'อาคาร\s*[^\s]+', '', address_str).strip()
+    
+    # หาห้องเลขที่
+    room_match = re.search(r'ห้อง\s*(\d+)', address_str)
+    if room_match:
+        result['room_number'] = room_match.group(1)
+        address_str = re.sub(r'ห้อง\s*\d+', '', address_str).strip()
+    
+    # หาชั้นที่
+    floor_match = re.search(r'ชั้น\s*(\d+)', address_str)
+    if floor_match:
+        result['floor'] = floor_match.group(1)
+        address_str = re.sub(r'ชั้น\s*\d+', '', address_str).strip()
+    
+    return result
+
+
+@app.route('/api/pnd1k/process-employee-data', methods=['POST'])
+def process_pnd1k_employee_data():
+    """ประมวลผลข้อมูลพนักงานแยกเป็นส่วนๆ และคำนวณยอดรวมทั้งปี"""
+    try:
+        import json
+        from pathlib import Path
+        
+        company = request.json.get('company', '').strip()
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+        
+        # แยก Build และชื่อบริษัท
+        parts = company.split(' ')
+        build = parts[0] if parts else ''
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        
+        def sanitize_filename(name):
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        safe_company_name = sanitize_filename(company_name or company)
+        pnd1k_data_dir = Path('data_pnd1k')
+        pnd1k_data_dir.mkdir(exist_ok=True)
+        
+        # โหลดข้อมูล attachment
+        attachment_file = pnd1k_data_dir / f"pnd1k_attachments_{safe_company_name}.json"
+        attachments = []
+        if attachment_file.exists():
+            try:
+                with open(attachment_file, 'r', encoding='utf-8') as f:
+                    attachments = json.load(f)
+                if not isinstance(attachments, list):
+                    attachments = [attachments] if attachments else []
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูล attachment: {e}")
+        
+        # โหลดข้อมูล ID card
+        id_card_file = pnd1k_data_dir / f"pnd1k_id_cards_{safe_company_name}.json"
+        id_cards = []
+        if id_card_file.exists():
+            try:
+                with open(id_card_file, 'r', encoding='utf-8') as f:
+                    id_cards = json.load(f)
+                if not isinstance(id_cards, list):
+                    id_cards = [id_cards] if id_cards else []
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูล ID card: {e}")
+        
+        # สร้าง map สำหรับรวบรวมข้อมูลตาม ID card
+        employee_data_map = {}
+        
+        # ประมวลผลข้อมูลจาก attachments
+        for att in attachments:
+            id_card_raw = att.get('recipient_id_card', '')
+            id_card = str(id_card_raw).replace(' ', '').strip() if id_card_raw else ''
+            if not id_card:
+                continue
+            
+            if id_card not in employee_data_map:
+                employee_data_map[id_card] = {
+                    'id_card': id_card,
+                    'name_parts': {},
+                    'address_parts': {},
+                    'total_income_year': 0.0,
+                    'total_tax_year': 0.0,
+                    'months': set()
+                }
+            
+            # แยกชื่อ
+            recipient_name = att.get('recipient_name', '')
+            if recipient_name:
+                name_parts = parse_thai_name(recipient_name)
+                if not employee_data_map[id_card]['name_parts'].get('prefix'):
+                    employee_data_map[id_card]['name_parts'] = name_parts
+            
+            # แยกที่อยู่ (ถ้ามี)
+            recipient_address = att.get('recipient_address', '')
+            if recipient_address and recipient_address != '-':
+                address_parts = parse_thai_address(recipient_address)
+                if not employee_data_map[id_card]['address_parts'].get('house_number'):
+                    employee_data_map[id_card]['address_parts'] = address_parts
+            
+            # คำนวณยอดรวมทั้งปี
+            income_amount = att.get('income_amount', '0')
+            tax_amount = att.get('tax_amount', '0')
+            
+            try:
+                income_value = float(str(income_amount).replace(',', '').replace(' ', '')) if income_amount else 0.0
+                tax_value = float(str(tax_amount).replace(',', '').replace(' ', '')) if tax_amount else 0.0
+                
+                employee_data_map[id_card]['total_income_year'] += income_value
+                employee_data_map[id_card]['total_tax_year'] += tax_value
+                
+                # เก็บเดือนที่จ่าย
+                payment_month = att.get('payment_month')
+                payment_year = att.get('payment_year')
+                if payment_month and payment_year:
+                    employee_data_map[id_card]['months'].add(f"{payment_year}-{str(payment_month).zfill(2)}")
+            except:
+                pass
+        
+        # ประมวลผลข้อมูลจาก ID cards (เพื่อดึงที่อยู่และชื่อที่ครบถ้วนกว่า)
+        for card in id_cards:
+            id_card = str(card.get('id_card_number', '')).replace(' ', '').strip()
+            if not id_card:
+                continue
+            
+            if id_card not in employee_data_map:
+                employee_data_map[id_card] = {
+                    'id_card': id_card,
+                    'name_parts': {},
+                    'address_parts': {},
+                    'total_income_year': 0.0,
+                    'total_tax_year': 0.0,
+                    'months': set()
+                }
+            
+            # แยกชื่อจาก ID card
+            full_name = card.get('full_name', '')
+            if full_name:
+                name_parts = parse_thai_name(full_name)
+                # อัพเดทถ้ายังไม่มีหรือข้อมูลจาก ID card ครบถ้วนกว่า
+                if not employee_data_map[id_card]['name_parts'].get('prefix') or (name_parts.get('last_name') and not employee_data_map[id_card]['name_parts'].get('last_name')):
+                    employee_data_map[id_card]['name_parts'].update(name_parts)
+            
+            # แยกที่อยู่จาก ID card
+            address = card.get('address', '')
+            if address and address != '-':
+                address_parts = parse_thai_address(address)
+                # อัพเดทถ้ายังไม่มีหรือข้อมูลจาก ID card ครบถ้วนกว่า
+                if not employee_data_map[id_card]['address_parts'].get('house_number') or (address_parts.get('province') and not employee_data_map[id_card]['address_parts'].get('province')):
+                    employee_data_map[id_card]['address_parts'].update(address_parts)
+        
+        # แปลง set เป็น list และจัดรูปแบบผลลัพธ์
+        processed_data = []
+        for id_card, data in employee_data_map.items():
+            processed_data.append({
+                'id_card': id_card,
+                'name_prefix': data['name_parts'].get('prefix', ''),
+                'name_first': data['name_parts'].get('first_name', ''),
+                'name_middle': data['name_parts'].get('middle_name', ''),
+                'name_last': data['name_parts'].get('last_name', ''),
+                'address_building': data['address_parts'].get('building', ''),
+                'address_room_number': data['address_parts'].get('room_number', ''),
+                'address_floor': data['address_parts'].get('floor', ''),
+                'address_village': data['address_parts'].get('village', ''),
+                'address_house_number': data['address_parts'].get('house_number', ''),
+                'address_moo': data['address_parts'].get('moo', ''),
+                'address_soi': data['address_parts'].get('soi', ''),
+                'address_intersection': data['address_parts'].get('intersection', ''),
+                'address_road': data['address_parts'].get('road', ''),
+                'address_province': data['address_parts'].get('province', ''),
+                'address_district': data['address_parts'].get('district', ''),
+                'address_subdistrict': data['address_parts'].get('subdistrict', ''),
+                'address_postal_code': data['address_parts'].get('postal_code', ''),
+                'total_income_year': round(data['total_income_year'], 2),
+                'total_tax_year': round(data['total_tax_year'], 2),
+                'months': sorted(list(data['months']))
+            })
+        
+        logger.info(f"✅ ประมวลผลข้อมูลพนักงานสำเร็จ: {len(processed_data)} คน")
+        
+        return jsonify({
+            'success': True,
+            'data': processed_data,
+            'count': len(processed_data),
+            'message': f'ประมวลผลข้อมูลพนักงานสำเร็จ {len(processed_data)} คน'
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการประมวลผลข้อมูลพนักงาน: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+def number_to_thai_text(number):
+    """แปลงตัวเลขเป็นตัวหนังสือไทย (บาท สตางค์)"""
+    try:
+        # แปลงเป็น float ก่อน
+        if isinstance(number, str):
+            number = float(number.replace(',', '').replace(' ', ''))
+        number = float(number)
+        
+        if number == 0:
+            return "ศูนย์บาทถ้วน"
+        
+        thai_digits = ['', 'หนึ่ง', 'สอง', 'สาม', 'สี่', 'ห้า', 'หก', 'เจ็ด', 'แปด', 'เก้า']
+        thai_units = ['', 'สิบ', 'ร้อย', 'พัน', 'หมื่น', 'แสน', 'ล้าน']
+        
+        def convert_group(n):
+            """แปลงตัวเลข 6 หลักเป็นตัวหนังสือ"""
+            if n == 0:
+                return ''
+            
+            result = ''
+            digits = str(n).zfill(6)
+            
+            for i, digit in enumerate(digits):
+                d = int(digit)
+                pos = 5 - i
+                
+                if d == 0:
+                    continue
+                
+                if pos == 1:  # สิบ
+                    if d == 1:
+                        result += 'สิบ'
+                    elif d == 2:
+                        result += 'ยี่สิบ'
+                    else:
+                        result += thai_digits[d] + 'สิบ'
+                elif pos == 0:  # หน่วย
+                    if d == 1 and len(digits) > 1 and int(digits[-2]) != 0:
+                        result += 'เอ็ด'
+                    else:
+                        result += thai_digits[d]
+                else:
+                    result += thai_digits[d] + thai_units[pos]
+            
+            return result
+        
+        # แยกส่วนจำนวนเต็มและทศนิยม
+        integer_part = int(number)
+        decimal_part = round((number - integer_part) * 100)
+        
+        # แปลงจำนวนเต็ม
+        if integer_part == 0:
+            result = ''
+        else:
+            # แบ่งเป็นกลุ่มละ 6 หลัก
+            groups = []
+            num_str = str(integer_part)
+            while num_str:
+                groups.insert(0, int(num_str[-6:]))
+                num_str = num_str[:-6]
+            
+            result_parts = []
+            for i, group in enumerate(groups):
+                group_text = convert_group(group)
+                if group_text:
+                    if i > 0:
+                        result_parts.append(group_text + 'ล้าน')
+                    else:
+                        result_parts.append(group_text)
+            
+            result = ''.join(result_parts)
+        
+        # เพิ่มทศนิยม (สตางค์)
+        if decimal_part > 0:
+            decimal_text = convert_group(decimal_part)
+            if result:
+                result += 'บาท' + decimal_text + 'สตางค์'
+            else:
+                result = decimal_text + 'สตางค์'
+        else:
+            if result:
+                result += 'บาทถ้วน'
+            else:
+                result = 'ศูนย์บาทถ้วน'
+        
+        return result
+    except Exception as e:
+        logger.warning(f"⚠️ ไม่สามารถแปลงตัวเลขเป็นตัวหนังสือไทย: {e}")
+        return "ศูนย์บาทถ้วน"
+
+
+@app.route('/api/pnd1k/generate-50-tawi', methods=['POST'])
+def generate_50_tawi():
+    """สร้างเอกสาร 50 ทวิ จาก Excel template และแปลงเป็น PDF"""
+    try:
+        import json
+        import re
+        import shutil
+        from pathlib import Path
+        from datetime import datetime
+        
+        data = request.json
+        company = data.get('company', '').strip()
+        id_card = data.get('id_card', '').strip().replace(' ', '')
+        income_type = data.get('income_type', '40(1)').strip()
+        save_path = data.get('save_path', '').strip()
+        employee_address_override = data.get('employee_address', '').strip()  # ที่อยู่ที่ส่งมาจาก frontend
+        
+        if not company or not id_card:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัทและเลขบัตรประชาชน'}), 400
+        
+        # แยก Build และชื่อบริษัท
+        parts = company.split(' ')
+        build = parts[0] if parts else ''
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        
+        def sanitize_filename(name):
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        safe_company_name = sanitize_filename(company_name or company)
+        pnd1k_data_dir = Path('data_pnd1k')
+        
+        # โหลดข้อมูลบริษัทจาก form
+        form_file = pnd1k_data_dir / f"pnd1k_form_{safe_company_name}.json"
+        company_tax_id = ''
+        company_name_full = company_name
+        company_address = ''
+        
+        if form_file.exists():
+            try:
+                with open(form_file, 'r', encoding='utf-8') as f:
+                    forms_data = json.load(f)
+                if isinstance(forms_data, list) and len(forms_data) > 0:
+                    form = forms_data[0]
+                    company_tax_id = form.get('tax_id', '')
+                    company_name_full = form.get('company_name', company_name)
+                    company_address = form.get('address', '')
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ form: {e}")
+        
+        # โหลดข้อมูลพนักงาน
+        attachment_file = pnd1k_data_dir / f"pnd1k_attachments_{safe_company_name}.json"
+        id_card_file = pnd1k_data_dir / f"pnd1k_id_cards_{safe_company_name}.json"
+        
+        # หาข้อมูลพนักงานจาก attachment
+        employee_attachments = []
+        if attachment_file.exists():
+            try:
+                with open(attachment_file, 'r', encoding='utf-8') as f:
+                    attachments = json.load(f)
+                if not isinstance(attachments, list):
+                    attachments = [attachments] if attachments else []
+                
+                # กรองเฉพาะพนักงานคนนี้และประเภทภาษีที่ระบุ
+                for att in attachments:
+                    att_id_card = str(att.get('recipient_id_card', '')).replace(' ', '').strip()
+                    att_income_type = att.get('income_type', '40(1)')
+                    if att_id_card == id_card and att_income_type == income_type:
+                        employee_attachments.append(att)
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ attachment: {e}")
+        
+        if not employee_attachments:
+            return jsonify({'success': False, 'error': f'ไม่พบข้อมูลพนักงานเลขบัตร {id_card} ประเภทภาษี {income_type}'}), 404
+        
+        # รวบรวมข้อมูลพนักงาน (ใช้ข้อมูลจาก attachment แรก)
+        first_att = employee_attachments[0]
+        employee_name = first_att.get('recipient_name', '').strip()
+        employee_address = ''
+        
+        # ถ้ามีที่อยู่ที่ส่งมาจาก frontend ให้ใช้ที่อยู่นั้นก่อน (priority สูงสุด)
+        if employee_address_override:
+            employee_address = employee_address_override.strip() if employee_address_override else ''
+            if employee_address:
+                logger.info(f"✅ ใช้ที่อยู่ที่ส่งมาจาก frontend สำหรับ {id_card}")
+                logger.info(f"   ความยาวที่อยู่: {len(employee_address)} ตัวอักษร")
+                logger.debug(f"   ที่อยู่เต็ม: {employee_address}")
+                if len(employee_address) > 100:
+                    logger.info(f"   ที่อยู่ (100 ตัวแรก): {employee_address[:100]}...")
+                else:
+                    logger.info(f"   ที่อยู่: {employee_address}")
+        else:
+            # หาที่อยู่จาก ID card file
+            if id_card_file.exists():
+                try:
+                    with open(id_card_file, 'r', encoding='utf-8') as f:
+                        id_cards = json.load(f)
+                    if not isinstance(id_cards, list):
+                        id_cards = [id_cards] if id_cards else []
+                    
+                    for card in id_cards:
+                        card_id = str(card.get('id_card_number', '')).replace(' ', '').strip()
+                        if card_id == id_card:
+                            employee_address = card.get('address', '').strip()
+                            if not employee_name:
+                                employee_name = card.get('full_name', '').strip()
+                            break
+                except Exception as e:
+                    logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ ID card: {e}")
+        
+        # คำนวณยอดรวม
+        total_income = 0.0
+        total_tax = 0.0
+        total_contribution = 0.0
+        
+        for att in employee_attachments:
+            try:
+                income = float(str(att.get('income_amount', '0')).replace(',', '').replace(' ', '')) or 0.0
+                tax = float(str(att.get('tax_amount', '0')).replace(',', '').replace(' ', '')) or 0.0
+                total_income += income
+                total_tax += tax
+            except:
+                pass
+        
+        # โหลดข้อมูล Social Security
+        ss_file = pnd1k_data_dir / f"pnd1k_social_security_{safe_company_name}.json"
+        if ss_file.exists():
+            try:
+                with open(ss_file, 'r', encoding='utf-8') as f:
+                    ss_data = json.load(f)
+                if not isinstance(ss_data, list):
+                    ss_data = [ss_data] if ss_data else []
+                
+                for ss in ss_data:
+                    ss_id_card = str(ss.get('recipient_id_card', '')).replace(' ', '').strip()
+                    if ss_id_card == id_card:
+                        contrib = float(str(ss.get('social_security_contribution', '0')).replace(',', '').replace(' ', '')) or 0.0
+                        total_contribution += contrib
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ Social Security: {e}")
+        
+        # โหลดไฟล์ Excel template
+        excel_template_path = Path('Excel_pnd1k') / 'excel_data_pnd1k.xlsx'
+        if not excel_template_path.exists():
+            return jsonify({'success': False, 'error': 'ไม่พบไฟล์ Excel template'}), 404
+        
+        try:
+            from openpyxl import load_workbook
+        except ImportError:
+            return jsonify({'success': False, 'error': 'ไม่พบไลบรารี openpyxl'}), 500
+        
+        # ใช้ win32com เพื่อกรอกข้อมูลและรักษา checkbox
+        # เปิดไฟล์ template โดยตรง (ไม่ต้องสร้างไฟล์ชั่วคราว)
+        try:
+            import win32com.client
+            import pythoncom
+            import tempfile
+            
+            # Initialize COM สำหรับ thread นี้ (จำเป็นสำหรับ multi-threaded environment เช่น Flask)
+            pythoncom.CoInitializeEx(pythoncom.COINIT_APARTMENTTHREADED)
+            
+            excel_app = win32com.client.Dispatch("Excel.Application")
+            excel_app.Visible = False
+            excel_app.DisplayAlerts = False
+            
+            # เปิดไฟล์ template โดยตรง
+            excel_template_abs_path = str(excel_template_path.absolute())
+            logger.info(f"📂 กำลังเปิดไฟล์ Excel template: {excel_template_abs_path}")
+            
+            # ตรวจสอบว่าไฟล์มีอยู่จริงหรือไม่
+            if not excel_template_path.exists():
+                raise Exception(f"ไม่พบไฟล์ Excel template: {excel_template_abs_path}")
+            
+            # เปิดไฟล์ Excel (ใช้ ReadOnly=False เพื่อให้สามารถแก้ไขได้)
+            try:
+                workbook = excel_app.Workbooks.Open(
+                    excel_template_abs_path,
+                    ReadOnly=False,
+                    UpdateLinks=False,
+                    Format=None
+                )
+            except Exception as e:
+                excel_app.Quit()
+                pythoncom.CoUninitialize()
+                raise Exception(f"ไม่สามารถเปิดไฟล์ Excel template ได้: {e}")
+            
+            if workbook is None:
+                excel_app.Quit()
+                pythoncom.CoUninitialize()
+                raise Exception(f"ไม่สามารถเปิดไฟล์ Excel template ได้ (workbook is None): {excel_template_abs_path}")
+            
+            try:
+                worksheet = workbook.Worksheets('WHT_From')
+            except Exception as e:
+                workbook.Close(False)
+                excel_app.Quit()
+                pythoncom.CoUninitialize()
+                raise Exception(f"ไม่พบชีต 'WHT_From' ในไฟล์ Excel template: {e}")
+            
+            if worksheet is None:
+                workbook.Close(False)
+                excel_app.Quit()
+                pythoncom.CoUninitialize()
+                raise Exception(f"ไม่พบชีต 'WHT_From' ในไฟล์ Excel template (worksheet is None)")
+            
+            # 1. กรอกเลข 13 หลักของบริษัท
+            if company_tax_id and len(company_tax_id.replace('-', '').replace(' ', '')) == 13:
+                tax_id_clean = company_tax_id.replace('-', '').replace(' ', '')
+                tax_id_cells = ['AD8', 'AG8', 'AI8', 'AK8', 'AM8', 'AP8', 'AR8', 'AT8', 'AV8', 'AX8', 'BA8', 'BC8', 'BF8']
+                for i, cell_ref in enumerate(tax_id_cells):
+                    if i < len(tax_id_clean):
+                        worksheet.Range(cell_ref).Value = tax_id_clean[i]
+            
+            # 2. กรอกชื่อกิจการ
+            worksheet.Range('D10').Value = company_name_full
+            
+            # 3. กรอกที่อยู่กิจการ
+            worksheet.Range('D12').Value = company_address
+            
+            # 4. กรอกเลขบัตรประชาชนของพนักงาน (13 หลัก)
+            if len(id_card) == 13:
+                id_card_cells = ['AD16', 'AG16', 'AI16', 'AK16', 'AM16', 'AP16', 'AR16', 'AT16', 'AV16', 'AX16', 'BA16', 'BC16', 'BF16']
+                for i, cell_ref in enumerate(id_card_cells):
+                    if i < len(id_card):
+                        worksheet.Range(cell_ref).Value = id_card[i]
+            
+            # 5. กรอกชื่อพนักงาน (รวมคำนำหน้า)
+            worksheet.Range('D18').Value = employee_name
+            
+            # 6. กรอกที่อยู่ของพนักงาน
+            if employee_address:
+                worksheet.Range('D20').Value = employee_address
+                logger.info(f"✅ กรอกที่อยู่พนักงานใน D20: {employee_address[:100]}...")
+            else:
+                logger.warning(f"⚠️ ไม่พบที่อยู่พนักงานสำหรับ {id_card} - D20 จะว่างเปล่า")
+                worksheet.Range('D20').Value = ''
+            
+            # 7. กรอกข้อมูลตามประเภทภาษี
+            date_format = '31/12/2025'
+            if income_type == '40(1)':
+                worksheet.Range('AK30').Value = date_format
+                worksheet.Range('AS30').Value = total_income
+                worksheet.Range('BA30').Value = total_tax
+            elif income_type == '40(2)':
+                worksheet.Range('AK31').Value = date_format
+                worksheet.Range('AS31').Value = total_income
+                worksheet.Range('BA31').Value = total_tax
+            
+            # 8. กรอกข้อมูลรวม
+            worksheet.Range('AS54').Value = total_income
+            worksheet.Range('BA54').Value = total_tax
+            
+            # 9. แปลงภาษีรวมเป็นตัวหนังสือไทย
+            tax_text = number_to_thai_text(total_tax)
+            worksheet.Range('P56').Value = tax_text
+            
+            # 10. กรอกเงินสมทบรวม
+            worksheet.Range('AM58').Value = total_contribution
+            
+            # 11. กรอกวันที่
+            worksheet.Range('AI67').Value = date_format
+            
+            # หมายเหตุ: checkbox "ในแนบ" (ภ.ง.ด.1ก., ภ.ง.ด.1ก.พิเศษ, ฯลฯ) ถูกตั้งค่าไว้ใน Excel template แล้ว
+            # เมื่อใช้ win32com จะรักษา checkbox ไว้โดยอัตโนมัติ
+            
+            # ตั้งค่า Page Setup เพื่อให้พอดี 1 หน้า
+            page_setup = worksheet.PageSetup
+            # ตั้งค่า Paper Size เป็น A4
+            page_setup.PaperSize = 9  # xlPaperA4 = 9
+            # ตั้งค่า Orientation เป็น Portrait (แนวตั้ง)
+            page_setup.Orientation = 1  # xlPortrait = 1
+            # ตั้งค่าให้พอดี 1 หน้า (ทั้งความกว้างและความสูง)
+            page_setup.FitToPagesWide = 1
+            page_setup.FitToPagesTall = 1
+            # ปิด Zoom เพื่อให้ใช้ FitToPagesWide/Tall แทน
+            page_setup.Zoom = False
+            
+            # สร้างชื่อไฟล์
+            employee_name_safe = re.sub(r'[<>:"/\\|?*]', '_', employee_name)[:50]
+            filename = f"50 ทวิ {id_card} {employee_name_safe} {income_type}.pdf"
+            filename_safe = re.sub(r'[<>:"/\\|?*]', '_', filename)
+            
+            # กำหนดโฟลเดอร์ที่จะเก็บไฟล์ (ถ้ามี save_path ให้ใช้ path นั้น ไม่เช่นนั้นใช้ exports)
+            if save_path:
+                try:
+                    # สร้าง path จาก save_path ที่ผู้ใช้ระบุ
+                    target_dir = Path(save_path)
+                    target_dir.mkdir(parents=True, exist_ok=True)
+                    final_pdf_path = target_dir / filename_safe
+                except Exception as e:
+                    logger.warning(f"⚠️ ไม่สามารถสร้างโฟลเดอร์ {save_path} ได้: {e} - ใช้โฟลเดอร์ exports แทน")
+                    exports_dir = Path('exports')
+                    exports_dir.mkdir(exist_ok=True)
+                    final_pdf_path = exports_dir / filename_safe
+            else:
+                # ใช้โฟลเดอร์ exports เป็นค่าเริ่มต้น
+                exports_dir = Path('exports')
+                exports_dir.mkdir(exist_ok=True)
+                final_pdf_path = exports_dir / filename_safe
+            
+            # สร้างไฟล์ PDF ชั่วคราวใน temp directory (จะลบทันทีหลังแปลงเสร็จ)
+            temp_pdf_dir = Path(tempfile.gettempdir())
+            temp_pdf_path = temp_pdf_dir / f"50tawi_{id_card}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+            
+            # แปลงเป็น PDF โดยตรงไปยังไฟล์ชั่วคราว
+            worksheet.ExportAsFixedFormat(
+                Type=0,  # xlTypePDF
+                Filename=str(temp_pdf_path.absolute()),
+                Quality=0,  # xlQualityStandard
+                IncludeDocProperties=True,
+                IgnorePrintAreas=False,
+                OpenAfterPublish=False
+            )
+            
+            # ปิด workbook โดยไม่บันทึก (เพื่อไม่ให้แก้ไข template)
+            workbook.Close(False)
+            excel_app.Quit()
+            
+            # Uninitialize COM
+            try:
+                pythoncom.CoUninitialize()
+            except:
+                pass
+            
+            # ย้ายไฟล์ PDF ไปยังโฟลเดอร์ที่กำหนด
+            shutil.move(str(temp_pdf_path), str(final_pdf_path))
+            
+            logger.info(f"✅ สร้างเอกสาร 50 ทวิสำเร็จ: {filename_safe} (เก็บไว้ที่: {final_pdf_path})")
+            
+            # กำหนด download_url และ file_path
+            # ถ้าเป็นโฟลเดอร์ exports ให้ใช้ download URL ผ่าน /exports/
+            # ถ้าเป็น path อื่น ให้ return path ที่เก็บไฟล์ไว้
+            if str(final_pdf_path.parent) == str(Path('exports').absolute()) or str(final_pdf_path.parent) == 'exports':
+                download_url = f'/exports/{filename_safe}'
+                file_path_display = None
+            else:
+                # ถ้าเก็บไว้ที่ path อื่น ให้ return path ที่เก็บไฟล์ไว้
+                download_url = None
+                file_path_display = str(final_pdf_path.absolute())
+            
+            response_data = {
+                'success': True,
+                'filename': filename_safe,
+                'message': f'สร้างเอกสาร 50 ทวิสำเร็จ (เก็บไว้ที่: {final_pdf_path.absolute()})'
+            }
+            
+            if download_url:
+                response_data['download_url'] = download_url
+            else:
+                response_data['file_path'] = file_path_display
+                response_data['message'] = f'สร้างเอกสาร 50 ทวิสำเร็จ\nไฟล์ถูกเก็บไว้ที่:\n{file_path_display}'
+            
+            # Cleanup ไฟล์ Excel ใน temp_exports (ถ้ามี)
+            cleanup_temp_exports_files(id_card)
+            
+            return jsonify(response_data), 200
+            
+        except ImportError:
+            # Uninitialize COM ในกรณี ImportError
+            try:
+                pythoncom.CoUninitialize()
+            except:
+                pass
+            
+            # Cleanup ไฟล์ Excel ใน temp_exports (ถ้ามี)
+            cleanup_temp_exports_files(id_card)
+            
+            logger.error("❌ ไม่พบ win32com - ไม่สามารถสร้างเอกสาร 50 ทวิได้ กรุณาติดตั้ง win32com")
+            return jsonify({
+                'success': False,
+                'error': 'ไม่สามารถสร้างเอกสาร 50 ทวิได้ กรุณาติดตั้ง win32com เพื่อรักษา checkbox'
+            }), 500
+            
+        except Exception as e:
+            # Uninitialize COM ในกรณีเกิด error
+            try:
+                import pythoncom
+                pythoncom.CoUninitialize()
+            except:
+                pass
+            
+            # Cleanup ไฟล์ Excel ใน temp_exports (ถ้ามี)
+            cleanup_temp_exports_files(id_card)
+            
+            logger.error(f"❌ เกิดข้อผิดพลาดในการสร้างเอกสาร 50 ทวิ: {e}", exc_info=True)
+            return jsonify({'success': False, 'error': str(e)}), 500
+        
+    except Exception as e:
+        # Uninitialize COM ในกรณีเกิด error
+        try:
+            import pythoncom
+            pythoncom.CoUninitialize()
+        except:
+            pass
+        
+        # Cleanup ไฟล์ Excel ใน temp_exports (ถ้ามี)
+        cleanup_temp_exports_files(id_card if 'id_card' in locals() else '')
+        
+        logger.error(f"❌ เกิดข้อผิดพลาดในการสร้างเอกสาร 50 ทวิ: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/pnd1k/upload-trial-balance', methods=['POST'])
+def upload_trial_balance():
+    """อัพโหลดไฟล์ Excel งบทดลองและอ่านข้อมูล"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        from datetime import datetime
+        
+        if 'file' not in request.files:
+            return jsonify({'success': False, 'error': 'ไม่พบไฟล์ที่อัพโหลด'}), 400
+        
+        file = request.files['file']
+        company = request.form.get('company', '').strip()
+        
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+        
+        if file.filename == '':
+            return jsonify({'success': False, 'error': 'ไม่ได้เลือกไฟล์'}), 400
+        
+        # ตรวจสอบว่าเป็นไฟล์ Excel หรือไม่
+        if not (file.filename.lower().endswith('.xlsx') or file.filename.lower().endswith('.xls')):
+            return jsonify({'success': False, 'error': 'กรุณาอัพโหลดไฟล์ Excel (.xlsx หรือ .xls) เท่านั้น'}), 400
+        
+        # แยก Build และชื่อบริษัท
+        parts = company.split(' ')
+        build = parts[0] if parts else ''
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        
+        def sanitize_filename(name):
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        safe_company_name = sanitize_filename(company_name or company)
+        pnd1k_data_dir = Path('data_pnd1k')
+        pnd1k_data_dir.mkdir(exist_ok=True)
+        
+        # สร้างโฟลเดอร์สำหรับเก็บไฟล์งบทดลอง
+        trial_balance_dir = pnd1k_data_dir / 'trial_balance'
+        trial_balance_dir.mkdir(exist_ok=True)
+        
+        # บันทึกไฟล์ Excel
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        file_extension = Path(file.filename).suffix
+        filename = f"trial_balance_{safe_company_name}_{timestamp}{file_extension}"
+        file_path = trial_balance_dir / filename
+        
+        file.save(str(file_path))
+        
+        # อ่านข้อมูลจากไฟล์ Excel
+        try:
+            from openpyxl import load_workbook
+        except ImportError:
+            return jsonify({'success': False, 'error': 'ไม่พบไลบรารี openpyxl'}), 500
+        
+        wb = load_workbook(str(file_path), data_only=True)
+        ws = wb.active
+        
+        # 1. อ่านชื่อรายงานจาก K1
+        report_name = ''
+        try:
+            report_name_cell = ws['K1']
+            if report_name_cell.value:
+                report_name = str(report_name_cell.value).strip()
+        except:
+            pass
+        
+        # 2. อ่านชื่อกิจการจาก K3
+        company_name_from_excel = ''
+        try:
+            company_cell = ws['K3']
+            if company_cell.value:
+                company_name_from_excel = str(company_cell.value).strip()
+                # ตัด "ชื่อกิจการ : " ออกถ้ามี
+                if ':' in company_name_from_excel:
+                    company_name_from_excel = company_name_from_excel.split(':', 1)[1].strip()
+        except:
+            pass
+        
+        # 3. อ่านข้อมูลงบทดลองเริ่มจากแถวที่ 3
+        # ดึงข้อมูลจากคอลลัม A ที่เริ่มต้นด้วย "5" และคอลลัม B, G
+        trial_balance_items = []
+        max_row = ws.max_row
+        
+        for row_num in range(3, max_row + 1):
+            try:
+                account_code_cell = ws[f'A{row_num}']
+                account_name_cell = ws[f'B{row_num}']
+                balance_cell = ws[f'G{row_num}']
+                
+                account_code = str(account_code_cell.value).strip() if account_code_cell.value else ''
+                account_name = str(account_name_cell.value).strip() if account_name_cell.value else ''
+                
+                # ตรวจสอบว่าโค้ดบัญชีเริ่มต้นด้วย "5"
+                if account_code and account_code.startswith('5'):
+                    # ดึงยอดเงินจากคอลลัม G
+                    balance_value = None
+                    if balance_cell.value is not None:
+                        try:
+                            balance_value = float(balance_cell.value)
+                        except (ValueError, TypeError):
+                            balance_value = None
+                    
+                    if balance_value is not None and balance_value != 0:
+                        trial_balance_items.append({
+                            'row': row_num,
+                            'account_code': account_code,
+                            'account_name': account_name,
+                            'balance': balance_value
+                        })
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านแถว {row_num} ได้: {e}")
+                continue
+        
+        wb.close()
+        
+        logger.info(f"✅ อัพโหลดไฟล์งบทดลองสำเร็จ: {filename} (บริษัท: {company_name}) - พบ {len(trial_balance_items)} รายการ")
+        
+        return jsonify({
+            'success': True,
+            'message': 'อัพโหลดไฟล์งบทดลองสำเร็จ',
+            'filename': filename,
+            'file_path': str(file_path),
+            'report_name': report_name,
+            'company_name': company_name_from_excel,
+            'trial_balance_items': trial_balance_items
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอัพโหลดไฟล์งบทดลอง: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/exports/<filename>')
+def download_export(filename):
+    """ดาวน์โหลดไฟล์ที่ export"""
+    try:
+        from flask import send_file
+        from pathlib import Path
+        
+        file_path = Path('exports') / filename
+        if file_path.exists() and file_path.suffix.lower() == '.pdf':
+            return send_file(str(file_path), as_attachment=True, download_name=filename)
+        else:
+            return jsonify({'success': False, 'error': 'ไฟล์ไม่พบ'}), 404
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการดาวน์โหลดไฟล์: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 
 @app.route('/api/pnd1k/attachments', methods=['GET'])
@@ -9091,6 +10667,726 @@ def get_pnd1k_attachments():
             'success': False,
             'error': str(e)
         }), 500
+
+
+def _extract_social_security_with_custom_fields(file_path):
+    """เรียก Akson key-extract สำหรับใบแนบประกันสังคม แล้วคืน raw_text, raw_content, structured_data"""
+    import requests
+    custom_fields = [
+        {"key": "การนำส่งเงินสมทบสำหรับค่าจ้างเดือน", "description": "ดึงข้อมูลเดือนและพ.ศ. ออกมาโดยให้แสดงผลเป็น dd/yyyy (เช่น 02/2025)", "example": "02/2025"},
+        {"key": "ชื่อสถานประกอบการ", "description": "ดึงข้อมูลของสถานประกอบการที่นำส่งเงินสมทบ", "example": "บริษัท เอบีซี จำกัด"},
+        {"key": "เลขประจำตัวบัตรประชาชน", "description": "ให้ดึงเลขบัตรประชาชน 13 หลัก จากแต่ละแถวในตาราง แยกด้วยเครื่องหมายจุลภาค (,) ตามลำดับรายบุคคล (เช่น 1100201119754, 1100400930401, 1100701929020)", "example": "1100201119754, 1100400930401, 1100701929020"},
+        {"key": "ดึงข้อมูลของชื่อและนามสกุล", "description": "ให้ดึงชื่อและนามสกุลของพนักงานจากแต่ละแถวในตาราง แยกด้วยเครื่องหมายจุลภาค (,) ตามลำดับรายบุคคล (เช่น นายเอ บีซีดี, นางสาวดี อีเอฟจี, นายจี เอชไอเจ)", "example": "นายเอ บีซีดี, นางสาวดี อีเอฟจี, นายจี เอชไอเจ"},
+        {"key": "ค่าจ้าง", "description": "ให้ดึงค่าจ้างของพนักงานจากแต่ละแถวในตาราง แยกด้วยเครื่องหมายจุลภาค (,) ตามลำดับรายบุคคล โดยอ่านเฉพาะตัวเลขและจุดทศนิยมเท่านั้น (เช่น 72,000.00, 57,750.00, 40,040.00)", "example": "72,000.00, 57,750.00, 40,040.00"},
+        {"key": "เงินสมทบ", "description": "ให้ดึงเงินสมทบของพนักงานจากแต่ละแถวในตาราง แยกด้วยเครื่องหมายจุลภาค (,) ตามลำดับรายบุคคล โดยอ่านเฉพาะตัวเลขและจุดทศนิยมเท่านั้น (เช่น 750.00, 750.00, 750.00)", "example": "750.00, 750.00, 750.00"},
+    ]
+    api_key = os.getenv('AKSON_API_KEY') or getattr(Config, 'AKSON_API_KEY', '')
+    if not api_key:
+        logger.warning("⚠️ ไม่พบ AksonOCR API key")
+        return '', '', None
+    payload = {
+        'customFields': json.dumps(custom_fields, ensure_ascii=False),
+        'model': 'aksonocr-1.0',
+        'additionalInstructions': 'ดึงข้อมูลจากตารางใบแนบประกันสังคม (สปส.1-10 ส่วนที่ 2) ให้ถูกต้องตามที่กำหนด โดยให้อ่านข้อมูลจากแต่ละแถวในตาราง ไม่ใช่รวมทั้งหมด เน้นความถูกต้องของตัวเลขค่าจ้างและเงินสมทบ โดยต้องอ่านตัวเลขให้ถูกต้องตามที่แสดงในเอกสาร กรุณาดึง เลขประจำตัวบัตรประชาชน, ดึงข้อมูลของชื่อและนามสกุล, ค่าจ้าง และ เงินสมทบ ให้ครบตามแต่ละแถวในตาราง โดยแยกด้วยเครื่องหมายจุลภาค (,) ตามลำดับรายบุคคล'
+    }
+    url = "https://backend.aksonocr.com/api/v1/key-extract"
+    try:
+        file_path_obj = Path(file_path)
+        file_name = file_path_obj.name
+        file_ext = file_path_obj.suffix.lower()
+        if file_ext not in ['.pdf', '.jpg', '.jpeg', '.png']:
+            return '', '', None
+        content_type_map = {'.pdf': 'application/pdf', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png'}
+        content_type = content_type_map.get(file_ext, 'application/octet-stream')
+        logger.info(f"🔄 กำลังใช้ AksonOCR (key-extract) อ่านใบแนบประกันสังคม: {file_name}")
+        with open(file_path, 'rb') as f:
+            files = {'file': (file_name, f, content_type)}
+            headers = {'X-API-Key': api_key}
+            response = requests.post(url, headers=headers, data=payload, files=files, timeout=180)
+        if response.status_code not in [200, 201]:
+            logger.error(f"❌ AksonOCR ส่งกลับ {response.status_code}")
+            return '', '', None
+        result = response.json()
+        raw_content = json.dumps(result, ensure_ascii=False, indent=2)
+        raw_text = ''
+        structured_data = {}
+        if result.get('success') and result.get('data'):
+            data = result['data']
+            structured_data = data
+            raw_text = json.dumps(data, ensure_ascii=False)
+        return raw_text, raw_content, structured_data
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอ่านใบแนบประกันสังคมด้วย key-extract: {e}", exc_info=True)
+        return '', '', None
+
+
+def _extract_social_security_from_structured_data(structured_data, raw_content=None, raw_text=None):
+    """แยกข้อมูลใบแนบประกันสังคมเป็นรายบุคคล จาก structured_data ของ key-extract"""
+    import re
+    import json
+    
+    if not structured_data:
+        return []
+    
+    # ดึงเดือน/ปี
+    month_str = str(structured_data.get('การนำส่งเงินสมทบสำหรับค่าจ้างเดือน', '') or '').strip()
+    payment_month, payment_year = None, None
+    if month_str and '/' in month_str:
+        parts = month_str.split('/')
+        if len(parts) >= 2:
+            try:
+                payment_month = int(parts[0].strip())
+                payment_year = int(parts[1].strip())
+                # ถ้าเป็นปี พ.ศ. (มากกว่า 2500) ให้แปลงเป็น ค.ศ.
+                if payment_year > 2500:
+                    payment_year = payment_year - 543
+            except Exception:
+                pass
+    
+    # ดึงข้อมูลพื้นฐาน
+    id_raw = str(structured_data.get('เลขประจำตัวบัตรประชาชน', '') or '').strip()
+    name_raw = str(structured_data.get('ดึงข้อมูลของชื่อและนามสกุล', '') or '').strip()
+    salary_raw = str(structured_data.get('ค่าจ้าง', '') or '').strip()
+    contrib_raw = str(structured_data.get('เงินสมทบ', '') or '').strip()
+    
+    # แยกชื่อออกเป็นรายบุคคล
+    recipient_names = [name.strip() for name in name_raw.split(',') if name.strip()]
+    
+    # แยกเลขบัตรออกเป็นรายบุคคล
+    recipient_id_cards = [id_card.strip().replace(' ', '').replace('-', '') 
+                         for id_card in id_raw.split(',') 
+                         if id_card.strip() and len(id_card.strip().replace(' ', '').replace('-', '')) == 13]
+    
+    # ถ้าเลขบัตรมีแค่ตัวเดียว แต่ชื่อมีหลายคน ให้ลองดึงจาก raw_content หรือ raw_text
+    if len(recipient_names) > 1 and len(recipient_id_cards) == 1:
+        # ลองดึงเลขบัตรจาก raw_content ก่อน (full JSON response)
+        if raw_content:
+            try:
+                content_data = json.loads(raw_content)
+                if isinstance(content_data, dict) and 'data' in content_data:
+                    full_id_cards = content_data['data'].get('เลขประจำตัวบัตรประชาชน', '')
+                    if full_id_cards:
+                        full_id_cards_str = str(full_id_cards).strip()
+                        if ',' in full_id_cards_str:
+                            extracted_id_cards = [id_card.strip().replace(' ', '').replace('-', '') 
+                                                for id_card in full_id_cards_str.split(',') 
+                                                if id_card.strip() and len(id_card.strip().replace(' ', '').replace('-', '')) == 13]
+                            if len(extracted_id_cards) > len(recipient_id_cards):
+                                recipient_id_cards = extracted_id_cards
+                                logger.info(f"📋 ดึงเลขบัตรประกันสังคมจาก raw_content: {len(recipient_id_cards)} ตัว")
+            except Exception as e:
+                logger.debug(f"⚠️ ไม่สามารถ parse raw_content: {e}")
+        
+        # ถ้ายังไม่ได้ ให้ลองดึงจาก raw_text
+        if len(recipient_id_cards) == 1 and len(recipient_names) > 1 and raw_text:
+            id_card_pattern = r'เลขประจำตัวบัตรประชาชน[:\s]+([0-9,\s\-]+)'
+            match = re.search(id_card_pattern, raw_text)
+            if match:
+                id_cards_text = match.group(1)
+                extracted_id_cards = [id_card.strip().replace(' ', '').replace('-', '') 
+                                    for id_card in id_cards_text.split(',') 
+                                    if id_card.strip() and len(id_card.strip().replace(' ', '').replace('-', '')) == 13]
+                if len(extracted_id_cards) > len(recipient_id_cards):
+                    recipient_id_cards = extracted_id_cards
+                    logger.info(f"📋 ดึงเลขบัตรประกันสังคมจาก raw_text: {len(recipient_id_cards)} ตัว")
+        
+        # ถ้ายังไม่ได้ ให้ใช้เลขบัตรเดียวซ้ำ
+        if len(recipient_id_cards) == 1 and len(recipient_names) > 1:
+            recipient_id_cards = [recipient_id_cards[0]] * len(recipient_names)
+            logger.warning(f"⚠️ ไม่พบเลขบัตรหลายตัว ใช้เลขบัตรเดียวซ้ำ: {recipient_id_cards[0]}")
+    
+    # ตรวจสอบว่าจำนวนชื่อและเลขบัตรตรงกันหรือไม่
+    if len(recipient_names) != len(recipient_id_cards):
+        logger.warning(f"⚠️ จำนวนชื่อ ({len(recipient_names)}) และเลขบัตร ({len(recipient_id_cards)}) ไม่ตรงกัน")
+        if len(recipient_names) > len(recipient_id_cards):
+            default_id_card = recipient_id_cards[0] if recipient_id_cards else '-'
+            recipient_id_cards.extend([default_id_card] * (len(recipient_names) - len(recipient_id_cards)))
+        else:
+            recipient_id_cards = recipient_id_cards[:len(recipient_names)]
+    
+    # แยกค่าจ้างและเงินสมทบ
+    salary_list = [x.strip() for x in salary_raw.split(',') if x.strip()]
+    contrib_list = [x.strip() for x in contrib_raw.split(',') if x.strip()]
+    
+    # Merge จำนวนเงินที่อาจถูกแยกผิด
+    if salary_list:
+        salary_list = merge_split_amounts(salary_list)
+    if contrib_list:
+        contrib_list = merge_split_amounts(contrib_list)
+    
+    # กำหนดจำนวนคน
+    person_count = len(recipient_names) if recipient_names else 1
+    
+    # Parse รายการค่าจ้าง
+    parsed_salary_amounts = []
+    if salary_list and len(salary_list) >= person_count:
+        for salary_str in salary_list[:person_count]:
+            try:
+                salary_str = re.sub(r'(\d)\s+(\d{2})$', r'\1.\2', salary_str)
+                salary_str = salary_str.replace(' ', '')
+                salary_clean = re.sub(r'[^\d.]', '', salary_str)
+                if salary_clean:
+                    parsed_salary_amounts.append(float(salary_clean))
+                else:
+                    parsed_salary_amounts.append(0.0)
+            except:
+                parsed_salary_amounts.append(0.0)
+    else:
+        # ถ้าไม่มีรายการ ให้ใช้ค่าเดียวและแบ่งเท่าๆ กัน
+        try:
+            salary_amount = float(re.sub(r'[,\s]', '', salary_raw)) if salary_raw else 0.0
+            individual_salary = salary_amount / person_count if person_count > 0 else 0.0
+            parsed_salary_amounts = [individual_salary] * person_count
+        except:
+            parsed_salary_amounts = [0.0] * person_count
+    
+    # Parse รายการเงินสมทบ
+    parsed_contrib_amounts = []
+    if contrib_list and len(contrib_list) >= person_count:
+        for contrib_str in contrib_list[:person_count]:
+            try:
+                contrib_str = re.sub(r'(\d)\s+(\d{2})$', r'\1.\2', contrib_str)
+                contrib_str = contrib_str.replace(' ', '')
+                contrib_clean = re.sub(r'[^\d.]', '', contrib_str)
+                if contrib_clean:
+                    parsed_contrib_amounts.append(float(contrib_clean))
+                else:
+                    parsed_contrib_amounts.append(0.0)
+            except:
+                parsed_contrib_amounts.append(0.0)
+    else:
+        # ถ้าไม่มีรายการ ให้ใช้ค่าเดียวและแบ่งเท่าๆ กัน
+        try:
+            contrib_amount = float(re.sub(r'[,\s]', '', contrib_raw)) if contrib_raw else 0.0
+            individual_contrib = contrib_amount / person_count if person_count > 0 else 0.0
+            parsed_contrib_amounts = [individual_contrib] * person_count
+        except:
+            parsed_contrib_amounts = [0.0] * person_count
+    
+    # ปรับให้จำนวนรายการเท่ากับจำนวนคน
+    while len(parsed_salary_amounts) < person_count:
+        parsed_salary_amounts.append(0.0)
+    while len(parsed_contrib_amounts) < person_count:
+        parsed_contrib_amounts.append(0.0)
+    
+    parsed_salary_amounts = parsed_salary_amounts[:person_count]
+    parsed_contrib_amounts = parsed_contrib_amounts[:person_count]
+    
+    # สร้าง entry สำหรับแต่ละคน
+    individual_entries = []
+    for i, (name, id_card) in enumerate(zip(recipient_names, recipient_id_cards)):
+        if not name and not id_card:
+            continue
+        
+        individual_salary = parsed_salary_amounts[i] if i < len(parsed_salary_amounts) else 0.0
+        individual_contrib = parsed_contrib_amounts[i] if i < len(parsed_contrib_amounts) else 0.0
+        
+        entry = {
+            'recipient_id_card': id_card or '-',
+            'recipient_name': name or '-',
+            'payment_month': payment_month,
+            'payment_year': payment_year,
+            'salary': f"{individual_salary:,.2f}",
+            'social_security_contribution': f"{individual_contrib:,.2f}",
+        }
+        individual_entries.append(entry)
+    
+    logger.info(f"✅ แยกข้อมูลประกันสังคมเป็นรายบุคคล: {len(individual_entries)} รายการ")
+    
+    return individual_entries
+
+
+@app.route('/api/pnd1k/ocr-social-security', methods=['POST'])
+def ocr_pnd1k_social_security():
+    """อ่านใบแนบประกันสังคมด้วย OCR แล้วเก็บใน data_pnd1k"""
+    try:
+        import re
+        from pathlib import Path
+        from datetime import datetime
+
+        if 'file' not in request.files:
+            return jsonify({'success': False, 'error': 'กรุณาอัพโหลดไฟล์'}), 400
+        file = request.files['file']
+        company = request.form.get('company', '').strip()
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาเลือกบริษัท'}), 400
+        if file.filename == '':
+            return jsonify({'success': False, 'error': 'กรุณาเลือกไฟล์'}), 400
+
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        if isinstance(company_name, list):
+            company_name = ' '.join(company_name)
+        if not isinstance(company_name, str):
+            company_name = str(company_name) if company_name else company
+
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            if isinstance(name, list):
+                name = ' '.join(name)
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+
+        temp_dir = Path('temp_uploads')
+        temp_dir.mkdir(exist_ok=True)
+        file_ext = Path(file.filename).suffix
+        temp_file = temp_dir / f"pnd1k_ss_{datetime.now().strftime('%Y%m%d_%H%M%S')}{file_ext}"
+        file.save(str(temp_file))
+
+        try:
+            raw_text, raw_content, structured_data = _extract_social_security_with_custom_fields(temp_file)
+            if not structured_data:
+                return jsonify({'success': False, 'error': 'ไม่สามารถอ่านข้อมูลใบแนบประกันสังคมได้'}), 400
+            individuals = _extract_social_security_from_structured_data(structured_data, raw_content, raw_text)
+            if not individuals:
+                return jsonify({'success': False, 'error': 'ไม่พบข้อมูลรายบุคคลในใบแนบประกันสังคม'}), 400
+
+            pnd1k_data_dir = Path('data_pnd1k')
+            pnd1k_data_dir.mkdir(exist_ok=True)
+            safe_name = sanitize_filename(company_name or company)
+            ss_file = pnd1k_data_dir / f"pnd1k_social_security_{safe_name}.json"
+            existing = []
+            if ss_file.exists():
+                try:
+                    with open(ss_file, 'r', encoding='utf-8') as f:
+                        existing = json.load(f)
+                except Exception:
+                    existing = []
+            if not isinstance(existing, list):
+                existing = [existing] if existing else []
+
+            first = individuals[0]
+            pm, py = first.get('payment_month'), first.get('payment_year')
+            if pm is not None and py is not None:
+                existing = [e for e in existing if not (e.get('payment_month') == pm and e.get('payment_year') == py)]
+            for r in individuals:
+                r['company'] = company
+                r['file_name'] = file.filename
+                r['created_at'] = datetime.now().isoformat()
+            existing.extend(individuals)
+
+            with open(ss_file, 'w', encoding='utf-8') as f:
+                json.dump(existing, f, ensure_ascii=False, indent=2)
+            logger.info(f"✅ บันทึกใบแนบประกันสังคม: {len(individuals)} รายการ")
+            return jsonify({'success': True, 'data': individuals, 'count': len(individuals)}), 200
+        finally:
+            try:
+                temp_file.unlink()
+            except Exception:
+                pass
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอ่านใบแนบประกันสังคม: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+def _extract_social_security_form_with_custom_fields(file_path):
+    """เรียก Akson key-extract สำหรับแบบประกันสังคม แล้วคืน raw_text, raw_content, structured_data"""
+    import requests
+    custom_fields = [
+        {"key": "ชื่อสถานประกอบการ", "description": "ดึงข้อมูลของสถานประกอบการที่นำส่งเงินสมทบ", "example": "บริษัท เอบีซี จำกัด"},
+        {"key": "ที่ตั้งสำนักงานใหญ่/สาขา", "description": "ดึงข้อมูลของที่ตั้งสถานประกอบการมา", "example": ""},
+        {"key": "รหัสไปรษณีย์", "description": "ดึงข้อมูลของรหัสไปรษณีย์มาแสดงข้อมูล", "example": "10160"},
+        {"key": "โทรศัพท์", "description": "ดึงข้อมูลของเบอร์โทรศัพท์มา", "example": "02-1234567"},
+        {"key": "การนำส่งเงินสมทบสำหรับค่าจ้างเดือน", "description": "ดึงข้อมูลเดือนและพ.ศ. ออกมาโดยให้แสดงผลเป็น dd/yyyy", "example": "01/2025"},
+        {"key": "เงินค่าจ้างทั้งสิ้น", "description": "ดึงข้อมูลของช่องบาทและ สต. รวมกันเป็น 0.00", "example": "0.00"},
+        {"key": "เงินสมทบผู้ประกันตน", "description": "ดึงข้อมูลของช่องบาทและ สต. รวมกันเป็น 0.00", "example": "0.00"},
+        {"key": "รวมเงินสมทบที่นำส่งทั้งสิ้น", "description": "ดึงข้อมูลของช่องบาทและ สต. รวมกันเป็น 0.00", "example": "0.00"},
+        {"key": "จำนวนผู้ประกันตนที่ส่งเงินสมทบ", "description": "ดึงข้อมูลออกมาว่าเป็นจำนวนกี่คน", "example": "27"},
+    ]
+    api_key = os.getenv('AKSON_API_KEY') or getattr(Config, 'AKSON_API_KEY', '')
+    if not api_key:
+        logger.warning("⚠️ ไม่พบ AksonOCR API key")
+        return '', '', None
+    payload = {
+        'customFields': json.dumps(custom_fields, ensure_ascii=False),
+        'model': 'aksonocr-1.0',
+    }
+    url = "https://backend.aksonocr.com/api/v1/key-extract"
+    try:
+        file_path_obj = Path(file_path)
+        file_name = file_path_obj.name
+        file_ext = file_path_obj.suffix.lower()
+        if file_ext not in ['.pdf', '.jpg', '.jpeg', '.png']:
+            return '', '', None
+        content_type_map = {'.pdf': 'application/pdf', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png'}
+        content_type = content_type_map.get(file_ext, 'application/octet-stream')
+        logger.info(f"🔄 กำลังใช้ AksonOCR (key-extract) อ่านแบบประกันสังคม: {file_name}")
+        with open(file_path, 'rb') as f:
+            files = {'file': (file_name, f, content_type)}
+            headers = {'X-API-Key': api_key}
+            response = requests.post(url, headers=headers, data=payload, files=files, timeout=180)
+        if response.status_code not in [200, 201]:
+            logger.error(f"❌ AksonOCR ส่งกลับ {response.status_code}")
+            return '', '', None
+        result = response.json()
+        raw_content = json.dumps(result, ensure_ascii=False, indent=2)
+        raw_text = ''
+        structured_data = {}
+        if result.get('success') and result.get('data'):
+            data = result['data']
+            structured_data = data
+            raw_text = json.dumps(data, ensure_ascii=False)
+        return raw_text, raw_content, structured_data
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอ่านแบบประกันสังคมด้วย key-extract: {e}", exc_info=True)
+        return '', '', None
+
+
+def _extract_social_security_form_from_structured_data(structured_data):
+    """Extract ข้อมูลแบบประกันสังคมจาก structured data"""
+    import re
+    if not structured_data:
+        return {}
+    month_str = str(structured_data.get('การนำส่งเงินสมทบสำหรับค่าจ้างเดือน', '') or '').strip()
+    payment_month, payment_year = None, None
+    if month_str and '/' in month_str:
+        parts = month_str.split('/')
+        if len(parts) >= 2:
+            try:
+                payment_month = int(parts[0].strip())
+                payment_year = int(parts[1].strip())
+                if payment_year > 2500:
+                    payment_year = payment_year - 543
+            except Exception:
+                pass
+    def clean_amount(val):
+        if not val:
+            return '0.00'
+        val_str = str(val).strip().replace(' ', '').replace(',', '')
+        try:
+            return f"{float(val_str):,.2f}"
+        except:
+            return '0.00'
+    def clean_count(val):
+        if not val:
+            return '0'
+        val_str = str(val).strip().replace(' ', '').replace(',', '')
+        try:
+            return str(int(float(val_str)))
+        except:
+            return '0'
+    return {
+        'company_name': str(structured_data.get('ชื่อสถานประกอบการ', '') or '').strip(),
+        'address': str(structured_data.get('ที่ตั้งสำนักงานใหญ่/สาขา', '') or '').strip(),
+        'postal_code': str(structured_data.get('รหัสไปรษณีย์', '') or '').strip(),
+        'phone': str(structured_data.get('โทรศัพท์', '') or '').strip(),
+        'payment_month': payment_month,
+        'payment_year': payment_year,
+        'total_salary': clean_amount(structured_data.get('เงินค่าจ้างทั้งสิ้น', '')),
+        'total_contribution': clean_amount(structured_data.get('เงินสมทบผู้ประกันตน', '')),
+        'total_contribution_all': clean_amount(structured_data.get('รวมเงินสมทบที่นำส่งทั้งสิ้น', '')),
+        'employee_count': clean_count(structured_data.get('จำนวนผู้ประกันตนที่ส่งเงินสมทบ', '')),
+    }
+
+
+@app.route('/api/pnd1k/ocr-social-security-form', methods=['POST'])
+def ocr_pnd1k_social_security_form():
+    """อ่านแบบประกันสังคมด้วย OCR แล้วเก็บใน data_pnd1k"""
+    try:
+        import re
+        from pathlib import Path
+        from datetime import datetime
+        if 'file' not in request.files:
+            return jsonify({'success': False, 'error': 'กรุณาอัพโหลดไฟล์'}), 400
+        file = request.files['file']
+        company = request.form.get('company', '').strip()
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาเลือกบริษัท'}), 400
+        if file.filename == '':
+            return jsonify({'success': False, 'error': 'กรุณาเลือกไฟล์'}), 400
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        if isinstance(company_name, list):
+            company_name = ' '.join(company_name)
+        if not isinstance(company_name, str):
+            company_name = str(company_name) if company_name else company
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            if isinstance(name, list):
+                name = ' '.join(name)
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        temp_dir = Path('temp_uploads')
+        temp_dir.mkdir(exist_ok=True)
+        file_ext = Path(file.filename).suffix
+        temp_file = temp_dir / f"pnd1k_ss_form_{datetime.now().strftime('%Y%m%d_%H%M%S')}{file_ext}"
+        file.save(str(temp_file))
+        try:
+            raw_text, raw_content, structured_data = _extract_social_security_form_with_custom_fields(temp_file)
+            if not structured_data:
+                return jsonify({'success': False, 'error': 'ไม่สามารถอ่านข้อมูลแบบประกันสังคมได้'}), 400
+            form_data = _extract_social_security_form_from_structured_data(structured_data)
+            if not form_data.get('payment_month') or not form_data.get('payment_year'):
+                return jsonify({'success': False, 'error': 'ไม่พบข้อมูลเดือน/ปีในแบบประกันสังคม'}), 400
+            pnd1k_data_dir = Path('data_pnd1k')
+            pnd1k_data_dir.mkdir(exist_ok=True)
+            safe_name = sanitize_filename(company_name or company)
+            ss_form_file = pnd1k_data_dir / f"pnd1k_social_security_form_{safe_name}.json"
+            existing = []
+            if ss_form_file.exists():
+                try:
+                    with open(ss_form_file, 'r', encoding='utf-8') as f:
+                        existing = json.load(f)
+                except Exception:
+                    existing = []
+            if not isinstance(existing, list):
+                existing = [existing] if existing else []
+            pm, py = form_data.get('payment_month'), form_data.get('payment_year')
+            if pm is not None and py is not None:
+                existing = [e for e in existing if not (e.get('payment_month') == pm and e.get('payment_year') == py)]
+            form_data['company'] = company
+            form_data['file_name'] = file.filename
+            form_data['created_at'] = datetime.now().isoformat()
+            existing.append(form_data)
+            with open(ss_form_file, 'w', encoding='utf-8') as f:
+                json.dump(existing, f, ensure_ascii=False, indent=2)
+            logger.info(f"✅ บันทึกแบบประกันสังคม: เดือน {pm}/{py}")
+            return jsonify({'success': True, 'data': form_data}), 200
+        finally:
+            try:
+                temp_file.unlink()
+            except Exception:
+                pass
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอ่านแบบประกันสังคม: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/pnd1k/social-security-forms', methods=['GET'])
+def get_pnd1k_social_security_forms():
+    """ดึงข้อมูลแบบประกันสังคมตามบริษัท"""
+    try:
+        import re
+        from pathlib import Path
+        company = request.args.get('company', '').strip()
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        if isinstance(company_name, list):
+            company_name = ' '.join(company_name)
+        if not isinstance(company_name, str):
+            company_name = str(company_name) if company_name else company
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            if isinstance(name, list):
+                name = ' '.join(name)
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        safe_name = sanitize_filename(company_name or company)
+        ss_form_file = Path('data_pnd1k') / f"pnd1k_social_security_form_{safe_name}.json"
+        if not ss_form_file.exists():
+            return jsonify({'success': True, 'forms': []}), 200
+        with open(ss_form_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if not isinstance(data, list):
+            data = [data] if data else []
+        return jsonify({'success': True, 'forms': data}), 200
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการดึงข้อมูลแบบประกันสังคม: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/pnd1k/social-security', methods=['GET'])
+def get_pnd1k_social_security():
+    """ดึงข้อมูลใบแนบประกันสังคมตามบริษัท"""
+    try:
+        import re
+        from pathlib import Path
+        company = request.args.get('company', '').strip()
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        if isinstance(company_name, list):
+            company_name = ' '.join(company_name)
+        if not isinstance(company_name, str):
+            company_name = str(company_name) if company_name else company
+
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            if isinstance(name, list):
+                name = ' '.join(name)
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+
+        safe_name = sanitize_filename(company_name or company)
+        ss_file = Path('data_pnd1k') / f"pnd1k_social_security_{safe_name}.json"
+        if not ss_file.exists():
+            return jsonify({'success': True, 'social_security': []}), 200
+        with open(ss_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        if not isinstance(data, list):
+            data = [data] if data else []
+        return jsonify({'success': True, 'social_security': data}), 200
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการดึงข้อมูลใบแนบประกันสังคม: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+def _check_pnd1k_duplicates(attachments):
+    """
+    ตรวจสอบข้อมูลพนักงาน/ชื่อซ้ำจากรายการใบแนบ ภ.ง.ด.1
+    คืนค่า: duplicate_id_cards, duplicate_names, id_card_name_mismatch
+    """
+    from collections import defaultdict
+    
+    if not attachments or not isinstance(attachments, list):
+        return [], [], []
+    
+    # จับคู่เลขบัตร-ชื่อ (ถ้าเลขบัตรเดียวกันมีชื่อต่างกัน = ข้อมูลผิด)
+    id_to_names = defaultdict(set)
+    for a in attachments:
+        ic = (a.get('recipient_id_card') or '').strip()
+        nm = (a.get('recipient_name') or '').strip()
+        if ic and ic != '-':
+            id_to_names[ic].add(nm)
+    
+    id_card_name_mismatch = []
+    for id_card, names in id_to_names.items():
+        names = [n for n in names if n]
+        if len(names) > 1:
+            id_card_name_mismatch.append({
+                'id_card': id_card,
+                'names': list(names),
+                'message': f'เลขบัตร {id_card} มีหลายชื่อ: {", ".join(names)}'
+            })
+    
+    # ซ้ำตามเลขบัตร+เดือน (คนเดียวกันในเดือนเดียวกันมากกว่า 1 รายการ)
+    key_id = lambda a: (
+        (a.get('recipient_id_card') or '').strip(),
+        a.get('payment_month'),
+        a.get('payment_year')
+    )
+    by_id_month = defaultdict(list)
+    for a in attachments:
+        k = key_id(a)
+        if k[0] and k[0] != '-':
+            by_id_month[k].append(a)
+    
+    duplicate_id_cards = []
+    for (id_card, mon, yr), items in by_id_month.items():
+        if len(items) <= 1:
+            continue
+        names = list({(a.get('recipient_name') or '').strip() for a in items})
+        duplicate_id_cards.append({
+            'id_card': id_card,
+            'payment_month': mon,
+            'payment_year': yr,
+            'count': len(items),
+            'names': names,
+            'message': f'เลขบัตร {id_card} ซ้ำ {len(items)} รายการ ในเดือน {mon or "-"}/{yr or "-"}'
+        })
+    
+    # ซ้ำตามชื่อ+เดือน (ชื่อเดียวกันในเดือนเดียวกันมากกว่า 1 รายการ)
+    key_name = lambda a: (
+        (a.get('recipient_name') or '').strip(),
+        a.get('payment_month'),
+        a.get('payment_year')
+    )
+    by_name_month = defaultdict(list)
+    for a in attachments:
+        k = key_name(a)
+        if k[0]:
+            by_name_month[k].append(a)
+    
+    duplicate_names = []
+    for (name, mon, yr), items in by_name_month.items():
+        if len(items) <= 1:
+            continue
+        id_cards = list({(a.get('recipient_id_card') or '').strip() for a in items})
+        duplicate_names.append({
+            'name': name,
+            'payment_month': mon,
+            'payment_year': yr,
+            'count': len(items),
+            'id_cards': id_cards,
+            'message': f'ชื่อ "{name}" ซ้ำ {len(items)} รายการ ในเดือน {mon or "-"}/{yr or "-"}'
+        })
+    
+    return duplicate_id_cards, duplicate_names, id_card_name_mismatch
+
+
+@app.route('/api/pnd1k/check-duplicates', methods=['GET'])
+def check_pnd1k_duplicates():
+    """API เช็คข้อมูลพนักงาน/ชื่อซ้ำ จากใบแนบ ภ.ง.ด.1 ตามบริษัท"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        
+        company = request.args.get('company', '').strip()
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+        
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        if isinstance(company_name, list):
+            company_name = ' '.join(company_name)
+        if not isinstance(company_name, str):
+            company_name = str(company_name) if company_name else company
+        
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            if isinstance(name, list):
+                name = ' '.join(name)
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        safe = sanitize_filename(company_name or company)
+        pnd1k_dir = Path('data_pnd1k')
+        attachment_file = pnd1k_dir / f"pnd1k_attachments_{safe}.json"
+        
+        if not attachment_file.exists():
+            return jsonify({
+                'success': True,
+                'duplicate_id_cards': [],
+                'duplicate_names': [],
+                'id_card_name_mismatch': [],
+                'total_entries': 0,
+                'message': 'ยังไม่มีข้อมูลใบแนบ ภ.ง.ด.1 สำหรับบริษัทนี้'
+            }), 200
+        
+        with open(attachment_file, 'r', encoding='utf-8') as f:
+            attachments = json.load(f)
+        if not isinstance(attachments, list):
+            attachments = [attachments] if attachments else []
+        
+        dup_ids, dup_names, mismatches = _check_pnd1k_duplicates(attachments)
+        
+        return jsonify({
+            'success': True,
+            'duplicate_id_cards': dup_ids,
+            'duplicate_names': dup_names,
+            'id_card_name_mismatch': mismatches,
+            'total_entries': len(attachments),
+            'has_duplicates': bool(dup_ids or dup_names or mismatches),
+            'message': 'พบข้อมูลซ้ำ' if (dup_ids or dup_names or mismatches) else 'ไม่พบข้อมูลซ้ำ'
+        }), 200
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการเช็คข้อมูลซ้ำ ภ.ง.ด.1: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 
 @app.route('/api/auditcheck/check-files', methods=['POST'])
