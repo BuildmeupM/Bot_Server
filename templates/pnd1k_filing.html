@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบยื่น ภ.ง.ด.1ก/กท.20 - BotV3</title>
+    <title>ระบบยื่น ภ.ง.ด.1ก/กท.20ก - BotV3</title>
     <style>
         * {
             margin: 0;
@@ -676,8 +676,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>📋 ระบบยื่น ภ.ง.ด.1ก/กท.20</h1>
-            <p>ระบบยื่นแบบแสดงรายการภาษีเงินได้หัก ณ ที่จ่าย (ภ.ง.ด.1ก) และแบบรายงานการจ่ายเงินได้ (กท.20)</p>
+            <h1>📋 ระบบยื่น ภ.ง.ด.1ก/กท.20ก</h1>
+            <p>ระบบยื่นแบบแสดงรายการภาษีเงินได้หัก ณ ที่จ่าย (ภ.ง.ด.1ก) และแบบรายงานการจ่ายเงินได้ (กท.20ก)</p>
         </div>
         
         <div class="nav-bar">
@@ -685,7 +685,7 @@
             <a href="/pdf" class="nav-link">🤖 ระบบอัตโนมัติ</a>
             <a href="/email" class="nav-link">📧 ส่งอีเมลล์</a>
             <a href="/auditcheck" class="nav-link">🔍 ตรวจภาษี</a>
-            <a href="/pnd1k-filing" class="nav-link active">📋 ยื่น ภ.ง.ด.1ก/กท.20</a>
+            <a href="/pnd1k-filing" class="nav-link active">📋 ยื่น ภ.ง.ด.1ก/กท.20ก</a>
         </div>
         
         <div class="form-section">
@@ -918,10 +918,6 @@
                 </div>
             </div>
             
-            <button class="btn btn-primary btn-full" id="submitBtn" onclick="submitFiles()" disabled>
-                📤 ส่งยื่นเอกสาร
-            </button>
-            
             <div class="progress-bar" id="progressBar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
@@ -949,8 +945,16 @@
                     <div style="color: #fbbf24; font-size: 1.5em; font-weight: 700;" id="summaryTotalIncome">0.00 บาท</div>
                 </div>
                 <div style="padding: 15px; background: rgba(239, 68, 68, 0.1); border-radius: 8px; border-left: 4px solid #ef4444;">
-                    <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 8px;">ผลต่าง</div>
+                    <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 8px;">ผลต่าง (เทียบกับรายได้)</div>
                     <div style="color: #fca5a5; font-size: 1.5em; font-weight: 700;" id="summaryDifference">0.00 บาท</div>
+                </div>
+                <div id="summaryContributionCard" style="display: none; padding: 15px; background: rgba(167, 139, 250, 0.1); border-radius: 8px; border-left: 4px solid #a78bfa;">
+                    <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 8px;">ยอดรวมเงินสมทบ</div>
+                    <div style="color: #a78bfa; font-size: 1.5em; font-weight: 700;" id="summaryTotalContribution">0.00 บาท</div>
+                </div>
+                <div id="summaryContributionDifferenceCard" style="display: none; padding: 15px; background: rgba(167, 139, 250, 0.1); border-radius: 8px; border-left: 4px solid #a78bfa;">
+                    <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 8px;">ผลต่าง (เทียบกับเงินสมทบ)</div>
+                    <div style="color: #c4b5fd; font-size: 1.5em; font-weight: 700;" id="summaryContributionDifference">0.00 บาท</div>
                 </div>
             </div>
             
@@ -982,7 +986,7 @@
                     👥 ข้อมูลพนักงาน
                 </button>
                 <button class="tab-button" onclick="switchTab('kt20')" id="tab-btn-kt20">
-                    📋 สรุปข้อมูลนำส่ง กท.20
+                    📋 สรุปข้อมูลนำส่ง กท.20ก
                 </button>
             </div>
             
@@ -1001,14 +1005,15 @@
                                 <th style="width: 10%;">📋 ประเภท</th>
                                 <th style="width: 12%;">📝 การยื่น</th>
                                 <th style="width: 12%;">👥 จำนวนพนักงาน</th>
-                                <th style="width: 18%;">💵 รายได้รวม</th>
-                                <th style="width: 18%;">💰 ภาษีรวม</th>
-                                <th style="width: 18%;">📁 ไฟล์</th>
+                                <th style="width: 15%;">💵 รายได้รวม</th>
+                                <th style="width: 15%;">💰 ภาษีรวม</th>
+                                <th style="width: 15%;">📁 ไฟล์</th>
+                                <th style="width: 9%;">⚙️ การจัดการ</th>
                             </tr>
                         </thead>
                         <tbody id="formDataTableBody">
                             <tr class="empty-row">
-                                <td colspan="7">ยังไม่มีข้อมูลแบบภาษี กรุณาอัพโหลดไฟล์แบบ ภ.ง.ด.1</td>
+                                <td colspan="8">ยังไม่มีข้อมูลแบบภาษี กรุณาอัพโหลดไฟล์แบบ ภ.ง.ด.1</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1019,13 +1024,22 @@
             <div id="tab-content-attachment" class="tab-content">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
                     <h2 style="margin: 0; color: #10b981;">📎 ข้อมูลใบแนบภาษี</h2>
-                    <button type="button" id="checkDuplicatesBtn" onclick="openCheckDuplicatesModal()" 
-                            style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: #334155; border: 1px solid #475569; border-radius: 8px; color: #e2e8f0; font-size: 14px; cursor: pointer; transition: all 0.2s;"
-                            onmouseover="this.style.background='#475569'; this.style.borderColor='#64748b';"
-                            onmouseout="this.style.background='#334155'; this.style.borderColor='#475569';"
-                            title="เช็คชื่อ/เลขบัตรซ้ำ และเลขบัตร-ชื่อไม่ตรงกัน">
-                        🔍 เช็คข้อมูลซ้ำ
-                    </button>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <button type="button" id="exportAllDataBtn" onclick="exportAllDataToExcel()" 
+                                style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: #10b981; border: 1px solid #059669; border-radius: 8px; color: #ffffff; font-size: 14px; cursor: pointer; transition: all 0.2s; font-weight: 600;"
+                                onmouseover="this.style.background='#059669'; this.style.borderColor='#047857';"
+                                onmouseout="this.style.background='#10b981'; this.style.borderColor='#059669';"
+                                title="ส่งออกข้อมูลทั้งหมดเป็นไฟล์ Excel สำหรับตรวจสอบ">
+                            📊 ส่งออกข้อมูลทั้งหมด
+                        </button>
+                        <button type="button" id="checkDuplicatesBtn" onclick="openCheckDuplicatesModal()" 
+                                style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: #334155; border: 1px solid #475569; border-radius: 8px; color: #e2e8f0; font-size: 14px; cursor: pointer; transition: all 0.2s;"
+                                onmouseover="this.style.background='#475569'; this.style.borderColor='#64748b';"
+                                onmouseout="this.style.background='#334155'; this.style.borderColor='#475569';"
+                                title="เช็คชื่อ/เลขบัตรซ้ำ และเลขบัตร-ชื่อไม่ตรงกัน">
+                            🔍 เช็คข้อมูลซ้ำ
+                        </button>
+                    </div>
                 </div>
                 
                 <!-- ตารางข้อมูลใบแนบ (scrollable) -->
@@ -1041,11 +1055,12 @@
                                 <th style="width: 14%;">💵 รายได้นำส่งทั้งหมด</th>
                                 <th style="width: 14%;">💰 ยอดหัก ณ ที่จ่าย</th>
                                 <th style="width: 14%;">📌 เงินสมทบประกันสังคม</th>
+                                <th style="width: 10%;">⚙️ การจัดการ</th>
                             </tr>
                         </thead>
                         <tbody id="uploadedDataTableBody">
                             <tr class="empty-row">
-                                <td colspan="8">ยังไม่มีข้อมูล กรุณาอัพโหลดไฟล์เพื่อแสดงข้อมูล</td>
+                                <td colspan="9">ยังไม่มีข้อมูล กรุณาอัพโหลดไฟล์เพื่อแสดงข้อมูล</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1082,21 +1097,27 @@
                     </table>
                 </div>
                 
-                <!-- ปุ่มสำหรับออกเอกสาร 50 ทวิพร้อมกันทุกคน -->
-                <div style="margin-top: 20px; text-align: center;">
+                <!-- ปุ่มสำหรับออกเอกสาร 50 ทวิพร้อมกันทุกคน และ ออกเอกสาร RD Prep -->
+                <div style="margin-top: 20px; text-align: center; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                     <button type="button" onclick="generate50TawiForAll()" 
                         style="padding: 12px 24px; background: linear-gradient(135deg, #7c2d12 0%, #92400e 100%); color: #fbbf24; border: 2px solid #f59e0b; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; box-shadow: 0 4px 12px rgba(124, 45, 18, 0.3); transition: all 0.3s ease;"
                         onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(124, 45, 18, 0.4)';"
                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(124, 45, 18, 0.3)';">
                         📄 ออก 50 ทวิ พร้อมกันทุกคน
                     </button>
+                    <button type="button" onclick="generateRDPrepForAll()" 
+                        style="padding: 12px 24px; background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); color: #93c5fd; border: 2px solid #3b82f6; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3); transition: all 0.3s ease;"
+                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(30, 58, 138, 0.4)';"
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(30, 58, 138, 0.3)';">
+                        📋 ออกเอกสาร RD Prep
+                    </button>
                 </div>
             </div>
             
-            <!-- Tab 4: สรุปข้อมูลนำส่ง กท.20 -->
+            <!-- Tab 4: สรุปข้อมูลนำส่ง กท.20ก -->
             <div id="tab-content-kt20" class="tab-content">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
-                    <h2 style="margin: 0; color: #10b981;">📋 สรุปข้อมูลนำส่ง กท.20</h2>
+                    <h2 style="margin: 0; color: #10b981;">📋 สรุปข้อมูลนำส่ง กท.20ก</h2>
                     <p style="margin: 0; font-size: 0.9em; color: #94a3b8;">ข้อมูลจากใบแนบประกันสังคม (สปส.1-10 ส่วนที่ 2)</p>
                 </div>
                 
@@ -1110,7 +1131,7 @@
                                 <th style="width: 15%;">💵 ค่าจ้างรวมทั้งปี</th>
                                 <th style="width: 15%;">💰 เงินสมทบรวมทั้งปี</th>
                                 <th style="width: 15%;">📊 จำนวนเดือน</th>
-                                <th style="width: 15%;">📈 ส่วนเกินที่นำส่ง กท.20</th>
+                                <th style="width: 15%;">📈 ส่วนเกินที่นำส่ง กท.20ก</th>
                                 <th style="width: 8%;">⚙️ การดำเนินการ</th>
                             </tr>
                         </thead>
@@ -1269,42 +1290,124 @@
                 <div style="color: #cbd5e1;"><strong style="color: #60a5fa;">ชื่อกิจการ:</strong> <span id="trialBalanceCompanyName">-</span></div>
             </div>
             
+            <!-- Tab สำหรับเลือกประเภทการเทียบข้อมูล -->
             <div style="margin-bottom: 20px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                    <h3 style="color: #fafafa; font-size: 1.1em; margin: 0;">รายการบัญชีที่เริ่มต้นด้วย "5"</h3>
-                    <div style="color: #94a3b8; font-size: 0.9em;">
-                        ยอดรวมที่เลือก: <span id="selectedTotal" style="color: #10b981; font-weight: 600;">0.00</span> บาท
+                <div style="display: flex; gap: 10px; border-bottom: 2px solid #334155; margin-bottom: 15px;">
+                    <button id="trialBalanceTabIncome" onclick="switchTrialBalanceTab('income')" 
+                        style="padding: 10px 20px; background: rgba(251, 191, 36, 0.2); border: none; border-bottom: 3px solid #fbbf24; color: #fbbf24; font-weight: 600; cursor: pointer; font-size: 0.95em; transition: all 0.3s;">
+                        💵 เทียบยอดรวมรายได้
+                    </button>
+                    <button id="trialBalanceTabContribution" onclick="switchTrialBalanceTab('contribution')" 
+                        style="padding: 10px 20px; background: rgba(167, 139, 250, 0.1); border: none; border-bottom: 3px solid transparent; color: #a78bfa; font-weight: 600; cursor: pointer; font-size: 0.95em; transition: all 0.3s;">
+                        💰 เทียบยอดรวมเงินสมทบ
+                    </button>
+                </div>
+                
+                <div id="trialBalanceTabContentIncome" style="display: block;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="color: #fafafa; font-size: 1.1em; margin: 0;">รายการบัญชีที่เริ่มต้นด้วย "5" (เทียบยอดรวมรายได้)</h3>
+                        <div style="color: #94a3b8; font-size: 0.9em;">
+                            ยอดรวมที่เลือก: <span id="selectedTotalIncome" style="color: #10b981; font-weight: 600;">0.00</span> บาท
+                        </div>
+                    </div>
+                    <div style="max-height: 400px; overflow-y: auto; border: 1px solid #334155; border-radius: 8px;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead style="position: sticky; top: 0; background: #0f172a; z-index: 10;">
+                                <tr>
+                                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #334155; color: #60a5fa; width: 50px;">
+                                        <input type="checkbox" id="selectAllTrialBalanceIncome" onchange="toggleAllTrialBalanceItems('income', this.checked)" style="cursor: pointer;">
+                                    </th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid #334155; color: #60a5fa;">รหัสบัญชี</th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid #334155; color: #60a5fa;">ชื่อบัญชี</th>
+                                    <th style="padding: 12px; text-align: right; border-bottom: 2px solid #334155; color: #60a5fa;">ยอดเงิน (บาท)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trialBalanceItemsListIncome">
+                                <!-- รายการจะถูกเพิ่มที่นี่ -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div style="max-height: 400px; overflow-y: auto; border: 1px solid #334155; border-radius: 8px;">
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <thead style="position: sticky; top: 0; background: #0f172a; z-index: 10;">
-                            <tr>
-                                <th style="padding: 12px; text-align: center; border-bottom: 2px solid #334155; color: #60a5fa; width: 50px;">
-                                    <input type="checkbox" id="selectAllTrialBalance" onchange="toggleAllTrialBalanceItems(this.checked)" style="cursor: pointer;">
-                                </th>
-                                <th style="padding: 12px; text-align: left; border-bottom: 2px solid #334155; color: #60a5fa;">รหัสบัญชี</th>
-                                <th style="padding: 12px; text-align: left; border-bottom: 2px solid #334155; color: #60a5fa;">ชื่อบัญชี</th>
-                                <th style="padding: 12px; text-align: right; border-bottom: 2px solid #334155; color: #60a5fa;">ยอดเงิน (บาท)</th>
-                            </tr>
-                        </thead>
-                        <tbody id="trialBalanceItemsList">
-                            <!-- รายการจะถูกเพิ่มที่นี่ -->
-                        </tbody>
-                    </table>
+                
+                <div id="trialBalanceTabContentContribution" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="color: #fafafa; font-size: 1.1em; margin: 0;">รายการบัญชีที่เริ่มต้นด้วย "5" (เทียบยอดรวมเงินสมทบ)</h3>
+                        <div style="color: #94a3b8; font-size: 0.9em;">
+                            ยอดรวมที่เลือก: <span id="selectedTotalContribution" style="color: #10b981; font-weight: 600;">0.00</span> บาท
+                        </div>
+                    </div>
+                    <div style="max-height: 400px; overflow-y: auto; border: 1px solid #334155; border-radius: 8px;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead style="position: sticky; top: 0; background: #0f172a; z-index: 10;">
+                                <tr>
+                                    <th style="padding: 12px; text-align: center; border-bottom: 2px solid #334155; color: #60a5fa; width: 50px;">
+                                        <input type="checkbox" id="selectAllTrialBalanceContribution" onchange="toggleAllTrialBalanceItems('contribution', this.checked)" style="cursor: pointer;">
+                                    </th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid #334155; color: #60a5fa;">รหัสบัญชี</th>
+                                    <th style="padding: 12px; text-align: left; border-bottom: 2px solid #334155; color: #60a5fa;">ชื่อบัญชี</th>
+                                    <th style="padding: 12px; text-align: right; border-bottom: 2px solid #334155; color: #60a5fa;">ยอดเงิน (บาท)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trialBalanceItemsListContribution">
+                                <!-- รายการจะถูกเพิ่มที่นี่ -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             
-            <div style="margin-bottom: 20px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 8px; border-left: 4px solid #10b981;">
+            <!-- ส่วนเลือกโหมดการเทียบข้อมูล -->
+            <div style="margin-bottom: 20px; padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 8px; border-left: 4px solid #3b82f6;">
+                <div style="margin-bottom: 15px;">
+                    <label style="color: #cbd5e1; font-weight: 600; margin-bottom: 8px; display: block;">โหมดการเทียบข้อมูล:</label>
+                    <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #cbd5e1;">
+                            <input type="radio" name="comparisonMode" value="all" checked onchange="updateComparisonMode()" style="cursor: pointer;">
+                            <span>เทียบข้อมูลทั้งหมด</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #cbd5e1;">
+                            <input type="radio" name="comparisonMode" value="month" onchange="updateComparisonMode()" style="cursor: pointer;">
+                            <span>เทียบข้อมูลเฉพาะเดือน</span>
+                        </label>
+                    </div>
+                </div>
+                <div id="monthSelectionContainer" style="display: none; margin-bottom: 15px;">
+                    <label style="color: #cbd5e1; font-weight: 600; margin-bottom: 8px; display: block;">เลือกเดือน:</label>
+                    <select id="comparisonMonthSelect" onchange="updateComparisonMode()" 
+                        style="padding: 8px 12px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: #fafafa; font-size: 0.95em; cursor: pointer; min-width: 200px;">
+                        <option value="">-- เลือกเดือน --</option>
+                    </select>
+                    <p style="color: #64748b; font-size: 0.85em; margin-top: 8px; margin-bottom: 0;">
+                        💡 กรุณาเลือกเดือนเพื่อเทียบข้อมูลเฉพาะเดือนนั้น
+                    </p>
+                </div>
+            </div>
+            
+            <!-- ส่วนสรุปผลการเทียบ -->
+            <div id="trialBalanceSummaryIncome" style="margin-bottom: 20px; padding: 15px; background: rgba(251, 191, 36, 0.1); border-radius: 8px; border-left: 4px solid #fbbf24;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                     <div style="color: #cbd5e1;"><strong style="color: #86efac;">ยอดรวมที่เลือก:</strong></div>
-                    <div style="color: #86efac; font-size: 1.2em; font-weight: 600;" id="selectedTotalDisplay">0.00 บาท</div>
+                    <div style="color: #86efac; font-size: 1.2em; font-weight: 600;" id="selectedTotalDisplayIncome">0.00 บาท</div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div style="color: #cbd5e1;"><strong style="color: #fbbf24;">ยอดรวมรายได้:</strong></div>
                     <div style="color: #fbbf24; font-size: 1.2em; font-weight: 600;" id="totalIncomeDisplay">0.00 บาท</div>
                 </div>
-                <div id="trialBalanceComparison" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155;">
+                <div id="trialBalanceComparisonIncome" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155;">
+                    <!-- ผลการเทียบจะแสดงที่นี่ -->
+                </div>
+            </div>
+            
+            <div id="trialBalanceSummaryContribution" style="margin-bottom: 20px; padding: 15px; background: rgba(167, 139, 250, 0.1); border-radius: 8px; border-left: 4px solid #a78bfa; display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <div style="color: #cbd5e1;"><strong style="color: #86efac;">ยอดรวมที่เลือก:</strong></div>
+                    <div style="color: #86efac; font-size: 1.2em; font-weight: 600;" id="selectedTotalDisplayContribution">0.00 บาท</div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="color: #cbd5e1;"><strong style="color: #a78bfa;">ยอดรวมเงินสมทบ:</strong></div>
+                    <div style="color: #a78bfa; font-size: 1.2em; font-weight: 600;" id="totalContributionDisplay">0.00 บาท</div>
+                </div>
+                <div id="trialBalanceComparisonContribution" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155;">
                     <!-- ผลการเทียบจะแสดงที่นี่ -->
                 </div>
             </div>
@@ -1359,9 +1462,21 @@
                 <p id="pathInputDescription" style="color: #94a3b8; font-size: 0.9em; margin: 0;">ตัวอย่าง: C:\Users\USER\Documents\50tawi</p>
             </div>
             <div style="margin-bottom: 24px;">
-                <input type="text" id="pathInputField" placeholder="กรุณาระบุ path" 
-                    style="width: 100%; padding: 12px 16px; background: #0f172a; border: 2px solid #334155; border-radius: 8px; color: #fafafa; font-size: 1em; font-family: monospace;"
-                    onkeypress="if(event.key === 'Enter') document.getElementById('pathInputConfirmBtn').click();">
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <input type="text" id="pathInputField" placeholder="กรุณาระบุ path หรือคลิกปุ่มเลือกโฟลเดอร์" 
+                        style="flex: 1; padding: 12px 16px; background: #0f172a; border: 2px solid #334155; border-radius: 8px; color: #fafafa; font-size: 1em; font-family: monospace;"
+                        onkeypress="if(event.key === 'Enter') document.getElementById('pathInputConfirmBtn').click();">
+                    <button type="button" id="pathInputBrowseBtn" onclick="browseFolder()" 
+                        style="padding: 12px 20px; background: #10b981; color: #ffffff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; white-space: nowrap; transition: all 0.2s;"
+                        onmouseover="this.style.background='#059669'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.background='#10b981'; this.style.transform='scale(1)';"
+                        title="เลือกโฟลเดอร์ (ใช้ File System Access API)">
+                        📂 เลือกโฟลเดอร์
+                    </button>
+                </div>
+                <p id="pathInputHint" style="color: #64748b; font-size: 0.85em; margin-top: 8px; margin-bottom: 0;">
+                    💡 หากปุ่มเลือกโฟลเดอร์ไม่ทำงาน กรุณากรอก path ด้วยตนเอง (เช่น: C:\Users\USER\Documents\50tawi)
+                </p>
             </div>
             <div style="display: flex; gap: 12px; justify-content: flex-end;">
                 <button type="button" id="pathInputCancelBtn" onclick="closePathInputModal()" 
@@ -1403,8 +1518,13 @@
                     <tbody id="monthlyDetailTableBody"></tbody>
                 </table>
             </div>
-            <div style="margin-top: 16px; display: flex; justify-content: flex-end;">
-                <button type="button" onclick="closeMonthlyDetailModal()" style="padding: 10px 20px; background: #334155; color: #e2e8f0; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em;">ปิด</button>
+            <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+                <button type="button" id="editMonthlyDataBtn" onclick="toggleEditMonthlyData()" style="padding: 10px 20px; background: #10b981; color: #ffffff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; display: none;">✏️ แก้ไข</button>
+                <div style="display: flex; gap: 10px;">
+                    <button type="button" id="saveMonthlyDataBtn" onclick="saveMonthlyData()" style="padding: 10px 20px; background: #10b981; color: #ffffff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; display: none;">💾 บันทึก</button>
+                    <button type="button" id="cancelEditMonthlyDataBtn" onclick="cancelEditMonthlyData()" style="padding: 10px 20px; background: #64748b; color: #e2e8f0; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; display: none;">ยกเลิก</button>
+                    <button type="button" onclick="closeMonthlyDetailModal()" style="padding: 10px 20px; background: #334155; color: #e2e8f0; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em;">ปิด</button>
+                </div>
             </div>
         </div>
     </div>
@@ -2348,6 +2468,13 @@
         function checkAllFilesUploaded() {
             const allUploaded = fileData.file1 && fileData.file2 && fileData.file3 && fileData.file4;
             const submitBtn = document.getElementById('submitBtn');
+            
+            // ตรวจสอบว่า submitBtn มีอยู่จริงก่อนใช้งาน
+            if (!submitBtn) {
+                console.warn('submitBtn element not found in DOM');
+                return;
+            }
+            
             submitBtn.disabled = !allUploaded;
             
             if (allUploaded) {
@@ -2400,6 +2527,8 @@
         let employeeOverrides = new Map();
         let employeeMap = new Map(); // เก็บข้อมูลพนักงานสำหรับใช้ในฟังก์ชันอื่นๆ
         let selectedMonth = 'all'; // 'all' หรือ '1'-'12'
+        let currentMonthlyEditData = null; // เก็บข้อมูลรายเดือนที่กำลังแก้ไข
+        let originalMonthlyData = null; // เก็บข้อมูลเดิมก่อนแก้ไข
         
         async function loadIdCards(company) {
             if (!company) {
@@ -2612,7 +2741,7 @@
             };
             
             if ((!pnd1kFormsList || pnd1kFormsList.length === 0) && (!socialSecurityFormData || socialSecurityFormData.length === 0)) {
-                tbody.innerHTML = '<tr class="empty-row"><td colspan="7">ยังไม่มีข้อมูลแบบภาษี กรุณาอัพโหลดไฟล์แบบ ภ.ง.ด.1 หรือแบบประกันสังคม</td></tr>';
+                tbody.innerHTML = '<tr class="empty-row"><td colspan="8">ยังไม่มีข้อมูลแบบภาษี กรุณาอัพโหลดไฟล์แบบ ภ.ง.ด.1 หรือแบบประกันสังคม</td></tr>';
                 return;
             }
             
@@ -2737,6 +2866,15 @@
                             <td style="padding: 12px; text-align: center; font-size: 0.9em; color: #94a3b8;">
                                 ${form.file_name || '-'}
                             </td>
+                            <td style="padding: 12px; text-align: center;">
+                                <button onclick="deleteFormData('pnd1k', '${form.file_name ? form.file_name.replace(/'/g, "\\'") : ''}', ${form.payment_month || 'null'}, ${form.payment_year || 'null'}, '${form.filing_type || ''}')" 
+                                    style="padding: 6px 12px; background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;"
+                                    onmouseover="this.style.background='rgba(239, 68, 68, 0.3)'; this.style.color='#fff';" 
+                                    onmouseout="this.style.background='rgba(239, 68, 68, 0.2)'; this.style.color='#ef4444';"
+                                    title="ลบข้อมูล">
+                                    🗑️ ลบ
+                                </button>
+                            </td>
                         </tr>
                     `;
                     });
@@ -2764,12 +2902,211 @@
                             <td style="padding: 12px; text-align: center; font-size: 0.9em; color: #94a3b8;">
                                 ${ss.file_name || '-'}
                             </td>
+                            <td style="padding: 12px; text-align: center;">
+                                <button onclick="deleteFormData('social_security', '${ss.file_name ? ss.file_name.replace(/'/g, "\\'") : ''}', ${ss.payment_month || 'null'}, ${ss.payment_year || 'null'}, '')" 
+                                    style="padding: 6px 12px; background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid #ef4444; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;"
+                                    onmouseover="this.style.background='rgba(239, 68, 68, 0.3)'; this.style.color='#fff';" 
+                                    onmouseout="this.style.background='rgba(239, 68, 68, 0.2)'; this.style.color='#ef4444';"
+                                    title="ลบข้อมูล">
+                                    🗑️ ลบ
+                                </button>
+                            </td>
                         </tr>
                     `;
                 }
             });
             
-            tbody.innerHTML = html || '<tr class="empty-row"><td colspan="7">ยังไม่มีข้อมูลแบบภาษี</td></tr>';
+            tbody.innerHTML = html || '<tr class="empty-row"><td colspan="8">ยังไม่มีข้อมูลแบบภาษี</td></tr>';
+        }
+        
+        // ฟังก์ชันลบข้อมูลที่อัพโหลด
+        async function deleteFormData(formType, fileName, paymentMonth, paymentYear, filingType) {
+            // แสดง confirmation modal
+            const monthNames = {
+                1: 'มกราคม', 2: 'กุมภาพันธ์', 3: 'มีนาคม', 4: 'เมษายน',
+                5: 'พฤษภาคม', 6: 'มิถุนายน', 7: 'กรกฎาคม', 8: 'สิงหาคม',
+                9: 'กันยายน', 10: 'ตุลาคม', 11: 'พฤศจิกายน', 12: 'ธันวาคม'
+            };
+            const monthName = paymentMonth ? monthNames[paymentMonth] || `เดือน ${paymentMonth}` : '';
+            const monthYearDisplay = paymentMonth && paymentYear ? `${monthName} ${paymentYear}` : '-';
+            
+            const confirmMessage = `คุณต้องการลบข้อมูลนี้หรือไม่?\n\n` +
+                `ประเภท: ${formType === 'pnd1k' ? 'แบบภาษี ภ.ง.ด.1' : 'แบบประกันสังคม'}\n` +
+                `ไฟล์: ${fileName || '-'}\n` +
+                `เดือน/ปี: ${monthYearDisplay}\n\n` +
+                `⚠️ การลบข้อมูลนี้จะไม่สามารถกู้คืนได้`;
+            
+            if (!confirm(confirmMessage)) {
+                return;
+            }
+            
+            try {
+                const company = document.getElementById('companySelect')?.value || '';
+                if (!company) {
+                    showNotificationModal('⚠️ แจ้งเตือน', 'ไม่พบข้อมูลบริษัท', '⚠️', 'warning');
+                    return;
+                }
+                
+                const response = await fetch('/api/pnd1k/delete-form-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        company: company,
+                        form_type: formType,
+                        file_name: fileName,
+                        payment_month: paymentMonth,
+                        payment_year: paymentYear,
+                        filing_type: filingType
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotificationModal('✅ สำเร็จ', `ลบข้อมูลเรียบร้อยแล้ว\n\nลบ ${result.deleted_count || 1} รายการ`, '✅', 'success');
+                    
+                    // โหลดข้อมูลใหม่
+                    await loadFormData(company);
+                    await loadSocialSecurityForms(company);
+                    
+                    // อัปเดตทุก tab
+                    updateAllTabs();
+                } else {
+                    showNotificationModal('❌ เกิดข้อผิดพลาด', result.error || 'ไม่สามารถลบข้อมูลได้', '❌', 'error');
+                }
+            } catch (error) {
+                console.error('Error deleting form data:', error);
+                showNotificationModal('❌ เกิดข้อผิดพลาด', 'เกิดข้อผิดพลาดในการลบข้อมูล: ' + error.message, '❌', 'error');
+            }
+        }
+        
+        async function deleteAttachmentData(monthKey, month, year) {
+            // แสดง confirmation modal
+            const monthNames = {
+                1: 'มกราคม', 2: 'กุมภาพันธ์', 3: 'มีนาคม', 4: 'เมษายน',
+                5: 'พฤษภาคม', 6: 'มิถุนายน', 7: 'กรกฎาคม', 8: 'สิงหาคม',
+                9: 'กันยายน', 10: 'ตุลาคม', 11: 'พฤศจิกายน', 12: 'ธันวาคม'
+            };
+            const monthName = monthNames[month] || `เดือน ${month}`;
+            const monthYearDisplay = `${monthName} ${year}`;
+            
+            // นับจำนวนรายการที่จะถูกลบ
+            const countToDelete = attachmentData.filter(att => 
+                att.payment_month === month && att.payment_year === year
+            ).length;
+            
+            const confirmMessage = `คุณต้องการลบข้อมูลใบแนบภาษีทั้งหมดในเดือนนี้หรือไม่?\n\n` +
+                `เดือน/ปี: ${monthYearDisplay}\n` +
+                `จำนวนรายการที่จะถูกลบ: ${countToDelete} รายการ\n\n` +
+                `⚠️ การลบข้อมูลนี้จะไม่สามารถกู้คืนได้\n` +
+                `⚠️ ข้อมูลที่เกี่ยวข้องทั้งหมด (รายได้, ภาษี, เงินสมทบ) ในเดือนนี้จะถูกลบด้วย`;
+            
+            if (!confirm(confirmMessage)) {
+                return;
+            }
+            
+            try {
+                const company = document.getElementById('companySelect')?.value || '';
+                if (!company) {
+                    showNotificationModal('⚠️ แจ้งเตือน', 'ไม่พบข้อมูลบริษัท', '⚠️', 'warning');
+                    return;
+                }
+                
+                const response = await fetch('/api/pnd1k/delete-attachment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        company: company,
+                        payment_month: month,
+                        payment_year: year
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotificationModal('✅ สำเร็จ', `ลบข้อมูลใบแนบภาษีเรียบร้อยแล้ว\n\nลบ ${result.deleted_count || countToDelete} รายการ`, '✅', 'success');
+                    
+                    // โหลดข้อมูลใหม่
+                    await loadAttachments(company);
+                    await loadSocialSecurity(company);
+                    
+                    // อัปเดตทุก tab
+                    updateAllTabs();
+                } else {
+                    showNotificationModal('❌ เกิดข้อผิดพลาด', result.error || 'ไม่สามารถลบข้อมูลได้', '❌', 'error');
+                }
+            } catch (error) {
+                console.error('Error deleting attachment data:', error);
+                showNotificationModal('❌ เกิดข้อผิดพลาด', 'เกิดข้อผิดพลาดในการลบข้อมูล: ' + error.message, '❌', 'error');
+            }
+        }
+        
+        async function deleteIdCardData(idCard) {
+            // หาชื่อพนักงานจากข้อมูลที่มี
+            const emp = employeeMap.get(idCard);
+            const empName = emp ? emp.name : idCard;
+            
+            // นับจำนวนรายการที่เกี่ยวข้อง (attachment และ social security)
+            const attachmentCount = attachmentData.filter(att => 
+                (att.recipient_id_card || '').toString().replace(/\s/g, '').trim() === idCard
+            ).length;
+            const socialSecurityCount = (socialSecurityData || []).filter(ss => 
+                (ss.recipient_id_card || '').toString().replace(/\s/g, '').trim() === idCard
+            ).length;
+            
+            const confirmMessage = `คุณต้องการลบข้อมูลบัตรประชาชนนี้หรือไม่?\n\n` +
+                `เลขบัตรประชาชน: ${idCard}\n` +
+                `ชื่อ: ${empName}\n\n` +
+                `ข้อมูลที่เกี่ยวข้อง:\n` +
+                `- ข้อมูลใบแนบภาษี: ${attachmentCount} รายการ\n` +
+                `- ข้อมูลประกันสังคม: ${socialSecurityCount} รายการ\n\n` +
+                `⚠️ การลบข้อมูลนี้จะไม่สามารถกู้คืนได้\n` +
+                `⚠️ ข้อมูลบัตรประชาชนจะถูกลบ แต่ข้อมูลใบแนบและประกันสังคมจะยังคงอยู่`;
+            
+            if (!confirm(confirmMessage)) {
+                return;
+            }
+            
+            try {
+                const company = document.getElementById('companySelect')?.value || '';
+                if (!company) {
+                    showNotificationModal('⚠️ แจ้งเตือน', 'ไม่พบข้อมูลบริษัท', '⚠️', 'warning');
+                    return;
+                }
+                
+                const response = await fetch('/api/pnd1k/delete-id-card', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        company: company,
+                        id_card_number: idCard
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotificationModal('✅ สำเร็จ', `ลบข้อมูลบัตรประชาชนเรียบร้อยแล้ว\n\nลบ ${result.deleted_count || 1} รายการ`, '✅', 'success');
+                    
+                    // โหลดข้อมูลใหม่
+                    await loadIdCards(company);
+                    
+                    // อัปเดตทุก tab
+                    updateAllTabs();
+                } else {
+                    showNotificationModal('❌ เกิดข้อผิดพลาด', result.error || 'ไม่สามารถลบข้อมูลได้', '❌', 'error');
+                }
+            } catch (error) {
+                console.error('Error deleting ID card data:', error);
+                showNotificationModal('❌ เกิดข้อผิดพลาด', 'เกิดข้อผิดพลาดในการลบข้อมูล: ' + error.message, '❌', 'error');
+            }
         }
         
         // ฟังก์ชันสำหรับแสดงข้อมูลพนักงาน (Tab 3)
@@ -2858,7 +3195,8 @@
                 const displayAddress = (o.address !== undefined && o.address !== '') ? o.address : emp.address;
                 // ตรวจสอบว่ามีที่อยู่หรือไม่ (ไม่ใช่ "-" หรือว่าง)
                 const hasAddress = displayAddress && displayAddress.trim() !== '' && displayAddress.trim() !== '-';
-                const monthList = Array.from(emp.months).sort().map(k => {
+                // เรียงเดือนจากมากไปหาน้อย (ธันวาคม → มกราคม)
+                const monthList = Array.from(emp.months).sort((a, b) => b.localeCompare(a)).map(k => {
                     const [y, m] = k.split('-');
                     const mm = (m && m.length >= 2) ? m : String(m).padStart(2, '0');
                     return `${mm}/${y || ''}`;
@@ -2907,7 +3245,7 @@
             tbody.innerHTML = html;
         }
         
-        // ฟังก์ชันสำหรับแสดงข้อมูลสรุปนำส่ง กท.20 (Tab 4)
+        // ฟังก์ชันสำหรับแสดงข้อมูลสรุปนำส่ง กท.20ก (Tab 4)
         function updateKT20DataTable() {
             const tbody = document.getElementById('kt20DataTableBody');
             
@@ -2991,10 +3329,10 @@
                 return nameA.localeCompare(nameB);
             });
             
-            // คำนวณยอดรวมทั้งปี (ใช้ค่าที่จำกัดที่ 20,000 สำหรับค่าจ้าง)
-            const SALARY_LIMIT = 20000;
+            // คำนวณยอดรวมทั้งปี (ใช้ค่าที่จำกัดที่ 240,000 สำหรับค่าจ้าง - เดือนละ 20,000 x 12 เดือน)
+            const SALARY_LIMIT = 240000;
             let grandTotalSalary = 0;
-            let grandTotalSalaryDisplay = 0; // ยอดรวมที่แสดง (จำกัดที่ 20,000)
+            let grandTotalSalaryDisplay = 0; // ยอดรวมที่แสดง (จำกัดที่ 240,000)
             let grandTotalExcess = 0; // ยอดรวมส่วนเกิน
             let grandTotalContribution = 0;
             
@@ -3094,11 +3432,12 @@
             
             titleEl.textContent = `รายได้แต่ละเดือน - ${emp.name || idCard}`;
             
-            // เรียงข้อมูลรายเดือนตามเดือน/ปี
+            // เรียงข้อมูลรายเดือนจากเดือนมากไปหาน้อย (ธันวาคม → มกราคม)
             emp.monthlyData.sort((a, b) => {
                 const keyA = a.monthKey || '';
                 const keyB = b.monthKey || '';
-                return keyA.localeCompare(keyB);
+                // เรียงจากมากไปน้อย
+                return keyB.localeCompare(keyA);
             });
             
             const monthNames = {
@@ -3134,7 +3473,7 @@
             });
             
             // แสดงยอดรวม
-            const SALARY_LIMIT = 20000;
+            const SALARY_LIMIT = 240000; // เดือนละ 20,000 x 12 เดือน
             const displaySalary = emp.totalSalary > SALARY_LIMIT ? SALARY_LIMIT : emp.totalSalary;
             const excess = emp.totalSalary > SALARY_LIMIT ? emp.totalSalary - SALARY_LIMIT : 0;
             
@@ -3149,12 +3488,12 @@
             if (excess > 0) {
                 html += `
                     <tr style="background: rgba(245, 158, 11, 0.1); border-top: 1px solid #f59e0b;">
-                        <td colspan="2" style="padding: 12px; font-weight: 700; color: #f59e0b; text-align: right;">ค่าจ้างที่นำส่ง กท.20 (จำกัดที่ 20,000):</td>
+                        <td colspan="2" style="padding: 12px; font-weight: 700; color: #f59e0b; text-align: right;">ค่าจ้างที่นำส่ง กท.20ก (จำกัดที่ 240,000):</td>
                         <td class="currency-cell" style="padding: 12px; text-align: right; font-weight: 700; color: #f59e0b;">${formatCurrency(displaySalary.toFixed(2))}</td>
                         <td style="padding: 12px;"></td>
                     </tr>
                     <tr style="background: rgba(245, 158, 11, 0.1);">
-                        <td colspan="2" style="padding: 12px; font-weight: 700; color: #f59e0b; text-align: right;">ส่วนเกินที่นำส่ง กท.20:</td>
+                        <td colspan="2" style="padding: 12px; font-weight: 700; color: #f59e0b; text-align: right;">ส่วนเกินที่นำส่ง กท.20ก:</td>
                         <td class="currency-cell" style="padding: 12px; text-align: right; font-weight: 700; color: #f59e0b;">${formatCurrency(excess.toFixed(2))}</td>
                         <td style="padding: 12px;"></td>
                     </tr>
@@ -3303,6 +3642,8 @@
             const titleEl = document.getElementById('pathInputTitle');
             const descEl = document.getElementById('pathInputDescription');
             const inputEl = document.getElementById('pathInputField');
+            const browseBtn = document.getElementById('pathInputBrowseBtn');
+            const hintEl = document.getElementById('pathInputHint');
             
             if (modal && titleEl && descEl && inputEl) {
                 titleEl.textContent = title || 'กรุณาระบุ path ที่จะเก็บไฟล์';
@@ -3310,8 +3651,79 @@
                 inputEl.value = defaultValue || '';
                 pathInputCallback = callback;
                 modal.style.display = 'flex';
+                
+                // ตรวจสอบว่า browser รองรับ File System Access API หรือไม่
+                if (browseBtn) {
+                    if (window.showDirectoryPicker) {
+                        browseBtn.style.display = 'block';
+                        if (hintEl) {
+                            hintEl.style.display = 'block';
+                        }
+                    } else {
+                        browseBtn.style.display = 'none';
+                        if (hintEl) {
+                            hintEl.style.display = 'block';
+                            hintEl.textContent = '💡 Browser ของคุณไม่รองรับการเลือกโฟลเดอร์ กรุณากรอก path ด้วยตนเอง (เช่น: C:\\Users\\USER\\Documents\\50tawi)';
+                        }
+                    }
+                }
+                
                 // Focus ที่ input field
                 setTimeout(() => inputEl.focus(), 100);
+            }
+        }
+        
+        async function browseFolder() {
+            try {
+                // ตรวจสอบว่า browser รองรับ File System Access API หรือไม่
+                if (!window.showDirectoryPicker) {
+                    showNotificationModal(
+                        '💡 วิธีกรอก Path', 
+                        'Browser ของคุณไม่รองรับการเลือกโฟลเดอร์โดยตรง\n\nกรุณากรอก path ด้วยตนเอง:\nตัวอย่าง: C:\\Users\\USER\\Documents\\50tawi\n\nหรือ:\n- คลิกขวาที่โฟลเดอร์ > Properties > Copy path\n- วางในช่องกรอก path', 
+                        '💡', 
+                        'info'
+                    );
+                    return;
+                }
+                
+                // เปิด dialog เลือกโฟลเดอร์
+                const directoryHandle = await window.showDirectoryPicker({
+                    mode: 'readwrite',
+                    startIn: 'documents'
+                });
+                
+                const folderName = directoryHandle.name;
+                
+                // แสดง modal ให้ผู้ใช้กรอก path เต็ม
+                showNotificationModal(
+                    '📂 เลือกโฟลเดอร์สำเร็จ',
+                    `คุณได้เลือกโฟลเดอร์: "${folderName}"\n\nเนื่องจากระบบต้องการ path เต็ม (เช่น: C:\\Users\\USER\\Documents\\${folderName})\nกรุณากรอก path เต็มในช่องกรอกด้านล่าง\n\nวิธีหา path:\n1. เปิด File Explorer\n2. ไปที่โฟลเดอร์ที่เลือก\n3. คลิกที่ address bar\n4. Copy path และวางในช่องกรอก`,
+                    '📂',
+                    'info'
+                );
+                
+                // แสดงชื่อโฟลเดอร์ใน input field เพื่อเป็นคำแนะนำ
+                const inputEl = document.getElementById('pathInputField');
+                if (inputEl) {
+                    // ล้างค่าเดิมและแสดงคำแนะนำ
+                    inputEl.value = '';
+                    inputEl.placeholder = `กรุณากรอก path เต็ม (เช่น: C:\\Users\\USER\\Documents\\${folderName})`;
+                    inputEl.focus();
+                }
+                
+            } catch (error) {
+                // ถ้าผู้ใช้ยกเลิกการเลือกโฟลเดอร์
+                if (error.name === 'AbortError') {
+                    // ไม่ต้องแสดงข้อความอะไร
+                    return;
+                }
+                console.error('Error selecting folder:', error);
+                showNotificationModal(
+                    '⚠️ เกิดข้อผิดพลาด', 
+                    'ไม่สามารถเลือกโฟลเดอร์ได้\n\nกรุณากรอก path ด้วยตนเอง:\nตัวอย่าง: C:\\Users\\USER\\Documents\\50tawi', 
+                    '⚠️', 
+                    'warning'
+                );
             }
         }
         
@@ -3357,53 +3769,217 @@
         
         // ตัวแปรสำหรับเก็บข้อมูลงบทดลอง
         let trialBalanceData = null;
-        let selectedTrialBalanceItems = new Set();
+        let selectedTrialBalanceItemsIncome = new Set();
+        let selectedTrialBalanceItemsContribution = new Set();
+        let currentTrialBalanceTab = 'income';
+        let lastSelectedItemsIncome = new Set();
+        let lastSelectedItemsContribution = new Set();
+        
+        function switchTrialBalanceTab(tab) {
+            currentTrialBalanceTab = tab;
+            
+            // อัปเดต UI ของ tabs
+            const tabIncome = document.getElementById('trialBalanceTabIncome');
+            const tabContribution = document.getElementById('trialBalanceTabContribution');
+            const contentIncome = document.getElementById('trialBalanceTabContentIncome');
+            const contentContribution = document.getElementById('trialBalanceTabContentContribution');
+            const summaryIncome = document.getElementById('trialBalanceSummaryIncome');
+            const summaryContribution = document.getElementById('trialBalanceSummaryContribution');
+            
+            if (tab === 'income') {
+                if (tabIncome) {
+                    tabIncome.style.background = 'rgba(251, 191, 36, 0.2)';
+                    tabIncome.style.borderBottom = '3px solid #fbbf24';
+                    tabIncome.style.color = '#fbbf24';
+                }
+                if (tabContribution) {
+                    tabContribution.style.background = 'rgba(167, 139, 250, 0.1)';
+                    tabContribution.style.borderBottom = '3px solid transparent';
+                    tabContribution.style.color = '#a78bfa';
+                }
+                if (contentIncome) contentIncome.style.display = 'block';
+                if (contentContribution) contentContribution.style.display = 'none';
+                if (summaryIncome) summaryIncome.style.display = 'block';
+                if (summaryContribution) summaryContribution.style.display = 'none';
+            } else {
+                if (tabIncome) {
+                    tabIncome.style.background = 'rgba(251, 191, 36, 0.1)';
+                    tabIncome.style.borderBottom = '3px solid transparent';
+                    tabIncome.style.color = '#fbbf24';
+                }
+                if (tabContribution) {
+                    tabContribution.style.background = 'rgba(167, 139, 250, 0.2)';
+                    tabContribution.style.borderBottom = '3px solid #a78bfa';
+                    tabContribution.style.color = '#a78bfa';
+                }
+                if (contentIncome) contentIncome.style.display = 'none';
+                if (contentContribution) contentContribution.style.display = 'block';
+                if (summaryIncome) summaryIncome.style.display = 'none';
+                if (summaryContribution) summaryContribution.style.display = 'block';
+            }
+            
+            // อัปเดตการเทียบข้อมูล
+            updateTrialBalanceSelection();
+        }
         
         function openTrialBalanceSelectionModal(result) {
             trialBalanceData = result;
-            selectedTrialBalanceItems.clear();
+            
+            // ถ้ามีข้อมูลที่เคยเลือกไว้ ให้ใช้ข้อมูลเดิม มิฉะนั้นให้ clear
+            if (lastSelectedItemsIncome.size > 0 || lastSelectedItemsContribution.size > 0) {
+                selectedTrialBalanceItemsIncome = new Set(lastSelectedItemsIncome);
+                selectedTrialBalanceItemsContribution = new Set(lastSelectedItemsContribution);
+            } else {
+                selectedTrialBalanceItemsIncome.clear();
+                selectedTrialBalanceItemsContribution.clear();
+            }
+            
+            currentTrialBalanceTab = 'income';
             
             const modal = document.getElementById('trialBalanceModal');
             const reportNameEl = document.getElementById('trialBalanceReportName');
             const companyNameEl = document.getElementById('trialBalanceCompanyName');
-            const itemsListEl = document.getElementById('trialBalanceItemsList');
+            const itemsListIncomeEl = document.getElementById('trialBalanceItemsListIncome');
+            const itemsListContributionEl = document.getElementById('trialBalanceItemsListContribution');
             
-            if (modal && reportNameEl && companyNameEl && itemsListEl) {
+            if (modal && reportNameEl && companyNameEl) {
                 // แสดงข้อมูลรายงานและชื่อกิจการ
                 reportNameEl.textContent = result.report_name || '-';
                 companyNameEl.textContent = result.company_name || '-';
                 
-                // แสดงรายการบัญชี
-                itemsListEl.innerHTML = '';
-                if (result.trial_balance_items && result.trial_balance_items.length > 0) {
-                    result.trial_balance_items.forEach((item, index) => {
-                        const row = document.createElement('tr');
-                        row.style.borderBottom = '1px solid #334155';
-                        row.innerHTML = `
-                            <td style="padding: 12px; text-align: center;">
-                                <input type="checkbox" 
-                                    class="trial-balance-item-checkbox" 
-                                    data-index="${index}"
-                                    data-balance="${item.balance}"
-                                    onchange="updateTrialBalanceSelection()"
-                                    style="cursor: pointer;">
-                            </td>
-                            <td style="padding: 12px; color: #fafafa; font-family: monospace;">${item.account_code}</td>
-                            <td style="padding: 12px; color: #cbd5e1;">${item.account_name}</td>
-                            <td style="padding: 12px; text-align: right; color: #10b981; font-weight: 600;">${formatCurrency(item.balance)}</td>
-                        `;
-                        itemsListEl.appendChild(row);
-                    });
+                // แสดงรายการบัญชีในทั้ง 2 tabs
+                const renderItems = (itemsListEl, tabType) => {
+                    if (!itemsListEl) return;
+                    itemsListEl.innerHTML = '';
+                    if (result.trial_balance_items && result.trial_balance_items.length > 0) {
+                        result.trial_balance_items.forEach((item, index) => {
+                            // ตรวจสอบว่ามีการเลือกไว้หรือไม่
+                            const isChecked = (tabType === 'income' && selectedTrialBalanceItemsIncome.has(index)) ||
+                                            (tabType === 'contribution' && selectedTrialBalanceItemsContribution.has(index));
+                            
+                            const row = document.createElement('tr');
+                            row.style.borderBottom = '1px solid #334155';
+                            row.innerHTML = `
+                                <td style="padding: 12px; text-align: center;">
+                                    <input type="checkbox" 
+                                        class="trial-balance-item-checkbox-${tabType}" 
+                                        data-index="${index}"
+                                        data-balance="${item.balance}"
+                                        data-tab="${tabType}"
+                                        ${isChecked ? 'checked' : ''}
+                                        onchange="updateTrialBalanceSelection()"
+                                        style="cursor: pointer;">
+                                </td>
+                                <td style="padding: 12px; color: #fafafa; font-family: monospace;">${item.account_code}</td>
+                                <td style="padding: 12px; color: #cbd5e1;">${item.account_name}</td>
+                                <td style="padding: 12px; text-align: right; color: #10b981; font-weight: 600;">${formatCurrency(item.balance)}</td>
+                            `;
+                            itemsListEl.appendChild(row);
+                        });
+                    }
+                };
+                
+                renderItems(itemsListIncomeEl, 'income');
+                renderItems(itemsListContributionEl, 'contribution');
+                
+                // อัปเดต checkbox "เลือกทั้งหมด"
+                const selectAllIncome = document.getElementById('selectAllTrialBalanceIncome');
+                const selectAllContribution = document.getElementById('selectAllTrialBalanceContribution');
+                if (selectAllIncome) {
+                    selectAllIncome.checked = selectedTrialBalanceItemsIncome.size > 0 && 
+                                             selectedTrialBalanceItemsIncome.size === (result.trial_balance_items?.length || 0);
                 }
+                if (selectAllContribution) {
+                    selectAllContribution.checked = selectedTrialBalanceItemsContribution.size > 0 && 
+                                                   selectedTrialBalanceItemsContribution.size === (result.trial_balance_items?.length || 0);
+                }
+                
+                // เตรียม dropdown เลือกเดือน
+                populateMonthDropdown();
                 
                 // คำนวณยอดรวมรายได้และภาษีจากข้อมูลพนักงาน
                 calculateTotalIncomeAndTax();
                 
                 // แสดงผลการเทียบตั้งแต่แรก (แม้ยังไม่เลือกรายการ)
-                compareTrialBalanceWithTotals(0);
+                updateComparisonMode();
+                
+                // ตั้งค่า tab เริ่มต้น
+                switchTrialBalanceTab('income');
                 
                 modal.style.display = 'flex';
             }
+        }
+        
+        function populateMonthDropdown() {
+            const monthSelect = document.getElementById('comparisonMonthSelect');
+            if (!monthSelect) return;
+            
+            // รวบรวมเดือนที่มีข้อมูลจาก tax form data และ social security forms
+            // ใช้ Map เพื่อเก็บข้อมูลเดือน (key: "year-month", value: {month, year})
+            const monthsMap = new Map();
+            
+            // ดึงเดือนจาก tax form data (ข้อมูลแบบภาษี) - ใช้เป็นหลัก
+            (pnd1kFormsList || []).forEach(form => {
+                const month = form.payment_month;
+                const year = form.payment_year;
+                if (month != null && year != null) {
+                    const key = `${year}-${String(month).padStart(2, '0')}`;
+                    if (!monthsMap.has(key)) {
+                        monthsMap.set(key, { month, year });
+                    }
+                }
+            });
+            
+            // ดึงเดือนจาก social security forms (เพิ่มเติม)
+            (socialSecurityFormData || []).forEach(form => {
+                const month = form.payment_month;
+                const year = form.payment_year;
+                if (month && year) {
+                    const key = `${year}-${String(month).padStart(2, '0')}`;
+                    if (!monthsMap.has(key)) {
+                        monthsMap.set(key, { month, year });
+                    }
+                }
+            });
+            
+            // แปลง Map เป็น Array และเรียงจากมากไปน้อย (ธันวาคม → มกราคม)
+            const sortedMonths = Array.from(monthsMap.entries())
+                .map(([key, value]) => ({ key, ...value }))
+                .sort((a, b) => b.key.localeCompare(a.key));
+            
+            // ล้าง options เดิม
+            monthSelect.innerHTML = '<option value="">-- เลือกเดือน --</option>';
+            
+            // เพิ่ม options
+            const monthNames = {
+                1: 'มกราคม', 2: 'กุมภาพันธ์', 3: 'มีนาคม', 4: 'เมษายน',
+                5: 'พฤษภาคม', 6: 'มิถุนายน', 7: 'กรกฎาคม', 8: 'สิงหาคม',
+                9: 'กันยายน', 10: 'ตุลาคม', 11: 'พฤศจิกายน', 12: 'ธันวาคม'
+            };
+            
+            sortedMonths.forEach(({ month, year }) => {
+                const monthName = monthNames[month] || `เดือน ${month}`;
+                const option = document.createElement('option');
+                option.value = `${year}-${String(month).padStart(2, '0')}`;
+                option.textContent = `${monthName} ${year}`;
+                monthSelect.appendChild(option);
+            });
+        }
+        
+        function updateComparisonMode() {
+            const modeAll = document.querySelector('input[name="comparisonMode"][value="all"]');
+            const modeMonth = document.querySelector('input[name="comparisonMode"][value="month"]');
+            const monthContainer = document.getElementById('monthSelectionContainer');
+            
+            // แสดง/ซ่อน dropdown เลือกเดือน
+            if (modeMonth && modeMonth.checked) {
+                if (monthContainer) monthContainer.style.display = 'block';
+            } else {
+                if (monthContainer) monthContainer.style.display = 'none';
+            }
+            
+            // อัปเดตการเทียบข้อมูล
+            updateTrialBalanceSelection();
         }
         
         function closeTrialBalanceModal() {
@@ -3413,12 +3989,13 @@
                 // ไม่ต้อง reset trialBalanceData เพื่อให้สามารถเปิด modal อีกครั้งได้โดยไม่ต้องอัพโหลดใหม่
                 // แต่ reset เฉพาะ selectedTrialBalanceItems เพื่อให้เริ่มต้นใหม่เมื่อเปิด modal อีกครั้ง
                 // หมายเหตุ: trialBalanceData จะยังคงอยู่เพื่อให้สามารถเปิด modal อีกครั้งได้
-                selectedTrialBalanceItems.clear();
+                selectedTrialBalanceItemsIncome.clear();
+                selectedTrialBalanceItemsContribution.clear();
             }
         }
         
-        function toggleAllTrialBalanceItems(checked) {
-            const checkboxes = document.querySelectorAll('.trial-balance-item-checkbox');
+        function toggleAllTrialBalanceItems(tab, checked) {
+            const checkboxes = document.querySelectorAll(`.trial-balance-item-checkbox-${tab}`);
             checkboxes.forEach(cb => {
                 cb.checked = checked;
             });
@@ -3426,160 +4003,383 @@
         }
         
         function updateTrialBalanceSelection() {
-            selectedTrialBalanceItems.clear();
-            const checkboxes = document.querySelectorAll('.trial-balance-item-checkbox:checked');
-            let total = 0;
+            // อัปเดตยอดรวมรายได้
+            selectedTrialBalanceItemsIncome.clear();
+            const checkboxesIncome = document.querySelectorAll('.trial-balance-item-checkbox-income:checked');
+            let totalIncome = 0;
             
-            checkboxes.forEach(cb => {
+            checkboxesIncome.forEach(cb => {
                 const index = parseInt(cb.getAttribute('data-index'));
                 const balance = parseFloat(cb.getAttribute('data-balance')) || 0;
-                selectedTrialBalanceItems.add(index);
-                total += balance;
+                selectedTrialBalanceItemsIncome.add(index);
+                totalIncome += balance;
             });
             
-            // อัพเดทยอดรวมที่เลือก
-            const selectedTotalEl = document.getElementById('selectedTotal');
-            const selectedTotalDisplayEl = document.getElementById('selectedTotalDisplay');
-            if (selectedTotalEl) selectedTotalEl.textContent = formatCurrency(total);
-            if (selectedTotalDisplayEl) selectedTotalDisplayEl.textContent = formatCurrency(total) + ' บาท';
+            // อัปเดตยอดรวมเงินสมทบ
+            selectedTrialBalanceItemsContribution.clear();
+            const checkboxesContribution = document.querySelectorAll('.trial-balance-item-checkbox-contribution:checked');
+            let totalContribution = 0;
             
-            // เทียบกับยอดรวมรายได้และภาษี
-            compareTrialBalanceWithTotals(total);
+            checkboxesContribution.forEach(cb => {
+                const index = parseInt(cb.getAttribute('data-index'));
+                const balance = parseFloat(cb.getAttribute('data-balance')) || 0;
+                selectedTrialBalanceItemsContribution.add(index);
+                totalContribution += balance;
+            });
+            
+            // อัพเดทยอดรวมที่เลือกสำหรับแต่ละ tab
+            const selectedTotalIncomeEl = document.getElementById('selectedTotalIncome');
+            const selectedTotalDisplayIncomeEl = document.getElementById('selectedTotalDisplayIncome');
+            if (selectedTotalIncomeEl) selectedTotalIncomeEl.textContent = formatCurrency(totalIncome);
+            if (selectedTotalDisplayIncomeEl) selectedTotalDisplayIncomeEl.textContent = formatCurrency(totalIncome) + ' บาท';
+            
+            const selectedTotalContributionEl = document.getElementById('selectedTotalContribution');
+            const selectedTotalDisplayContributionEl = document.getElementById('selectedTotalDisplayContribution');
+            if (selectedTotalContributionEl) selectedTotalContributionEl.textContent = formatCurrency(totalContribution);
+            if (selectedTotalDisplayContributionEl) selectedTotalDisplayContributionEl.textContent = formatCurrency(totalContribution) + ' บาท';
+            
+            // เทียบกับยอดรวมรายได้และภาษี (จะเรียก calculateTotalIncomeAndTax ภายใน)
+            compareTrialBalanceWithTotals(totalIncome, totalContribution);
         }
         
         function calculateTotalIncomeAndTax() {
             // คำนวณยอดรวมรายได้จากข้อมูลพนักงาน
-            let totalIncome = 0;
+            const modeAll = document.querySelector('input[name="comparisonMode"][value="all"]');
+            const modeMonth = document.querySelector('input[name="comparisonMode"][value="month"]');
+            const monthSelect = document.getElementById('comparisonMonthSelect');
             
-            if (employeeMap && employeeMap.size > 0) {
-                const employees = Array.from(employeeMap.values());
-                employees.forEach(emp => {
-                    totalIncome += parseFloat(emp.totalIncome || 0);
-                });
+            let totalIncome = 0;
+            let totalContribution = 0;
+            
+            // ตรวจสอบโหมดการเทียบ
+            const isAllMode = modeAll && modeAll.checked;
+            const selectedMonth = monthSelect ? monthSelect.value : '';
+            
+            // ถ้าเป็นโหมดเฉพาะเดือนแต่ยังไม่เลือกเดือน ให้แสดง 0
+            if (!isAllMode && !selectedMonth) {
+                totalIncome = 0;
+                totalContribution = 0;
+            } else {
+                // ดึงข้อมูลจาก tax form data (ข้อมูลแบบภาษี)
+                if (isAllMode) {
+                    // โหมดทั้งหมด: รวมทุกเดือนจาก tax form data
+                    if (pnd1kFormsList && pnd1kFormsList.length > 0) {
+                        pnd1kFormsList.forEach(form => {
+                            const pickValid = (...vals) => {
+                                for (const v of vals) {
+                                    if (v !== undefined && v !== null && String(v).toLowerCase() !== 'none' && String(v).trim() !== '') return v;
+                                }
+                                return null;
+                            };
+                            const section40_1 = form.section_40_1 || {};
+                            const section40_2 = form.section_40_2 || {};
+                            const sectionTotal = form.section_total || {};
+                            const incomeRaw = pickValid(sectionTotal.total_income, section40_1.total_income, section40_2.total_income);
+                            if (incomeRaw) {
+                                totalIncome += parseFloat(String(incomeRaw).replace(/,/g, '')) || 0;
+                            }
+                        });
+                    }
+                } else if (selectedMonth) {
+                    // โหมดเฉพาะเดือน: ดึงข้อมูลจาก tax form data สำหรับเดือนที่เลือก
+                    const [year, month] = selectedMonth.split('-');
+                    const monthNum = parseInt(month, 10);
+                    const yearNum = parseInt(year, 10);
+                    
+                    // หา tax form สำหรับเดือนที่เลือก
+                    const formForMonth = (pnd1kFormsList || []).find(f => 
+                        f.payment_year == yearNum && f.payment_month == monthNum
+                    );
+                    
+                    if (formForMonth) {
+                        // ดึงข้อมูลจาก tax form
+                        const pickValid = (...vals) => {
+                            for (const v of vals) {
+                                if (v !== undefined && v !== null && String(v).toLowerCase() !== 'none' && String(v).trim() !== '') return v;
+                            }
+                            return null;
+                        };
+                        const section40_1 = formForMonth.section_40_1 || {};
+                        const section40_2 = formForMonth.section_40_2 || {};
+                        const sectionTotal = formForMonth.section_total || {};
+                        const incomeRaw = pickValid(sectionTotal.total_income, section40_1.total_income, section40_2.total_income);
+                        if (incomeRaw) {
+                            totalIncome = parseFloat(String(incomeRaw).replace(/,/g, '')) || 0;
+                        }
+                    } else {
+                        // ถ้าไม่มี tax form data ให้ใช้ข้อมูลจาก employeeMap เป็น fallback
+                        if (employeeMap && employeeMap.size > 0) {
+                            const employees = Array.from(employeeMap.values());
+                            employees.forEach(emp => {
+                                emp.monthlyData.forEach(monthData => {
+                                    if (monthData.year == year && String(monthData.month).padStart(2, '0') == month) {
+                                        totalIncome += parseFloat(monthData.income || 0);
+                                    }
+                                });
+                            });
+                        }
+                    }
+                }
+                
+                // คำนวณยอดรวมเงินสมทบจาก social security forms
+                if (!isAllMode && selectedMonth) {
+                    // โหมดเฉพาะเดือน: หา total_contribution_all ของเดือนนั้น
+                    const [year, month] = selectedMonth.split('-');
+                    const form = (socialSecurityFormData || []).find(f => 
+                        f.payment_year == year && String(f.payment_month).padStart(2, '0') == month
+                    );
+                    if (form && form.total_contribution_all) {
+                        totalContribution = parseFloat(String(form.total_contribution_all).replace(/,/g, '')) || 0;
+                    }
+                } else if (isAllMode) {
+                    // โหมดทั้งหมด: รวม total_contribution_all ทุกเดือน
+                    (socialSecurityFormData || []).forEach(form => {
+                        if (form.total_contribution_all) {
+                            totalContribution += parseFloat(String(form.total_contribution_all).replace(/,/g, '')) || 0;
+                        }
+                    });
+                }
             }
             
             // แสดงยอดรวมรายได้
             const totalIncomeEl = document.getElementById('totalIncomeDisplay');
+            const totalIncomeDisplayInSummaryEl = document.getElementById('totalIncomeDisplayInSummary');
             if (totalIncomeEl) totalIncomeEl.textContent = formatCurrency(totalIncome) + ' บาท';
+            if (totalIncomeDisplayInSummaryEl) totalIncomeDisplayInSummaryEl.textContent = formatCurrency(totalIncome) + ' บาท';
+            
+            // แสดงยอดรวมเงินสมทบ
+            const totalContributionEl = document.getElementById('totalContributionDisplay');
+            if (totalContributionEl) totalContributionEl.textContent = formatCurrency(totalContribution) + ' บาท';
             
             // เก็บค่าไว้สำหรับเทียบ
             window.trialBalanceTotalIncome = totalIncome;
+            window.trialBalanceTotalContribution = totalContribution;
         }
         
-        function compareTrialBalanceWithTotals(selectedTotal) {
-            const comparisonEl = document.getElementById('trialBalanceComparison');
-            if (!comparisonEl) {
-                console.warn('ไม่พบ element trialBalanceComparison');
-                return;
-            }
+        function compareTrialBalanceWithTotals(selectedTotalIncome, selectedTotalContribution) {
+            // อัปเดตการคำนวณยอดรวมก่อน
+            calculateTotalIncomeAndTax();
             
             const totalIncome = window.trialBalanceTotalIncome || 0;
+            const totalContribution = window.trialBalanceTotalContribution || 0;
             
-            // ถ้ายังไม่เลือกรายการ ให้แสดงเฉพาะยอดรวมรายได้
-            if (selectedTotal === 0 || selectedTotal === null || selectedTotal === undefined) {
-                comparisonEl.innerHTML = `
-                    <div style="color: #94a3b8; font-size: 0.9em; line-height: 1.6;">
-                        <div>กรุณาเลือกรายการจากตารางด้านบนเพื่อเทียบยอดรวม</div>
-                        <div style="margin-top: 8px; color: #fbbf24;">
-                            ยอดรวมรายได้: ${formatCurrency(totalIncome)} บาท
+            // แสดงผลการเทียบสำหรับยอดรวมรายได้
+            const comparisonIncomeEl = document.getElementById('trialBalanceComparisonIncome');
+            if (comparisonIncomeEl) {
+                if (selectedTotalIncome === 0 || selectedTotalIncome === null || selectedTotalIncome === undefined) {
+                    comparisonIncomeEl.innerHTML = `
+                        <div style="color: #94a3b8; font-size: 0.9em; line-height: 1.6;">
+                            <div>กรุณาเลือกรายการจากตารางด้านบนเพื่อเทียบยอดรวม</div>
+                            <div style="margin-top: 8px; color: #fbbf24;">
+                                ยอดรวมรายได้: ${formatCurrency(totalIncome)} บาท
+                            </div>
                         </div>
-                    </div>
-                `;
-                return;
+                    `;
+                } else {
+                    const difference = selectedTotalIncome - totalIncome;
+                    const absDifference = Math.abs(difference);
+                    
+                    let comparisonHtml = '';
+                    if (absDifference < 0.01) {
+                        comparisonHtml = `
+                            <div style="color: #86efac; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span>✅</span>
+                                <span>ยอดรวมตรงกัน</span>
+                            </div>
+                            <div style="color: #cbd5e1; font-size: 0.9em; line-height: 1.6;">
+                                <div>ยอดรวมที่เลือก: ${formatCurrency(selectedTotalIncome)} บาท</div>
+                                <div>ยอดรวมรายได้: ${formatCurrency(totalIncome)} บาท</div>
+                                <div style="margin-top: 8px; color: #94a3b8;">
+                                    ผลต่าง: ${formatCurrency(absDifference)} บาท
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        const differenceColor = absDifference > 1000 ? '#ef4444' : '#f59e0b';
+                        const differenceIcon = absDifference > 1000 ? '⚠️' : 'ℹ️';
+                        const differenceText = difference > 0 ? 'มากกว่า' : 'น้อยกว่า';
+                        
+                        comparisonHtml = `
+                            <div style="color: ${differenceColor}; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span>${differenceIcon}</span>
+                                <span>พบผลต่างระหว่างยอดรวม</span>
+                            </div>
+                            <div style="color: #cbd5e1; font-size: 0.9em; line-height: 1.6;">
+                                <div>ยอดรวมที่เลือก: ${formatCurrency(selectedTotalIncome)} บาท</div>
+                                <div>ยอดรวมรายได้: ${formatCurrency(totalIncome)} บาท</div>
+                                <div style="margin-top: 8px; color: ${differenceColor}; font-weight: 600;">
+                                    ผลต่าง: ${formatCurrency(absDifference)} บาท (ยอดรวมที่เลือก ${differenceText} ยอดรวมรายได้)
+                                </div>
+                            </div>
+                        `;
+                    }
+                    comparisonIncomeEl.innerHTML = comparisonHtml;
+                }
             }
             
-            const difference = selectedTotal - totalIncome; // ผลต่าง (อาจเป็นบวกหรือลบ)
-            const absDifference = Math.abs(difference);
-            
-            // แสดงแจ้งเตือนผลต่างเสมอ
-            let comparisonHtml = '';
-            if (absDifference < 0.01) {
-                // ตรงกัน (ต่างกันน้อยกว่า 0.01 บาท)
-                comparisonHtml = `
-                    <div style="color: #86efac; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                        <span>✅</span>
-                        <span>ยอดรวมตรงกัน</span>
-                    </div>
-                    <div style="color: #cbd5e1; font-size: 0.9em; line-height: 1.6;">
-                        <div>ยอดรวมที่เลือก: ${formatCurrency(selectedTotal)} บาท</div>
-                        <div>ยอดรวมรายได้: ${formatCurrency(totalIncome)} บาท</div>
-                        <div style="margin-top: 8px; color: #94a3b8;">
-                            ผลต่าง: ${formatCurrency(absDifference)} บาท
+            // แสดงผลการเทียบสำหรับยอดรวมเงินสมทบ
+            const comparisonContributionEl = document.getElementById('trialBalanceComparisonContribution');
+            if (comparisonContributionEl) {
+                if (selectedTotalContribution === 0 || selectedTotalContribution === null || selectedTotalContribution === undefined) {
+                    comparisonContributionEl.innerHTML = `
+                        <div style="color: #94a3b8; font-size: 0.9em; line-height: 1.6;">
+                            <div>กรุณาเลือกรายการจากตารางด้านบนเพื่อเทียบยอดรวม</div>
+                            <div style="margin-top: 8px; color: #a78bfa;">
+                                ยอดรวมเงินสมทบ: ${formatCurrency(totalContribution)} บาท
+                            </div>
                         </div>
-                    </div>
-                `;
-            } else {
-                // มีผลต่าง
-                const differenceColor = absDifference > 1000 ? '#ef4444' : '#f59e0b';
-                const differenceIcon = absDifference > 1000 ? '⚠️' : 'ℹ️';
-                const differenceText = difference > 0 ? 'มากกว่า' : 'น้อยกว่า';
-                
-                comparisonHtml = `
-                    <div style="color: ${differenceColor}; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                        <span>${differenceIcon}</span>
-                        <span>พบผลต่างระหว่างยอดรวม</span>
-                    </div>
-                    <div style="color: #cbd5e1; font-size: 0.9em; line-height: 1.6;">
-                        <div>ยอดรวมที่เลือก: ${formatCurrency(selectedTotal)} บาท</div>
-                        <div>ยอดรวมรายได้: ${formatCurrency(totalIncome)} บาท</div>
-                        <div style="margin-top: 8px; color: ${differenceColor}; font-weight: 600;">
-                            ผลต่าง: ${formatCurrency(absDifference)} บาท (ยอดรวมที่เลือก ${differenceText} ยอดรวมรายได้)
-                        </div>
-                    </div>
-                `;
+                    `;
+                } else {
+                    const contributionDifference = selectedTotalContribution - totalContribution;
+                    const absContributionDifference = Math.abs(contributionDifference);
+                    
+                    let comparisonHtml = '';
+                    if (absContributionDifference < 0.01) {
+                        comparisonHtml = `
+                            <div style="color: #86efac; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span>✅</span>
+                                <span>ยอดรวมตรงกัน</span>
+                            </div>
+                            <div style="color: #cbd5e1; font-size: 0.9em; line-height: 1.6;">
+                                <div>ยอดรวมที่เลือก: ${formatCurrency(selectedTotalContribution)} บาท</div>
+                                <div>ยอดรวมเงินสมทบ: ${formatCurrency(totalContribution)} บาท</div>
+                                <div style="margin-top: 8px; color: #94a3b8;">
+                                    ผลต่าง: ${formatCurrency(absContributionDifference)} บาท
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        const contributionDiffColor = absContributionDifference > 1000 ? '#ef4444' : '#f59e0b';
+                        const contributionDiffIcon = absContributionDifference > 1000 ? '⚠️' : 'ℹ️';
+                        const contributionDiffText = contributionDifference > 0 ? 'มากกว่า' : 'น้อยกว่า';
+                        
+                        comparisonHtml = `
+                            <div style="color: ${contributionDiffColor}; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <span>${contributionDiffIcon}</span>
+                                <span>พบผลต่างระหว่างยอดรวม</span>
+                            </div>
+                            <div style="color: #cbd5e1; font-size: 0.9em; line-height: 1.6;">
+                                <div>ยอดรวมที่เลือก: ${formatCurrency(selectedTotalContribution)} บาท</div>
+                                <div>ยอดรวมเงินสมทบ: ${formatCurrency(totalContribution)} บาท</div>
+                                <div style="margin-top: 8px; color: ${contributionDiffColor}; font-weight: 600;">
+                                    ผลต่าง: ${formatCurrency(absContributionDifference)} บาท (ยอดรวมที่เลือก ${contributionDiffText} ยอดรวมเงินสมทบ)
+                                </div>
+                            </div>
+                        `;
+                    }
+                    comparisonContributionEl.innerHTML = comparisonHtml;
+                }
             }
-            
-            comparisonEl.innerHTML = comparisonHtml;
         }
         
         function confirmTrialBalanceSelection() {
-            if (selectedTrialBalanceItems.size === 0) {
+            // รวบรวมรายการที่เลือกจากทั้ง 2 tabs
+            const selectedItemsIncome = [];
+            const selectedItemsContribution = [];
+            let selectedTotalIncome = 0;
+            let selectedTotalContribution = 0;
+            
+            selectedTrialBalanceItemsIncome.forEach(index => {
+                if (trialBalanceData && trialBalanceData.trial_balance_items[index]) {
+                    const item = trialBalanceData.trial_balance_items[index];
+                    selectedItemsIncome.push(item);
+                    selectedTotalIncome += parseFloat(item.balance || 0);
+                }
+            });
+            
+            selectedTrialBalanceItemsContribution.forEach(index => {
+                if (trialBalanceData && trialBalanceData.trial_balance_items[index]) {
+                    const item = trialBalanceData.trial_balance_items[index];
+                    selectedItemsContribution.push(item);
+                    selectedTotalContribution += parseFloat(item.balance || 0);
+                }
+            });
+            
+            // ตรวจสอบว่ามีการเลือกรายการหรือไม่
+            if (selectedItemsIncome.length === 0 && selectedItemsContribution.length === 0) {
                 showNotificationModal('⚠️ แจ้งเตือน', 'กรุณาเลือกรายการอย่างน้อย 1 รายการ', '⚠️', 'warning');
                 return;
             }
             
-            const selectedItems = [];
-            let selectedTotal = 0;
-            selectedTrialBalanceItems.forEach(index => {
+            // รวมรายการทั้งหมด (ไม่ซ้ำกัน)
+            const allSelectedItems = [];
+            const allSelectedIndices = new Set([...selectedTrialBalanceItemsIncome, ...selectedTrialBalanceItemsContribution]);
+            allSelectedIndices.forEach(index => {
                 if (trialBalanceData && trialBalanceData.trial_balance_items[index]) {
-                    const item = trialBalanceData.trial_balance_items[index];
-                    selectedItems.push(item);
-                    selectedTotal += parseFloat(item.balance || 0);
+                    allSelectedItems.push(trialBalanceData.trial_balance_items[index]);
                 }
             });
             
-            // คำนวณยอดรวมรายได้
+            const selectedTotal = selectedTotalIncome + selectedTotalContribution;
+            
+            // คำนวณยอดรวมรายได้และเงินสมทบ (อัปเดตล่าสุด)
+            calculateTotalIncomeAndTax();
             const totalIncome = window.trialBalanceTotalIncome || 0;
-            const difference = selectedTotal - totalIncome;
-            const absDifference = Math.abs(difference);
+            const totalContribution = window.trialBalanceTotalContribution || 0;
+            
+            const differenceIncome = selectedTotalIncome - totalIncome;
+            const absDifferenceIncome = Math.abs(differenceIncome);
+            const differenceContribution = selectedTotalContribution - totalContribution;
+            const absDifferenceContribution = Math.abs(differenceContribution);
             
             // สร้างข้อความสรุป
-            let summaryMessage = `บันทึกรายการที่เลือก ${selectedItems.length} รายการเรียบร้อย\n\n`;
-            summaryMessage += `📊 สรุปข้อมูล:\n`;
-            summaryMessage += `• ยอดรวมที่เลือก: ${formatCurrency(selectedTotal)} บาท\n`;
-            summaryMessage += `• ยอดรวมรายได้: ${formatCurrency(totalIncome)} บาท\n`;
+            const modeAll = document.querySelector('input[name="comparisonMode"][value="all"]');
+            const modeMonth = document.querySelector('input[name="comparisonMode"][value="month"]');
+            const monthSelect = document.getElementById('comparisonMonthSelect');
+            const isAllMode = modeAll && modeAll.checked;
+            const selectedMonth = monthSelect ? monthSelect.value : '';
             
-            if (absDifference < 0.01) {
-                summaryMessage += `• ผลต่าง: ${formatCurrency(absDifference)} บาท (ตรงกัน)`;
-            } else {
-                const differenceText = difference > 0 ? 'มากกว่า' : 'น้อยกว่า';
-                summaryMessage += `• ผลต่าง: ${formatCurrency(absDifference)} บาท (ยอดรวมที่เลือก ${differenceText} ยอดรวมรายได้)`;
+            let summaryMessage = `บันทึกรายการที่เลือก ${allSelectedItems.length} รายการเรียบร้อย\n\n`;
+            summaryMessage += `📊 สรุปข้อมูล:\n`;
+            summaryMessage += `• โหมดการเทียบ: ${isAllMode ? 'เทียบข้อมูลทั้งหมด' : (selectedMonth ? `เทียบข้อมูลเฉพาะเดือน ${selectedMonth}` : 'เทียบข้อมูลทั้งหมด')}\n\n`;
+            
+            // สรุปยอดรวมรายได้
+            if (selectedItemsIncome.length > 0) {
+                summaryMessage += `💵 เทียบยอดรวมรายได้:\n`;
+                summaryMessage += `• ยอดรวมที่เลือก: ${formatCurrency(selectedTotalIncome)} บาท\n`;
+                summaryMessage += `• ยอดรวมรายได้: ${formatCurrency(totalIncome)} บาท\n`;
+                if (absDifferenceIncome < 0.01) {
+                    summaryMessage += `• ผลต่าง: ${formatCurrency(absDifferenceIncome)} บาท (ตรงกัน)\n`;
+                } else {
+                    const differenceText = differenceIncome > 0 ? 'มากกว่า' : 'น้อยกว่า';
+                    summaryMessage += `• ผลต่าง: ${formatCurrency(absDifferenceIncome)} บาท (ยอดรวมที่เลือก ${differenceText} ยอดรวมรายได้)\n`;
+                }
+                summaryMessage += `\n`;
+            }
+            
+            // สรุปยอดรวมเงินสมทบ
+            if (selectedItemsContribution.length > 0) {
+                summaryMessage += `💰 เทียบยอดรวมเงินสมทบ:\n`;
+                summaryMessage += `• ยอดรวมที่เลือก: ${formatCurrency(selectedTotalContribution)} บาท\n`;
+                summaryMessage += `• ยอดรวมเงินสมทบ: ${formatCurrency(totalContribution)} บาท\n`;
+                if (absDifferenceContribution < 0.01) {
+                    summaryMessage += `• ผลต่าง: ${formatCurrency(absDifferenceContribution)} บาท (ตรงกัน)\n`;
+                } else {
+                    const contributionDiffText = differenceContribution > 0 ? 'มากกว่า' : 'น้อยกว่า';
+                    summaryMessage += `• ผลต่าง: ${formatCurrency(absDifferenceContribution)} บาท (ยอดรวมที่เลือก ${contributionDiffText} ยอดรวมเงินสมทบ)\n`;
+                }
             }
             
             // บันทึกข้อมูลที่เลือก (สามารถใช้สำหรับการประมวลผลต่อไป)
-            console.log('Selected trial balance items:', selectedItems);
-            console.log('Selected total:', selectedTotal);
+            console.log('Selected trial balance items (Income):', selectedItemsIncome);
+            console.log('Selected trial balance items (Contribution):', selectedItemsContribution);
+            console.log('Selected total (Income):', selectedTotalIncome);
+            console.log('Selected total (Contribution):', selectedTotalContribution);
             console.log('Total income:', totalIncome);
-            console.log('Difference:', absDifference);
+            console.log('Total contribution:', totalContribution);
             
-            // แสดงข้อมูลบนหน้าเว็บ
-            displayTrialBalanceSummary(selectedItems, selectedTotal, totalIncome, absDifference, difference);
+            // เก็บข้อมูลที่เลือกไว้สำหรับเปิด modal ใหม่
+            lastSelectedItemsIncome = new Set(selectedTrialBalanceItemsIncome);
+            lastSelectedItemsContribution = new Set(selectedTrialBalanceItemsContribution);
+            
+            // แสดงข้อมูลบนหน้าเว็บ (ใช้ข้อมูลรวม)
+            displayTrialBalanceSummary(allSelectedItems, selectedTotalIncome, selectedTotalContribution, totalIncome, absDifferenceIncome, differenceIncome, totalContribution, absDifferenceContribution, differenceContribution, selectedItemsIncome.length > 0, selectedItemsContribution.length > 0);
             
             showNotificationModal('✅ สำเร็จ', summaryMessage, '✅', 'success');
             closeTrialBalanceModal();
         }
         
-        function displayTrialBalanceSummary(selectedItems, selectedTotal, totalIncome, absDifference, difference) {
+        function displayTrialBalanceSummary(selectedItems, selectedTotalIncome, selectedTotalContribution, totalIncome, absDifferenceIncome, differenceIncome, totalContribution = 0, absDifferenceContribution = 0, differenceContribution = 0, isIncomeEnabled = false, isContributionEnabled = false) {
             const summaryCard = document.getElementById('trialBalanceSummaryCard');
             if (!summaryCard) return;
             
@@ -3588,16 +4388,49 @@
             const totalIncomeEl = document.getElementById('summaryTotalIncome');
             const differenceEl = document.getElementById('summaryDifference');
             const selectedItemsEl = document.getElementById('summarySelectedItems');
+            const contributionCard = document.getElementById('summaryContributionCard');
+            const contributionEl = document.getElementById('summaryTotalContribution');
+            const contributionDiffCard = document.getElementById('summaryContributionDifferenceCard');
+            const contributionDiffEl = document.getElementById('summaryContributionDifference');
             
-            if (selectedTotalEl) selectedTotalEl.textContent = formatCurrency(selectedTotal) + ' บาท';
-            if (totalIncomeEl) totalIncomeEl.textContent = formatCurrency(totalIncome) + ' บาท';
+            // แสดงยอดรวมที่เลือก (รวมทั้งสองส่วน)
+            const totalSelected = selectedTotalIncome + selectedTotalContribution;
+            if (selectedTotalEl) selectedTotalEl.textContent = formatCurrency(totalSelected) + ' บาท';
             
-            // แสดงผลต่าง
-            if (differenceEl) {
-                const differenceText = difference > 0 ? 'มากกว่า' : 'น้อยกว่า';
-                const differenceColor = absDifference > 1000 ? '#fca5a5' : '#fbbf24';
-                differenceEl.style.color = differenceColor;
-                differenceEl.textContent = formatCurrency(absDifference) + ' บาท (' + differenceText + ')';
+            // แสดงผลการเทียบกับรายได้ (ถ้าเปิดใช้งาน)
+            if (isIncomeEnabled) {
+                if (totalIncomeEl) totalIncomeEl.textContent = formatCurrency(totalIncome) + ' บาท';
+                
+                // แสดงผลต่าง (เทียบกับรายได้)
+                if (differenceEl) {
+                    const differenceText = differenceIncome > 0 ? 'มากกว่า' : 'น้อยกว่า';
+                    const differenceColor = absDifferenceIncome > 1000 ? '#fca5a5' : '#fbbf24';
+                    differenceEl.style.color = differenceColor;
+                    differenceEl.textContent = formatCurrency(absDifferenceIncome) + ' บาท (' + differenceText + ')';
+                }
+            } else {
+                if (totalIncomeEl) totalIncomeEl.textContent = '0.00 บาท';
+                if (differenceEl) {
+                    differenceEl.style.color = '#94a3b8';
+                    differenceEl.textContent = '-';
+                }
+            }
+            
+            // แสดงข้อมูลเงินสมทบ (ถ้าเปิดใช้งาน)
+            if (isContributionEnabled && totalContribution > 0) {
+                if (contributionCard) contributionCard.style.display = 'block';
+                if (contributionEl) contributionEl.textContent = formatCurrency(totalContribution) + ' บาท';
+                
+                if (contributionDiffCard) contributionDiffCard.style.display = 'block';
+                if (contributionDiffEl) {
+                    const contributionDiffText = differenceContribution > 0 ? 'มากกว่า' : 'น้อยกว่า';
+                    const contributionDiffColor = absDifferenceContribution > 1000 ? '#fca5a5' : '#c4b5fd';
+                    contributionDiffEl.style.color = contributionDiffColor;
+                    contributionDiffEl.textContent = formatCurrency(absDifferenceContribution) + ' บาท (' + contributionDiffText + ')';
+                }
+            } else {
+                if (contributionCard) contributionCard.style.display = 'none';
+                if (contributionDiffCard) contributionDiffCard.style.display = 'none';
             }
             
             // แสดงรายการที่เลือก
@@ -3632,11 +4465,19 @@
                 return;
             }
             
-            // เปิด modal การเลือกข้อมูลอีกครั้ง
+            // เก็บข้อมูลที่เลือกไว้ก่อนเปิด modal ใหม่
+            lastSelectedItemsIncome = new Set(selectedTrialBalanceItemsIncome);
+            lastSelectedItemsContribution = new Set(selectedTrialBalanceItemsContribution);
+            
+            // เปิด modal การเลือกข้อมูลอีกครั้ง (จะดึงข้อมูลที่เคยเลือกไว้มาแสดง)
             openTrialBalanceSelectionModal(trialBalanceData);
         }
         
         function openMonthlyDetailModal(idCard) {
+            openMonthlyDetailModalForMonth(idCard, null, null);
+        }
+        
+        function openMonthlyDetailModalForMonth(idCard, targetMonth, targetYear) {
             const monthNames = { '1': 'ม.ค.', '2': 'ก.พ.', '3': 'มี.ค.', '4': 'เม.ย.', '5': 'พ.ค.', '6': 'มิ.ย.', '7': 'ก.ค.', '8': 'ส.ค.', '9': 'ก.ย.', '10': 'ต.ค.', '11': 'พ.ย.', '12': 'ธ.ค.' };
             const normalized = (idCard || '').toString().replace(/\s/g, '').trim();
             
@@ -3646,6 +4487,12 @@
                 const m = att.payment_month;
                 const y = att.payment_year;
                 if (m == null || y == null) return;
+                
+                // ถ้ามีการระบุเดือนและปีเป้าหมาย ให้แสดงเฉพาะเดือนนั้น
+                if (targetMonth != null && targetYear != null && (m !== targetMonth || y !== targetYear)) {
+                    return;
+                }
+                
                 const key = `${y}-${String(m).padStart(2, '0')}`;
                 const inc = parseFloat(String(att.income_amount || '0').replace(/,/g, '')) || 0;
                 const tax = parseFloat(String(att.tax_amount || '0').replace(/,/g, '')) || 0;
@@ -3666,13 +4513,38 @@
                 const m = ss.payment_month;
                 const y = ss.payment_year;
                 if (m == null || y == null) return;
+                
+                // ถ้ามีการระบุเดือนและปีเป้าหมาย ให้แสดงเฉพาะเดือนนั้น
+                if (targetMonth != null && targetYear != null && (m !== targetMonth || y !== targetYear)) {
+                    return;
+                }
+                
                 const key = `${y}-${String(m).padStart(2, '0')}`;
                 const contrib = parseFloat(String(ss.social_security_contribution || '0').replace(/,/g, '')) || 0;
                 if (!byMonth.has(key)) byMonth.set(key, { year: y, month: m, income: 0, tax: 0, contribution: 0 });
                 byMonth.get(key).contribution += contrib;
             });
             
-            const sorted = Array.from(byMonth.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+            // เรียงข้อมูลจากเดือนมากไปหาน้อย (ธันวาคม → มกราคม)
+            const sorted = Array.from(byMonth.entries()).sort((a, b) => {
+                // a[0] และ b[0] เป็น key ในรูปแบบ "YYYY-MM"
+                // เรียงจากมากไปน้อย (ปีมากก่อน แล้วเดือนมากก่อน)
+                return b[0].localeCompare(a[0]);
+            });
+            
+            // เก็บข้อมูลสำหรับการแก้ไข
+            currentMonthlyEditData = {
+                idCard: normalized,
+                monthlyData: sorted.map(([k, v]) => ({
+                    year: v.year,
+                    month: v.month,
+                    income: v.income,
+                    tax: v.tax,
+                    contribution: v.contribution || 0,
+                    incomeType: v.incomeType || '-'
+                }))
+            };
+            originalMonthlyData = JSON.parse(JSON.stringify(currentMonthlyEditData)); // สำรองข้อมูลเดิม
             
             let name = '-';
             const card = idCardData.find(c => (c.id_card_number || '').toString().trim() === normalized);
@@ -3684,25 +4556,83 @@
             const titleEl = document.getElementById('monthlyDetailTitle');
             const subEl = document.getElementById('monthlyDetailSubtitle');
             const tbody = document.getElementById('monthlyDetailTableBody');
-            if (titleEl) titleEl.textContent = 'รายได้แต่ละเดือน';
+            
+            // กำหนด title ตามว่ามีการระบุเดือนหรือไม่
+            if (targetMonth != null && targetYear != null) {
+                const monthName = monthNames[String(targetMonth)] || `เดือน ${targetMonth}`;
+                if (titleEl) titleEl.textContent = `รายได้เดือน ${monthName} ${targetYear}`;
+            } else {
+                if (titleEl) titleEl.textContent = 'รายได้แต่ละเดือน';
+            }
             if (subEl) subEl.textContent = `${name} (${normalized})`;
             
+            // แสดงปุ่มแก้ไข
+            const editBtn = document.getElementById('editMonthlyDataBtn');
+            const saveBtn = document.getElementById('saveMonthlyDataBtn');
+            const cancelBtn = document.getElementById('cancelEditMonthlyDataBtn');
+            if (editBtn) editBtn.style.display = sorted.length > 0 ? 'block' : 'none';
+            if (saveBtn) saveBtn.style.display = 'none';
+            if (cancelBtn) cancelBtn.style.display = 'none';
+            
+            renderMonthlyDataTable(sorted, monthNames, false);
+            
+            const modal = document.getElementById('monthlyDetailModal');
+            if (modal) modal.style.display = 'flex';
+        }
+        
+        function renderMonthlyDataTable(sorted, monthNames, isEditMode) {
+            const tbody = document.getElementById('monthlyDetailTableBody');
+            if (!tbody) return;
+            
             if (sorted.length === 0) {
-                if (tbody) tbody.innerHTML = '<tr><td colspan="5" style="padding: 20px; text-align: center; color: #94a3b8;">ไม่มีข้อมูลรายเดือน</td></tr>';
-            } else {
-                let html = '';
-                let sumIncome = 0, sumTax = 0, sumContrib = 0;
-                sorted.forEach(([k, v]) => {
-                    const mn = monthNames[String(v.month)] || v.month;
-                    const label = `${mn}/${v.year}`;
-                    sumIncome += v.income;
-                    sumTax += v.tax;
-                    sumContrib += v.contribution || 0;
-                    let incomeType = v.incomeType || '-';
-                    if (incomeType === '-' || !incomeType) {
-                        const formForMonth = getFormForMonth(v.month, v.year);
-                        incomeType = (formForMonth && formForMonth.income_type) ? formForMonth.income_type : '-';
-                    }
+                tbody.innerHTML = '<tr><td colspan="5" style="padding: 20px; text-align: center; color: #94a3b8;">ไม่มีข้อมูลรายเดือน</td></tr>';
+                return;
+            }
+            
+            let html = '';
+            let sumIncome = 0, sumTax = 0, sumContrib = 0;
+            sorted.forEach(([k, v], index) => {
+                const mn = monthNames[String(v.month)] || v.month;
+                const label = `${mn}/${v.year}`;
+                sumIncome += v.income;
+                sumTax += v.tax;
+                sumContrib += v.contribution || 0;
+                let incomeType = v.incomeType || '-';
+                if (incomeType === '-' || !incomeType) {
+                    const formForMonth = getFormForMonth(v.month, v.year);
+                    incomeType = (formForMonth && formForMonth.income_type) ? formForMonth.income_type : '-';
+                }
+                
+                if (isEditMode) {
+                    // โหมดแก้ไข: แสดง input fields
+                    html += `<tr data-month-key="${k}" data-index="${index}">
+                        <td style="padding: 10px 12px; border-bottom: 1px solid #334155; color: #e2e8f0;">${label}</td>
+                        <td style="padding: 10px 12px; text-align: center; border-bottom: 1px solid #334155;">
+                            <span style="background: rgba(16, 185, 129, 0.2); padding: 4px 8px; border-radius: 4px; font-weight: 600; color: #10b981; font-size: 0.9em;">
+                                ${incomeType}
+                            </span>
+                        </td>
+                        <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155;">
+                            <input type="number" step="0.01" min="0" value="${v.income.toFixed(2)}" 
+                                data-field="income" data-month-key="${k}"
+                                style="width: 100%; padding: 6px; background: #0f172a; border: 1px solid #334155; border-radius: 4px; color: #86efac; text-align: right; font-size: 0.9em;"
+                                onchange="updateMonthlyDataTotal()">
+                        </td>
+                        <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155;">
+                            <input type="number" step="0.01" min="0" value="${v.tax.toFixed(2)}" 
+                                data-field="tax" data-month-key="${k}"
+                                style="width: 100%; padding: 6px; background: #0f172a; border: 1px solid #334155; border-radius: 4px; color: #93c5fd; text-align: right; font-size: 0.9em;"
+                                onchange="updateMonthlyDataTotal()">
+                        </td>
+                        <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155;">
+                            <input type="number" step="0.01" min="0" value="${(v.contribution || 0).toFixed(2)}" 
+                                data-field="contribution" data-month-key="${k}"
+                                style="width: 100%; padding: 6px; background: #0f172a; border: 1px solid #334155; border-radius: 4px; color: #fbbf24; text-align: right; font-size: 0.9em;"
+                                onchange="updateMonthlyDataTotal()">
+                        </td>
+                    </tr>`;
+                } else {
+                    // โหมดดู: แสดงค่าปกติ
                     html += `<tr>
                         <td style="padding: 10px 12px; border-bottom: 1px solid #334155; color: #e2e8f0;">${label}</td>
                         <td style="padding: 10px 12px; text-align: center; border-bottom: 1px solid #334155;">
@@ -3714,24 +4644,197 @@
                         <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155; color: #93c5fd;">${formatCurrency(v.tax)}</td>
                         <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155; color: #fbbf24;">${formatCurrency((v.contribution || 0))}</td>
                     </tr>`;
-                });
-                html += `<tr style="background: rgba(15, 23, 42, 0.6); font-weight: 600;">
+                }
+            });
+            html += `<tr style="background: rgba(15, 23, 42, 0.6); font-weight: 600;" id="monthlyTotalRow">
+                <td style="padding: 10px 12px; border-bottom: 1px solid #334155; color: #fafafa;">รวม</td>
+                <td style="padding: 10px 12px; text-align: center; border-bottom: 1px solid #334155; color: #fafafa;">-</td>
+                <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155; color: #86efac;">${formatCurrency(sumIncome)}</td>
+                <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155; color: #93c5fd;">${formatCurrency(sumTax)}</td>
+                <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155; color: #fbbf24;">${formatCurrency(sumContrib)}</td>
+            </tr>`;
+            tbody.innerHTML = html;
+        }
+        
+        function updateMonthlyDataTotal() {
+            if (!currentMonthlyEditData) return;
+            
+            const inputs = document.querySelectorAll('#monthlyDetailTableBody input[data-field]');
+            let sumIncome = 0, sumTax = 0, sumContrib = 0;
+            
+            inputs.forEach(input => {
+                const value = parseFloat(input.value) || 0;
+                const field = input.getAttribute('data-field');
+                const monthKey = input.getAttribute('data-month-key');
+                
+                // อัปเดตข้อมูลใน currentMonthlyEditData
+                const monthData = currentMonthlyEditData.monthlyData.find(m => `${m.year}-${String(m.month).padStart(2, '0')}` === monthKey);
+                if (monthData) {
+                    if (field === 'income') {
+                        monthData.income = value;
+                        sumIncome += value;
+                    } else if (field === 'tax') {
+                        monthData.tax = value;
+                        sumTax += value;
+                    } else if (field === 'contribution') {
+                        monthData.contribution = value;
+                        sumContrib += value;
+                    }
+                }
+            });
+            
+            // อัปเดตแถวรวม
+            const totalRow = document.getElementById('monthlyTotalRow');
+            if (totalRow) {
+                totalRow.innerHTML = `
                     <td style="padding: 10px 12px; border-bottom: 1px solid #334155; color: #fafafa;">รวม</td>
                     <td style="padding: 10px 12px; text-align: center; border-bottom: 1px solid #334155; color: #fafafa;">-</td>
                     <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155; color: #86efac;">${formatCurrency(sumIncome)}</td>
                     <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155; color: #93c5fd;">${formatCurrency(sumTax)}</td>
                     <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155; color: #fbbf24;">${formatCurrency(sumContrib)}</td>
-                </tr>`;
-                if (tbody) tbody.innerHTML = html;
+                `;
+            }
+        }
+        
+        function toggleEditMonthlyData() {
+            if (!currentMonthlyEditData) return;
+            
+            const monthNames = { '1': 'ม.ค.', '2': 'ก.พ.', '3': 'มี.ค.', '4': 'เม.ย.', '5': 'พ.ค.', '6': 'มิ.ย.', '7': 'ก.ค.', '8': 'ส.ค.', '9': 'ก.ย.', '10': 'ต.ค.', '11': 'พ.ย.', '12': 'ธ.ค.' };
+            // เรียงจากเดือนมากไปหาน้อย (ธันวาคม → มกราคม)
+            const sorted = currentMonthlyEditData.monthlyData.map(m => {
+                const key = `${m.year}-${String(m.month).padStart(2, '0')}`;
+                return [key, m];
+            }).sort((a, b) => b[0].localeCompare(a[0]));
+            
+            // แสดงโหมดแก้ไข
+            renderMonthlyDataTable(sorted, monthNames, true);
+            
+            // แสดง/ซ่อนปุ่ม
+            const editBtn = document.getElementById('editMonthlyDataBtn');
+            const saveBtn = document.getElementById('saveMonthlyDataBtn');
+            const cancelBtn = document.getElementById('cancelEditMonthlyDataBtn');
+            if (editBtn) editBtn.style.display = 'none';
+            if (saveBtn) saveBtn.style.display = 'block';
+            if (cancelBtn) cancelBtn.style.display = 'block';
+        }
+        
+        function cancelEditMonthlyData() {
+            if (!currentMonthlyEditData || !originalMonthlyData) return;
+            
+            // คืนค่าจากข้อมูลเดิม
+            currentMonthlyEditData = JSON.parse(JSON.stringify(originalMonthlyData));
+            
+            const monthNames = { '1': 'ม.ค.', '2': 'ก.พ.', '3': 'มี.ค.', '4': 'เม.ย.', '5': 'พ.ค.', '6': 'มิ.ย.', '7': 'ก.ค.', '8': 'ส.ค.', '9': 'ก.ย.', '10': 'ต.ค.', '11': 'พ.ย.', '12': 'ธ.ค.' };
+            // เรียงจากเดือนมากไปหาน้อย (ธันวาคม → มกราคม)
+            const sorted = currentMonthlyEditData.monthlyData.map(m => {
+                const key = `${m.year}-${String(m.month).padStart(2, '0')}`;
+                return [key, m];
+            }).sort((a, b) => b[0].localeCompare(a[0]));
+            
+            // แสดงโหมดดู
+            renderMonthlyDataTable(sorted, monthNames, false);
+            
+            // แสดง/ซ่อนปุ่ม
+            const editBtn = document.getElementById('editMonthlyDataBtn');
+            const saveBtn = document.getElementById('saveMonthlyDataBtn');
+            const cancelBtn = document.getElementById('cancelEditMonthlyDataBtn');
+            if (editBtn) editBtn.style.display = 'block';
+            if (saveBtn) saveBtn.style.display = 'none';
+            if (cancelBtn) cancelBtn.style.display = 'none';
+        }
+        
+        async function saveMonthlyData() {
+            if (!currentMonthlyEditData) {
+                showStatusMessage('⚠️ ไม่พบข้อมูลที่จะบันทึก', 'warning');
+                return;
             }
             
-            const modal = document.getElementById('monthlyDetailModal');
-            if (modal) modal.style.display = 'flex';
+            // อ่านค่าจาก input fields อีกครั้งเพื่อให้แน่ใจว่ามีค่าล่าสุด
+            const inputs = document.querySelectorAll('#monthlyDetailTableBody input[data-field]');
+            inputs.forEach(input => {
+                const value = parseFloat(input.value) || 0;
+                const field = input.getAttribute('data-field');
+                const monthKey = input.getAttribute('data-month-key');
+                const monthData = currentMonthlyEditData.monthlyData.find(m => `${m.year}-${String(m.month).padStart(2, '0')}` === monthKey);
+                if (monthData) {
+                    if (field === 'income') monthData.income = value;
+                    else if (field === 'tax') monthData.tax = value;
+                    else if (field === 'contribution') monthData.contribution = value;
+                }
+            });
+            
+            const company = document.getElementById('companySelect')?.value || '';
+            if (!company) {
+                showStatusMessage('⚠️ กรุณาเลือกบริษัท', 'warning');
+                return;
+            }
+            
+            try {
+                showStatusMessage('⏳ กำลังบันทึกข้อมูล...', 'info');
+                
+                const response = await fetch('/api/pnd1k/update-monthly-data', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        company: company,
+                        id_card: currentMonthlyEditData.idCard,
+                        monthly_data: currentMonthlyEditData.monthlyData
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatusMessage('✅ บันทึกข้อมูลสำเร็จ', 'success');
+                    
+                    // อัปเดตข้อมูลใน memory
+                    await loadAttachments(company);
+                    await loadSocialSecurity(company);
+                    
+                    // ปิดโหมดแก้ไขและรีเฟรช modal
+                    const monthNames = { '1': 'ม.ค.', '2': 'ก.พ.', '3': 'มี.ค.', '4': 'เม.ย.', '5': 'พ.ค.', '6': 'มิ.ย.', '7': 'ก.ค.', '8': 'ส.ค.', '9': 'ก.ย.', '10': 'ต.ค.', '11': 'พ.ย.', '12': 'ธ.ค.' };
+                    // เรียงจากเดือนมากไปหาน้อย (ธันวาคม → มกราคม)
+                    const sorted = currentMonthlyEditData.monthlyData.map(m => {
+                        const key = `${m.year}-${String(m.month).padStart(2, '0')}`;
+                        return [key, m];
+                    }).sort((a, b) => b[0].localeCompare(a[0]));
+                    
+                    renderMonthlyDataTable(sorted, monthNames, false);
+                    
+                    // แสดง/ซ่อนปุ่ม
+                    const editBtn = document.getElementById('editMonthlyDataBtn');
+                    const saveBtn = document.getElementById('saveMonthlyDataBtn');
+                    const cancelBtn = document.getElementById('cancelEditMonthlyDataBtn');
+                    if (editBtn) editBtn.style.display = 'block';
+                    if (saveBtn) saveBtn.style.display = 'none';
+                    if (cancelBtn) cancelBtn.style.display = 'none';
+                    
+                    // อัปเดต originalMonthlyData
+                    originalMonthlyData = JSON.parse(JSON.stringify(currentMonthlyEditData));
+                } else {
+                    showStatusMessage(`⚠️ ${result.error || 'เกิดข้อผิดพลาดในการบันทึก'}`, 'warning');
+                }
+            } catch (error) {
+                console.error('Error saving monthly data:', error);
+                showStatusMessage('⚠️ เกิดข้อผิดพลาดในการบันทึกข้อมูล', 'warning');
+            }
         }
         
         function closeMonthlyDetailModal() {
             const modal = document.getElementById('monthlyDetailModal');
             if (modal) modal.style.display = 'none';
+            
+            // รีเซ็ตสถานะการแก้ไข
+            currentMonthlyEditData = null;
+            originalMonthlyData = null;
+            
+            // ซ่อนปุ่มแก้ไข/บันทึก
+            const editBtn = document.getElementById('editMonthlyDataBtn');
+            const saveBtn = document.getElementById('saveMonthlyDataBtn');
+            const cancelBtn = document.getElementById('cancelEditMonthlyDataBtn');
+            if (editBtn) editBtn.style.display = 'none';
+            if (saveBtn) saveBtn.style.display = 'none';
+            if (cancelBtn) cancelBtn.style.display = 'none';
         }
         
         async function saveEditEmployee() {
@@ -3995,6 +5098,204 @@
                 console.error('Error generating 50 Tawi:', error);
                 showStatusMessage('❌ สร้างเอกสารไม่สำเร็จ', 'error');
                 showNotificationModal('❌ เกิดข้อผิดพลาด', error.message || 'ไม่สามารถสร้างเอกสารได้', '❌', 'error');
+            }
+        }
+        
+        // ฟังก์ชันสำหรับออกเอกสาร RD Prep พร้อมกันทุกคน
+        async function generateRDPrepForAll() {
+            const company = document.getElementById('companySelect').value;
+            if (!company) {
+                showNotificationModal('⚠️ ข้อผิดพลาด', 'กรุณาเลือกบริษัท', '⚠️', 'warning');
+                return;
+            }
+            
+            // ดึงรายชื่อพนักงานทั้งหมด
+            const employees = Array.from(employeeMap.values());
+            if (employees.length === 0) {
+                showNotificationModal('⚠️ ข้อผิดพลาด', 'ไม่พบข้อมูลพนักงาน', '⚠️', 'warning');
+                return;
+            }
+            
+            // ถาม path ที่จะเก็บไฟล์ผ่าน modal
+            showPathInputModal(
+                `📁 กรุณาระบุ path ที่จะเก็บไฟล์ RD Prep สำหรับพนักงานทั้งหมด ${employees.length} คน`,
+                'ตัวอย่าง: C:\\Users\\USER\\Documents\\rdprep',
+                '',
+                async (savePath) => {
+                    console.log('Path received:', savePath);
+                    console.log('Company:', company);
+                    console.log('Employees count:', employees.length);
+                    
+                    // ตรวจสอบพนักงานที่ไม่มีที่อยู่
+                    const employeesWithoutAddress = employees.filter(emp => {
+                        const address = emp.address || '';
+                        return !address || address.trim() === '' || address === '-';
+                    });
+                    
+                    // ถ้ามีพนักงานที่ไม่มีที่อยู่ ให้แสดง modal ยืนยัน
+                    if (employeesWithoutAddress.length > 0) {
+                        // ดึงที่อยู่บริษัท (ลองหลายแหล่งเพื่อให้ได้ข้อมูลครบ)
+                        let companyAddress = '';
+                        
+                        // ลองดึงจาก pnd1kFormsList ก่อน (เพราะอาจมีข้อมูลครบกว่า)
+                        if (pnd1kFormsList && pnd1kFormsList.length > 0) {
+                            const f = pnd1kFormsList[0];
+                            const formAddress = (f.address || '').trim();
+                            if (formAddress && formAddress !== '-') {
+                                companyAddress = formAddress;
+                            }
+                        }
+                        
+                        // ถ้ายังไม่มี ให้ลองดึงจาก companyAddress element
+                        if (!companyAddress) {
+                            const companyAddressEl = document.getElementById('companyAddress');
+                            if (companyAddressEl) {
+                                // ใช้ innerText แทน textContent เพื่อให้ได้ข้อมูลครบ (รวม whitespace)
+                                const addressText = companyAddressEl.innerText || companyAddressEl.textContent || '';
+                                if (addressText && addressText.trim() !== '-') {
+                                    companyAddress = addressText.trim();
+                                }
+                            }
+                        }
+                        
+                        console.log('Company address retrieved:', companyAddress);
+                        console.log('Company address length:', companyAddress.length);
+                        
+                        // สร้างข้อความยืนยัน
+                        let confirmMessage = `พบพนักงานที่ยังไม่มีข้อมูลที่อยู่ ${employeesWithoutAddress.length} คน\n\n`;
+                        if (employeesWithoutAddress.length <= 10) {
+                            confirmMessage += 'รายชื่อ:\n';
+                            employeesWithoutAddress.forEach((emp, index) => {
+                                confirmMessage += `${index + 1}. ${emp.name || emp.idCard || 'ไม่ระบุชื่อ'}\n`;
+                            });
+                        } else {
+                            confirmMessage += `(แสดง 10 คนแรก)\n`;
+                            employeesWithoutAddress.slice(0, 10).forEach((emp, index) => {
+                                confirmMessage += `${index + 1}. ${emp.name || emp.idCard || 'ไม่ระบุชื่อ'}\n`;
+                            });
+                            confirmMessage += `... และอีก ${employeesWithoutAddress.length - 10} คน\n`;
+                        }
+                        
+                        if (companyAddress) {
+                            confirmMessage += `\nระบบจะดึงที่อยู่บริษัทมาใส่ให้กับพนักงานเหล่านี้:\n"${companyAddress.substring(0, 100)}${companyAddress.length > 100 ? '...' : ''}"\n\nต้องการดำเนินการต่อหรือไม่?`;
+                        } else {
+                            confirmMessage += `\n⚠️ ไม่พบที่อยู่บริษัท ระบบจะไม่สามารถดึงที่อยู่มาใส่ให้ได้\n\nต้องการดำเนินการต่อหรือไม่?`;
+                        }
+                        
+                        // แสดง modal ยืนยัน
+                        showNotificationModal(
+                            '⚠️ ยืนยันการดำเนินการ',
+                            confirmMessage,
+                            '⚠️',
+                            'warning',
+                            async () => {
+                                // เมื่อผู้ใช้ยืนยัน
+                                if (companyAddress) {
+                                    // ดึงที่อยู่บริษัทมาใส่ให้กับพนักงานที่ไม่มีที่อยู่
+                                    employeesWithoutAddress.forEach(emp => {
+                                        let o = employeeOverrides.get(emp.idCard);
+                                        if (!o) {
+                                            o = {};
+                                            employeeOverrides.set(emp.idCard, o);
+                                        }
+                                        o.address = companyAddress;
+                                    });
+                                    
+                                    // อัพเดท employeeMap
+                                    employeesWithoutAddress.forEach(emp => {
+                                        const empInMap = employeeMap.get(emp.idCard);
+                                        if (empInMap) {
+                                            empInMap.address = companyAddress;
+                                        }
+                                    });
+                                    
+                                    showStatusMessage(`✅ ดึงที่อยู่บริษัทมาใส่ให้กับพนักงาน ${employeesWithoutAddress.length} คนเรียบร้อย`, 'success');
+                                    
+                                    // อัพเดทตารางข้อมูลพนักงาน
+                                    updateEmployeeDataTable();
+                                }
+                                
+                                // สร้าง address_overrides map สำหรับส่งไปยัง API
+                                const addressOverridesMap = {};
+                                if (companyAddress) {
+                                    employeesWithoutAddress.forEach(emp => {
+                                        addressOverridesMap[emp.idCard] = companyAddress;
+                                    });
+                                }
+                                
+                                // อัพเดท employees array ใหม่หลังจากอัพเดทที่อยู่แล้ว
+                                const updatedEmployees = Array.from(employeeMap.values());
+                                
+                                // เรียกฟังก์ชันสร้างเอกสาร
+                                try {
+                                    await generateRDPrepForAllWithPath(company, savePath, updatedEmployees, addressOverridesMap);
+                                } catch (error) {
+                                    console.error('Error in generateRDPrepForAllWithPath:', error);
+                                    showNotificationModal('❌ เกิดข้อผิดพลาด', error.message || 'ไม่สามารถสร้างเอกสารได้', '❌', 'error');
+                                }
+                            },
+                            true // แสดงปุ่มยกเลิก
+                        );
+                    } else {
+                        // ถ้าพนักงานทุกคนมีที่อยู่แล้ว ให้ดำเนินการทันที
+                        try {
+                            await generateRDPrepForAllWithPath(company, savePath, employees, {});
+                        } catch (error) {
+                            console.error('Error in generateRDPrepForAllWithPath:', error);
+                            showNotificationModal('❌ เกิดข้อผิดพลาด', error.message || 'ไม่สามารถสร้างเอกสารได้', '❌', 'error');
+                        }
+                    }
+                }
+            );
+        }
+        
+        async function generateRDPrepForAllWithPath(company, savePath, employees, addressOverrides = {}) {
+            try {
+                // แสดง loading
+                const loadingModal = document.getElementById('loading50TawiModal');
+                const loadingMessage = document.getElementById('loading50TawiMessage');
+                if (loadingModal && loadingMessage) {
+                    loadingMessage.textContent = 'กำลังสร้างไฟล์ RD Prep...';
+                    loadingModal.style.display = 'flex';
+                }
+                
+                const response = await fetch('/api/pnd1k/generate-rd-prep', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        company: company,
+                        save_path: savePath,
+                        address_overrides: addressOverrides
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (!response.ok || !result.success) {
+                    throw new Error(result.error || 'ไม่สามารถสร้างไฟล์ RD Prep ได้');
+                }
+                
+                // ซ่อน loading
+                if (loadingModal) {
+                    loadingModal.style.display = 'none';
+                }
+                
+                // แสดงข้อความสำเร็จพร้อม path ที่เก็บไฟล์
+                const filePath = result.file_path || result.filename || 'ไม่ระบุ';
+                showNotificationModal('✅ สำเร็จ', `สร้างไฟล์ RD Prep สำเร็จ\n\nไฟล์: ${result.filename}\nเก็บไว้ที่: ${filePath}`, '✅', 'success');
+                
+            } catch (error) {
+                console.error('Error generating RD Prep:', error);
+                
+                // ซ่อน loading
+                const loadingModal = document.getElementById('loading50TawiModal');
+                if (loadingModal) {
+                    loadingModal.style.display = 'none';
+                }
+                
+                showNotificationModal('❌ เกิดข้อผิดพลาด', error.message || 'ไม่สามารถสร้างไฟล์ RD Prep ได้', '❌', 'error');
             }
         }
         
@@ -4444,7 +5745,7 @@
             });
             
             if (allData.length === 0) {
-                tbody.innerHTML = '<tr class="empty-row"><td colspan="8">ยังไม่มีข้อมูล กรุณาอัพโหลดไฟล์เพื่อแสดงข้อมูล</td></tr>';
+                tbody.innerHTML = '<tr class="empty-row"><td colspan="9">ยังไม่มีข้อมูล กรุณาอัพโหลดไฟล์เพื่อแสดงข้อมูล</td></tr>';
                 return;
             }
             
@@ -4474,10 +5775,12 @@
                 monthGroups[monthKey].push(person);
             });
             
-            // สร้าง HTML แยกตามเดือน (เรียงมากไปหาน้อย) · แถบปิดเป็นค่าเริ่มต้น
+            // สร้าง HTML แยกตามเดือน (เรียงมากไปหาน้อย: ธันวาคม → มกราคม) · แถบปิดเป็นค่าเริ่มต้น
             let html = '';
             const sortedMonthKeys = Object.keys(monthGroups).sort((a, b) => {
                 if (a === 'no-month' || b === 'no-month') return (a === 'no-month' ? 1 : 0) - (b === 'no-month' ? 1 : 0);
+                // เรียงจากมากไปน้อย (ปีมากก่อน แล้วเดือนมากก่อน)
+                // key format: "YYYY-MM" เช่น "2025-12", "2025-01"
                 return b.localeCompare(a);
             });
             
@@ -4537,17 +5840,17 @@
                     const monthName = monthNames[month] || `เดือน ${month}`;
                     
                     monthHeader = `
-                        <tr class="month-header-row" id="${monthRowId}" onclick="toggleMonthSection('${monthKey}')" style="cursor: pointer; user-select: none;">
+                        <tr class="month-header-row" id="${monthRowId}" style="user-select: none;">
                             <td style="background: #0f172a; color: #10b981; font-weight: 600; padding: 15px; text-align: center;">
-                                <span class="month-toggle-icon" id="icon-${monthKey}" style="transition: transform 0.3s ease; display: inline-block; margin-right: 8px; font-size: 0.9em;">▶</span>
+                                <span class="month-toggle-icon" id="icon-${monthKey}" onclick="toggleMonthSection('${monthKey}')" style="transition: transform 0.3s ease; display: inline-block; margin-right: 8px; font-size: 0.9em; cursor: pointer;">▶</span>
                             </td>
-                            <td colspan="2" style="background: #0f172a; color: #10b981; font-weight: 600; font-size: 1.1em; padding: 15px; text-align: left;">
+                            <td colspan="2" onclick="toggleMonthSection('${monthKey}')" style="background: #0f172a; color: #10b981; font-weight: 600; font-size: 1.1em; padding: 15px; text-align: left; cursor: pointer;">
                                 📅 ${monthName} ${year || ''} (${persons.length} รายการ)
                             </td>
-                            <td style="background: #0f172a; color: #10b981; font-weight: 600; font-size: 1em; padding: 15px; text-align: center;">
+                            <td onclick="toggleMonthSection('${monthKey}')" style="background: #0f172a; color: #10b981; font-weight: 600; font-size: 1em; padding: 15px; text-align: center; cursor: pointer;">
                                 ${monthDisplay}
                             </td>
-                            <td style="background: #0f172a; color: #10b981; font-weight: 600; font-size: 0.95em; padding: 15px; text-align: center;">
+                            <td onclick="toggleMonthSection('${monthKey}')" style="background: #0f172a; color: #10b981; font-weight: 600; font-size: 0.95em; padding: 15px; text-align: center; cursor: pointer;">
                                 ${incomeTypeForMonth === '-' ? '-' : incomeTypeForMonth.split(', ').map(type => {
                                     const trimmedType = type.trim();
                                     if (trimmedType === '40(1)') {
@@ -4559,14 +5862,32 @@
                                     }
                                 }).join('')}
                             </td>
-                            <td class="currency-cell" style="background: #0f172a; color: #10b981; font-weight: 700; font-size: 1.1em; padding: 15px; text-align: right;">
+                            <td class="currency-cell" onclick="toggleMonthSection('${monthKey}')" style="background: #0f172a; color: #10b981; font-weight: 700; font-size: 1.1em; padding: 15px; text-align: right; cursor: pointer;">
                                 ${formatCurrency(totalIncome.toFixed(2))}
                             </td>
-                            <td class="currency-cell" style="background: #0f172a; color: #10b981; font-weight: 700; font-size: 1.1em; padding: 15px; text-align: right;">
+                            <td class="currency-cell" onclick="toggleMonthSection('${monthKey}')" style="background: #0f172a; color: #10b981; font-weight: 700; font-size: 1.1em; padding: 15px; text-align: right; cursor: pointer;">
                                 ${formatCurrency(totalTax.toFixed(2))}
                             </td>
-                            <td class="currency-cell" style="background: #0f172a; color: #10b981; font-weight: 700; font-size: 1.1em; padding: 15px; text-align: right;">
+                            <td class="currency-cell" onclick="toggleMonthSection('${monthKey}')" style="background: #0f172a; color: #10b981; font-weight: 700; font-size: 1.1em; padding: 15px; text-align: right; cursor: pointer;">
                                 ${formatCurrency(totalSS.toFixed(2))}
+                            </td>
+                            <td style="background: #0f172a; padding: 15px; text-align: center;">
+                                <div style="display: flex; gap: 6px; justify-content: center; align-items: center;">
+                                    <button type="button" onclick="event.stopPropagation(); openEditMonthModal('${monthKey}', ${month}, ${year})" 
+                                        style="padding: 6px 12px; background: #10b981; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85em; transition: all 0.2s;"
+                                        onmouseover="this.style.background='#059669'; this.style.transform='scale(1.05)';"
+                                        onmouseout="this.style.background='#10b981'; this.style.transform='scale(1)';"
+                                        title="แก้ไขข้อมูลทั้งหมดในเดือนนี้">
+                                        ✏️ แก้ไขเดือน
+                                    </button>
+                                    <button type="button" onclick="event.stopPropagation(); deleteAttachmentData('${monthKey}', ${month}, ${year})" 
+                                        style="padding: 6px 12px; background: #dc2626; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85em; transition: all 0.2s;"
+                                        onmouseover="this.style.background='#b91c1c'; this.style.transform='scale(1.05)';"
+                                        onmouseout="this.style.background='#dc2626'; this.style.transform='scale(1)';"
+                                        title="ลบข้อมูลทั้งหมดในเดือนนี้">
+                                        🗑️ ลบเดือน
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     `;
@@ -4617,6 +5938,30 @@
                             <td class="currency-cell">${formatCurrency(incomeValue.toFixed(2))}</td>
                             <td class="currency-cell">${formatCurrency(taxValue.toFixed(2))}</td>
                             <td class="currency-cell">${ssVal != null ? formatCurrency(ssVal.toFixed(2)) : '-'}</td>
+                            <td style="text-align: center; padding: 10px;">
+                                ${(() => {
+                                    // ดึงเดือนและปีจาก monthKey หรือ person object
+                                    let editMonth = person.paymentMonth;
+                                    let editYear = person.paymentYear;
+                                    if (!editMonth || !editYear) {
+                                        // ถ้าไม่มี ให้ดึงจาก monthKey
+                                        const monthKeyParts = monthKey.split('-');
+                                        if (monthKeyParts.length >= 2) {
+                                            editYear = parseInt(monthKeyParts[0]) || 0;
+                                            editMonth = parseInt(monthKeyParts[1]) || 0;
+                                        }
+                                    }
+                                    return `
+                                        <button type="button" onclick="openMonthlyDetailModalForMonth('${person.idCard || ''}', ${editMonth || 0}, ${editYear || 0})" 
+                                            style="padding: 6px 12px; background: #3b82f6; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85em; transition: all 0.2s;"
+                                            onmouseover="this.style.background='#2563eb'; this.style.transform='scale(1.05)';"
+                                            onmouseout="this.style.background='#3b82f6'; this.style.transform='scale(1)';"
+                                            title="แก้ไขข้อมูลเดือน ${monthDisplay} ของบุคคลนี้">
+                                            ✏️ แก้ไข
+                                        </button>
+                                    `;
+                                })()}
+                            </td>
                         </tr>
                     `;
                 });
@@ -4651,6 +5996,120 @@
             } else {
                 icon.textContent = '▶';
                 icon.style.transform = 'rotate(-90deg)';
+            }
+        }
+        
+        async function exportAllDataToExcel() {
+            const company = document.getElementById('companySelect')?.value || '';
+            if (!company) {
+                showNotificationModal('⚠️ ข้อผิดพลาด', 'กรุณาเลือกบริษัทก่อนส่งออกข้อมูล', '⚠️', 'warning');
+                return;
+            }
+            
+            // ตรวจสอบว่ามีข้อมูลหรือไม่
+            if ((!attachmentData || attachmentData.length === 0) && 
+                (!socialSecurityData || socialSecurityData.length === 0) &&
+                (!idCardData || idCardData.length === 0)) {
+                showNotificationModal('⚠️ ไม่มีข้อมูล', 'ไม่พบข้อมูลที่จะส่งออก กรุณาอัพโหลดไฟล์ก่อน', '⚠️', 'warning');
+                return;
+            }
+            
+            // ถาม path ที่จะเก็บไฟล์
+            showPathInputModal(
+                '📊 ส่งออกข้อมูลทั้งหมดเป็น Excel',
+                'กรุณาระบุ path ที่จะเก็บไฟล์รายงาน Excel\nตัวอย่าง: C:\\Users\\USER\\Documents\\reports',
+                '',
+                async (savePath) => {
+                    await exportAllDataToExcelWithPath(company, savePath);
+                }
+            );
+        }
+        
+        async function exportAllDataToExcelWithPath(company, savePath) {
+            try {
+                showStatusMessage('⏳ กำลังสร้างไฟล์ Excel...', 'info');
+                
+                const response = await fetch('/api/pnd1k/export-all-data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        company: company,
+                        save_path: savePath
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatusMessage('✅ สร้างไฟล์ Excel สำเร็จ', 'success');
+                    
+                    // ดาวน์โหลดไฟล์ (ถ้ามี download_url)
+                    if (result.download_url) {
+                        const link = document.createElement('a');
+                        link.href = result.download_url;
+                        link.download = result.filename || 'pnd1k_all_data.xlsx';
+                        link.target = '_blank';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    } else if (result.file_path) {
+                        // ถ้าเป็น network path ให้แสดงข้อความแนะนำ
+                        showNotificationModal(
+                            '✅ สำเร็จ',
+                            `สร้างไฟล์ Excel สำเร็จ\n\nไฟล์ถูกบันทึกไว้ที่:\n${result.file_path}\n\n${result.filename ? `ชื่อไฟล์: ${result.filename}` : ''}\n\nกรุณาเปิดไฟล์จาก path ด้านบน`,
+                            '✅',
+                            'success'
+                        );
+                        return; // ไม่ต้องแสดง notification ซ้ำ
+                    }
+                    
+                    showNotificationModal(
+                        '✅ สำเร็จ',
+                        `สร้างไฟล์ Excel สำเร็จ\n\nไฟล์ถูกบันทึกไว้ที่:\n${result.file_path || savePath}\n\n${result.filename ? `ชื่อไฟล์: ${result.filename}` : ''}`,
+                        '✅',
+                        'success'
+                    );
+                } else {
+                    showStatusMessage(`⚠️ ${result.error || 'เกิดข้อผิดพลาด'}`, 'warning');
+                    showNotificationModal('⚠️ เกิดข้อผิดพลาด', result.error || 'ไม่สามารถสร้างไฟล์ Excel ได้', '⚠️', 'warning');
+                }
+            } catch (error) {
+                console.error('Error exporting data:', error);
+                showStatusMessage('⚠️ เกิดข้อผิดพลาดในการส่งออกข้อมูล', 'warning');
+                showNotificationModal('❌ เกิดข้อผิดพลาด', error.message || 'ไม่สามารถส่งออกข้อมูลได้', '❌', 'error');
+            }
+        }
+        
+        function openEditMonthModal(monthKey, month, year) {
+            // รวบรวมข้อมูลทั้งหมดในเดือนนี้
+            const monthDataRows = document.querySelectorAll(`tr.month-data-row[data-month-key="${monthKey}"]`);
+            if (monthDataRows.length === 0) {
+                showStatusMessage('⚠️ ไม่พบข้อมูลในเดือนนี้', 'warning');
+                return;
+            }
+            
+            // ขยาย section ของเดือนนี้เพื่อให้เห็นรายการทั้งหมด
+            const firstRow = monthDataRows[0];
+            const isHidden = firstRow.style.display === 'none';
+            if (isHidden) {
+                toggleMonthSection(monthKey);
+            }
+            
+            // แสดงข้อความแนะนำ
+            const monthNames = {
+                '1': 'มกราคม', '2': 'กุมภาพันธ์', '3': 'มีนาคม', '4': 'เมษายน',
+                '5': 'พฤษภาคม', '6': 'มิถุนายน', '7': 'กรกฎาคม', '8': 'สิงหาคม',
+                '9': 'กันยายน', '10': 'ตุลาคม', '11': 'พฤศจิกายน', '12': 'ธันวาคม'
+            };
+            const monthName = monthNames[String(month)] || `เดือน ${month}`;
+            showStatusMessage(`💡 กรุณาแก้ไขข้อมูลรายบุคคลในเดือน ${monthName} ${year} โดยคลิกปุ่ม "แก้ไข" ในแถวของแต่ละบุคคล`, 'info');
+            
+            // Scroll ไปที่ section นี้
+            const monthRow = document.getElementById(`month-row-${monthKey}`);
+            if (monthRow) {
+                monthRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
         
@@ -4697,6 +6156,21 @@
             const statusMessage = document.getElementById('statusMessage');
             const progressBar = document.getElementById('progressBar');
             const progressFill = document.getElementById('progressFill');
+            
+            // ตรวจสอบว่า elements มีอยู่จริงก่อนใช้งาน
+            if (!submitBtn) {
+                console.error('submitBtn element not found in DOM');
+                if (statusMessage) {
+                    statusMessage.className = 'status-message error';
+                    statusMessage.textContent = '❌ ไม่พบปุ่มส่งยื่นเอกสาร';
+                }
+                return;
+            }
+            
+            if (!statusMessage || !progressBar || !progressFill) {
+                console.error('Required elements not found in DOM');
+                return;
+            }
             
             if (!fileData.file1 || !fileData.file2 || !fileData.file3 || !fileData.file4) {
                 statusMessage.className = 'status-message error';
@@ -4747,12 +6221,16 @@
                     throw new Error(error.message || 'เกิดข้อผิดพลาดในการส่งยื่น');
                 }
             } catch (error) {
-                progressFill.style.width = '0%';
-                statusMessage.className = 'status-message error';
-                statusMessage.textContent = '❌ เกิดข้อผิดพลาด: ' + error.message;
+                if (progressFill) progressFill.style.width = '0%';
+                if (statusMessage) {
+                    statusMessage.className = 'status-message error';
+                    statusMessage.textContent = '❌ เกิดข้อผิดพลาด: ' + error.message;
+                }
                 
-                submitBtn.disabled = false;
-                submitBtn.textContent = '📤 ส่งยื่นเอกสาร';
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '📤 ส่งยื่นเอกสาร';
+                }
             }
         }
         
