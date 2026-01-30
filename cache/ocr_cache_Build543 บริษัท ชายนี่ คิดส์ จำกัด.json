@@ -7370,5 +7370,84 @@
       "method": "aksonocr"
     },
     "cached_at": 1769160403.9484353
+  },
+  "e3a868011c39f134083a05277e873617": {
+    "filename": "26.12.2025_WHT_EXP-20251200265_EXC2512-240_p008_VAT.pdf",
+    "filepath": "V:\\AAA.โฟรเดอร์หลัก\\Build543 บริษัท ชายนี่ คิดส์ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2025-12\\VAT\\26.12.2025_WHT_EXP-20251200265_EXC2512-240_p008_VAT.pdf",
+    "data": {
+      "filename": "26.12.2025_WHT_EXP-20251200265_EXC2512-240_p008_VAT.pdf",
+      "filepath": "V:\\AAA.โฟรเดอร์หลัก\\Build543 บริษัท ชายนี่ คิดส์ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2025-12\\VAT\\26.12.2025_WHT_EXP-20251200265_EXC2512-240_p008_VAT.pdf",
+      "success": true,
+      "company_name": "บริษัท สยามคอมเมอร์เชียล ซีพอร์ท จำกัด (SIAM COMMERCIAL SEAPORT CO.,LTD.)",
+      "tax_id": "0105518012712",
+      "branch": "00001",
+      "date": "26/12/2025",
+      "document_number": "SCSP-2025-055400",
+      "reference_number": "EXP-20251200265",
+      "amount_before_vat": 1000.0,
+      "vat_amount": 70.0,
+      "total_amount": 1070.0,
+      "buyer_name": "SHINEE KIDS CO., LTD.",
+      "buyer_tax_id": "0105568010616",
+      "buyer_address": "366/32 AIYARA VILLAGE, PHETKASEM 81, LIAP KHLONG PHASI CHAROEN FANG NUEA ROAD,, NONG KHAEM SUBDISTRICT, NONG KHAEM BANGKOK 10160",
+      "document_type": "Receipt / Tax Invoice",
+      "document_status": "ต้นฉบับ",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1,000.00",
+          "ราคาต่อหน่วย": "1,000.00",
+          "รายการ": "Lift On 40 ft FCL General",
+          "ลำดับ": "1"
+        }
+      ],
+      "customs_duty": 0.0,
+      "has_customs_duty": false,
+      "is_customs_department": false,
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: SCSP-2025-055400\nวันที่: 26/12/2025\nชื่อผู้ขาย: บริษัท สยามคอมเมอร์เชียล ซีพอร์ท จำกัด (SIAM COMMERCIAL SEAPORT CO.,LTD.)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105518012712\nที่อยู่ผู้ขาย: 223/21-22 อาคารคันทรี ทาวเวอร์ อาคารเอ ชั้นที่ 9 ถ.สรรพาวุธ แขวงบางนาใต้ เขตบางนา กรุงเทพมหานคร 10260\nชื่อผู้ซื้อ: SHINEE KIDS CO., LTD.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105568010616\nที่อยู่ผู้ซื้อ: 366/32 AIYARA VILLAGE, PHETKASEM 81, LI...",
+      "method": "aksonocr"
+    },
+    "cached_at": 1769739487.422272
+  },
+  "fe2505064dd667e49c4b9d3564de6172": {
+    "filename": "18.12.2025_EXP-20251200182_EXC2512-167_p007_VAT.pdf",
+    "filepath": "V:\\AAA.โฟรเดอร์หลัก\\Build543 บริษัท ชายนี่ คิดส์ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2025-12\\VAT\\Mediterranean\\18.12.2025_EXP-20251200182_EXC2512-167_p007_VAT.pdf",
+    "data": {
+      "filename": "18.12.2025_EXP-20251200182_EXC2512-167_p007_VAT.pdf",
+      "filepath": "V:\\AAA.โฟรเดอร์หลัก\\Build543 บริษัท ชายนี่ คิดส์ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2025-12\\VAT\\Mediterranean\\18.12.2025_EXP-20251200182_EXC2512-167_p007_VAT.pdf",
+      "success": true,
+      "company_name": "Mediterranean Shipping (Thailand) Co., Ltd.",
+      "tax_id": "0105544019079",
+      "branch": "00000",
+      "date": "18/12/2025",
+      "document_number": "2512104571",
+      "reference_number": "EXP-20251200182",
+      "amount_before_vat": 1800.0,
+      "vat_amount": 126.0,
+      "total_amount": 3426.0,
+      "buyer_name": "SHINEE KIDS CO., LTD.",
+      "buyer_tax_id": "0105568010616",
+      "buyer_address": "366/32 AIYARA VILLAGE, PHETKASEM 81, LIAP KHLONG PHASI CHAROEN FANG NUEA RD., NONG KHAEM, NONG KHAEM, BANGKOK, TH10160",
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "document_status": "ต้นฉบับ",
+      "items": [
+        {
+          "จำนวนเงิน": "1,500.00",
+          "รายการ": "CY CHARGE - GENERAL",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "1,800.00",
+          "รายการ": "CLEANING",
+          "ลำดับ": "2"
+        }
+      ],
+      "customs_duty": 0.0,
+      "has_customs_duty": false,
+      "is_customs_department": false,
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: 2512104571\nวันที่: 18/12/2025\nชื่อผู้ขาย: Mediterranean Shipping (Thailand) Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105544019079\nที่อยู่ผู้ขาย: MSC Building, 571 Sukhumvit 71 Rd., Klongton-Nua, Vadhana, Bangkok 10110\nชื่อผู้ซื้อ: SHINEE KIDS CO., LTD.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105568010616\nที่อยู่ผู้ซื้อ: 366/32 AIYARA VILLAGE, PHETKASEM 81, LIAP KHLONG PHASI CHAROEN FANG NUEA RD., NONG KHAEM, NONG KHAE...",
+      "method": "aksonocr"
+    },
+    "cached_at": 1769739499.625746
   }
 }

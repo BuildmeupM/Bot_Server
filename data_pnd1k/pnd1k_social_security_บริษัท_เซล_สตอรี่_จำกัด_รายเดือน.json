@@ -1,0 +1,79 @@
+[
+  {
+    "recipient_id_card": "1100703131432",
+    "recipient_name": "นายภานุภาพ สมประสงค์",
+    "payment_month": 1,
+    "payment_year": 2025,
+    "salary": "28,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build386 บริษัท เซล สตอรี่ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม 01.2025.pdf",
+    "created_at": "2026-01-28T10:47:01.239565"
+  },
+  {
+    "recipient_id_card": "1102002515198",
+    "recipient_name": "นางสาวศิวพร ฤทธิดิเรก",
+    "payment_month": 1,
+    "payment_year": 2025,
+    "salary": "18,666.67",
+    "social_security_contribution": "750.00",
+    "company": "Build386 บริษัท เซล สตอรี่ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม 01.2025.pdf",
+    "created_at": "2026-01-28T10:47:01.239565"
+  },
+  {
+    "recipient_id_card": "1103703146386",
+    "recipient_name": "นายธนาธิป สังขะวรรณ",
+    "payment_month": 1,
+    "payment_year": 2025,
+    "salary": "21,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build386 บริษัท เซล สตอรี่ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม 01.2025.pdf",
+    "created_at": "2026-01-28T10:47:01.239565"
+  },
+  {
+    "recipient_id_card": "1110301326212",
+    "recipient_name": "นางสาวหิรัณยา วัฒนพงศ์พรชัย",
+    "payment_month": 1,
+    "payment_year": 2025,
+    "salary": "35,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build386 บริษัท เซล สตอรี่ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม 01.2025.pdf",
+    "created_at": "2026-01-28T10:47:01.239565"
+  },
+  {
+    "recipient_id_card": "1411700227623",
+    "recipient_name": "นายสราวุธ พรมดี",
+    "payment_month": 1,
+    "payment_year": 2025,
+    "salary": "50,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build386 บริษัท เซล สตอรี่ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม 01.2025.pdf",
+    "created_at": "2026-01-28T10:47:01.239565"
+  },
+  {
+    "recipient_id_card": "1579900363420",
+    "recipient_name": "นายดลภัทร์ รินสินจ้อย",
+    "payment_month": 1,
+    "payment_year": 2025,
+    "salary": "40,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build386 บริษัท เซล สตอรี่ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม 01.2025.pdf",
+    "created_at": "2026-01-28T10:47:01.239565"
+  },
+  {
+    "recipient_id_card": "1859900185626",
+    "recipient_name": "นายจารุกิตติ์ บุญจันทร์",
+    "payment_month": 1,
+    "payment_year": 2025,
+    "salary": "38,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build386 บริษัท เซล สตอรี่ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม 01.2025.pdf",
+    "created_at": "2026-01-28T10:47:01.239565"
+  }
+]

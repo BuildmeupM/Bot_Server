@@ -806,6 +806,25 @@ def email_page():
     """หน้าส่งอีเมลล์"""
     return render_template('email_sending.html')
 
+@app.route('/filing-summary')
+def filing_summary_page():
+    """หน้าสรุปข้อมูลยื่น บอจ.5/งบการเงิน/ภ.ง.ด.50 (เฉพาะ admin และ audit)"""
+    # ตรวจสอบ role (admin หรือ audit)
+    is_admin = session.get('is_admin', False)
+    # สำหรับตอนนี้ ใช้แค่ admin ก่อน (ถ้ามี audit role ในอนาคต ให้เพิ่มตรวจสอบที่นี่)
+    if not is_admin:
+        return render_template('filing_summary_login.html'), 200
+    return render_template('filing_summary.html', is_admin=is_admin)
+
+@app.route('/filing-dashboard')
+def filing_dashboard_page():
+    """หน้า Dashboard สรุปข้อมูลยื่น บอจ.5/งบการเงิน/ภ.ง.ด.50 (เฉพาะ admin และ audit)"""
+    # ตรวจสอบ role (admin หรือ audit)
+    is_admin = session.get('is_admin', False)
+    if not is_admin:
+        return render_template('filing_summary_login.html'), 200
+    return render_template('filing_dashboard.html', is_admin=is_admin)
+
 @app.route('/document-sorting')
 def document_sorting_page():
     """หน้าคัดแยกเอกสาร"""
@@ -1919,7 +1938,8 @@ def save_email_history(
     cc_emails: Optional[List[str]] = None,
     subject: Optional[str] = None,
     body: Optional[str] = None,
-    line_message: Optional[str] = None
+    line_message: Optional[str] = None,
+    summary_data: Optional[dict] = None
 ):
     """
     บันทึกประวัติการส่งอีเมลเป็น JSON
@@ -1964,7 +1984,8 @@ def save_email_history(
             'cc_emails': cc_emails or [],
             'subject': subject or None,
             'body': body or None,
-            'line_message': line_message or None
+            'line_message': line_message or None,
+            'summary_data': summary_data or None
         }
         
         history.append(history_entry)
@@ -2258,7 +2279,8 @@ def send_email():
                 to_emails=to_emails,
                 cc_emails=cc_emails,
                 subject=subject,
-                body=body
+                body=body,
+                summary_data=summary_data if summary_data else None
             )
             return jsonify({'success': True, 'message': message}), 200
         else:
@@ -3036,7 +3058,8 @@ def send_email_by_pattern():
                 to_emails=to_emails if to_emails else None,
                 cc_emails=cc_emails if cc_emails else None,
                 subject=final_subject,
-                body=final_body
+                body=final_body,
+                summary_data=summary_data if summary_data else None
             )
             
             response_data = {'success': True, 'message': message}
@@ -3092,6 +3115,476 @@ def get_email_history():
         return jsonify({'success': True, 'history': history}), 200
     except Exception as e:
         logger.error(f"เกิดข้อผิดพลาดในการดึงประวัติ: {e}", exc_info=True)
+        return jsonify({'success': False, 'message': f'เกิดข้อผิดพลาด: {e}'}), 500
+
+@app.route('/api/filing-summary/data', methods=['GET'])
+def get_filing_summary_data():
+    """ดึงข้อมูลสรุปยื่น บอจ.5/งบการเงิน/ภ.ง.ด.50 จาก cache JSON (เฉพาะ admin และ audit)"""
+    # ตรวจสอบ role (admin หรือ audit)
+    is_admin = session.get('is_admin', False)
+    if not is_admin:
+        return jsonify({'success': False, 'message': 'ไม่มีสิทธิ์เข้าถึง'}), 403
+    
+    try:
+        cache_dir = Path('cache')
+        if not cache_dir.exists():
+            return jsonify({'success': True, 'summary_data': []}), 200
+        
+        summary_list = []
+        
+        # อ่านไฟล์ JSON ทั้งหมดในโฟลเดอร์ cache
+        for cache_file in cache_dir.glob('ocr_cache_*.json'):
+            try:
+                with open(cache_file, 'r', encoding='utf-8') as f:
+                    cache_data = json.load(f)
+                
+                # แยกชื่อบริษัทจากชื่อไฟล์
+                filename = cache_file.stem  # ได้ชื่อไฟล์โดยไม่มี .json
+                # ลบ "ocr_cache_" ออก
+                company_info = filename.replace('ocr_cache_', '')
+                
+                # ประมวลผลข้อมูลใน cache
+                company_summary = {
+                    'company_name': company_info,
+                    'cache_file': cache_file.name,
+                    'total_documents': 0,
+                    'total_vat': 0.0,
+                    'total_amount': 0.0,
+                    'total_withholding': 0.0,
+                    'documents': [],
+                    'date_range': {'min': None, 'max': None}
+                }
+                
+                # ประมวลผลแต่ละ entry ใน cache
+                for entry_key, entry_data in cache_data.items():
+                    if not isinstance(entry_data, dict):
+                        continue
+                    
+                    doc_data = entry_data.get('data', {})
+                    if not doc_data:
+                        continue
+                    
+                    # ดึงข้อมูลจาก raw_text ถ้ามี (ต้อง parse JSON)
+                    parsed_data = None
+                    if 'raw_text' in doc_data:
+                        try:
+                            parsed_data = json.loads(doc_data['raw_text'])
+                            if isinstance(parsed_data, dict) and 'data' in parsed_data:
+                                parsed_data = parsed_data['data']
+                        except:
+                            pass
+                    
+                    # ดึงข้อมูลจาก data โดยตรง (สำหรับไฟล์ใหม่)
+                    if not parsed_data:
+                        parsed_data = doc_data
+                    
+                    # ดึงข้อมูลที่สำคัญ
+                    vat_amount = 0.0
+                    total_amount = 0.0
+                    withholding_amount = 0.0
+                    doc_date = None
+                    
+                    # ดึง VAT amount
+                    if 'vat_amount' in parsed_data:
+                        vat_amount = float(parsed_data['vat_amount']) if parsed_data['vat_amount'] else 0.0
+                    elif 'ภาษีมูลค่าเพิ่ม' in parsed_data:
+                        try:
+                            vat_amount = float(str(parsed_data['ภาษีมูลค่าเพิ่ม']).replace(',', ''))
+                        except:
+                            pass
+                    
+                    # ดึง Total amount
+                    if 'total_amount' in parsed_data:
+                        total_amount = float(parsed_data['total_amount']) if parsed_data['total_amount'] else 0.0
+                    elif 'ยอดรวมสุทธิ' in parsed_data:
+                        try:
+                            total_amount = float(str(parsed_data['ยอดรวมสุทธิ']).replace(',', ''))
+                        except:
+                            pass
+                    
+                    # ดึง Withholding amount
+                    if 'จำนวนเงินหัก ณ ที่จ่าย' in parsed_data:
+                        try:
+                            withholding_amount = float(str(parsed_data['จำนวนเงินหัก ณ ที่จ่าย']).replace(',', ''))
+                        except:
+                            pass
+                    
+                    # ดึงวันที่
+                    if 'date' in parsed_data:
+                        doc_date = parsed_data['date']
+                    elif 'วันที่' in parsed_data:
+                        doc_date = parsed_data['วันที่']
+                    
+                    # อัปเดต summary
+                    company_summary['total_documents'] += 1
+                    company_summary['total_vat'] += vat_amount
+                    company_summary['total_amount'] += total_amount
+                    company_summary['total_withholding'] += withholding_amount
+                    
+                    # อัปเดต date range
+                    if doc_date:
+                        try:
+                            # แปลงวันที่เป็นรูปแบบที่เปรียบเทียบได้
+                            date_parts = doc_date.split('/')
+                            if len(date_parts) == 3:
+                                day, month, year = date_parts
+                                # แปลงปี พ.ศ. เป็น ค.ศ. ถ้าจำเป็น
+                                year_int = int(year)
+                                if year_int > 2500:
+                                    year_int -= 543
+                                date_obj = datetime(year_int, int(month), int(day))
+                                
+                                if company_summary['date_range']['min'] is None or date_obj < company_summary['date_range']['min']:
+                                    company_summary['date_range']['min'] = date_obj
+                                if company_summary['date_range']['max'] is None or date_obj > company_summary['date_range']['max']:
+                                    company_summary['date_range']['max'] = date_obj
+                        except:
+                            pass
+                    
+                    # ดึงชื่อบริษัทที่อ่าน (ผู้ขาย)
+                    seller_company = parsed_data.get('company_name') or parsed_data.get('ชื่อผู้ขาย', '')
+                    seller_tax_id = parsed_data.get('tax_id') or parsed_data.get('เลขประจำตัวผู้เสียภาษี - ผู้ขาย', '')
+                    
+                    # เพิ่มข้อมูลเอกสาร
+                    doc_info = {
+                        'filename': entry_data.get('filename', ''),
+                        'filepath': entry_data.get('filepath', ''),
+                        'date': doc_date,
+                        'vat_amount': vat_amount,
+                        'total_amount': total_amount,
+                        'withholding_amount': withholding_amount,
+                        'company_name': seller_company,
+                        'tax_id': seller_tax_id,
+                        'document_number': parsed_data.get('document_number') or parsed_data.get('เลขที่ใบกำกับภาษี', '')
+                    }
+                    company_summary['documents'].append(doc_info)
+                    
+                    # สรุปข้อมูลตามบริษัทที่อ่าน (ผู้ขาย)
+                    if seller_company:
+                        if 'companies_read' not in company_summary:
+                            company_summary['companies_read'] = {}
+                        
+                        if seller_company not in company_summary['companies_read']:
+                            company_summary['companies_read'][seller_company] = {
+                                'tax_id': seller_tax_id,
+                                'file_count': 0,
+                                'filenames': [],
+                                'total_vat': 0.0,
+                                'total_amount': 0.0,
+                                'total_withholding': 0.0
+                            }
+                        
+                        company_summary['companies_read'][seller_company]['file_count'] += 1
+                        company_summary['companies_read'][seller_company]['filenames'].append(entry_data.get('filename', ''))
+                        company_summary['companies_read'][seller_company]['total_vat'] += vat_amount
+                        company_summary['companies_read'][seller_company]['total_amount'] += total_amount
+                        company_summary['companies_read'][seller_company]['total_withholding'] += withholding_amount
+                
+                # แปลง date range เป็น string
+                if company_summary['date_range']['min']:
+                    company_summary['date_range']['min'] = company_summary['date_range']['min'].strftime('%Y-%m-%d')
+                if company_summary['date_range']['max']:
+                    company_summary['date_range']['max'] = company_summary['date_range']['max'].strftime('%Y-%m-%d')
+                
+                # เพิ่มเฉพาะถ้ามีเอกสาร
+                if company_summary['total_documents'] > 0:
+                    summary_list.append(company_summary)
+                    
+            except Exception as e:
+                logger.warning(f"ไม่สามารถอ่านไฟล์ cache {cache_file.name}: {e}")
+                continue
+        
+        # เรียงลำดับตามชื่อบริษัท
+        summary_list.sort(key=lambda x: x['company_name'])
+        
+        return jsonify({'success': True, 'summary_data': summary_list}), 200
+    except Exception as e:
+        logger.error(f"เกิดข้อผิดพลาดในการดึงข้อมูลสรุป: {e}", exc_info=True)
+        return jsonify({'success': False, 'message': f'เกิดข้อผิดพลาด: {e}'}), 500
+
+@app.route('/api/filing-summary/export-excel', methods=['GET'])
+def export_filing_summary_excel():
+    """ส่งออกข้อมูลสรุปยื่น บอจ.5/งบการเงิน/ภ.ง.ด.50 เป็น Excel (เฉพาะ admin และ audit)"""
+    # ตรวจสอบ role (admin หรือ audit)
+    is_admin = session.get('is_admin', False)
+    if not is_admin:
+        return jsonify({'success': False, 'message': 'ไม่มีสิทธิ์เข้าถึง'}), 403
+    
+    try:
+        from openpyxl import Workbook
+        from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
+        from openpyxl.utils import get_column_letter
+        import tempfile
+        
+        cache_dir = Path('cache')
+        if not cache_dir.exists():
+            return jsonify({'success': False, 'message': 'ไม่พบโฟลเดอร์ cache'}), 404
+        
+        # สร้าง Workbook
+        wb = Workbook()
+        
+        # สไตล์สำหรับ Header
+        header_fill = PatternFill(start_color="2C3E50", end_color="2C3E50", fill_type="solid")
+        header_font = Font(name='TH Sarabun New', size=12, bold=True, color="FFFFFF")
+        header_alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
+        border = Border(
+            left=Side(style='thin'),
+            right=Side(style='thin'),
+            top=Side(style='thin'),
+            bottom=Side(style='thin')
+        )
+        data_font = Font(name='TH Sarabun New', size=11)
+        
+        # Sheet 1: สรุปตาม Build
+        ws1 = wb.active
+        ws1.title = "สรุปตาม Build"
+        
+        headers1 = ["Build/Company", "จำนวนไฟล์", "จำนวนบริษัท"]
+        ws1.append(headers1)
+        
+        # Format header
+        for col in range(1, len(headers1) + 1):
+            cell = ws1.cell(row=1, column=col)
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = header_alignment
+            cell.border = border
+        
+        # Sheet 2: รายละเอียดบริษัทที่อ่าน
+        ws2 = wb.create_sheet("รายละเอียดบริษัท")
+        headers2 = ["Build/Company", "ชื่อบริษัท", "เลขประจำตัวผู้เสียภาษี", "จำนวนไฟล์", "ชื่อไฟล์", "ยอดรวม VAT", "ยอดรวมหัก ณ ที่จ่าย", "ยอดรวมทั้งสิ้น"]
+        ws2.append(headers2)
+        
+        # Format header
+        for col in range(1, len(headers2) + 1):
+            cell = ws2.cell(row=1, column=col)
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = header_alignment
+            cell.border = border
+        
+        # อ่านไฟล์ JSON ทั้งหมดในโฟลเดอร์ cache
+        for cache_file in cache_dir.glob('ocr_cache_*.json'):
+            try:
+                with open(cache_file, 'r', encoding='utf-8') as f:
+                    cache_data = json.load(f)
+                
+                filename = cache_file.stem
+                company_info = filename.replace('ocr_cache_', '')
+                
+                # สรุปข้อมูลใน cache
+                total_documents = 0
+                companies_read = {}
+                
+                for entry_key, entry_data in cache_data.items():
+                    if not isinstance(entry_data, dict):
+                        continue
+                    
+                    doc_data = entry_data.get('data', {})
+                    if not doc_data:
+                        continue
+                    
+                    # ดึงข้อมูลจาก raw_text ถ้ามี
+                    parsed_data = None
+                    if 'raw_text' in doc_data:
+                        try:
+                            parsed_data = json.loads(doc_data['raw_text'])
+                            if isinstance(parsed_data, dict) and 'data' in parsed_data:
+                                parsed_data = parsed_data['data']
+                        except:
+                            pass
+                    
+                    if not parsed_data:
+                        parsed_data = doc_data
+                    
+                    # ดึงข้อมูลตัวเลข
+                    vat_amount = 0.0
+                    total_amount = 0.0
+                    withholding_amount = 0.0
+                    
+                    # ดึง VAT amount
+                    if 'vat_amount' in parsed_data:
+                        try:
+                            vat_amount = float(parsed_data['vat_amount']) if parsed_data['vat_amount'] else 0.0
+                        except:
+                            pass
+                    elif 'ภาษีมูลค่าเพิ่ม' in parsed_data:
+                        try:
+                            vat_amount = float(str(parsed_data['ภาษีมูลค่าเพิ่ม']).replace(',', ''))
+                        except:
+                            pass
+                    
+                    # ดึง Total amount
+                    if 'total_amount' in parsed_data:
+                        try:
+                            total_amount = float(parsed_data['total_amount']) if parsed_data['total_amount'] else 0.0
+                        except:
+                            pass
+                    elif 'ยอดรวมสุทธิ' in parsed_data:
+                        try:
+                            total_amount = float(str(parsed_data['ยอดรวมสุทธิ']).replace(',', ''))
+                        except:
+                            pass
+                    
+                    # ดึง Withholding amount
+                    if 'จำนวนเงินหัก ณ ที่จ่าย' in parsed_data:
+                        try:
+                            withholding_amount = float(str(parsed_data['จำนวนเงินหัก ณ ที่จ่าย']).replace(',', ''))
+                        except:
+                            pass
+                    elif 'withholding_amount' in parsed_data:
+                        try:
+                            withholding_amount = float(parsed_data['withholding_amount']) if parsed_data['withholding_amount'] else 0.0
+                        except:
+                            pass
+                    
+                    # ดึงชื่อบริษัทที่อ่าน (ผู้ขาย)
+                    seller_company = parsed_data.get('company_name') or parsed_data.get('ชื่อผู้ขาย', '')
+                    seller_tax_id = parsed_data.get('tax_id') or parsed_data.get('เลขประจำตัวผู้เสียภาษี - ผู้ขาย', '')
+                    
+                    if seller_company:
+                        total_documents += 1
+                        
+                        if seller_company not in companies_read:
+                            companies_read[seller_company] = {
+                                'tax_id': seller_tax_id,
+                                'file_count': 0,
+                                'filenames': [],
+                                'total_vat': 0.0,
+                                'total_amount': 0.0,
+                                'total_withholding': 0.0
+                            }
+                        
+                        companies_read[seller_company]['file_count'] += 1
+                        companies_read[seller_company]['total_vat'] += vat_amount
+                        companies_read[seller_company]['total_amount'] += total_amount
+                        companies_read[seller_company]['total_withholding'] += withholding_amount
+                        filename_entry = entry_data.get('filename', '')
+                        if filename_entry:
+                            companies_read[seller_company]['filenames'].append(filename_entry)
+                
+                # เพิ่มข้อมูลใน Sheet 1
+                if total_documents > 0:
+                    ws1.append([
+                        company_info,
+                        total_documents,
+                        len(companies_read)
+                    ])
+                    
+                    # เพิ่มข้อมูลใน Sheet 2
+                    for company_name, company_data in companies_read.items():
+                        filenames = company_data.get('filenames', [])
+                        total_vat = company_data.get('total_vat', 0.0)
+                        total_withholding = company_data.get('total_withholding', 0.0)
+                        total_amount_sum = company_data.get('total_amount', 0.0)
+                        
+                        # ถ้ามีหลายไฟล์ ให้แยกเป็นหลายแถว
+                        if filenames:
+                            for idx, filename_item in enumerate(filenames):
+                                if idx == 0:
+                                    # แถวแรกแสดงข้อมูลบริษัทและจำนวนไฟล์ทั้งหมด พร้อมยอดรวม
+                                    ws2.append([
+                                        company_info,
+                                        company_name,
+                                        company_data.get('tax_id', ''),
+                                        company_data.get('file_count', 0),
+                                        filename_item,
+                                        total_vat,
+                                        total_withholding,
+                                        total_amount_sum
+                                    ])
+                                else:
+                                    # แถวถัดไปแสดงเฉพาะชื่อไฟล์ (ยอดรวมว่าง)
+                                    ws2.append([
+                                        '',  # Build/Company ว่าง
+                                        '',  # ชื่อบริษัทว่าง
+                                        '',  # Tax ID ว่าง
+                                        '',  # จำนวนไฟล์ว่าง
+                                        filename_item,
+                                        '',  # ยอดรวม VAT ว่าง
+                                        '',  # ยอดรวมหัก ณ ที่จ่ายว่าง
+                                        ''   # ยอดรวมทั้งสิ้นว่าง
+                                    ])
+                        else:
+                            # ถ้าไม่มีชื่อไฟล์ ให้แสดงแถวเดียว
+                            ws2.append([
+                                company_info,
+                                company_name,
+                                company_data.get('tax_id', ''),
+                                company_data.get('file_count', 0),
+                                '',
+                                total_vat,
+                                total_withholding,
+                                total_amount_sum
+                            ])
+                    
+            except Exception as e:
+                logger.warning(f"ไม่สามารถอ่านไฟล์ cache {cache_file.name}: {e}")
+                continue
+        
+        # Format ข้อมูลใน Sheet 1
+        for row in ws1.iter_rows(min_row=2, max_row=ws1.max_row):
+            for cell in row:
+                cell.font = data_font
+                cell.border = border
+                if cell.column == 2 or cell.column == 3:  # จำนวนไฟล์, จำนวนบริษัท
+                    cell.alignment = Alignment(horizontal='right', vertical='center')
+                else:
+                    cell.alignment = Alignment(horizontal='left', vertical='center')
+        
+        # Format ข้อมูลใน Sheet 2
+        for row in ws2.iter_rows(min_row=2, max_row=ws2.max_row):
+            for cell in row:
+                cell.font = data_font
+                cell.border = border
+                if cell.column == 4:  # จำนวนไฟล์
+                    cell.alignment = Alignment(horizontal='right', vertical='center')
+                elif cell.column in [6, 7, 8]:  # ยอดรวม VAT, หัก ณ ที่จ่าย, ทั้งสิ้น
+                    cell.alignment = Alignment(horizontal='right', vertical='center')
+                    # จัดรูปแบบตัวเลข
+                    if cell.value and isinstance(cell.value, (int, float)):
+                        cell.number_format = '#,##0.00'
+                else:
+                    cell.alignment = Alignment(horizontal='left', vertical='center')
+        
+        # ปรับความกว้างคอลัมน์
+        ws1.column_dimensions['A'].width = 50
+        ws1.column_dimensions['B'].width = 15
+        ws1.column_dimensions['C'].width = 15
+        
+        ws2.column_dimensions['A'].width = 40
+        ws2.column_dimensions['B'].width = 40
+        ws2.column_dimensions['C'].width = 20
+        ws2.column_dimensions['D'].width = 15
+        ws2.column_dimensions['E'].width = 60
+        ws2.column_dimensions['F'].width = 18  # ยอดรวม VAT
+        ws2.column_dimensions['G'].width = 20  # ยอดรวมหัก ณ ที่จ่าย
+        ws2.column_dimensions['H'].width = 18  # ยอดรวมทั้งสิ้น
+        
+        # Freeze header row
+        ws1.freeze_panes = 'A2'
+        ws2.freeze_panes = 'A2'
+        
+        # สร้างไฟล์ชั่วคราว
+        temp_dir = Path(tempfile.gettempdir())
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        excel_filename = f'filing_summary_{timestamp}.xlsx'
+        excel_path = temp_dir / excel_filename
+        
+        wb.save(excel_path)
+        
+        logger.info(f"✅ สร้างไฟล์ Excel สรุปข้อมูล: {excel_path}")
+        
+        # ส่งไฟล์กลับ
+        return send_file(
+            str(excel_path),
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            as_attachment=True,
+            download_name=excel_filename
+        )
+        
+    except Exception as e:
+        logger.error(f"เกิดข้อผิดพลาดในการส่งออก Excel: {e}", exc_info=True)
         return jsonify({'success': False, 'message': f'เกิดข้อผิดพลาด: {e}'}), 500
 
 @app.route('/api/email/history/export', methods=['GET'])
@@ -10779,8 +11272,14 @@ def generate_50_tawi():
                     if i < len(tax_id_clean):
                         worksheet.Range(cell_ref).Value = tax_id_clean[i]
             
-            # 2. กรอกชื่อกิจการ
-            worksheet.Range('D10').Value = company_name_full
+            # 2. กรอกชื่อกิจการ (ตัดข้อความหลัง "จำกัด" ออก)
+            # ตัดข้อความหลัง "จำกัด" ออก (เช่น "รายเดือน", "รายปี" ฯลฯ)
+            cleaned_company_name = company_name_full
+            if 'จำกัด' in cleaned_company_name:
+                # หาตำแหน่งของ "จำกัด" และตัดทุกอย่างหลังนั้นออก
+                index = cleaned_company_name.find('จำกัด')
+                cleaned_company_name = cleaned_company_name[:index + len('จำกัด')].strip()
+            worksheet.Range('D10').Value = cleaned_company_name
             
             # 3. กรอกที่อยู่กิจการ
             worksheet.Range('D12').Value = company_address

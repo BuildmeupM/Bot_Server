@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BotV3 - ไม่มีสิทธิ์เข้าถึง</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0e1117;
+            color: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .error-container {
+            text-align: center;
+            max-width: 500px;
+        }
+        
+        .error-icon {
+            font-size: 5em;
+            margin-bottom: 20px;
+        }
+        
+        .error-title {
+            font-size: 2em;
+            color: #ef4444;
+            margin-bottom: 15px;
+        }
+        
+        .error-message {
+            color: #94a3b8;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">🔒</div>
+        <h1 class="error-title">ไม่มีสิทธิ์เข้าถึง</h1>
+        <p class="error-message">คุณต้องเป็น admin หรือ audit เพื่อเข้าถึงหน้านี้</p>
+        <a href="/" class="btn">กลับไปหน้าแรก</a>
+    </div>
+</body>
+</html>
