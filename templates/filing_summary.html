@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BotV3 - สรุปข้อมูลยื่น บอจ.5/งบการเงิน/ภ.ง.ด.50</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0e1117;
+            color: #fafafa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        .nav-bar {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav-link {
+            padding: 10px 20px;
+            background: #334155;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .nav-link:hover {
+            background: #475569;
+        }
+        
+        .nav-link.active {
+            background: #667eea;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .summary-card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .summary-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .summary-card-title {
+            color: #fbbf24;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        .summary-card-date {
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+        
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .summary-table th,
+        .summary-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .summary-table th {
+            background: #0f172a;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+        
+        .summary-table td {
+            color: #cbd5e1;
+        }
+        
+        .summary-table tr:hover {
+            background: #0f172a;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #94a3b8;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+        
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .filter-section {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-group label {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            padding: 8px 12px;
+            border: 1px solid #475569;
+            border-radius: 5px;
+            background: #0f172a;
+            color: #fafafa;
+            font-size: 14px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .amount-cell {
+            text-align: right;
+            font-weight: 600;
+            color: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 สรุปข้อมูลยื่น บอจ.5/งบการเงิน/ภ.ง.ด.50</h1>
+            <p>ข้อมูลสรุปการยื่นแบบภาษีและเอกสารที่เกี่ยวข้อง</p>
+        </div>
+        
+        <div class="nav-bar">
+            <a href="/" class="nav-link">🏠 หน้าแรก</a>
+            <a href="/email" class="nav-link">📧 ส่งอีเมลล์</a>
+            <a href="/filing-summary" class="nav-link active">📋 สรุปข้อมูลยื่น</a>
+            <a href="/filing-dashboard" class="nav-link">📊 Dashboard</a>
+            <button class="nav-link" onclick="exportToExcel()" style="background: #10b981; border: none; cursor: pointer;">
+                📥 ส่งออก Excel
+            </button>
+        </div>
+        
+        <div class="filter-section">
+            <div class="filter-group">
+                <label>ค้นหา:</label>
+                <input type="text" id="searchInput" placeholder="ค้นหาชื่อบริษัท, Pattern, หรือ Subject..." style="min-width: 300px;">
+                <label>จากวันที่:</label>
+                <input type="date" id="dateFrom">
+                <label>ถึงวันที่:</label>
+                <input type="date" id="dateTo">
+                <button class="btn btn-primary" onclick="filterData()">🔍 ค้นหา</button>
+                <button class="btn btn-primary" onclick="resetFilter()">🔄 รีเซ็ต</button>
+            </div>
+        </div>
+        
+        <div id="summaryStats" style="background: #1e293b; padding: 20px; border-radius: 10px; margin-bottom: 20px; display: none;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="text-align: center; padding: 15px; background: #0f172a; border-radius: 8px; border-left: 4px solid #667eea;">
+                    <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">จำนวน Build ทั้งหมด</div>
+                    <div style="color: #60a5fa; font-size: 1.8em; font-weight: 700;" id="totalBuilds">0</div>
+                </div>
+                <div style="text-align: center; padding: 15px; background: #0f172a; border-radius: 8px; border-left: 4px solid #10b981;">
+                    <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">จำนวนไฟล์ทั้งหมด</div>
+                    <div style="color: #10b981; font-size: 1.8em; font-weight: 700;" id="totalFiles">0</div>
+                </div>
+                <div style="text-align: center; padding: 15px; background: #0f172a; border-radius: 8px; border-left: 4px solid #fbbf24;">
+                    <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">จำนวนบริษัทที่อ่าน</div>
+                    <div style="color: #fbbf24; font-size: 1.8em; font-weight: 700;" id="totalCompanies">0</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="summaryContainer">
+            <div class="loading">
+                <p>⏳ กำลังโหลดข้อมูล...</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let allSummaryData = {
+            ocr_cache: [],
+            auditcheck: []
+        };
+        
+        // โหลดข้อมูลเมื่อหน้าเว็บโหลดเสร็จ
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSummaryData();
+        });
+        
+        // ฟังก์ชันโหลดข้อมูลสรุป
+        async function loadSummaryData() {
+            try {
+                const response = await fetch('/api/filing-summary/data');
+                const data = await response.json();
+                
+                if (!data.success) {
+                    if (response.status === 403) {
+                        document.getElementById('summaryContainer').innerHTML = `
+                            <div class="empty-state">
+                                <div class="empty-state-icon">🔒</div>
+                                <h2>ไม่มีสิทธิ์เข้าถึง</h2>
+                                <p>คุณต้องเป็น admin หรือ audit เพื่อเข้าถึงหน้านี้</p>
+                            </div>
+                        `;
+                        return;
+                    }
+                    throw new Error(data.message || 'ไม่สามารถโหลดข้อมูลได้');
+                }
+                
+                // รองรับทั้งรูปแบบเก่าและใหม่
+                if (data.summary_data && typeof data.summary_data === 'object' && !Array.isArray(data.summary_data)) {
+                    allSummaryData = {
+                        ocr_cache: data.summary_data.ocr_cache || [],
+                        auditcheck: data.summary_data.auditcheck || []
+                    };
+                } else {
+                    // รูปแบบเก่า (backward compatibility)
+                    const oldData = data.summary_data || [];
+                    allSummaryData = {
+                        ocr_cache: oldData.filter(item => item.data_source === 'ocr_cache' || !item.data_source),
+                        auditcheck: oldData.filter(item => item.data_source === 'auditcheck')
+                    };
+                }
+                
+                displaySummaryStats(allSummaryData);
+                displaySummaryData(allSummaryData);
+            } catch (error) {
+                console.error('Error loading summary data:', error);
+                document.getElementById('summaryContainer').innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">❌</div>
+                        <h2>เกิดข้อผิดพลาด</h2>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // ฟังก์ชันแสดงสถิติสรุป
+        function displaySummaryStats(data) {
+            const ocrCacheData = data.ocr_cache || [];
+            const auditcheckData = data.auditcheck || [];
+            const allData = [...ocrCacheData, ...auditcheckData];
+            
+            if (allData.length === 0) {
+                document.getElementById('summaryStats').style.display = 'none';
+                return;
+            }
+            
+            // คำนวณสถิติ
+            let totalFiles = 0;
+            let totalCompanies = new Set();
+            
+            allData.forEach(company => {
+                totalFiles += company.total_documents || 0;
+                
+                // นับบริษัทที่อ่าน
+                if (company.companies_read) {
+                    Object.keys(company.companies_read).forEach(companyName => {
+                        if (companyName) {
+                            totalCompanies.add(companyName);
+                        }
+                    });
+                }
+            });
+            
+            // แสดงสถิติ
+            document.getElementById('totalBuilds').textContent = allData.length;
+            document.getElementById('totalFiles').textContent = totalFiles.toLocaleString('th-TH');
+            document.getElementById('totalCompanies').textContent = totalCompanies.size;
+            document.getElementById('summaryStats').style.display = 'block';
+        }
+        
+        // ฟังก์ชันแสดงข้อมูลสรุป
+        function displaySummaryData(data) {
+            const container = document.getElementById('summaryContainer');
+            
+            const ocrCacheData = data.ocr_cache || [];
+            const auditcheckData = data.auditcheck || [];
+            const allData = [...ocrCacheData, ...auditcheckData];
+            
+            if (allData.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <h2>ยังไม่มีข้อมูล</h2>
+                        <p>ยังไม่มีข้อมูลสรุปการยื่นแบบภาษี</p>
+                    </div>
+                `;
+                document.getElementById('summaryStats').style.display = 'none';
+                return;
+            }
+            
+            // ประกาศตัวแปร html
+            let html = '';
+            
+            // สร้าง Tab Navigation
+            html += `
+                <div class="tab-navigation" style="display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid #334155;">
+                    <button class="tab-button active" onclick="switchTab('ocr_cache')" id="tab-ocr_cache" style="padding: 12px 24px; background: #3b82f6; color: white; border: none; border-radius: 8px 8px 0 0; cursor: pointer; font-size: 1em; font-weight: 600;">
+                        📊 ข้อมูล OCR ของเซอร์วิส (${ocrCacheData.length} Builds)
+                    </button>
+                    <button class="tab-button" onclick="switchTab('auditcheck')" id="tab-auditcheck" style="padding: 12px 24px; background: #475569; color: #cbd5e1; border: none; border-radius: 8px 8px 0 0; cursor: pointer; font-size: 1em; font-weight: 600;">
+                        🔍 ข้อมูล OCR ของผู้ตรวจ (${auditcheckData.length} Builds)
+                    </button>
+                </div>
+            `;
+            
+            // Container สำหรับแต่ละ Tab
+            html += `
+                <div id="tab-content-ocr_cache" class="tab-content">
+            `;
+            
+            // แสดงข้อมูล OCR Cache (ข้อมูล OCR ของเซอร์วิส)
+            if (ocrCacheData.length > 0) {
+                ocrCacheData.forEach((company, index) => {
+                const dateRange = company.date_range || {};
+                const dateRangeStr = dateRange.min && dateRange.max 
+                    ? `${dateRange.min} ถึง ${dateRange.max}`
+                    : dateRange.min || dateRange.max || 'ไม่ระบุ';
+                
+                html += `
+                    <div class="summary-card">
+                        <div class="summary-card-header">
+                            <div>
+                                <div class="summary-card-title">${company.company_name || 'ไม่ระบุชื่อบริษัท'}</div>
+                                <div style="color: #94a3b8; font-size: 0.85em; margin-top: 5px;">
+                                    ไฟล์ Cache: ${company.cache_file || '-'} | 
+                                    <span style="color: #10b981; font-weight: 600;">จำนวนไฟล์ทั้งหมด: ${(company.total_documents || 0).toLocaleString('th-TH')} ไฟล์</span>
+                                    ${company.companies_read && Object.keys(company.companies_read).length > 0 ? 
+                                        ` | <span style="color: #fbbf24; font-weight: 600;">จำนวนบริษัทที่อ่าน: ${Object.keys(company.companies_read).length} บริษัท</span>` : 
+                                        ''}
+                                </div>
+                            </div>
+                            <div class="summary-card-date">${dateRangeStr}</div>
+                        </div>
+                        
+                        <table class="summary-table">
+                            <thead>
+                                <tr>
+                                    <th>รายการ</th>
+                                    <th style="text-align: right;">จำนวนเงิน</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ยอดรวมภาษีมูลค่าเพิ่ม (VAT)</td>
+                                    <td class="amount-cell">${formatCurrency(company.total_vat || 0)}</td>
+                                </tr>
+                                <tr>
+                                    <td>ยอดรวมหัก ณ ที่จ่าย</td>
+                                    <td class="amount-cell">${formatCurrency(company.total_withholding || 0)}</td>
+                                </tr>
+                                <tr>
+                                    <td>ยอดรวมทั้งสิ้น</td>
+                                    <td class="amount-cell" style="color: #60a5fa; font-size: 1.1em;">${formatCurrency(company.total_amount || 0)}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        ${company.companies_read && Object.keys(company.companies_read).length > 0 ? `
+                            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #334155;">
+                                <div style="color: #fbbf24; font-weight: 600; margin-bottom: 15px; font-size: 1.1em;">📋 สรุปข้อมูลบริษัทที่อ่าน:</div>
+                                <div style="display: grid; gap: 15px;">
+                                    ${Object.entries(company.companies_read).map(([companyName, companyData]) => `
+                                        <div style="background: #0f172a; padding: 15px; border-radius: 8px; border-left: 4px solid #667eea;">
+                                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                                                <div>
+                                                    <div style="color: #60a5fa; font-weight: 600; font-size: 1em; margin-bottom: 5px;">${companyName || 'ไม่ระบุชื่อบริษัท'}</div>
+                                                    ${companyData.tax_id ? `
+                                                        <div style="color: #94a3b8; font-size: 0.85em;">เลขประจำตัวผู้เสียภาษี: ${companyData.tax_id}</div>
+                                                    ` : ''}
+                                                </div>
+                                                <div style="color: #10b981; font-weight: 600; font-size: 1.1em;">${companyData.file_count || 0} ไฟล์</div>
+                                            </div>
+                                            
+                                            <table class="summary-table" style="font-size: 0.9em; margin-top: 10px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>รายการ</th>
+                                                        <th style="text-align: right;">จำนวนเงิน</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ยอดรวมภาษีมูลค่าเพิ่ม (VAT)</td>
+                                                        <td class="amount-cell">${formatCurrency(companyData.total_vat || 0)}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ยอดรวมหัก ณ ที่จ่าย</td>
+                                                        <td class="amount-cell">${formatCurrency(companyData.total_withholding || 0)}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>ยอดรวมทั้งสิ้น</td>
+                                                        <td class="amount-cell" style="color: #60a5fa;">${formatCurrency(companyData.total_amount || 0)}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            
+                                            ${companyData.filenames && companyData.filenames.length > 0 ? `
+                                                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155;">
+                                                    <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">รายชื่อไฟล์ (${companyData.filenames.length} ไฟล์):</div>
+                                                    <div style="max-height: 150px; overflow-y: auto; background: #1e293b; padding: 10px; border-radius: 5px;">
+                                                        ${companyData.filenames.map((filename, idx) => `
+                                                            <div style="color: #cbd5e1; font-size: 0.85em; padding: 3px 0; border-bottom: 1px solid #334155;">
+                                                                ${idx + 1}. ${filename || '-'}
+                                                            </div>
+                                                        `).join('')}
+                                                    </div>
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        ${company.documents && company.documents.length > 0 ? `
+                            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #334155;">
+                                <div style="color: #60a5fa; font-weight: 600; margin-bottom: 10px;">รายละเอียดเอกสารทั้งหมด (แสดง 10 รายการแรก):</div>
+                                <div style="max-height: 300px; overflow-y: auto;">
+                                    <table class="summary-table" style="font-size: 0.9em;">
+                                        <thead>
+                                            <tr>
+                                                <th>วันที่</th>
+                                                <th>ชื่อไฟล์</th>
+                                                <th>เลขที่เอกสาร</th>
+                                                <th>ชื่อผู้ขาย</th>
+                                                <th style="text-align: right;">VAT</th>
+                                                <th style="text-align: right;">หัก ณ ที่จ่าย</th>
+                                                <th style="text-align: right;">ยอดรวม</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${company.documents.slice(0, 10).map(doc => `
+                                                <tr>
+                                                    <td>${doc.date || '-'}</td>
+                                                    <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${doc.filename || ''}">${doc.filename || '-'}</td>
+                                                    <td>${doc.document_number || '-'}</td>
+                                                    <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${doc.company_name || ''}">${doc.company_name || '-'}</td>
+                                                    <td class="amount-cell" style="font-size: 0.9em;">${formatCurrency(doc.vat_amount || 0)}</td>
+                                                    <td class="amount-cell" style="font-size: 0.9em;">${formatCurrency(doc.withholding_amount || 0)}</td>
+                                                    <td class="amount-cell" style="font-size: 0.9em;">${formatCurrency(doc.total_amount || 0)}</td>
+                                                </tr>
+                                            `).join('')}
+                                        </tbody>
+                                    </table>
+                                    ${company.documents.length > 10 ? `
+                                        <div style="color: #94a3b8; font-size: 0.85em; margin-top: 10px; text-align: center;">
+                                            ... และอีก ${company.documents.length - 10} รายการ
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+                });
+            } else {
+                html += `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <h2>ยังไม่มีข้อมูล OCR ของเซอร์วิส</h2>
+                        <p>ยังไม่มีข้อมูลสรุปการยื่นแบบภาษีจากเซอร์วิส</p>
+                    </div>
+                `;
+            }
+            
+            html += `</div>`; // ปิด tab-content-ocr_cache
+            
+            // Container สำหรับ Auditcheck Tab
+            html += `
+                <div id="tab-content-auditcheck" class="tab-content" style="display: none;">
+            `;
+            
+            // แสดงข้อมูล Auditcheck (ข้อมูล OCR ของผู้ตรวจ)
+            if (auditcheckData.length > 0) {
+                auditcheckData.forEach((company, index) => {
+                    const dateRange = company.date_range || {};
+                    const dateRangeStr = dateRange.min && dateRange.max 
+                        ? `${dateRange.min} ถึง ${dateRange.max}`
+                        : dateRange.min || dateRange.max || (company.tax_month ? `เดือนภาษี: ${company.tax_month}` : 'ไม่ระบุ');
+                    
+                    html += `
+                        <div class="summary-card">
+                            <div class="summary-card-header">
+                                <div>
+                                    <div class="summary-card-title">${company.company_name || 'ไม่ระบุชื่อบริษัท'}</div>
+                                    <div style="color: #94a3b8; font-size: 0.85em; margin-top: 5px;">
+                                        ไฟล์ Cache: ${company.cache_file || '-'} | 
+                                        <span style="color: #10b981; font-weight: 600;">จำนวนไฟล์ทั้งหมด: ${(company.total_documents || 0).toLocaleString('th-TH')} ไฟล์</span>
+                                        ${company.companies_read && Object.keys(company.companies_read).length > 0 ? 
+                                            ` | <span style="color: #fbbf24; font-weight: 600;">จำนวนบริษัทที่อ่าน: ${Object.keys(company.companies_read).length} บริษัท</span>` : 
+                                            ''}
+                                        ${company.tax_month ? ` | <span style="color: #f59e0b; font-weight: 600;">เดือนภาษี: ${company.tax_month}</span>` : ''}
+                                    </div>
+                                </div>
+                                <div class="summary-card-date">${dateRangeStr}</div>
+                            </div>
+                            
+                            ${company.companies_read && Object.keys(company.companies_read).length > 0 ? `
+                                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #334155;">
+                                    <div style="color: #fbbf24; font-weight: 600; margin-bottom: 15px; font-size: 1.1em;">📋 สรุปข้อมูลบริษัทที่อ่าน:</div>
+                                    <div style="display: grid; gap: 15px;">
+                                        ${Object.entries(company.companies_read).map(([companyName, companyData]) => `
+                                            <div style="background: #0f172a; padding: 15px; border-radius: 8px; border-left: 4px solid #10b981;">
+                                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                                                    <div>
+                                                        <div style="color: #10b981; font-weight: 600; font-size: 1em; margin-bottom: 5px;">${companyName || 'ไม่ระบุชื่อบริษัท'}</div>
+                                                        ${companyData.tax_id ? `
+                                                            <div style="color: #94a3b8; font-size: 0.85em;">เลขประจำตัวผู้เสียภาษี: ${companyData.tax_id}</div>
+                                                        ` : ''}
+                                                    </div>
+                                                    <div style="color: #10b981; font-weight: 600; font-size: 1.1em;">${companyData.file_count || 0} ไฟล์</div>
+                                                </div>
+                                                
+                                                ${companyData.filenames && companyData.filenames.length > 0 ? `
+                                                    <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155;">
+                                                        <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">รายชื่อไฟล์ (${companyData.filenames.length} ไฟล์):</div>
+                                                        <div style="max-height: 150px; overflow-y: auto; background: #1e293b; padding: 10px; border-radius: 5px;">
+                                                            ${companyData.filenames.map((filename, idx) => `
+                                                                <div style="color: #cbd5e1; font-size: 0.85em; padding: 3px 0; border-bottom: 1px solid #334155;">
+                                                                    ${idx + 1}. ${filename || '-'}
+                                                                </div>
+                                                            `).join('')}
+                                                        </div>
+                                                    </div>
+                                                ` : ''}
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+            } else {
+                html += `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <h2>ยังไม่มีข้อมูล OCR ของผู้ตรวจ</h2>
+                        <p>ยังไม่มีข้อมูลสรุปการยื่นแบบภาษีจากผู้ตรวจ</p>
+                    </div>
+                `;
+            }
+            
+            html += `</div>`; // ปิด tab-content-auditcheck
+            
+            container.innerHTML = html;
+        }
+        
+        // ฟังก์ชันสลับ Tab
+        function switchTab(tabName) {
+            // ซ่อนทุก Tab Content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Reset ทุก Tab Button
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.style.background = '#475569';
+                btn.style.color = '#cbd5e1';
+            });
+            
+            // แสดง Tab Content ที่เลือก
+            const selectedContent = document.getElementById(`tab-content-${tabName}`);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
+            
+            // Highlight Tab Button ที่เลือก
+            const selectedButton = document.getElementById(`tab-${tabName}`);
+            if (selectedButton) {
+                selectedButton.style.background = tabName === 'ocr_cache' ? '#3b82f6' : '#10b981';
+                selectedButton.style.color = 'white';
+            }
+        }
+        
+        // ฟังก์ชันกรองข้อมูล
+        function filterData() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const dateFrom = document.getElementById('dateFrom').value;
+            const dateTo = document.getElementById('dateTo').value;
+            
+            const allData = [...allSummaryData.ocr_cache, ...allSummaryData.auditcheck];
+            
+            let filtered = allData.filter(company => {
+                // ค้นหาใน company_name, cache_file
+                const matchesSearch = !searchTerm || 
+                    (company.company_name && company.company_name.toLowerCase().includes(searchTerm)) ||
+                    (company.cache_file && company.cache_file.toLowerCase().includes(searchTerm));
+                
+                // กรองตามวันที่ (ใช้ date_range)
+                let matchesDate = true;
+                if (dateFrom || dateTo) {
+                    const dateRange = company.date_range || {};
+                    if (dateFrom && dateRange.max && dateRange.max < dateFrom) matchesDate = false;
+                    if (dateTo && dateRange.min && dateRange.min > dateTo) matchesDate = false;
+                }
+                
+                return matchesSearch && matchesDate;
+            });
+            
+            // แสดงผลแบบกรอง (ต้องแปลงกลับเป็นรูปแบบที่ displaySummaryData ต้องการ)
+            const filteredData = {
+                ocr_cache: filtered.filter(item => item.data_source === 'ocr_cache' || (!item.data_source && allSummaryData.ocr_cache.includes(item))),
+                auditcheck: filtered.filter(item => item.data_source === 'auditcheck')
+            };
+            displaySummaryStats({ ocr_cache: filteredData.ocr_cache, auditcheck: filteredData.auditcheck });
+            displaySummaryData(filteredData);
+        }
+        
+        // ฟังก์ชันรีเซ็ตการกรอง
+        function resetFilter() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('dateFrom').value = '';
+            document.getElementById('dateTo').value = '';
+            displaySummaryStats(allSummaryData);
+            displaySummaryData(allSummaryData);
+        }
+        
+        // ฟังก์ชันจัดรูปแบบวันที่และเวลา
+        function formatDateTime(dateTimeStr) {
+            if (!dateTimeStr) return '-';
+            try {
+                const [date, time] = dateTimeStr.split(' ');
+                const [year, month, day] = date.split('-');
+                return `${day}/${month}/${year} ${time || ''}`;
+            } catch (e) {
+                return dateTimeStr;
+            }
+        }
+        
+        // ฟังก์ชันจัดรูปแบบเงิน
+        function formatCurrency(amount) {
+            if (!amount || amount === '0' || amount === 'ไม่มียอดชำระ') {
+                return amount || '0.00';
+            }
+            // ถ้าเป็นตัวเลข ให้จัดรูปแบบ
+            const num = parseFloat(amount.toString().replace(/,/g, ''));
+            if (isNaN(num)) return amount;
+            return num.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+        
+        // ฟังก์ชันค้นหาเมื่อกด Enter
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        filterData();
+                    }
+                });
+            }
+        });
+        
+        // ฟังก์ชันส่งออก Excel
+        async function exportToExcel() {
+            try {
+                // แสดง loading
+                const originalContent = document.getElementById('summaryContainer').innerHTML;
+                document.getElementById('summaryContainer').innerHTML = `
+                    <div class="loading">
+                        <p>⏳ กำลังสร้างไฟล์ Excel...</p>
+                    </div>
+                `;
+                
+                // ดาวน์โหลดไฟล์ Excel
+                const response = await fetch('/api/filing-summary/export-excel');
+                
+                if (!response.ok) {
+                    if (response.status === 403) {
+                        alert('⚠️ คุณไม่มีสิทธิ์เข้าถึง');
+                        return;
+                    }
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'ไม่สามารถสร้างไฟล์ Excel ได้');
+                }
+                
+                // ดาวน์โหลดไฟล์
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `filing_summary_${new Date().toISOString().slice(0, 10)}.xlsx`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                
+                // คืนค่าเนื้อหาเดิม
+                document.getElementById('summaryContainer').innerHTML = originalContent;
+                
+                // โหลดข้อมูลใหม่
+                loadSummaryData();
+                
+                alert('✅ ส่งออก Excel สำเร็จ');
+            } catch (error) {
+                console.error('Error exporting Excel:', error);
+                alert('❌ เกิดข้อผิดพลาดในการส่งออก Excel: ' + error.message);
+                
+                // คืนค่าเนื้อหาเดิม
+                loadSummaryData();
+            }
+        }
+    </script>
+</body>
+</html>

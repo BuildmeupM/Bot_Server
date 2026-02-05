@@ -797,13 +797,12 @@
                          ondragleave="handleDragLeave(event)">
                         <div class="file-drop-zone-icon">📄</div>
                         <div class="file-drop-zone-text">ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์</div>
-                        <div class="file-drop-zone-hint">รองรับ PDF, DOC, DOCX, XLS, XLSX · เลือกได้หลายไฟล์ อ่านทีละไฟล์</div>
+                        <div class="file-drop-zone-hint">รองรับ PDF, DOC, DOCX, XLS, XLSX · อัพโหลดได้ทีละไฟล์</div>
                     </div>
                     <input type="file" 
                            id="fileInput1" 
                            class="file-input" 
                            accept=".pdf,.doc,.docx,.xls,.xlsx"
-                           multiple
                            onchange="handleFileSelect(event, 'fileInput1', 'dropZone1', 'fileInfo1')">
                     <div id="fileInfo1" class="file-info" style="display: none;"></div>
                 </div>
@@ -819,13 +818,12 @@
                          ondragleave="handleDragLeave(event)">
                         <div class="file-drop-zone-icon">📄</div>
                         <div class="file-drop-zone-text">ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์</div>
-                        <div class="file-drop-zone-hint">รองรับ PDF, DOC, DOCX, XLS, XLSX · เลือกได้หลายไฟล์ อ่านทีละไฟล์</div>
+                        <div class="file-drop-zone-hint">รองรับ PDF, DOC, DOCX, XLS, XLSX · อัพโหลดได้ทีละไฟล์</div>
                     </div>
                     <input type="file" 
                            id="fileInput2" 
                            class="file-input" 
                            accept=".pdf,.doc,.docx,.xls,.xlsx"
-                           multiple
                            onchange="handleFileSelect(event, 'fileInput2', 'dropZone2', 'fileInfo2')">
                     <div id="fileInfo2" class="file-info" style="display: none;"></div>
                 </div>
@@ -1042,6 +1040,34 @@
                     </div>
                 </div>
                 
+                <!-- สรุปยอดรวม 12 เดือน -->
+                <div id="attachmentSummary12Months" style="display: none; margin-bottom: 20px; padding: 20px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border: 2px solid #10b981; border-radius: 12px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h3 style="margin: 0; color: #10b981; font-size: 1.3em; display: flex; align-items: center; gap: 10px;">
+                            <span>📊</span>
+                            <span>สรุปยอดรวมทั้ง 12 เดือน</span>
+                        </h3>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div style="padding: 15px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px;">
+                            <div style="color: #94a3b8; font-size: 0.9em; margin-bottom: 5px;">💵 รายได้นำส่งทั้งหมด</div>
+                            <div id="attachmentSummaryTotalIncome" style="color: #10b981; font-size: 1.5em; font-weight: 700;">0.00</div>
+                        </div>
+                        <div style="padding: 15px; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px;">
+                            <div style="color: #94a3b8; font-size: 0.9em; margin-bottom: 5px;">💰 ยอดหัก ณ ที่จ่าย</div>
+                            <div id="attachmentSummaryTotalTax" style="color: #3b82f6; font-size: 1.5em; font-weight: 700;">0.00</div>
+                        </div>
+                        <div style="padding: 15px; background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 8px;">
+                            <div style="color: #94a3b8; font-size: 0.9em; margin-bottom: 5px;">📌 เงินสมทบประกันสังคม</div>
+                            <div id="attachmentSummaryTotalSS" style="color: #fbbf24; font-size: 1.5em; font-weight: 700;">0.00</div>
+                        </div>
+                        <div style="padding: 15px; background: rgba(148, 163, 184, 0.1); border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 8px;">
+                            <div style="color: #94a3b8; font-size: 0.9em; margin-bottom: 5px;">📅 จำนวนเดือนที่มีข้อมูล</div>
+                            <div id="attachmentSummaryMonthCount" style="color: #94a3b8; font-size: 1.5em; font-weight: 700;">0 เดือน</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- ตารางข้อมูลใบแนบ (scrollable) -->
                 <div class="table-container" style="max-height: 600px; overflow-y: auto; border: 1px solid #444; border-radius: 8px;">
                     <table class="uploaded-data-table">
@@ -1079,19 +1105,20 @@
                     <table class="uploaded-data-table">
                         <thead style="position: sticky; top: 0; background: #1e1e1e; z-index: 10;">
                             <tr>
-                                <th style="width: 11%;">🆔 เลขบัตรประชาชน</th>
-                                <th style="width: 16%;">👤 ชื่อ - นามสกุล</th>
-                                <th style="width: 28%;">📍 ที่อยู่</th>
-                                <th style="width: 11%;">📆 เดือนที่จ่าย</th>
-                                <th style="width: 10%;">💵 รายได้รวม</th>
-                                <th style="width: 10%;">💰 ภาษีรวม</th>
-                                <th style="width: 10%;">📌 เงินสมทบ</th>
+                                <th style="width: 10%;">🆔 เลขบัตรประชาชน</th>
+                                <th style="width: 14%;">👤 ชื่อ - นามสกุล</th>
+                                <th style="width: 24%;">📍 ที่อยู่</th>
+                                <th style="width: 9%;">📋 ประเภทภาษี</th>
+                                <th style="width: 10%;">📆 เดือนที่จ่าย</th>
+                                <th style="width: 9%;">💵 รายได้รวม</th>
+                                <th style="width: 9%;">💰 ภาษีรวม</th>
+                                <th style="width: 9%;">📌 เงินสมทบ</th>
                                 <th style="width: 12%;">⚙️ การดำเนินการ</th>
                             </tr>
                         </thead>
                         <tbody id="employeeDataTableBody">
                             <tr class="empty-row">
-                                <td colspan="8">ยังไม่มีข้อมูลพนักงาน กรุณาอัพโหลดบัตรประชาชนและ/หรือใบแนบ ภ.ง.ด.1</td>
+                                <td colspan="9">ยังไม่มีข้อมูลพนักงาน กรุณาอัพโหลดบัตรประชาชนและ/หรือใบแนบ ภ.ง.ด.1</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1251,9 +1278,18 @@
                 <label style="display: block; margin-bottom: 6px; color: #cbd5e1; font-weight: 500;">📅 วันออกบัตร</label>
                 <input type="text" id="editEmployeeIssueDate" placeholder="เช่น 1 ก.พ. 2560" style="width: 100%; padding: 10px 12px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fafafa; font-size: 14px;" />
             </div>
-            <div class="form-group" style="margin-bottom: 18px;">
+            <div class="form-group" style="margin-bottom: 14px;">
                 <label style="display: block; margin-bottom: 6px; color: #cbd5e1; font-weight: 500;">📅 วันหมดอายุบัตร</label>
                 <input type="text" id="editEmployeeExpiryDate" placeholder="เช่น 1 ก.พ. 2570" style="width: 100%; padding: 10px 12px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fafafa; font-size: 14px;" />
+            </div>
+            <div class="form-group" style="margin-bottom: 18px;">
+                <label style="display: block; margin-bottom: 6px; color: #cbd5e1; font-weight: 500;">📋 ประเภทภาษี <span style="color: #f59e0b; font-size: 0.85em;">(ใช้กำหนดการดึงข้อมูล)</span></label>
+                <select id="editEmployeeIncomeType" style="width: 100%; padding: 10px 12px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fafafa; font-size: 14px; cursor: pointer;">
+                    <option value="40(1)">40(1) - เงินเดือน ค่าจ้าง เบี้ยเลี้ยง โบนัส</option>
+                    <option value="40(2)">40(2) - ค่าธรรมเนียม ค่านายหน้า</option>
+                    <option value="-">- (ไม่ระบุ)</option>
+                </select>
+                <div style="color: #94a3b8; font-size: 0.85em; margin-top: 5px;">⚠️ ประเภทภาษีนี้จะใช้เป็นตัวกำหนดการดึงข้อมูลเมื่อส่งออกเอกสาร</div>
             </div>
             <div style="display: flex; gap: 10px; justify-content: flex-end;">
                 <button type="button" onclick="closeEditEmployeeModal()" style="padding: 10px 20px; background: #334155; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em;">ยกเลิก</button>
@@ -1525,6 +1561,114 @@
                     <button type="button" id="cancelEditMonthlyDataBtn" onclick="cancelEditMonthlyData()" style="padding: 10px 20px; background: #64748b; color: #e2e8f0; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; display: none;">ยกเลิก</button>
                     <button type="button" onclick="closeMonthlyDetailModal()" style="padding: 10px 20px; background: #334155; color: #e2e8f0; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em;">ปิด</button>
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal สำหรับเลือกประเภทภาษีก่อนอัพโหลดใบแนบ ภ.ง.ด.1 -->
+    <div id="taxTypeSelectionModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10005; align-items: center; justify-content: center;">
+        <div style="background: #1e293b; border-radius: 12px; padding: 30px; max-width: 500px; width: 90%; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <h2 style="color: #10b981; font-size: 1.5em; margin: 0; display: flex; align-items: center; gap: 10px;">
+                    <span>📋</span>
+                    <span>เลือกประเภทภาษี</span>
+                </h2>
+                <button onclick="closeTaxTypeSelectionModal()" style="background: none; border: none; color: #94a3b8; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 5px; transition: all 0.3s;" onmouseover="this.style.background='#334155'; this.style.color='#fafafa';" onmouseout="this.style.background='none'; this.style.color='#94a3b8';">×</button>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <p style="color: #cbd5e1; font-size: 1em; margin-bottom: 20px; line-height: 1.6;">
+                    กรุณาเลือกประเภทภาษีของไฟล์ที่ต้องการอัพโหลด:
+                </p>
+                <div id="taxTypeSelectionFileName" style="color: #60a5fa; font-weight: 600; margin-bottom: 20px; padding: 10px; background: rgba(59, 130, 246, 0.1); border-radius: 6px; border-left: 4px solid #3b82f6;">
+                    📄 <span id="taxTypeFileNameText">-</span>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <label style="display: flex; align-items: center; padding: 15px; background: rgba(16, 185, 129, 0.1); border: 2px solid rgba(16, 185, 129, 0.3); border-radius: 8px; cursor: pointer; transition: all 0.3s;" 
+                           onmouseover="this.style.background='rgba(16, 185, 129, 0.2)'; this.style.borderColor='#10b981';" 
+                           onmouseout="this.style.background='rgba(16, 185, 129, 0.1)'; this.style.borderColor='rgba(16, 185, 129, 0.3)';">
+                        <input type="radio" name="taxTypeSelection" value="40(1)" id="taxType40_1" style="margin-right: 12px; width: 20px; height: 20px; cursor: pointer; accent-color: #10b981;">
+                        <span style="color: #10b981; font-weight: 600; font-size: 1.1em;">40(1)</span>
+                    </label>
+                    
+                    <label style="display: flex; align-items: center; padding: 15px; background: rgba(59, 130, 246, 0.1); border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 8px; cursor: pointer; transition: all 0.3s;" 
+                           onmouseover="this.style.background='rgba(59, 130, 246, 0.2)'; this.style.borderColor='#3b82f6';" 
+                           onmouseout="this.style.background='rgba(59, 130, 246, 0.1)'; this.style.borderColor='rgba(59, 130, 246, 0.3)';">
+                        <input type="radio" name="taxTypeSelection" value="40(2)" id="taxType40_2" style="margin-right: 12px; width: 20px; height: 20px; cursor: pointer; accent-color: #3b82f6;">
+                        <span style="color: #3b82f6; font-weight: 600; font-size: 1.1em;">40(2)</span>
+                    </label>
+                    
+                    <label style="display: flex; align-items: center; padding: 15px; background: rgba(148, 163, 184, 0.1); border: 2px solid rgba(148, 163, 184, 0.3); border-radius: 8px; cursor: pointer; transition: all 0.3s;" 
+                           onmouseover="this.style.background='rgba(148, 163, 184, 0.2)'; this.style.borderColor='#94a3b8';" 
+                           onmouseout="this.style.background='rgba(148, 163, 184, 0.1)'; this.style.borderColor='rgba(148, 163, 184, 0.3)';">
+                        <input type="radio" name="taxTypeSelection" value="both" id="taxTypeBoth" style="margin-right: 12px; width: 20px; height: 20px; cursor: pointer; accent-color: #94a3b8;">
+                        <span style="color: #94a3b8; font-weight: 600; font-size: 1.1em;">ทั้ง 40(1) และ 40(2)</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px;">
+                <button type="button" onclick="closeTaxTypeSelectionModal()" style="padding: 12px 24px; background: #334155; color: #e2e8f0; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">ยกเลิก</button>
+                <button type="button" onclick="confirmTaxTypeSelection()" style="padding: 12px 24px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em; transition: all 0.3s; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)';">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal สำหรับเลือกเดือน/ปี -->
+    <div id="monthYearSelectionModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10006; align-items: center; justify-content: center;">
+        <div style="background: #1e293b; border-radius: 12px; padding: 30px; max-width: 500px; width: 90%; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <h2 style="color: #3b82f6; font-size: 1.5em; margin: 0; display: flex; align-items: center; gap: 10px;">
+                    <span>📅</span>
+                    <span>ยืนยันเดือน/ปี</span>
+                </h2>
+                <button onclick="closeMonthYearSelectionModal()" style="background: none; border: none; color: #94a3b8; font-size: 24px; cursor: pointer; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 5px; transition: all 0.3s;" onmouseover="this.style.background='#334155'; this.style.color='#fafafa';" onmouseout="this.style.background='none'; this.style.color='#94a3b8';">×</button>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <p style="color: #cbd5e1; font-size: 1em; margin-bottom: 15px; line-height: 1.6;">
+                    ระบบอ่านเดือน/ปีจากไฟล์:
+                </p>
+                <div id="monthYearSelectionFileName" style="color: #60a5fa; font-weight: 600; margin-bottom: 15px; padding: 10px; background: rgba(59, 130, 246, 0.1); border-radius: 6px; border-left: 4px solid #3b82f6;">
+                    📄 <span id="monthYearFileNameText">-</span>
+                </div>
+                <div style="color: #10b981; font-weight: 600; margin-bottom: 20px; padding: 10px; background: rgba(16, 185, 129, 0.1); border-radius: 6px; border-left: 4px solid #10b981; white-space: pre-line;">
+                    <span id="detectedMonthYearText">-</span>
+                </div>
+                
+                <p style="color: #cbd5e1; font-size: 0.95em; margin-bottom: 15px;">
+                    กรุณายืนยันว่าเดือน/ปีถูกต้อง หรือเลือกใหม่:
+                </p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <div>
+                        <label style="display: block; color: #cbd5e1; font-weight: 600; margin-bottom: 8px;">เดือน</label>
+                        <select id="monthYearSelectionMonth" style="width: 100%; padding: 10px; background: #0f172a; border: 2px solid #334155; border-radius: 8px; color: #e2e8f0; font-size: 1em; cursor: pointer;">
+                            <option value="1">มกราคม</option>
+                            <option value="2">กุมภาพันธ์</option>
+                            <option value="3">มีนาคม</option>
+                            <option value="4">เมษายน</option>
+                            <option value="5">พฤษภาคม</option>
+                            <option value="6">มิถุนายน</option>
+                            <option value="7">กรกฎาคม</option>
+                            <option value="8">สิงหาคม</option>
+                            <option value="9">กันยายน</option>
+                            <option value="10">ตุลาคม</option>
+                            <option value="11">พฤศจิกายน</option>
+                            <option value="12">ธันวาคม</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; color: #cbd5e1; font-weight: 600; margin-bottom: 8px;">ปี (ค.ศ.)</label>
+                        <input type="number" id="monthYearSelectionYear" min="2000" max="2100" step="1" style="width: 100%; padding: 10px; background: #0f172a; border: 2px solid #334155; border-radius: 8px; color: #e2e8f0; font-size: 1em;" value="2025">
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 25px;">
+                <button type="button" onclick="closeMonthYearSelectionModal()" style="padding: 12px 24px; background: #334155; color: #e2e8f0; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">ยกเลิก</button>
+                <button type="button" onclick="confirmMonthYearSelection()" style="padding: 12px 24px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em; transition: all 0.3s; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.3)';">ยืนยัน</button>
             </div>
         </div>
     </div>
@@ -1907,16 +2051,18 @@
             if (files.length === 0) return;
             
             const fileIndex = inputId.slice(-1);
+            // สำหรับ fileIndex 1-4 ให้ใช้ไฟล์แรกเท่านั้น (อัพโหลดทีละไฟล์)
+            // สำหรับ fileIndex 5-6 ยังคงรองรับหลายไฟล์
             const file = files[0];
-            const isMulti = files.length > 1;
-            fileData[`file${fileIndex}`] = files[files.length - 1];
+            const isMulti = (fileIndex === '5' || fileIndex === '6') && files.length > 1;
+            fileData[`file${fileIndex}`] = file;
             
             const dropZone = document.getElementById(dropZoneId);
             const fileInfo = document.getElementById(fileInfoId);
             
             dropZone.classList.add('has-file');
             dropZone.querySelector('.file-drop-zone-text').textContent = isMulti ? `เลือก ${files.length} ไฟล์` : file.name;
-            const totalSize = files.reduce((s, f) => s + (f.size || 0), 0);
+            const totalSize = isMulti ? files.reduce((s, f) => s + (f.size || 0), 0) : file.size;
             dropZone.querySelector('.file-drop-zone-hint').textContent = isMulti ? `รวม ${formatFileSize(totalSize)}` : formatFileSize(file.size);
             
             const fileListHtml = isMulti
@@ -2020,67 +2166,95 @@
             }
             
             if (fileIndex === '1') {
-                // ตรวจสอบชื่อไฟล์ทุกไฟล์ก่อนประมวลผล
-                const invalidFiles = [];
-                for (let i = 0; i < files.length; i++) {
-                    const validation = validateFilename(files[i].name, '1');
-                    if (!validation.valid) {
-                        invalidFiles.push({ name: files[i].name, error: validation.error });
-                    }
-                }
-                
-                if (invalidFiles.length > 0) {
-                    const errorMessage = 'ชื่อไฟล์ไม่ถูกต้อง:\n\n' + 
-                        invalidFiles.map(f => `• ${f.name}\n  ${f.error}`).join('\n\n');
-                    showNotificationModal('⚠️ ชื่อไฟล์ไม่ถูกต้อง', errorMessage, '⚠️', 'warning');
+                // ตรวจสอบชื่อไฟล์ก่อนประมวลผล
+                const validation = validateFilename(file.name, '1');
+                if (!validation.valid) {
+                    showNotificationModal('⚠️ ชื่อไฟล์ไม่ถูกต้อง', validation.error, '⚠️', 'warning');
                     removeFile(inputId, dropZoneId, fileInfoId, fileIndex);
                     return;
                 }
                 
-                for (let i = 0; i < files.length; i++) {
-                    dropZone.querySelector('.file-drop-zone-text').textContent = isMulti
-                        ? `⏳ กำลังอ่านไฟล์ที่ ${i + 1}/${files.length}: ${files[i].name}`
-                        : '⏳ กำลังอ่านข้อมูลด้วย OCR...';
-                    await processPnd1kFormOCR(files[i], { multiIndex: i + 1, multiTotal: files.length, isMulti });
-                }
-                if (isMulti && files.length > 0) {
-                    dropZone.querySelector('.file-drop-zone-text').textContent = `✅ อ่านครบ ${files.length} ไฟล์`;
-                    if (typeof showStatusMessage === 'function') {
-                        showStatusMessage(`✅ อ่านแบบ ภ.ง.ด.1 ครบ ${files.length} ไฟล์`, 'success');
+                // อ่าน OCR ก่อนเพื่อดึงเดือน/ปีจาก OCR
+                dropZone.querySelector('.file-drop-zone-text').textContent = '⏳ กำลังอ่านข้อมูลด้วย OCR...';
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รอสักครู่...';
+                
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('company', document.getElementById('companySelect')?.value || '');
+                formData.append('preview_only', 'true'); // ส่ง flag เพื่อให้ API ส่งแค่เดือน/ปีกลับมา
+                
+                try {
+                    const response = await fetch('/api/pnd1k/ocr-form-preview', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    let ocrMonthYear = null;
+                    if (result.success && result.month && result.year) {
+                        ocrMonthYear = { month: result.month, year: result.year };
                     }
+                    
+                    // อ่านเดือน/ปีจากชื่อไฟล์เป็น fallback
+                    const filenameMonthYear = extractMonthYearFromFilename(file.name);
+                    
+                    // ใช้เดือน/ปีจาก OCR ก่อน ถ้าไม่มีให้ใช้จากชื่อไฟล์
+                    const detectedMonthYear = ocrMonthYear || filenameMonthYear;
+                    
+                    // แสดง Modal พร้อมข้อมูลที่อ่านได้
+                    showMonthYearSelectionModal(file, '1', dropZone, detectedMonthYear, ocrMonthYear, filenameMonthYear);
+                } catch (error) {
+                    console.error('Error reading OCR preview:', error);
+                    // ถ้า OCR ล้มเหลว ให้ใช้แค่ชื่อไฟล์
+                    const filenameMonthYear = extractMonthYearFromFilename(file.name);
+                    showMonthYearSelectionModal(file, '1', dropZone, filenameMonthYear, null, filenameMonthYear);
                 }
             }
             
             if (fileIndex === '2') {
-                // ตรวจสอบชื่อไฟล์ทุกไฟล์ก่อนประมวลผล
-                const invalidFiles = [];
-                for (let i = 0; i < files.length; i++) {
-                    const validation = validateFilename(files[i].name, '2');
-                    if (!validation.valid) {
-                        invalidFiles.push({ name: files[i].name, error: validation.error });
-                    }
-                }
-                
-                if (invalidFiles.length > 0) {
-                    const errorMessage = 'ชื่อไฟล์ไม่ถูกต้อง:\n\n' + 
-                        invalidFiles.map(f => `• ${f.name}`).join('\n') + 
-                        '\n\nจะต้องเป็นข้อมูลของ "ใบแนบ ภ.ง.ด.1"';
-                    showNotificationModal('⚠️ ชื่อไฟล์ไม่ถูกต้อง', errorMessage, '⚠️', 'warning');
+                // ตรวจสอบชื่อไฟล์ก่อนประมวลผล
+                const validation = validateFilename(file.name, '2');
+                if (!validation.valid) {
+                    showNotificationModal('⚠️ ชื่อไฟล์ไม่ถูกต้อง', 'จะต้องเป็นข้อมูลของ "ใบแนบ ภ.ง.ด.1"', '⚠️', 'warning');
                     removeFile(inputId, dropZoneId, fileInfoId, fileIndex);
                     return;
                 }
                 
-                for (let i = 0; i < files.length; i++) {
-                    dropZone.querySelector('.file-drop-zone-text').textContent = isMulti
-                        ? `⏳ กำลังอ่านไฟล์ที่ ${i + 1}/${files.length}: ${files[i].name}`
-                        : '⏳ กำลังอ่านข้อมูลด้วย OCR...';
-                    await processPnd1kAttachmentOCR(files[i], { multiIndex: i + 1, multiTotal: files.length, isMulti });
-                }
-                if (isMulti && files.length > 0) {
-                    dropZone.querySelector('.file-drop-zone-text').textContent = `✅ อ่านครบ ${files.length} ไฟล์`;
-                    if (typeof showStatusMessage === 'function') {
-                        showStatusMessage(`✅ อ่านใบแนบ ภ.ง.ด.1 ครบ ${files.length} ไฟล์`, 'success');
+                // อ่าน OCR ก่อนเพื่อดึงเดือน/ปีจาก OCR
+                dropZone.querySelector('.file-drop-zone-text').textContent = '⏳ กำลังอ่านข้อมูลด้วย OCR...';
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รอสักครู่...';
+                
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('company', document.getElementById('companySelect')?.value || '');
+                
+                try {
+                    const response = await fetch('/api/pnd1k/ocr-attachment-preview', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const result = await response.json();
+                    
+                    let ocrMonthYear = null;
+                    if (result.success && result.month && result.year) {
+                        ocrMonthYear = { month: result.month, year: result.year };
                     }
+                    
+                    // อ่านเดือน/ปีจากชื่อไฟล์เป็น fallback
+                    const filenameMonthYear = extractMonthYearFromFilename(file.name);
+                    
+                    // ใช้เดือน/ปีจาก OCR ก่อน ถ้าไม่มีให้ใช้จากชื่อไฟล์
+                    const detectedMonthYear = ocrMonthYear || filenameMonthYear;
+                    
+                    // แสดง Modal พร้อมข้อมูลที่อ่านได้
+                    showMonthYearSelectionModal(file, '2', dropZone, detectedMonthYear, ocrMonthYear, filenameMonthYear);
+                } catch (error) {
+                    console.error('Error reading OCR preview:', error);
+                    // ถ้า OCR ล้มเหลว ให้ใช้แค่ชื่อไฟล์
+                    const filenameMonthYear = extractMonthYearFromFilename(file.name);
+                    showMonthYearSelectionModal(file, '2', dropZone, filenameMonthYear, null, filenameMonthYear);
                 }
             }
             
@@ -2304,13 +2478,20 @@
             }
         }
         
-        async function processSocialSecurityFormOCR(file) {
+        async function processSocialSecurityFormOCR(file, opts = {}) {
+            const { month, year } = opts;
             const company = document.getElementById('companySelect')?.value || '';
             if (!company) return;
             const dropZone = document.getElementById('dropZone3');
+            dropZone.querySelector('.file-drop-zone-text').textContent = '⏳ กำลังอ่าน: ' + file.name;
+            dropZone.querySelector('.file-drop-zone-hint').textContent = 'รอสักครู่...';
+            const fileInfo = document.getElementById('fileInfo3');
+            if (fileInfo) fileInfo.style.display = 'none';
             const formData = new FormData();
             formData.append('file', file);
             formData.append('company', company);
+            if (month) formData.append('month', month);
+            if (year) formData.append('year', year);
             try {
                 const response = await fetch('/api/pnd1k/ocr-social-security-form', {
                     method: 'POST',
@@ -2338,13 +2519,20 @@
             }
         }
         
-        async function processSocialSecurityOCR(file) {
+        async function processSocialSecurityAttachmentOCR(file, opts = {}) {
+            const { month, year } = opts;
             const company = document.getElementById('companySelect')?.value || '';
             if (!company) return;
             const dropZone = document.getElementById('dropZone4');
+            dropZone.querySelector('.file-drop-zone-text').textContent = '⏳ กำลังอ่าน: ' + file.name;
+            dropZone.querySelector('.file-drop-zone-hint').textContent = 'รอสักครู่...';
+            const fileInfo = document.getElementById('fileInfo4');
+            if (fileInfo) fileInfo.style.display = 'none';
             const formData = new FormData();
             formData.append('file', file);
             formData.append('company', company);
+            if (month) formData.append('month', month);
+            if (year) formData.append('year', year);
             try {
                 const response = await fetch('/api/pnd1k/ocr-social-security', {
                     method: 'POST',
@@ -2375,7 +2563,7 @@
         
         // ===== ฟังก์ชันจัดการ OCR แบบ ภ.ง.ด.1 =====
         async function processPnd1kFormOCR(file, opts = {}) {
-            const { multiIndex, multiTotal, isMulti } = opts;
+            const { multiIndex, multiTotal, isMulti, month, year } = opts;
             const company = document.getElementById('companySelect')?.value || '';
             if (!company) {
                 alert('กรุณาเลือกบริษัทก่อนอัพโหลดเอกสารแบบ ภ.ง.ด.1');
@@ -2385,7 +2573,7 @@
                 const dropZone = document.getElementById('dropZone1');
                 dropZone.classList.remove('has-file');
                 dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
-                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX · เลือกได้หลายไฟล์ อ่านทีละไฟล์';
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX · อัพโหลดได้ทีละไฟล์';
                 const fileInfo = document.getElementById('fileInfo1');
                 fileInfo.style.display = 'none';
                 return;
@@ -2400,6 +2588,8 @@
             const formData = new FormData();
             formData.append('file', file);
             formData.append('company', company);
+            if (month) formData.append('month', month);
+            if (year) formData.append('year', year);
             
             try {
                 const response = await fetch('/api/pnd1k/ocr-form', {
@@ -2445,7 +2635,7 @@
         
         // ===== ฟังก์ชันจัดการ OCR ใบแนบ ภ.ง.ด.1 =====
         async function processPnd1kAttachmentOCR(file, opts = {}) {
-            const { multiIndex, multiTotal, isMulti } = opts;
+            const { multiIndex, multiTotal, isMulti, incomeType, month, year } = opts;
             const company = document.getElementById('companySelect')?.value || '';
             if (!company) {
                 alert('กรุณาเลือกบริษัทก่อนอัพโหลดเอกสารใบแนบ ภ.ง.ด.1');
@@ -2455,7 +2645,7 @@
                 const dropZone = document.getElementById('dropZone2');
                 dropZone.classList.remove('has-file');
                 dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
-                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX · เลือกได้หลายไฟล์ อ่านทีละไฟล์';
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX · อัพโหลดได้ทีละไฟล์';
                 const fileInfo = document.getElementById('fileInfo2');
                 fileInfo.style.display = 'none';
                 return;
@@ -2470,6 +2660,13 @@
             const formData = new FormData();
             formData.append('file', file);
             formData.append('company', company);
+            // ส่งประเภทภาษีไปยัง API (ถ้ามี)
+            if (incomeType) {
+                formData.append('income_type', incomeType);
+            }
+            // ส่งเดือน/ปีไปยัง API (ถ้ามี)
+            if (month) formData.append('month', month);
+            if (year) formData.append('year', year);
             
             try {
                 const response = await fetch('/api/pnd1k/ocr-attachment', {
@@ -2629,6 +2826,10 @@
         let currentMonthlyEditData = null; // เก็บข้อมูลรายเดือนที่กำลังแก้ไข
         let originalMonthlyData = null; // เก็บข้อมูลเดิมก่อนแก้ไข
         
+        // ตัวแปรสำหรับเก็บไฟล์ที่รอการเลือกประเภทภาษี
+        let pendingAttachmentFiles = [];
+        let pendingAttachmentFileIndex = 0;
+        
         async function loadIdCards(company) {
             if (!company) {
                 idCardData = [];
@@ -2783,7 +2984,38 @@
                 }
             }
             if (elType) {
-                elType.textContent = (form && form.income_type) ? form.income_type : '-';
+                let incomeType = form && form.income_type ? form.income_type : null;
+                
+                // ถ้าไม่มี income_type ให้ตรวจสอบจาก section_40_1 และ section_40_2
+                if (!incomeType || incomeType === '-') {
+                    const section40_1 = form && form.section_40_1 ? form.section_40_1 : {};
+                    const section40_2 = form && form.section_40_2 ? form.section_40_2 : {};
+                    
+                    const has40_1 = section40_1 && section40_1.count && 
+                        String(section40_1.count).toLowerCase() !== 'none' && 
+                        String(section40_1.count).trim() !== '' &&
+                        section40_1.total_income && 
+                        String(section40_1.total_income).toLowerCase() !== 'none' && 
+                        String(section40_1.total_income).trim() !== '';
+                    const has40_2 = section40_2 && section40_2.count && 
+                        String(section40_2.count).toLowerCase() !== 'none' && 
+                        String(section40_2.count).trim() !== '' &&
+                        section40_2.total_income && 
+                        String(section40_2.total_income).toLowerCase() !== 'none' && 
+                        String(section40_2.total_income).trim() !== '';
+                    
+                    if (has40_1 && has40_2) {
+                        incomeType = '40(1), 40(2)';
+                    } else if (has40_1) {
+                        incomeType = '40(1)';
+                    } else if (has40_2) {
+                        incomeType = '40(2)';
+                    } else {
+                        incomeType = '-';
+                    }
+                }
+                
+                elType.textContent = incomeType || '-';
             }
         }
         
@@ -2926,7 +3158,33 @@
                     const count = pickValid(sectionTotal.count, section40_1.count, section40_2.count) || '0';
                     const totalIncomeRaw = pickValid(sectionTotal.total_income, section40_1.total_income, section40_2.total_income) || '0.00';
                     const totalTaxRaw = pickValid(sectionTotal.total_tax, section40_1.total_tax, section40_2.total_tax) || '0.00';
-                    const incomeType = form.income_type || '-';
+                    
+                    // ตรวจสอบประเภทภาษีจาก section_40_1 และ section_40_2
+                    const has40_1 = section40_1 && section40_1.count && 
+                        String(section40_1.count).toLowerCase() !== 'none' && 
+                        String(section40_1.count).trim() !== '' &&
+                        section40_1.total_income && 
+                        String(section40_1.total_income).toLowerCase() !== 'none' && 
+                        String(section40_1.total_income).trim() !== '';
+                    const has40_2 = section40_2 && section40_2.count && 
+                        String(section40_2.count).toLowerCase() !== 'none' && 
+                        String(section40_2.count).trim() !== '' &&
+                        section40_2.total_income && 
+                        String(section40_2.total_income).toLowerCase() !== 'none' && 
+                        String(section40_2.total_income).trim() !== '';
+                    
+                    let incomeType = form.income_type || '-';
+                    if (!incomeType || incomeType === '-') {
+                        if (has40_1 && has40_2) {
+                            incomeType = '40(1), 40(2)';
+                        } else if (has40_1) {
+                            incomeType = '40(1)';
+                        } else if (has40_2) {
+                            incomeType = '40(2)';
+                        } else {
+                            incomeType = '-';
+                        }
+                    }
                     // ดึง filing_type_display โดยตรงจาก form object
                     const filingTypeDisplay = form.filing_type_display;
                     const filingType = form.filing_type || '';
@@ -3245,18 +3503,75 @@
                 });
             });
             
+            // สร้าง Map สำหรับเก็บข้อมูลพนักงานแยกตามประเภทภาษี
+            // key: {idCard}_{incomeType}
+            const employeeByTypeMap = new Map();
+            
             attachmentData.forEach(att => {
                 const idCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
                 if (!idCard) return;
                 
-                if (!employeeMap.has(idCard)) {
-                    employeeMap.set(idCard, {
+                // หาประเภทภาษีจาก attachment โดยตรวจสอบ employeeOverrides ก่อน
+                const normalizedIdCard = idCard.toString().replace(/\s/g, '').trim();
+                let incomeType = att.income_type;
+                
+                // ถ้า income_type เป็น null, undefined, '', หรือ '-' ให้ตรวจสอบ employeeOverrides
+                if (!incomeType || incomeType === '-' || incomeType === '') {
+                    // ลองหาจาก employeeOverrides โดยใช้ key: {idCard}_{incomeType} สำหรับทุกประเภท
+                    let foundOverride = null;
+                    for (const [key, override] of employeeOverrides.entries()) {
+                        if (key.startsWith(`${normalizedIdCard}_`)) {
+                            if (override && override.income_type) {
+                                foundOverride = override.income_type;
+                                break;
+                            }
+                        }
+                    }
+                    // ถ้าไม่มี override ให้ลองหาโดยใช้แค่ idCard
+                    if (!foundOverride) {
+                        const fallbackOverride = employeeOverrides.get(normalizedIdCard);
+                        if (fallbackOverride && fallbackOverride.income_type) {
+                            foundOverride = fallbackOverride.income_type;
+                        }
+                    }
+                    incomeType = foundOverride || '40(1)';
+                }
+                
+                const key = `${idCard}_${incomeType}`;
+                
+                if (!employeeByTypeMap.has(key)) {
+                    // หาข้อมูลพื้นฐานจาก idCardData หรือ attachmentData
+                    let baseName = '-';
+                    let baseAddress = '-';
+                    let baseBirthDate = '-';
+                    let baseIssueDate = '-';
+                    let baseExpiryDate = '-';
+                    
+                    const card = idCardData.find(c => (c.id_card_number || '').toString().trim() === idCard);
+                    if (card) {
+                        baseName = (card.full_name || '').trim() || '-';
+                        baseAddress = (card.address || '').trim() || '-';
+                        baseBirthDate = (card.birth_date || '').trim() || '-';
+                        baseIssueDate = (card.issue_date || '').trim() || '-';
+                        baseExpiryDate = (card.expiry_date || '').trim() || '-';
+                    } else {
+                        const firstAtt = attachmentData.find(a => {
+                            const attIdCard = (a.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                            return attIdCard === idCard;
+                        });
+                        if (firstAtt) {
+                            baseName = (firstAtt.recipient_name || '').trim() || '-';
+                        }
+                    }
+                    
+                    employeeByTypeMap.set(key, {
                         idCard: idCard,
-                        name: (att.recipient_name || '').trim() || '-',
-                        address: '-',
-                        birthDate: '-',
-                        issueDate: '-',
-                        expiryDate: '-',
+                        incomeType: incomeType,
+                        name: baseName,
+                        address: baseAddress,
+                        birthDate: baseBirthDate,
+                        issueDate: baseIssueDate,
+                        expiryDate: baseExpiryDate,
                         months: new Set(),
                         totalIncome: 0,
                         totalTax: 0,
@@ -3264,7 +3579,7 @@
                     });
                 }
                 
-                const emp = employeeMap.get(idCard);
+                const emp = employeeByTypeMap.get(key);
                 if ((att.recipient_name || '').trim() && emp.name === '-') emp.name = (att.recipient_name || '').trim();
                 if (att.payment_month != null && att.payment_year != null) {
                     emp.months.add(`${att.payment_year}-${String(att.payment_month).padStart(2, '0')}`);
@@ -3278,10 +3593,70 @@
                 if (ssMapEmp.has(ssKey)) emp.totalContribution += ssMapEmp.get(ssKey);
             });
             
-            const employees = Array.from(employeeMap.values());
+            // รวมข้อมูลจาก idCardData ที่ยังไม่มีใน employeeByTypeMap
+            idCardData.forEach(card => {
+                const idCard = (card.id_card_number || '').toString().trim();
+                if (!idCard) return;
+                
+                // หาประเภทภาษีที่มีใน attachmentData สำหรับ idCard นี้
+                const normalizedIdCard = idCard.toString().replace(/\s/g, '').trim();
+                let types = [...new Set(attachmentData
+                    .filter(a => (a.recipient_id_card || '').toString().replace(/\s/g, '').trim() === normalizedIdCard)
+                    .map(a => {
+                        let type = a.income_type;
+                        // ถ้า income_type เป็น null, undefined, '', หรือ '-' ให้ตรวจสอบ employeeOverrides
+                        if (!type || type === '-' || type === '') {
+                            // ลองหาจาก employeeOverrides โดยใช้ key: {idCard}_{incomeType} สำหรับทุกประเภท
+                            let foundOverride = null;
+                            for (const [key, override] of employeeOverrides.entries()) {
+                                if (key.startsWith(`${normalizedIdCard}_`)) {
+                                    if (override && override.income_type) {
+                                        foundOverride = override.income_type;
+                                        break;
+                                    }
+                                }
+                            }
+                            // ถ้าไม่มี override ให้ลองหาโดยใช้แค่ idCard
+                            if (!foundOverride) {
+                                const fallbackOverride = employeeOverrides.get(normalizedIdCard);
+                                if (fallbackOverride && fallbackOverride.income_type) {
+                                    foundOverride = fallbackOverride.income_type;
+                                }
+                            }
+                            type = foundOverride || '40(1)';
+                        }
+                        return type;
+                    })
+                    .filter(t => t && t !== '-'))];
+                
+                // ถ้าไม่มีประเภทภาษีเลย ให้ใช้ default
+                if (types.length === 0) types.push('40(1)');
+                
+                // สร้าง entry สำหรับแต่ละประเภทภาษี
+                types.forEach(incomeType => {
+                    const key = `${idCard}_${incomeType}`;
+                    if (!employeeByTypeMap.has(key)) {
+                        employeeByTypeMap.set(key, {
+                            idCard: idCard,
+                            incomeType: incomeType,
+                            name: (card.full_name || '').trim() || '-',
+                            address: (card.address || '').trim() || '-',
+                            birthDate: (card.birth_date || '').trim() || '-',
+                            issueDate: (card.issue_date || '').trim() || '-',
+                            expiryDate: (card.expiry_date || '').trim() || '-',
+                            months: new Set(),
+                            totalIncome: 0,
+                            totalTax: 0,
+                            totalContribution: 0
+                        });
+                    }
+                });
+            });
+            
+            const employees = Array.from(employeeByTypeMap.values());
             
             if (employees.length === 0) {
-                tbody.innerHTML = '<tr class="empty-row"><td colspan="8">ยังไม่มีข้อมูลพนักงาน กรุณาอัพโหลดบัตรประชาชนและ/หรือใบแนบ ภ.ง.ด.1</td></tr>';
+                tbody.innerHTML = '<tr class="empty-row"><td colspan="9">ยังไม่มีข้อมูลพนักงาน กรุณาอัพโหลดบัตรประชาชนและ/หรือใบแนบ ภ.ง.ด.1</td></tr>';
                 return;
             }
             
@@ -3289,9 +3664,40 @@
             
             let html = '';
             employees.forEach(emp => {
-                const o = employeeOverrides.get(emp.idCard) || {};
+                const normalizedIdCard = (emp.idCard || '').toString().replace(/\s/g, '').trim();
+                
+                // ใช้ key: {idCard}_{incomeType} สำหรับ employeeOverrides
+                const overrideKey = `${normalizedIdCard}_${emp.incomeType}`;
+                let o = employeeOverrides.get(overrideKey);
+                
+                // ถ้าไม่มี override ที่ตรงกับ incomeType ให้ลองหาโดยใช้แค่ idCard
+                if (!o) {
+                    o = employeeOverrides.get(normalizedIdCard) || {};
+                }
+                
+                // ถ้ายังไม่มี ให้ลองหาจาก employeeOverrides ที่มี key ขึ้นต้นด้วย {idCard}_
+                if (!o || Object.keys(o).length === 0) {
+                    for (const [key, override] of employeeOverrides.entries()) {
+                        if (key.startsWith(`${normalizedIdCard}_`)) {
+                            o = override;
+                            break;
+                        }
+                    }
+                }
+                
+                if (!o) o = {};
+                
                 const displayName = (o.name !== undefined && o.name !== '') ? o.name : emp.name;
                 const displayAddress = (o.address !== undefined && o.address !== '') ? o.address : emp.address;
+                
+                // ใช้ประเภทภาษีจาก employeeOverrides ก่อน แล้วค่อยใช้จาก emp.incomeType
+                let displayIncomeType = o.income_type || emp.incomeType || '40(1)';
+                
+                // ถ้าไม่มี override แต่มีข้อมูลใน attachmentData ให้ตรวจสอบอีกครั้ง
+                if (!o.income_type && emp.incomeType) {
+                    displayIncomeType = emp.incomeType;
+                }
+                
                 // ตรวจสอบว่ามีที่อยู่หรือไม่ (ไม่ใช่ "-" หรือว่าง)
                 const hasAddress = displayAddress && displayAddress.trim() !== '' && displayAddress.trim() !== '-';
                 // เรียงเดือนจากมากไปหาน้อย (ธันวาคม → มกราคม)
@@ -3307,22 +3713,38 @@
                 const monthTooltip = monthList.length > 0 
                     ? monthList.join(', ') 
                     : '';
+                
+                // สีตามประเภทภาษี
+                const incomeTypeColor = displayIncomeType === '40(1)' ? '#10b981' : displayIncomeType === '40(2)' ? '#3b82f6' : '#94a3b8';
+                const incomeTypeBg = displayIncomeType === '40(1)' ? 'rgba(16, 185, 129, 0.2)' : displayIncomeType === '40(2)' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(148, 163, 184, 0.2)';
+                
                 html += `
                     <tr>
                         <td style="padding: 10px; font-size: 0.9em;">${emp.idCard}</td>
                         <td style="padding: 10px;">${displayName}</td>
                         <td style="padding: 10px; font-size: 0.9em;">${displayAddress}</td>
+                        <td style="padding: 10px; text-align: center;">
+                            <select class="employee-tax-type-select"
+                                data-id-card="${emp.idCard.replace(/'/g, "\\'")}"
+                                data-income-type="${emp.incomeType.replace(/'/g, "\\'")}"
+                                onchange="updateEmployeeTaxType(this)"
+                                style="padding: 4px 8px; background: ${incomeTypeBg}; border: 1px solid ${incomeTypeColor}; border-radius: 4px; font-weight: 600; color: ${incomeTypeColor}; font-size: 0.9em; cursor: pointer; min-width: 70px;">
+                                <option value="40(1)" ${displayIncomeType === '40(1)' ? 'selected' : ''}>40(1)</option>
+                                <option value="40(2)" ${displayIncomeType === '40(2)' ? 'selected' : ''}>40(2)</option>
+                                <option value="-" ${displayIncomeType === '-' || !displayIncomeType ? 'selected' : ''}>-</option>
+                            </select>
+                        </td>
                         <td style="padding: 10px; text-align: center; font-size: 0.9em; color: #94a3b8; cursor: ${monthTooltip ? 'help' : 'default'};" title="${monthTooltip}">${monthDisplay}</td>
                         <td class="currency-cell" style="padding: 10px; text-align: right;">${formatCurrency(emp.totalIncome)}</td>
                         <td class="currency-cell" style="padding: 10px; text-align: right;">${formatCurrency(emp.totalTax)}</td>
                         <td class="currency-cell" style="padding: 10px; text-align: right;">${formatCurrency(emp.totalContribution || 0)}</td>
                         <td style="padding: 10px; white-space: nowrap;">
-                            <button type="button" onclick="openMonthlyDetailModal('${emp.idCard.replace(/'/g, "\\'")}')" title="ดูรายได้แต่ละเดือน"
+                            <button type="button" onclick="openMonthlyDetailModal('${emp.idCard.replace(/'/g, "\\'")}', '${emp.incomeType.replace(/'/g, "\\'")}')" title="ดูรายได้แต่ละเดือน (${emp.incomeType})"
                                 style="padding: 6px 10px; margin-right: 4px; background: #14532d; color: #86efac; border: 1px solid #22c55e; border-radius: 6px; cursor: pointer; font-size: 12px;"
                                 onmouseover="this.style.background='#166534'; this.style.color='#fff';" onmouseout="this.style.background='#14532d'; this.style.color='#86efac';">
                                 💵 รายเดือน
                             </button>
-                            <button type="button" onclick="openEditEmployeeModal('${emp.idCard.replace(/'/g, "\\'")}')" title="แก้ไขข้อมูล"
+                            <button type="button" onclick="openEditEmployeeModal('${emp.idCard.replace(/'/g, "\\'")}', '${emp.incomeType.replace(/'/g, "\\'")}')" title="แก้ไขข้อมูล (${emp.incomeType})"
                                 style="padding: 6px 10px; margin-right: 4px; background: #334155; color: #e2e8f0; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 12px;"
                                 onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">
                                 ✏️ แก้ไข
@@ -3332,7 +3754,7 @@
                                 onmouseover="this.style.background='#2563eb'; this.style.color='#fff';" onmouseout="this.style.background='#1e3a5f'; this.style.color='#93c5fd';">
                                 📍 ดึงที่อยู่บริษัท
                             </button>` : ''}
-                            <button type="button" onclick="generate50Tawi('${emp.idCard.replace(/'/g, "\\'")}')" title="ออกเอกสาร 50 ทวิ"
+                            <button type="button" onclick="generate50Tawi('${emp.idCard.replace(/'/g, "\\'")}', '${emp.incomeType.replace(/'/g, "\\'")}')" title="ออกเอกสาร 50 ทวิ (${emp.incomeType})"
                                 style="padding: 6px 10px; background: #7c2d12; color: #fbbf24; border: 1px solid #f59e0b; border-radius: 6px; cursor: pointer; font-size: 12px;"
                                 onmouseover="this.style.background='#92400e'; this.style.color='#fff';" onmouseout="this.style.background='#7c2d12'; this.style.color='#fbbf24';">
                                 📄 ออก 50 ทวิ
@@ -3603,7 +4025,7 @@
             modal.style.display = 'flex';
         }
         
-        function openEditEmployeeModal(idCard) {
+        function openEditEmployeeModal(idCard, incomeType = null) {
             let base = { name: '', address: '-', birthDate: '-', issueDate: '-', expiryDate: '-' };
             const card = idCardData.find(c => (c.id_card_number || '').toString().trim() === idCard);
             if (card) {
@@ -3613,10 +4035,43 @@
                 base.issueDate = (card.issue_date || '').trim() || '-';
                 base.expiryDate = (card.expiry_date || '').trim() || '-';
             } else {
-                const att = attachmentData.find(a => (a.recipient_id_card || '').toString().replace(/\s/g, '').trim() === idCard);
+                // หาจาก attachmentData ที่ตรงกับ incomeType (ถ้ามี)
+                let att = null;
+                if (incomeType) {
+                    att = attachmentData.find(a => {
+                        const attIdCard = (a.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                        const attIncomeType = a.income_type || '40(1)';
+                        return attIdCard === idCard && attIncomeType === incomeType;
+                    });
+                }
+                if (!att) {
+                    att = attachmentData.find(a => (a.recipient_id_card || '').toString().replace(/\s/g, '').trim() === idCard);
+                }
                 if (att) base.name = (att.recipient_name || '').trim() || '-';
             }
-            const o = employeeOverrides.get(idCard) || {};
+            
+            // หา override จาก employeeOverrides (ใช้ key: {idCard}_{incomeType} ถ้ามี incomeType)
+            const overrideKey = incomeType ? `${idCard}_${incomeType}` : idCard;
+            const o = employeeOverrides.get(overrideKey) || employeeOverrides.get(idCard) || {};
+            
+            // หาประเภทภาษีจาก employeeOverrides หรือจาก parameter หรือจาก attachmentData
+            let defaultIncomeType = o.income_type || incomeType;
+            if (!defaultIncomeType) {
+                const matchingAttachments = (attachmentData || []).filter(a => {
+                    const attIdCard = (a.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                    return attIdCard === idCard;
+                });
+                if (matchingAttachments.length > 0) {
+                    const types = matchingAttachments.map(a => a.income_type || '40(1)').filter(t => t && t !== '-');
+                    if (types.length > 0) {
+                        const typeCount = {};
+                        types.forEach(t => typeCount[t] = (typeCount[t] || 0) + 1);
+                        defaultIncomeType = Object.keys(typeCount).reduce((a, b) => typeCount[a] > typeCount[b] ? a : b);
+                    }
+                }
+            }
+            if (!defaultIncomeType) defaultIncomeType = '40(1)';
+            
             document.getElementById('editEmployeeIdCardOld').value = idCard;
             document.getElementById('editEmployeeIdCard').value = idCard;
             document.getElementById('editEmployeeName').value = (o.name !== undefined && o.name !== '') ? o.name : (base.name || '');
@@ -3624,6 +4079,14 @@
             document.getElementById('editEmployeeBirthDate').value = (o.birthDate !== undefined && o.birthDate !== '') ? o.birthDate : (base.birthDate || '');
             document.getElementById('editEmployeeIssueDate').value = (o.issueDate !== undefined && o.issueDate !== '') ? o.issueDate : (base.issueDate || '');
             document.getElementById('editEmployeeExpiryDate').value = (o.expiryDate !== undefined && o.expiryDate !== '') ? o.expiryDate : (base.expiryDate || '');
+            document.getElementById('editEmployeeIncomeType').value = defaultIncomeType;
+            
+            // เก็บ incomeType ไว้ใน hidden field เพื่อใช้ตอนบันทึก
+            const incomeTypeInput = document.getElementById('editEmployeeIncomeType');
+            if (incomeTypeInput) {
+                incomeTypeInput.setAttribute('data-original-income-type', incomeType || '');
+            }
+            
             const modal = document.getElementById('editEmployeeModal');
             if (modal) modal.style.display = 'flex';
         }
@@ -4572,15 +5035,24 @@
             openTrialBalanceSelectionModal(trialBalanceData);
         }
         
-        function openMonthlyDetailModal(idCard) {
-            openMonthlyDetailModalForMonth(idCard, null, null);
+        function openMonthlyDetailModal(idCard, incomeType = null) {
+            openMonthlyDetailModalForMonth(idCard, null, null, incomeType);
         }
         
-        function openMonthlyDetailModalForMonth(idCard, targetMonth, targetYear) {
+        function openMonthlyDetailModalForMonth(idCard, targetMonth, targetYear, incomeType = null) {
             const monthNames = { '1': 'ม.ค.', '2': 'ก.พ.', '3': 'มี.ค.', '4': 'เม.ย.', '5': 'พ.ค.', '6': 'มิ.ย.', '7': 'ก.ค.', '8': 'ส.ค.', '9': 'ก.ย.', '10': 'ต.ค.', '11': 'พ.ย.', '12': 'ธ.ค.' };
             const normalized = (idCard || '').toString().replace(/\s/g, '').trim();
             
-            const rows = attachmentData.filter(att => (att.recipient_id_card || '').toString().replace(/\s/g, '').trim() === normalized);
+            // กรองข้อมูลตาม idCard และ incomeType (ถ้ามี)
+            let rows = attachmentData.filter(att => {
+                const attIdCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                if (attIdCard !== normalized) return false;
+                if (incomeType) {
+                    const attIncomeType = att.income_type || '40(1)';
+                    return attIncomeType === incomeType;
+                }
+                return true;
+            });
             const byMonth = new Map();
             rows.forEach(att => {
                 const m = att.payment_month;
@@ -4707,9 +5179,13 @@
                     html += `<tr data-month-key="${k}" data-index="${index}">
                         <td style="padding: 10px 12px; border-bottom: 1px solid #334155; color: #e2e8f0;">${label}</td>
                         <td style="padding: 10px 12px; text-align: center; border-bottom: 1px solid #334155;">
-                            <span style="background: rgba(16, 185, 129, 0.2); padding: 4px 8px; border-radius: 4px; font-weight: 600; color: #10b981; font-size: 0.9em;">
-                                ${incomeType}
-                            </span>
+                            <select data-field="incomeType" data-month-key="${k}"
+                                style="width: 100%; padding: 6px; background: #0f172a; border: 1px solid #334155; border-radius: 4px; color: #10b981; text-align: center; font-size: 0.9em; font-weight: 600; cursor: pointer;"
+                                onchange="updateMonthlyDataTotal()">
+                                <option value="40(1)" ${incomeType === '40(1)' ? 'selected' : ''}>40(1)</option>
+                                <option value="40(2)" ${incomeType === '40(2)' ? 'selected' : ''}>40(2)</option>
+                                <option value="-" ${incomeType === '-' || !incomeType ? 'selected' : ''}>-</option>
+                            </select>
                         </td>
                         <td style="padding: 10px 12px; text-align: right; border-bottom: 1px solid #334155;">
                             <input type="number" step="0.01" min="0" value="${v.income.toFixed(2)}" 
@@ -4758,11 +5234,10 @@
         function updateMonthlyDataTotal() {
             if (!currentMonthlyEditData) return;
             
-            const inputs = document.querySelectorAll('#monthlyDetailTableBody input[data-field]');
+            const inputs = document.querySelectorAll('#monthlyDetailTableBody input[data-field], #monthlyDetailTableBody select[data-field]');
             let sumIncome = 0, sumTax = 0, sumContrib = 0;
             
             inputs.forEach(input => {
-                const value = parseFloat(input.value) || 0;
                 const field = input.getAttribute('data-field');
                 const monthKey = input.getAttribute('data-month-key');
                 
@@ -4770,14 +5245,20 @@
                 const monthData = currentMonthlyEditData.monthlyData.find(m => `${m.year}-${String(m.month).padStart(2, '0')}` === monthKey);
                 if (monthData) {
                     if (field === 'income') {
+                        const value = parseFloat(input.value) || 0;
                         monthData.income = value;
                         sumIncome += value;
                     } else if (field === 'tax') {
+                        const value = parseFloat(input.value) || 0;
                         monthData.tax = value;
                         sumTax += value;
                     } else if (field === 'contribution') {
+                        const value = parseFloat(input.value) || 0;
                         monthData.contribution = value;
                         sumContrib += value;
+                    } else if (field === 'incomeType') {
+                        // อัปเดตประเภทภาษี
+                        monthData.incomeType = input.value || '-';
                     }
                 }
             });
@@ -4848,17 +5329,23 @@
                 return;
             }
             
-            // อ่านค่าจาก input fields อีกครั้งเพื่อให้แน่ใจว่ามีค่าล่าสุด
-            const inputs = document.querySelectorAll('#monthlyDetailTableBody input[data-field]');
+            // อ่านค่าจาก input fields และ select fields อีกครั้งเพื่อให้แน่ใจว่ามีค่าล่าสุด
+            const inputs = document.querySelectorAll('#monthlyDetailTableBody input[data-field], #monthlyDetailTableBody select[data-field]');
             inputs.forEach(input => {
-                const value = parseFloat(input.value) || 0;
                 const field = input.getAttribute('data-field');
                 const monthKey = input.getAttribute('data-month-key');
                 const monthData = currentMonthlyEditData.monthlyData.find(m => `${m.year}-${String(m.month).padStart(2, '0')}` === monthKey);
                 if (monthData) {
-                    if (field === 'income') monthData.income = value;
-                    else if (field === 'tax') monthData.tax = value;
-                    else if (field === 'contribution') monthData.contribution = value;
+                    if (field === 'income') {
+                        monthData.income = parseFloat(input.value) || 0;
+                    } else if (field === 'tax') {
+                        monthData.tax = parseFloat(input.value) || 0;
+                    } else if (field === 'contribution') {
+                        monthData.contribution = parseFloat(input.value) || 0;
+                    } else if (field === 'incomeType') {
+                        // อัปเดตประเภทภาษี
+                        monthData.incomeType = input.value || '-';
+                    }
                 }
             });
             
@@ -4948,6 +5435,7 @@
             const birthDate = (document.getElementById('editEmployeeBirthDate').value || '').trim();
             const issueDate = (document.getElementById('editEmployeeIssueDate').value || '').trim();
             const expiryDate = (document.getElementById('editEmployeeExpiryDate').value || '').trim();
+            const incomeType = (document.getElementById('editEmployeeIncomeType').value || '').trim();
             
             // ถ้าเลขบัตรเปลี่ยน ให้รวมข้อมูล (merge)
             if (oldIdCard && oldIdCard !== newIdCard) {
@@ -4956,6 +5444,10 @@
                     const attIdCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
                     if (attIdCard === oldIdCard) {
                         att.recipient_id_card = newIdCard;
+                        // อัปเดตชื่อด้วยถ้ามีการแก้ไข
+                        if (name && name !== '-') {
+                            att.recipient_name = name;
+                        }
                     }
                 });
                 
@@ -5004,9 +5496,30 @@
             }
             
             // 4) บันทึกข้อมูลที่แก้ไข (ใช้ newIdCard)
-            let o = employeeOverrides.get(newIdCard);
-            if (!o) { o = {}; employeeOverrides.set(newIdCard, o); }
+            // หา original incomeType จาก hidden attribute
+            const incomeTypeInput = document.getElementById('editEmployeeIncomeType');
+            const originalIncomeType = incomeTypeInput?.getAttribute('data-original-income-type') || '';
+            
+            // ใช้ key: {idCard}_{incomeType} ถ้ามี originalIncomeType
+            const overrideKey = originalIncomeType ? `${newIdCard}_${originalIncomeType}` : newIdCard;
+            let o = employeeOverrides.get(overrideKey);
+            if (!o) { 
+                o = {}; 
+                employeeOverrides.set(overrideKey, o); 
+            }
             o.name = name; o.address = address; o.birthDate = birthDate; o.issueDate = issueDate; o.expiryDate = expiryDate;
+            if (incomeType) o.income_type = incomeType;
+            
+            // 4.5) อัปเดตชื่อและที่อยู่ใน attachmentData (แม้ว่าเลขบัตรจะไม่เปลี่ยน)
+            attachmentData.forEach(att => {
+                const attIdCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                if (attIdCard === newIdCard) {
+                    // อัปเดตชื่อถ้ามีการแก้ไข
+                    if (name && name !== '-') {
+                        att.recipient_name = name;
+                    }
+                }
+            });
             
             // 5) อัปเดต idCardData ถ้ามีการแก้ไขข้อมูล
             const cardIndex = idCardData.findIndex(c => (c.id_card_number || '').toString().trim() === newIdCard);
@@ -5095,7 +5608,7 @@
             closeEditEmployeeModal();
         }
         
-        async function generate50Tawi(idCard) {
+        async function generate50Tawi(idCard, incomeType = null) {
             if (!idCard || idCard === '-') {
                 showNotificationModal('⚠️ ข้อผิดพลาด', 'ไม่พบเลขบัตรประชาชน', '⚠️', 'warning');
                 return;
@@ -5113,38 +5626,62 @@
                 'ตัวอย่าง: C:\\Users\\USER\\Documents\\50tawi',
                 '',
                 async (savePath) => {
-                    await generate50TawiWithPath(idCard, company, savePath);
+                    await generate50TawiWithPath(idCard, company, savePath, incomeType);
                 }
             );
         }
         
-        async function generate50TawiWithPath(idCard, company, savePath) {
+        async function generate50TawiWithPath(idCard, company, savePath, preferredIncomeType = null) {
             
-            // หาประเภทภาษี (40(1) หรือ 40(2)) จาก attachment data
-            let incomeType = '40(1)';
-            const matchingAttachments = (attachmentData || []).filter(a => {
-                const attIdCard = (a.recipient_id_card || '').toString().replace(/\s/g, '').trim();
-                return attIdCard === idCard;
-            });
+            const normalizedIdCard = (idCard || '').toString().replace(/\s/g, '').trim();
+            let incomeType = preferredIncomeType;
             
-            if (matchingAttachments.length > 0) {
-                // ถ้ามีหลายประเภท ให้ถามผู้ใช้หรือใช้ประเภทแรก
-                const types = [...new Set(matchingAttachments.map(a => a.income_type || '40(1)'))];
-                if (types.length > 1) {
-                    // ถ้ามีหลายประเภท ให้ถามผู้ใช้ผ่าน modal
-                    showPathInputModal(
-                        'เลือกประเภทภาษี',
-                        `พบข้อมูลหลายประเภทภาษี: ${types.join(', ')}\nกรุณาเลือกประเภทภาษีที่ต้องการ (40(1) หรือ 40(2)):`,
-                        types[0],
-                        (selectedType) => {
-                            incomeType = selectedType || types[0];
-                            // เรียกฟังก์ชันต่อ
-                            continueGenerate50Tawi(idCard, company, savePath, incomeType);
-                        }
-                    );
-                    return; // หยุดการทำงานรอ callback
+            // ถ้ามี preferredIncomeType ให้ลองหา override ที่ตรงกันก่อน
+            if (incomeType) {
+                const overrideKey = `${normalizedIdCard}_${incomeType}`;
+                const employeeOverride = employeeOverrides.get(overrideKey);
+                if (employeeOverride && employeeOverride.income_type) {
+                    incomeType = employeeOverride.income_type;
                 } else {
-                    incomeType = types[0] || '40(1)';
+                    // ถ้าไม่มี override ที่ตรงกัน ให้ลองหาโดยใช้แค่ idCard
+                    const fallbackOverride = employeeOverrides.get(normalizedIdCard);
+                    if (fallbackOverride && fallbackOverride.income_type) {
+                        incomeType = fallbackOverride.income_type;
+                    }
+                }
+            } else {
+                // ถ้าไม่มี preferredIncomeType ให้ลองหาจาก employeeOverrides โดยใช้แค่ idCard
+                const employeeOverride = employeeOverrides.get(normalizedIdCard);
+                incomeType = employeeOverride?.income_type;
+            }
+            
+            // ถ้ายังไม่มี ให้หาจาก attachment data
+            if (!incomeType) {
+                incomeType = '40(1)';
+                const matchingAttachments = (attachmentData || []).filter(a => {
+                    const attIdCard = (a.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                    return attIdCard === normalizedIdCard;
+                });
+                
+                if (matchingAttachments.length > 0) {
+                    // ถ้ามีหลายประเภท ให้ถามผู้ใช้หรือใช้ประเภทแรก
+                    const types = [...new Set(matchingAttachments.map(a => a.income_type || '40(1)').filter(t => t && t !== '-'))];
+                    if (types.length > 1) {
+                        // ถ้ามีหลายประเภท ให้ถามผู้ใช้ผ่าน modal
+                        showPathInputModal(
+                            'เลือกประเภทภาษี',
+                            `พบข้อมูลหลายประเภทภาษี: ${types.join(', ')}\nกรุณาเลือกประเภทภาษีที่ต้องการ (40(1) หรือ 40(2)):`,
+                            types[0],
+                            (selectedType) => {
+                                incomeType = selectedType || types[0];
+                                // เรียกฟังก์ชันต่อ
+                                continueGenerate50Tawi(idCard, company, savePath, incomeType);
+                            }
+                        );
+                        return; // หยุดการทำงานรอ callback
+                    } else if (types.length === 1) {
+                        incomeType = types[0];
+                    }
                 }
             }
             
@@ -5350,6 +5887,29 @@
         
         async function generateRDPrepForAllWithPath(company, savePath, employees, addressOverrides = {}) {
             try {
+                // สร้าง income_type_overrides จาก employeeOverrides
+                const incomeTypeOverrides = {};
+                employees.forEach(emp => {
+                    const normalizedIdCard = (emp.idCard || '').toString().replace(/\s/g, '').trim();
+                    const empIncomeType = emp.incomeType || '40(1)';
+                    
+                    // ลองหา override โดยใช้ key: {idCard}_{incomeType} ก่อน
+                    const overrideKey = `${normalizedIdCard}_${empIncomeType}`;
+                    let override = employeeOverrides.get(overrideKey);
+                    
+                    // ถ้าไม่มี ให้ลองหาโดยใช้แค่ idCard
+                    if (!override || !override.income_type) {
+                        override = employeeOverrides.get(normalizedIdCard);
+                    }
+                    
+                    if (override && override.income_type) {
+                        incomeTypeOverrides[normalizedIdCard] = override.income_type;
+                    } else if (empIncomeType) {
+                        // ถ้าไม่มี override ให้ใช้ค่าเดิมจาก emp.incomeType
+                        incomeTypeOverrides[normalizedIdCard] = empIncomeType;
+                    }
+                });
+                
                 // แสดง loading
                 const loadingModal = document.getElementById('loading50TawiModal');
                 const loadingMessage = document.getElementById('loading50TawiMessage');
@@ -5366,7 +5926,8 @@
                     body: JSON.stringify({
                         company: company,
                         save_path: savePath,
-                        address_overrides: addressOverrides
+                        address_overrides: addressOverrides,
+                        income_type_overrides: incomeTypeOverrides
                     })
                 });
                 
@@ -5405,8 +5966,118 @@
                 return;
             }
             
-            // ดึงรายชื่อพนักงานทั้งหมด
-            const employees = Array.from(employeeMap.values());
+            // สร้าง employeeByTypeMap เหมือนใน updateEmployeeDataTable() เพื่อให้ได้ข้อมูลที่แยกตาม incomeType
+            const employeeByTypeMap = new Map();
+            
+            attachmentData.forEach(att => {
+                const idCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                if (!idCard) return;
+                
+                // หาประเภทภาษีจาก attachment โดยตรวจสอบ employeeOverrides ก่อน
+                const normalizedIdCard = idCard.toString().replace(/\s/g, '').trim();
+                let incomeType = att.income_type;
+                
+                // ถ้า income_type เป็น null, undefined, '', หรือ '-' ให้ตรวจสอบ employeeOverrides
+                if (!incomeType || incomeType === '-' || incomeType === '') {
+                    // ลองหาจาก employeeOverrides โดยใช้ key: {idCard}_{incomeType} สำหรับทุกประเภท
+                    let foundOverride = null;
+                    for (const [key, override] of employeeOverrides.entries()) {
+                        if (key.startsWith(`${normalizedIdCard}_`)) {
+                            if (override && override.income_type) {
+                                foundOverride = override.income_type;
+                                break;
+                            }
+                        }
+                    }
+                    // ถ้าไม่มี override ให้ลองหาโดยใช้แค่ idCard
+                    if (!foundOverride) {
+                        const fallbackOverride = employeeOverrides.get(normalizedIdCard);
+                        if (fallbackOverride && fallbackOverride.income_type) {
+                            foundOverride = fallbackOverride.income_type;
+                        }
+                    }
+                    incomeType = foundOverride || '40(1)';
+                }
+                
+                const key = `${idCard}_${incomeType}`;
+                
+                if (!employeeByTypeMap.has(key)) {
+                    // หาข้อมูลพื้นฐานจาก idCardData หรือ attachmentData
+                    let baseName = '-';
+                    let baseAddress = '-';
+                    
+                    const card = idCardData.find(c => (c.id_card_number || '').toString().trim() === idCard);
+                    if (card) {
+                        baseName = (card.full_name || '').trim() || '-';
+                        baseAddress = (card.address || '').trim() || '-';
+                    } else {
+                        const firstAtt = attachmentData.find(a => {
+                            const attIdCard = (a.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                            return attIdCard === idCard;
+                        });
+                        if (firstAtt) {
+                            baseName = (firstAtt.recipient_name || '').trim() || '-';
+                        }
+                    }
+                    
+                    employeeByTypeMap.set(key, {
+                        idCard: idCard,
+                        incomeType: incomeType,
+                        name: baseName,
+                        address: baseAddress
+                    });
+                }
+            });
+            
+            // รวมข้อมูลจาก idCardData ที่ยังไม่มีใน employeeByTypeMap
+            idCardData.forEach(card => {
+                const idCard = (card.id_card_number || '').toString().trim();
+                if (!idCard) return;
+                
+                const normalizedIdCard = idCard.toString().replace(/\s/g, '').trim();
+                let types = [...new Set(attachmentData
+                    .filter(a => (a.recipient_id_card || '').toString().replace(/\s/g, '').trim() === normalizedIdCard)
+                    .map(a => {
+                        let type = a.income_type;
+                        if (!type || type === '-' || type === '') {
+                            let foundOverride = null;
+                            for (const [key, override] of employeeOverrides.entries()) {
+                                if (key.startsWith(`${normalizedIdCard}_`)) {
+                                    if (override && override.income_type) {
+                                        foundOverride = override.income_type;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (!foundOverride) {
+                                const fallbackOverride = employeeOverrides.get(normalizedIdCard);
+                                if (fallbackOverride && fallbackOverride.income_type) {
+                                    foundOverride = fallbackOverride.income_type;
+                                }
+                            }
+                            type = foundOverride || '40(1)';
+                        }
+                        return type;
+                    })
+                    .filter(t => t && t !== '-'))];
+                
+                if (types.length === 0) types.push('40(1)');
+                
+                types.forEach(incomeType => {
+                    const key = `${idCard}_${incomeType}`;
+                    if (!employeeByTypeMap.has(key)) {
+                        employeeByTypeMap.set(key, {
+                            idCard: idCard,
+                            incomeType: incomeType,
+                            name: (card.full_name || '').trim() || '-',
+                            address: (card.address || '').trim() || '-'
+                        });
+                    }
+                });
+            });
+            
+            // ดึงรายชื่อพนักงานทั้งหมดจาก employeeByTypeMap (แยกตาม incomeType แล้ว)
+            const employees = Array.from(employeeByTypeMap.values());
             if (employees.length === 0) {
                 showNotificationModal('⚠️ ข้อผิดพลาด', 'ไม่พบข้อมูลพนักงาน', '⚠️', 'warning');
                 return;
@@ -5489,27 +6160,41 @@
                                 if (companyAddress) {
                                     // ดึงที่อยู่บริษัทมาใส่ให้กับพนักงานที่ไม่มีที่อยู่
                                     employeesWithoutAddress.forEach(emp => {
-                                        let o = employeeOverrides.get(emp.idCard);
+                                        const normalizedIdCard = (emp.idCard || '').toString().replace(/\s/g, '').trim();
+                                        // ใช้ key: {idCard}_{incomeType} ถ้ามี incomeType
+                                        const overrideKey = emp.incomeType ? `${normalizedIdCard}_${emp.incomeType}` : normalizedIdCard;
+                                        let o = employeeOverrides.get(overrideKey);
                                         if (!o) {
                                             o = {};
-                                            employeeOverrides.set(emp.idCard, o);
+                                            employeeOverrides.set(overrideKey, o);
                                         }
                                         o.address = companyAddress;
-                                    });
-                                    
-                                    // อัพเดท employeeMap
-                                    employeesWithoutAddress.forEach(emp => {
-                                        const empInMap = employeeMap.get(emp.idCard);
-                                        if (empInMap) {
-                                            empInMap.address = companyAddress;
+                                        
+                                        // อัพเดท fallback key ด้วย
+                                        const fallbackOverride = employeeOverrides.get(normalizedIdCard);
+                                        if (fallbackOverride) {
+                                            fallbackOverride.address = companyAddress;
+                                        } else {
+                                            const fallback = { address: companyAddress };
+                                            employeeOverrides.set(normalizedIdCard, fallback);
                                         }
                                     });
                                     
                                     showStatusMessage(`✅ ดึงที่อยู่บริษัทมาใส่ให้กับพนักงาน ${employeesWithoutAddress.length} คนเรียบร้อย`, 'success');
                                 }
                                 
-                                // อัพเดท employees array ใหม่หลังจากอัพเดทที่อยู่แล้ว
-                                const updatedEmployees = Array.from(employeeMap.values());
+                                // สร้าง employees array ใหม่จาก employeeByTypeMap (แยกตาม incomeType แล้ว)
+                                const updatedEmployees = Array.from(employeeByTypeMap.values());
+                                
+                                // อัพเดทที่อยู่ใน updatedEmployees จาก employeeOverrides
+                                updatedEmployees.forEach(emp => {
+                                    const normalizedIdCard = (emp.idCard || '').toString().replace(/\s/g, '').trim();
+                                    const overrideKey = emp.incomeType ? `${normalizedIdCard}_${emp.incomeType}` : normalizedIdCard;
+                                    const override = employeeOverrides.get(overrideKey) || employeeOverrides.get(normalizedIdCard);
+                                    if (override && override.address) {
+                                        emp.address = override.address;
+                                    }
+                                });
                                 
                                 // เรียกฟังก์ชันสร้างเอกสาร
                                 try {
@@ -5579,18 +6264,25 @@
                 // Normalize idCard (ลบช่องว่าง)
                 const normalizedIdCard = (idCard || '').toString().replace(/\s/g, '').trim();
                 
-                // หาประเภทภาษี (40(1) หรือ 40(2)) จาก attachment data
-                let incomeType = '40(1)';
-                const matchingAttachments = (attachmentData || []).filter(a => {
-                    const attIdCard = (a.recipient_id_card || '').toString().replace(/\s/g, '').trim();
-                    return attIdCard === normalizedIdCard;
-                });
+                // ใช้ประเภทภาษีจาก emp.incomeType (เพราะเราแยกตามประเภทภาษีแล้ว)
+                let incomeType = emp.incomeType || '40(1)';
                 
-                if (matchingAttachments.length > 0) {
-                    const types = [...new Set(matchingAttachments.map(a => a.income_type || '40(1)'))];
-                    // ถ้ามีหลายประเภท ให้ใช้ประเภทแรก (หรืออาจจะถามผู้ใช้)
-                    incomeType = types[0] || '40(1)';
+                // ถ้ามีการ override ใน employeeOverrides ให้ใช้ค่า override
+                // ลองหา override โดยใช้ key: {idCard}_{incomeType} ก่อน
+                const overrideKey = `${normalizedIdCard}_${incomeType}`;
+                let employeeOverride = employeeOverrides.get(overrideKey);
+                
+                // ถ้าไม่มี override ที่ตรงกัน ให้ลองหาโดยใช้แค่ idCard
+                if (!employeeOverride || !employeeOverride.income_type) {
+                    employeeOverride = employeeOverrides.get(normalizedIdCard);
                 }
+                
+                if (employeeOverride && employeeOverride.income_type) {
+                    incomeType = employeeOverride.income_type;
+                }
+                
+                // ใช้ incomeType จาก emp.incomeType เป็นหลัก (เพราะเราแยกตามประเภทภาษีแล้ว)
+                // และ override จะใช้เมื่อมีการแก้ไขเท่านั้น
                 
                 try {
                     // ดึงที่อยู่พนักงานจาก employeeMap หรือ employeeOverrides (ดึงใหม่ทุกครั้งเพื่อให้ได้ข้อมูลล่าสุด)
@@ -5772,12 +6464,12 @@
                 if (existing) {
                     // อัพเดทข้อมูลเดิมด้วยข้อมูลจากใบแนบ
                     // รวมจำนวนเงิน (ถ้ามีหลายรายการในเดือนเดียวกัน)
-                    const existingIncome = parseFloat(existing.totalIncome?.toString().replace(/,/g, '')) || 0;
-                    const newIncome = parseFloat(att.income_amount?.toString().replace(/,/g, '')) || 0;
+                    const existingIncome = parseFloat(String(existing.totalIncome || '0').replace(/,/g, '').replace(/\s/g, '')) || 0;
+                    const newIncome = parseFloat(String(att.income_amount || '0').replace(/,/g, '').replace(/\s/g, '')) || 0;
                     existing.totalIncome = (existingIncome + newIncome).toFixed(2);
                     
-                    const existingTax = parseFloat(existing.taxAmount?.toString().replace(/,/g, '')) || 0;
-                    const newTax = parseFloat(att.tax_amount?.toString().replace(/,/g, '')) || 0;
+                    const existingTax = parseFloat(String(existing.taxAmount || '0').replace(/,/g, '').replace(/\s/g, '')) || 0;
+                    const newTax = parseFloat(String(att.tax_amount || '0').replace(/,/g, '').replace(/\s/g, '')) || 0;
                     existing.taxAmount = (existingTax + newTax).toFixed(2);
                     if (att.income_type && !existing.incomeType) {
                         existing.incomeType = att.income_type;
@@ -5883,6 +6575,9 @@
                 return b.localeCompare(a);
             });
             
+            // เก็บยอดรวมของแต่ละเดือนเพื่อใช้ในการสรุป
+            const monthlyTotals = {};
+            
             sortedMonthKeys.forEach((monthKey, index) => {
                 const persons = monthGroups[monthKey];
                 const monthRowId = `month-row-${monthKey}`;
@@ -5925,11 +6620,30 @@
                 let totalTax = 0;
                 let totalSS = 0;
                 persons.forEach(person => {
-                    totalIncome += parseFloat(person.totalIncome?.toString().replace(/,/g, '')) || 0;
-                    totalTax += parseFloat(person.taxAmount?.toString().replace(/,/g, '')) || 0;
-                    const c = person.socialSecurityContribution;
-                    totalSS += (c != null && c !== '') ? (parseFloat(String(c).replace(/,/g, '')) || 0) : 0;
+                    // ใช้วิธีเดียวกับที่แสดงในตาราง
+                    const incomeAmount = person.totalIncome || person.income_amount || '0';
+                    const incomeValue = parseFloat(incomeAmount.toString().replace(/,/g, '').replace(/\s/g, '')) || 0;
+                    totalIncome += incomeValue;
+                    
+                    const taxAmount = person.taxAmount || person.tax_amount || '0';
+                    const taxValue = parseFloat(taxAmount.toString().replace(/,/g, '').replace(/\s/g, '')) || 0;
+                    totalTax += taxValue;
+                    
+                    const ssVal = person.socialSecurityContribution != null && person.socialSecurityContribution !== ''
+                        ? (parseFloat(String(person.socialSecurityContribution).replace(/,/g, '').replace(/\s/g, '')) || 0) : null;
+                    if (ssVal != null) {
+                        totalSS += ssVal;
+                    }
                 });
+                
+                // เก็บยอดรวมของเดือนนี้
+                if (monthKey !== 'no-month') {
+                    monthlyTotals[monthKey] = {
+                        totalIncome: totalIncome,
+                        totalTax: totalTax,
+                        totalSS: totalSS
+                    };
+                }
                 
                 if (monthKey !== 'no-month' && persons.length > 0) {
                     const firstPerson = persons[0];
@@ -6025,13 +6739,19 @@
                             <td style="text-align: center;">
                                 ${(() => {
                                     const incomeType = personIncomeType || '-';
-                                    if (incomeType === '40(1)') {
-                                        return `<span style="background: rgba(16, 185, 129, 0.2); padding: 4px 8px; border-radius: 4px; font-weight: 600; color: #10b981; font-size: 0.9em;">${incomeType}</span>`;
-                                    } else if (incomeType === '40(2)') {
-                                        return `<span style="background: rgba(59, 130, 246, 0.2); padding: 4px 8px; border-radius: 4px; font-weight: 600; color: #3b82f6; font-size: 0.9em;">${incomeType}</span>`;
-                                    } else {
-                                        return `<span style="background: rgba(148, 163, 184, 0.2); padding: 4px 8px; border-radius: 4px; font-weight: 600; color: #94a3b8; font-size: 0.9em;">${incomeType}</span>`;
-                                    }
+                                    // สร้าง dropdown สำหรับแก้ไขประเภทภาษี
+                                    return `
+                                        <select class="tax-type-select" 
+                                            data-id-card="${person.idCard || ''}" 
+                                            data-month="${person.paymentMonth || ''}" 
+                                            data-year="${person.paymentYear || ''}"
+                                            onchange="updateTaxTypeDirectly(this)"
+                                            style="padding: 4px 8px; background: ${incomeType === '40(1)' ? 'rgba(16, 185, 129, 0.2)' : incomeType === '40(2)' ? 'rgba(59, 130, 246, 0.2)' : 'rgba(148, 163, 184, 0.2)'}; border: 1px solid ${incomeType === '40(1)' ? '#10b981' : incomeType === '40(2)' ? '#3b82f6' : '#94a3b8'}; border-radius: 4px; font-weight: 600; color: ${incomeType === '40(1)' ? '#10b981' : incomeType === '40(2)' ? '#3b82f6' : '#94a3b8'}; font-size: 0.9em; cursor: pointer; min-width: 70px;">
+                                            <option value="40(1)" ${incomeType === '40(1)' ? 'selected' : ''}>40(1)</option>
+                                            <option value="40(2)" ${incomeType === '40(2)' ? 'selected' : ''}>40(2)</option>
+                                            <option value="-" ${incomeType === '-' || !incomeType ? 'selected' : ''}>-</option>
+                                        </select>
+                                    `;
                                 })()}
                             </td>
                             <td class="currency-cell">${formatCurrency(incomeValue.toFixed(2))}</td>
@@ -6067,6 +6787,128 @@
             });
             
             tbody.innerHTML = html;
+            
+            // คำนวณและแสดงสรุปยอดรวม 12 เดือน (ใช้ยอดรวมที่คำนวณไว้แล้วในตาราง)
+            // เรียกใช้หลังจากตารางแสดงผลเสร็จแล้ว
+            // ใช้ setTimeout เพื่อให้แน่ใจว่า DOM อัปเดตเสร็จแล้ว
+            setTimeout(() => {
+                console.log('🔄 เรียกใช้ updateAttachmentSummary12Months ด้วย monthlyTotals:', monthlyTotals);
+                updateAttachmentSummary12Months(monthlyTotals);
+            }, 100);
+        }
+        
+        function updateAttachmentSummary12Months(monthlyTotals) {
+            const summaryDiv = document.getElementById('attachmentSummary12Months');
+            const totalIncomeEl = document.getElementById('attachmentSummaryTotalIncome');
+            const totalTaxEl = document.getElementById('attachmentSummaryTotalTax');
+            const totalSSEl = document.getElementById('attachmentSummaryTotalSS');
+            const monthCountEl = document.getElementById('attachmentSummaryMonthCount');
+            
+            console.log('🔍 ตรวจสอบ elements:', {
+                summaryDiv: !!summaryDiv,
+                totalIncomeEl: !!totalIncomeEl,
+                totalTaxEl: !!totalTaxEl,
+                totalSSEl: !!totalSSEl,
+                monthCountEl: !!monthCountEl,
+                monthlyTotals: monthlyTotals
+            });
+            
+            if (!summaryDiv || !totalIncomeEl || !totalTaxEl || !totalSSEl || !monthCountEl) {
+                console.error('❌ ไม่พบ elements สำหรับแสดงสรุปยอดรวม:', {
+                    summaryDiv: !!summaryDiv,
+                    totalIncomeEl: !!totalIncomeEl,
+                    totalTaxEl: !!totalTaxEl,
+                    totalSSEl: !!totalSSEl,
+                    monthCountEl: !!monthCountEl
+                });
+                return;
+            }
+            
+            if (!monthlyTotals || typeof monthlyTotals !== 'object') {
+                console.warn('⚠️ monthlyTotals ไม่ถูกต้อง:', monthlyTotals);
+                summaryDiv.style.display = 'none';
+                return;
+            }
+            
+            // คำนวณยอดรวมจากยอดรวมของแต่ละเดือนที่คำนวณไว้แล้ว
+            let totalIncome = 0;
+            let totalTax = 0;
+            let totalSS = 0;
+            const monthKeys = Object.keys(monthlyTotals);
+            
+            // รวมยอดรวมของทุกเดือน
+            monthKeys.forEach(monthKey => {
+                const monthTotal = monthlyTotals[monthKey];
+                if (monthTotal) {
+                    totalIncome += monthTotal.totalIncome || 0;
+                    totalTax += monthTotal.totalTax || 0;
+                    totalSS += monthTotal.totalSS || 0;
+                }
+            });
+            
+            // แสดงผล
+            const formattedIncome = formatCurrency(totalIncome.toFixed(2));
+            const formattedTax = formatCurrency(totalTax.toFixed(2));
+            const formattedSS = formatCurrency(totalSS.toFixed(2));
+            
+            // ตรวจสอบว่ามีค่าหรือไม่ก่อนแสดงผล
+            if (totalIncomeEl) {
+                totalIncomeEl.textContent = formattedIncome;
+                totalIncomeEl.innerText = formattedIncome; // ใช้ทั้ง textContent และ innerText เพื่อความแน่ใจ
+            }
+            if (totalTaxEl) {
+                totalTaxEl.textContent = formattedTax;
+                totalTaxEl.innerText = formattedTax;
+            }
+            if (totalSSEl) {
+                totalSSEl.textContent = formattedSS;
+                totalSSEl.innerText = formattedSS;
+            }
+            if (monthCountEl) {
+                monthCountEl.textContent = `${monthKeys.length} เดือน`;
+                monthCountEl.innerText = `${monthKeys.length} เดือน`;
+            }
+            
+            // Debug log
+            console.log('📊 สรุปยอดรวม 12 เดือน:', {
+                totalIncome: totalIncome,
+                totalTax: totalTax,
+                totalSS: totalSS,
+                monthCount: monthKeys.length,
+                monthKeys: monthKeys.sort(),
+                monthlyTotals: monthlyTotals,
+                formattedIncome: formattedIncome,
+                formattedTax: formattedTax,
+                formattedSS: formattedSS,
+                elementsFound: {
+                    totalIncomeEl: !!totalIncomeEl,
+                    totalTaxEl: !!totalTaxEl,
+                    totalSSEl: !!totalSSEl,
+                    monthCountEl: !!monthCountEl
+                }
+            });
+            
+            // ตรวจสอบว่าข้อมูลถูกแสดงหรือไม่ (ตรวจสอบอีกครั้งหลังจาก set ค่า)
+            setTimeout(() => {
+                console.log('🔍 ตรวจสอบการแสดงผล (หลัง set ค่า):', {
+                    totalIncomeElText: totalIncomeEl?.textContent,
+                    totalTaxElText: totalTaxEl?.textContent,
+                    totalSSElText: totalSSEl?.textContent,
+                    monthCountElText: monthCountEl?.textContent,
+                    summaryDivDisplay: summaryDiv?.style.display,
+                    summaryDivVisible: summaryDiv?.offsetParent !== null
+                });
+            }, 50);
+            
+            // แสดงส่วนสรุปถ้ามีข้อมูล
+            if (monthKeys.length > 0) {
+                summaryDiv.style.display = 'block';
+                summaryDiv.style.visibility = 'visible';
+                console.log('✅ แสดงส่วนสรุปยอดรวม 12 เดือน, monthKeys.length:', monthKeys.length);
+            } else {
+                summaryDiv.style.display = 'none';
+                console.log('⚠️ ไม่แสดงส่วนสรุปเพราะไม่มีข้อมูลเดือน');
+            }
         }
         
         function toggleMonthSection(monthKey) {
@@ -6603,6 +7445,534 @@
                 });
             }
         });
+        
+        // ฟังก์ชันสำหรับแสดง Modal เลือกประเภทภาษีก่อนอัพโหลด
+        function showTaxTypeSelectionModal(file, dropZone, opts = {}) {
+            const modal = document.getElementById('taxTypeSelectionModal');
+            const fileNameText = document.getElementById('taxTypeFileNameText');
+            
+            if (modal && fileNameText) {
+                fileNameText.textContent = file.name;
+                // รีเซ็ต radio buttons
+                document.getElementById('taxType40_1').checked = false;
+                document.getElementById('taxType40_2').checked = false;
+                document.getElementById('taxTypeBoth').checked = false;
+                modal.style.display = 'flex';
+                
+                // เก็บข้อมูลสำหรับ callback
+                window.currentTaxTypeFile = file;
+                window.currentTaxTypeDropZone = dropZone;
+                window.currentTaxTypeOpts = opts;
+            }
+        }
+        
+        function closeTaxTypeSelectionModal() {
+            const modal = document.getElementById('taxTypeSelectionModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            
+            // ถ้ายกเลิก ให้รีเซ็ตไฟล์ input
+            const fileInput = document.getElementById('fileInput2');
+            const dropZone = document.getElementById('dropZone2');
+            if (fileInput && dropZone) {
+                fileInput.value = '';
+                fileData.file2 = null;
+                dropZone.classList.remove('has-file');
+                dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX · เลือกได้หลายไฟล์ อ่านทีละไฟล์';
+            }
+            
+            // รีเซ็ตตัวแปร
+            pendingAttachmentFiles = [];
+            pendingAttachmentFileIndex = 0;
+            window.currentTaxTypeFile = null;
+            window.currentTaxTypeDropZone = null;
+            window.currentTaxTypeOpts = null;
+        }
+        
+        async function confirmTaxTypeSelection() {
+            const selectedType = document.querySelector('input[name="taxTypeSelection"]:checked');
+            
+            if (!selectedType) {
+                showNotificationModal('⚠️ กรุณาเลือกประเภทภาษี', 'กรุณาเลือกประเภทภาษีก่อนดำเนินการต่อ', '⚠️', 'warning');
+                return;
+            }
+            
+            const taxType = selectedType.value;
+            const file = window.currentTaxTypeFile;
+            const dropZone = window.currentTaxTypeDropZone;
+            const opts = window.currentTaxTypeOpts || {};
+            
+            if (!file) {
+                closeTaxTypeSelectionModal();
+                return;
+            }
+            
+            // ปิด Modal
+            closeTaxTypeSelectionModal();
+            
+            // ประมวลผลไฟล์ด้วยประเภทภาษีที่เลือก (รวมถึง month และ year ถ้ามี)
+            await processPnd1kAttachmentOCR(file, { ...opts, incomeType: taxType });
+            
+            // ถ้ามีไฟล์ถัดไป ให้แสดง Modal สำหรับไฟล์ถัดไป
+            if (pendingAttachmentFiles.length > pendingAttachmentFileIndex + 1) {
+                pendingAttachmentFileIndex++;
+                const nextFile = pendingAttachmentFiles[pendingAttachmentFileIndex];
+                const nextOpts = {
+                    multiIndex: pendingAttachmentFileIndex + 1,
+                    multiTotal: pendingAttachmentFiles.length,
+                    isMulti: true
+                };
+                showTaxTypeSelectionModal(nextFile, dropZone, nextOpts);
+            } else if (pendingAttachmentFiles.length > 0) {
+                // ถ้าเป็นไฟล์สุดท้าย ให้แสดงข้อความสำเร็จ
+                if (dropZone) {
+                    dropZone.querySelector('.file-drop-zone-text').textContent = `✅ อ่านครบ ${pendingAttachmentFiles.length} ไฟล์`;
+                }
+                if (typeof showStatusMessage === 'function') {
+                    showStatusMessage(`✅ อ่านใบแนบ ภ.ง.ด.1 ครบ ${pendingAttachmentFiles.length} ไฟล์`, 'success');
+                }
+                pendingAttachmentFiles = [];
+                pendingAttachmentFileIndex = 0;
+            }
+        }
+        
+        // ฟังก์ชันสำหรับอ่านเดือน/ปีจากชื่อไฟล์
+        function extractMonthYearFromFilename(filename) {
+            // รูปแบบที่รองรับ:
+            // 1. ด.08.68 หรือ ด.8.68 หรือ ด.08.2568 หรือ ด.8.2568 (เดือน.ปี พ.ศ.)
+            // 2. 08.68 หรือ 8.68 หรือ 08.2568 หรือ 8.2568 (เดือน.ปี พ.ศ.)
+            // 3. 2025-08 หรือ 2025-8 หรือ 08-2025 หรือ 8-2025 (ปี-เดือน ค.ศ.)
+            // 4. 202508 หรือ 20258 (YYYYMM)
+            
+            let detectedMonth = null;
+            let detectedYear = null;
+            
+            // รูปแบบ 1: ด.MM.YY หรือ ด.MM.YYYY (เดือน.ปี พ.ศ.)
+            const pattern1 = /ด\.(\d{1,2})\.(\d{2,4})/i;
+            let match = filename.match(pattern1);
+            if (match) {
+                detectedMonth = parseInt(match[1]);
+                let year = parseInt(match[2]);
+                // ถ้าเป็นปี 2 หลัก (68) ให้แปลงเป็น 4 หลัก (2568)
+                if (year < 100) {
+                    year = 2500 + year;
+                }
+                // แปลงจาก พ.ศ. เป็น ค.ศ.
+                if (year > 2500) {
+                    detectedYear = year - 543;
+                } else {
+                    detectedYear = year;
+                }
+            }
+            
+            // รูปแบบ 2: MM.YY หรือ MM.YYYY (เดือน.ปี พ.ศ.) - ต้องระวังไม่ให้ match กับวันที่
+            if (!detectedMonth) {
+                const pattern2 = /(?:^|[^0-9])(\d{1,2})\.(\d{2,4})(?:[^0-9]|$)/;
+                match = filename.match(pattern2);
+                if (match) {
+                    const month = parseInt(match[1]);
+                    const year = parseInt(match[2]);
+                    // ตรวจสอบว่าเป็นเดือนที่ถูกต้อง (1-12) และปีที่สมเหตุสมผล
+                    if (month >= 1 && month <= 12 && year >= 2500 && year <= 2600) {
+                        detectedMonth = month;
+                        detectedYear = year - 543;
+                    } else if (month >= 1 && month <= 12 && year >= 2000 && year <= 2100) {
+                        detectedMonth = month;
+                        detectedYear = year;
+                    }
+                }
+            }
+            
+            // รูปแบบ 3: YYYY-MM หรือ YYYY-M หรือ MM-YYYY หรือ M-YYYY
+            if (!detectedMonth) {
+                const pattern3a = /(\d{4})-(\d{1,2})/; // 2025-08
+                match = filename.match(pattern3a);
+                if (match) {
+                    const year = parseInt(match[1]);
+                    const month = parseInt(match[2]);
+                    if (month >= 1 && month <= 12 && year >= 2000 && year <= 2100) {
+                        detectedMonth = month;
+                        detectedYear = year;
+                    }
+                } else {
+                    const pattern3b = /(\d{1,2})-(\d{4})/; // 08-2025
+                    match = filename.match(pattern3b);
+                    if (match) {
+                        const month = parseInt(match[1]);
+                        const year = parseInt(match[2]);
+                        if (month >= 1 && month <= 12 && year >= 2000 && year <= 2100) {
+                            detectedMonth = month;
+                            detectedYear = year;
+                        }
+                    }
+                }
+            }
+            
+            // รูปแบบ 4: YYYYMM (202508)
+            if (!detectedMonth) {
+                const pattern4 = /(\d{4})(\d{2})/;
+                match = filename.match(pattern4);
+                if (match) {
+                    const year = parseInt(match[1]);
+                    const month = parseInt(match[2]);
+                    if (month >= 1 && month <= 12 && year >= 2000 && year <= 2100) {
+                        detectedMonth = month;
+                        detectedYear = year;
+                    }
+                }
+            }
+            
+            return {
+                month: detectedMonth,
+                year: detectedYear
+            };
+        }
+        
+        // ตัวแปรสำหรับเก็บไฟล์ที่รอการเลือกเดือน/ปี
+        let pendingMonthYearFile = null;
+        let pendingMonthYearFileIndex = null;
+        let pendingMonthYearDropZone = null;
+        
+        // ฟังก์ชันสำหรับแสดง Modal เลือกเดือน/ปี
+        function showMonthYearSelectionModal(file, fileIndex, dropZone, detectedMonthYear, ocrMonthYear = null, filenameMonthYear = null) {
+            const modal = document.getElementById('monthYearSelectionModal');
+            const fileNameText = document.getElementById('monthYearFileNameText');
+            const detectedText = document.getElementById('detectedMonthYearText');
+            const monthSelect = document.getElementById('monthYearSelectionMonth');
+            const yearInput = document.getElementById('monthYearSelectionYear');
+            
+            if (modal && fileNameText && detectedText && monthSelect && yearInput) {
+                fileNameText.textContent = file.name;
+                
+                const monthNames = {
+                    '1': 'มกราคม', '2': 'กุมภาพันธ์', '3': 'มีนาคม', '4': 'เมษายน',
+                    '5': 'พฤษภาคม', '6': 'มิถุนายน', '7': 'กรกฎาคม', '8': 'สิงหาคม',
+                    '9': 'กันยายน', '10': 'ตุลาคม', '11': 'พฤศจิกายน', '12': 'ธันวาคม'
+                };
+                
+                // สร้างข้อความแสดงเดือน/ปีที่อ่านได้
+                let detectedMessage = '';
+                if (ocrMonthYear && ocrMonthYear.month && ocrMonthYear.year) {
+                    const ocrMonthName = monthNames[String(ocrMonthYear.month)] || `เดือน ${ocrMonthYear.month}`;
+                    detectedMessage = `📅 เดือนที่อ่านได้จาก OCR: ${ocrMonthName} ${ocrMonthYear.year}`;
+                    if (filenameMonthYear && filenameMonthYear.month && filenameMonthYear.year && 
+                        (filenameMonthYear.month !== ocrMonthYear.month || filenameMonthYear.year !== ocrMonthYear.year)) {
+                        const filenameMonthName = monthNames[String(filenameMonthYear.month)] || `เดือน ${filenameMonthYear.month}`;
+                        detectedMessage += `\n📄 เดือนที่อ่านได้จากชื่อไฟล์: ${filenameMonthName} ${filenameMonthYear.year}`;
+                    }
+                } else if (filenameMonthYear && filenameMonthYear.month && filenameMonthYear.year) {
+                    const filenameMonthName = monthNames[String(filenameMonthYear.month)] || `เดือน ${filenameMonthYear.month}`;
+                    detectedMessage = `📄 เดือนที่อ่านได้จากชื่อไฟล์: ${filenameMonthName} ${filenameMonthYear.year}`;
+                } else {
+                    detectedMessage = 'ไม่พบข้อมูลเดือน/ปีใน OCR และชื่อไฟล์';
+                }
+                
+                detectedText.textContent = detectedMessage;
+                
+                // ตั้งค่าใน dropdown และ input (ใช้ค่าจาก OCR ก่อน ถ้าไม่มีให้ใช้จากชื่อไฟล์)
+                if (detectedMonthYear && detectedMonthYear.month && detectedMonthYear.year) {
+                    monthSelect.value = detectedMonthYear.month;
+                    yearInput.value = detectedMonthYear.year;
+                } else {
+                    // ตั้งค่าเป็นเดือนและปีปัจจุบัน
+                    const now = new Date();
+                    monthSelect.value = now.getMonth() + 1;
+                    yearInput.value = now.getFullYear();
+                }
+                
+                modal.style.display = 'flex';
+                
+                // เก็บข้อมูลสำหรับ callback
+                pendingMonthYearFile = file;
+                pendingMonthYearFileIndex = fileIndex;
+                pendingMonthYearDropZone = dropZone;
+            }
+        }
+        
+        function closeMonthYearSelectionModal() {
+            const modal = document.getElementById('monthYearSelectionModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            
+            // ถ้ายกเลิก ให้รีเซ็ตไฟล์ input
+            if (pendingMonthYearFileIndex) {
+                const fileInput = document.getElementById(`fileInput${pendingMonthYearFileIndex}`);
+                const dropZone = pendingMonthYearDropZone;
+                if (fileInput && dropZone) {
+                    fileInput.value = '';
+                    fileData[`file${pendingMonthYearFileIndex}`] = null;
+                    dropZone.classList.remove('has-file');
+                    dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
+                    dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับ PDF, DOC, DOCX, XLS, XLSX · อัพโหลดได้ทีละไฟล์';
+                }
+            }
+            
+            // รีเซ็ตตัวแปร
+            pendingMonthYearFile = null;
+            pendingMonthYearFileIndex = null;
+            pendingMonthYearDropZone = null;
+        }
+        
+        async function confirmMonthYearSelection() {
+            const monthSelect = document.getElementById('monthYearSelectionMonth');
+            const yearInput = document.getElementById('monthYearSelectionYear');
+            
+            if (!monthSelect || !yearInput) {
+                showNotificationModal('⚠️ เกิดข้อผิดพลาด', 'ไม่พบ elements สำหรับเลือกเดือน/ปี', '⚠️', 'warning');
+                return;
+            }
+            
+            const selectedMonth = parseInt(monthSelect.value);
+            const selectedYear = parseInt(yearInput.value);
+            
+            if (!selectedMonth || !selectedYear) {
+                showNotificationModal('⚠️ กรุณาเลือกเดือน/ปี', 'กรุณาเลือกเดือนและปีก่อนดำเนินการต่อ', '⚠️', 'warning');
+                return;
+            }
+            
+            const file = pendingMonthYearFile;
+            const fileIndex = pendingMonthYearFileIndex;
+            const dropZone = pendingMonthYearDropZone;
+            
+            if (!file || !fileIndex) {
+                closeMonthYearSelectionModal();
+                return;
+            }
+            
+            // ปิด Modal
+            closeMonthYearSelectionModal();
+            
+            // ประมวลผลไฟล์ด้วยเดือน/ปีที่เลือก
+            if (fileIndex === '1') {
+                await processPnd1kFormOCR(file, { month: selectedMonth, year: selectedYear });
+                checkAllFilesUploaded();
+                updateSummary();
+            } else if (fileIndex === '2') {
+                // สำหรับใบแนบ ภ.ง.ด.1 จะถามประเภทภาษีก่อน แล้วจะถามเดือน/ปีอีกครั้งใน processPnd1kAttachmentOCR
+                // แต่ตอนนี้ให้ถามเดือน/ปีก่อน แล้วค่อยถามประเภทภาษี
+                showTaxTypeSelectionModal(file, dropZone, { month: selectedMonth, year: selectedYear });
+            } else if (fileIndex === '3') {
+                await processSocialSecurityFormOCR(file, { month: selectedMonth, year: selectedYear });
+                checkAllFilesUploaded();
+                updateSummary();
+            } else if (fileIndex === '4') {
+                await processSocialSecurityAttachmentOCR(file, { month: selectedMonth, year: selectedYear });
+                checkAllFilesUploaded();
+                updateSummary();
+            }
+        }
+        
+        // ฟังก์ชันสำหรับอัปเดตประเภทภาษีของพนักงานจากตารางข้อมูลพนักงาน
+        async function updateEmployeeTaxType(selectElement) {
+            const idCard = selectElement.getAttribute('data-id-card') || '';
+            const oldIncomeType = selectElement.getAttribute('data-income-type') || '';
+            const newIncomeType = selectElement.value || '40(1)';
+            
+            if (!idCard || idCard === '-') {
+                showStatusMessage('⚠️ ไม่พบเลขบัตรประชาชน', 'warning');
+                return;
+            }
+            
+            const normalizedIdCard = idCard.toString().replace(/\s/g, '').trim();
+            
+            // ถ้าประเภทภาษีเปลี่ยน ให้อัพเดทข้อมูลใน attachmentData
+            if (oldIncomeType && oldIncomeType !== newIncomeType && newIncomeType !== '-') {
+                const company = document.getElementById('companySelect')?.value || '';
+                if (company) {
+                    try {
+                        // อัพเดททุก record ที่มี idCard และ incomeType เดิม
+                        attachmentData.forEach(att => {
+                            const attIdCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                            const attIncomeType = att.income_type || '40(1)';
+                            if (attIdCard === normalizedIdCard && attIncomeType === oldIncomeType) {
+                                att.income_type = newIncomeType;
+                            }
+                        });
+                        
+                        // ส่งไปยัง backend เพื่อบันทึกถาวร
+                        const response = await fetch('/api/pnd1k/update-employee-tax-type-bulk', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                company: company,
+                                id_card: normalizedIdCard,
+                                old_income_type: oldIncomeType,
+                                new_income_type: newIncomeType
+                            })
+                        });
+                        
+                        const result = await response.json();
+                        if (result.success) {
+                            // โหลดข้อมูลใหม่
+                            await loadAttachments(company);
+                        }
+                    } catch (error) {
+                        console.error('Error updating tax type:', error);
+                    }
+                }
+            }
+            
+            // อัพเดทใน employeeOverrides (ใช้ key: {idCard}_{incomeType})
+            // ถ้ามี oldIncomeType ให้อัพเดท key เดิมด้วย (ลบหรืออัพเดท)
+            if (oldIncomeType && oldIncomeType !== newIncomeType) {
+                const oldKey = `${normalizedIdCard}_${oldIncomeType}`;
+                const oldOverride = employeeOverrides.get(oldKey);
+                if (oldOverride) {
+                    // ลบ key เดิม
+                    employeeOverrides.delete(oldKey);
+                }
+            }
+            
+            // สร้างหรืออัพเดท key ใหม่
+            const newKey = `${normalizedIdCard}_${newIncomeType}`;
+            let o = employeeOverrides.get(newKey);
+            if (!o) {
+                o = {};
+                employeeOverrides.set(newKey, o);
+            }
+            o.income_type = newIncomeType;
+            
+            // อัพเดท key ที่ใช้แค่ idCard (fallback) ด้วย
+            let fallbackOverride = employeeOverrides.get(normalizedIdCard);
+            if (!fallbackOverride) {
+                fallbackOverride = {};
+                employeeOverrides.set(normalizedIdCard, fallbackOverride);
+            }
+            fallbackOverride.income_type = newIncomeType;
+            
+            // อัพเดทสีของ dropdown
+            if (newIncomeType === '40(1)') {
+                selectElement.style.background = 'rgba(16, 185, 129, 0.2)';
+                selectElement.style.borderColor = '#10b981';
+                selectElement.style.color = '#10b981';
+            } else if (newIncomeType === '40(2)') {
+                selectElement.style.background = 'rgba(59, 130, 246, 0.2)';
+                selectElement.style.borderColor = '#3b82f6';
+                selectElement.style.color = '#3b82f6';
+            } else {
+                selectElement.style.background = 'rgba(148, 163, 184, 0.2)';
+                selectElement.style.borderColor = '#94a3b8';
+                selectElement.style.color = '#94a3b8';
+            }
+            
+            // อัพเดทตารางใหม่
+            updateEmployeeDataTable();
+            
+            showStatusMessage('✅ อัปเดตประเภทภาษีสำเร็จ', 'success');
+        }
+        
+        // ฟังก์ชันสำหรับอัปเดตประเภทภาษีโดยตรงจากตาราง
+        async function updateTaxTypeDirectly(selectElement) {
+            const idCard = selectElement.getAttribute('data-id-card') || '';
+            const month = parseInt(selectElement.getAttribute('data-month')) || null;
+            const year = parseInt(selectElement.getAttribute('data-year')) || null;
+            const newIncomeType = selectElement.value || '-';
+            
+            if (!idCard || idCard === '-' || !month || !year) {
+                showStatusMessage('⚠️ ไม่พบข้อมูลที่จำเป็นสำหรับการอัปเดต', 'warning');
+                // คืนค่าเดิม
+                const originalType = attachmentData.find(att => {
+                    const attIdCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                    return attIdCard === idCard && att.payment_month === month && att.payment_year === year;
+                })?.income_type || '-';
+                selectElement.value = originalType;
+                return;
+            }
+            
+            const company = document.getElementById('companySelect')?.value || '';
+            if (!company) {
+                showStatusMessage('⚠️ กรุณาเลือกบริษัท', 'warning');
+                // คืนค่าเดิม
+                const originalType = attachmentData.find(att => {
+                    const attIdCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                    return attIdCard === idCard && att.payment_month === month && att.payment_year === year;
+                })?.income_type || '-';
+                selectElement.value = originalType;
+                return;
+            }
+            
+            try {
+                // อัปเดตข้อมูลใน attachmentData
+                const normalizedIdCard = idCard.toString().replace(/\s/g, '').trim();
+                let updated = false;
+                attachmentData.forEach(att => {
+                    const attIdCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                    if (attIdCard === normalizedIdCard && att.payment_month === month && att.payment_year === year) {
+                        att.income_type = newIncomeType;
+                        updated = true;
+                    }
+                });
+                
+                if (!updated) {
+                    showStatusMessage('⚠️ ไม่พบข้อมูลที่จะอัปเดต', 'warning');
+                    return;
+                }
+                
+                // ส่งข้อมูลไปยัง API
+                showStatusMessage('⏳ กำลังอัปเดตประเภทภาษี...', 'info');
+                
+                const response = await fetch('/api/pnd1k/update-tax-type', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        company: company,
+                        id_card: normalizedIdCard,
+                        month: month,
+                        year: year,
+                        income_type: newIncomeType
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatusMessage('✅ อัปเดตประเภทภาษีสำเร็จ', 'success');
+                    
+                    // โหลดข้อมูลใหม่จาก JSON file เพื่อให้แน่ใจว่า attachmentData ตรงกับข้อมูลที่แก้ไขแล้ว
+                    await loadAttachments(company);
+                    
+                    // อัปเดตสีของ dropdown ตามประเภทภาษีใหม่
+                    if (newIncomeType === '40(1)') {
+                        selectElement.style.background = 'rgba(16, 185, 129, 0.2)';
+                        selectElement.style.borderColor = '#10b981';
+                        selectElement.style.color = '#10b981';
+                    } else if (newIncomeType === '40(2)') {
+                        selectElement.style.background = 'rgba(59, 130, 246, 0.2)';
+                        selectElement.style.borderColor = '#3b82f6';
+                        selectElement.style.color = '#3b82f6';
+                    } else {
+                        selectElement.style.background = 'rgba(148, 163, 184, 0.2)';
+                        selectElement.style.borderColor = '#94a3b8';
+                        selectElement.style.color = '#94a3b8';
+                    }
+                    
+                    // รีโหลดข้อมูลเพื่อให้แน่ใจว่าข้อมูลถูกต้อง
+                    await loadAttachments(company);
+                    updateUploadedDataTable();
+                } else {
+                    showStatusMessage(`⚠️ ${result.error || 'เกิดข้อผิดพลาดในการอัปเดต'}`, 'warning');
+                    // คืนค่าเดิม
+                    const originalType = attachmentData.find(att => {
+                        const attIdCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                        return attIdCard === normalizedIdCard && att.payment_month === month && att.payment_year === year;
+                    })?.income_type || '-';
+                    selectElement.value = originalType;
+                }
+            } catch (error) {
+                console.error('Error updating tax type:', error);
+                showStatusMessage('⚠️ เกิดข้อผิดพลาดในการอัปเดตประเภทภาษี', 'warning');
+                // คืนค่าเดิม
+                const normalizedIdCard = idCard.toString().replace(/\s/g, '').trim();
+                const originalType = attachmentData.find(att => {
+                    const attIdCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                    return attIdCard === normalizedIdCard && att.payment_month === month && att.payment_year === year;
+                })?.income_type || '-';
+                selectElement.value = originalType;
+            }
+        }
     </script>
 </body>
 </html>

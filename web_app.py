@@ -3,7 +3,7 @@ BotV3 - Flask Web Application
 Web Application แบบ Flask สำหรับ BotV3
 """
 
-from flask import Flask, render_template, request, jsonify, send_from_directory, session, send_file
+from flask import Flask, render_template, request, jsonify, send_from_directory, session, send_file, redirect
 from flask_cors import CORS
 from pathlib import Path
 import sys
@@ -815,6 +815,16 @@ def filing_summary_page():
     if not is_admin:
         return render_template('filing_summary_login.html'), 200
     return render_template('filing_summary.html', is_admin=is_admin)
+
+@app.route('/filing-summary-login')
+@app.route('/filing_summary_login')
+def filing_summary_login_page():
+    """หน้าเข้าสู่ระบบสำหรับหน้าสรุปข้อมูลยื่น"""
+    # ถ้า login แล้ว ให้ redirect ไปหน้า summary
+    is_admin = session.get('is_admin', False)
+    if is_admin:
+        return redirect('/filing-summary')
+    return render_template('filing_summary_login.html'), 200
 
 @app.route('/filing-dashboard')
 def filing_dashboard_page():
@@ -3128,11 +3138,12 @@ def get_filing_summary_data():
     try:
         cache_dir = Path('cache')
         if not cache_dir.exists():
-            return jsonify({'success': True, 'summary_data': []}), 200
+            return jsonify({'success': True, 'summary_data': {'ocr_cache': [], 'auditcheck': []}}), 200
         
-        summary_list = []
+        ocr_cache_list = []
+        auditcheck_list = []
         
-        # อ่านไฟล์ JSON ทั้งหมดในโฟลเดอร์ cache
+        # อ่านไฟล์ ocr_cache (ข้อมูล OCR ของเซอร์วิส)
         for cache_file in cache_dir.glob('ocr_cache_*.json'):
             try:
                 with open(cache_file, 'r', encoding='utf-8') as f:
@@ -3147,6 +3158,7 @@ def get_filing_summary_data():
                 company_summary = {
                     'company_name': company_info,
                     'cache_file': cache_file.name,
+                    'data_source': 'ocr_cache',  # ระบุว่าเป็นข้อมูล OCR ของเซอร์วิส
                     'total_documents': 0,
                     'total_vat': 0.0,
                     'total_amount': 0.0,
@@ -3288,16 +3300,115 @@ def get_filing_summary_data():
                 
                 # เพิ่มเฉพาะถ้ามีเอกสาร
                 if company_summary['total_documents'] > 0:
-                    summary_list.append(company_summary)
+                    ocr_cache_list.append(company_summary)
                     
             except Exception as e:
                 logger.warning(f"ไม่สามารถอ่านไฟล์ cache {cache_file.name}: {e}")
                 continue
         
-        # เรียงลำดับตามชื่อบริษัท
-        summary_list.sort(key=lambda x: x['company_name'])
+        # อ่านไฟล์ auditcheck_state (ข้อมูล OCR ของผู้ตรวจ)
+        for auditcheck_file in cache_dir.glob('auditcheck_state_*.json'):
+            try:
+                with open(auditcheck_file, 'r', encoding='utf-8') as f:
+                    auditcheck_data = json.load(f)
+                
+                # ดึงข้อมูลจาก auditcheck_state
+                company_name = auditcheck_data.get('company', '')
+                tax_month = auditcheck_data.get('taxMonth', '')
+                step4_ocr_data = auditcheck_data.get('step4OCRData', {})
+                
+                if not company_name or not step4_ocr_data:
+                    continue
+                
+                # แยกชื่อบริษัทจากชื่อไฟล์ (ถ้าไม่มีในข้อมูล)
+                filename = auditcheck_file.stem
+                if not company_name:
+                    # ลบ "auditcheck_state_" และ "_YYYY-MM" ออก
+                    company_name = filename.replace('auditcheck_state_', '')
+                    if tax_month:
+                        company_name = company_name.replace(f'_{tax_month}', '')
+                
+                # ประมวลผลข้อมูลใน auditcheck
+                company_summary = {
+                    'company_name': company_name,
+                    'cache_file': auditcheck_file.name,
+                    'data_source': 'auditcheck',  # ระบุว่าเป็นข้อมูล OCR ของผู้ตรวจ
+                    'tax_month': tax_month,
+                    'total_documents': 0,
+                    'total_vat': 0.0,
+                    'total_amount': 0.0,
+                    'total_withholding': 0.0,
+                    'documents': [],
+                    'date_range': {'min': None, 'max': None},
+                    'companies_read': {}
+                }
+                
+                # ดึงข้อมูลจาก metadata ใน step4OCRData
+                metadata_list = step4_ocr_data.get('metadata', [])
+                if not metadata_list and step4_ocr_data.get('count', 0) > 0:
+                    # ถ้าไม่มี metadata แต่มี count แสดงว่ามีข้อมูลแต่ไม่ได้เก็บ metadata
+                    # ให้ใช้ข้อมูลจาก comparisons หรือ initialNotes
+                    pass
+                
+                # ประมวลผลแต่ละ metadata entry
+                for meta_item in metadata_list:
+                    if not isinstance(meta_item, dict):
+                        continue
+                    
+                    filename_item = meta_item.get('filename', '')
+                    seller_company = meta_item.get('company_name', '')
+                    
+                    if filename_item:
+                        company_summary['total_documents'] += 1
+                        
+                        # เพิ่มข้อมูลเอกสาร
+                        doc_info = {
+                            'filename': filename_item,
+                            'filepath': '',
+                            'date': None,
+                            'vat_amount': 0.0,
+                            'total_amount': 0.0,
+                            'withholding_amount': 0.0,
+                            'company_name': seller_company,
+                            'tax_id': '',
+                            'document_number': ''
+                        }
+                        company_summary['documents'].append(doc_info)
+                        
+                        # สรุปข้อมูลตามบริษัทที่อ่าน
+                        if seller_company:
+                            if seller_company not in company_summary['companies_read']:
+                                company_summary['companies_read'][seller_company] = {
+                                    'tax_id': '',
+                                    'file_count': 0,
+                                    'filenames': [],
+                                    'total_vat': 0.0,
+                                    'total_amount': 0.0,
+                                    'total_withholding': 0.0
+                                }
+                            
+                            company_summary['companies_read'][seller_company]['file_count'] += 1
+                            company_summary['companies_read'][seller_company]['filenames'].append(filename_item)
+                
+                # เพิ่มเฉพาะถ้ามีเอกสาร
+                if company_summary['total_documents'] > 0:
+                    auditcheck_list.append(company_summary)
+                    
+            except Exception as e:
+                logger.warning(f"ไม่สามารถอ่านไฟล์ auditcheck {auditcheck_file.name}: {e}")
+                continue
         
-        return jsonify({'success': True, 'summary_data': summary_list}), 200
+        # เรียงลำดับตามชื่อบริษัท
+        ocr_cache_list.sort(key=lambda x: x['company_name'])
+        auditcheck_list.sort(key=lambda x: x['company_name'])
+        
+        return jsonify({
+            'success': True, 
+            'summary_data': {
+                'ocr_cache': ocr_cache_list,
+                'auditcheck': auditcheck_list
+            }
+        }), 200
     except Exception as e:
         logger.error(f"เกิดข้อผิดพลาดในการดึงข้อมูลสรุป: {e}", exc_info=True)
         return jsonify({'success': False, 'message': f'เกิดข้อผิดพลาด: {e}'}), 500
@@ -3322,6 +3433,9 @@ def export_filing_summary_excel():
         
         # สร้าง Workbook
         wb = Workbook()
+        # ลบ Sheet เริ่มต้นที่ว่างเปล่า (จะสร้างใหม่ทีหลัง)
+        if wb.worksheets:
+            wb.remove(wb.worksheets[0])
         
         # สไตล์สำหรับ Header
         header_fill = PatternFill(start_color="2C3E50", end_color="2C3E50", fill_type="solid")
@@ -3335,11 +3449,10 @@ def export_filing_summary_excel():
         )
         data_font = Font(name='TH Sarabun New', size=11)
         
-        # Sheet 1: สรุปตาม Build
-        ws1 = wb.active
-        ws1.title = "สรุปตาม Build"
+        # Sheet 1: สรุปตาม Build (OCR Cache)
+        ws1 = wb.create_sheet("สรุปตาม Build (OCR Cache)")
         
-        headers1 = ["Build/Company", "จำนวนไฟล์", "จำนวนบริษัท"]
+        headers1 = ["ประเภท", "Build/Company", "จำนวนไฟล์", "จำนวนบริษัท"]
         ws1.append(headers1)
         
         # Format header
@@ -3350,8 +3463,8 @@ def export_filing_summary_excel():
             cell.alignment = header_alignment
             cell.border = border
         
-        # Sheet 2: รายละเอียดบริษัทที่อ่าน
-        ws2 = wb.create_sheet("รายละเอียดบริษัท")
+        # Sheet 2: รายละเอียดบริษัทที่อ่าน (OCR Cache)
+        ws2 = wb.create_sheet("รายละเอียดบริษัท (OCR Cache)")
         headers2 = ["Build/Company", "ชื่อบริษัท", "เลขประจำตัวผู้เสียภาษี", "จำนวนไฟล์", "ชื่อไฟล์", "ยอดรวม VAT", "ยอดรวมหัก ณ ที่จ่าย", "ยอดรวมทั้งสิ้น"]
         ws2.append(headers2)
         
@@ -3363,7 +3476,33 @@ def export_filing_summary_excel():
             cell.alignment = header_alignment
             cell.border = border
         
-        # อ่านไฟล์ JSON ทั้งหมดในโฟลเดอร์ cache
+        # Sheet 3: สรุปตาม Build (Auditcheck)
+        ws3 = wb.create_sheet("สรุปตาม Build (Auditcheck)")
+        headers3 = ["ประเภท", "Build/Company", "เดือนภาษี", "จำนวนไฟล์", "จำนวนบริษัท"]
+        ws3.append(headers3)
+        
+        # Format header
+        for col in range(1, len(headers3) + 1):
+            cell = ws3.cell(row=1, column=col)
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = header_alignment
+            cell.border = border
+        
+        # Sheet 4: รายละเอียดบริษัทที่อ่าน (Auditcheck)
+        ws4 = wb.create_sheet("รายละเอียดบริษัท (Auditcheck)")
+        headers4 = ["Build/Company", "เดือนภาษี", "ชื่อบริษัท", "เลขประจำตัวผู้เสียภาษี", "จำนวนไฟล์", "ชื่อไฟล์"]
+        ws4.append(headers4)
+        
+        # Format header
+        for col in range(1, len(headers4) + 1):
+            cell = ws4.cell(row=1, column=col)
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = header_alignment
+            cell.border = border
+        
+        # อ่านไฟล์ ocr_cache (ข้อมูล OCR ของเซอร์วิส)
         for cache_file in cache_dir.glob('ocr_cache_*.json'):
             try:
                 with open(cache_file, 'r', encoding='utf-8') as f:
@@ -3463,9 +3602,10 @@ def export_filing_summary_excel():
                         if filename_entry:
                             companies_read[seller_company]['filenames'].append(filename_entry)
                 
-                # เพิ่มข้อมูลใน Sheet 1
+                # เพิ่มข้อมูลใน Sheet 1 (OCR Cache)
                 if total_documents > 0:
                     ws1.append([
+                        'OCR Cache (เซอร์วิส)',
                         company_info,
                         total_documents,
                         len(companies_read)
@@ -3522,17 +3662,251 @@ def export_filing_summary_excel():
                 logger.warning(f"ไม่สามารถอ่านไฟล์ cache {cache_file.name}: {e}")
                 continue
         
-        # Format ข้อมูลใน Sheet 1
+        # อ่านไฟล์ auditcheck_state (ข้อมูล OCR ของผู้ตรวจ)
+        for auditcheck_file in cache_dir.glob('auditcheck_state_*.json'):
+            try:
+                with open(auditcheck_file, 'r', encoding='utf-8') as f:
+                    auditcheck_data = json.load(f)
+                
+                company_name = auditcheck_data.get('company', '')
+                tax_month = auditcheck_data.get('taxMonth', '')
+                step4_ocr_data = auditcheck_data.get('step4OCRData', {})
+                
+                if not company_name or not step4_ocr_data:
+                    continue
+                
+                filename = auditcheck_file.stem
+                if not company_name:
+                    company_name = filename.replace('auditcheck_state_', '')
+                    if tax_month:
+                        company_name = company_name.replace(f'_{tax_month}', '')
+                
+                # สรุปข้อมูลใน auditcheck
+                total_documents = 0
+                companies_read = {}
+                
+                metadata_list = step4_ocr_data.get('metadata', [])
+                for meta_item in metadata_list:
+                    if not isinstance(meta_item, dict):
+                        continue
+                    
+                    filename_item = meta_item.get('filename', '')
+                    seller_company = meta_item.get('company_name', '')
+                    
+                    if filename_item:
+                        total_documents += 1
+                        
+                        if seller_company not in companies_read:
+                            companies_read[seller_company] = {
+                                'tax_id': '',
+                                'file_count': 0,
+                                'filenames': []
+                            }
+                        
+                        companies_read[seller_company]['file_count'] += 1
+                        companies_read[seller_company]['filenames'].append(filename_item)
+                
+                # เพิ่มข้อมูลใน Sheet 3 (Auditcheck Summary)
+                if total_documents > 0:
+                    ws3.append([
+                        'Auditcheck (ผู้ตรวจ)',
+                        company_name,
+                        tax_month or '',
+                        total_documents,
+                        len(companies_read)
+                    ])
+                    
+                    # เพิ่มข้อมูลใน Sheet 4 (Auditcheck Details)
+                    for company_name_item, company_data in companies_read.items():
+                        filenames = company_data.get('filenames', [])
+                        if filenames:
+                            for idx, filename_item in enumerate(filenames):
+                                if idx == 0:
+                                    ws4.append([
+                                        company_name,
+                                        tax_month or '',
+                                        company_name_item,
+                                        company_data.get('tax_id', ''),
+                                        company_data.get('file_count', 0),
+                                        filename_item
+                                    ])
+                                else:
+                                    ws4.append([
+                                        '',  # Build/Company ว่าง
+                                        '',  # เดือนภาษีว่าง
+                                        '',  # ชื่อบริษัทว่าง
+                                        '',  # Tax ID ว่าง
+                                        '',  # จำนวนไฟล์ว่าง
+                                        filename_item
+                                    ])
+                        else:
+                            ws4.append([
+                                company_name,
+                                tax_month or '',
+                                company_name_item,
+                                company_data.get('tax_id', ''),
+                                company_data.get('file_count', 0),
+                                ''
+                            ])
+                    
+            except Exception as e:
+                logger.warning(f"ไม่สามารถอ่านไฟล์ auditcheck {auditcheck_file.name}: {e}")
+                continue
+        
+        # Sheet 5: สรุปรวมทั้งหมด
+        ws5 = wb.create_sheet("สรุปรวมทั้งหมด")
+        headers5 = ["ประเภท", "Build/Company", "เดือนภาษี", "จำนวนไฟล์", "จำนวนบริษัท", "ยอดรวม VAT", "ยอดรวมหัก ณ ที่จ่าย", "ยอดรวมทั้งสิ้น"]
+        ws5.append(headers5)
+        
+        # Format header Sheet 5
+        for col in range(1, len(headers5) + 1):
+            cell = ws5.cell(row=1, column=col)
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = header_alignment
+            cell.border = border
+        
+        # รวมข้อมูลทั้งหมดจาก OCR Cache และ Auditcheck
+        # อ่านข้อมูล OCR Cache อีกครั้งเพื่อรวมใน Sheet 5
+        for cache_file in cache_dir.glob('ocr_cache_*.json'):
+            try:
+                with open(cache_file, 'r', encoding='utf-8') as f:
+                    cache_data = json.load(f)
+                
+                filename = cache_file.stem
+                company_info = filename.replace('ocr_cache_', '')
+                
+                total_documents = 0
+                total_vat = 0.0
+                total_amount = 0.0
+                total_withholding = 0.0
+                companies_set = set()
+                
+                for entry_key, entry_data in cache_data.items():
+                    if not isinstance(entry_data, dict):
+                        continue
+                    
+                    doc_data = entry_data.get('data', {})
+                    if not doc_data:
+                        continue
+                    
+                    parsed_data = None
+                    if 'raw_text' in doc_data:
+                        try:
+                            parsed_data = json.loads(doc_data['raw_text'])
+                            if isinstance(parsed_data, dict) and 'data' in parsed_data:
+                                parsed_data = parsed_data['data']
+                        except:
+                            pass
+                    
+                    if not parsed_data:
+                        parsed_data = doc_data
+                    
+                    seller_company = parsed_data.get('company_name') or parsed_data.get('ชื่อผู้ขาย', '')
+                    if seller_company:
+                        total_documents += 1
+                        companies_set.add(seller_company)
+                        
+                        # ดึงยอดรวม
+                        vat_amount = 0.0
+                        if 'vat_amount' in parsed_data:
+                            try:
+                                vat_amount = float(parsed_data['vat_amount']) if parsed_data['vat_amount'] else 0.0
+                            except:
+                                pass
+                        elif 'ภาษีมูลค่าเพิ่ม' in parsed_data:
+                            try:
+                                vat_amount = float(str(parsed_data['ภาษีมูลค่าเพิ่ม']).replace(',', ''))
+                            except:
+                                pass
+                        
+                        total_amount_val = 0.0
+                        if 'total_amount' in parsed_data:
+                            try:
+                                total_amount_val = float(parsed_data['total_amount']) if parsed_data['total_amount'] else 0.0
+                            except:
+                                pass
+                        elif 'ยอดรวมสุทธิ' in parsed_data:
+                            try:
+                                total_amount_val = float(str(parsed_data['ยอดรวมสุทธิ']).replace(',', ''))
+                            except:
+                                pass
+                        
+                        withholding_amount = 0.0
+                        if 'จำนวนเงินหัก ณ ที่จ่าย' in parsed_data:
+                            try:
+                                withholding_amount = float(str(parsed_data['จำนวนเงินหัก ณ ที่จ่าย']).replace(',', ''))
+                            except:
+                                pass
+                        
+                        total_vat += vat_amount
+                        total_amount += total_amount_val
+                        total_withholding += withholding_amount
+                
+                if total_documents > 0:
+                    ws5.append([
+                        'OCR Cache (เซอร์วิส)',
+                        company_info,
+                        '',  # ไม่มีเดือนภาษีสำหรับ OCR Cache
+                        total_documents,
+                        len(companies_set),
+                        total_vat,
+                        total_withholding,
+                        total_amount
+                    ])
+            except Exception as e:
+                logger.warning(f"ไม่สามารถอ่านไฟล์ cache สำหรับสรุปรวม {cache_file.name}: {e}")
+                continue
+        
+        # รวมข้อมูล Auditcheck ใน Sheet 5
+        for auditcheck_file in cache_dir.glob('auditcheck_state_*.json'):
+            try:
+                with open(auditcheck_file, 'r', encoding='utf-8') as f:
+                    auditcheck_data = json.load(f)
+                
+                company_name = auditcheck_data.get('company', '')
+                tax_month = auditcheck_data.get('taxMonth', '')
+                step4_ocr_data = auditcheck_data.get('step4OCRData', {})
+                
+                if not company_name or not step4_ocr_data:
+                    continue
+                
+                metadata_list = step4_ocr_data.get('metadata', [])
+                total_documents = len(metadata_list)
+                companies_set = set()
+                
+                for meta_item in metadata_list:
+                    if isinstance(meta_item, dict):
+                        seller_company = meta_item.get('company_name', '')
+                        if seller_company:
+                            companies_set.add(seller_company)
+                
+                if total_documents > 0:
+                    ws5.append([
+                        'Auditcheck (ผู้ตรวจ)',
+                        company_name,
+                        tax_month or '',
+                        total_documents,
+                        len(companies_set),
+                        0.0,  # Auditcheck ไม่มียอดรวม VAT
+                        0.0,  # Auditcheck ไม่มียอดรวมหัก ณ ที่จ่าย
+                        0.0   # Auditcheck ไม่มียอดรวมทั้งสิ้น
+                    ])
+            except Exception as e:
+                logger.warning(f"ไม่สามารถอ่านไฟล์ auditcheck สำหรับสรุปรวม {auditcheck_file.name}: {e}")
+                continue
+        
+        # Format ข้อมูลใน Sheet 1 (OCR Cache Summary)
         for row in ws1.iter_rows(min_row=2, max_row=ws1.max_row):
             for cell in row:
                 cell.font = data_font
                 cell.border = border
-                if cell.column == 2 or cell.column == 3:  # จำนวนไฟล์, จำนวนบริษัท
+                if cell.column == 3 or cell.column == 4:  # จำนวนไฟล์, จำนวนบริษัท
                     cell.alignment = Alignment(horizontal='right', vertical='center')
                 else:
                     cell.alignment = Alignment(horizontal='left', vertical='center')
         
-        # Format ข้อมูลใน Sheet 2
+        # Format ข้อมูลใน Sheet 2 (OCR Cache Details)
         for row in ws2.iter_rows(min_row=2, max_row=ws2.max_row):
             for cell in row:
                 cell.font = data_font
@@ -3542,15 +3916,50 @@ def export_filing_summary_excel():
                 elif cell.column in [6, 7, 8]:  # ยอดรวม VAT, หัก ณ ที่จ่าย, ทั้งสิ้น
                     cell.alignment = Alignment(horizontal='right', vertical='center')
                     # จัดรูปแบบตัวเลข
-                    if cell.value and isinstance(cell.value, (int, float)):
+                    if cell.value and isinstance(cell.value, (int, float)) and cell.value != '':
+                        cell.number_format = '#,##0.00'
+                else:
+                    cell.alignment = Alignment(horizontal='left', vertical='center')
+        
+        # Format ข้อมูลใน Sheet 3 (Auditcheck Summary)
+        for row in ws3.iter_rows(min_row=2, max_row=ws3.max_row):
+            for cell in row:
+                cell.font = data_font
+                cell.border = border
+                if cell.column == 4 or cell.column == 5:  # จำนวนไฟล์, จำนวนบริษัท
+                    cell.alignment = Alignment(horizontal='right', vertical='center')
+                else:
+                    cell.alignment = Alignment(horizontal='left', vertical='center')
+        
+        # Format ข้อมูลใน Sheet 4 (Auditcheck Details)
+        for row in ws4.iter_rows(min_row=2, max_row=ws4.max_row):
+            for cell in row:
+                cell.font = data_font
+                cell.border = border
+                if cell.column == 5:  # จำนวนไฟล์
+                    cell.alignment = Alignment(horizontal='right', vertical='center')
+                else:
+                    cell.alignment = Alignment(horizontal='left', vertical='center')
+        
+        # Format ข้อมูลใน Sheet 5 (สรุปรวมทั้งหมด)
+        for row in ws5.iter_rows(min_row=2, max_row=ws5.max_row):
+            for cell in row:
+                cell.font = data_font
+                cell.border = border
+                if cell.column in [4, 5]:  # จำนวนไฟล์, จำนวนบริษัท
+                    cell.alignment = Alignment(horizontal='right', vertical='center')
+                elif cell.column in [6, 7, 8]:  # ยอดรวม VAT, หัก ณ ที่จ่าย, ทั้งสิ้น
+                    cell.alignment = Alignment(horizontal='right', vertical='center')
+                    if cell.value and isinstance(cell.value, (int, float)) and cell.value != 0:
                         cell.number_format = '#,##0.00'
                 else:
                     cell.alignment = Alignment(horizontal='left', vertical='center')
         
         # ปรับความกว้างคอลัมน์
-        ws1.column_dimensions['A'].width = 50
-        ws1.column_dimensions['B'].width = 15
-        ws1.column_dimensions['C'].width = 15
+        ws1.column_dimensions['A'].width = 25  # ประเภท
+        ws1.column_dimensions['B'].width = 50  # Build/Company
+        ws1.column_dimensions['C'].width = 15  # จำนวนไฟล์
+        ws1.column_dimensions['D'].width = 15  # จำนวนบริษัท
         
         ws2.column_dimensions['A'].width = 40
         ws2.column_dimensions['B'].width = 40
@@ -3561,9 +3970,55 @@ def export_filing_summary_excel():
         ws2.column_dimensions['G'].width = 20  # ยอดรวมหัก ณ ที่จ่าย
         ws2.column_dimensions['H'].width = 18  # ยอดรวมทั้งสิ้น
         
+        ws3.column_dimensions['A'].width = 25  # ประเภท
+        ws3.column_dimensions['B'].width = 50  # Build/Company
+        ws3.column_dimensions['C'].width = 15  # เดือนภาษี
+        ws3.column_dimensions['D'].width = 15  # จำนวนไฟล์
+        ws3.column_dimensions['E'].width = 15  # จำนวนบริษัท
+        
+        ws4.column_dimensions['A'].width = 40
+        ws4.column_dimensions['B'].width = 15  # เดือนภาษี
+        ws4.column_dimensions['C'].width = 40
+        ws4.column_dimensions['D'].width = 20
+        ws4.column_dimensions['E'].width = 15
+        ws4.column_dimensions['F'].width = 60
+        
+        ws5.column_dimensions['A'].width = 25  # ประเภท
+        ws5.column_dimensions['B'].width = 50  # Build/Company
+        ws5.column_dimensions['C'].width = 15  # เดือนภาษี
+        ws5.column_dimensions['D'].width = 15  # จำนวนไฟล์
+        ws5.column_dimensions['E'].width = 15  # จำนวนบริษัท
+        ws5.column_dimensions['F'].width = 18  # ยอดรวม VAT
+        ws5.column_dimensions['G'].width = 20  # ยอดรวมหัก ณ ที่จ่าย
+        ws5.column_dimensions['H'].width = 18  # ยอดรวมทั้งสิ้น
+        
         # Freeze header row
         ws1.freeze_panes = 'A2'
         ws2.freeze_panes = 'A2'
+        ws3.freeze_panes = 'A2'
+        ws4.freeze_panes = 'A2'
+        ws5.freeze_panes = 'A2'
+        
+        # เรียงลำดับ Sheet ให้ถูกต้อง (สรุปรวมทั้งหมดอยู่หน้าแรก)
+        # เก็บ reference ของ Sheet ทั้งหมด
+        sheets_dict = {
+            'summary': ws5,
+            'ocr_cache_summary': ws1,
+            'ocr_cache_details': ws2,
+            'auditcheck_summary': ws3,
+            'auditcheck_details': ws4
+        }
+        
+        # ลบ Sheet ทั้งหมดออกก่อน
+        while wb.worksheets:
+            wb.remove(wb.worksheets[0])
+        
+        # เพิ่ม Sheet กลับมาในลำดับที่ต้องการ
+        wb._sheets.append(sheets_dict['summary'])
+        wb._sheets.append(sheets_dict['ocr_cache_summary'])
+        wb._sheets.append(sheets_dict['ocr_cache_details'])
+        wb._sheets.append(sheets_dict['auditcheck_summary'])
+        wb._sheets.append(sheets_dict['auditcheck_details'])
         
         # สร้างไฟล์ชั่วคราว
         temp_dir = Path(tempfile.gettempdir())
@@ -8227,7 +8682,15 @@ def update_id_card():
             att_id_card = str(att.get('recipient_id_card', '')).strip().replace(' ', '').replace('-', '')
             if att_id_card == old_id_card:
                 att['recipient_id_card'] = new_id_card
+                # อัปเดตชื่อและข้อมูลอื่นๆ ถ้ามีการแก้ไข
+                if name and name.strip() and name.strip() != '-':
+                    att['recipient_name'] = name.strip()
                 updated_count += 1
+            elif att_id_card == new_id_card:
+                # ถ้าเลขบัตรไม่เปลี่ยน แต่มีการแก้ไขชื่อ ให้อัปเดตชื่อด้วย
+                if name and name.strip() and name.strip() != '-':
+                    att['recipient_name'] = name.strip()
+                    updated_count += 1
         
         if updated_count > 0:
             with open(attachment_file, 'w', encoding='utf-8') as f:
@@ -8317,7 +8780,8 @@ def update_monthly_data():
                 monthly_map[key] = {
                     'income': float(md.get('income', 0) or 0),
                     'tax': float(md.get('tax', 0) or 0),
-                    'contribution': float(md.get('contribution', 0) or 0)
+                    'contribution': float(md.get('contribution', 0) or 0),
+                    'income_type': md.get('incomeType') or md.get('income_type') or None  # เพิ่มประเภทภาษี
                 }
         
         # อัปเดตข้อมูลใน attachments
@@ -8350,6 +8814,9 @@ def update_monthly_data():
                     # ถ้ามีรายการเดียว ให้อัปเดตเลย
                     att['income_amount'] = f"{monthly_map[key]['income']:.2f}"
                     att['tax_amount'] = f"{monthly_map[key]['tax']:.2f}"
+                    # อัปเดตประเภทภาษี
+                    if monthly_map[key].get('income_type'):
+                        att['income_type'] = monthly_map[key]['income_type']
                     updated_attachments += 1
                 elif len(same_month_attachments) > 1:
                     # ถ้ามีหลายรายการ ให้คำนวณสัดส่วน
@@ -8367,6 +8834,9 @@ def update_monthly_data():
                     
                     att['income_amount'] = f"{new_income:.2f}"
                     att['tax_amount'] = f"{new_tax:.2f}"
+                    # อัปเดตประเภทภาษี (ใช้ค่าเดียวกันทุกรายการในเดือนเดียวกัน)
+                    if monthly_map[key].get('income_type'):
+                        att['income_type'] = monthly_map[key]['income_type']
                     updated_attachments += 1
         
         if updated_attachments > 0:
@@ -8423,6 +8893,256 @@ def update_monthly_data():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+@app.route('/api/pnd1k/update-tax-type', methods=['POST'])
+def update_tax_type():
+    """อัปเดตประเภทภาษีของแต่ละบุคคลในเดือนที่ระบุ"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        
+        data = request.get_json()
+        company = data.get('company', '').strip()
+        id_card = str(data.get('id_card', '')).strip().replace(' ', '').replace('-', '')
+        month = data.get('month')
+        year = data.get('year')
+        income_type = data.get('income_type', '').strip()
+        
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+        
+        if not id_card or len(id_card) != 13:
+            return jsonify({'success': False, 'error': 'เลขบัตรประชาชนต้องเป็น 13 หลัก'}), 400
+        
+        if month is None or year is None:
+            return jsonify({'success': False, 'error': 'กรุณาระบุเดือนและปี'}), 400
+        
+        if not income_type:
+            income_type = '-'
+        
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        if isinstance(company_name, list):
+            company_name = ' '.join(company_name)
+        if not isinstance(company_name, str):
+            company_name = str(company_name) if company_name else company
+        
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            if isinstance(name, list):
+                name = ' '.join(name)
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        safe_company_name = sanitize_filename(company_name or company)
+        pnd1k_data_dir = Path('data_pnd1k')
+        pnd1k_data_dir.mkdir(exist_ok=True)
+        
+        updated_count = 0
+        
+        # อัปเดตข้อมูลในไฟล์ attachments
+        attachment_file = pnd1k_data_dir / f"pnd1k_attachments_{safe_company_name}.json"
+        attachments = []
+        if attachment_file.exists():
+            try:
+                with open(attachment_file, 'r', encoding='utf-8') as f:
+                    attachments = json.load(f)
+                if not isinstance(attachments, list):
+                    attachments = [attachments] if attachments else []
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ใบแนบ: {e}")
+        
+        # อัปเดตประเภทภาษีใน attachments
+        for att in attachments:
+            att_id_card = str(att.get('recipient_id_card', '')).strip().replace(' ', '').replace('-', '')
+            if att_id_card != id_card:
+                continue
+            
+            att_month = att.get('payment_month')
+            att_year = att.get('payment_year')
+            if att_month == month and att_year == year:
+                att['income_type'] = income_type
+                updated_count += 1
+        
+        if updated_count > 0:
+            with open(attachment_file, 'w', encoding='utf-8') as f:
+                json.dump(attachments, f, ensure_ascii=False, indent=2)
+            logger.info(f"✅ อัปเดตประเภทภาษีสำเร็จ: เลขบัตร {id_card} เดือน {month}/{year} ({updated_count} รายการ)")
+        else:
+            logger.warning(f"⚠️ ไม่พบข้อมูลที่จะอัปเดต: เลขบัตร {id_card} เดือน {month}/{year}")
+        
+        return jsonify({
+            'success': True,
+            'message': f'อัปเดตประเภทภาษีสำเร็จ ({updated_count} รายการ)',
+            'updated_count': updated_count
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอัปเดตประเภทภาษี: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/pnd1k/update-employee-tax-type-bulk', methods=['POST'])
+def update_employee_tax_type_bulk():
+    """อัปเดตประเภทภาษีของพนักงานทั้งหมดที่ตรงกับเงื่อนไข (สำหรับเปลี่ยนประเภทภาษีในตารางข้อมูลพนักงาน)"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        
+        data = request.get_json()
+        company = data.get('company', '').strip()
+        id_card = str(data.get('id_card', '')).strip().replace(' ', '').replace('-', '')
+        old_income_type = data.get('old_income_type', '').strip()
+        new_income_type = data.get('new_income_type', '').strip()
+        
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+        
+        if not id_card or len(id_card) != 13:
+            return jsonify({'success': False, 'error': 'เลขบัตรประชาชนต้องเป็น 13 หลัก'}), 400
+        
+        if not old_income_type or not new_income_type:
+            return jsonify({'success': False, 'error': 'กรุณาระบุประเภทภาษีเดิมและใหม่'}), 400
+        
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        if isinstance(company_name, list):
+            company_name = ' '.join(company_name)
+        if not isinstance(company_name, str):
+            company_name = str(company_name) if company_name else company
+        
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            if isinstance(name, list):
+                name = ' '.join(name)
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        safe_company_name = sanitize_filename(company_name)
+        pnd1k_data_dir = Path('data_pnd1k')
+        pnd1k_data_dir.mkdir(exist_ok=True)
+        
+        updated_count = 0
+        
+        # อัปเดตข้อมูลในไฟล์ attachments
+        attachment_file = pnd1k_data_dir / f"pnd1k_attachments_{safe_company_name}.json"
+        attachments = []
+        if attachment_file.exists():
+            try:
+                with open(attachment_file, 'r', encoding='utf-8') as f:
+                    attachments = json.load(f)
+                if not isinstance(attachments, list):
+                    attachments = [attachments] if attachments else []
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ใบแนบ: {e}")
+        
+        # อัปเดตประเภทภาษีใน attachments (ทุก record ที่ตรงกับ id_card และ old_income_type)
+        for att in attachments:
+            att_id_card = str(att.get('recipient_id_card', '')).strip().replace(' ', '').replace('-', '')
+            att_income_type = str(att.get('income_type', '40(1)')).strip()
+            if att_id_card == id_card and att_income_type == old_income_type:
+                att['income_type'] = new_income_type
+                updated_count += 1
+        
+        if updated_count > 0:
+            with open(attachment_file, 'w', encoding='utf-8') as f:
+                json.dump(attachments, f, ensure_ascii=False, indent=2)
+            logger.info(f"✅ อัปเดตประเภทภาษี bulk สำเร็จ: เลขบัตร {id_card} จาก {old_income_type} เป็น {new_income_type} ({updated_count} รายการ)")
+        else:
+            logger.warning(f"⚠️ ไม่พบข้อมูลที่จะอัปเดต: เลขบัตร {id_card} ประเภทภาษี {old_income_type}")
+        
+        return jsonify({
+            'success': True,
+            'message': f'อัปเดตประเภทภาษีสำเร็จ ({updated_count} รายการ)',
+            'updated_count': updated_count
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอัปเดตประเภทภาษี bulk: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/pnd1k/ocr-attachment-preview', methods=['POST'])
+def ocr_pnd1k_attachment_preview():
+    """อ่านข้อมูลใบแนบ ภ.ง.ด.1 ด้วย OCR และส่งกลับแค่เดือน/ปี (สำหรับ preview ก่อนยืนยัน)"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        from datetime import datetime
+        
+        if 'file' not in request.files:
+            return jsonify({'success': False, 'error': 'กรุณาอัพโหลดไฟล์'}), 400
+        
+        file = request.files['file']
+        company = request.form.get('company', '').strip()
+        
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาเลือกบริษัท'}), 400
+        
+        if file.filename == '':
+            return jsonify({'success': False, 'error': 'กรุณาเลือกไฟล์'}), 400
+        
+        temp_dir = Path('temp_uploads')
+        temp_dir.mkdir(exist_ok=True)
+        file_ext = Path(file.filename).suffix
+        temp_file = temp_dir / f"pnd1k_attachment_preview_{datetime.now().strftime('%Y%m%d_%H%M%S')}{file_ext}"
+        file.save(str(temp_file))
+        
+        try:
+            raw_text, raw_content, structured_data = extract_pnd1k_attachment_with_custom_fields(temp_file)
+            
+            if not raw_text and not structured_data:
+                return jsonify({'success': False, 'error': 'ไม่สามารถอ่านข้อมูลใบแนบ ภ.ง.ด.1 ได้'}), 400
+            
+            if structured_data:
+                attachment_data = extract_pnd1k_attachment_from_structured_data(structured_data, raw_content, raw_text)
+                
+                # ดึงเดือน/ปีจาก payment_date
+                payment_date = attachment_data.get('payment_date', '').strip()
+                payment_month = None
+                payment_year = None
+                
+                if payment_date:
+                    date_parts = payment_date.split('/')
+                    if len(date_parts) >= 2:
+                        try:
+                            payment_month = int(date_parts[1])
+                            if len(date_parts) >= 3:
+                                payment_year = int(date_parts[2])
+                                if payment_year > 2500:
+                                    payment_year = payment_year - 543
+                        except:
+                            pass
+                
+                return jsonify({
+                    'success': True,
+                    'month': payment_month,
+                    'year': payment_year,
+                    'payment_date': payment_date
+                }), 200
+            else:
+                return jsonify({'success': False, 'error': 'ไม่พบข้อมูลในเอกสาร'}), 400
+        finally:
+            try:
+                if temp_file.exists():
+                    temp_file.unlink()
+            except:
+                pass
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอ่าน OCR preview (attachment): {e}", exc_info=True)
+        return jsonify({'success': False, 'error': f'เกิดข้อผิดพลาด: {str(e)}'}), 500
+
+
 @app.route('/api/pnd1k/ocr-attachment', methods=['POST'])
 def ocr_pnd1k_attachment():
     """อ่านข้อมูลใบแนบ ภ.ง.ด.1 ด้วย OCR และเก็บข้อมูลตามชื่อบริษัท"""
@@ -8441,6 +9161,9 @@ def ocr_pnd1k_attachment():
         
         file = request.files['file']
         company = request.form.get('company', '').strip()
+        income_type = request.form.get('income_type', '').strip() or None  # ประเภทภาษีที่ผู้ใช้เลือก (40(1), 40(2), หรือ both)
+        user_month = request.form.get('month', '').strip()
+        user_year = request.form.get('year', '').strip()
         
         if not company:
             return jsonify({
@@ -8498,6 +9221,18 @@ def ocr_pnd1k_attachment():
                 attachment_data = extract_pnd1k_attachment_from_structured_data(structured_data, raw_content, raw_text)
                 logger.info(f"📋 ใช้ structured_data จาก key-extract: {list(attachment_data.keys())}")
                 logger.info(f"📋 income_type ที่กำหนด: {attachment_data.get('income_type', 'None')}")
+                
+                # ถ้าผู้ใช้เลือกประเภทภาษีมาแล้ว ให้ใช้ค่าที่ผู้ใช้เลือกแทนค่าจาก OCR
+                if income_type:
+                    if income_type == 'both':
+                        # ถ้าเลือก "ทั้ง 40(1) และ 40(2)" ให้ใช้ค่าจาก OCR หรือค่าเริ่มต้น
+                        logger.info(f"📋 ผู้ใช้เลือก: ทั้ง 40(1) และ 40(2) - ใช้ค่าจาก OCR: {attachment_data.get('income_type', 'None')}")
+                    else:
+                        # ถ้าเลือก 40(1) หรือ 40(2) ให้ใช้ค่าที่ผู้ใช้เลือก
+                        attachment_data['income_type'] = income_type
+                        logger.info(f"📋 ผู้ใช้เลือกประเภทภาษี: {income_type} - ใช้ค่าที่ผู้ใช้เลือกแทนค่าจาก OCR")
+                else:
+                    logger.info(f"📋 ไม่มีการเลือกประเภทภาษีจากผู้ใช้ - ใช้ค่าจาก OCR: {attachment_data.get('income_type', 'None')}")
                 # Log ข้อมูลจำนวนเงินได้และภาษีที่พบ
                 logger.info(f"📋 income_amount: {attachment_data.get('income_amount', '')}, tax_amount: {attachment_data.get('tax_amount', '')}")
                 logger.info(f"📋 income_amounts_list: {attachment_data.get('income_amounts_list', [])}, tax_amounts_list: {attachment_data.get('tax_amounts_list', [])}")
@@ -8556,7 +9291,11 @@ def ocr_pnd1k_attachment():
                 attachments = [attachments] if attachments else []
             
             # แยกข้อมูลเป็นรายบุคคล (ส่ง raw_content ไปด้วยเพื่อดึงเลขบัตรถ้าจำเป็น)
-            individual_entries = split_attachment_data_by_individual(attachment_data, raw_text, company, build, company_name, file.filename, raw_content)
+            # ถ้าผู้ใช้เลือกเดือน/ปีมา ให้ส่งไปยัง split_attachment_data_by_individual
+            individual_entries = split_attachment_data_by_individual(
+                attachment_data, raw_text, company, build, company_name, file.filename, raw_content,
+                user_month=user_month, user_year=user_year
+            )
             
             # เพิ่มข้อมูลใหม่เป็นรายบุคคล
             attachments.extend(individual_entries)
@@ -9092,7 +9831,7 @@ def extract_pnd1k_attachment_from_structured_data(structured_data, raw_content=N
     return data
 
 
-def split_attachment_data_by_individual(attachment_data, raw_text, company, build, company_name, file_name, raw_content=None):
+def split_attachment_data_by_individual(attachment_data, raw_text, company, build, company_name, file_name, raw_content=None, user_month=None, user_year=None):
     """แยกข้อมูลใบแนบ ภ.ง.ด.1 เป็นรายบุคคลและแยกตามเดือน"""
     import re
     import json
@@ -9244,21 +9983,34 @@ def split_attachment_data_by_individual(attachment_data, raw_text, company, buil
     parsed_conditions = parsed_conditions[:person_count]
     
     # แยกเดือนจาก payment_date (รูปแบบ: dd/mm/yyyy หรือ dd/mm/yyyy)
+    # หรือใช้ค่าที่ผู้ใช้เลือก (ถ้ามี)
     payment_month = None
     payment_year = None
-    if payment_date:
-        # ลอง parse วันที่ (อาจเป็น dd/mm/yyyy หรือ dd/mm/yyyy)
-        date_parts = payment_date.split('/')
-        if len(date_parts) >= 2:
-            try:
-                payment_month = int(date_parts[1])
-                if len(date_parts) >= 3:
-                    payment_year = int(date_parts[2])
-                    # ถ้าเป็นปี พ.ศ. ให้แปลงเป็น ค.ศ.
-                    if payment_year > 2500:
-                        payment_year = payment_year - 543
-            except:
-                pass
+    
+    # ถ้าผู้ใช้เลือกเดือน/ปีมา ให้ใช้ค่าที่ผู้ใช้เลือก
+    if user_month and user_year:
+        try:
+            payment_month = int(user_month)
+            payment_year = int(user_year)
+            logger.info(f"📅 ใช้เดือน/ปีที่ผู้ใช้เลือกใน split_attachment_data_by_individual: {user_month}/{user_year}")
+        except ValueError:
+            logger.warning(f"⚠️ ไม่สามารถแปลงเดือน/ปีที่ผู้ใช้เลือกได้: {user_month}/{user_year}")
+    
+    # ถ้ายังไม่มีค่าเดือน/ปี ให้ลองอ่านจาก payment_date
+    if not payment_month or not payment_year:
+        if payment_date:
+            # ลอง parse วันที่ (อาจเป็น dd/mm/yyyy หรือ dd/mm/yyyy)
+            date_parts = payment_date.split('/')
+            if len(date_parts) >= 2:
+                try:
+                    payment_month = int(date_parts[1])
+                    if len(date_parts) >= 3:
+                        payment_year = int(date_parts[2])
+                        # ถ้าเป็นปี พ.ศ. ให้แปลงเป็น ค.ศ.
+                        if payment_year > 2500:
+                            payment_year = payment_year - 543
+                except:
+                    pass
     
     # ดึงประเภทเงินได้จาก attachment_data
     attachment_income_type = attachment_data.get('income_type')
@@ -9481,12 +10233,12 @@ def extract_pnd1k_form_from_structured_data(structured_data, raw_content=None, r
     if not isinstance(structured_data, dict):
         return data
     
-    # ดึงข้อมูลพื้นฐาน
-    data['tax_id'] = structured_data.get('เลขประจำตัวผู้เสียภาษีอากร', '').strip()
-    data['branch'] = structured_data.get('สาขาที่', '').strip()
-    data['company_name'] = structured_data.get('ชื่อผ้มีหน้าที่หักภาษีหัก ณ ที่จ่าย (หน่วยงาน):', '').strip()
-    data['address'] = structured_data.get('ที่อยู่', '').strip()
-    data['payment_period'] = structured_data.get('เดือนที่จ่ายเงินได้พึงประเมิน', '').strip()
+    # ดึงข้อมูลพื้นฐาน (ใช้ or '' เพื่อป้องกัน None)
+    data['tax_id'] = (structured_data.get('เลขประจำตัวผู้เสียภาษีอากร') or '').strip()
+    data['branch'] = (structured_data.get('สาขาที่') or '').strip()
+    data['company_name'] = (structured_data.get('ชื่อผ้มีหน้าที่หักภาษีหัก ณ ที่จ่าย (หน่วยงาน):') or '').strip()
+    data['address'] = (structured_data.get('ที่อยู่') or '').strip()
+    data['payment_period'] = (structured_data.get('เดือนที่จ่ายเงินได้พึงประเมิน') or '').strip()
     
     # แยก payment_period เป็น payment_month และ payment_year
     payment_month = None
@@ -9877,6 +10629,91 @@ def validate_monthly_totals(form_data, attachments):
     return validation_results
 
 
+@app.route('/api/pnd1k/ocr-form-preview', methods=['POST'])
+def ocr_pnd1k_form_preview():
+    """อ่านข้อมูลแบบ ภ.ง.ด.1 ด้วย OCR และส่งกลับแค่เดือน/ปี (สำหรับ preview ก่อนยืนยัน)"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        from datetime import datetime
+        
+        # ตรวจสอบว่ามีไฟล์ส่งมาหรือไม่
+        if 'file' not in request.files:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาอัพโหลดไฟล์'
+            }), 400
+        
+        file = request.files['file']
+        company = request.form.get('company', '').strip()
+        
+        if not company:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาเลือกบริษัท'
+            }), 400
+        
+        if file.filename == '':
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาเลือกไฟล์'
+            }), 400
+        
+        # สร้างโฟลเดอร์ temp สำหรับเก็บไฟล์ชั่วคราว
+        temp_dir = Path('temp_uploads')
+        temp_dir.mkdir(exist_ok=True)
+        
+        # บันทึกไฟล์ชั่วคราว
+        file_ext = Path(file.filename).suffix
+        temp_file = temp_dir / f"pnd1k_form_preview_{datetime.now().strftime('%Y%m%d_%H%M%S')}{file_ext}"
+        file.save(str(temp_file))
+        
+        try:
+            # Initialize variables
+            raw_text = ''
+            raw_content = ''
+            structured_data = None
+            
+            # ใช้ key-extract API พร้อม custom fields สำหรับแบบ ภ.ง.ด.1
+            raw_text, raw_content, structured_data = extract_pnd1k_form_with_custom_fields(temp_file)
+            
+            if not raw_text and not structured_data:
+                return jsonify({
+                    'success': False,
+                    'error': 'ไม่สามารถอ่านข้อมูลแบบ ภ.ง.ด.1 ได้'
+                }), 400
+            
+            # Extract ข้อมูลแบบ ภ.ง.ด.1 (เฉพาะเดือน/ปี)
+            if structured_data:
+                form_data = extract_pnd1k_form_from_structured_data(structured_data, raw_content, raw_text)
+                
+                return jsonify({
+                    'success': True,
+                    'month': form_data.get('payment_month'),
+                    'year': form_data.get('payment_year'),
+                    'payment_period': form_data.get('payment_period', '')
+                }), 200
+            else:
+                return jsonify({
+                    'success': False,
+                    'error': 'ไม่พบข้อมูลในเอกสาร'
+                }), 400
+        finally:
+            # ลบไฟล์ชั่วคราว
+            try:
+                if temp_file.exists():
+                    temp_file.unlink()
+            except:
+                pass
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอ่าน OCR preview: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': f'เกิดข้อผิดพลาด: {str(e)}'
+        }), 500
+
+
 @app.route('/api/pnd1k/ocr-form', methods=['POST'])
 def ocr_pnd1k_form():
     """อ่านข้อมูลแบบ ภ.ง.ด.1 ด้วย OCR และตรวจสอบยอดรวมกับข้อมูลใบแนบ"""
@@ -9947,6 +10784,17 @@ def ocr_pnd1k_form():
             if structured_data:
                 form_data = extract_pnd1k_form_from_structured_data(structured_data, raw_content, raw_text)
                 logger.info(f"📋 ใช้ structured_data จาก key-extract: {list(form_data.keys())}")
+                
+                # ถ้าผู้ใช้เลือกเดือน/ปีมา ให้ใช้ค่าที่ผู้ใช้เลือกแทนค่าที่อ่านได้จาก OCR
+                user_month = request.form.get('month', '').strip()
+                user_year = request.form.get('year', '').strip()
+                if user_month and user_year:
+                    try:
+                        form_data['payment_month'] = int(user_month)
+                        form_data['payment_year'] = int(user_year)
+                        logger.info(f"📅 ใช้เดือน/ปีที่ผู้ใช้เลือก: {user_month}/{user_year}")
+                    except ValueError:
+                        logger.warning(f"⚠️ ไม่สามารถแปลงเดือน/ปีที่ผู้ใช้เลือกได้: {user_month}/{user_year}")
             else:
                 return jsonify({
                     'success': False,
@@ -10673,6 +11521,11 @@ def generate_rd_prep():
         if not isinstance(address_overrides, dict):
             address_overrides = {}
         
+        # รับ income_type_overrides จาก frontend (dict ของ id_card -> income_type)
+        income_type_overrides = request.json.get('income_type_overrides', {})
+        if not isinstance(income_type_overrides, dict):
+            income_type_overrides = {}
+        
         # แยก Build และชื่อบริษัท
         parts = company.split(' ')
         build = parts[0] if parts else ''
@@ -10742,7 +11595,12 @@ def generate_rd_prep():
             if not id_card:
                 continue
             
-            income_type = att.get('income_type', '40(1)') or '40(1)'
+            # ใช้ income_type จาก income_type_overrides ก่อน (priority สูงสุด)
+            income_type = income_type_overrides.get(id_card)
+            if not income_type:
+                # ถ้าไม่มีใน income_type_overrides ให้ใช้จาก attachment
+                income_type = att.get('income_type', '40(1)') or '40(1)'
+            
             key = f"{id_card}_{income_type}"
             
             if key not in employee_data_map:
@@ -11122,12 +11980,17 @@ def generate_50_tawi():
                 if not isinstance(attachments, list):
                     attachments = [attachments] if attachments else []
                 
-                # กรองเฉพาะพนักงานคนนี้และประเภทภาษีที่ระบุ
+                # กรองเฉพาะพนักงานคนนี้และประเภทภาษีที่ระบุ (ต้องตรงกันทุกประการ)
                 for att in attachments:
-                    att_id_card = str(att.get('recipient_id_card', '')).replace(' ', '').strip()
-                    att_income_type = att.get('income_type', '40(1)')
+                    att_id_card = str(att.get('recipient_id_card', '')).replace(' ', '').replace('-', '').strip()
+                    att_income_type = str(att.get('income_type', '40(1)')).strip()
+                    # เปรียบเทียบให้ตรงกันทุกประการ (case-sensitive)
                     if att_id_card == id_card and att_income_type == income_type:
                         employee_attachments.append(att)
+                    else:
+                        # Log สำหรับ debug
+                        if att_id_card == id_card:
+                            logger.debug(f"🔍 กรองข้อมูล: id_card ตรงกัน แต่ income_type ไม่ตรง - att: '{att_income_type}' vs requested: '{income_type}'")
             except Exception as e:
                 logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ attachment: {e}")
         
@@ -11302,18 +12165,32 @@ def generate_50_tawi():
                 logger.warning(f"⚠️ ไม่พบที่อยู่พนักงานสำหรับ {id_card} - D20 จะว่างเปล่า")
                 worksheet.Range('D20').Value = ''
             
-            # 7. กรอกข้อมูลตามประเภทภาษี
+            # 7. กรอกข้อมูลตามประเภทภาษี (ล้างข้อมูลก่อนเพื่อป้องกันข้อมูลปน)
             date_format = '31/12/2025'
+            
+            # ล้างข้อมูลทั้ง 40(1) และ 40(2) ก่อน
+            worksheet.Range('AK30').Value = ''
+            worksheet.Range('AS30').Value = ''
+            worksheet.Range('BA30').Value = ''
+            worksheet.Range('AK31').Value = ''
+            worksheet.Range('AS31').Value = ''
+            worksheet.Range('BA31').Value = ''
+            
+            # กรอกเฉพาะประเภทภาษีที่ระบุ
             if income_type == '40(1)':
                 worksheet.Range('AK30').Value = date_format
                 worksheet.Range('AS30').Value = total_income
                 worksheet.Range('BA30').Value = total_tax
+                logger.info(f"✅ กรอกข้อมูล 40(1): รายได้={total_income}, ภาษี={total_tax}")
             elif income_type == '40(2)':
                 worksheet.Range('AK31').Value = date_format
                 worksheet.Range('AS31').Value = total_income
                 worksheet.Range('BA31').Value = total_tax
+                logger.info(f"✅ กรอกข้อมูล 40(2): รายได้={total_income}, ภาษี={total_tax}")
+            else:
+                logger.warning(f"⚠️ ประเภทภาษีไม่รู้จัก: {income_type}")
             
-            # 8. กรอกข้อมูลรวม
+            # 8. กรอกข้อมูลรวม (เฉพาะประเภทภาษีที่ระบุ)
             worksheet.Range('AS54').Value = total_income
             worksheet.Range('BA54').Value = total_tax
             
@@ -11968,6 +12845,8 @@ def ocr_pnd1k_social_security():
             return jsonify({'success': False, 'error': 'กรุณาอัพโหลดไฟล์'}), 400
         file = request.files['file']
         company = request.form.get('company', '').strip()
+        user_month = request.form.get('month', '').strip()
+        user_year = request.form.get('year', '').strip()
         if not company:
             return jsonify({'success': False, 'error': 'กรุณาเลือกบริษัท'}), 400
         if file.filename == '':
@@ -12004,6 +12883,18 @@ def ocr_pnd1k_social_security():
             individuals = _extract_social_security_from_structured_data(structured_data, raw_content, raw_text)
             if not individuals:
                 return jsonify({'success': False, 'error': 'ไม่พบข้อมูลรายบุคคลในใบแนบประกันสังคม'}), 400
+            
+            # ถ้าผู้ใช้เลือกเดือน/ปีมา ให้ใช้ค่าที่ผู้ใช้เลือกแทนค่าที่อ่านได้จาก OCR
+            if user_month and user_year:
+                try:
+                    user_month_int = int(user_month)
+                    user_year_int = int(user_year)
+                    for individual in individuals:
+                        individual['payment_month'] = user_month_int
+                        individual['payment_year'] = user_year_int
+                    logger.info(f"📅 ใช้เดือน/ปีที่ผู้ใช้เลือกสำหรับใบแนบประกันสังคม: {user_month}/{user_year}")
+                except ValueError:
+                    logger.warning(f"⚠️ ไม่สามารถแปลงเดือน/ปีที่ผู้ใช้เลือกได้: {user_month}/{user_year}")
 
             pnd1k_data_dir = Path('data_pnd1k')
             pnd1k_data_dir.mkdir(exist_ok=True)
@@ -12154,6 +13045,8 @@ def ocr_pnd1k_social_security_form():
             return jsonify({'success': False, 'error': 'กรุณาอัพโหลดไฟล์'}), 400
         file = request.files['file']
         company = request.form.get('company', '').strip()
+        user_month = request.form.get('month', '').strip()
+        user_year = request.form.get('year', '').strip()
         if not company:
             return jsonify({'success': False, 'error': 'กรุณาเลือกบริษัท'}), 400
         if file.filename == '':
@@ -12184,6 +13077,16 @@ def ocr_pnd1k_social_security_form():
             if not structured_data:
                 return jsonify({'success': False, 'error': 'ไม่สามารถอ่านข้อมูลแบบประกันสังคมได้'}), 400
             form_data = _extract_social_security_form_from_structured_data(structured_data)
+            
+            # ถ้าผู้ใช้เลือกเดือน/ปีมา ให้ใช้ค่าที่ผู้ใช้เลือกแทนค่าที่อ่านได้จาก OCR
+            if user_month and user_year:
+                try:
+                    form_data['payment_month'] = int(user_month)
+                    form_data['payment_year'] = int(user_year)
+                    logger.info(f"📅 ใช้เดือน/ปีที่ผู้ใช้เลือกสำหรับแบบประกันสังคม: {user_month}/{user_year}")
+                except ValueError:
+                    logger.warning(f"⚠️ ไม่สามารถแปลงเดือน/ปีที่ผู้ใช้เลือกได้: {user_month}/{user_year}")
+            
             if not form_data.get('payment_month') or not form_data.get('payment_year'):
                 return jsonify({'success': False, 'error': 'ไม่พบข้อมูลเดือน/ปีในแบบประกันสังคม'}), 400
             pnd1k_data_dir = Path('data_pnd1k')
