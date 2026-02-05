@@ -1060,7 +1060,7 @@ def admin_login():
     if username == ADMIN_USERNAME and password_hash == ADMIN_PASSWORD_HASH:
         session['is_admin'] = True
         session['admin_username'] = username
-        return jsonify({'success': True, 'message': 'เข้าสู่ระบบแอดมินสำเร็จ'}), 200
+        return jsonify({'success': True, 'message': 'เข้าสู่ระบบสำเร็จ'}), 200
     else:
         return jsonify({'success': False, 'message': 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง'}), 401
 
@@ -1946,13 +1946,27 @@ def save_email_history(
     sent_time: Optional[datetime] = None,
     to_emails: Optional[List[str]] = None,
     cc_emails: Optional[List[str]] = None,
+    bcc_emails: Optional[List[str]] = None,
     subject: Optional[str] = None,
     body: Optional[str] = None,
+    body_html: Optional[str] = None,
     line_message: Optional[str] = None,
-    summary_data: Optional[dict] = None
+    line_enabled: bool = False,
+    line_user_id: Optional[str] = None,
+    line_sent: bool = False,
+    summary_data: Optional[dict] = None,
+    attachments: Optional[List[dict]] = None,
+    from_email: Optional[str] = None,
+    status: str = 'success',
+    error_message: Optional[str] = None,
+    error_code: Optional[str] = None,
+    smtp_server: Optional[str] = None,
+    smtp_port: Optional[int] = None,
+    smtp_use_tls: Optional[bool] = None,
+    request_obj=None
 ):
     """
-    บันทึกประวัติการส่งอีเมลเป็น JSON
+    บันทึกประวัติการส่งอีเมลเป็น JSON (โครงสร้างใหม่)
     
     Args:
         pattern_name: ชื่อ Pattern ที่ใช้ (ถ้ามี)
@@ -1960,13 +1974,30 @@ def save_email_history(
         sent_time: เวลาที่ส่ง (ถ้าไม่ระบุจะใช้เวลาปัจจุบัน)
         to_emails: รายการอีเมลล์ผู้รับ
         cc_emails: รายการอีเมลล์ CC
+        bcc_emails: รายการอีเมลล์ BCC
         subject: หัวข้ออีเมลล์
-        body: เนื้อหาอีเมลล์
+        body: เนื้อหาอีเมลล์ (text)
+        body_html: เนื้อหาอีเมลล์ (HTML)
         line_message: ข้อความที่ส่งไปยัง LINE
+        line_enabled: ส่ง LINE หรือไม่
+        line_user_id: LINE User ID
+        line_sent: ส่ง LINE สำเร็จหรือไม่
+        summary_data: ข้อมูลสรุป (PDF)
+        attachments: รายการไฟล์แนบ
+        from_email: อีเมลล์ผู้ส่ง
+        status: สถานะการส่ง ('success', 'failed', 'pending')
+        error_message: ข้อความ error (ถ้ามี)
+        error_code: Error code (ถ้ามี)
+        smtp_server: SMTP server ที่ใช้
+        smtp_port: SMTP port ที่ใช้
+        smtp_use_tls: ใช้ TLS หรือไม่
+        request_obj: Flask request object (สำหรับดึง metadata)
     """
     try:
         if sent_time is None:
             sent_time = datetime.now()
+        
+        created_at = datetime.now()
         
         # สร้างโฟลเดอร์ email_system ถ้ายังไม่มี
         email_system_dir = Path('email_system')
@@ -1985,17 +2016,83 @@ def save_email_history(
                 logger.warning(f"ไม่สามารถโหลด email history ได้: {e}")
                 history = []
         
-        # เพิ่มประวัติใหม่
+        # คำนวณข้อมูล attachments
+        attachment_count = len(attachments) if attachments else 0
+        total_size = sum(att.get('size', 0) for att in (attachments or []))
+        
+        # ดึง metadata จาก request (ถ้ามี)
+        user_agent = None
+        ip_address = None
+        if request_obj:
+            user_agent = request_obj.headers.get('User-Agent')
+            ip_address = request_obj.remote_addr
+        
+        # ดึง SMTP config จาก global email service (ถ้ามี)
+        if not smtp_server:
+            try:
+                email_service = get_global_email_service()
+                if email_service:
+                    smtp_server = email_service.smtp_server
+                    smtp_port = email_service.smtp_port
+                    smtp_use_tls = email_service.smtp_use_tls
+                    if not from_email:
+                        from_email = email_service.email_from
+            except:
+                pass
+        
+        # สร้าง history entry ใหม่ (โครงสร้างใหม่)
         history_entry = {
-            'pattern_name': pattern_name or None,
-            'signature_name': signature_name or None,
-            'sent_time': sent_time.strftime('%Y-%m-%d %H:%M:%S'),
+            # Unique ID และ Timestamps
+            'id': str(uuid.uuid4()),
+            'status': status,  # 'success', 'failed', 'pending'
+            'sent_time': sent_time.isoformat(),  # ISO 8601 format
+            'created_at': created_at.isoformat(),
+            
+            # Pattern & Signature
+            'pattern_name': pattern_name,
+            'signature_name': signature_name,
+            
+            # Email Details
+            'from_email': from_email,
             'to_emails': to_emails or [],
             'cc_emails': cc_emails or [],
-            'subject': subject or None,
-            'body': body or None,
-            'line_message': line_message or None,
-            'summary_data': summary_data or None
+            'bcc_emails': bcc_emails or [],
+            'subject': subject,
+            'body': body,
+            'body_html': body_html,
+            
+            # Attachments
+            'attachments': attachments or [],
+            'attachment_count': attachment_count,
+            'total_size': total_size,
+            
+            # LINE Integration
+            'line_enabled': line_enabled,
+            'line_user_id': line_user_id,
+            'line_message': line_message,
+            'line_sent': line_sent,
+            'line_sent_time': sent_time.isoformat() if line_sent else None,
+            
+            # Summary Data
+            'summary_pdf_generated': summary_data is not None,
+            'summary_data': summary_data,
+            
+            # Error Tracking
+            'error_message': error_message,
+            'error_code': error_code,
+            'retry_count': 0,
+            
+            # SMTP Config
+            'smtp_server': smtp_server,
+            'smtp_port': smtp_port,
+            'smtp_use_tls': smtp_use_tls,
+            
+            # Metadata
+            'user_agent': user_agent,
+            'ip_address': ip_address,
+            
+            # Backward compatibility: เก็บ format เดิมด้วย
+            'sent_time_old': sent_time.strftime('%Y-%m-%d %H:%M:%S'),  # สำหรับ compatibility
         }
         
         history.append(history_entry)
@@ -2004,9 +2101,11 @@ def save_email_history(
         with open(history_file, 'w', encoding='utf-8') as f:
             json.dump(history, f, ensure_ascii=False, indent=2)
         
-        logger.info(f"✅ บันทึกประวัติการส่งอีเมล: pattern={pattern_name}, signature={signature_name}, time={sent_time.strftime('%Y-%m-%d %H:%M:%S')}")
+        logger.info(f"✅ บันทึกประวัติการส่งอีเมล: id={history_entry['id']}, status={status}, pattern={pattern_name}, signature={signature_name}, time={sent_time.isoformat()}")
+        return history_entry['id']
     except Exception as e:
         logger.error(f"❌ ไม่สามารถบันทึกประวัติการส่งอีเมลได้: {e}", exc_info=True)
+        return None
 
 @app.route('/api/email/preview', methods=['POST'])
 def preview_email():
@@ -2281,19 +2380,93 @@ def send_email():
                 except Exception as e:
                     logger.warning(f"ไม่สามารถลบไฟล์ชั่วคราวได้: {temp_path} - {e}")
         
+        # เตรียมข้อมูล attachments สำหรับ history
+        attachment_history = []
+        if attachments:
+            for att in attachments:
+                if isinstance(att, dict):
+                    att_path = att.get('path')
+                    att_filename = att.get('filename')
+                else:
+                    att_path = att
+                    att_filename = Path(att_path).name if att_path else None
+                
+                if att_path:
+                    att_path_obj = Path(att_path) if not isinstance(att_path, Path) else att_path
+                    if att_path_obj.exists():
+                        try:
+                            file_size = att_path_obj.stat().st_size
+                            # พยายามดึง content type
+                            import mimetypes
+                            content_type, _ = mimetypes.guess_type(str(att_path_obj))
+                            if not content_type:
+                                content_type = 'application/octet-stream'
+                            
+                            attachment_history.append({
+                                'filename': att_filename or att_path_obj.name,
+                                'size': file_size,
+                                'content_type': content_type,
+                                'is_zipped': zip_attachments and len(attachments) > 1
+                            })
+                        except Exception as e:
+                            logger.warning(f"ไม่สามารถอ่านข้อมูลไฟล์แนบได้: {att_path_obj} - {e}")
+        
+        # ดึงข้อมูล LINE (ถ้ามี)
+        line_enabled = data.get('line_enabled', False)
+        line_user_id = data.get('line_user_id')
+        line_message = data.get('line_message')
+        line_sent = False  # จะอัปเดตเมื่อส่ง LINE สำเร็จ
+        
         if success:
-            # บันทึกประวัติการส่งอีเมล (ไม่มี pattern_name เพราะเป็นการส่งปกติ)
+            # บันทึกประวัติการส่งอีเมล (โครงสร้างใหม่)
             save_email_history(
                 pattern_name=None,
                 signature_name=signature_name,
                 to_emails=to_emails,
                 cc_emails=cc_emails,
+                bcc_emails=bcc_emails,
                 subject=subject,
                 body=body,
-                summary_data=summary_data if summary_data else None
+                body_html=body_html,
+                line_message=line_message,
+                line_enabled=line_enabled,
+                line_user_id=line_user_id,
+                line_sent=line_sent,
+                summary_data=summary_data if summary_data else None,
+                attachments=attachment_history if attachment_history else None,
+                from_email=email_service.email_from if email_service else None,
+                status='success',
+                smtp_server=email_service.smtp_server if email_service else None,
+                smtp_port=email_service.smtp_port if email_service else None,
+                smtp_use_tls=email_service.smtp_use_tls if email_service else None,
+                request_obj=request
             )
             return jsonify({'success': True, 'message': message}), 200
         else:
+            # บันทึกประวัติการส่งอีเมลที่ล้มเหลว
+            save_email_history(
+                pattern_name=None,
+                signature_name=signature_name,
+                to_emails=to_emails,
+                cc_emails=cc_emails,
+                bcc_emails=bcc_emails,
+                subject=subject,
+                body=body,
+                body_html=body_html,
+                line_message=line_message,
+                line_enabled=line_enabled,
+                line_user_id=line_user_id,
+                line_sent=False,
+                summary_data=summary_data if summary_data else None,
+                attachments=attachment_history if attachment_history else None,
+                from_email=email_service.email_from if email_service else None,
+                status='failed',
+                error_message=message,
+                smtp_server=email_service.smtp_server if email_service else None,
+                smtp_port=email_service.smtp_port if email_service else None,
+                smtp_use_tls=email_service.smtp_use_tls if email_service else None,
+                request_obj=request
+            )
             return jsonify({'success': False, 'message': message}), 400
     except Exception as e:
         return jsonify({'success': False, 'message': f'เกิดข้อผิดพลาด: {e}'}), 500
@@ -3062,14 +3235,63 @@ def send_email_by_pattern():
         
         if success:
             # บันทึกประวัติการส่งอีเมล (มี pattern_name)
+            # เตรียมข้อมูล attachments สำหรับ history
+            attachment_history = []
+            if attachments:
+                for att in attachments:
+                    if isinstance(att, dict):
+                        att_path = att.get('path')
+                        att_filename = att.get('filename')
+                    else:
+                        att_path = att
+                        att_filename = Path(att_path).name if att_path else None
+                    
+                    if att_path:
+                        att_path_obj = Path(att_path) if not isinstance(att_path, Path) else att_path
+                        if att_path_obj.exists():
+                            try:
+                                file_size = att_path_obj.stat().st_size
+                                import mimetypes
+                                content_type, _ = mimetypes.guess_type(str(att_path_obj))
+                                if not content_type:
+                                    content_type = 'application/octet-stream'
+                                
+                                attachment_history.append({
+                                    'filename': att_filename or att_path_obj.name,
+                                    'size': file_size,
+                                    'content_type': content_type,
+                                    'is_zipped': zip_attachments and len(attachments) > 1
+                                })
+                            except Exception as e:
+                                logger.warning(f"ไม่สามารถอ่านข้อมูลไฟล์แนบได้: {att_path_obj} - {e}")
+            
+            # ดึงข้อมูล LINE (ถ้ามี)
+            line_enabled = data.get('line_enabled', False)
+            line_user_id = data.get('line_user_id')
+            line_message = data.get('line_message')
+            line_sent = False  # จะอัปเดตเมื่อส่ง LINE สำเร็จ
+            
             save_email_history(
                 pattern_name=pattern_name,
                 signature_name=signature_name,
                 to_emails=to_emails if to_emails else None,
                 cc_emails=cc_emails if cc_emails else None,
+                bcc_emails=bcc_emails if bcc_emails else None,
                 subject=final_subject,
                 body=final_body,
-                summary_data=summary_data if summary_data else None
+                body_html=None,  # pattern อาจไม่มี HTML
+                line_message=line_message,
+                line_enabled=line_enabled,
+                line_user_id=line_user_id,
+                line_sent=line_sent,
+                summary_data=summary_data if summary_data else None,
+                attachments=attachment_history if attachment_history else None,
+                from_email=email_service.email_from if email_service else None,
+                status='success',
+                smtp_server=email_service.smtp_server if email_service else None,
+                smtp_port=email_service.smtp_port if email_service else None,
+                smtp_use_tls=email_service.smtp_use_tls if email_service else None,
+                request_obj=request
             )
             
             response_data = {'success': True, 'message': message}
@@ -3119,8 +3341,41 @@ def get_email_history():
             logger.error(f"ไม่สามารถโหลด email history ได้: {e}")
             return jsonify({'success': True, 'history': []}), 200
         
-        # เรียงลำดับจากใหม่ไปเก่า (reverse)
-        history.reverse()
+        # เรียงลำดับจากใหม่ไปเก่า (ใช้ sent_time หรือ sent_time_old)
+        def get_sort_time(entry):
+            # ลองใช้ sent_time (ISO format) ก่อน
+            if entry.get('sent_time'):
+                try:
+                    # รองรับทั้ง ISO format และ format เก่า
+                    if 'T' in entry['sent_time']:
+                        return datetime.fromisoformat(entry['sent_time'].replace('Z', '+00:00'))
+                    else:
+                        return datetime.strptime(entry['sent_time'], '%Y-%m-%d %H:%M:%S')
+                except:
+                    pass
+            
+            # ถ้าไม่มี sent_time ให้ใช้ sent_time_old
+            if entry.get('sent_time_old'):
+                try:
+                    return datetime.strptime(entry['sent_time_old'], '%Y-%m-%d %H:%M:%S')
+                except:
+                    pass
+            
+            # ถ้าไม่มีทั้งสอง ให้ใช้ created_at
+            if entry.get('created_at'):
+                try:
+                    if 'T' in entry['created_at']:
+                        return datetime.fromisoformat(entry['created_at'].replace('Z', '+00:00'))
+                    else:
+                        return datetime.strptime(entry['created_at'], '%Y-%m-%d %H:%M:%S')
+                except:
+                    pass
+            
+            # ถ้าไม่มีเลย ให้ใช้เวลาปัจจุบัน (จะอยู่ท้ายสุด)
+            return datetime.now()
+        
+        # เรียงลำดับจากใหม่ไปเก่า
+        history.sort(key=get_sort_time, reverse=True)
         
         return jsonify({'success': True, 'history': history}), 200
     except Exception as e:

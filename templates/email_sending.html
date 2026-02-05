@@ -185,6 +185,160 @@
             display: block;
         }
         
+        /* ใช้ inline style แทน CSS class เพื่อ override ทุกอย่าง */
+        .tab-content[style*="display: block"] {
+            display: block !important;
+        }
+        
+        /* History Detail Modal Styles */
+        .history-detail-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .history-detail-content {
+            background: #1e293b;
+            border-radius: 12px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 2px solid #475569;
+        }
+        
+        .history-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid #334155;
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        }
+        
+        .history-detail-header h2 {
+            margin: 0;
+            color: #fbbf24;
+        }
+        
+        .history-detail-close {
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .history-detail-close:hover {
+            background: #475569;
+            color: #fff;
+        }
+        
+        .history-detail-body {
+            padding: 20px;
+        }
+        
+        .history-detail-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #0f172a;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .history-detail-section h3 {
+            margin: 0 0 15px 0;
+            color: #fbbf24;
+            font-size: 1.1em;
+        }
+        
+        .history-detail-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .history-detail-row strong {
+            color: #cbd5e1;
+            min-width: 120px;
+        }
+        
+        .history-detail-row span {
+            color: #e2e8f0;
+            flex: 1;
+        }
+        
+        .history-attachment-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .history-attachment-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #1e293b;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        
+        .attachment-icon {
+            font-size: 1.2em;
+        }
+        
+        .attachment-name {
+            flex: 1;
+            color: #e2e8f0;
+        }
+        
+        .attachment-size {
+            color: #94a3b8;
+            font-size: 0.9em;
+        }
+        
+        .attachment-type {
+            color: #64748b;
+            font-size: 0.85em;
+            padding: 2px 8px;
+            background: #334155;
+            border-radius: 4px;
+        }
+        
+        .history-detail-body-content {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+            background: #0f172a;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: #e2e8f0;
+            border: 1px solid #334155;
+        }
+        
         .log-container {
             background: #0f172a;
             color: #00ff00;
@@ -219,6 +373,229 @@
         .tax-form-checked span:first-child {
             color: #27ae60 !important;
         }
+        
+        /* เพิ่มสไตล์สำหรับ required fields */
+        .form-group label span.required {
+            color: #ef4444;
+            font-weight: bold;
+            margin-left: 4px;
+        }
+        
+        /* เพิ่มสไตล์สำหรับ help text */
+        .help-text {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #94a3b8;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        /* เพิ่มสไตล์สำหรับ step indicator */
+        .step-indicator {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #3b82f6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        
+        /* เพิ่มสไตล์สำหรับ section card */
+        .section-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #334155;
+            margin-bottom: 20px;
+        }
+        
+        /* เพิ่มสไตล์สำหรับ floating action button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+            display: none; /* ซ่อนไว้ก่อน จะแสดงเมื่อ scroll ลง */
+        }
+        
+        .fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.6);
+        }
+        
+        /* เพิ่มสไตล์สำหรับ tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #1e293b;
+            color: #fafafa;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+            border: 1px solid #475569;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* เพิ่มสไตล์สำหรับ field ที่มี error */
+        .field-error {
+            border: 2px solid #ef4444 !important;
+            background-color: rgba(239, 68, 68, 0.1) !important;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 12px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* เพิ่มสไตล์สำหรับ field ที่ valid */
+        .field-valid {
+            border: 2px solid #10b981 !important;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-card {
+                padding: 15px;
+            }
+        }
+        
+        /* สไตล์สำหรับปุ่ม Admin */
+        .admin-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.6);
+        }
+        
+        /* สไตล์สำหรับ Admin Modal */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10003;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .admin-modal-content {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border: 2px solid #f59e0b;
+        }
+        
+        .admin-modal-content h3 {
+            color: #fbbf24;
+            margin: 0 0 20px 0;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .admin-modal-content input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #475569;
+            border-radius: 5px;
+            background: #0f172a;
+            color: #fafafa;
+            font-size: 14px;
+        }
+        
+        .admin-modal-content button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .admin-modal-content .btn-confirm {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .admin-modal-content .btn-confirm:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+        
+        .admin-modal-content .btn-cancel {
+            background: #475569;
+            color: white;
+        }
+        
+        .admin-modal-content .btn-cancel:hover {
+            background: #64748b;
+        }
     </style>
 </head>
 <body>
@@ -238,7 +615,12 @@
         
         <div class="content-grid">
             <div class="panel">
-                <h2>⚙️ ตั้งค่า SMTP</h2>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h2 style="margin: 0;">⚙️ ตั้งค่า SMTP</h2>
+                    <button type="button" class="admin-btn" onclick="showAdminModal()" title="Admin Quick Config">
+                        🔑 ADMIN
+                    </button>
+                </div>
                 <form id="smtpForm">
                     <div class="form-group">
                         <label>SMTP Server</label>
@@ -283,6 +665,19 @@
         </div>
     </div>
     
+    <!-- Admin Modal -->
+    <div id="adminModal" class="admin-modal">
+        <div class="admin-modal-content">
+            <h3>🔑 Admin Quick Config</h3>
+            <p style="color: #cbd5e1; margin-bottom: 20px; text-align: center; font-size: 14px;">
+                กรุณากรอกรหัสผ่าน Admin เพื่อทำการตั้งค่า SMTP อัตโนมัติ
+            </p>
+            <input type="password" id="adminPassword" placeholder="รหัสผ่าน Admin" autocomplete="off" onkeypress="if(event.key === 'Enter') confirmAdminConfig()">
+            <button class="btn-confirm" onclick="confirmAdminConfig()">✅ ยืนยัน</button>
+            <button class="btn-cancel" onclick="closeAdminModal()">❌ ยกเลิก</button>
+        </div>
+    </div>
+    
     <script>
         let smtpConfigured = false;
         
@@ -311,9 +706,105 @@
             }
         }
         
+        // Admin Functions
+        function showAdminModal() {
+            const modal = document.getElementById('adminModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                document.getElementById('adminPassword').focus();
+            }
+        }
+        
+        function closeAdminModal() {
+            const modal = document.getElementById('adminModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.getElementById('adminPassword').value = '';
+            }
+        }
+        
+        function confirmAdminConfig() {
+            const password = document.getElementById('adminPassword').value;
+            const ADMIN_PASSWORD = 'admin123';
+            
+            if (password !== ADMIN_PASSWORD) {
+                showCustomAlert('❌ รหัสผ่าน Admin ไม่ถูกต้อง', 'error');
+                document.getElementById('adminPassword').value = '';
+                document.getElementById('adminPassword').focus();
+                return;
+            }
+            
+            // Auto-fill SMTP config
+            document.getElementById('smtpServer').value = 'smtppro.zoho.com';
+            document.getElementById('smtpPort').value = '587';
+            document.getElementById('smtpUseTLS').checked = true;
+            document.getElementById('smtpUsername').value = 'yuttana.w@bmuc.co.th';
+            document.getElementById('smtpPassword').value = 'Hf4gaPz6gmQB';
+            document.getElementById('emailFrom').value = 'yuttana.w@bmuc.co.th';
+            
+            // อัปเดต TLS setting
+            updateTLSSetting();
+            
+            // ปิด modal
+            closeAdminModal();
+            
+            // ตั้ง flag เพื่อบอกว่าเป็นการ login จาก Admin
+            window.isAdminLogin = true;
+            
+            // เก็บ admin status ใน localStorage เพื่อให้คงอยู่แม้ refresh หน้า
+            localStorage.setItem('isAdmin', 'true');
+            
+            // แสดงแท็บ admin-only
+            showAdminTabs();
+            
+            // แสดงข้อความกำลังบันทึก
+            showCustomAlert('⏳ กำลังบันทึกและทดสอบการเชื่อมต่อ SMTP...', 'info');
+            
+            // รอสักครู่แล้วบันทึกอัตโนมัติ
+            setTimeout(() => {
+                // สร้าง event object เพื่อส่งไปยัง saveSMTPConfig
+                const fakeEvent = {
+                    preventDefault: function() {}
+                };
+                
+                // เรียก saveSMTPConfig เพื่อบันทึกและทดสอบการเชื่อมต่อ
+                saveSMTPConfig(fakeEvent);
+            }, 500);
+        }
+        
+        // ฟังก์ชันแสดง/ซ่อนแท็บ admin-only
+        function showAdminTabs() {
+            const adminTabs = document.querySelectorAll('.admin-only-tab');
+            adminTabs.forEach(tab => {
+                tab.style.display = 'inline-block';
+            });
+        }
+        
+        function hideAdminTabs() {
+            const adminTabs = document.querySelectorAll('.admin-only-tab');
+            adminTabs.forEach(tab => {
+                tab.style.display = 'none';
+            });
+        }
+        
+        // ตรวจสอบ admin status จาก localStorage
+        function checkAdminStatus() {
+            const isAdmin = localStorage.getItem('isAdmin') === 'true';
+            if (isAdmin) {
+                window.isAdminLogin = true;
+                showAdminTabs();
+            } else {
+                window.isAdminLogin = false;
+                hideAdminTabs();
+            }
+        }
+        
         // เรียกใช้เมื่อโหลดหน้า
         document.addEventListener('DOMContentLoaded', function() {
             updateTLSSetting();
+            
+            // ตรวจสอบ admin status เมื่อโหลดหน้า
+            checkAdminStatus();
             
             // เพิ่ม event listener สำหรับ SMTP form
             const smtpForm = document.getElementById('smtpForm');
@@ -326,7 +817,162 @@
             loadPatternsList();
             loadSignatures();
             loadSignaturesList();
+            
+            // เพิ่ม keyboard shortcut สำหรับส่งอีเมล
+            document.addEventListener('keydown', function(e) {
+                // Ctrl+Enter หรือ Cmd+Enter สำหรับส่งอีเมล
+                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                    const sendButton = document.querySelector('.btn-primary[onclick*="sendEmail"]');
+                    if (sendButton && !sendButton.disabled) {
+                        e.preventDefault();
+                        sendButton.click();
+                    }
+                }
+                
+                // Esc สำหรับปิด modal
+                if (e.key === 'Escape') {
+                    const modals = document.querySelectorAll('[id$="Modal"]');
+                    modals.forEach(modal => {
+                        if (modal.style.display !== 'none') {
+                            const closeFunc = modal.getAttribute('onclick') || '';
+                            if (closeFunc.includes('close')) {
+                                eval(closeFunc);
+                            }
+                        }
+                    });
+                }
+            });
+            
+            // แสดง/ซ่อน Floating Action Button เมื่อ scroll
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function() {
+                const fab = document.getElementById('fabSendEmail');
+                if (!fab) return;
+                
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const formBottom = document.querySelector('form')?.getBoundingClientRect().bottom || 0;
+                
+                // แสดง FAB เมื่อ scroll ลงมากกว่า 200px และฟอร์มยังอยู่บนหน้าจอ
+                if (scrollTop > 200 && formBottom > window.innerHeight) {
+                    fab.style.display = 'flex';
+                    fab.style.alignItems = 'center';
+                    fab.style.justifyContent = 'center';
+                } else {
+                    fab.style.display = 'none';
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+            
+            // เพิ่ม real-time validation สำหรับฟอร์ม
+            setupRealTimeValidation();
         });
+        
+        // ฟังก์ชันสำหรับ real-time validation
+        function setupRealTimeValidation() {
+            // Validation สำหรับ email fields
+            const emailFields = {
+                'toEmails': {
+                    validate: (value) => {
+                        if (!value.trim()) return { valid: true, message: '' }; // ไม่บังคับ
+                        const emails = value.split('\n').map(e => e.trim()).filter(e => e);
+                        const invalidEmails = emails.filter(e => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e));
+                        if (invalidEmails.length > 0) {
+                            return { valid: false, message: `อีเมลล์ไม่ถูกต้อง: ${invalidEmails.join(', ')}` };
+                        }
+                        return { valid: true, message: '' };
+                    }
+                },
+                'ccEmails': {
+                    validate: (value) => {
+                        if (!value.trim()) return { valid: true, message: '' }; // ไม่บังคับ
+                        const emails = value.split('\n').map(e => e.trim()).filter(e => e);
+                        const invalidEmails = emails.filter(e => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e));
+                        if (invalidEmails.length > 0) {
+                            return { valid: false, message: `อีเมลล์ไม่ถูกต้อง: ${invalidEmails.join(', ')}` };
+                        }
+                        return { valid: true, message: '' };
+                    }
+                },
+                'emailSubject': {
+                    validate: (value) => {
+                        if (!value.trim()) {
+                            return { valid: false, message: 'กรุณากรอกหัวข้ออีเมลล์' };
+                        }
+                        return { valid: true, message: '' };
+                    }
+                },
+                'emailBody': {
+                    validate: (value) => {
+                        if (!value.trim()) {
+                            return { valid: false, message: 'กรุณากรอกเนื้อหาอีเมลล์' };
+                        }
+                        return { valid: true, message: '' };
+                    }
+                },
+                'emailSignature': {
+                    validate: (value) => {
+                        if (!value || value === '') {
+                            return { valid: false, message: 'กรุณาเลือกลายเซ็นต์' };
+                        }
+                        return { valid: true, message: '' };
+                    }
+                }
+            };
+            
+            // เพิ่ม event listeners สำหรับแต่ละ field
+            Object.keys(emailFields).forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field) return;
+                
+                const validator = emailFields[fieldId];
+                
+                // Validation เมื่อ blur (ออกจาก field)
+                field.addEventListener('blur', function() {
+                    validateField(fieldId, this.value, validator);
+                });
+                
+                // Validation เมื่อเปลี่ยนค่า (debounce สำหรับ performance)
+                let timeout;
+                field.addEventListener('input', function() {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => {
+                        validateField(fieldId, this.value, validator);
+                    }, 500); // รอ 500ms หลังผู้ใช้หยุดพิมพ์
+                });
+            });
+        }
+        
+        // ฟังก์ชันสำหรับ validate field และแสดง error
+        function validateField(fieldId, value, validator) {
+            const field = document.getElementById(fieldId);
+            if (!field) return;
+            
+            const result = validator.validate(value);
+            const formGroup = field.closest('.form-group');
+            if (!formGroup) return;
+            
+            // ลบ error message เดิม
+            const existingError = formGroup.querySelector('.error-message');
+            if (existingError) {
+                existingError.remove();
+            }
+            
+            // ลบ class error/valid
+            field.classList.remove('field-error', 'field-valid');
+            
+            if (!result.valid) {
+                // แสดง error
+                field.classList.add('field-error');
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.innerHTML = `<span>❌</span><span>${result.message}</span>`;
+                formGroup.appendChild(errorDiv);
+            } else if (value.trim()) {
+                // แสดง valid state (ถ้ามีค่า)
+                field.classList.add('field-valid');
+            }
+        }
         
         function validateSMTPConfig() {
             const smtpServer = document.getElementById('smtpServer').value.trim();
@@ -432,7 +1078,21 @@
                         </div>
                     `;
                     showEmailForm();
+                    // ตรวจสอบ admin status หลังจากแสดงฟอร์ม
+                    setTimeout(() => {
+                        checkAdminStatus();
+                    }, 100);
                     loadPatterns();
+                    
+                    // ถ้าเป็นการ login จาก Admin ให้แสดงข้อความสำเร็จ
+                    if (window.isAdminLogin) {
+                        showCustomAlert('✅ เข้าสู่ระบบ Admin สำเร็จ!\n\n✅ ตั้งค่า SMTP และทดสอบการเชื่อมต่อสำเร็จ\n\nระบบพร้อมใช้งานแล้ว', 'success');
+                        // เก็บ admin status ใน localStorage
+                        localStorage.setItem('isAdmin', 'true');
+                        // แสดงแท็บ admin-only
+                        showAdminTabs();
+                        // ไม่ reset flag เพื่อให้คงสถานะ admin
+                    }
                 } else {
                     document.getElementById('smtpStatus').innerHTML = `
                         <div class="status-box status-warning">
@@ -447,6 +1107,15 @@
                             </p>
                         </div>
                     `;
+                    
+                    // ถ้าเป็นการ login จาก Admin ให้แสดงข้อความ error
+                    if (window.isAdminLogin) {
+                        showCustomAlert(`❌ ไม่สามารถเชื่อมต่อ SMTP ได้\n\n${data.message}\n\nกรุณาตรวจสอบการตั้งค่าและลองอีกครั้ง`, 'error');
+                        // เก็บ admin status ใน localStorage แม้จะเชื่อมต่อไม่สำเร็จ (เพราะผู้ใช้ login แล้ว)
+                        localStorage.setItem('isAdmin', 'true');
+                        showAdminTabs();
+                        // ไม่ reset flag เพื่อให้คงสถานะ admin
+                    }
                 }
             })
             .catch(error => {
@@ -456,17 +1125,31 @@
                         <p>❌ เกิดข้อผิดพลาดในการเชื่อมต่อ: ${error}</p>
                     </div>
                 `;
+                
+                // ถ้าเป็นการ login จาก Admin ให้แสดงข้อความ error
+                if (window.isAdminLogin) {
+                    showCustomAlert(`❌ เกิดข้อผิดพลาดในการเชื่อมต่อ SMTP\n\n${error}\n\nกรุณาตรวจสอบการตั้งค่าและลองอีกครั้ง`, 'error');
+                    // ถ้าเป็นการ login จาก Admin ให้เก็บสถานะ admin
+                    if (window.isAdminLogin) {
+                        localStorage.setItem('isAdmin', 'true');
+                        showAdminTabs();
+                    }
+                }
             });
         }
         
         function showEmailForm() {
+            // ตรวจสอบ admin status ก่อนสร้าง HTML
+            const isAdmin = localStorage.getItem('isAdmin') === 'true';
+            const adminTabStyle = isAdmin ? 'inline-block' : 'none';
+            
             document.getElementById('emailContent').innerHTML = `
                 <div class="tabs">
-                    <button class="tab active" onclick="switchTab('single')">📧 ส่งอีเมลล์</button>
-                    <button class="tab" onclick="switchTab('bulk')">📋 ส่งหลายฉบับ</button>
-                    <button class="tab" onclick="switchTab('patterns')">📝 แพทเทิร์น</button>
-                    <button class="tab" onclick="switchTab('signatures')">✍️ ลายเซ็นต์</button>
-                    <button class="tab" onclick="switchTab('history')">📊 ประวัติ</button>
+                    <button class="tab active" onclick="switchTab('single', this)">📧 ส่งอีเมลล์</button>
+                    <button class="tab admin-only-tab" onclick="switchTab('bulk', this)" style="display: ${adminTabStyle};">📋 ส่งหลายฉบับ</button>
+                    <button class="tab admin-only-tab" onclick="switchTab('patterns', this)" style="display: ${adminTabStyle};">📝 แพทเทิร์น</button>
+                    <button class="tab admin-only-tab" onclick="switchTab('signatures', this)" style="display: ${adminTabStyle};">✍️ ลายเซ็นต์</button>
+                    <button class="tab admin-only-tab" onclick="switchTab('history', this)" style="display: ${adminTabStyle};">📊 ประวัติ</button>
                 </div>
                 
                 <div id="singleTab" class="tab-content active">
@@ -486,49 +1169,100 @@
                     </div>
                     
                     <form onsubmit="event.preventDefault(); return false;">
-                        <div class="form-group">
-                            <label>เลือก Template อีเมลล์</label>
-                            <select id="emailTemplate" onchange="loadEmailTemplate()" style="width: 100%; padding: 10px; border: 1px solid #475569; border-radius: 5px; background: #0f172a; color: #fafafa;">
-                                <option value="">-- เลือก Template --</option>
-                                <option value="template1">1. ยื่นแบบมีหัก ณ ที่จ่ายและภาษีมูลค่าเพิ่ม</option>
-                                <option value="template2">2. ยื่นแบบมีหัก ณ ที่จ่าย</option>
-                                <option value="template3">3. ยื่นแบบภาษีมูลค่าเพิ่ม</option>
-                            </select>
-                            <small style="color: #94a3b8;">เลือก template เพื่อเติมหัวข้อและเนื้อหาอีเมลล์อัตโนมัติ</small>
+                        <!-- Step 1: Template และ Pattern -->
+                        <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 10px; border: 2px solid #334155; margin-bottom: 20px;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: #3b82f6; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">1</div>
+                                <h3 style="color: #60a5fa; margin: 0; font-size: 18px;">📋 เลือก Template และ Pattern</h3>
+                            </div>
+                            <div class="form-group">
+                                <label style="display: flex; align-items: center; gap: 8px;">
+                                    <span>เลือก Template อีเมลล์</span>
+                                    <span style="font-size: 12px; color: #94a3b8;">(ไม่บังคับ)</span>
+                                </label>
+                                <select id="emailTemplate" onchange="loadEmailTemplate()" style="width: 100%; padding: 10px; border: 1px solid #475569; border-radius: 5px; background: #0f172a; color: #fafafa;">
+                                    <option value="">-- เลือก Template --</option>
+                                    <option value="template1">1. ยื่นแบบมีหัก ณ ที่จ่ายและภาษีมูลค่าเพิ่ม</option>
+                                    <option value="template2">2. ยื่นแบบมีหัก ณ ที่จ่าย</option>
+                                    <option value="template3">3. ยื่นแบบภาษีมูลค่าเพิ่ม</option>
+                                </select>
+                                <small style="color: #94a3b8; display: flex; align-items: center; gap: 5px; margin-top: 5px;">
+                                    <span>💡</span>
+                                    <span>เลือก template เพื่อเติมหัวข้อและเนื้อหาอีเมลล์อัตโนมัติ</span>
+                                </small>
+                            </div>
+                            <div class="form-group" style="position: relative;">
+                                <label style="display: flex; align-items: center; gap: 8px;">
+                                    <span>ใช้แพทเทิร์น (Pattern)</span>
+                                    <span style="font-size: 12px; color: #94a3b8;">(ไม่บังคับ)</span>
+                                </label>
+                                <input type="text" id="emailPattern" placeholder="พิมพ์เพื่อค้นหา pattern..." autocomplete="off" oninput="handlePatternChange()" onfocus="showPatternSuggestions()" onblur="handlePatternBlur()" style="width: 100%; padding: 10px; border: 1px solid #475569; border-radius: 5px; background: #0f172a; color: #fafafa;">
+                                <div id="patternSuggestions" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: #0f172a; border: 1px solid #475569; border-top: none; border-radius: 0 0 5px 5px; max-height: 200px; overflow-y: auto; z-index: 1000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);"></div>
+                                <small style="color: #94a3b8; display: flex; align-items: center; gap: 5px; margin-top: 5px;">
+                                    <span>💡</span>
+                                    <span>พิมพ์เพื่อค้นหา pattern หรือเลือกจากรายการ (ถ้าไม่ระบุ ระบบจะตรวจสอบจาก Tax ID อัตโนมัติ)</span>
+                                </small>
+                            </div>
                         </div>
-                        <div class="form-group" style="position: relative;">
-                            <label>ใช้แพทเทิร์น (Pattern)</label>
-                            <input type="text" id="emailPattern" placeholder="พิมพ์เพื่อค้นหา pattern..." autocomplete="off" oninput="handlePatternChange()" onfocus="showPatternSuggestions()" onblur="handlePatternBlur()" style="width: 100%; padding: 10px; border: 1px solid #475569; border-radius: 5px; background: #0f172a; color: #fafafa;">
-                            <div id="patternSuggestions" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: #0f172a; border: 1px solid #475569; border-top: none; border-radius: 0 0 5px 5px; max-height: 200px; overflow-y: auto; z-index: 1000; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);"></div>
-                            <small style="color: #94a3b8;">พิมพ์เพื่อค้นหา pattern หรือเลือกจากรายการ (ถ้าไม่ระบุ ระบบจะตรวจสอบจาก Tax ID อัตโนมัติ)</small>
+                        
+                        <!-- Step 2: ข้อมูลอีเมล -->
+                        <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 10px; border: 2px solid #334155; margin-bottom: 20px;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: #3b82f6; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">2</div>
+                                <h3 style="color: #60a5fa; margin: 0; font-size: 18px;">📧 ข้อมูลอีเมล</h3>
+                            </div>
+                            <div class="form-group">
+                                <label>อีเมลล์ผู้รับ (To) <span style="color: #ef4444;">*</span></label>
+                                <textarea id="toEmails" placeholder="email1@example.com&#10;email2@example.com"></textarea>
+                                <small style="color: #94a3b8; display: flex; align-items: center; gap: 5px; margin-top: 5px;">
+                                    <span>💡</span>
+                                    <span>ถ้าไม่ระบุจะใช้เมลล์เริ่มต้นจาก config</span>
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label>อีเมลล์ CC</label>
+                                <textarea id="ccEmails" placeholder="cc1@example.com&#10;cc2@example.com"></textarea>
+                                <small style="color: #94a3b8; display: flex; align-items: center; gap: 5px; margin-top: 5px;">
+                                    <span>💡</span>
+                                    <span>จะรวมกับ CC เริ่มต้นจาก config</span>
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label>หัวข้ออีเมลล์ (Subject) <span style="color: #ef4444;">*</span></label>
+                                <input type="text" id="emailSubject" placeholder="หัวข้ออีเมลล์" required>
+                            </div>
+                            <div class="form-group">
+                                <label>เนื้อหาอีเมลล์ <span style="color: #ef4444;">*</span></label>
+                                <textarea id="emailBody" placeholder="เนื้อหาอีเมลล์..." rows="10" required></textarea>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>อีเมลล์ผู้รับ (To) *</label>
-                            <textarea id="toEmails" placeholder="email1@example.com&#10;email2@example.com"></textarea>
-                            <small style="color: #94a3b8;">ถ้าไม่ระบุจะใช้เมลล์เริ่มต้นจาก config</small>
+                        
+                        <!-- Step 3: ลายเซ็นต์ (ย้ายขึ้นมา) -->
+                        <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 10px; border: 2px solid #fbbf24; margin-bottom: 20px; box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: #fbbf24; color: #1e293b; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">3</div>
+                                <h3 style="color: #fbbf24; margin: 0; font-size: 18px;">✍️ เลือกลายเซ็นต์</h3>
+                            </div>
+                            <div class="form-group">
+                                <label style="display: flex; align-items: center; gap: 8px;">
+                                    <span>ลายเซ็นต์ (Signature)</span>
+                                    <span style="color: #ef4444; font-weight: bold;">*</span>
+                                </label>
+                                <select id="emailSignature" required style="width: 100%; padding: 12px; border: 2px solid #fbbf24; border-radius: 5px; background: #0f172a; color: #fafafa; font-size: 15px; font-weight: 500;">
+                                    <option value="">-- ⚠️ กรุณาเลือกลายเซ็นต์ --</option>
+                                </select>
+                                <small style="color: #fbbf24; display: flex; align-items: center; gap: 5px; margin-top: 8px; font-weight: 500;">
+                                    <span>⚠️</span>
+                                    <span>บังคับเลือกลายเซ็นต์ก่อนส่งอีเมลล์ (จัดการลายเซ็นต์ได้ที่แท็บ "ลายเซ็นต์")</span>
+                                </small>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>อีเมลล์ CC</label>
-                            <textarea id="ccEmails" placeholder="cc1@example.com&#10;cc2@example.com"></textarea>
-                            <small style="color: #94a3b8;">จะรวมกับ CC เริ่มต้นจาก config</small>
-                        </div>
-                        <div class="form-group">
-                            <label>หัวข้ออีเมลล์ (Subject) *</label>
-                            <input type="text" id="emailSubject" placeholder="หัวข้ออีเมลล์" required>
-                        </div>
-                        <div class="form-group">
-                            <label>เนื้อหาอีเมลล์ *</label>
-                            <textarea id="emailBody" placeholder="เนื้อหาอีเมลล์..." rows="10" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>ลายเซ็นต์ (Signature) *</label>
-                            <select id="emailSignature" required style="width: 100%; padding: 10px; border: 1px solid #475569; border-radius: 5px; background: #0f172a; color: #fafafa;">
-                                <option value="">-- กรุณาเลือกลายเซ็นต์ --</option>
-                            </select>
-                            <small style="color: #fbbf24;">⚠️ บังคับเลือกลายเซ็นต์ก่อนส่งอีเมลล์ (จัดการลายเซ็นต์ได้ที่แท็บ "ลายเซ็นต์")</small>
-                        </div>
-                        <div class="form-group">
-                            <label>ไฟล์แนบ (Attachments)</label>
+                        <!-- Step 4: ไฟล์แนบ -->
+                        <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 10px; border: 2px solid #334155; margin-bottom: 20px;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: #3b82f6; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">4</div>
+                                <h3 style="color: #60a5fa; margin: 0; font-size: 18px;">📎 ไฟล์แนบ (Attachments)</h3>
+                            </div>
                             
                             <!-- รายการแบบภาษีที่อัปโหลดแล้ว -->
                             <div style="background: #0f172a; padding: 15px; border-radius: 8px; border: 1px solid #475569; margin-bottom: 15px;">
@@ -662,9 +1396,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group" style="background: #0f172a; padding: 15px; border-radius: 8px; border: 1px solid #475569; margin-top: 20px;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                                <label style="margin: 0; color: #60a5fa; font-weight: bold;">📱 ส่งข้อความไปยัง LINE</label>
+                        
+                        <!-- Step 5: ตั้งค่า LINE (ถ้าต้องการ) -->
+                        <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 10px; border: 2px solid #334155; margin-bottom: 20px;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                                <div style="width: 32px; height: 32px; border-radius: 50%; background: #3b82f6; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">5</div>
+                                <h3 style="color: #60a5fa; margin: 0; font-size: 18px;">📱 ส่งข้อความไปยัง LINE</h3>
+                                <span style="font-size: 12px; color: #94a3b8;">(ไม่บังคับ)</span>
+                            </div>
+                            <div style="background: #0f172a; padding: 15px; border-radius: 8px; border: 1px solid #475569;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <label style="margin: 0; color: #60a5fa; font-weight: bold;">เปิดใช้งานการส่งข้อความ LINE</label>
                                 <label style="margin: 0; display: flex; align-items: center; gap: 10px;">
                                     <input type="checkbox" id="lineEnabled" onchange="toggleLineSettings()" style="width: auto; margin: 0;">
                                     <span style="color: #94a3b8; font-size: 14px;">เปิดใช้งาน</span>
@@ -838,137 +1580,154 @@
                                 </div>
                             </div>
                         </div>
-                        <div style="display: flex; gap: 10px;">
-                            <button type="button" class="btn" onclick="previewEmail()" style="background: #60a5fa; color: white; flex: 1;">👁️ ดูตัวอย่าง (Preview)</button>
-                            <button type="button" class="btn btn-primary" onclick="sendEmail(event)" style="flex: 1;">📤 ส่งอีเมลล์</button>
+                        <!-- Step 4: ปุ่มส่งอีเมล (Sticky) -->
+                        <div style="position: sticky; bottom: 20px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px; border-radius: 10px; border: 2px solid #334155; margin-top: 30px; box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3); z-index: 100;">
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <button type="button" class="btn" onclick="previewEmail()" style="background: #60a5fa; color: white; flex: 1; padding: 14px 24px; font-size: 16px; font-weight: 600;">
+                                    👁️ ดูตัวอย่าง (Preview)
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="sendEmail(event)" style="flex: 2; padding: 14px 24px; font-size: 18px; font-weight: 700; background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);">
+                                    📤 ส่งอีเมลล์ (Ctrl+Enter)
+                                </button>
+                            </div>
+                            <small style="color: #94a3b8; display: block; text-align: center; margin-top: 10px; font-size: 12px;">
+                                💡 กด Ctrl+Enter เพื่อส่งอีเมลล์เร็วขึ้น
+                            </small>
                         </div>
                     </form>
-                    
-                    <!-- Custom Alert Modal -->
-                    <div id="customAlertModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10002; display: flex; justify-content: center; align-items: center;">
-                        <div id="customAlertContent" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 12px; padding: 30px; max-width: 500px; width: 90%; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); border: 2px solid #475569; animation: slideIn 0.3s ease;">
-                            <div id="customAlertIcon" style="font-size: 48px; text-align: center; margin-bottom: 20px;">⚠️</div>
-                            <h3 id="customAlertTitle" style="color: #60a5fa; margin: 0 0 15px 0; text-align: center; font-size: 20px; font-weight: 600;">แจ้งเตือน</h3>
-                            <div id="customAlertMessage" style="color: #cbd5e1; margin-bottom: 25px; line-height: 1.6; font-size: 14px; white-space: pre-line; text-align: center;"></div>
-                            <div style="text-align: center;">
-                                <button id="customAlertOkBtn" onclick="closeCustomAlert()" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: 600; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4); transition: all 0.3s ease;">ตกลง</button>
-                            </div>
+                </div>
+                
+                <!-- Floating Action Button สำหรับส่งอีเมล -->
+                <button class="fab" onclick="document.querySelector('.btn-primary').click()" title="ส่งอีเมลล์ (Ctrl+Enter)" id="fabSendEmail">
+                    📤
+                </button>
+                
+                <!-- Custom Alert Modal -->
+                <div id="customAlertModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10002; justify-content: center; align-items: center;">
+                    <div id="customAlertContent" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius: 12px; padding: 30px; max-width: 500px; width: 90%; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); border: 2px solid #475569; animation: slideIn 0.3s ease;">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <div id="customAlertIcon" style="font-size: 48px; margin-bottom: 10px; line-height: 1;">⚠️</div>
+                            <h3 id="customAlertTitle" style="color: #60a5fa; margin: 0 0 15px 0; font-size: 20px; font-weight: 600;">แจ้งเตือน</h3>
+                        </div>
+                        <div id="customAlertMessage" style="color: #cbd5e1; line-height: 1.6; font-size: 14px; white-space: pre-line; text-align: left; background: rgba(15, 23, 42, 0.5); padding: 15px; border-radius: 8px; margin-bottom: 25px; max-height: 300px; overflow-y: auto;"></div>
+                        <div style="text-align: center;">
+                            <button id="customAlertOkBtn" onclick="closeCustomAlert()" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: 600; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4); transition: all 0.3s ease;">ตกลง</button>
                         </div>
                     </div>
-                    
-                    <style>
-                        @keyframes slideIn {
-                            from {
-                                opacity: 0;
-                                transform: translateY(-20px) scale(0.95);
-                            }
-                            to {
-                                opacity: 1;
-                                transform: translateY(0) scale(1);
-                            }
+                </div>
+                
+                <style>
+                    @keyframes slideIn {
+                        from {
+                            opacity: 0;
+                            transform: translateY(-20px) scale(0.95);
                         }
-                        #customAlertOkBtn:hover {
-                            transform: translateY(-2px);
-                            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.5);
+                        to {
+                            opacity: 1;
+                            transform: translateY(0) scale(1);
                         }
-                        #customAlertOkBtn:active {
-                            transform: translateY(0);
-                        }
-                    </style>
-                    
-                    <!-- Modal สำหรับ Preview -->
-                    <div id="emailPreviewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10000; overflow-y: auto;">
-                        <div style="max-width: 900px; margin: 20px auto; background: #1e293b; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                                <h2 style="color: #60a5fa; margin: 0;">👁️ ตัวอย่างอีเมลล์ที่จะส่ง</h2>
-                                <button onclick="event.stopPropagation(); closeEmailPreview(); return false;" style="background: #dc2626; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 14px;">✕ ปิด</button>
+                    }
+                    #customAlertOkBtn:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 6px 16px rgba(59, 130, 246, 0.5);
+                    }
+                    #customAlertOkBtn:active {
+                        transform: translateY(0);
+                    }
+                </style>
+                
+                <!-- Modal สำหรับ Preview -->
+                <div id="emailPreviewModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10000; overflow-y: auto;">
+                    <div style="max-width: 900px; margin: 20px auto; background: #1e293b; border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h2 style="color: #60a5fa; margin: 0;">👁️ ตัวอย่างอีเมลล์ที่จะส่ง</h2>
+                            <button onclick="event.stopPropagation(); closeEmailPreview(); return false;" style="background: #dc2626; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 14px;">✕ ปิด</button>
+                        </div>
+                        
+                        <div style="background: #0f172a; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                            <div style="margin-bottom: 10px;">
+                                <strong style="color: #94a3b8;">จาก:</strong> <span style="color: #cbd5e1;" id="previewFrom">-</span>
                             </div>
-                            
-                            <div style="background: #0f172a; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
-                                <div style="margin-bottom: 10px;">
-                                    <strong style="color: #94a3b8;">จาก:</strong> <span style="color: #cbd5e1;" id="previewFrom">-</span>
-                                </div>
-                                <div style="margin-bottom: 10px;">
-                                    <strong style="color: #94a3b8;">ถึง:</strong> <span style="color: #cbd5e1;" id="previewTo">-</span>
-                                </div>
-                                <div style="margin-bottom: 10px;">
-                                    <strong style="color: #94a3b8;">CC:</strong> <span style="color: #cbd5e1;" id="previewCC">-</span>
-                                </div>
-                                <div style="margin-bottom: 10px;">
-                                    <strong style="color: #94a3b8;">หัวข้อ:</strong> <span style="color: #cbd5e1;" id="previewSubject">-</span>
-                                </div>
-                                <div style="margin-bottom: 10px;">
-                                    <strong style="color: #94a3b8;">ไฟล์แนบ:</strong> <span style="color: #cbd5e1;" id="previewAttachments">-</span>
-                                </div>
-                                <div>
-                                    <strong style="color: #94a3b8;">ลายเซ็นต์:</strong> <span style="color: #cbd5e1;" id="previewSignature">-</span>
-                                </div>
+                            <div style="margin-bottom: 10px;">
+                                <strong style="color: #94a3b8;">ถึง:</strong> <span style="color: #cbd5e1;" id="previewTo">-</span>
                             </div>
-                            
-                            <div style="background: white; padding: 20px; border-radius: 5px; min-height: 300px;">
-                                <div id="previewContent" style="color: #1e293b; line-height: 1.6;">
-                                    <!-- เนื้อหาอีเมลล์จะแสดงที่นี่ -->
-                                </div>
+                            <div style="margin-bottom: 10px;">
+                                <strong style="color: #94a3b8;">CC:</strong> <span style="color: #cbd5e1;" id="previewCC">-</span>
                             </div>
-                            
-                            <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end;">
-                                <button onclick="event.stopPropagation(); closeEmailPreview(); return false;" class="btn" style="background: #475569; color: white;">ยกเลิก</button>
-                                <button onclick="event.stopPropagation(); sendEmailFromPreview(); return false;" class="btn btn-primary">📤 ส่งอีเมลล์</button>
+                            <div style="margin-bottom: 10px;">
+                                <strong style="color: #94a3b8;">หัวข้อ:</strong> <span style="color: #cbd5e1;" id="previewSubject">-</span>
                             </div>
+                            <div style="margin-bottom: 10px;">
+                                <strong style="color: #94a3b8;">ไฟล์แนบ:</strong> <span style="color: #cbd5e1;" id="previewAttachments">-</span>
+                            </div>
+                            <div>
+                                <strong style="color: #94a3b8;">ลายเซ็นต์:</strong> <span style="color: #cbd5e1;" id="previewSignature">-</span>
+                            </div>
+                        </div>
+                        
+                        <div style="background: white; padding: 20px; border-radius: 5px; min-height: 300px;">
+                            <div id="previewContent" style="color: #1e293b; line-height: 1.6;">
+                                <!-- เนื้อหาอีเมลล์จะแสดงที่นี่ -->
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end;">
+                            <button onclick="event.stopPropagation(); closeEmailPreview(); return false;" class="btn" style="background: #475569; color: white;">ยกเลิก</button>
+                            <button onclick="event.stopPropagation(); sendEmailFromPreview(); return false;" class="btn btn-primary">📤 ส่งอีเมลล์</button>
                         </div>
                     </div>
-                    
-                    <!-- Progress Modal สำหรับแสดงสถานะการส่งอีเมลล์ -->
-                    <div id="sendingProgressModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 10001; overflow-y: auto;">
-                        <div style="max-width: 600px; margin: 80px auto; background: #1e293b; border-radius: 12px; padding: 30px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);">
-                            <div style="text-align: center; margin-bottom: 30px;">
-                                <h2 style="color: #60a5fa; margin: 0 0 10px 0;">📤 กำลังส่งอีเมลล์...</h2>
-                                <p style="color: #94a3b8; margin: 0;">กรุณารอสักครู่ ระบบกำลังดำเนินการ</p>
-                            </div>
-                            
-                            <!-- Progress Steps -->
-                            <div id="progressSteps" style="margin-bottom: 20px;">
-                                <!-- Step 1: ตรวจสอบข้อมูล -->
-                                <div class="progress-step" data-step="1" style="display: flex; align-items: center; padding: 15px; margin-bottom: 10px; background: #0f172a; border-radius: 8px; border-left: 4px solid #64748b;">
-                                    <div class="step-icon" style="width: 40px; height: 40px; border-radius: 50%; background: #64748b; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">
-                                        ⏳
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <div class="step-title" style="color: #cbd5e1; font-weight: bold; margin-bottom: 5px;">1. ตรวจสอบข้อมูล</div>
-                                        <div class="step-status" style="color: #94a3b8; font-size: 13px;">รอดำเนินการ...</div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Step 2: สร้าง PDF สรุป -->
-                                <div class="progress-step" data-step="2" style="display: flex; align-items: center; padding: 15px; margin-bottom: 10px; background: #0f172a; border-radius: 8px; border-left: 4px solid #64748b;">
-                                    <div class="step-icon" style="width: 40px; height: 40px; border-radius: 50%; background: #64748b; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">
-                                        ⏳
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <div class="step-title" style="color: #cbd5e1; font-weight: bold; margin-bottom: 5px;">2. สร้าง PDF สรุป</div>
-                                        <div class="step-status" style="color: #94a3b8; font-size: 13px;">รอดำเนินการ...</div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Step 3: ส่งอีเมลล์ -->
-                                <div class="progress-step" data-step="3" style="display: flex; align-items: center; padding: 15px; margin-bottom: 10px; background: #0f172a; border-radius: 8px; border-left: 4px solid #64748b;">
-                                    <div class="step-icon" style="width: 40px; height: 40px; border-radius: 50%; background: #64748b; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">
-                                        ⏳
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <div class="step-title" style="color: #cbd5e1; font-weight: bold; margin-bottom: 5px;">3. ส่งอีเมลล์</div>
-                                        <div class="step-status" style="color: #94a3b8; font-size: 13px;">รอดำเนินการ...</div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <!-- Overall Progress Bar -->
-                            <div style="background: #0f172a; border-radius: 10px; height: 8px; overflow: hidden; margin-top: 20px;">
-                                <div id="overallProgressBar" style="background: linear-gradient(90deg, #3b82f6, #60a5fa); height: 100%; width: 0%; transition: width 0.3s ease;"></div>
-                            </div>
-                            <div id="overallProgressText" style="text-align: center; color: #94a3b8; font-size: 13px; margin-top: 10px;">0%</div>
+                </div>
+                
+                <!-- Progress Modal สำหรับแสดงสถานะการส่งอีเมลล์ -->
+                <div id="sendingProgressModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 10001; overflow-y: auto;">
+                    <div style="max-width: 600px; margin: 80px auto; background: #1e293b; border-radius: 12px; padding: 30px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);">
+                        <div style="text-align: center; margin-bottom: 30px;">
+                            <h2 style="color: #60a5fa; margin: 0 0 10px 0;">📤 กำลังส่งอีเมลล์...</h2>
+                            <p style="color: #94a3b8; margin: 0;">กรุณารอสักครู่ ระบบกำลังดำเนินการ</p>
                         </div>
+                        
+                        <!-- Progress Steps -->
+                        <div id="progressSteps" style="margin-bottom: 20px;">
+                            <!-- Step 1: ตรวจสอบข้อมูล -->
+                            <div class="progress-step" data-step="1" style="display: flex; align-items: center; padding: 15px; margin-bottom: 10px; background: #0f172a; border-radius: 8px; border-left: 4px solid #64748b;">
+                                <div class="step-icon" style="width: 40px; height: 40px; border-radius: 50%; background: #64748b; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">
+                                    ⏳
+                                </div>
+                                <div style="flex: 1;">
+                                    <div class="step-title" style="color: #cbd5e1; font-weight: bold; margin-bottom: 5px;">1. ตรวจสอบข้อมูล</div>
+                                    <div class="step-status" style="color: #94a3b8; font-size: 13px;">รอดำเนินการ...</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 2: สร้าง PDF สรุป -->
+                            <div class="progress-step" data-step="2" style="display: flex; align-items: center; padding: 15px; margin-bottom: 10px; background: #0f172a; border-radius: 8px; border-left: 4px solid #64748b;">
+                                <div class="step-icon" style="width: 40px; height: 40px; border-radius: 50%; background: #64748b; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">
+                                    ⏳
+                                </div>
+                                <div style="flex: 1;">
+                                    <div class="step-title" style="color: #cbd5e1; font-weight: bold; margin-bottom: 5px;">2. สร้าง PDF สรุป</div>
+                                    <div class="step-status" style="color: #94a3b8; font-size: 13px;">รอดำเนินการ...</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Step 3: ส่งอีเมลล์ -->
+                            <div class="progress-step" data-step="3" style="display: flex; align-items: center; padding: 15px; margin-bottom: 10px; background: #0f172a; border-radius: 8px; border-left: 4px solid #64748b;">
+                                <div class="step-icon" style="width: 40px; height: 40px; border-radius: 50%; background: #64748b; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 18px;">
+                                    ⏳
+                                </div>
+                                <div style="flex: 1;">
+                                    <div class="step-title" style="color: #cbd5e1; font-weight: bold; margin-bottom: 5px;">3. ส่งอีเมลล์</div>
+                                    <div class="step-status" style="color: #94a3b8; font-size: 13px;">รอดำเนินการ...</div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <!-- Overall Progress Bar -->
+                        <div style="background: #0f172a; border-radius: 10px; height: 8px; overflow: hidden; margin-top: 20px;">
+                            <div id="overallProgressBar" style="background: linear-gradient(90deg, #3b82f6, #60a5fa); height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+                        </div>
+                        <div id="overallProgressText" style="text-align: center; color: #94a3b8; font-size: 13px; margin-top: 10px;">0%</div>
                     </div>
                 </div>
                 
@@ -1134,22 +1893,501 @@
             }, 100);
         }
         
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            
-            event.target.classList.add('active');
-            document.getElementById(tabName + 'Tab').classList.add('active');
-            
-            // โหลดข้อมูลเมื่อเปลี่ยนแท็บ
-            if (tabName === 'patterns') {
-                loadPatternsList();
-            } else if (tabName === 'history') {
-                loadEmailHistory();
+        function switchTab(tabName, buttonElement) {
+            try {
+                console.log(`[switchTab] Switching to tab: ${tabName}`);
+                
+                // ซ่อนทุก tab content (รวมถึง singleTab)
+                const allTabContents = document.querySelectorAll('.tab-content');
+                console.log(`[switchTab] Found ${allTabContents.length} tab-content elements`);
+                allTabContents.forEach(content => {
+                    content.classList.remove('active');
+                    // ซ่อนด้วย inline style เพื่อความแน่ใจ
+                    content.style.setProperty('display', 'none', 'important');
+                    content.style.setProperty('visibility', 'hidden', 'important');
+                });
+                
+                // ลบ active class จากทุก tab button
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                
+                // หาและแสดง tab content ที่เลือก
+                const tabContentId = tabName + 'Tab';
+                const tabContent = document.getElementById(tabContentId);
+                
+                if (!tabContent) {
+                    console.error(`[switchTab] Tab content not found: ${tabContentId}`);
+                    console.error(`[switchTab] Available tab-content IDs:`, Array.from(allTabContents).map(el => el.id));
+                    showCustomAlert(`ไม่พบเนื้อหาของแท็บ "${tabName}" (ID: ${tabContentId})`, 'error');
+                    return;
+                }
+                
+                console.log(`[switchTab] Found tab content: ${tabContentId}`, tabContent);
+                
+                // ซ่อน singleTab ก่อนเสมอ (ถ้าไม่ใช่ singleTab ที่กำลังแสดง) - สำคัญมาก!
+                const singleTab = document.getElementById('singleTab');
+                if (singleTab && tabName !== 'single') {
+                    // ซ่อน singleTab ด้วยวิธีที่แน่นอนที่สุด
+                    singleTab.style.setProperty('display', 'none', 'important');
+                    singleTab.style.setProperty('visibility', 'hidden', 'important');
+                    singleTab.style.setProperty('opacity', '0', 'important');
+                    singleTab.style.setProperty('height', '0', 'important');
+                    singleTab.style.setProperty('overflow', 'hidden', 'important');
+                    singleTab.style.setProperty('position', 'absolute', 'important');
+                    singleTab.style.setProperty('left', '-9999px', 'important');
+                    singleTab.classList.remove('active');
+                    console.log(`[switchTab] Hid singleTab completely with all methods`);
+                }
+                
+                // ตรวจสอบ parent element (ต้องไม่ใช่ singleTab)
+                let parent = tabContent.parentElement;
+                console.log(`[switchTab] Direct parent:`, parent, `ID:`, parent ? parent.id : 'N/A');
+                
+                // ถ้า parent เป็น singleTab ให้ย้าย element ออกมาก่อน
+                if (parent && parent.id === 'singleTab') {
+                    console.warn(`[switchTab] CRITICAL: Tab content is inside singleTab! Moving it out immediately...`);
+                    const emailContent = document.getElementById('emailContent');
+                    if (emailContent && tabContent) {
+                        // ย้าย element ออกมาจาก singleTab โดยใช้ insertBefore เพื่อวางไว้หลัง singleTab
+                        const singleTab = document.getElementById('singleTab');
+                        if (singleTab && singleTab.nextSibling) {
+                            emailContent.insertBefore(tabContent, singleTab.nextSibling);
+                        } else {
+                            emailContent.appendChild(tabContent);
+                        }
+                        console.log(`[switchTab] Moved tab content out of singleTab`);
+                        // อัปเดต parent reference
+                        parent = emailContent;
+                    } else {
+                        // ถ้าย้ายไม่ได้ ให้ใช้ parent ที่ถูกต้อง
+                        parent = parent.parentElement; // emailContent
+                        console.log(`[switchTab] Using emailContent as parent instead`);
+                    }
+                }
+                
+                console.log(`[switchTab] Parent element:`, parent);
+                console.log(`[switchTab] Parent ID:`, parent ? parent.id : 'N/A');
+                console.log(`[switchTab] Parent display:`, parent ? getComputedStyle(parent).display : 'N/A');
+                console.log(`[switchTab] Parent visibility:`, parent ? getComputedStyle(parent).visibility : 'N/A');
+                console.log(`[switchTab] Parent opacity:`, parent ? getComputedStyle(parent).opacity : 'N/A');
+                
+                // แสดง tab content - ใช้ inline style with important เพื่อ override ทุกอย่าง
+                tabContent.classList.add('active');
+                
+                // Force display ด้วย inline style และ important flag ทันที
+                // ลบ style ที่อาจซ่อน element ก่อน
+                tabContent.style.removeProperty('display');
+                tabContent.style.removeProperty('visibility');
+                tabContent.style.removeProperty('opacity');
+                tabContent.style.removeProperty('height');
+                tabContent.style.removeProperty('position');
+                tabContent.style.removeProperty('left');
+                
+                // ตั้งค่าใหม่
+                tabContent.style.setProperty('display', 'block', 'important');
+                tabContent.style.setProperty('visibility', 'visible', 'important');
+                tabContent.style.setProperty('opacity', '1', 'important');
+                tabContent.style.setProperty('height', 'auto', 'important');
+                tabContent.style.setProperty('min-height', '100px', 'important');
+                tabContent.style.setProperty('position', 'relative', 'important');
+                tabContent.style.setProperty('left', 'auto', 'important');
+                tabContent.style.setProperty('width', '100%', 'important');
+                
+                // ถ้า element อยู่ใน singleTab ให้ย้ายออกมา (แก้ไขปัญหาที่แท็บถูกสร้างไว้ใน singleTab)
+                // ตรวจสอบอีกครั้งหลังจากตั้งค่า style แล้ว
+                const currentParent = tabContent.parentElement;
+                if (currentParent && currentParent.id === 'singleTab') {
+                    console.warn(`[switchTab] CRITICAL: Tab content is still inside singleTab after style update! Moving it out...`);
+                    const emailContent = document.getElementById('emailContent');
+                    if (emailContent && tabContent) {
+                        // ย้าย element ออกมาจาก singleTab โดยใช้ insertBefore เพื่อวางไว้หลัง singleTab
+                        const singleTab = document.getElementById('singleTab');
+                        if (singleTab && singleTab.nextSibling) {
+                            emailContent.insertBefore(tabContent, singleTab.nextSibling);
+                        } else {
+                            emailContent.appendChild(tabContent);
+                        }
+                        console.log(`[switchTab] Moved tab content out of singleTab (second attempt)`);
+                        // อัปเดต parent reference
+                        parent = emailContent;
+                    }
+                }
+                
+                // ตรวจสอบว่า element มีเนื้อหาหรือไม่
+                const hasContent = tabContent.innerHTML.trim().length > 0;
+                const childrenCount = tabContent.children.length;
+                console.log(`[switchTab] Element has content: ${hasContent}, children: ${childrenCount}`);
+                console.log(`[switchTab] Element innerHTML length: ${tabContent.innerHTML.length}`);
+                
+                // ตรวจสอบ computed style หลังตั้งค่า
+                const computedDisplay = getComputedStyle(tabContent).display;
+                const computedVisibility = getComputedStyle(tabContent).visibility;
+                const computedOpacity = getComputedStyle(tabContent).opacity;
+                const computedHeight = tabContent.offsetHeight;
+                const computedWidth = tabContent.offsetWidth;
+                
+                console.log(`[switchTab] Tab content ${tabContentId} is now active`);
+                console.log(`[switchTab] - display: ${computedDisplay}`);
+                console.log(`[switchTab] - visibility: ${computedVisibility}`);
+                console.log(`[switchTab] - opacity: ${computedOpacity}`);
+                console.log(`[switchTab] - classes: ${tabContent.className}`);
+                console.log(`[switchTab] - offsetHeight: ${computedHeight}`);
+                console.log(`[switchTab] - offsetWidth: ${computedWidth}`);
+                
+                // ถ้ายังไม่แสดง ให้ตรวจสอบ parent และ force อีกครั้ง
+                if (computedDisplay === 'none' || computedHeight === 0) {
+                    console.warn(`[switchTab] Tab content still hidden after force! Checking parent...`);
+                    
+                    // ตรวจสอบว่า singleTab ถูกซ่อนหรือไม่ (สำคัญมาก!)
+                    if (singleTab && singleTab !== tabContent) {
+                        singleTab.style.setProperty('display', 'none', 'important');
+                        singleTab.style.setProperty('visibility', 'hidden', 'important');
+                        singleTab.style.setProperty('opacity', '0', 'important');
+                        singleTab.style.setProperty('height', '0', 'important');
+                        singleTab.style.setProperty('overflow', 'hidden', 'important');
+                        console.log(`[switchTab] Ensured singleTab is completely hidden`);
+                    }
+                    
+                    // Force parent display (ถ้าไม่ใช่ singleTab)
+                    if (parent && parent.id !== 'singleTab' && parent.id !== 'emailContent') {
+                        parent.style.setProperty('display', 'block', 'important');
+                        parent.style.setProperty('visibility', 'visible', 'important');
+                        parent.style.setProperty('opacity', '1', 'important');
+                        console.log(`[switchTab] Forced parent display (${parent.id})`);
+                    }
+                    
+                    // Force emailContent display
+                    const emailContent = document.getElementById('emailContent');
+                    if (emailContent) {
+                        emailContent.style.setProperty('display', 'block', 'important');
+                        emailContent.style.setProperty('visibility', 'visible', 'important');
+                        emailContent.style.setProperty('opacity', '1', 'important');
+                        console.log(`[switchTab] Forced emailContent display`);
+                    }
+                    
+                    // ลองอีกครั้งด้วย setTimeout
+                    setTimeout(() => {
+                        const finalDisplay = getComputedStyle(tabContent).display;
+                        const finalHeight = tabContent.offsetHeight;
+                        console.log(`[switchTab] After timeout - display: ${finalDisplay}, height: ${finalHeight}`);
+                        
+                        if (finalDisplay === 'none' || finalHeight === 0) {
+                            console.error(`[switchTab] CRITICAL: Tab content still not visible after all attempts!`);
+                            console.error(`[switchTab] Element:`, tabContent);
+                            console.error(`[switchTab] Parent:`, parent);
+                            console.error(`[switchTab] All computed styles:`, window.getComputedStyle(tabContent));
+                        }
+                    }, 100);
+                }
+                
+                // เพิ่ม active class ให้กับ tab button ที่ถูกคลิก
+                if (buttonElement) {
+                    buttonElement.classList.add('active');
+                    console.log(`[switchTab] Added active class to button element`);
+                } else {
+                    // ถ้าไม่ได้ส่ง buttonElement มา ให้หาเอง
+                    const tabButtons = document.querySelectorAll('.tab');
+                    tabButtons.forEach(button => {
+                        const onclickAttr = button.getAttribute('onclick') || '';
+                        if (onclickAttr.includes(`switchTab('${tabName}'`)) {
+                            button.classList.add('active');
+                            console.log(`[switchTab] Found and activated button via onclick attribute`);
+                        }
+                    });
+                }
+                
+                // โหลดข้อมูลเมื่อเปลี่ยนแท็บ
+                if (tabName === 'patterns') {
+                    console.log(`[switchTab] Loading patterns list...`);
+                    loadPatternsList();
+                } else if (tabName === 'signatures') {
+                    console.log(`[switchTab] Loading signatures list...`);
+                    loadSignaturesList();
+                } else if (tabName === 'history') {
+                    console.log(`[switchTab] Loading email history...`);
+                    loadEmailHistory();
+                } else if (tabName === 'bulk') {
+                    console.log(`[switchTab] Switched to bulk tab`);
+                } else if (tabName === 'single') {
+                    console.log(`[switchTab] Switched to single tab`);
+                }
+            } catch (error) {
+                console.error('[switchTab] Error:', error);
+                console.error('[switchTab] Stack:', error.stack);
+                showCustomAlert(`เกิดข้อผิดพลาดในการเปลี่ยนแท็บ: ${error.message}`, 'error');
             }
         }
         
         // ฟังก์ชันโหลดประวัติการส่งอีเมล
+        // ตัวแปรสำหรับการค้นหาและกรอง
+        let emailHistoryData = [];
+        let filteredHistoryData = [];
+        
+        // ฟังก์ชันแปลงเวลา ISO เป็นรูปแบบที่อ่านง่าย
+        function formatDateTime(isoString) {
+            if (!isoString) return 'ไม่ระบุ';
+            try {
+                // รองรับทั้ง ISO format และ format เก่า
+                let date;
+                if (isoString.includes('T')) {
+                    date = new Date(isoString);
+                } else {
+                    // Format เก่า: "2025-12-02 11:40:48"
+                    date = new Date(isoString.replace(' ', 'T'));
+                }
+                
+                if (isNaN(date.getTime())) return isoString;
+                
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const hours = String(date.getHours()).padStart(2, '0');
+                const minutes = String(date.getMinutes()).padStart(2, '0');
+                const seconds = String(date.getSeconds()).padStart(2, '0');
+                
+                return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            } catch (e) {
+                return isoString;
+            }
+        }
+        
+        // ฟังก์ชันแปลงขนาดไฟล์
+        function formatFileSize(bytes) {
+            if (!bytes || bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+        
+        // ฟังก์ชันแสดงรายละเอียด
+        function showHistoryDetail(entry, index) {
+            const modal = document.getElementById('historyDetailModal');
+            if (!modal) {
+                // สร้าง modal ถ้ายังไม่มี
+                const modalHTML = `
+                    <div id="historyDetailModal" class="history-detail-modal" style="display: none;">
+                        <div class="history-detail-content">
+                            <div class="history-detail-header">
+                                <h2>📧 รายละเอียดการส่งอีเมลล์</h2>
+                                <button class="history-detail-close" onclick="closeHistoryDetail()">&times;</button>
+                            </div>
+                            <div class="history-detail-body" id="historyDetailBody">
+                                <!-- เนื้อหาจะถูกเติมที่นี่ -->
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+            }
+            
+            const detailBody = document.getElementById('historyDetailBody');
+            const sentTime = formatDateTime(entry.sent_time || entry.sent_time_old);
+            const status = entry.status || 'success';
+            const statusIcon = status === 'success' ? '✅' : status === 'failed' ? '❌' : '⏳';
+            const statusColor = status === 'success' ? '#10b981' : status === 'failed' ? '#ef4444' : '#f59e0b';
+            
+            let detailHTML = `
+                <div class="history-detail-section">
+                    <h3>📋 ข้อมูลพื้นฐาน</h3>
+                    <div class="history-detail-row">
+                        <strong>ID:</strong> <span>${entry.id || `#${index + 1}`}</span>
+                    </div>
+                    <div class="history-detail-row">
+                        <strong>สถานะ:</strong> <span style="color: ${statusColor};">${statusIcon} ${status === 'success' ? 'สำเร็จ' : status === 'failed' ? 'ล้มเหลว' : 'รอดำเนินการ'}</span>
+                    </div>
+                    <div class="history-detail-row">
+                        <strong>เวลาที่ส่ง:</strong> <span>${sentTime}</span>
+                    </div>
+                    ${entry.created_at ? `<div class="history-detail-row"><strong>เวลาที่สร้าง:</strong> <span>${formatDateTime(entry.created_at)}</span></div>` : ''}
+                </div>
+                
+                <div class="history-detail-section">
+                    <h3>📝 Pattern & Signature</h3>
+                    <div class="history-detail-row">
+                        <strong>Pattern:</strong> <span>${entry.pattern_name || '<span style="color: #94a3b8;">ไม่ใช้ Pattern</span>'}</span>
+                    </div>
+                    <div class="history-detail-row">
+                        <strong>Signature:</strong> <span>${entry.signature_name || '<span style="color: #94a3b8;">ไม่ใช้ Signature</span>'}</span>
+                    </div>
+                </div>
+                
+                <div class="history-detail-section">
+                    <h3>📧 ข้อมูลอีเมลล์</h3>
+                    <div class="history-detail-row">
+                        <strong>จาก:</strong> <span>${entry.from_email || 'ไม่ระบุ'}</span>
+                    </div>
+                    <div class="history-detail-row">
+                        <strong>ถึง:</strong> <span>${(entry.to_emails || []).join(', ') || 'ไม่ระบุ'}</span>
+                    </div>
+                    ${(entry.cc_emails || []).length > 0 ? `<div class="history-detail-row"><strong>CC:</strong> <span>${entry.cc_emails.join(', ')}</span></div>` : ''}
+                    ${(entry.bcc_emails || []).length > 0 ? `<div class="history-detail-row"><strong>BCC:</strong> <span>${entry.bcc_emails.join(', ')}</span></div>` : ''}
+                    <div class="history-detail-row">
+                        <strong>หัวข้อ:</strong> <span>${entry.subject || 'ไม่ระบุ'}</span>
+                    </div>
+                </div>
+            `;
+            
+            // แสดง attachments
+            if (entry.attachments && entry.attachments.length > 0) {
+                detailHTML += `
+                    <div class="history-detail-section">
+                        <h3>📎 ไฟล์แนบ (${entry.attachment_count || entry.attachments.length} ไฟล์)</h3>
+                        <ul class="history-attachment-list">
+                `;
+                entry.attachments.forEach(att => {
+                    detailHTML += `
+                        <li>
+                            <span class="attachment-icon">📄</span>
+                            <span class="attachment-name">${att.filename || 'ไม่ระบุชื่อ'}</span>
+                            <span class="attachment-size">${formatFileSize(att.size || 0)}</span>
+                            ${att.content_type ? `<span class="attachment-type">${att.content_type}</span>` : ''}
+                        </li>
+                    `;
+                });
+                detailHTML += `
+                        </ul>
+                        <div class="history-detail-row" style="margin-top: 10px;">
+                            <strong>ขนาดรวม:</strong> <span>${formatFileSize(entry.total_size || 0)}</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // แสดง LINE info
+            if (entry.line_enabled) {
+                detailHTML += `
+                    <div class="history-detail-section">
+                        <h3>📱 LINE</h3>
+                        <div class="history-detail-row">
+                            <strong>สถานะ:</strong> <span>${entry.line_sent ? '✅ ส่งสำเร็จ' : '❌ ไม่ได้ส่ง'}</span>
+                        </div>
+                        ${entry.line_user_id ? `<div class="history-detail-row"><strong>User ID:</strong> <span style="font-family: monospace; font-size: 0.9em;">${entry.line_user_id}</span></div>` : ''}
+                        ${entry.line_message ? `<div class="history-detail-row"><strong>ข้อความ:</strong> <span style="white-space: pre-wrap;">${entry.line_message}</span></div>` : ''}
+                    </div>
+                `;
+            }
+            
+            // แสดง error (ถ้ามี)
+            if (entry.error_message) {
+                detailHTML += `
+                    <div class="history-detail-section" style="border-left: 4px solid #ef4444;">
+                        <h3>⚠️ ข้อผิดพลาด</h3>
+                        <div class="history-detail-row">
+                            <strong>ข้อความ:</strong> <span style="color: #ef4444;">${entry.error_message}</span>
+                        </div>
+                        ${entry.error_code ? `<div class="history-detail-row"><strong>Error Code:</strong> <span>${entry.error_code}</span></div>` : ''}
+                    </div>
+                `;
+            }
+            
+            // แสดง body (ถ้ามี)
+            if (entry.body) {
+                detailHTML += `
+                    <div class="history-detail-section">
+                        <h3>📄 เนื้อหาอีเมลล์</h3>
+                        <div class="history-detail-body-content" style="max-height: 300px; overflow-y: auto; padding: 10px; background: #1e293b; border-radius: 6px; white-space: pre-wrap; font-family: monospace; font-size: 0.9em;">${entry.body}</div>
+                    </div>
+                `;
+            }
+            
+            detailBody.innerHTML = detailHTML;
+            document.getElementById('historyDetailModal').style.display = 'flex';
+        }
+        
+        // ฟังก์ชันปิด modal
+        function closeHistoryDetail() {
+            const modal = document.getElementById('historyDetailModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // ฟังก์ชันกรองและค้นหา
+        function filterHistory() {
+            const searchInput = document.getElementById('historySearchInput');
+            const statusFilter = document.getElementById('historyStatusFilter');
+            
+            const searchTerm = (searchInput?.value || '').toLowerCase();
+            const statusValue = statusFilter?.value || 'all';
+            
+            filteredHistoryData = emailHistoryData.filter(entry => {
+                // ค้นหา
+                const matchesSearch = !searchTerm || 
+                    (entry.pattern_name || '').toLowerCase().includes(searchTerm) ||
+                    (entry.signature_name || '').toLowerCase().includes(searchTerm) ||
+                    (entry.subject || '').toLowerCase().includes(searchTerm) ||
+                    (entry.to_emails || []).some(email => email.toLowerCase().includes(searchTerm));
+                
+                // กรองตาม status
+                const matchesStatus = statusValue === 'all' || (entry.status || 'success') === statusValue;
+                
+                return matchesSearch && matchesStatus;
+            });
+            
+            renderHistory();
+        }
+        
+        // ฟังก์ชันแสดงประวัติ
+        function renderHistory() {
+            const logsContainer = document.getElementById('emailLogs');
+            if (!logsContainer) return;
+            
+            const dataToShow = filteredHistoryData.length > 0 ? filteredHistoryData : emailHistoryData;
+            
+            if (dataToShow.length === 0) {
+                logsContainer.innerHTML = '<div class="log-entry log-info">[ระบบ] ไม่พบข้อมูลที่ตรงกับเงื่อนไข</div>';
+                return;
+            }
+            
+            let html = '';
+            dataToShow.forEach((entry, index) => {
+                const sentTime = formatDateTime(entry.sent_time || entry.sent_time_old);
+                const patternName = entry.pattern_name || '<span style="color: #94a3b8;">ไม่ใช้ Pattern</span>';
+                const signatureName = entry.signature_name || '<span style="color: #94a3b8;">ไม่ใช้ Signature</span>';
+                const status = entry.status || 'success';
+                const statusIcon = status === 'success' ? '✅' : status === 'failed' ? '❌' : '⏳';
+                const statusColor = status === 'success' ? '#10b981' : status === 'failed' ? '#ef4444' : '#f59e0b';
+                const borderColor = status === 'success' ? '#10b981' : status === 'failed' ? '#ef4444' : '#f59e0b';
+                
+                // นับจำนวนผู้รับ
+                const toCount = (entry.to_emails || []).length;
+                const ccCount = (entry.cc_emails || []).length;
+                const totalRecipients = toCount + ccCount;
+                
+                // นับจำนวนไฟล์แนบ
+                const attachmentCount = entry.attachment_count || (entry.attachments || []).length;
+                
+                html += `
+                    <div class="log-entry" style="margin-bottom: 10px; padding: 15px; border-left: 4px solid ${borderColor}; cursor: pointer; transition: all 0.2s;" 
+                         onclick="showHistoryDetail(${JSON.stringify(entry).replace(/"/g, '&quot;')}, ${index})"
+                         onmouseover="this.style.background='#1e293b'; this.style.transform='translateX(4px)';"
+                         onmouseout="this.style.background=''; this.style.transform='translateX(0)';">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px; align-items: center;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span style="font-size: 1.2em;">${statusIcon}</span>
+                                <strong style="color: ${statusColor};">📧 #${dataToShow.length - index} ${entry.id ? `(${entry.id.substring(0, 8)}...)` : ''}</strong>
+                            </div>
+                            <span style="color: #94a3b8; font-size: 0.9em;">${sentTime}</span>
+                        </div>
+                        <div style="margin-top: 8px;">
+                            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                                <div><strong>Pattern:</strong> ${patternName}</div>
+                                <div><strong>Signature:</strong> ${signatureName}</div>
+                                ${totalRecipients > 0 ? `<div><strong>📧 ผู้รับ:</strong> ${totalRecipients} คน</div>` : ''}
+                                ${attachmentCount > 0 ? `<div><strong>📎 ไฟล์:</strong> ${attachmentCount} ไฟล์</div>` : ''}
+                                ${entry.line_enabled ? `<div><strong>📱 LINE:</strong> ${entry.line_sent ? '✅' : '❌'}</div>` : ''}
+                            </div>
+                            ${entry.error_message ? `<div style="margin-top: 8px; color: #ef4444; font-size: 0.9em;">⚠️ ${entry.error_message}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            logsContainer.innerHTML = html;
+        }
+        
         async function loadEmailHistory() {
             try {
                 const response = await fetch('/api/email/history');
@@ -1160,31 +2398,60 @@
                 
                 if (!data.success || !data.history || data.history.length === 0) {
                     logsContainer.innerHTML = '<div class="log-entry log-info">[ระบบ] ยังไม่มีประวัติการส่ง</div>';
+                    emailHistoryData = [];
+                    filteredHistoryData = [];
                     return;
                 }
                 
-                // แสดงประวัติ
-                let html = '';
-                data.history.forEach((entry, index) => {
-                    const sentTime = entry.sent_time || 'ไม่ระบุ';
-                    const patternName = entry.pattern_name || '<span style="color: #94a3b8;">ไม่ใช้ Pattern</span>';
-                    const signatureName = entry.signature_name || '<span style="color: #94a3b8;">ไม่ใช้ Signature</span>';
-                    
-                    html += `
-                        <div class="log-entry log-success" style="margin-bottom: 10px; padding: 15px; border-left: 4px solid #10b981;">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                                <strong style="color: #10b981;">📧 การส่งครั้งที่ ${data.history.length - index}</strong>
-                                <span style="color: #94a3b8; font-size: 0.9em;">${sentTime}</span>
-                            </div>
-                            <div style="margin-top: 8px;">
-                                <div><strong>Pattern:</strong> ${patternName}</div>
-                                <div style="margin-top: 5px;"><strong>Signature:</strong> ${signatureName}</div>
+                // เก็บข้อมูลไว้ในตัวแปร
+                emailHistoryData = data.history;
+                filteredHistoryData = data.history;
+                
+                // เรียงลำดับตาม sent_time (ใหม่สุดก่อน)
+                emailHistoryData.sort((a, b) => {
+                    const timeA = a.sent_time || a.sent_time_old || '';
+                    const timeB = b.sent_time || b.sent_time_old || '';
+                    return timeB.localeCompare(timeA);
+                });
+                
+                // แสดง UI สำหรับค้นหาและกรอง (ถ้ายังไม่มี)
+                const historyTab = document.getElementById('historyTab');
+                if (historyTab && !document.getElementById('historySearchInput')) {
+                    const searchHTML = `
+                        <div style="margin-bottom: 20px; padding: 15px; background: #1e293b; border-radius: 8px;">
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                                <div style="flex: 1; min-width: 200px;">
+                                    <input type="text" id="historySearchInput" placeholder="🔍 ค้นหา (Pattern, Signature, Subject, Email)..." 
+                                           style="width: 100%; padding: 8px 12px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: #e2e8f0;"
+                                           oninput="filterHistory()">
+                                </div>
+                                <div>
+                                    <select id="historyStatusFilter" 
+                                            style="padding: 8px 12px; background: #0f172a; border: 1px solid #334155; border-radius: 6px; color: #e2e8f0;"
+                                            onchange="filterHistory()">
+                                        <option value="all">ทั้งหมด</option>
+                                        <option value="success">✅ สำเร็จ</option>
+                                        <option value="failed">❌ ล้มเหลว</option>
+                                        <option value="pending">⏳ รอดำเนินการ</option>
+                                    </select>
+                                </div>
+                                <div style="color: #94a3b8; font-size: 0.9em;">
+                                    แสดง ${emailHistoryData.length} รายการ
+                                </div>
                             </div>
                         </div>
                     `;
-                });
+                    logsContainer.insertAdjacentHTML('beforebegin', searchHTML);
+                }
                 
-                logsContainer.innerHTML = html;
+                // อัปเดตจำนวนรายการ
+                const countElement = document.querySelector('#historyTab [style*="color: #94a3b8"]');
+                if (countElement) {
+                    countElement.textContent = `แสดง ${emailHistoryData.length} รายการ`;
+                }
+                
+                // แสดงประวัติ
+                renderHistory();
             } catch (error) {
                 console.error('Error loading email history:', error);
                 const logsContainer = document.getElementById('emailLogs');
@@ -3481,10 +4748,10 @@
             if (payInAmount === 0) {
                 // ถ้าไม่มี Pay-in แต่มีแบบภาษีที่มียอดชำระ > 0 ให้แจ้งเตือน
                 if (totalTaxAmount > 0) {
-                    alert(`⚠️ ไม่พบยอด Pay-in!\n\n` +
+                    showCustomAlert(`⚠️ ไม่พบยอด Pay-in!\n\n` +
                           `ระบบตรวจพบแบบภาษีที่มียอดรวม: ${totalTaxAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} บาท\n` +
                           `แต่ไม่พบยอด Pay-in ที่สอดคล้องกัน\n\n` +
-                          `กรุณาตรวจสอบว่ามีการอัปโหลดไฟล์ Pay-in และระบบอ่านข้อมูลได้ถูกต้องหรือไม่`);
+                          `กรุณาตรวจสอบว่ามีการอัปโหลดไฟล์ Pay-in และระบบอ่านข้อมูลได้ถูกต้องหรือไม่`, 'warning');
                     return false;
                 }
                 // ถ้าไม่มี Pay-in และไม่มีแบบภาษีที่มียอดชำระ → ผ่าน (กรณีไม่มีข้อมูล)
@@ -3494,21 +4761,21 @@
             // ตรวจสอบว่ามีแบบภาษีหรือไม่
             if (totalTaxAmount === 0) {
                 // ถ้ามี Pay-in แต่ไม่มีแบบภาษี → แจ้งเตือน
-                alert(`⚠️ ไม่พบยอดแบบภาษี!\n\n` +
+                showCustomAlert(`⚠️ ไม่พบยอดแบบภาษี!\n\n` +
                       `ระบบตรวจพบยอด Pay-in: ${payInAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} บาท\n` +
                       `แต่ไม่พบยอดแบบภาษีที่สอดคล้องกัน\n\n` +
-                      `กรุณาตรวจสอบว่ามีการอัปโหลดไฟล์แบบภาษีและระบบอ่านข้อมูลได้ถูกต้องหรือไม่`);
+                      `กรุณาตรวจสอบว่ามีการอัปโหลดไฟล์แบบภาษีและระบบอ่านข้อมูลได้ถูกต้องหรือไม่`, 'warning');
                 return false;
             }
             
             // ตรวจสอบว่าผลรวมเท่ากันหรือไม่ (ยอมรับความแตกต่างไม่เกิน 0.01 บาท)
             const difference = Math.abs(totalTaxAmount - payInAmount);
             if (difference > 0.01) {
-                alert(`⚠️ ยอดรวมไม่ตรงกัน!\n\n` +
+                showCustomAlert(`⚠️ ยอดรวมไม่ตรงกัน!\n\n` +
                       `ยอดรวมแบบภาษี (ภ.ง.ด.1 + ภ.ง.ด.3 + ภ.ง.ด.53 + ภ.ง.ด.54 + ภ.พ.36 + ภ.พ.30): ${totalTaxAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} บาท\n` +
                       `ยอดชำระ (Pay-in): ${payInAmount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} บาท\n` +
                       `ความแตกต่าง: ${difference.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} บาท\n\n` +
-                      `กรุณาตรวจสอบข้อมูลก่อนส่งอีเมล`);
+                      `กรุณาตรวจสอบข้อมูลก่อนส่งอีเมล`, 'warning');
                 return false;
             }
             
@@ -5139,14 +6406,40 @@
             }
         }
         
+        // Helper function สำหรับตรวจสอบและดึงค่า Signature
+        function getSignatureValue() {
+            const signatureSelect = document.getElementById('emailSignature');
+            return signatureSelect?.value || '';
+        }
+        
+        // Helper function สำหรับตรวจสอบว่าเลือก Signature หรือยัง
+        function validateSignature(action = 'ส่งอีเมลล์') {
+            const signatureValue = getSignatureValue();
+            if (!signatureValue || signatureValue === '') {
+                const signatureSelect = document.getElementById('emailSignature');
+                showCustomAlert(`⚠️ กรุณาเลือกลายเซ็นต์ (Signature) ก่อน${action}`, 'warning');
+                if (signatureSelect) signatureSelect.focus();
+                return false;
+            }
+            return true;
+        }
+        
+        // Helper function สำหรับปิด progress modal และแสดงผลลัพธ์
+        function closeProgressAndShowResult(success, message, delay = 1000) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    hideSendingProgress();
+                    showCustomAlert(message, success ? 'success' : 'error');
+                    resolve();
+                }, delay);
+            });
+        }
+        
         function sendEmail(event) {
             event.preventDefault();
             
             // ✅ ตรวจสอบว่าเลือก Signature หรือยัง
-            const signatureSelect = document.getElementById('emailSignature');
-            if (!signatureSelect || !signatureSelect.value || signatureSelect.value === '') {
-                alert('⚠️ กรุณาเลือกลายเซ็นต์ (Signature) ก่อนส่งอีเมลล์');
-                signatureSelect.focus();
+            if (!validateSignature('ส่งอีเมลล์')) {
                 return; // หยุดการส่งอีเมล
             }
             
@@ -5262,9 +6555,9 @@
                 });
                 
                 if (!hasAttachment) {
-                    alert('⚠️ ไม่พบไฟล์ใบแนบ!\n\n' +
+                    showCustomAlert('⚠️ ไม่พบไฟล์ใบแนบ!\n\n' +
                           'สำหรับแบบภาษี ภ.ง.ด.3 ต้องมีไฟล์ใบแนบมาด้วย\n' +
-                          'กรุณาอัปโหลดไฟล์ที่มีคำว่า "ใบแนบ" และ "ภ.ง.ด.3" ในชื่อไฟล์');
+                          'กรุณาอัปโหลดไฟล์ที่มีคำว่า "ใบแนบ" และ "ภ.ง.ด.3" ในชื่อไฟล์', 'warning');
                     return; // หยุดการส่งอีเมล
                 }
             }
@@ -5287,9 +6580,9 @@
                 });
                 
                 if (!hasAttachment) {
-                    alert('⚠️ ไม่พบไฟล์ใบแนบ!\n\n' +
+                    showCustomAlert('⚠️ ไม่พบไฟล์ใบแนบ!\n\n' +
                           'สำหรับแบบภาษี ภ.ง.ด.53 ต้องมีไฟล์ใบแนบมาด้วย\n' +
-                          'กรุณาอัปโหลดไฟล์ที่มีคำว่า "ใบแนบ" และ "ภ.ง.ด.53" ในชื่อไฟล์');
+                          'กรุณาอัปโหลดไฟล์ที่มีคำว่า "ใบแนบ" และ "ภ.ง.ด.53" ในชื่อไฟล์', 'warning');
                     return; // หยุดการส่งอีเมล
                 }
             }
@@ -5312,9 +6605,9 @@
                 });
                 
                 if (!hasAttachment) {
-                    alert('⚠️ ไม่พบไฟล์ใบแนบ!\n\n' +
+                    showCustomAlert('⚠️ ไม่พบไฟล์ใบแนบ!\n\n' +
                           'สำหรับแบบภาษี ประกันสังคม ต้องมีไฟล์ใบแนบมาด้วย\n' +
-                          'กรุณาอัปโหลดไฟล์ที่มีคำว่า "ใบแนบ" และ "ประกันสังคม" ในชื่อไฟล์');
+                          'กรุณาอัปโหลดไฟล์ที่มีคำว่า "ใบแนบ" และ "ประกันสังคม" ในชื่อไฟล์', 'warning');
                     return; // หยุดการส่งอีเมล
                 }
             }
@@ -5914,7 +7207,7 @@
                                 return sendPayInFilesToLine(user_id || lineUserId);
                             } else {
                                 const errorMsg = (data && data.message) || 'ไม่ทราบสาเหตุ';
-                                alert('❌ ' + errorMsg);
+                                showCustomAlert('❌ ' + errorMsg, 'error');
                                 console.warn('⚠️ [LINE] ส่งรูปภาพไม่สำเร็จ: ' + (data.message || 'ไม่ทราบสาเหตุ'));
                                 throw new Error(data.message);
                             }
@@ -5922,16 +7215,16 @@
                         .then((payinResult) => {
                             // แสดงผลลัพธ์รวม
                             if (payinResult && payinResult.success) {
-                                alert(`✅ ส่งไปยัง LINE สำเร็จ\n- PDF สรุปภาษี\n- ไฟล์ Pay-in: ${payinResult.count} ไฟล์`);
+                                showCustomAlert(`✅ ส่งไปยัง LINE สำเร็จ\n- PDF สรุปภาษี\n- ไฟล์ Pay-in: ${payinResult.count} ไฟล์`, 'success');
                             } else if (payinResult && !payinResult.success) {
-                                alert(`⚠️ ส่ง PDF สรุปภาษีสำเร็จ\nแต่ส่งไฟล์ Pay-in ล้มเหลว: ${payinResult.message}`);
+                                showCustomAlert(`⚠️ ส่ง PDF สรุปภาษีสำเร็จ\nแต่ส่งไฟล์ Pay-in ล้มเหลว: ${payinResult.message}`, 'warning');
                             } else {
-                                alert('✅ ส่งไปยัง LINE สำเร็จ');
+                                showCustomAlert('✅ ส่งไปยัง LINE สำเร็จ', 'success');
                             }
                         })
                         .catch(error => {
                             console.error('❌ [LINE] เกิดข้อผิดพลาด:', error);
-                            alert('❌ เกิดข้อผิดพลาด: ' + error);
+                            showCustomAlert('❌ เกิดข้อผิดพลาด: ' + error, 'error');
                         })
                         .finally(() => {
                             // ปิด modal
@@ -5954,10 +7247,10 @@
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            alert('✅ ' + data.message);
+                            showCustomAlert('✅ ' + data.message, 'success');
                             console.log('✅ [LINE] ส่ง PDF สำเร็จ');
                         } else {
-                            alert('❌ ' + data.message);
+                            showCustomAlert('❌ ' + data.message, 'error');
                             console.warn('⚠️ [LINE] ส่ง PDF ไม่สำเร็จ: ' + (data.message || 'ไม่ทราบสาเหตุ'));
                         }
                     })
@@ -6050,12 +7343,12 @@
                                 }
                             } else {
                                 console.warn('⚠️ [LINE] ส่ง PDF ไม่สำเร็จ: ' + (data.message || 'ไม่ทราบสาเหตุ'));
-                                alert('❌ ' + (data.message || 'ไม่ทราบสาเหตุ'));
+                                showCustomAlert('❌ ' + (data.message || 'ไม่ทราบสาเหตุ'), 'error');
                             }
                         })
                         .catch(error => {
                             console.error('❌ [LINE] เกิดข้อผิดพลาดในการส่ง PDF:', error);
-                            alert('❌ เกิดข้อผิดพลาด: ' + error);
+                            showCustomAlert('❌ เกิดข้อผิดพลาด: ' + error, 'error');
                         });
                     } else {
                         // ถ้าไม่มีรูปภาพ ส่งข้อความ
@@ -6081,16 +7374,16 @@
                         .then(data => {
                             if (data.success) {
                                 console.log('✅ [LINE] ส่งข้อความสำเร็จ');
-                                alert('✅ ส่งข้อความ LINE สำเร็จ');
+                                showCustomAlert('✅ ส่งข้อความ LINE สำเร็จ', 'success');
                             } else {
                                 const errorMsg = data.message || 'ไม่ทราบสาเหตุ';
                                 console.warn('⚠️ [LINE] ส่งข้อความไม่สำเร็จ: ' + errorMsg);
-                                alert('⚠️ ส่งข้อความ LINE ไม่สำเร็จ: ' + errorMsg);
+                                showCustomAlert('⚠️ ส่งข้อความ LINE ไม่สำเร็จ: ' + errorMsg, 'warning');
                             }
                         })
                         .catch(error => {
                             console.error('❌ [LINE] เกิดข้อผิดพลาดในการส่งข้อความ:', error);
-                            alert('❌ เกิดข้อผิดพลาดในการส่งข้อความ LINE: ' + error.message);
+                            showCustomAlert('❌ เกิดข้อผิดพลาดในการส่งข้อความ LINE: ' + error.message, 'error');
                         });
                     }
                 } else {
@@ -6162,11 +7455,11 @@
                         subject: subject,  // เพิ่มส่ง subject
                         body: body,  // เพิ่มส่ง body
                         attachments: attachments.length > 0 ? attachments : undefined,
-                        signature_name: document.getElementById('emailSignature') ? document.getElementById('emailSignature').value || undefined : undefined,
+                        signature_name: getSignatureValue() || undefined,
                         summary_data: summaryData,
                         payin_files: payinFilesToSend.length > 0 ? payinFilesToSend : undefined,  // ✅ เพิ่มรายการไฟล์ Pay-in
                         line_user_id: lineUserId || undefined,  // ✅ เพิ่ม LINE user ID
-                        zip_attachments: document.getElementById('zipAttachments') ? document.getElementById('zipAttachments').checked : false
+                        zip_attachments: document.getElementById('zipAttachments')?.checked || false
                     })
                 })
                 .then(response => response.json())
@@ -6214,37 +7507,29 @@
                                     } else {
                                         const errorMsg = lineData.message || 'ไม่ทราบสาเหตุ';
                                         console.warn('⚠️ [LINE] ส่งข้อความไม่สำเร็จ: ' + errorMsg);
-                                        alert('⚠️ ส่งข้อความ LINE ไม่สำเร็จ: ' + errorMsg);
+                                        showCustomAlert('⚠️ ส่งข้อความ LINE ไม่สำเร็จ: ' + errorMsg, 'warning');
                                     }
                                 })
                                 .catch(error => {
                                     console.error('❌ [LINE] เกิดข้อผิดพลาดในการส่งข้อความ:', error);
-                                    alert('❌ เกิดข้อผิดพลาดในการส่งข้อความ LINE: ' + error.message);
+                                    showCustomAlert('❌ เกิดข้อผิดพลาดในการส่งข้อความ LINE: ' + error.message, 'error');
                                 });
                             }
                             
                             // ปิด modal หลังส่งอีเมลล์สำเร็จ
-                            setTimeout(() => {
-                                hideSendingProgress();
-                                alert('✅ ' + data.message);
+                            closeProgressAndShowResult(true, '✅ ' + data.message).then(() => {
                                 resetEmailForm();
-                            }, 1000);
+                            });
                         } else {
                             updateProgressStep(3, 'error', 'ส่งอีเมลล์ไม่สำเร็จ');
-                            setTimeout(() => {
-                                hideSendingProgress();
-                                alert('❌ ' + data.message);
-                            }, 1000);
+                            closeProgressAndShowResult(false, '❌ ' + data.message);
                         }
                     }, 500);
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     updateProgressStep(3, 'error', 'เกิดข้อผิดพลาด: ' + error);
-                    setTimeout(() => {
-                        hideSendingProgress();
-                        alert('❌ เกิดข้อผิดพลาด: ' + error);
-                    }, 1000);
+                    closeProgressAndShowResult(false, '❌ เกิดข้อผิดพลาด: ' + error);
                 });
             } else {
                 // ส่งอีเมลล์ปกติ
@@ -6271,9 +7556,9 @@
                         subject: subject,
                         body: body,
                         attachments: attachments.length > 0 ? attachments : undefined,
-                        signature_name: document.getElementById('emailSignature').value || undefined,
+                        signature_name: getSignatureValue() || undefined,
                         summary_data: summaryData,
-                        zip_attachments: document.getElementById('zipAttachments').checked
+                        zip_attachments: document.getElementById('zipAttachments')?.checked || false
                     })
                 })
                 .then(response => response.json())
@@ -6321,37 +7606,29 @@
                                     } else {
                                         const errorMsg = lineData.message || 'ไม่ทราบสาเหตุ';
                                         console.warn('⚠️ [LINE] ส่งข้อความไม่สำเร็จ: ' + errorMsg);
-                                        alert('⚠️ ส่งข้อความ LINE ไม่สำเร็จ: ' + errorMsg);
+                                        showCustomAlert('⚠️ ส่งข้อความ LINE ไม่สำเร็จ: ' + errorMsg, 'warning');
                                     }
                                 })
                                 .catch(error => {
                                     console.error('❌ [LINE] เกิดข้อผิดพลาดในการส่งข้อความ:', error);
-                                    alert('❌ เกิดข้อผิดพลาดในการส่งข้อความ LINE: ' + error.message);
+                                    showCustomAlert('❌ เกิดข้อผิดพลาดในการส่งข้อความ LINE: ' + error.message, 'error');
                                 });
                             }
                             
                             // ปิด modal หลังส่งอีเมลล์สำเร็จ
-                            setTimeout(() => {
-                                hideSendingProgress();
-                                alert('✅ ' + data.message);
+                            closeProgressAndShowResult(true, '✅ ' + data.message).then(() => {
                                 resetEmailForm();
-                            }, 1000);
+                            });
                         } else {
                             updateProgressStep(3, 'error', 'ส่งอีเมลล์ไม่สำเร็จ');
-                            setTimeout(() => {
-                                hideSendingProgress();
-                                alert('❌ ' + data.message);
-                            }, 1000);
+                            closeProgressAndShowResult(false, '❌ ' + data.message);
                         }
                     }, 500);
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     updateProgressStep(3, 'error', 'เกิดข้อผิดพลาด: ' + error);
-                    setTimeout(() => {
-                        hideSendingProgress();
-                        alert('❌ เกิดข้อผิดพลาด: ' + error);
-                    }, 1000);
+                    closeProgressAndShowResult(false, '❌ เกิดข้อผิดพลาด: ' + error);
                 });
             }
         }
@@ -8054,7 +9331,7 @@
                 <button onclick="document.getElementById('emailPattern').focus(); document.getElementById('emailPattern').select();" style="padding: 8px 16px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 13px;">
                     🔄 เลือก Pattern อื่น
                 </button>
-                <button onclick="switchTab('patterns')" style="padding: 8px 16px; background: #10b981; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 13px;">
+                <button onclick="switchTab('patterns', this)" style="padding: 8px 16px; background: #10b981; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 13px;">
                     ➕ สร้าง Pattern ใหม่
                 </button>
             `;
@@ -8166,7 +9443,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    alert(`✅ นำเข้าข้อมูลสำเร็จ: ${data.imported_count} รายการ\n${data.errors && data.errors.length > 0 ? `⚠️ มีข้อผิดพลาด ${data.errors.length} รายการ:\n${data.errors.join('\n')}` : ''}`);
+                    showCustomAlert(`✅ นำเข้าข้อมูลสำเร็จ: ${data.imported_count} รายการ\n${data.errors && data.errors.length > 0 ? `⚠️ มีข้อผิดพลาด ${data.errors.length} รายการ:\n${data.errors.join('\n')}` : ''}`, data.errors && data.errors.length > 0 ? 'warning' : 'success');
                     loadPatternsList(); // โหลดรายการใหม่
                 } else {
                     alert('❌ ' + (data.message || 'เกิดข้อผิดพลาดในการนำเข้าข้อมูล'));
@@ -8327,7 +9604,11 @@
                             });
                         }
                     } else {
-                        console.warn('emailSignature select element not found');
+                        // ไม่แสดง warning ถ้าไม่ได้อยู่ใน singleTab (เพราะ element ยังไม่มี)
+                        const singleTab = document.getElementById('singleTab');
+                        if (singleTab && singleTab.classList.contains('active')) {
+                            console.warn('emailSignature select element not found (singleTab is active)');
+                        }
                     }
                 })
                 .catch(error => {
@@ -8596,10 +9877,7 @@
         
         function previewEmail() {
             // ✅ ตรวจสอบว่าเลือก Signature หรือยัง
-            const signatureSelect = document.getElementById('emailSignature');
-            if (!signatureSelect || !signatureSelect.value || signatureSelect.value === '') {
-                alert('⚠️ กรุณาเลือกลายเซ็นต์ (Signature) ก่อนดูตัวอย่างอีเมลล์');
-                signatureSelect.focus();
+            if (!validateSignature('ดูตัวอย่างอีเมลล์')) {
                 return; // หยุดการดูตัวอย่าง
             }
             
@@ -8681,7 +9959,7 @@
         function sendEmailFromPreview() {
             // ส่งอีเมลล์โดยใช้ข้อมูลจาก preview
             if (!previewData) {
-                alert('❌ ไม่มีข้อมูลสำหรับส่งอีเมลล์');
+                showCustomAlert('❌ ไม่มีข้อมูลสำหรับส่งอีเมลล์', 'error');
                 console.error('previewData is null or undefined');
                 return;
             }
@@ -8699,7 +9977,7 @@
         function sendEmailDirectly(data) {
             // ตรวจสอบว่า data มีค่าหรือไม่
             if (!data) {
-                alert('❌ ไม่มีข้อมูลสำหรับส่งอีเมลล์');
+                showCustomAlert('❌ ไม่มีข้อมูลสำหรับส่งอีเมลล์', 'error');
                 console.error('sendEmailDirectly: data is null or undefined');
                 return;
             }
@@ -8729,21 +10007,21 @@
                         cc_emails: data.cc_emails,
                         attachments: attachments.length > 0 ? attachments : undefined,
                         signature_name: data.signature_name,
-                        zip_attachments: document.getElementById('zipAttachments') ? document.getElementById('zipAttachments').checked : false
+                        zip_attachments: document.getElementById('zipAttachments')?.checked || false
                     })
                 })
                 .then(response => response.json())
                 .then(result => {
                     if (result.success) {
-                        alert('✅ ' + result.message);
+                        showCustomAlert('✅ ' + result.message, 'success');
                         resetEmailForm();
                     } else {
-                        alert('❌ ' + result.message);
+                        showCustomAlert('❌ ' + result.message, 'error');
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('❌ เกิดข้อผิดพลาด: ' + error);
+                    showCustomAlert('❌ เกิดข้อผิดพลาด: ' + error, 'error');
                 });
             } else {
                 // ส่งปกติ
@@ -8759,7 +10037,7 @@
                         body: data.body,
                         attachments: attachments.length > 0 ? attachments : undefined,
                         signature_name: data.signature_name,
-                        zip_attachments: document.getElementById('zipAttachments') ? document.getElementById('zipAttachments').checked : false
+                        zip_attachments: document.getElementById('zipAttachments')?.checked || false
                     })
                 })
                 .then(response => response.json())
@@ -8791,22 +10069,22 @@
                                 } else {
                                     const errorMsg = lineResult.message || 'ไม่ทราบสาเหตุ';
                                     console.warn('⚠️ ส่งข้อความ LINE ไม่สำเร็จ: ' + errorMsg);
-                                    alert('⚠️ ส่งข้อความ LINE ไม่สำเร็จ: ' + errorMsg);
+                                    showCustomAlert('⚠️ ส่งข้อความ LINE ไม่สำเร็จ: ' + errorMsg, 'warning');
                                 }
                             })
                             .catch(error => {
                                 console.error('❌ เกิดข้อผิดพลาดในการส่ง LINE:', error);
-                                alert('❌ เกิดข้อผิดพลาดในการส่งข้อความ LINE: ' + error.message);
+                                showCustomAlert('❌ เกิดข้อผิดพลาดในการส่งข้อความ LINE: ' + error.message, 'error');
                             });
                         }
                         resetEmailForm();
                     } else {
-                        alert('❌ ' + result.message);
+                        showCustomAlert('❌ ' + result.message, 'error');
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('❌ เกิดข้อผิดพลาด: ' + error);
+                    showCustomAlert('❌ เกิดข้อผิดพลาด: ' + error, 'error');
                 });
             }
         }
@@ -8878,28 +10156,40 @@
             }
             
             // อัปเดตเนื้อหา
-            iconEl.textContent = icon;
-            titleEl.textContent = title;
-            titleEl.style.color = titleColor;
-            messageEl.textContent = message;
-            contentEl.style.background = bgGradient;
-            contentEl.style.borderColor = borderColor;
-            okBtn.style.background = btnGradient;
+            if (iconEl) iconEl.textContent = icon;
+            if (titleEl) {
+                titleEl.textContent = title;
+                titleEl.style.color = titleColor;
+            }
+            if (messageEl) {
+                // แปลง \n เป็น <br> และรองรับ HTML
+                const formattedMessage = message.replace(/\n/g, '<br>');
+                messageEl.innerHTML = formattedMessage;
+            }
+            if (contentEl) {
+                contentEl.style.background = bgGradient;
+                contentEl.style.borderColor = borderColor;
+            }
+            if (okBtn) okBtn.style.background = btnGradient;
             
             // แสดง modal
-            modal.style.display = 'flex';
+            if (modal) {
+                modal.style.display = 'flex';
+            }
             
             // Focus ที่ปุ่ม OK เพื่อให้กด Enter ได้
-            setTimeout(() => {
-                okBtn.focus();
-            }, 100);
-            
-            // เพิ่ม event listener สำหรับปุ่ม Enter
-            okBtn.onkeydown = function(e) {
-                if (e.key === 'Enter') {
-                    closeCustomAlert();
-                }
-            };
+            if (okBtn) {
+                setTimeout(() => {
+                    okBtn.focus();
+                }, 100);
+                
+                // เพิ่ม event listener สำหรับปุ่ม Enter
+                okBtn.onkeydown = function(e) {
+                    if (e.key === 'Enter') {
+                        closeCustomAlert();
+                    }
+                };
+            }
         }
         
         // ฟังก์ชันปิด Custom Alert Modal

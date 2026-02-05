@@ -801,14 +801,11 @@ class EmailService:
                 
                 # สร้าง alternative part: text และ HTML
                 # Email client จะเลือกแสดง HTML ถ้ารองรับ
-                # ถ้ามี signature ให้ attach แค่ HTML version เท่านั้น (ไม่ attach text version) เพื่อหลีกเลี่ยงการแสดงซ้ำ
-                if signature:
-                    # มี signature → attach แค่ HTML version (มีลายเซ็นต์แล้ว)
-                    content_part.attach(MIMEText(body_html, 'html', 'utf-8'))
-                else:
-                    # ไม่มี signature → attach ทั้ง text และ HTML version
-                    content_part.attach(MIMEText(body, 'plain', 'utf-8'))
-                    content_part.attach(MIMEText(body_html, 'html', 'utf-8'))
+                # ✅ แก้ไข: ต้อง attach ทั้ง text และ HTML version เสมอ เพื่อให้ email client ที่ไม่รองรับ HTML ยังเห็นเนื้อหาได้
+                # Attach text version (สำหรับ email client ที่ไม่รองรับ HTML)
+                content_part.attach(MIMEText(body, 'plain', 'utf-8'))
+                # Attach HTML version (สำหรับ email client ที่รองรับ HTML)
+                content_part.attach(MIMEText(body_html, 'html', 'utf-8'))
             else:
                 # ถ้าไม่มี body_html แสดงแค่ text
                 content_part.attach(MIMEText(body, 'plain', 'utf-8'))
