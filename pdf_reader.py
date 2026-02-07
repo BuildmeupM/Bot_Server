@@ -900,7 +900,47 @@ class PDFReader:
                         print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
                     else:
                         print("❌ ไม่พบ pattern \\d{4}-\\d{6,7} ใน next_line")
-                
+                elif 'TRSPEMKP00-00000-26' in line and i + 1 < len(lines):
+                    next_line = lines[i + 1].strip()
+                    match = re.search(r'\d{4}-\d{7}', next_line)
+                    if match:
+                        additional_info = match.group(0)
+                        combined_info = f"TRSPEMKP00-00000-26{additional_info}"
+                        keyword_results["เลขที่เอกสาร"] = combined_info
+                        print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
+
+                elif 'TRSPECPS00-00000-26' in line and i + 1 < len(lines):
+                    next_line = lines[i + 1].strip()
+                    match = re.search(r'\d{4}-\d{7}',next_line)
+                    if match:
+                        additional_info = match.group(0)
+                        combined_info = f"TRSPECPS00-00000-26{additional_info}"
+                        keyword_results["เลขที่เอกสาร"] = combined_info
+                        print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
+                elif 'TRSPEFHM00-00000-26' in line and i + 1 < len(lines): 
+                    print("✅ พบ TRSPEFHM00-00000-26")
+                    next_line = lines[i + 1].strip()        
+                    print(f"next_line: {next_line}")               
+                    match = re.search(r'\d{4}-\d{6,7}', next_line)
+                    if match:
+                        additional_info = match.group(0)
+                        combined_info = f"TRSPEFHM00-00000-26{additional_info}"
+                        keyword_results["เลขที่เอกสาร"] = combined_info
+                        print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
+                    else:
+                        print("❌ ไม่พบ pattern \\d{4}-\\d{6,7} ใน next_line")
+                elif 'TRSPESPF00-00000-26' in line and i + 1 < len(lines): 
+                    print("✅ พบ TRSPESPF00-00000-26")
+                    next_line = lines[i + 1].strip()        
+                    print(f"next_line: {next_line}")               
+                    match = re.search(r'\d{4}-\d{6,7}', next_line)
+                    if match:
+                        additional_info = match.group(0)
+                        combined_info = f"TRSPESPF00-00000-26{additional_info}"
+                        keyword_results["เลขที่เอกสาร"] = combined_info
+                        print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
+                    else:
+                        print("❌ ไม่พบ pattern \\d{4}-\\d{6,7} ใน next_line")
 
                         print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
                 if 'วันที่/ Date' in line:
@@ -932,7 +972,7 @@ class PDFReader:
                         match = re.search(r'\d{4}-\d{7}', next_line)
                         if match:
                             additional_info = match.group(0)
-                            combined_info = f"RCSPXSPB00-00000-24{additional_info}"
+                            combined_info = f"RCSPXSPB00-00000-25{additional_info}"
                             keyword_results["เลขที่เอกสาร"] = combined_info
                             print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
                             pass
@@ -941,7 +981,7 @@ class PDFReader:
                         match = re.search(r'\d{4}-\d{7}', next_line)
                         if match:
                             additional_info = match.group(0)
-                            combined_info = f"RCSPXSPB00-00000-24{additional_info}"
+                            combined_info = f"RCSPXSPB00-00000-25{additional_info}"
                             keyword_results["เลขที่เอกสาร"] = combined_info
                             print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
                             pass
@@ -987,6 +1027,78 @@ class PDFReader:
                         if match:
                             additional_info = match.group(0)
                             combined_info = f"RCSPXSPW00-00000-2{additional_info}"
+                            keyword_results["เลขที่เอกสาร"] = combined_info
+                            print(f"เลขที่เอกสาร :{keyword_results['เลขที่เอกสาร']}")
+                            pass
+                    elif 'RCSPXSPB00-00000-26' in line and i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        match = re.search(r'\d{4}-\d{7}', next_line)
+                        if match:
+                            additional_info = match.group(0)
+                            combined_info = f"RCSPXSPB00-00000-26{additional_info}"
+                            keyword_results["เลขที่เอกสาร"] = combined_info
+                            print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
+                            pass
+                    elif 'RCSPXSPR00-00000-26' in line and i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        match = re.search(r'\d{4}-\d{7}', next_line)
+                        if match:
+                            additional_info = match.group(0)
+                            combined_info = f"RCSPXSPB00-00000-26{additional_info}"
+                            keyword_results["เลขที่เอกสาร"] = combined_info
+                            print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
+                            pass
+                    elif 'RCSPXSPW00-00000-26' in line and i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        match = re.search(r'\d{4}-\d{7}', next_line)
+                        if match:
+                            additional_info = match.group(0)
+                            combined_info = f"RCSPXSPB00-00000-26{additional_info}"
+                            keyword_results["เลขที่เอกสาร"] = combined_info
+                            print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
+                            pass
+                    elif 'RCSPXSPB00-00000-26' in line and i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        match = re.search(r'\d{4}-\d{7}', next_line)
+                        if match:
+                            additional_info = match.group(0)
+                            combined_info = f"RCSPXSPB00-00000-26{additional_info}"
+                            keyword_results["เลขที่เอกสาร"] = combined_info
+                            print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
+                            pass
+                    elif 'RCSPXSPR00-00000-26' in line and i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        match = re.search(r'\d{4}-\d{7}', next_line)
+                        if match:
+                            additional_info = match.group(0)
+                            combined_info = f"RCSPXSPB00-00000-26{additional_info}"
+                            keyword_results["เลขที่เอกสาร"] = combined_info
+                            print(f"เลขที่เอกสาร : {keyword_results['เลขที่เอกสาร']}")
+                            pass
+                    elif 'NRSPXSPW00-00000-26' in line and i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        match = re.search(r'\d{4}-\d{7}', next_line)
+                        if match:
+                            additional_info = match.group(0)
+                            combined_info = f"NRSPXSPW00-00000-26{additional_info}"
+                            keyword_results["เลขที่เอกสาร"] = combined_info
+                            print(f"เลขที่เอกสาร :{keyword_results['เลขที่เอกสาร']}")
+                            pass
+                    elif 'NRSPXSPB00-00000-26' in line and i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        match = re.search(r'\d{4}-\d{7}', next_line)
+                        if match:
+                            additional_info = match.group(0)
+                            combined_info = f"NRSPXSPB00-00000-26{additional_info}"
+                            keyword_results["เลขที่เอกสาร"] = combined_info
+                            print(f"เลขที่เอกสาร :{keyword_results['เลขที่เอกสาร']}")
+                            pass
+                    elif 'RCSPXSPW00-00000-26' in line and i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        match = re.search(r'\d{4}-\d{7}', next_line)
+                        if match:
+                            additional_info = match.group(0)
+                            combined_info = f"RCSPXSPW00-00000-26{additional_info}"
                             keyword_results["เลขที่เอกสาร"] = combined_info
                             print(f"เลขที่เอกสาร :{keyword_results['เลขที่เอกสาร']}")
                             pass
