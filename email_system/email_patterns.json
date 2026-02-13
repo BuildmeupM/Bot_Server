@@ -2358,24 +2358,6 @@
     "line_user_id": "Uc1867b085d8abe7e547f286b7a3272b5",
     "tax_id": "0105565095831"
   },
-  "306 วิซแรพ": {
-    "pattern_name": "306 วิซแรพ",
-    "subject_template": "",
-    "body_template": "",
-    "body_html_template": null,
-    "default_to": [
-      "wimonphornk@gmail.com"
-    ],
-    "default_cc": [
-      "Kankanis.B@bmuc.co.th"
-    ],
-    "default_bcc": [],
-    "description": "",
-    "logo_path": null,
-    "company_name": "บริษัท วิซแรพ จำกัด",
-    "line_user_id": "U98c62fcb26f9404c8e98bfa9e5c7e375",
-    "tax_id": "0105565204479"
-  },
   "309 เอ็นทีเจอินเตอร์": {
     "pattern_name": "309 เอ็นทีเจอินเตอร์",
     "subject_template": "",
@@ -5935,5 +5917,23 @@
     "company_name": "บริษัท นูโร ไบโอติกส์ จำกัด",
     "line_user_id": "U1b609db94fbb39c4648b8265f4e728a2",
     "tax_id": "0-1055-65113-21-0"
+  },
+  "306 นอยมันน์ อาร์ตเวิร์คส์": {
+    "pattern_name": "306 นอยมันน์ อาร์ตเวิร์คส์",
+    "subject_template": "",
+    "body_template": "",
+    "body_html_template": null,
+    "default_to": [
+      "wimonphornk@gmail.com"
+    ],
+    "default_cc": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "default_bcc": [],
+    "description": "",
+    "logo_path": null,
+    "company_name": "บริษัท นอยมันน์ อาร์ตเวิร์คส์ จำกัด",
+    "line_user_id": "U98c62fcb26f9404c8e98bfa9e5c7e375",
+    "tax_id": "0105565204479"
   }
 }

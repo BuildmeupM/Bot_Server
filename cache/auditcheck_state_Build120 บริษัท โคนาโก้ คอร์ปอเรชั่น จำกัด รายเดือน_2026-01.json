@@ -1,0 +1,48 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-09T10:32:42.228Z",
+  "last_saved": "2026-02-09T17:32:42.001753",
+  "company": "Build120 บริษัท โคนาโก้ คอร์ปอเรชั่น จำกัด รายเดือน",
+  "base_company": "Build120 บริษัท โคนาโก้ คอร์ปอเรชั่น จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": ""
+  },
+  "initialNotes": {},
+  "comparisonApprovals": {
+    "0-address_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build120 บริษัท โคนาโก้ คอร์ปอเรชั่น จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 1,
+    "metadata": [
+      {
+        "filename": "15.01.2026_WHT_EXP-20260100001_RT-20260100194_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 1,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "RT-20260100194",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": true
+  }
+}

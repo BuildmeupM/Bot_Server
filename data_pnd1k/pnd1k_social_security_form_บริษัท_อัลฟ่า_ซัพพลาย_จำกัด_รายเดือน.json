@@ -1,0 +1,32 @@
+[
+  {
+    "company_name": "บริษัท อัลฟ่า ซัพพลาย จำกัด",
+    "address": "35/3 หมู่ที่ 5 ต.คอกกระบือ อ.เมือง สมุทรสาคร",
+    "postal_code": "74000",
+    "phone": "0909010319",
+    "payment_month": 1,
+    "payment_year": 2025,
+    "total_salary": "151,550.00",
+    "total_contribution": "7,555.00",
+    "total_contribution_all": "15,110.00",
+    "employee_count": "13",
+    "company": "Build341 บริษัท อัลฟ่า ซัพพลาย จำกัด รายเดือน",
+    "file_name": "แบบ ประกันสังคม (ส่วนที่1).pdf",
+    "created_at": "2026-02-11T17:46:21.171078"
+  },
+  {
+    "company_name": "บริษัท อัลฟ่า ซัพพลาย จำกัด",
+    "address": "35/3 หมู่ที่ 5 ต.คอกกระบือ อ.เมือง สมุทรสาคร",
+    "postal_code": "74000",
+    "phone": "0909010319",
+    "payment_month": 2,
+    "payment_year": 2025,
+    "total_salary": "130,091.00",
+    "total_contribution": "6,494.00",
+    "total_contribution_all": "12,988.00",
+    "employee_count": "13",
+    "company": "Build341 บริษัท อัลฟ่า ซัพพลาย จำกัด รายเดือน",
+    "file_name": "แบบ ประกันสังคม (ส่วนที่1).pdf",
+    "created_at": "2026-02-11T17:51:57.832115"
+  }
+]

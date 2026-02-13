@@ -1,0 +1,284 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-09T07:53:00.830Z",
+  "last_saved": "2026-02-09T14:53:00.895669",
+  "company": "Build486 บริษัท เอส พี เค ดิสทริบิวเตอร์ จำกัด รายเดือน",
+  "base_company": "Build486 บริษัท เอส พี เค ดิสทริบิวเตอร์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=1,065.72 แต่ OCR=815.72 (ต่างกัน 250.00)",
+    "2": "",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ฝ้ายการช่าง จำกัด' แต่ OCR='บริษัท ฝ่ายการช่าง จำกัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=3,190.00 แต่ OCR=2,360.00 (ต่างกัน 830.00)",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท รัตนโกสินทร์เครื่องเย็น จำกัด' แต่ OCR='บริษัท รัตนโกสินทร์ เครื่องเย็น จำกัด'",
+    "5": "",
+    "6": "",
+    "7": "วันที่ไม่ตรงกัน: ภาษีซื้อ='09/01/2026' แต่ OCR='09/01/2069'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='EI2601011910' แต่ OCR='El2601011910'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วิชัย เฟอร์โก้อินเตอร์ จำกัด' แต่ OCR='บริษัท วิชัย เฟอร์โก้ อินเตอร์ จำกัด'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "10": "",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เก็ตเกทเวย์ จำกัด' แต่ OCR='บริษัท มาร์เก็ตเกทเวย์ จำกัด (สำนักงานใหญ่)'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วิชัย เฟอร์โก้อินเตอร์ จำกัด' แต่ OCR='บริษัท พรีเฟอร์ เฟอร์นิเจอร์ จำกัด'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105543005821' แต่ OCR='0745554002297'",
+    "13": "",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จํากัด'",
+    "15": "",
+    "16": "",
+    "17": "",
+    "18": ""
+  },
+  "initialNotes": {
+    "1": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=1,065.72 แต่ OCR=815.72 (ต่างกัน 250.00)",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ฝ้ายการช่าง จำกัด' แต่ OCR='บริษัท ฝ่ายการช่าง จำกัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=3,190.00 แต่ OCR=2,360.00 (ต่างกัน 830.00)",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท รัตนโกสินทร์เครื่องเย็น จำกัด' แต่ OCR='บริษัท รัตนโกสินทร์ เครื่องเย็น จำกัด'",
+    "7": "วันที่ไม่ตรงกัน: ภาษีซื้อ='09/01/2026' แต่ OCR='09/01/2069'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='EI2601011910' แต่ OCR='El2601011910'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วิชัย เฟอร์โก้อินเตอร์ จำกัด' แต่ OCR='บริษัท วิชัย เฟอร์โก้ อินเตอร์ จำกัด'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เก็ตเกทเวย์ จำกัด' แต่ OCR='บริษัท มาร์เก็ตเกทเวย์ จำกัด (สำนักงานใหญ่)'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วิชัย เฟอร์โก้อินเตอร์ จำกัด' แต่ OCR='บริษัท พรีเฟอร์ เฟอร์นิเจอร์ จำกัด'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105543005821' แต่ OCR='0745554002297'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จํากัด'"
+  },
+  "comparisonApprovals": {
+    "0-address_match": true,
+    "0-company_data_all": true,
+    "1-total_amount_match": true,
+    "1-address_match": true,
+    "2-address_match": true,
+    "3-company_name_match": true,
+    "3-total_amount_match": true,
+    "3-company_tax_id_match": true,
+    "3-address_match": true,
+    "4-company_name_match": true,
+    "4-address_match": true,
+    "5-address_match": true,
+    "6-address_match": true,
+    "7-date_match": true,
+    "7-address_match": true,
+    "8-document_no_match": true,
+    "8-address_match": true,
+    "9-address_match": true,
+    "10-address_match": true,
+    "11-company_name_match": true,
+    "11-address_match": true,
+    "12-address_match": true,
+    "13-address_match": true,
+    "14-company_name_match": true,
+    "14-address_match": true,
+    "15-address_match": true,
+    "16-address_match": true,
+    "17-address_match": true,
+    "18-address_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build486 บริษัท เอส พี เค ดิสทริบิวเตอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 19,
+    "metadata": [
+      {
+        "filename": "06.01.2026_EXP-2026010014_530214_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ครูอัส จำกัด"
+      },
+      {
+        "filename": "20.01.2026_WHT_EXP-2026010002_530401_ค่าบริการบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จํากัด"
+      },
+      {
+        "filename": "10.01.2026_EXP-2026010023_510112_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท วิชัย เฟอร์โก้ อินเตอร์ จำกัด"
+      },
+      {
+        "filename": "10.01.2026_EXP-2026010019_530214_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท (ไทย) จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-2026010022_510112_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท รัตนโกสินทร์ เครื่องเย็น จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-2026010021_530214_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "16.01.2026_EXP-2026010028_114102_.สินค้าสำเร็จรูป_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-2026010030_114102_สินค้าสำเร็จรูป_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-2026010024_510112_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท พรีเฟอร์ เฟอร์นิเจอร์ จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-2026010016_510112_.ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "13.01.2026_EXP-2026010026_114102_.สินค้าสำเร็จรูป_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด (สำนักงานใหญ่)"
+      },
+      {
+        "filename": "13.01.2026_EXP-2026010027_114102_สินค้าสำเร็จรูป_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-2026010017_510112_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท เครื่องดับเพลิงอิมพีเรียล จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-2026010018_530214_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท แม็กซ์สเตชันเนอรี่กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-2026010020_530214_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "06.01.2026_EXP-2026010012_510112_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท โฮมเมดิคส์ ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-2026010029_114102_.สินค้าสำเร็จรูป_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-2026010025_114102_สินค้าสำเร็จรูป_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-2026010015_530214_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ฝ่ายการช่าง จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 19,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-2026010016",
+        "ocr_document_no": "466112",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-2026010012",
+        "ocr_document_no": "CA2026010289",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-2026010014",
+        "ocr_document_no": "INV2026010286",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-2026010015",
+        "ocr_document_no": "IN260107/0001",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-2026010022",
+        "ocr_document_no": "IV26-01-0040",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-2026010017",
+        "ocr_document_no": "IV690100192",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-2026010018",
+        "ocr_document_no": "HS0048155",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-2026010025",
+        "ocr_document_no": "IV6900008",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-2026010019",
+        "ocr_document_no": "El2601011910",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-2026010023",
+        "ocr_document_no": "HS0008050",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-2026010027",
+        "ocr_document_no": "IV6900018",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-2026010026",
+        "ocr_document_no": "IV6900019",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-2026010024",
+        "ocr_document_no": "HS0007003",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-2026010028",
+        "ocr_document_no": "IV6900024",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-2026010002",
+        "ocr_document_no": "RT-20260100237",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-2026010020",
+        "ocr_document_no": "MKT988920260003696",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-2026010029",
+        "ocr_document_no": "IV6900059",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-2026010030",
+        "ocr_document_no": "IV6900064",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-2026010021",
+        "ocr_document_no": "107944",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

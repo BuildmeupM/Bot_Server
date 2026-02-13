@@ -1,0 +1,156 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-09T08:36:54.480Z",
+  "last_saved": "2026-02-09T15:36:54.437232",
+  "company": "Build295 บริษัท ฟอเรจ ไวน์ จำกัด รายเดือน",
+  "base_company": "Build295 บริษัท ฟอเรจ ไวน์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte.Ltd.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nวันที่ไม่ตรงกัน: ภาษีซื้อ='09/12/2025' แต่ OCR='01/11/2025'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=650.00 แต่ OCR=0.00 (ต่างกัน 650.00)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=45.50 แต่ OCR=0.00 (ต่างกัน 45.50)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=741.00 แต่ OCR=0.00 (ต่างกัน 741.00)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จํากัด'",
+    "5": "",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte.Ltd.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=650.00 แต่ OCR=0.00 (ต่างกัน 650.00)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=45.50 แต่ OCR=0.00 (ต่างกัน 45.50)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=741.00 แต่ OCR=0.00 (ต่างกัน 741.00)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'",
+    "7": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte.Ltd.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nวันที่ไม่ตรงกัน: ภาษีซื้อ='09/12/2025' แต่ OCR='01/11/2025'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=650.00 แต่ OCR=0.00 (ต่างกัน 650.00)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=45.50 แต่ OCR=0.00 (ต่างกัน 45.50)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=741.00 แต่ OCR=0.00 (ต่างกัน 741.00)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จํากัด'",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte.Ltd.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=650.00 แต่ OCR=0.00 (ต่างกัน 650.00)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=45.50 แต่ OCR=0.00 (ต่างกัน 45.50)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=741.00 แต่ OCR=0.00 (ต่างกัน 741.00)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'"
+  },
+  "comparisonApprovals": {
+    "0-date_match": true,
+    "0-company_name_match": true,
+    "0-tax_id_match": true,
+    "0-branch_match": true,
+    "0-amount_before_vat_match": true,
+    "0-vat_amount_match": true,
+    "0-document_type_match": true,
+    "0-total_amount_match": true,
+    "0-reference_no_match": true,
+    "4-company_name_match": true,
+    "4-address_match": true,
+    "5-address_match": true,
+    "6-company_name_match": true,
+    "6-tax_id_match": true,
+    "6-branch_match": true,
+    "6-amount_before_vat_match": true,
+    "6-vat_amount_match": true,
+    "6-total_amount_match": true,
+    "6-document_type_match": true,
+    "6-address_match": true,
+    "7-address_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build295 บริษัท ฟอเรจ ไวน์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 9,
+    "metadata": [
+      {
+        "filename": "09.12.2025_EXP-20251200016_ภพ.36 เดือน 11.2025_VAT.pdf",
+        "company_name": "Google Asia Pacific Pte.Ltd."
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100006_115101_ค่าใช้จ่ายจ่ายล่วงหน้า - ค่าสินค้า_VAT.pdf",
+        "company_name": "บริษัท รีเสิร์ฟ ไวน์ จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100005_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท เจนบรรเจิด จำกัด"
+      },
+      {
+        "filename": "30.12.2025_EXP-20251200015_114102_สินค้าสำเร็จรูป_VAT.pdf",
+        "company_name": "บริษัท รีเสิร์ฟ ไวน์ จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100004_530303_ค่าโทรศัพท์สำนักงาน_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100014_215103_ภ.พ.36 ค้างจ่าย_VAT.pdf",
+        "company_name": "Google Asia Pacific Pte.Ltd."
+      },
+      {
+        "filename": "07.01.2026_WHT_EXP-20260100008_530401_ค่าบริการบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จํากัด"
+      },
+      {
+        "filename": "07.01.2026_WHT_EXP-20260100013_530408_ค่าบริการอื่นๆ_VAT.pdf",
+        "company_name": "บริษัท มีทรัพย์ แมเนจเมนท์ จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100011_530301_ค่าไฟฟ้า_VAT.pdf",
+        "company_name": "บริษัท มีทรัพย์ แมเนจเมนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 9,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251200016",
+        "ocr_document_no": "69109272026",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251200015",
+        "ocr_document_no": "IV6812074",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "RE 6901021",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "RE 6901022",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "RT-20260100071",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "W-BK-1067-6901-10602714",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "69113025237",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "SL26012073",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "IV6901057",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="th">
 
 <head>
@@ -5098,6 +5098,15 @@
             return true;
         }
 
+        // ฟังก์ชันแปลงปี พ.ศ. เป็น ค.ศ. (สำหรับเปรียบเทียบ)
+        // ถ้าปี > 2400 ถือว่าเป็นปี พ.ศ. ให้ลบ 543 เพื่อแปลงเป็น ค.ศ.
+        function normalizeYear(year) {
+            if (year === null || year === undefined) return year;
+            const y = parseInt(year);
+            if (isNaN(y)) return year;
+            return y > 2400 ? y - 543 : y;
+        }
+
         // ฟังก์ชันสำหรับแสดงและตรวจสอบเดือนของแต่ละแบบภาษี
         function updateMonthSummary() {
             const monthSummaryEl = document.getElementById('monthSummary');
@@ -5313,7 +5322,7 @@
                     }
 
                     if (monthInfo && monthInfo.month) {
-                        const key = `${taxFormType}_${monthInfo.month}_${monthInfo.year || 'unknown'}`;
+                        const key = `${taxFormType}_${monthInfo.month}_${normalizeYear(monthInfo.year) || 'unknown'}`;
                         if (!monthData[key]) {
                             monthData[key] = {
                                 taxFormType: taxFormType,
@@ -5376,7 +5385,7 @@
                 const monthCounts = {};
                 items.forEach(item => {
                     if (item.month && item.year) {
-                        const key = `${item.month}_${item.year}`;
+                        const key = `${item.month}_${normalizeYear(item.year)}`;
                         monthCounts[key] = (monthCounts[key] || 0) + item.files.length;
                     }
                 });
@@ -5421,13 +5430,13 @@
                     </div>
                 `;
 
-                // รวบรวมเดือนสำหรับการตรวจสอบความสอดคล้อง
+                // รวบรวมเดือนสำหรับการตรวจสอบความสอดคล้อง (แปลงปี พ.ศ. เป็น ค.ศ. เพื่อเปรียบเทียบ)
                 items.forEach(item => {
                     if (item.month && item.year) {
                         if (item.isSupplement) {
-                            supplementMonths.push({ month: item.month, year: item.year });
+                            supplementMonths.push({ month: item.month, year: normalizeYear(item.year) });
                         } else {
-                            normalMonths.push({ month: item.month, year: item.year });
+                            normalMonths.push({ month: item.month, year: normalizeYear(item.year) });
                         }
                     }
                 });
@@ -5697,9 +5706,8 @@
                             'กันยายน': '9', 'ตุลาคม': '10', 'พฤศจิกายน': '11', 'ธันวาคม': '12'
                         };
                         const monthNum = monthMap[month] || month;
-                        // แปลงปี พ.ศ. เป็น ค.ศ. (ลบ 543)
-                        const yearBE = year;
-                        const yearCE = yearBE - 543;
+n                        // แปลงปี พ.ศ. เป็น ค.ศ. (ใช้ normalizeYear รองรับทั้งปี พ.ศ. และ ค.ศ.)
+                        const yearCE = normalizeYear(parseInt(year));
                         // รูปแบบ: ประจำเดือน 10.25 (เดือน.ปี 2 หลักสุดท้าย)
                         const yearShort = yearCE.toString().slice(-2);
                         const periodText = `ประจำเดือน ${monthNum}.${yearShort}`;
@@ -5931,18 +5939,21 @@
                     return false; // ไม่สามารถตรวจสอบได้ ให้ผ่าน
                 }
 
+                // แปลงปี พ.ศ. เป็น ค.ศ. สำหรับเปรียบเทียบ
+                const normalizedFileYear = normalizeYear(fileYear);
+
                 // ตรวจสอบว่าเป็นแบบยื่นปกติหรือเพิ่มเติม
                 const isSupplement = isSupplementFiling(ocrResult, taxFormType);
 
                 if (!isSupplement && monthMismatchData.normalMismatch.length > 0) {
-                    // แบบยื่นปกติ: ตรวจสอบว่าเดือนไม่ตรงกันหรือไม่
+                    // แบบยื่นปกติ: ตรวจสอบว่าเดือนไม่ตรงกันหรือไม่ (เปรียบเทียบด้วยปี ค.ศ.)
                     return monthMismatchData.normalMismatch.some(m =>
-                        m.month === fileMonth && m.year === fileYear
+                        m.month === fileMonth && normalizeYear(m.year) === normalizedFileYear
                     );
                 } else if (isSupplement && monthMismatchData.supplementMismatch.length > 0) {
-                    // แบบยื่นเพิ่มเติม: ตรวจสอบว่าเดือนไม่ตรงกันหรือไม่
+                    // แบบยื่นเพิ่มเติม: ตรวจสอบว่าเดือนไม่ตรงกันหรือไม่ (เปรียบเทียบด้วยปี ค.ศ.)
                     return monthMismatchData.supplementMismatch.some(m =>
-                        m.month === fileMonth && m.year === fileYear
+                        m.month === fileMonth && normalizeYear(m.year) === normalizedFileYear
                     );
                 }
 
@@ -6046,16 +6057,16 @@
                                     }
 
                                     if (otherMonth && otherYear) {
-                                        const key = `${otherMonth}_${otherYear}`;
+                                        const key = `${otherMonth}_${normalizeYear(otherYear)}`;
                                         monthCounts[key] = (monthCounts[key] || 0) + 1;
-                                        allMonths.push({ month: otherMonth, year: otherYear });
+                                        allMonths.push({ month: otherMonth, year: normalizeYear(otherYear) });
                                     }
                                 });
 
-                                // เพิ่มเดือนของไฟล์ปัจจุบัน
-                                const currentKey = `${fileMonth}_${fileYear}`;
+                                // เพิ่มเดือนของไฟล์ปัจจุบัน (แปลงปี พ.ศ. เป็น ค.ศ.)
+                                const currentKey = `${fileMonth}_${normalizeYear(fileYear)}`;
                                 monthCounts[currentKey] = (monthCounts[currentKey] || 0) + 1;
-                                allMonths.push({ month: fileMonth, year: fileYear });
+                                allMonths.push({ month: fileMonth, year: normalizeYear(fileYear) });
 
                                 // หาเดือนที่พบบ่อยที่สุด
                                 if (Object.keys(monthCounts).length > 1) {
@@ -6064,8 +6075,8 @@
                                     );
                                     const [commonMonth, commonYear] = mostCommonMonth.split('_').map(Number);
 
-                                    // ตรวจสอบว่าเดือนของไฟล์นี้ไม่ตรงกับเดือนที่พบบ่อยที่สุดหรือไม่
-                                    if (fileMonth !== commonMonth || fileYear !== commonYear) {
+                                    // ตรวจสอบว่าเดือนของไฟล์นี้ไม่ตรงกับเดือนที่พบบ่อยที่สุดหรือไม่ (เปรียบเทียบด้วยปี ค.ศ.)
+                                    if (fileMonth !== commonMonth || normalizeYear(fileYear) !== commonYear) {
                                         hasMonthMismatch = true;
                                     }
                                 }
@@ -6540,7 +6551,9 @@
                     const taxFormType = file.ocr_result.tax_form_type || '';
                     if (taxFormType.includes('ภ.ง.ด.1') || taxFormType.includes('ภงด.1')) {
                         const amounts = file.ocr_result.amounts || {};
-                        const totalAmount = amounts['รวมยอดภาษีที่นำส่งทั้งสิ้น (ภ.ง.ด.1)'] ||
+                        const totalAmount = amounts['รวม (ภ.ง.ด.1)'] ||
+                            amounts['รวมยอดภาษีที่นำส่งทั้งสิ้น และเงินเพิ่ม (ภ.ง.ด.1)'] ||
+                            amounts['รวมยอดภาษีที่นำส่งทั้งสิ้น (ภ.ง.ด.1)'] ||
                             amounts['รวมยอดภาษีที่นำส่งทั้งสิ้น และเงินเพิ่ม'] || 0;
 
                         // ถ้ายอดชำระ = 0 → ต้องตรวจสอบไฟล์ใบเสร็จรับเงิน
