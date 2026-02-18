@@ -700,6 +700,30 @@
     <script>
         let smtpConfigured = false;
 
+        // ===== Global Constants & Helpers =====
+        const THAI_MONTH_MAP = {
+            'มกราคม': 1, 'กุมภาพันธ์': 2, 'มีนาคม': 3, 'เมษายน': 4,
+            'พฤษภาคม': 5, 'มิถุนายน': 6, 'กรกฎาคม': 7, 'สิงหาคม': 8,
+            'กันยายน': 9, 'ตุลาคม': 10, 'พฤศจิกายน': 11, 'ธันวาคม': 12
+        };
+
+        // แปลงเลขเดือน → ชื่อเดือนภาษาไทย
+        function getThaiMonthName(monthNumber) {
+            return Object.keys(THAI_MONTH_MAP).find(k => THAI_MONTH_MAP[k] === monthNumber) || monthNumber;
+        }
+
+        // แปลงชื่อเดือนภาษาไทย → เลขเดือน
+        function getMonthNumber(monthName) {
+            return THAI_MONTH_MAP[monthName] || monthName;
+        }
+
+        // format เดือน+ปี สำหรับแสดงผล
+        function formatMonthYear(month, year) {
+            const name = typeof month === 'number' ? getThaiMonthName(month) : month;
+            return `${name} ${year}`;
+        }
+        // ===== End Global Constants & Helpers =====
+
         function updateTLSSetting() {
             const port = parseInt(document.getElementById('smtpPort').value);
             const tlsCheckbox = document.getElementById('smtpUseTLS');
@@ -5000,97 +5024,30 @@
 
             // ตรวจสอบแบบยื่นปกติ
             if (monthMismatchData.normalMismatch.length > 0) {
-                const monthMap = {
-                    'มกราคม': 1, 'กุมภาพันธ์': 2, 'มีนาคม': 3, 'เมษายน': 4,
-                    'พฤษภาคม': 5, 'มิถุนายน': 6, 'กรกฎาคม': 7, 'สิงหาคม': 8,
-                    'กันยายน': 9, 'ตุลาคม': 10, 'พฤศจิกายน': 11, 'ธันวาคม': 12
-                };
-
-                const commonMonthName = Object.keys(monthMap).find(k => monthMap[k] === monthMismatchData.commonMonth);
+                const commonMonthName = getThaiMonthName(monthMismatchData.commonMonth);
                 const mismatchedDetails = monthMismatchData.normalMismatch.map(m => {
-                    const monthName = Object.keys(monthMap).find(k => monthMap[k] === m.month);
-                    return `${monthName || m.month} ${m.year}`;
+                    return formatMonthYear(m.month, m.year);
                 }).join(', ');
 
                 const message = `⚠️ พบเดือนที่ไม่ตรงกันในแบบยื่นปกติ!\n\n` +
-                    `เดือนที่พบบ่อยที่สุด: ${commonMonthName || monthMismatchData.commonMonth} ${monthMismatchData.commonYear}\n` +
+                    `เดือนที่พบบ่อยที่สุด: ${commonMonthName} ${monthMismatchData.commonYear}\n` +
                     `เดือนที่ไม่ตรงกัน: ${mismatchedDetails}\n\n` +
-                    `ระบบไม่อนุญาตให้รวมยอดเงินจากแบบยื่นปกติที่เดือนไม่ตรงกัน\n` +
-                    `กรุณาตรวจสอบและลบไฟล์ที่เดือนไม่ตรงกันออกก่อน`;
-
-                alert(message);
-                return false; // ไม่อนุญาตให้รวม
-            }
-
-            // ตรวจสอบแบบยื่นเพิ่มเติม
-            if (monthMismatchData.supplementMismatch.length > 0) {
-                const monthMap = {
-                    'มกราคม': 1, 'กุมภาพันธ์': 2, 'มีนาคม': 3, 'เมษายน': 4,
-                    'พฤษภาคม': 5, 'มิถุนายน': 6, 'กรกฎาคม': 7, 'สิงหาคม': 8,
-                    'กันยายน': 9, 'ตุลาคม': 10, 'พฤศจิกายน': 11, 'ธันวาคม': 12
-                };
-
-                const mismatchedDetails = monthMismatchData.supplementMismatch.map(m => {
-                    const monthName = Object.keys(monthMap).find(k => monthMap[k] === m.month);
-                    return `${monthName || m.month} ${m.year}`;
-                }).join(', ');
-
-                const message = `⚠️ พบเดือนที่ไม่ตรงกันในแบบยื่นเพิ่มเติม!\n\n` +
-                    `เดือนที่ไม่ตรงกัน: ${mismatchedDetails}\n\n` +
-                    `คุณต้องการรวมยอดเงินจากแบบยื่นเพิ่มเติมเหล่านี้หรือไม่?`;
+                    `ข้อมูลนี้เป็นข้อมูลที่ถูกต้องแล้วหรือไม่?\n` +
+                    `กด "ตกลง" เพื่อดำเนินการต่อ หรือ "ยกเลิก" เพื่อตรวจสอบใหม่`;
 
                 return confirm(message); // ให้ผู้ใช้ยืนยัน
             }
 
-            return true;
-        }
-
-        // ฟังก์ชันตรวจสอบและแสดง popup สำหรับเดือนที่ไม่ตรงกัน
-        function checkAndShowMonthMismatchPopup() {
-            if (!monthMismatchData.hasMismatch) {
-                return true; // ไม่มีปัญหา ให้ผ่าน
-            }
-
-            // ตรวจสอบแบบยื่นปกติ
-            if (monthMismatchData.normalMismatch.length > 0) {
-                const monthMap = {
-                    'มกราคม': 1, 'กุมภาพันธ์': 2, 'มีนาคม': 3, 'เมษายน': 4,
-                    'พฤษภาคม': 5, 'มิถุนายน': 6, 'กรกฎาคม': 7, 'สิงหาคม': 8,
-                    'กันยายน': 9, 'ตุลาคม': 10, 'พฤศจิกายน': 11, 'ธันวาคม': 12
-                };
-
-                const commonMonthName = Object.keys(monthMap).find(k => monthMap[k] === monthMismatchData.commonMonth);
-                const mismatchedDetails = monthMismatchData.normalMismatch.map(m => {
-                    const monthName = Object.keys(monthMap).find(k => monthMap[k] === m.month);
-                    return `${monthName || m.month} ${m.year}`;
-                }).join(', ');
-
-                const message = `⚠️ พบเดือนที่ไม่ตรงกันในแบบยื่นปกติ!\n\n` +
-                    `เดือนที่พบบ่อยที่สุด: ${commonMonthName || monthMismatchData.commonMonth} ${monthMismatchData.commonYear}\n` +
-                    `เดือนที่ไม่ตรงกัน: ${mismatchedDetails}\n\n` +
-                    `ระบบไม่อนุญาตให้รวมยอดเงินจากแบบยื่นปกติที่เดือนไม่ตรงกัน\n` +
-                    `กรุณาตรวจสอบและลบไฟล์ที่เดือนไม่ตรงกันออกก่อน`;
-
-                alert(message);
-                return false; // ไม่อนุญาตให้รวม
-            }
-
             // ตรวจสอบแบบยื่นเพิ่มเติม
             if (monthMismatchData.supplementMismatch.length > 0) {
-                const monthMap = {
-                    'มกราคม': 1, 'กุมภาพันธ์': 2, 'มีนาคม': 3, 'เมษายน': 4,
-                    'พฤษภาคม': 5, 'มิถุนายน': 6, 'กรกฎาคม': 7, 'สิงหาคม': 8,
-                    'กันยายน': 9, 'ตุลาคม': 10, 'พฤศจิกายน': 11, 'ธันวาคม': 12
-                };
-
                 const mismatchedDetails = monthMismatchData.supplementMismatch.map(m => {
-                    const monthName = Object.keys(monthMap).find(k => monthMap[k] === m.month);
-                    return `${monthName || m.month} ${m.year}`;
+                    return formatMonthYear(m.month, m.year);
                 }).join(', ');
 
                 const message = `⚠️ พบเดือนที่ไม่ตรงกันในแบบยื่นเพิ่มเติม!\n\n` +
                     `เดือนที่ไม่ตรงกัน: ${mismatchedDetails}\n\n` +
-                    `คุณต้องการรวมยอดเงินจากแบบยื่นเพิ่มเติมเหล่านี้หรือไม่?`;
+                    `ข้อมูลนี้เป็นข้อมูลที่ถูกต้องแล้วหรือไม่?\n` +
+                    `กด "ตกลง" เพื่อดำเนินการต่อ หรือ "ยกเลิก" เพื่อตรวจสอบใหม่`;
 
                 return confirm(message); // ให้ผู้ใช้ยืนยัน
             }
@@ -5118,11 +5075,7 @@
 
             // รวบรวมข้อมูลเดือนจากทุกไฟล์
             const monthData = {};
-            const monthMap = {
-                'มกราคม': 1, 'กุมภาพันธ์': 2, 'มีนาคม': 3, 'เมษายน': 4,
-                'พฤษภาคม': 5, 'มิถุนายน': 6, 'กรกฎาคม': 7, 'สิงหาคม': 8,
-                'กันยายน': 9, 'ตุลาคม': 10, 'พฤศจิกายน': 11, 'ธันวาคม': 12
-            };
+            const monthMap = THAI_MONTH_MAP;
 
             // ฟังก์ชันแปลงเดือนเป็นตัวเลข
             function parseMonth(monthValue, yearValue) {
@@ -5700,13 +5653,8 @@
                     const year = ocrData.filing_period.year;
                     if (month && year) {
                         // แปลงเดือนเป็นตัวเลข (มกราคม=1, กุมภาพันธ์=2, ...)
-                        const monthMap = {
-                            'มกราคม': '1', 'กุมภาพันธ์': '2', 'มีนาคม': '3', 'เมษายน': '4',
-                            'พฤษภาคม': '5', 'มิถุนายน': '6', 'กรกฎาคม': '7', 'สิงหาคม': '8',
-                            'กันยายน': '9', 'ตุลาคม': '10', 'พฤศจิกายน': '11', 'ธันวาคม': '12'
-                        };
-                        const monthNum = monthMap[month] || month;
-n                        // แปลงปี พ.ศ. เป็น ค.ศ. (ใช้ normalizeYear รองรับทั้งปี พ.ศ. และ ค.ศ.)
+                        const monthNum = getMonthNumber(month);
+                        // แปลงปี พ.ศ. เป็น ค.ศ. (ใช้ normalizeYear รองรับทั้งปี พ.ศ. และ ค.ศ.)
                         const yearCE = normalizeYear(parseInt(year));
                         // รูปแบบ: ประจำเดือน 10.25 (เดือน.ปี 2 หลักสุดท้าย)
                         const yearShort = yearCE.toString().slice(-2);

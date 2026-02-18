@@ -15513,14 +15513,30 @@ def run_ocr_for_audit():
                                     logger.info(f"✅ ดึง buyer/company จาก raw_text JSON: name={bool(buyer_name)}, tax_id={bool(buyer_tax_id)}, addr={bool(buyer_address)}")
                         except Exception:
                             pass
-                    if not buyer_address and (raw_text_str or text_str):
-                        import re
-                        for src in [raw_text_str, text_str]:
-                            addr_match = re.search(r'ที่อยู่ผู้ซื้อ\s*[:\s]+\s*(.+?)(?=\n[A-Za-z\u0e00-\u0e7f]|\n\n|\nยอด|\nรายการ|$)', str(src or ''), re.DOTALL)
+                    # Fallback: ดึงข้อมูลผู้ซื้อจาก raw_text แบบ plain text ด้วย regex
+                    # กรณี raw_text ไม่ใช่ JSON เช่น "ชื่อผู้ซื้อ: PLAIJAWAK FOOD AND BEVERAGE CO., LTD."
+                    import re
+                    for src in [raw_text_str, text_str]:
+                        src_str = str(src or '')
+                        if not src_str:
+                            continue
+                        if not buyer_name:
+                            name_match = re.search(r'ชื่อผู้ซื้อ\s*[:\s]+\s*(.+?)(?=\n|$)', src_str)
+                            if name_match:
+                                buyer_name = name_match.group(1).strip()
+                                logger.info(f"✅ ดึงชื่อผู้ซื้อจาก raw_text: {buyer_name[:50]}")
+                        if not buyer_tax_id:
+                            tax_match = re.search(r'เลขประจำตัวผู้เสียภาษี\s*[-–]\s*ผู้ซื้อ\s*[:\s]+\s*(\d[\d\s-]*\d)', src_str)
+                            if tax_match:
+                                buyer_tax_id = tax_match.group(1).strip().replace(' ', '').replace('-', '')
+                                logger.info(f"✅ ดึงเลขประจำตัวผู้เสียภาษีผู้ซื้อจาก raw_text: {buyer_tax_id}")
+                        if not buyer_address:
+                            addr_match = re.search(r'ที่อยู่ผู้ซื้อ\s*[:\s]+\s*(.+?)(?=\n[A-Za-z\u0e00-\u0e7f]|\n\n|\nยอด|\nรายการ|$)', src_str, re.DOTALL)
                             if addr_match:
                                 buyer_address = addr_match.group(1).strip()
-                                logger.info(f"✅ ดึงที่อยู่ผู้ซื้อจาก text: {buyer_address[:50]}...")
-                                break
+                                logger.info(f"✅ ดึงที่อยู่ผู้ซื้อจาก raw_text: {buyer_address[:50]}...")
+                        if buyer_name and buyer_tax_id and buyer_address:
+                            break
                     extracted_data = {
                         'company_name': company_name,
                         'tax_id': tax_id,
@@ -20776,15 +20792,36 @@ def export_audit_report_to_excel():
                     status_cell.fill = status_fill
                 
                 # หมายเหตุ (คอลัมน์ 15) - ใช้ initial_note จาก backend ถ้า notes จากหน้าเว็บว่างเปล่า
+                # แต่ถ้าทุกจุดที่ไม่ตรงกันถูกอนุมัติแล้ว ไม่ต้องแสดงหมายเหตุ
                 # ใช้ item_no - 1 เป็น key เพื่อให้ตรงกับ index ที่เริ่มจาก 0 ในหน้าเว็บ
                 # เพราะหน้าเว็บใช้ index (0, 1, 2, ...) เป็น key ใน comparisonNotes
                 item_key = str(item_no - 1)
                 note_text = ''
                 if isinstance(notes, dict):
                     note_text = notes.get(item_key, '')
-                # ถ้าไม่มี notes จากหน้าเว็บ ให้ใช้ initial_note จาก backend
+                # ถ้าไม่มี notes จากหน้าเว็บ ให้ตรวจสอบว่าทุกจุดที่ไม่ตรงกันถูกอนุมัติหรือไม่
+                # ถ้าอนุมัติทุกจุดแล้ว ไม่ต้องใช้ initial_note fallback
                 if not note_text:
-                    note_text = comp.get('initial_note', '') if isinstance(comp, dict) else ''
+                    # ถ้าเปิดโหมดตรวจสอบเพิ่ม (selfCheckMode) ไม่ต้องใช้ initial_note
+                    if is_self_check:
+                        note_text = ''
+                    else:
+                        # ตรวจสอบว่ายังมี field ที่ไม่ match อยู่หรือไม่ (หลังจากปรับตามการอนุมัติแล้ว)
+                        # ถ้าทุก field ตรงกันหมดแล้ว (รวมที่ถูกอนุมัติ) ไม่ต้องใช้ initial_note
+                        has_remaining_mismatch = False
+                        check_fields = ['company_name_match', 'tax_id_match', 'branch_match', 'document_no_match', 
+                                        'date_match', 'amount_before_vat_match', 'vat_amount_match', 'total_amount_match', 
+                                        'document_type_match', 'reference_no_match']
+                        for field_key in check_fields:
+                            # ใช้ adjusted_match_details ที่รวมการอนุมัติแล้ว
+                            field_matched = adjusted_match_details.get(field_key, False) if adjusted_match_details else match_details.get(field_key, False)
+                            if not field_matched:
+                                has_remaining_mismatch = True
+                                break
+                        
+                        # ใช้ initial_note เฉพาะเมื่อยังมีจุดที่ไม่ตรงและยังไม่ถูกอนุมัติ
+                        if has_remaining_mismatch:
+                            note_text = comp.get('initial_note', '') if isinstance(comp, dict) else ''
                 ws.cell(row=row, column=15, value=note_text).font = data_font
                 
                 # ไฮไลท์เฉพาะจุดที่ถูกอนุมัติในรายการปกติ (ก่อนการไฮไลท์ทั้งแถว)

@@ -1,1984 +1,44 @@
-@ -1,9929 +0,0 @@
-<!DOCTYPE html>
-<html lang="th">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BotV3 - ตรวจภาษี</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0e1117;
-            color: #fafafa;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .header {
-            background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
-            padding: 20px;
-            border-radius: 10px;
-            color: white;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .nav-bar {
-            background: #1e293b;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .nav-link {
-            padding: 10px 20px;
-            background: #334155;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .nav-link:hover {
-            background: #475569;
-        }
-
-        .nav-link.active {
-            background: #667eea;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #334155;
-        }
-
-        .tab-button {
-            padding: 15px 30px;
-            background: transparent;
-            color: #cbd5e1;
-            border: none;
-            border-bottom: 3px solid transparent;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .tab-button:hover {
-            color: #fbbf24;
-            background: rgba(251, 191, 36, 0.1);
-        }
-
-        .tab-button.active {
-            color: #fbbf24;
-            border-bottom-color: #fbbf24;
-            background: rgba(251, 191, 36, 0.1);
-        }
-
-        .tab-content {
-            display: none;
-            background: #1e293b;
-            padding: 30px;
-            border-radius: 10px;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .form-section {
-            background: #0f172a;
-            padding: 25px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #cbd5e1;
-            font-weight: 500;
-        }
-
-        .form-group select,
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 5px;
-            color: #fafafa;
-            font-size: 14px;
-        }
-
-        .form-group select:focus,
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .autocomplete-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        .autocomplete-input {
-            width: 100%;
-            padding: 12px 40px 12px 12px;
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 5px;
-            color: #fafafa;
-            font-size: 14px;
-        }
-
-        .autocomplete-input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .autocomplete-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 5px;
-            max-height: 300px;
-            overflow-y: auto;
-            z-index: 1000;
-            margin-top: 5px;
-            display: none;
-        }
-
-        .autocomplete-dropdown.show {
-            display: block;
-        }
-
-        .autocomplete-item {
-            padding: 12px;
-            cursor: pointer;
-            color: #fafafa;
-            border-bottom: 1px solid #334155;
-        }
-
-        .autocomplete-item:hover,
-        .autocomplete-item.selected {
-            background: #334155;
-        }
-
-        .autocomplete-item:last-child {
-            border-bottom: none;
-        }
-
-        .autocomplete-clear {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: #94a3b8;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .autocomplete-clear:hover {
-            color: #fafafa;
-        }
-
-        .steps-container {
-            margin-top: 30px;
-        }
-
-        .step {
-            background: #0f172a;
-            border-left: 4px solid #334155;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        .step.active {
-            border-left-color: #667eea;
-            background: #1e293b;
-        }
-
-        .step.completed {
-            border-left-color: #10b981;
-        }
-
-        .step.error {
-            border-left-color: #ef4444;
-        }
-
-        .step-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: #334155;
-            color: #fafafa;
-            border-radius: 50%;
-            font-weight: bold;
-            margin-right: 15px;
-        }
-
-        .step.active .step-number {
-            background: #667eea;
-        }
-
-        .step.completed .step-number {
-            background: #10b981;
-        }
-
-        .step.error .step-number {
-            background: #ef4444;
-        }
-
-        .step-title {
-            flex: 1;
-            font-size: 18px;
-            font-weight: 600;
-            color: #fafafa;
-        }
-
-        .step-status {
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        .step-status.pending {
-            background: #334155;
-            color: #cbd5e1;
-        }
-
-        .step-status.checking {
-            background: #fbbf24;
-            color: #1e293b;
-        }
-
-        .step-status.success {
-            background: #10b981;
-            color: white;
-        }
-
-        .step-status.error {
-            background: #ef4444;
-            color: white;
-        }
-
-        .step-content {
-            margin-top: 15px;
-            padding-left: 47px;
-        }
-
-        .step-details {
-            color: #cbd5e1;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .file-list {
-            background: #0f172a;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 10px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .file-item {
-            padding: 8px;
-            margin-bottom: 5px;
-            background: #1e293b;
-            border-radius: 3px;
-            font-size: 13px;
-            color: #cbd5e1;
-        }
-
-        .file-item.success {
-            border-left: 3px solid #10b981;
-        }
-
-        .file-item.error {
-            border-left: 3px solid #ef4444;
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            background: #0f172a;
-        }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #334155;
-        }
-
-        .comparison-table th {
-            background: #1e293b;
-            color: #fbbf24;
-            font-weight: 600;
-        }
-
-        .comparison-table td {
-            color: #cbd5e1;
-        }
-
-        .comparison-table tr:hover {
-            background: #1e293b;
-        }
-
-        .match {
-            color: #10b981;
-        }
-
-        .mismatch {
-            color: #ef4444;
-        }
-
-        /* Accordion comparison styles */
-        .comparison-row {
-            margin-bottom: 15px;
-            background: #1e293b;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            overflow: hidden;
-        }
-
-        .comparison-row-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            cursor: pointer;
-            transition: background 0.3s;
-            border-bottom: 1px solid #334155;
-        }
-
-        .comparison-row-header:hover {
-            background: #0f172a;
-        }
-
-        .comparison-row-header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex: 1;
-        }
-
-        .comparison-row-number {
-            background: #334155;
-            color: white;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-
-        .comparison-row-title {
-            flex: 1;
-        }
-
-        .comparison-row-title-main {
-            font-weight: 600;
-            color: #fafafa;
-            font-size: 1em;
-            margin-bottom: 5px;
-        }
-
-        .comparison-row-title-sub {
-            font-size: 0.85em;
-            color: #94a3b8;
-        }
-
-        .comparison-row-status {
-            padding: 6px 12px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            font-weight: 500;
-            margin-right: 10px;
-        }
-
-        .comparison-row-status.match {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-        }
-
-        .comparison-row-status.partial-match {
-            background: rgba(251, 191, 36, 0.2);
-            color: #fbbf24;
-        }
-
-        .comparison-row-status.mismatch {
-            background: rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-        }
-
-        .comparison-row-toggle {
-            color: #94a3b8;
-            font-size: 1.2em;
-            transition: transform 0.3s;
-        }
-
-        .comparison-row.expanded .comparison-row-toggle {
-            transform: rotate(180deg);
-        }
-
-        .comparison-row-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, opacity 0.2s ease-out;
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .comparison-row.expanded .comparison-row-content {
-            max-height: 2000px;
-            opacity: 1;
-            visibility: visible;
-            transition: max-height 0.5s ease-in, opacity 0.3s ease-in, visibility 0s linear 0s;
-        }
-
-        /* ป้องกัน rows ที่ถูกซ่อนไม่ให้แสดงผล */
-        .comparison-tab-content:not(.active) .comparison-row {
-            display: none !important;
-        }
-
-        .comparison-content-wrapper {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .comparison-sides-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .company-data-section {
-            width: 100%;
-        }
-
-        .comparison-side {
-            background: #0f172a;
-            border-radius: 8px;
-            padding: 15px;
-            border: 1px solid #334155;
-        }
-
-        .comparison-side-header {
-            font-weight: 600;
-            font-size: 1em;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #334155;
-        }
-
-        .comparison-side.purchase-tax .comparison-side-header {
-            color: #60a5fa;
-        }
-
-        .comparison-side.ocr .comparison-side-header {
-            color: #10b981;
-        }
-
-        /* สีแดงสำหรับแถบข้อมูลภาษีซื้อเมื่ออยู่ในโหมด "ตรวจด้วยตัวเอง" */
-        .comparison-side.purchase-tax.self-check-mode {
-            background-color: rgba(239, 68, 68, 0.15);
-            border: 2px solid #ef4444;
-            border-radius: 8px;
-            padding: 10px;
-        }
-
-        .comparison-side.purchase-tax.self-check-mode .comparison-side-header {
-            color: #ef4444;
-            font-weight: 600;
-        }
-
-        .comparison-field {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #334155;
-        }
-
-        .comparison-field:last-child {
-            border-bottom: none;
-        }
-
-        .comparison-field-label {
-            color: #94a3b8;
-            font-size: 0.9em;
-            flex: 1;
-        }
-
-        .comparison-field-value {
-            color: #cbd5e1;
-            font-weight: 500;
-            flex: 1;
-            text-align: right;
-        }
-
-        .comparison-field-value.match {
-            color: #10b981;
-        }
-
-        .comparison-field-value.mismatch {
-            color: #ef4444;
-        }
-
-        .comparison-field-value.approved {
-            color: #10b981;
-            font-style: italic;
-        }
-
-        /* Tabs styles */
-        .comparison-tabs {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-            border-bottom: 2px solid #334155;
-            padding-bottom: 0;
-        }
-
-        .comparison-tab {
-            padding: 12px 20px;
-            background: transparent;
-            border: none;
-            border-bottom: 3px solid transparent;
-            color: #94a3b8;
-            font-size: 0.95em;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            bottom: -2px;
-        }
-
-        .comparison-tab:hover {
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .comparison-tab.active {
-            color: #60a5fa;
-            border-bottom-color: #60a5fa;
-            background: rgba(96, 165, 250, 0.1);
-        }
-
-        .comparison-tab-content {
-            display: none !important;
-            margin-top: 15px;
-        }
-
-        .comparison-tab-content.active {
-            display: block !important;
-        }
-
-        .comparison-tab-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.85em;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-
-        .comparison-tab-badge.all {
-            background: rgba(96, 165, 250, 0.2);
-            color: #60a5fa;
-        }
-
-        .comparison-tab-badge.mismatch {
-            background: rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-        }
-
-        .comparison-tab-badge.no-ocr-data {
-            background: rgba(139, 92, 246, 0.2);
-            color: #a855f7;
-        }
-
-        .comparison-tab-badge.partial {
-            background: rgba(251, 191, 36, 0.2);
-            color: #fbbf24;
-        }
-
-        .comparison-tab-badge.match {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn:disabled {
-            background: #334155;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .btn-secondary {
-            background: #334155;
-        }
-
-        .btn-secondary:hover {
-            background: #475569;
-        }
-
-        .loading {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            border: 2px solid #334155;
-            border-top-color: #667eea;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin-right: 8px;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-
-            to {
-                opacity: 0;
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideOut {
-            from {
-                transform: translateX(0);
-                opacity: 1;
-            }
-
-            to {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-        }
-
-        .alert {
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        .alert.info {
-            background: rgba(59, 130, 246, 0.1);
-            border-left: 4px solid #3b82f6;
-            color: #93c5fd;
-        }
-
-        .alert.warning {
-            background: rgba(251, 191, 36, 0.1);
-            border-left: 4px solid #fbbf24;
-            color: #fde047;
-        }
-
-        .alert.success {
-            background: rgba(16, 185, 129, 0.1);
-            border-left: 4px solid #10b981;
-            color: #6ee7b7;
-        }
-
-        .alert.error {
-            background: rgba(239, 68, 68, 0.1);
-            border-left: 4px solid #ef4444;
-            color: #fca5a5;
-        }
-
-        /* Modal/Popup Styles */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-overlay.show {
-            display: flex;
-        }
-
-        .modal-content {
-            background: #1e293b;
-            border-radius: 10px;
-            padding: 35px;
-            max-width: 1200px;
-            width: 95%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            animation: modalSlideIn 0.3s ease-out;
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.8;
-                transform: scale(1.02);
-            }
-        }
-
-        .company-info-card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .company-info-card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(16, 185, 129, 0.2);
-        }
-
-        .modal-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #334155;
-        }
-
-        .modal-icon {
-            font-size: 32px;
-            margin-right: 15px;
-        }
-
-        .modal-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #fafafa;
-            flex: 1;
-        }
-
-        .modal-body {
-            margin-bottom: 25px;
-        }
-
-        .modal-info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            color: #cbd5e1;
-            font-size: 14px;
-        }
-
-        .modal-info-item-icon {
-            margin-right: 10px;
-            font-size: 18px;
-        }
-
-        .modal-info-item-label {
-            font-weight: 600;
-            margin-right: 8px;
-            color: #94a3b8;
-        }
-
-        .modal-info-item-value {
-            color: #fafafa;
-            font-weight: 500;
-        }
-
-        .modal-company-name {
-            background: #0f172a;
-            padding: 12px 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-            border-left: 3px solid #667eea;
-            color: #fafafa;
-        }
-
-        .modal-steps {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #334155;
-        }
-
-        .modal-steps-title {
-            font-weight: 600;
-            color: #fafafa;
-            margin-bottom: 10px;
-        }
-
-        .modal-step-item {
-            color: #cbd5e1;
-            margin-bottom: 8px;
-            padding-left: 20px;
-            font-size: 14px;
-        }
-
-        .modal-footer {
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-        }
-
-        .modal-btn {
-            padding: 10px 25px;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .modal-btn-primary {
-            background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-        }
-
-        .modal-btn-primary:hover {
-            background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-        }
-
-        .modal-btn-secondary {
-            background: #334155;
-            color: #cbd5e1;
-        }
-
-        .modal-btn-secondary:hover {
-            background: #475569;
-            color: #fafafa;
-        }
-
-        .development-notice {
-            text-align: center;
-            padding: 60px 20px;
-            color: #cbd5e1;
-        }
-
-        .development-notice h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #fbbf24;
-        }
-
-        .development-notice p {
-            font-size: 16px;
-            opacity: 0.8;
-        }
-
-        /* Password Protection Overlay */
-        .password-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0e1117;
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .password-overlay.hidden {
-            display: none;
-        }
-
-        .password-box {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            border: 1px solid rgba(102, 126, 234, 0.3);
-            border-radius: 16px;
-            padding: 40px;
-            width: 420px;
-            max-width: 90%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(102, 126, 234, 0.1);
-            animation: slideUp 0.4s ease-out;
-        }
-
-        .password-box .lock-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .password-box h2 {
-            color: #fafafa;
-            font-size: 22px;
-            margin-bottom: 8px;
-        }
-
-        .password-box p {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
-
-        .password-input-group {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .password-input-group input {
-            width: 100%;
-            padding: 14px 16px;
-            padding-right: 48px;
-            background: #0f172a;
-            border: 2px solid #334155;
-            border-radius: 10px;
-            color: #fafafa;
-            font-size: 16px;
-            letter-spacing: 4px;
-            text-align: center;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .password-input-group input:focus {
-            border-color: #667eea;
-        }
-
-        .password-input-group input.error {
-            border-color: #ef4444;
-            animation: shake 0.4s ease-in-out;
-        }
-
-        .password-input-group .toggle-password {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: #94a3b8;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 4px;
-        }
-
-        .password-input-group .toggle-password:hover {
-            color: #fafafa;
-        }
-
-        .password-error-msg {
-            color: #ef4444;
-            font-size: 13px;
-            margin-top: -12px;
-            margin-bottom: 16px;
-            display: none;
-        }
-
-        .password-error-msg.show {
-            display: block;
-        }
-
-        .password-submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .password-submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        @keyframes shake {
-
-            0%,
-            100% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(-8px);
-            }
-
-            50% {
-                transform: translateX(8px);
-            }
-
-            75% {
-                transform: translateX(-4px);
-            }
-        }
-
-        .main-content-hidden {
-            display: none !important;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Password Protection Overlay (สำหรับแท็บตรวจภาษีมูลค่าเพิ่ม) -->
-    <div class="password-overlay hidden" id="passwordOverlay">
-        <div class="password-box">
-            <div class="lock-icon">🔒</div>
-            <h2>ต้องการรหัสผ่าน</h2>
-            <p>กรุณากรอกรหัสผ่านเพื่อเข้าถึงหน้าตรวจภาษีมูลค่าเพิ่ม</p>
-            <div class="password-input-group">
-                <input type="password" id="accessCodeInput" placeholder="กรอกรหัสผ่าน" autocomplete="off"
-                    maxlength="20">
-                <button class="toggle-password" onclick="togglePasswordVisibility()" type="button">🔍</button>
-            </div>
-            <div class="password-error-msg" id="passwordErrorMsg">❌ รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</div>
-            <button class="password-submit-btn" onclick="verifyAccessCode()" id="passwordSubmitBtn">เข้าสู่ระบบ</button>
-            <button onclick="closePasswordModal()"
-                style="width: 100%; padding: 12px; margin-top: 10px; background: #334155; color: #94a3b8; border: none; border-radius: 10px; font-size: 14px; cursor: pointer; transition: all 0.3s;"
-                onmouseover="this.style.background='#475569'; this.style.color='#fafafa';"
-                onmouseout="this.style.background='#334155'; this.style.color='#94a3b8';">⬅️ ย้อนกลับ</button>
-        </div>
-    </div>
-
-    <div class="container" id="mainContainer">
-        <div class="header">
-            <h1>🔍 ตรวจภาษี</h1>
-            <p>ระบบตรวจสอบความถูกต้องของข้อมูลภาษี</p>
-        </div>
-
-        <div class="nav-bar">
-            <a href="/" class="nav-link">🏠 หน้าแรก</a>
-            <a href="/pdf" class="nav-link">🤖 ระบบอัตโนมัติ</a>
-            <a href="/email" class="nav-link">📧 ส่งอีเมลล์</a>
-            <a href="/document-sorting" class="nav-link">📋 คัดแยกเอกสาร</a>
-            <a href="/auditcheck" class="nav-link active">🔍 ตรวจภาษี</a>
-            <a href="/pnd1k-filing" class="nav-link">📋 ยื่น ภ.ง.ด.1ก/กท.20</a>
-        </div>
-
-        <div class="tabs">
-            <button class="tab-button" onclick="switchTab('withholding')">ตรวจภาษีหัก ณ ที่จ่าย</button>
-            <button class="tab-button" onclick="switchTab('vat')">ตรวจภาษีมูลค่าเพิ่ม</button>
-            <button class="tab-button active" onclick="switchTab('ocr-queue')">ระบบฝากอ่านข้อมูล</button>
-        </div>
-
-        <!-- Tab: ตรวจภาษีหัก ณ ที่จ่าย -->
-        <div id="withholding-tab" class="tab-content">
-            <div class="development-notice">
-                <h2>🚧 กำลังพัฒนา</h2>
-                <p>ฟีเจอร์นี้กำลังอยู่ในขั้นตอนการพัฒนา</p>
-            </div>
-        </div>
-
-        <!-- Tab: ระบบฝากอ่านข้อมูล -->
-        <div id="ocr-queue-tab" class="tab-content active">
-            <div class="form-section">
-                <h2 style="color: #fafafa; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                    <span style="font-size: 1.5em;">📥</span>
-                    <span>ระบบฝากอ่านข้อมูล OCR</span>
-                </h2>
-
-                <div style="background: #0f172a; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                    <div class="form-group">
-                        <label
-                            style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
-                            <span>📁</span>
-                            <span>ที่อยู่ไฟล์หรือโฟลเดอร์</span>
-                        </label>
-                        <input type="text" id="ocrQueuePath" class="form-control"
-                            placeholder="ตัวอย่าง: V:/A.โฟร์เดอร์หลัก/บริษัท ABC/2025-01"
-                            style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;"
-                            onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
-                            onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';" />
-                        <div style="color: #94a3b8; font-size: 0.85em; margin-top: 8px;">
-                            💡 สามารถระบุที่อยู่ไฟล์หรือโฟลเดอร์ที่ต้องการอ่านข้อมูล OCR
-                        </div>
-                    </div>
-
-                    <button type="button" onclick="submitOCRQueue()" id="submitOCRQueueBtn"
-                        style="width: 100%; padding: 15px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 1em; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 15px;"
-                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(139, 92, 246, 0.4)';"
-                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(139, 92, 246, 0.3)';">
-                        <span style="font-size: 1.2em;">🚀</span>
-                        <span>เริ่มอ่านข้อมูล OCR</span>
-                    </button>
-                </div>
-
-                <!-- แสดงคิวที่กำลังทำงาน -->
-                <div id="ocrQueueList" style="margin-top: 20px;">
-                    <!-- คิวจะถูกแสดงที่นี่ -->
-                </div>
-            </div>
-
-            <!-- Modal สำหรับยืนยันการส่งคิว OCR -->
-            <div class="modal-overlay" id="ocrQueueConfirmModal" style="display: none; backdrop-filter: blur(4px);">
-                <div class="modal-content" style="max-width: 600px;">
-                    <div class="modal-header"
-                        style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-bottom: 2px solid rgba(139, 92, 246, 0.2); padding: 24px;">
-                        <div style="display: flex; align-items: center; gap: 16px;">
-                            <div
-                                style="width: 56px; height: 56px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);">
-                                📥
-                            </div>
-                            <div>
-                                <h3 style="color: #fafafa; font-size: 1.3em; font-weight: 700; margin: 0;">
-                                    ยืนยันการส่งคิว OCR</h3>
-                                <p style="color: #94a3b8; font-size: 0.9em; margin: 5px 0 0 0;">
-                                    ตรวจสอบข้อมูลก่อนเริ่มอ่านข้อมูล OCR</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="padding: 24px; background: #1e293b;">
-                        <div style="background: #0f172a; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                            <div class="modal-info-item"
-                                style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <span class="modal-info-item-icon">📁</span>
-                                <div style="flex: 1;">
-                                    <span class="modal-info-item-label"
-                                        style="color: #94a3b8; font-size: 0.9em;">ที่อยู่ไฟล์/โฟลเดอร์:</span>
-                                    <div class="modal-info-item-value" id="ocrQueueConfirmPath"
-                                        style="color: #fafafa; font-size: 1em; font-weight: 500; word-break: break-all; margin-top: 5px;">
-                                        -</div>
-                                </div>
-                            </div>
-                            <div class="modal-info-item"
-                                style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <span class="modal-info-item-icon">📄</span>
-                                <div style="flex: 1;">
-                                    <span class="modal-info-item-label"
-                                        style="color: #94a3b8; font-size: 0.9em;">จำนวนไฟล์ทั้งหมด:</span>
-                                    <div class="modal-info-item-value" id="ocrQueueConfirmTotalFiles"
-                                        style="color: #60a5fa; font-size: 1.2em; font-weight: 700; margin-top: 5px;">-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-info-item"
-                                style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                                <span class="modal-info-item-icon">⏱️</span>
-                                <div style="flex: 1;">
-                                    <span class="modal-info-item-label"
-                                        style="color: #94a3b8; font-size: 0.9em;">เวลาที่คาดว่าจะใช้:</span>
-                                    <div class="modal-info-item-value" id="ocrQueueConfirmEstimatedTime"
-                                        style="color: #fbbf24; font-size: 1.2em; font-weight: 700; margin-top: 5px;">-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- เลือกวิธีการรัน OCR - แสดงใน modal -->
-                        <div
-                            style="margin-bottom: 20px; padding: 12px; background: #0f172a; border-radius: 8px; border: 2px solid #3b82f6;">
-                            <div style="color: #60a5fa; font-weight: 600; margin-bottom: 10px;">💡 เลือกวิธีการรัน OCR:
-                            </div>
-                            <div style="display: flex; gap: 10px; flex-direction: row; flex-wrap: wrap;">
-                                <label
-                                    style="display: flex; align-items: center; cursor: pointer; padding: 10px; background: #1e293b; border-radius: 5px; border: 2px solid #334155; flex: 1; min-width: 250px;">
-                                    <input type="radio" name="ocrQueueMode" value="new" checked
-                                        style="margin-right: 10px; cursor: pointer; flex-shrink: 0;"
-                                        id="ocrQueueModeNew">
-                                    <div style="flex: 1;">
-                                        <div style="color: #fafafa; font-weight: 600; font-size: 0.9em;">🔄
-                                            อ่านใหม่ทั้งหมด</div>
-                                        <div style="color: #94a3b8; font-size: 0.8em; margin-top: 3px;">รัน OCR
-                                            ใหม่ทั้งหมด (ไม่ใช้ cache)</div>
-                                    </div>
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; cursor: pointer; padding: 10px; background: #1e293b; border-radius: 5px; border: 2px solid #334155; flex: 1; min-width: 250px;">
-                                    <input type="radio" name="ocrQueueMode" value="continue"
-                                        style="margin-right: 10px; cursor: pointer; flex-shrink: 0;"
-                                        id="ocrQueueModeContinue">
-                                    <div style="flex: 1;">
-                                        <div style="color: #fafafa; font-weight: 600; font-size: 0.9em;">▶️
-                                            อ่านต่อจากที่ค้าง</div>
-                                        <div style="color: #94a3b8; font-size: 0.8em; margin-top: 3px;">ใช้ cache
-                                            ที่มีอยู่แล้ว และอ่านต่อจากไฟล์ที่ยังไม่ได้อ่าน</div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                        <div
-                            style="background: #fbbf2415; border-left: 4px solid #fbbf24; padding: 12px; border-radius: 8px; margin-bottom: 20px;">
-                            <div style="color: #fbbf24; font-weight: 600; margin-bottom: 5px;">💡 หมายเหตุ:</div>
-                            <div style="color: #cbd5e1; font-size: 0.9em; line-height: 1.6;">
-                                • ระบบจะประมวลผลสูงสุด 3 คิวพร้อมกัน<br>
-                                • หากคิวเต็มแล้ว กรุณารอให้คิวใดคิวหนึ่งเสร็จก่อน<br>
-                                • เวลาที่แสดงเป็นค่าประมาณ (1 รายการ/30 วินาที)
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer"
-                        style="padding: 20px 24px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-top: 1px solid rgba(51, 65, 85, 0.5); display: flex; justify-content: flex-end; gap: 12px;">
-                        <button class="modal-btn modal-btn-secondary" onclick="closeOCRQueueConfirmModal()"
-                            style="padding: 10px 24px; border-radius: 8px; transition: all 0.3s ease;"
-                            onmouseover="this.style.transform='translateY(-1px)';"
-                            onmouseout="this.style.transform='translateY(0)';">
-                            ยกเลิก
-                        </button>
-                        <button class="modal-btn modal-btn-primary" id="ocrQueueConfirmBtn"
-                            onclick="confirmOCRQueueSubmit()"
-                            style="padding: 10px 24px; border-radius: 8px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); transition: all 0.3s ease;"
-                            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(139, 92, 246, 0.4)';"
-                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(139, 92, 246, 0.3)';">
-                            ✅ ยืนยันและเริ่มอ่าน
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tab: ตรวจภาษีมูลค่าเพิ่ม -->
-        <div id="vat-tab" class="tab-content">
-            <div class="form-section">
-                <div class="form-group">
-                    <label>📅 เลือกเดือนภาษี</label>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                        <select id="taxMonth" class="form-control">
-                            <option value="">-- เลือกเดือน --</option>
-                            <option value="01">มกราคม</option>
-                            <option value="02">กุมภาพันธ์</option>
-                            <option value="03">มีนาคม</option>
-                            <option value="04">เมษายน</option>
-                            <option value="05">พฤษภาคม</option>
-                            <option value="06">มิถุนายน</option>
-                            <option value="07">กรกฎาคม</option>
-                            <option value="08">สิงหาคม</option>
-                            <option value="09">กันยายน</option>
-                            <option value="10">ตุลาคม</option>
-                            <option value="11">พฤศจิกายน</option>
-                            <option value="12">ธันวาคม</option>
-                        </select>
-                        <select id="taxYear" class="form-control">
-                            <!-- ปีจะถูกสร้างโดย JavaScript -->
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>🏢 ชื่อบริษัทที่ตรวจ</label>
-                    <div class="autocomplete-wrapper">
-                        <input type="text" id="companySelect" class="autocomplete-input"
-                            placeholder="พิมพ์เพื่อค้นหาหรือเลือกบริษัท..." autocomplete="off" />
-                        <button type="button" class="autocomplete-clear" id="clearCompany" onclick="clearCompany()"
-                            style="display: none;">×</button>
-                        <div class="autocomplete-dropdown" id="companyDropdown"></div>
-                    </div>
-                    <input type="hidden" id="companyValue" />
-                </div>
-
-                <div class="form-group" id="companyInfoGroup" style="display: none;">
-                    <label
-                        style="display: flex; align-items: center; gap: 8px; font-size: 1.1em; font-weight: 600; color: #fafafa; margin-bottom: 15px;">
-                        <span style="font-size: 1.3em;">📋</span>
-                        <span>ข้อมูลบริษัท</span>
-                    </label>
-                    <div id="companyInfoCard" class="company-info-card-hover"
-                        style="margin-top: 10px; padding: 24px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 12px; border: 1px solid #334155; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(16, 185, 129, 0.1);">
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 2px solid rgba(51, 65, 85, 0.5);">
-                            <div style="flex: 1;">
-                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                                    <div
-                                        style="width: 4px; height: 24px; background: linear-gradient(180deg, #10b981 0%, #059669 100%); border-radius: 2px;">
-                                    </div>
-                                    <div>
-                                        <div
-                                            style="color: #60a5fa; font-size: 0.75em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">
-                                            Build</div>
-                                        <div style="color: #fafafa; font-size: 1.3em; font-weight: 700; background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
-                                            id="companyBuild">-</div>
-                                    </div>
-                                </div>
-                                <div style="margin-top: 16px;">
-                                    <div
-                                        style="color: #94a3b8; font-size: 0.75em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">
-                                        ชื่อบริษัท</div>
-                                    <div style="color: #fafafa; font-size: 1.05em; font-weight: 500; line-height: 1.5;"
-                                        id="companyName">-</div>
-                                </div>
-                                <div style="margin-top: 16px;">
-                                    <div
-                                        style="color: #94a3b8; font-size: 0.75em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">
-                                        เลขประจำตัวผู้เสียภาษี 13 หลัก</div>
-                                    <div style="color: #fafafa; font-size: 1.05em; font-weight: 500; line-height: 1.5;"
-                                        id="companyTaxId">-</div>
-                                </div>
-                            </div>
-                            <button type="button" onclick="openDatabaseModal()"
-                                style="padding: 10px 20px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; display: flex; align-items: center; gap: 6px;"
-                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(59, 130, 246, 0.4)';"
-                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.3)';">
-                                <span>✏️</span>
-                                <span>แก้ไขข้อมูล</span>
-                            </button>
-                        </div>
-
-                        <div style="padding-top: 20px;">
-                            <div
-                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-                                <div style="padding: 16px; background: rgba(15, 23, 42, 0.6); border-radius: 8px; border: 1px solid rgba(51, 65, 85, 0.3); transition: all 0.3s ease;"
-                                    onmouseover="this.style.borderColor='rgba(96, 165, 250, 0.5)'; this.style.background='rgba(15, 23, 42, 0.8)';"
-                                    onmouseout="this.style.borderColor='rgba(51, 65, 85, 0.3)'; this.style.background='rgba(15, 23, 42, 0.6)';">
-                                    <div
-                                        style="display: flex; align-items: center; gap: 8px; color: #60a5fa; font-size: 0.85em; font-weight: 600; margin-bottom: 10px;">
-                                        <span style="font-size: 1.2em;">📍</span>
-                                        <span>ที่อยู่บริษัท</span>
-                                    </div>
-                                    <div style="color: #cbd5e1; font-size: 0.95em; line-height: 1.7;"
-                                        id="companyAddress">-</div>
-                                </div>
-                                <div style="padding: 16px; background: rgba(15, 23, 42, 0.6); border-radius: 8px; border: 1px solid rgba(51, 65, 85, 0.3); transition: all 0.3s ease;"
-                                    onmouseover="this.style.borderColor='rgba(96, 165, 250, 0.5)'; this.style.background='rgba(15, 23, 42, 0.8)';"
-                                    onmouseout="this.style.borderColor='rgba(51, 65, 85, 0.3)'; this.style.background='rgba(15, 23, 42, 0.6)';">
-                                    <div
-                                        style="display: flex; align-items: center; gap: 8px; color: #60a5fa; font-size: 0.85em; font-weight: 600; margin-bottom: 10px;">
-                                        <span style="font-size: 1.2em;">📊</span>
-                                        <span>สถานะภาษีมูลค่าเพิ่ม</span>
-                                    </div>
-                                    <div style="color: #cbd5e1; font-size: 0.95em;" id="companyVatStatus">-</div>
-                                </div>
-                                <div style="padding: 16px; background: rgba(15, 23, 42, 0.6); border-radius: 8px; border: 1px solid rgba(51, 65, 85, 0.3); transition: all 0.3s ease;"
-                                    onmouseover="this.style.borderColor='rgba(96, 165, 250, 0.5)'; this.style.background='rgba(15, 23, 42, 0.8)';"
-                                    onmouseout="this.style.borderColor='rgba(51, 65, 85, 0.3)'; this.style.background='rgba(15, 23, 42, 0.6)';">
-                                    <div
-                                        style="display: flex; align-items: center; gap: 8px; color: #60a5fa; font-size: 0.85em; font-weight: 600; margin-bottom: 10px;">
-                                        <span style="font-size: 1.2em;">📅</span>
-                                        <span>วันที่จดภาษีมูลค่าเพิ่ม</span>
-                                    </div>
-                                    <div style="color: #cbd5e1; font-size: 0.95em;" id="companyVatDate">-</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="noCompanyData"
-                            style="display: none; margin-top: 20px; padding: 20px; background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%); border-radius: 10px; border: 2px dashed rgba(251, 191, 36, 0.3);">
-                            <div
-                                style="display: flex; align-items: center; gap: 10px; color: #fbbf24; margin-bottom: 12px; font-weight: 600;">
-                                <span style="font-size: 1.5em;">⚠️</span>
-                                <span>ยังไม่มีข้อมูลบริษัท</span>
-                            </div>
-                            <div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 16px; line-height: 1.6;">
-                                กรุณาเพิ่มข้อมูลบริษัท (Build, ชื่อบริษัท, ที่อยู่, สถานะภาษี, วันที่จด)
-                                เพื่อเชื่อมโยงกับบริษัทนี้</div>
-                            <button type="button" onclick="openDatabaseModal()"
-                                style="padding: 10px 20px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 6px;"
-                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(16, 185, 129, 0.4)';"
-                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)';">
-                                <span>➕</span>
-                                <span>เพิ่มข้อมูลบริษัท</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- ส่วนแสดงข้อมูลภายในสาขา (สำหรับบริษัทพิเศษที่มีสาขา) -->
-                    <div id="branchInfoSection"
-                        style="display: none; margin-top: 20px; padding: 20px; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 12px; border: 1px solid #334155;">
-                        <div
-                            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <span style="font-size: 1.5em;">📁</span>
-                                <div>
-                                    <div style="color: #fafafa; font-size: 1.1em; font-weight: 600;"
-                                        id="branchInfoTitle">ข้อมูลภายในสาขา</div>
-                                    <div style="color: #94a3b8; font-size: 0.85em; margin-top: 4px;"
-                                        id="branchInfoPath">-</div>
-                                </div>
-                            </div>
-                            <button onclick="loadBranchInfo()"
-                                style="padding: 8px 16px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; gap: 6px;"
-                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(59, 130, 246, 0.4)';"
-                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                                <span>🔄</span>
-                                <span>รีเฟรช</span>
-                            </button>
-                        </div>
-                        <div id="branchInfoContent" style="min-height: 100px;">
-                            <div style="padding: 20px; text-align: center; color: #94a3b8;">
-                                <div style="font-size: 1.2em; margin-bottom: 10px;">📂</div>
-                                <div>กดปุ่ม "รีเฟรช" เพื่อดูข้อมูลภายในสาขา</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <button class="btn" onclick="startAudit()">🚀 เริ่มตรวจสอบ</button>
-            </div>
-
-            <!-- Modal/Popup for OCR Confirmation -->
-            <div class="modal-overlay" id="ocrConfirmModal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="modal-icon">🤖</div>
-                        <div class="modal-title">ยืนยันการรัน OCR</div>
-                    </div>
-                    <div class="modal-body">
-                        <!-- ข้อมูล OCR แนวนอน -->
-                        <div
-                            style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #334155;">
-                            <div class="modal-info-item" style="flex: 1; min-width: 150px;">
-                                <span class="modal-info-item-icon">📅</span>
-                                <span class="modal-info-item-label">เดือนภาษี:</span>
-                                <span class="modal-info-item-value" id="modalTaxMonth">-</span>
-                            </div>
-                            <div class="modal-info-item" style="flex: 2; min-width: 200px;">
-                                <span class="modal-info-item-icon">🏢</span>
-                                <span class="modal-info-item-label">ชื่อบริษัท:</span>
-                                <span class="modal-info-item-value" id="modalCompanyName"
-                                    style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">-</span>
-                            </div>
-                            <div class="modal-info-item" style="flex: 1; min-width: 150px;">
-                                <span class="modal-info-item-icon">📄</span>
-                                <span class="modal-info-item-label">จำนวนไฟล์:</span>
-                                <span class="modal-info-item-value" id="modalTotalFiles">-</span>
-                            </div>
-                            <div class="modal-info-item" style="flex: 1; min-width: 150px;">
-                                <span class="modal-info-item-icon">⏱️</span>
-                                <span class="modal-info-item-label">เวลา:</span>
-                                <span class="modal-info-item-value" id="modalEstimatedTime">-</span>
-                            </div>
-                        </div>
-                        <!-- ระบบจะ: แนวนอน -->
-                        <div class="modal-steps"
-                            style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #334155;">
-                            <div class="modal-steps-title" style="margin-bottom: 8px;">ระบบจะ:</div>
-                            <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                                <div class="modal-step-item" style="flex: 1; min-width: 200px; margin-bottom: 0;">1.
-                                    ค้นหาไฟล์ PDF ในโฟลเดอร์ VAT</div>
-                                <div class="modal-step-item" style="flex: 1; min-width: 200px; margin-bottom: 0;">2. รัน
-                                    OCR จากไฟล์ PDF</div>
-                                <div class="modal-step-item" style="flex: 1; min-width: 200px; margin-bottom: 0;">3.
-                                    ดึงข้อมูลและแสดงผลบนเว็บ</div>
-                            </div>
-                        </div>
-                        <!-- ส่วนเลือกโฟลเดอร์ย่อย - แนวนอน -->
-                        <div id="folderSelectionContainer"
-                            style="margin-top: 15px; padding: 12px; background: #0f172a; border-radius: 8px; border: 2px solid #3b82f6; display: none;">
-                            <div
-                                style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                                <div style="color: #60a5fa; font-weight: 600;">📁 เลือกโฟลเดอร์ที่ต้องการอ่าน:</div>
-                                <div style="display: flex; gap: 8px;">
-                                    <button onclick="selectAllFolders()"
-                                        style="padding: 6px 12px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85em;">เลือกทั้งหมด</button>
-                                    <button onclick="deselectAllFolders()"
-                                        style="padding: 6px 12px; background: #64748b; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85em;">ยกเลิกทั้งหมด</button>
-                                </div>
-                            </div>
-                            <div id="folderCheckboxes"
-                                style="display: flex; flex-direction: row; gap: 6px; overflow-x: auto; overflow-y: hidden; padding: 5px; scrollbar-width: thin;">
-                                <!-- จะถูกเติมด้วย JavaScript -->
-                            </div>
-                        </div>
-                        <!-- เลือกวิธีการรัน OCR - แนวนอน -->
-                        <div
-                            style="margin-top: 15px; padding: 12px; background: #0f172a; border-radius: 8px; border: 2px solid #3b82f6;">
-                            <div style="color: #60a5fa; font-weight: 600; margin-bottom: 10px;">💡 เลือกวิธีการรัน OCR:
-                            </div>
-                            <div style="display: flex; gap: 10px; flex-direction: row; flex-wrap: wrap;">
-                                <label
-                                    style="display: flex; align-items: center; cursor: pointer; padding: 10px; background: #1e293b; border-radius: 5px; border: 2px solid #334155; flex: 1; min-width: 250px;">
-                                    <input type="radio" name="ocrMode" value="new" checked
-                                        style="margin-right: 10px; cursor: pointer; flex-shrink: 0;" id="ocrModeNew">
-                                    <div style="flex: 1;">
-                                        <div style="color: #fafafa; font-weight: 600; font-size: 0.9em;">🔄
-                                            อ่านใหม่ทั้งหมด</div>
-                                        <div style="color: #94a3b8; font-size: 0.8em; margin-top: 3px;">รัน OCR
-                                            ใหม่ทั้งหมด (ไม่ใช้ cache)</div>
-                                    </div>
-                                </label>
-                                <label
-                                    style="display: flex; align-items: center; cursor: pointer; padding: 10px; background: #1e293b; border-radius: 5px; border: 2px solid #334155; flex: 1; min-width: 250px;">
-                                    <input type="radio" name="ocrMode" value="continue"
-                                        style="margin-right: 10px; cursor: pointer; flex-shrink: 0;"
-                                        id="ocrModeContinue">
-                                    <div style="flex: 1;">
-                                        <div style="color: #fafafa; font-weight: 600; font-size: 0.9em;">▶️
-                                            อ่านต่อจากที่ค้าง</div>
-                                        <div style="color: #94a3b8; font-size: 0.8em; margin-top: 3px;">ใช้ cache
-                                            ที่มีอยู่แล้ว และอ่านต่อจากไฟล์ที่ยังไม่ได้อ่าน</div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="modal-btn modal-btn-secondary" onclick="closeOCRConfirmModal()">ยกเลิก</button>
-                        <button class="modal-btn modal-btn-primary" id="modalConfirmBtn">ตกลง</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal สำหรับเพิ่ม/แก้ไขข้อมูลบริษัท -->
-            <div class="modal-overlay" id="databaseModal" style="display: none; backdrop-filter: blur(4px);">
-                <div class="modal-content" style="max-width: 700px;">
-                    <div class="modal-header"
-                        style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-bottom: 2px solid rgba(59, 130, 246, 0.2); padding: 24px;">
-                        <div style="display: flex; align-items: center; justify-content: space-between;">
-                            <div style="display: flex; align-items: center; gap: 16px;">
-                                <div
-                                    style="width: 56px; height: 56px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);">
-                                    🏢
-                                </div>
-                                <div>
-                                    <div class="modal-title"
-                                        style="font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #fafafa 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                                        เพิ่ม/แก้ไขข้อมูลบริษัท</div>
-                                    <div style="color: #94a3b8; font-size: 0.85em; margin-top: 4px;">กรอกข้อมูลบริษัท
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-body" style="padding: 24px; background: #0f172a;">
-                        <form id="companyForm">
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
-                                    <span>🔢</span>
-                                    <span>Build</span>
-                                    <span style="color: #ef4444;">*</span>
-                                </label>
-                                <input type="text" id="companyBuildInput" class="form-control"
-                                    placeholder="เช่น Build001, Build002" required
-                                    style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;"
-                                    onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
-                                    onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';" />
-                            </div>
-
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
-                                    <span>🏢</span>
-                                    <span>ชื่อบริษัท</span>
-                                    <span style="color: #ef4444;">*</span>
-                                </label>
-                                <input type="text" id="companyNameInput" class="form-control"
-                                    placeholder="กรุณากรอกชื่อบริษัท" required
-                                    style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;"
-                                    onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
-                                    onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';" />
-                            </div>
-
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
-                                    <span>🆔</span>
-                                    <span>เลขประจำตัวผู้เสียภาษี 13 หลัก</span>
-                                </label>
-                                <input type="text" id="companyTaxIdInput" class="form-control"
-                                    placeholder="กรุณากรอกเลขประจำตัวผู้เสียภาษี 13 หลัก" maxlength="13"
-                                    pattern="[0-9]{13}"
-                                    style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;"
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');"
-                                    onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
-                                    onblur="this.style.borderColor='#334155'; this.style.boxShadow='none'; validateTaxId(this);" />
-                                <div id="taxIdError"
-                                    style="color: #ef4444; font-size: 0.85em; margin-top: 5px; display: none;"></div>
-                            </div>
-
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
-                                    <span>📊</span>
-                                    <span>สถานะภาษีมูลค่าเพิ่ม</span>
-                                    <span style="color: #ef4444;">*</span>
-                                </label>
-                                <select id="companyVatStatusInput" class="form-control" required
-                                    style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;"
-                                    onchange="handleVatStatusChange()"
-                                    onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
-                                    onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';">
-                                    <option value="">-- เลือกสถานะ --</option>
-                                    <option value="จดภาษีมูลค่าเพิ่ม">จดภาษีมูลค่าเพิ่ม</option>
-                                    <option value="ยังไม่จดภาษีมูลค่าเพิ่ม">ยังไม่จดภาษีมูลค่าเพิ่ม</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
-                                    <span>📅</span>
-                                    <span>วันที่จดภาษีมูลค่าเพิ่ม</span>
-                                    <span id="vatDateRequired" style="color: #ef4444; display: none;">*</span>
-                                </label>
-                                <input type="date" id="companyVatDateInput" class="form-control"
-                                    style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;"
-                                    onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
-                                    onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';" />
-                            </div>
-
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
-                                    <span>📍</span>
-                                    <span>ที่อยู่บริษัท</span>
-                                    <span style="color: #ef4444;">*</span>
-                                </label>
-                                <textarea id="companyAddressInput" class="form-control" rows="8"
-                                    placeholder="กรุณากรอกที่อยู่บริษัท" required
-                                    style="background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease; resize: both; min-height: 120px; width: 100%;"
-                                    onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
-                                    onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';"></textarea>
-                            </div>
-
-                            <div class="form-group" style="margin-bottom: 20px;">
-                                <label
-                                    style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #fafafa; margin-bottom: 10px;">
-                                    <span>🗄️</span>
-                                    <span>ฐานข้อมูล</span>
-                                </label>
-                                <div style="display: flex; gap: 8px; align-items: center;">
-                                    <select id="companyDatabaseSelect" class="form-control"
-                                        style="flex: 1; background: #1e293b; border: 2px solid #334155; border-radius: 8px; padding: 12px 16px; color: #fafafa; font-size: 0.95em; transition: all 0.3s ease;"
-                                        onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
-                                        onblur="this.style.borderColor='#334155'; this.style.boxShadow='none';">
-                                        <option value="">-- ไม่เลือกฐานข้อมูล --</option>
-                                    </select>
-                                    <button type="button" onclick="openDatabaseManagementModal()"
-                                        style="padding: 12px 20px; background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9em; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3); transition: all 0.3s ease; white-space: nowrap;"
-                                        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(139, 92, 246, 0.4)';"
-                                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(139, 92, 246, 0.3)';">
-                                        <span style="font-size: 1.1em;">⚙️</span>
-                                        <span>จัดการฐานข้อมูล</span>
-                                    </button>
-                                </div>
-                                <div style="color: #94a3b8; font-size: 0.85em; margin-top: 8px;">
-                                    เลือกฐานข้อมูลที่ต้องการเชื่อมโยงกับบริษัทนี้ (ถ้ามี)
-                                </div>
-                            </div>
-
-                            <div style="display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;">
-                                <button type="button"
-                                    onclick="window.open('https://vsinter.rd.go.th/rd-webcontent-web/#/vatsearch', '_blank')"
-                                    style="flex: 1; min-width: 200px; padding: 12px 20px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px;"
-                                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(16, 185, 129, 0.4)';"
-                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)';">
-                                    <span style="font-size: 1.1em;">🔗</span>
-                                    <span>ไปยังหน้า VAT-Info</span>
-                                </button>
-                                <button type="button"
-                                    onclick="window.open('https://datawarehouse.dbd.go.th/', '_blank')"
-                                    style="flex: 1; min-width: 200px; padding: 12px 20px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95em; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px;"
-                                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(59, 130, 246, 0.4)';"
-                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.3)';">
-                                    <span style="font-size: 1.1em;">🏛️</span>
-                                    <span>ไปยังหน้า DBD - DWH</span>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer"
-                        style="padding: 20px 24px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-top: 1px solid rgba(51, 65, 85, 0.5); display: flex; justify-content: flex-end; gap: 12px;">
-                        <button class="modal-btn modal-btn-secondary" onclick="closeDatabaseModal()"
-                            style="padding: 10px 24px; border-radius: 8px; transition: all 0.3s ease;"
-                            onmouseover="this.style.transform='translateY(-1px)';"
-                            onmouseout="this.style.transform='translateY(0)';">
-                            ยกเลิก
-                        </button>
-                        <button class="modal-btn modal-btn-primary" id="saveDatabaseBtn"
-                            onclick="saveCompanyConfigForm()"
-                            style="padding: 10px 24px; border-radius: 8px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); transition: all 0.3s ease;"
-                            onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(59, 130, 246, 0.4)';"
-                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.3)';">
-                            💾 บันทึก
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal เลือกสาขา -->
-            <div class="modal-overlay" id="branchSelectionModal" style="display: none; backdrop-filter: blur(4px);">
-                <div class="modal-content" style="max-width: 800px;">
-                    <div class="modal-header"
-                        style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-bottom: 2px solid rgba(59, 130, 246, 0.2); padding: 24px;">
-                        <div style="display: flex; align-items: center; justify-content: space-between;">
-                            <div style="display: flex; align-items: center; gap: 16px;">
-                                <div
-                                    style="width: 56px; height: 56px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
-                                    🏢
-                                </div>
-                                <div>
-                                    <div class="modal-title"
-                                        style="font-size: 1.4em; font-weight: 700; background: linear-gradient(135deg, #fafafa 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                                        เลือกสาขา</div>
-                                    <div style="color: #94a3b8; font-size: 0.85em; margin-top: 4px;"
-                                        id="branchModalCompanyName">-</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-body"
-                        style="padding: 24px; background: #0f172a; max-height: 60vh; overflow-y: auto;">
-                        <div id="branchLoading" style="text-align: center; padding: 40px; color: #94a3b8;">
-                            <div style="font-size: 1.2em; margin-bottom: 10px;">⏳</div>
-                            <div>กำลังโหลดรายการสาขา...</div>
-                        </div>
-                        <div id="branchList" style="display: none;">
-                            <!-- รายการสาขาจะถูกสร้างโดย JavaScript -->
-                        </div>
-                        <div id="branchError" style="display: none; text-align: center; padding: 40px; color: #ef4444;">
-                            <div style="font-size: 1.2em; margin-bottom: 10px;">❌</div>
-                            <div id="branchErrorMessage">เกิดข้อผิดพลาดในการโหลดรายการสาขา</div>
-                        </div>
-                    </div>
-                    <div class="modal-footer"
-                        style="padding: 20px 24px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-top: 1px solid rgba(51, 65, 85, 0.5); display: flex; justify-content: flex-end; gap: 12px;">
-                        <button class="modal-btn modal-btn-secondary" onclick="closeBranchSelectionModal()"
-                            style="padding: 10px 24px; border-radius: 8px; transition: all 0.3s ease;"
-                            onmouseover="this.style.transform='translateY(-1px)';"
-                            onmouseout="this.style.transform='translateY(0)';">
-                            ยกเลิก
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="steps-container" id="stepsContainer" style="display: none;">
-                <!-- Step 1: มีไฟล์ งบทดลอง -->
-                <div class="step" id="step1">
-                    <div class="step-header">
-                        <div style="display: flex; align-items: center;">
-                            <span class="step-number">1</span>
-                            <span class="step-title">มีไฟล์ งบทดลอง</span>
-                        </div>
-                        <span class="step-status pending" id="step1Status">รอตรวจสอบ</span>
-                    </div>
-                    <div class="step-content">
-                        <div class="step-details" id="step1Details">กำลังตรวจสอบ...</div>
-                    </div>
-                </div>
-
-                <!-- Step 2: มีไฟล์ ภาษีซื้อ (เดิมเป็น Step 3) -->
-                <div class="step" id="step2">
-                    <div class="step-header">
-                        <div style="display: flex; align-items: center;">
-                            <span class="step-number">2</span>
-                            <span class="step-title">มีไฟล์ ภาษีซื้อ</span>
-                        </div>
-                        <span class="step-status pending" id="step2Status">รอตรวจสอบ</span>
-                    </div>
-                    <div class="step-content">
-                        <div class="step-details" id="step2Details">รอการตรวจสอบขั้นตอนก่อนหน้า...</div>
-                    </div>
-                </div>
-
-                <!-- Step 3: ข้อมูลรายการงบทดลอง (เดิมเป็น Step 4) -->
-                <div class="step" id="step3">
-                    <div class="step-header">
-                        <div style="display: flex; align-items: center;">
-                            <span class="step-number">3</span>
-                            <span class="step-title">ข้อมูลรายการงบทดลอง</span>
-                        </div>
-                        <span class="step-status pending" id="step3Status">รอตรวจสอบ</span>
-                    </div>
-                    <div class="step-content">
-                        <div class="step-details" id="step3Details">รอการตรวจสอบขั้นตอนก่อนหน้า...</div>
-                    </div>
-                </div>
-
-                <!-- Step 4: มีไฟล์ Excel ที่ส่งออกจากระบบ OCR (เดิมเป็น Step 2) -->
-                <div class="step" id="step4">
-                    <div class="step-header">
-                        <div style="display: flex; align-items: center;">
-                            <span class="step-number">4</span>
-                            <span class="step-title">มีไฟล์ Excel ที่ส่งออกจากระบบ OCR</span>
-                        </div>
-                        <span class="step-status pending" id="step4Status">รอตรวจสอบ</span>
-                    </div>
-                    <div class="step-content">
-                        <div class="step-details" id="step4Details">รอการตรวจสอบขั้นตอนก่อนหน้า...</div>
-                    </div>
-                </div>
-
-                <!-- Step 5: ผลเทียบข้อมูลภาษีซื้อและไฟล์ OCR -->
-                <div class="step" id="step5">
-                    <div class="step-header">
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <div style="display: flex; align-items: center;">
-                                <span class="step-number">5</span>
-                                <span class="step-title">ผลเทียบข้อมูลภาษีซื้อและไฟล์ OCR</span>
-                            </div>
-                            <!-- ปุ่มส่งออก Excel -->
-                            <button onclick="exportToExcel()"
-                                style="padding: 8px 16px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; font-weight: 600; display: none; align-items: center; gap: 6px; transition: all 0.3s;"
-                                id="exportExcelBtn"
-                                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.4)';"
-                                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                                <span style="font-size: 1.1em;">📊</span> ส่งออก Excel
-                            </button>
-                        </div>
-                        <span class="step-status pending" id="step5Status">รอตรวจสอบ</span>
-                    </div>
-                    <div class="step-content">
-                        <div class="step-details" id="step5Details">รอการตรวจสอบขั้นตอนก่อนหน้า...</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
         // เก็บข้อมูล OCR จาก Step 4 เพื่อใช้ใน Step 5 (global variable)
         let step4OCRData = null;
-
+        
         // เก็บข้อมูล Step 4 สำหรับใช้เมื่อกดยกเลิก
         let step4Data = null;
-
+        
         // Load companies on page load
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             loadCompanies();
-
+            
             // Setup year dropdown first - ใช้ setTimeout เพื่อให้แน่ใจว่า DOM พร้อมแล้ว
-            setTimeout(function () {
+            setTimeout(function() {
                 setupYearDropdown();
-
+                
                 // Auto-restore สถานะการตรวจสอบ (ถ้ามี)
                 autoRestoreAuditState();
             }, 100);
-
-            // โหลดคิว OCR เพราะเป็นแท็บเริ่มต้น
-            setTimeout(function () {
-                loadOCRQueue();
-                startOCRQueuePolling();
-            }, 200);
         });
-
+        
         /**
          * Auto-restore สถานะการตรวจสอบเมื่อโหลดหน้าเว็บ
          */
         async function autoRestoreAuditState() {
             // รอให้ form elements พร้อมก่อน
             await new Promise(resolve => setTimeout(resolve, 500));
-
+            
             const taxMonth = document.getElementById('taxMonth')?.value;
             const taxYear = document.getElementById('taxYear')?.value;
             const company = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value;
-
+            
             // ถ้ายังไม่ได้เลือกข้อมูล ให้ไม่ restore
             if (!taxMonth || !taxYear || !company) {
                 console.log('⚠️ ยังไม่ได้เลือกข้อมูล - ข้าม auto-restore');
                 return;
             }
-
+            
             const taxMonthFormatted = `${taxYear}-${taxMonth}`;
-
+            
             // โหลดสถานะ
             const savedState = await loadAuditState(company, taxMonthFormatted);
-
+            
             if (savedState) {
                 // แปลงวันที่และเวลาล่าสุดที่บันทึก
                 const lastSavedTimestamp = savedState.last_saved || savedState.timestamp;
@@ -2001,7 +61,7 @@
                 } else {
                     lastSavedDate = 'ไม่ทราบวันที่';
                 }
-
+                
                 // ถามผู้ใช้ว่าต้องการ restore หรือไม่
                 const shouldRestore = confirm(
                     `ต้องการจะดึงข้อมูลเดิมที่เคยตรวจไปแล้ว วันที่และเวลาล่าสุดที่ระบบบันทึก หรือไม่?\n\n` +
@@ -2012,10 +72,10 @@
                     `- เอกสารใช้ไม่ได้: ${Object.keys(savedState.invalidDocuments || {}).length} รายการ\n\n` +
                     `กด "OK" เพื่อดึงข้อมูลเดิม หรือ "Cancel" เพื่อเริ่มตรวจใหม่`
                 );
-
+                
                 if (shouldRestore) {
                     restoreAuditState(savedState);
-
+                    
                     // ถ้ามี comparison results ให้ refresh Step 5
                     if (savedState.comparisonResults && savedState.comparisonResults.count > 0) {
                         console.log('🔄 กำลัง refresh Step 5 เพื่อแสดงข้อมูลที่ restore...');
@@ -2024,19 +84,19 @@
                             checkStep5(taxMonthFormatted, company);
                         }, 1000);
                     }
-
+                    
                     showToast('success', '✅ โหลดข้อมูลการตรวจสอบที่บันทึกไว้เรียบร้อยแล้ว');
                 }
             }
         }
-
+        
         function setupYearDropdown() {
             console.log('🔄 เริ่มต้น setupYearDropdown()');
             const yearSelect = document.getElementById('taxYear');
             if (!yearSelect) {
                 console.error('❌ ไม่พบ element taxYear');
                 // ลองหาใหม่หลังจาก delay
-                setTimeout(function () {
+                setTimeout(function() {
                     const retrySelect = document.getElementById('taxYear');
                     if (retrySelect) {
                         console.log('✅ พบ element taxYear หลังจาก delay');
@@ -2047,14 +107,14 @@
                 }, 500);
                 return;
             }
-
+            
             console.log('✅ พบ element taxYear แล้ว กำลังสร้าง dropdown...');
-
+            
             // ล้าง options เดิมทั้งหมด
             yearSelect.innerHTML = '';
-
+            
             const currentYear = new Date().getFullYear();
-
+            
             // เพิ่มปีจากปีปัจจุบัน - 1 ถึงปีปัจจุบัน + 1 (ย้อนหลัง 1 ปี, ปีปัจจุบัน, ล่วงหน้า 1 ปี)
             for (let year = currentYear - 1; year <= currentYear + 1; year++) {
                 const option = document.createElement('option');
@@ -2066,10 +126,10 @@
                 }
                 yearSelect.appendChild(option);
             }
-
+            
             console.log(`✅ สร้าง dropdown ปีสำเร็จ: ${currentYear - 1}, ${currentYear}, ${currentYear + 1}`);
             console.log(`✅ ตั้งค่าเริ่มต้นเป็นปีปัจจุบัน: ${currentYear}`);
-
+            
             // ตรวจสอบว่า options ถูกสร้างหรือไม่
             if (yearSelect.options.length === 0) {
                 console.error('❌ ไม่สามารถสร้าง dropdown ปีได้ - ลองสร้างแบบ hardcode');
@@ -2086,19 +146,19 @@
                 });
                 console.log(`✅ สร้าง dropdown ปีแบบ hardcode สำเร็จ: ${yearSelect.options.length} ปี`);
             }
-
+            
             // ตั้งค่าเดือนปัจจุบันหลังจากสร้าง dropdown เสร็จ
-            setTimeout(function () {
+            setTimeout(function() {
                 const now = new Date();
                 const month = String(now.getMonth() + 1).padStart(2, '0');
                 const taxMonthEl = document.getElementById('taxMonth');
-
+                
                 // ตั้งค่าเดือน
                 if (taxMonthEl) {
                     taxMonthEl.value = month;
                     console.log(`✅ ตั้งค่าเดือน: ${month}`);
                 }
-
+                
                 // ตรวจสอบว่าปีถูกตั้งค่าถูกต้องหรือไม่
                 if (yearSelect && yearSelect.value != currentYear) {
                     yearSelect.value = currentYear;
@@ -2106,43 +166,24 @@
                 }
             }, 100);
         }
-
+        
         function switchTab(tabName) {
-            // ถ้าเลือกแท็บ VAT ต้องตรวจสอบรหัสผ่านทุกครั้ง
-            if (tabName === 'vat' && !window._vatPasswordVerified) {
-                // เก็บ event.target ไว้ก่อน เพราะจะใช้หลังยืนยันรหัส
-                window._pendingVatTabButton = event?.target;
-                showVatPasswordModal();
-                return;
-            }
-            // รีเซ็ต flag หลังสลับแท็บสำเร็จ
-            window._vatPasswordVerified = false;
-
             // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
-
+            
             // Remove active class from all buttons
             document.querySelectorAll('.tab-button').forEach(btn => {
                 btn.classList.remove('active');
             });
-
+            
             // Show selected tab
             document.getElementById(tabName + '-tab').classList.add('active');
-
+            
             // Add active class to clicked button
-            if (event?.target) {
-                event.target.classList.add('active');
-            } else {
-                // หาปุ่มที่ตรงกับ tabName
-                document.querySelectorAll('.tab-button').forEach(btn => {
-                    if (btn.textContent.includes(tabName === 'vat' ? 'มูลค่าเพิ่ม' : tabName === 'withholding' ? 'หัก ณ ที่จ่าย' : 'ฝากอ่าน')) {
-                        btn.classList.add('active');
-                    }
-                });
-            }
-
+            event.target.classList.add('active');
+            
             // ถ้าเป็น OCR queue tab ให้โหลดคิว
             if (tabName === 'ocr-queue') {
                 loadOCRQueue();
@@ -2151,49 +192,27 @@
                 stopOCRQueuePolling();
             }
         }
-
-        // ฟังก์ชันแสดง Password Modal สำหรับแท็บ VAT
-        function showVatPasswordModal() {
-            const overlay = document.getElementById('passwordOverlay');
-            overlay.classList.remove('hidden');
-            overlay.style.animation = 'fadeIn 0.3s ease-out';
-            // Reset input
-            const input = document.getElementById('accessCodeInput');
-            input.value = '';
-            input.classList.remove('error');
-            document.getElementById('passwordErrorMsg').classList.remove('show');
-            setTimeout(() => input.focus(), 300);
-        }
-
-        // ฟังก์ชันปิด Password Modal (ย้อนกลับ)
-        function closePasswordModal() {
-            const overlay = document.getElementById('passwordOverlay');
-            overlay.style.animation = 'fadeOut 0.3s ease-out';
-            setTimeout(() => {
-                overlay.classList.add('hidden');
-            }, 250);
-        }
-
+        
         // ========== OCR Queue System ==========
         let ocrQueuePollingInterval = null;
-
+        
         // ตัวแปรสำหรับเก็บข้อมูลคิวที่กำลังจะส่ง
         let pendingOCRQueueData = null;
-
+        
         // ฟังก์ชันสำหรับส่งคิว OCR (แสดง modal ยืนยันก่อน)
         async function submitOCRQueue() {
             const pathInput = document.getElementById('ocrQueuePath');
             const path = pathInput.value.trim();
-
+            
             if (!path) {
                 alert('กรุณาระบุที่อยู่ไฟล์หรือโฟลเดอร์');
                 return;
             }
-
+            
             const submitBtn = document.getElementById('submitOCRQueueBtn');
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span style="font-size: 1.2em;">⏳</span><span>กำลังตรวจสอบ...</span>';
-
+            
             try {
                 // เรียก API เพื่อนับไฟล์และคำนวณเวลา
                 const checkResponse = await fetch('/api/auditcheck/ocr-queue/check', {
@@ -2205,26 +224,26 @@
                         path: path
                     })
                 });
-
+                
                 const checkData = await checkResponse.json();
-
+                
                 if (!checkData.success) {
                     alert('เกิดข้อผิดพลาด: ' + (checkData.error || 'ไม่ทราบสาเหตุ'));
                     submitBtn.disabled = false;
                     submitBtn.innerHTML = '<span style="font-size: 1.2em;">🚀</span><span>เริ่มอ่านข้อมูล OCR</span>';
                     return;
                 }
-
+                
                 // เก็บข้อมูลไว้สำหรับยืนยัน (ยังไม่เก็บ ocr_mode เพราะจะให้เลือกใน modal)
                 pendingOCRQueueData = {
                     path: path,
                     total_files: checkData.total_files || 0,
                     estimated_time: checkData.estimated_time || 0
                 };
-
+                
                 // แสดง modal ยืนยัน
                 showOCRQueueConfirmModal(checkData.total_files || 0, checkData.estimated_time || 0, path);
-
+                
             } catch (error) {
                 console.error('Error checking OCR queue:', error);
                 alert('เกิดข้อผิดพลาดในการตรวจสอบ: ' + error.message);
@@ -2233,49 +252,49 @@
                 submitBtn.innerHTML = '<span style="font-size: 1.2em;">🚀</span><span>เริ่มอ่านข้อมูล OCR</span>';
             }
         }
-
+        
         // ฟังก์ชันสำหรับแสดง modal ยืนยัน
         function showOCRQueueConfirmModal(totalFiles, estimatedTime, path) {
             const modal = document.getElementById('ocrQueueConfirmModal');
             const pathElement = document.getElementById('ocrQueueConfirmPath');
             const totalFilesElement = document.getElementById('ocrQueueConfirmTotalFiles');
             const estimatedTimeElement = document.getElementById('ocrQueueConfirmEstimatedTime');
-
+            
             pathElement.textContent = path;
             totalFilesElement.textContent = `${totalFiles.toLocaleString('th-TH')} ไฟล์`;
             estimatedTimeElement.textContent = formatEstimatedTime(estimatedTime);
-
+            
             // รีเซ็ต radio button เป็น "อ่านใหม่ทั้งหมด"
             const newModeRadio = document.getElementById('ocrQueueModeNew');
             if (newModeRadio) {
                 newModeRadio.checked = true;
             }
-
+            
             modal.style.display = 'flex';
         }
-
+        
         // ฟังก์ชันสำหรับปิด modal ยืนยัน
         function closeOCRQueueConfirmModal() {
             const modal = document.getElementById('ocrQueueConfirmModal');
             modal.style.display = 'none';
             pendingOCRQueueData = null;
         }
-
+        
         // ฟังก์ชันสำหรับยืนยันและส่งคิวจริงๆ
         async function confirmOCRQueueSubmit() {
             if (!pendingOCRQueueData) {
                 alert('ไม่พบข้อมูลคิว กรุณาลองอีกครั้ง');
                 return;
             }
-
+            
             // ดึงค่า OCR mode ที่เลือกใน modal
             const ocrModeRadio = document.querySelector('input[name="ocrQueueMode"]:checked');
             const ocrMode = ocrModeRadio ? ocrModeRadio.value : 'new';
-
+            
             const confirmBtn = document.getElementById('ocrQueueConfirmBtn');
             confirmBtn.disabled = true;
             confirmBtn.innerHTML = '<span>⏳ กำลังส่งคิว...</span>';
-
+            
             try {
                 const response = await fetch('/api/auditcheck/ocr-queue/submit', {
                     method: 'POST',
@@ -2287,19 +306,19 @@
                         ocr_mode: ocrMode
                     })
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (data.success) {
                     // ปิด modal
                     closeOCRQueueConfirmModal();
-
+                    
                     // ล้าง input
                     document.getElementById('ocrQueuePath').value = '';
-
+                    
                     // แสดง toast
                     showToast('success', `✅ ส่งคิวสำเร็จ! คิว ID: ${data.queue_id}`);
-
+                    
                     // โหลดคิวใหม่
                     loadOCRQueue();
                 } else {
@@ -2313,13 +332,13 @@
                 confirmBtn.innerHTML = '✅ ยืนยันและเริ่มอ่าน';
             }
         }
-
+        
         // ฟังก์ชันสำหรับโหลดคิวทั้งหมด
         async function loadOCRQueue() {
             try {
                 const response = await fetch('/api/auditcheck/ocr-queue/list');
                 const data = await response.json();
-
+                
                 if (data.success) {
                     renderOCRQueueList(data.queues || []);
                 }
@@ -2327,11 +346,11 @@
                 console.error('Error loading OCR queue:', error);
             }
         }
-
+        
         // ฟังก์ชันสำหรับแสดงคิวทั้งหมด (แยกตามสถานะ)
         function renderOCRQueueList(queues) {
             const queueList = document.getElementById('ocrQueueList');
-
+            
             if (!queues || queues.length === 0) {
                 queueList.innerHTML = `
                     <div style="background: #1e293b; padding: 30px; border-radius: 10px; text-align: center; color: #94a3b8;">
@@ -2341,7 +360,7 @@
                 `;
                 return;
             }
-
+            
             // กรองรายการที่หมดเวลาแล้ว (30 นาทีหลังจากเสร็จ)
             const now = new Date();
             const validQueues = queues.filter(queue => {
@@ -2351,15 +370,15 @@
                 }
                 return true; // แสดงรายการที่ยังไม่เสร็จหรือไม่มี auto_remove_at
             });
-
+            
             // แยกตามสถานะ
             const processingQueues = validQueues.filter(q => q.status === 'processing');
             const pendingQueues = validQueues.filter(q => q.status === 'pending');
             const completedQueues = validQueues.filter(q => q.status === 'completed');
             const failedQueues = validQueues.filter(q => q.status === 'failed');
-
+            
             let html = '';
-
+            
             // ส่วนที่กำลังประมวลผล
             if (processingQueues.length > 0) {
                 html += `<h3 style="color: #3b82f6; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;"><span>🔄</span><span>ข้อมูลที่กำลังอ่าน (${processingQueues.length})</span></h3>`;
@@ -2367,7 +386,7 @@
                     html += renderQueueItem(queue);
                 });
             }
-
+            
             // ส่วนที่รอคิว
             if (pendingQueues.length > 0) {
                 html += `<h3 style="color: #fbbf24; margin-top: 30px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;"><span>⏳</span><span>คิวที่กำลังรอ (${pendingQueues.length})</span></h3>`;
@@ -2375,7 +394,7 @@
                     html += renderQueueItem(queue);
                 });
             }
-
+            
             // ส่วนที่เสร็จแล้ว (แสดงชื่อบริษัท)
             if (completedQueues.length > 0) {
                 // จัดกลุ่มตามชื่อบริษัท
@@ -2387,7 +406,7 @@
                     }
                     groupedByCompany[companyName].push(queue);
                 });
-
+                
                 // แสดงแต่ละกลุ่มบริษัท
                 Object.keys(groupedByCompany).forEach(companyName => {
                     const companyQueues = groupedByCompany[companyName];
@@ -2397,7 +416,7 @@
                     });
                 });
             }
-
+            
             // ส่วนที่ล้มเหลว
             if (failedQueues.length > 0) {
                 html += `<h3 style="color: #ef4444; margin-top: 30px; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;"><span>❌</span><span>รายการที่ล้มเหลว (${failedQueues.length})</span></h3>`;
@@ -2405,7 +424,7 @@
                     html += renderQueueItem(queue);
                 });
             }
-
+            
             if (html === '') {
                 html = `
                     <div style="background: #1e293b; padding: 30px; border-radius: 10px; text-align: center; color: #94a3b8;">
@@ -2414,10 +433,10 @@
                     </div>
                 `;
             }
-
+            
             queueList.innerHTML = html;
         }
-
+        
         // ฟังก์ชันสำหรับ escape HTML
         function escapeHtml(text) {
             if (!text) return '';
@@ -2425,7 +444,7 @@
             div.textContent = text;
             return div.innerHTML;
         }
-
+        
         // ฟังก์ชันสำหรับแสดงรายการคิวแต่ละรายการ
         function renderQueueItem(queue) {
             const status = queue.status || 'pending';
@@ -2435,20 +454,20 @@
                 'completed': { bg: '#10b98115', border: '#10b981', text: '✅ เสร็จสิ้น' },
                 'failed': { bg: '#ef444415', border: '#ef4444', text: '❌ ล้มเหลว' }
             };
-
+            
             const statusInfo = statusColors[status] || statusColors['pending'];
             const progress = queue.progress || 0;
             const total = queue.total || 0;
             const completed = queue.completed || 0;
             const estimatedTime = queue.estimated_time || 0;
-
+            
             // คำนวณเวลาที่เหลือก่อนถอดออก (สำหรับรายการที่เสร็จแล้ว)
             let autoRemoveInfo = '';
             if (status === 'completed' && queue.auto_remove_at) {
                 const now = new Date();
                 const removeTime = new Date(queue.auto_remove_at);
                 const remainingMs = removeTime - now;
-
+                
                 if (remainingMs > 0) {
                     const remainingMinutes = Math.floor(remainingMs / 60000);
                     const remainingSeconds = Math.floor((remainingMs % 60000) / 1000);
@@ -2459,7 +478,7 @@
                     `;
                 }
             }
-
+            
             // สร้าง HTML สำหรับแสดงข้อมูลที่ OCR อ่านได้
             let ocrResultsHtml = '';
             if (status === 'completed') {
@@ -2473,18 +492,18 @@
                             </button>
                             <div id="ocrResults-${queue.queue_id}" style="display: none; margin-top: 10px; padding: 15px; background: #0f172a; border-radius: 8px; border: 1px solid #334155;">
                     `;
-
-                    queue.ocr_results.forEach((result, idx) => {
-                        const filename = escapeHtml(result.filename || '');
-                        const taxFormType = escapeHtml(result.tax_form_type || '');
-                        const companyName = escapeHtml(result.company_name || '');
-                        const taxId = escapeHtml(result.tax_id || '');
-                        const branch = escapeHtml(result.branch || '');
-                        const date = escapeHtml(result.date || '');
-                        const documentNumber = escapeHtml(result.document_number || '');
-                        const referenceNumber = escapeHtml(result.reference_number || '');
-
-                        ocrResultsHtml += `
+                
+                queue.ocr_results.forEach((result, idx) => {
+                    const filename = escapeHtml(result.filename || '');
+                    const taxFormType = escapeHtml(result.tax_form_type || '');
+                    const companyName = escapeHtml(result.company_name || '');
+                    const taxId = escapeHtml(result.tax_id || '');
+                    const branch = escapeHtml(result.branch || '');
+                    const date = escapeHtml(result.date || '');
+                    const documentNumber = escapeHtml(result.document_number || '');
+                    const referenceNumber = escapeHtml(result.reference_number || '');
+                    
+                    ocrResultsHtml += `
                         <div style="margin-bottom: ${idx < queue.ocr_results.length - 1 ? '20px' : '0'}; padding-bottom: ${idx < queue.ocr_results.length - 1 ? '20px' : '0'}; border-bottom: ${idx < queue.ocr_results.length - 1 ? '1px solid #334155' : 'none'};">
                             <div style="color: #60a5fa; font-weight: 600; margin-bottom: 15px; font-size: 1em; display: flex; align-items: center; gap: 8px;">
                                 <span>🤖</span>
@@ -2497,130 +516,130 @@
                             
                             <div style="display: flex; flex-direction: column; gap: 10px;">
                     `;
-
-                        // แสดงข้อมูลแบบรายการแนวตั้ง
-                        if (documentNumber && documentNumber !== 'ไม่พบ') {
-                            ocrResultsHtml += `
+                    
+                    // แสดงข้อมูลแบบรายการแนวตั้ง
+                    if (documentNumber && documentNumber !== 'ไม่พบ') {
+                        ocrResultsHtml += `
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">เลขที่เอกสาร:</span>
                                 <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${documentNumber}</span>
                             </div>
                         `;
-                        }
-
-                        if (date && date !== 'ไม่พบ') {
-                            ocrResultsHtml += `
+                    }
+                    
+                    if (date && date !== 'ไม่พบ') {
+                        ocrResultsHtml += `
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">วันที่:</span>
                                 <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${date}</span>
                             </div>
                         `;
-                        }
-
-                        if (companyName && companyName !== 'ไม่พบ') {
-                            ocrResultsHtml += `
+                    }
+                    
+                    if (companyName && companyName !== 'ไม่พบ') {
+                        ocrResultsHtml += `
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">ชื่อบริษัท:</span>
                                 <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${companyName}</span>
                             </div>
                         `;
-                        }
-
-                        if (taxId && taxId !== 'ไม่พบ') {
-                            ocrResultsHtml += `
+                    }
+                    
+                    if (taxId && taxId !== 'ไม่พบ') {
+                        ocrResultsHtml += `
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">เลขประจำตัวผู้เสียภาษี:</span>
                                 <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${taxId}</span>
                             </div>
                         `;
-                        }
-
-                        if (branch && branch !== 'ไม่พบ') {
-                            ocrResultsHtml += `
+                    }
+                    
+                    if (branch && branch !== 'ไม่พบ') {
+                        ocrResultsHtml += `
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">สาขา:</span>
                                 <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${branch}</span>
                             </div>
                         `;
-                        }
-
-                        if (referenceNumber && referenceNumber !== 'ไม่พบ') {
-                            ocrResultsHtml += `
+                    }
+                    
+                    if (referenceNumber && referenceNumber !== 'ไม่พบ') {
+                        ocrResultsHtml += `
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">เลขที่เอกสารอ้างอิง (จากชื่อไฟล์):</span>
                                 <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${referenceNumber}</span>
                             </div>
                         `;
-                        }
-
-                        // แสดงข้อมูลยอดเงิน
-                        const amountBeforeVat = result.amount_before_vat || (result.amounts && result.amounts['ยอดก่อนภาษี']) || 0;
-                        const vatAmount = result.vat_amount || (result.amounts && result.amounts['ภาษีมูลค่าเพิ่ม']) || 0;
-                        const totalAmount = result.total_amount || (result.amounts && result.amounts['ยอดรวม']) || 0;
-
-                        if (amountBeforeVat > 0 || vatAmount > 0 || totalAmount > 0) {
-                            if (amountBeforeVat > 0) {
-                                const amountValue = typeof amountBeforeVat === 'number'
-                                    ? amountBeforeVat.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                                    : escapeHtml(String(amountBeforeVat));
-                                ocrResultsHtml += `
+                    }
+                    
+                    // แสดงข้อมูลยอดเงิน
+                    const amountBeforeVat = result.amount_before_vat || (result.amounts && result.amounts['ยอดก่อนภาษี']) || 0;
+                    const vatAmount = result.vat_amount || (result.amounts && result.amounts['ภาษีมูลค่าเพิ่ม']) || 0;
+                    const totalAmount = result.total_amount || (result.amounts && result.amounts['ยอดรวม']) || 0;
+                    
+                    if (amountBeforeVat > 0 || vatAmount > 0 || totalAmount > 0) {
+                        if (amountBeforeVat > 0) {
+                            const amountValue = typeof amountBeforeVat === 'number' 
+                                ? amountBeforeVat.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+                                : escapeHtml(String(amountBeforeVat));
+                            ocrResultsHtml += `
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">ยอดก่อนภาษีมูลค่าเพิ่ม:</span>
                                     <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${amountValue}</span>
                                 </div>
                             `;
-                            }
-
-                            if (vatAmount > 0) {
-                                const amountValue = typeof vatAmount === 'number'
-                                    ? vatAmount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                                    : escapeHtml(String(vatAmount));
-                                ocrResultsHtml += `
+                        }
+                        
+                        if (vatAmount > 0) {
+                            const amountValue = typeof vatAmount === 'number' 
+                                ? vatAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+                                : escapeHtml(String(vatAmount));
+                            ocrResultsHtml += `
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">ยอดภาษีมูลค่าเพิ่ม:</span>
                                     <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${amountValue}</span>
                                 </div>
                             `;
-                            }
-
-                            if (totalAmount > 0) {
-                                const amountValue = typeof totalAmount === 'number'
-                                    ? totalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-                                    : escapeHtml(String(totalAmount));
-                                ocrResultsHtml += `
+                        }
+                        
+                        if (totalAmount > 0) {
+                            const amountValue = typeof totalAmount === 'number' 
+                                ? totalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+                                : escapeHtml(String(totalAmount));
+                            ocrResultsHtml += `
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">ยอดหลังบวกภาษีมูลค่าเพิ่ม:</span>
                                     <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${amountValue}</span>
                                 </div>
                             `;
-                            }
                         }
-
-                        if (taxFormType && taxFormType !== 'ไม่ระบุ' && taxFormType !== 'ไม่พบ') {
-                            ocrResultsHtml += `
+                    }
+                    
+                    if (taxFormType && taxFormType !== 'ไม่ระบุ' && taxFormType !== 'ไม่พบ') {
+                        ocrResultsHtml += `
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">ประเภทเอกสาร:</span>
                                 <span style="color: #10b981; font-size: 0.9em; font-weight: 600;">${taxFormType}</span>
                             </div>
                         `;
-                        }
-
-                        const documentStatus = escapeHtml(result.document_status || '');
-                        if (documentStatus && documentStatus !== 'ไม่พบ') {
-                            ocrResultsHtml += `
+                    }
+                    
+                    const documentStatus = escapeHtml(result.document_status || '');
+                    if (documentStatus && documentStatus !== 'ไม่พบ') {
+                        ocrResultsHtml += `
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <span style="color: #94a3b8; font-size: 0.9em; min-width: 200px;">สถานะเอกสาร:</span>
                                 <span style="color: #cbd5e1; font-size: 0.9em;">${documentStatus}</span>
                             </div>
                         `;
-                        }
-
-                        ocrResultsHtml += `</div>`;
-
-                        // แสดงรายการสินค้า
-                        const items = result.items || [];
-                        if (items && Array.isArray(items) && items.length > 0) {
-                            ocrResultsHtml += `
+                    }
+                    
+                    ocrResultsHtml += `</div>`;
+                    
+                    // แสดงรายการสินค้า
+                    const items = result.items || [];
+                    if (items && Array.isArray(items) && items.length > 0) {
+                        ocrResultsHtml += `
                             <div style="margin-top: 20px;">
                                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
                                     <span style="color: #94a3b8; font-size: 0.9em;">📦 รายการสินค้า:</span>
@@ -2628,42 +647,42 @@
                                 </div>
                                 <div style="max-height: 300px; overflow-y: auto; padding-right: 5px;">
                         `;
-
-                            items.forEach((item, itemIdx) => {
-                                // รองรับทั้ง key ภาษาไทยและอังกฤษ
-                                const itemName = escapeHtml(item['รายการ'] || item.name || item.product_name || item.description || 'ไม่ระบุ');
-
-                                // ดึงจำนวน (รองรับทั้งภาษาไทยและอังกฤษ)
-                                let quantity = 0;
-                                const quantityStr = item['จำนวน'] || item.quantity || item.qty || '0';
-                                try {
-                                    // ลบหน่วยออก (เช่น "2 ใบ" -> "2")
-                                    const quantityClean = typeof quantityStr === 'string' ? quantityStr.split()[0] : String(quantityStr);
-                                    quantity = parseFloat(quantityClean.replace(/,/g, '')) || 0;
-                                } catch {
-                                    quantity = 0;
-                                }
-
-                                // ดึงราคา (รองรับทั้งภาษาไทยและอังกฤษ)
-                                let price = 0;
-                                const priceStr = item['ราคาต่อหน่วย'] || item.price || item.unit_price || '0';
-                                try {
-                                    price = parseFloat(String(priceStr).replace(/,/g, '').replace('฿', '').trim()) || 0;
-                                } catch {
-                                    price = 0;
-                                }
-
-                                // ดึงยอดรวม (รองรับทั้งภาษาไทยและอังกฤษ)
-                                let subtotal = 0;
-                                const subtotalStr = item['จำนวนเงิน'] || item.subtotal || item.total || '0';
-                                try {
-                                    subtotal = parseFloat(String(subtotalStr).replace(/,/g, '').replace('฿', '').trim()) || 0;
-                                } catch {
-                                    // ถ้าไม่มียอดรวม ให้คำนวณจากจำนวน x ราคา
-                                    subtotal = quantity * price;
-                                }
-
-                                ocrResultsHtml += `
+                        
+                        items.forEach((item, itemIdx) => {
+                            // รองรับทั้ง key ภาษาไทยและอังกฤษ
+                            const itemName = escapeHtml(item['รายการ'] || item.name || item.product_name || item.description || 'ไม่ระบุ');
+                            
+                            // ดึงจำนวน (รองรับทั้งภาษาไทยและอังกฤษ)
+                            let quantity = 0;
+                            const quantityStr = item['จำนวน'] || item.quantity || item.qty || '0';
+                            try {
+                                // ลบหน่วยออก (เช่น "2 ใบ" -> "2")
+                                const quantityClean = typeof quantityStr === 'string' ? quantityStr.split()[0] : String(quantityStr);
+                                quantity = parseFloat(quantityClean.replace(/,/g, '')) || 0;
+                            } catch {
+                                quantity = 0;
+                            }
+                            
+                            // ดึงราคา (รองรับทั้งภาษาไทยและอังกฤษ)
+                            let price = 0;
+                            const priceStr = item['ราคาต่อหน่วย'] || item.price || item.unit_price || '0';
+                            try {
+                                price = parseFloat(String(priceStr).replace(/,/g, '').replace('฿', '').trim()) || 0;
+                            } catch {
+                                price = 0;
+                            }
+                            
+                            // ดึงยอดรวม (รองรับทั้งภาษาไทยและอังกฤษ)
+                            let subtotal = 0;
+                            const subtotalStr = item['จำนวนเงิน'] || item.subtotal || item.total || '0';
+                            try {
+                                subtotal = parseFloat(String(subtotalStr).replace(/,/g, '').replace('฿', '').trim()) || 0;
+                            } catch {
+                                // ถ้าไม่มียอดรวม ให้คำนวณจากจำนวน x ราคา
+                                subtotal = quantity * price;
+                            }
+                            
+                            ocrResultsHtml += `
                                 <div style="background: #1e293b; border-left: 4px solid #3b82f6; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
                                     <div style="display: flex; align-items: flex-start; gap: 10px;">
                                         <div style="width: 28px; height: 28px; border-radius: 50%; background: #334155; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
@@ -2672,24 +691,24 @@
                                         <div style="flex: 1;">
                                             <div style="color: #cbd5e1; font-size: 0.9em; font-weight: 600; margin-bottom: 8px;">${itemName}</div>
                                             <div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 4px;">
-                                                จำนวน: <span style="color: #cbd5e1;">${typeof quantity === 'number' ? quantity.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : quantity}</span> 
-                                                ราคา: <span style="color: #cbd5e1;">${typeof price === 'number' ? price.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : price}</span>
+                                                จำนวน: <span style="color: #cbd5e1;">${typeof quantity === 'number' ? quantity.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : quantity}</span> 
+                                                ราคา: <span style="color: #cbd5e1;">${typeof price === 'number' ? price.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : price}</span>
                                             </div>
                                             <div style="color: #10b981; font-size: 0.9em; font-weight: 600;">
-                                                ยอดรวม: ${typeof subtotal === 'number' ? subtotal.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : subtotal} บาท
+                                                ยอดรวม: ${typeof subtotal === 'number' ? subtotal.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : subtotal} บาท
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             `;
-                            });
-
-                            ocrResultsHtml += `</div></div>`;
-                        }
-
-                        ocrResultsHtml += `</div>`;
-                    });
-
+                        });
+                        
+                        ocrResultsHtml += `</div></div>`;
+                    }
+                    
+                    ocrResultsHtml += `</div>`;
+                });
+                
                     ocrResultsHtml += `</div></div>`;
                 } else {
                     // แสดงข้อความแจ้งเตือนถ้ายังไม่มีข้อมูล
@@ -2705,7 +724,7 @@
                     `;
                 }
             }
-
+            
             return `
                 <div style="background: ${statusInfo.bg}; border-left: 4px solid ${statusInfo.border}; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
                     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
@@ -2772,20 +791,20 @@
                 </div>
             `;
         }
-
+        
         // ฟังก์ชันสำหรับยกเลิกคิว
         async function cancelOCRQueue(queueId) {
             if (!confirm('ต้องการยกเลิกคิวนี้หรือไม่?')) {
                 return;
             }
-
+            
             try {
                 const response = await fetch(`/api/auditcheck/ocr-queue/cancel/${queueId}`, {
                     method: 'POST'
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (data.success) {
                     showToast('success', '✅ ยกเลิกคิวสำเร็จ');
                     loadOCRQueue();
@@ -2797,7 +816,7 @@
                 alert('เกิดข้อผิดพลาดในการยกเลิกคิว: ' + error.message);
             }
         }
-
+        
         // ฟังก์ชันสำหรับ format เวลาที่คาดว่าจะใช้
         function formatEstimatedTime(seconds) {
             if (seconds < 60) {
@@ -2812,13 +831,13 @@
                 return `${hours} ชั่วโมง ${minutes} นาที`;
             }
         }
-
+        
         // ฟังก์ชันรีเช็คไฟล์ที่ยังไม่ได้อ่าน
         async function checkUnreadFiles(queueId, folderPath) {
             const unreadFilesDiv = document.getElementById(`unreadFiles-${queueId}`);
             unreadFilesDiv.style.display = 'block';
             unreadFilesDiv.innerHTML = '<div style="padding: 15px; text-align: center; color: #94a3b8;">⏳ กำลังตรวจสอบไฟล์ที่ยังไม่ได้อ่าน...</div>';
-
+            
             try {
                 const response = await fetch('/api/auditcheck/ocr-queue/check-unread', {
                     method: 'POST',
@@ -2829,16 +848,16 @@
                         folder_path: folderPath
                     })
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (data.success) {
                     const unreadFiles = data.unread_files || [];
                     const allFiles = data.all_files || [];
                     const readFiles = data.read_files || [];
-
+                    
                     let html = '';
-
+                    
                     if (unreadFiles.length === 0) {
                         html = `
                             <div style="padding: 15px; background: #10b98115; border-radius: 8px; border: 1px solid #10b981; text-align: center;">
@@ -2862,7 +881,7 @@
                                 <div style="max-height: 300px; overflow-y: auto; background: #0f172a; border-radius: 6px; padding: 10px; margin-top: 10px;">
                                     <div style="color: #cbd5e1; font-size: 0.9em; font-weight: 600; margin-bottom: 8px;">รายชื่อไฟล์ที่ยังไม่ได้อ่าน:</div>
                         `;
-
+                        
                         unreadFiles.forEach((filename, idx) => {
                             html += `
                                 <div style="padding: 8px; margin-bottom: 5px; background: #1e293b; border-radius: 4px; border-left: 3px solid #f59e0b; color: #cbd5e1; font-size: 0.85em;">
@@ -2870,7 +889,7 @@
                                 </div>
                             `;
                         });
-
+                        
                         html += `
                                 </div>
                                 <button onclick="rerunOCRForUnreadFiles('${queueId}', '${escapeHtml(folderPath)}')" style="width: 100%; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #ffffff; border: 1px solid #10b981; border-radius: 8px; cursor: pointer; font-size: 0.95em; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s; box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);" onmouseover="this.style.background='linear-gradient(135deg, #059669 0%, #047857 100%)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 8px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.background='linear-gradient(135deg, #10b981 0%, #059669 100%)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(16, 185, 129, 0.3)';">
@@ -2880,7 +899,7 @@
                             </div>
                         `;
                     }
-
+                    
                     unreadFilesDiv.innerHTML = html;
                 } else {
                     unreadFilesDiv.innerHTML = `
@@ -2902,13 +921,13 @@
                 `;
             }
         }
-
+        
         // ฟังก์ชันอ่านใหม่รอบที่ 2 สำหรับไฟล์ที่ยังไม่ได้อ่าน
         async function rerunOCRForUnreadFiles(queueId, folderPath) {
             if (!confirm(`ต้องการอ่านไฟล์ที่ยังไม่ได้อ่านใหม่หรือไม่?`)) {
                 return;
             }
-
+            
             try {
                 const response = await fetch('/api/auditcheck/ocr-queue/rerun-unread', {
                     method: 'POST',
@@ -2920,9 +939,9 @@
                         original_queue_id: queueId
                     })
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (data.success) {
                     showToast('success', `✅ เริ่มอ่านไฟล์ที่ยังไม่ได้อ่านแล้ว (${data.unread_count || 0} ไฟล์)`);
                     // รีโหลดรายการคิว
@@ -2937,46 +956,46 @@
                 alert('เกิดข้อผิดพลาดในการอ่านใหม่: ' + error.message);
             }
         }
-
+        
         // ฟังก์ชันสำหรับดึงชื่อบริษัทจาก path
         function extractCompanyNameFromPath(path) {
             if (!path) return 'ไม่ระบุ';
-
+            
             // แปลง path เป็น array ของส่วนต่างๆ
             const pathParts = path.split(/[/\\]/).filter(p => p.trim() !== '');
-
+            
             // หา "Build" หรือชื่อบริษัท (มักจะอยู่หลัง "A.โฟร์เดอร์หลัก" หรือ "AA.โฟรเดอร์หลัก" หรือ "AAA.โฟรเดอร์หลัก")
             for (let i = 0; i < pathParts.length; i++) {
                 const part = pathParts[i];
-
+                
                 // ถ้าเจอ Build ให้ใช้ส่วนนั้น (เช่น "Build000 ทดสอบระบบ")
                 if (part && part.includes('Build')) {
                     return part;
                 }
-
+                
                 // ถ้าเจอส่วนที่อยู่หลัง "โฟร์เดอร์หลัก" หรือ "โฟรเดอร์หลัก" และไม่ใช่ส่วนสุดท้าย
-                if (i > 0 && (pathParts[i - 1].includes('โฟร์เดอร์หลัก') || pathParts[i - 1].includes('โฟรเดอร์หลัก'))) {
+                if (i > 0 && (pathParts[i-1].includes('โฟร์เดอร์หลัก') || pathParts[i-1].includes('โฟรเดอร์หลัก'))) {
                     if (part && part.trim() !== '' && !part.includes('โฟร์เดอร์') && !part.includes('โฟรเดอร์')) {
                         return part;
                     }
                 }
             }
-
+            
             // ถ้าหาไม่เจอ ให้ใช้ส่วนที่ 2 หรือ 3 (มักจะเป็นชื่อบริษัท)
             if (pathParts.length >= 2) {
                 return pathParts[1] || 'ไม่ระบุ';
             }
-
+            
             // ถ้ายังหาไม่เจอ ให้ใช้ส่วนสุดท้ายของ path
             const lastPart = pathParts[pathParts.length - 1];
             return lastPart || 'ไม่ระบุ';
         }
-
+        
         // ฟังก์ชันสำหรับแสดง/ซ่อนข้อมูลที่ OCR อ่านได้
         function toggleOCRResults(queueId) {
             const resultsDiv = document.getElementById(`ocrResults-${queueId}`);
             const iconSpan = document.getElementById(`ocrResultsIcon-${queueId}`);
-
+            
             if (resultsDiv.style.display === 'none') {
                 resultsDiv.style.display = 'block';
                 iconSpan.textContent = '▲';
@@ -2985,7 +1004,7 @@
                 iconSpan.textContent = '▼';
             }
         }
-
+        
         // ฟังก์ชันสำหรับ format วันที่เวลา
         function formatDateTime(dateString) {
             if (!dateString) return '-';
@@ -2998,18 +1017,18 @@
                 minute: '2-digit'
             });
         }
-
+        
         // ฟังก์ชันสำหรับเริ่ม polling
         function startOCRQueuePolling() {
             if (ocrQueuePollingInterval) {
                 return; // กำลัง polling อยู่แล้ว
             }
-
+            
             ocrQueuePollingInterval = setInterval(() => {
                 loadOCRQueue();
             }, 30000); // อัพเดททุก 30 วินาที (30000ms)
         }
-
+        
         // ฟังก์ชันสำหรับหยุด polling
         function stopOCRQueuePolling() {
             if (ocrQueuePollingInterval) {
@@ -3017,15 +1036,15 @@
                 ocrQueuePollingInterval = null;
             }
         }
-
+        
         let allCompanies = [];
         let selectedCompanyIndex = -1;
-
+        
         async function loadCompanies() {
             try {
                 const response = await fetch('/api/auditcheck/companies');
                 const data = await response.json();
-
+                
                 if (data.success) {
                     allCompanies = data.companies;
                     setupAutocomplete();
@@ -3037,15 +1056,15 @@
                 showAlert('error', 'เกิดข้อผิดพลาดในการโหลดรายชื่อบริษัท');
             }
         }
-
+        
         function setupAutocomplete() {
             const input = document.getElementById('companySelect');
             const dropdown = document.getElementById('companyDropdown');
             const clearBtn = document.getElementById('clearCompany');
-
+            
             function showDropdown(searchTerm = '') {
                 selectedCompanyIndex = -1;
-
+                
                 if (searchTerm === '') {
                     // แสดงรายการทั้งหมด
                     dropdown.innerHTML = '';
@@ -3053,17 +1072,17 @@
                         const item = document.createElement('div');
                         item.className = 'autocomplete-item';
                         item.textContent = company;
-                        item.addEventListener('click', function () {
+                        item.addEventListener('click', function() {
                             selectCompany(company);
                         });
                         dropdown.appendChild(item);
                     });
                 } else {
                     // กรองบริษัทที่ตรงกับคำค้นหา
-                    const filtered = allCompanies.filter(company =>
+                    const filtered = allCompanies.filter(company => 
                         company.toLowerCase().includes(searchTerm.toLowerCase())
                     );
-
+                    
                     if (filtered.length === 0) {
                         dropdown.innerHTML = '<div class="autocomplete-item">ไม่พบบริษัทที่ตรงกับคำค้นหา</div>';
                     } else {
@@ -3072,48 +1091,48 @@
                             const item = document.createElement('div');
                             item.className = 'autocomplete-item';
                             item.textContent = company;
-                            item.addEventListener('click', function () {
+                            item.addEventListener('click', function() {
                                 selectCompany(company);
                             });
                             dropdown.appendChild(item);
                         });
                     }
                 }
-
+                
                 dropdown.classList.add('show');
             }
-
+            
             // แสดง dropdown เมื่อคลิกที่ input
-            input.addEventListener('click', function (e) {
+            input.addEventListener('click', function(e) {
                 if (dropdown.classList.contains('show')) {
                     dropdown.classList.remove('show');
                 } else {
                     showDropdown(input.value);
                 }
             });
-
+            
             // แสดง dropdown เมื่อ focus
-            input.addEventListener('focus', function (e) {
+            input.addEventListener('focus', function(e) {
                 showDropdown(input.value);
             });
-
-            input.addEventListener('input', function (e) {
+            
+            input.addEventListener('input', function(e) {
                 const searchTerm = e.target.value;
                 selectedCompanyIndex = -1;
-
+                
                 if (searchTerm === '') {
                     clearBtn.style.display = 'none';
                     document.getElementById('companyValue').value = '';
                 } else {
                     clearBtn.style.display = 'block';
                 }
-
+                
                 showDropdown(searchTerm);
             });
-
-            input.addEventListener('keydown', function (e) {
+            
+            input.addEventListener('keydown', function(e) {
                 const items = dropdown.querySelectorAll('.autocomplete-item');
-
+                
                 if (e.key === 'ArrowDown') {
                     e.preventDefault();
                     selectedCompanyIndex = Math.min(selectedCompanyIndex + 1, items.length - 1);
@@ -3131,20 +1150,20 @@
                     dropdown.classList.remove('show');
                 }
             });
-
+            
             // ปิด dropdown เมื่อคลิกนอก (แต่ไม่ปิดเมื่อคลิกที่ input หรือ clear button)
-            document.addEventListener('click', function (e) {
+            document.addEventListener('click', function(e) {
                 if (!input.contains(e.target) && !dropdown.contains(e.target) && !clearBtn.contains(e.target)) {
                     dropdown.classList.remove('show');
                 }
             });
-
+            
             // ป้องกันการปิด dropdown เมื่อคลิกที่ clear button
-            clearBtn.addEventListener('click', function (e) {
+            clearBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
             });
         }
-
+        
         function updateSelection(items) {
             items.forEach((item, index) => {
                 if (index === selectedCompanyIndex) {
@@ -3155,20 +1174,20 @@
                 }
             });
         }
-
+        
         // ตัวแปรเก็บข้อมูลสาขาที่เลือก
         let selectedBranch = null;
         let selectedCompanyForBranch = null;
         let baseCompanyName = null; // เก็บชื่อบริษัทหลัก (ไม่รวมสาขา) สำหรับบริษัทพิเศษ
-
+        
         async function selectCompany(company) {
             const input = document.getElementById('companySelect');
             const dropdown = document.getElementById('companyDropdown');
             const clearBtn = document.getElementById('clearCompany');
-
+            
             dropdown.classList.remove('show');
             selectedCompanyIndex = -1;
-
+            
             // ตรวจสอบว่าเป็นบริษัทพิเศษที่ต้องเลือกสาขาหรือไม่
             const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
             if (company === specialCompany) {
@@ -3177,27 +1196,27 @@
                 await showBranchSelectionModal(company);
                 return;
             }
-
+            
             // สำหรับบริษัทปกติ ให้ทำงานตามเดิม
             input.value = company;
             document.getElementById('companyValue').value = company;
             clearBtn.style.display = 'block';
             selectedBranch = null; // รีเซ็ตสาขา
             baseCompanyName = null; // รีเซ็ตชื่อบริษัทหลัก
-
+            
             // ซ่อนส่วนข้อมูลภายในสาขา (สำหรับบริษัทปกติ)
             const branchInfoSection = document.getElementById('branchInfoSection');
             if (branchInfoSection) {
                 branchInfoSection.style.display = 'none';
             }
-
+            
             // แสดงส่วนข้อมูลบริษัท
             document.getElementById('companyInfoGroup').style.display = 'block';
-
+            
             // โหลดข้อมูลบริษัทที่บันทึกไว้
             loadCompanyInfo(company);
         }
-
+        
         // แสดง modal เลือกสาขา
         async function showBranchSelectionModal(company) {
             const modal = document.getElementById('branchSelectionModal');
@@ -3205,31 +1224,31 @@
             const branchListDiv = document.getElementById('branchList');
             const errorDiv = document.getElementById('branchError');
             const companyNameDiv = document.getElementById('branchModalCompanyName');
-
+            
             // แสดง modal
             modal.style.display = 'flex';
             companyNameDiv.textContent = company;
-
+            
             // ซ่อนส่วนอื่นๆ และแสดง loading
             loadingDiv.style.display = 'block';
             branchListDiv.style.display = 'none';
             errorDiv.style.display = 'none';
-
+            
             try {
                 // เรียก API เพื่อดึงรายการสาขา
                 const response = await fetch(`/api/auditcheck/company-branches?company=${encodeURIComponent(company)}`);
                 const data = await response.json();
-
+                
                 if (!data.success) {
                     throw new Error(data.error || 'ไม่สามารถโหลดรายการสาขาได้');
                 }
-
+                
                 const branches = data.branches || [];
-
+                
                 if (branches.length === 0) {
                     throw new Error('ไม่พบสาขาในบริษัทนี้');
                 }
-
+                
                 // สร้างรายการสาขา
                 branchListDiv.innerHTML = '';
                 branches.forEach((branch, index) => {
@@ -3246,22 +1265,22 @@
                         align-items: center;
                         gap: 16px;
                     `;
-                    branchItem.onmouseover = function () {
+                    branchItem.onmouseover = function() {
                         this.style.borderColor = '#10b981';
                         this.style.background = 'linear-gradient(135deg, #1e293b 0%, #1e293b 100%)';
                         this.style.transform = 'translateX(4px)';
                         this.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.2)';
                     };
-                    branchItem.onmouseout = function () {
+                    branchItem.onmouseout = function() {
                         this.style.borderColor = '#334155';
                         this.style.background = 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)';
                         this.style.transform = 'translateX(0)';
                         this.style.boxShadow = 'none';
                     };
-                    branchItem.onclick = function () {
+                    branchItem.onclick = function() {
                         selectBranch(branch, company);
                     };
-
+                    
                     branchItem.innerHTML = `
                         <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;">
                             📁
@@ -3272,14 +1291,14 @@
                         </div>
                         <div style="color: #10b981; font-size: 1.5em;">→</div>
                     `;
-
+                    
                     branchListDiv.appendChild(branchItem);
                 });
-
+                
                 // แสดงรายการสาขา
                 loadingDiv.style.display = 'none';
                 branchListDiv.style.display = 'block';
-
+                
             } catch (error) {
                 console.error('Error loading branches:', error);
                 loadingDiv.style.display = 'none';
@@ -3287,29 +1306,29 @@
                 document.getElementById('branchErrorMessage').textContent = error.message || 'เกิดข้อผิดพลาดในการโหลดรายการสาขา';
             }
         }
-
+        
         // เลือกสาขา
         function selectBranch(branch, company) {
             selectedBranch = branch;
             baseCompanyName = company; // เก็บชื่อบริษัทหลักไว้สำหรับใช้ใน modal
-
+            
             // อัปเดต company value ให้รวมสาขา (ใช้ path ของสาขา)
             // แต่เก็บชื่อบริษัทเดิมไว้ใน companySelect
             const input = document.getElementById('companySelect');
             const companyValue = branch.path; // ใช้ path ของสาขาเป็น company value
-
+            
             input.value = `${company} - ${branch.name}`;
             document.getElementById('companyValue').value = companyValue;
-
+            
             // ปิด modal
             closeBranchSelectionModal();
-
+            
             // แสดงปุ่ม clear
             document.getElementById('clearCompany').style.display = 'block';
-
+            
             // แสดงส่วนข้อมูลบริษัท
             document.getElementById('companyInfoGroup').style.display = 'block';
-
+            
             // แสดงส่วนข้อมูลภายในสาขา
             const branchInfoSection = document.getElementById('branchInfoSection');
             const branchInfoTitle = document.getElementById('branchInfoTitle');
@@ -3319,18 +1338,18 @@
                 branchInfoTitle.textContent = `ข้อมูลภายในสาขา: ${branch.name}`;
                 branchInfoPath.textContent = branch.path;
             }
-
+            
             // โหลดข้อมูลบริษัท (ใช้ชื่อบริษัทเดิม)
             loadCompanyInfo(company);
-
+            
             // โหลดข้อมูลภายในสาขา
             loadBranchInfo();
-
+            
             // เริ่มทำงานตามระบบที่ตั้งไว้ทันที (สำหรับบริษัทพิเศษที่มีสาขา)
             // ตรวจสอบว่ามีเดือนภาษีและปีภาษีเลือกไว้แล้วหรือไม่
             const taxMonth = document.getElementById('taxMonth')?.value;
             const taxYear = document.getElementById('taxYear')?.value;
-
+            
             if (taxMonth && taxYear) {
                 // ถ้ามีเดือนและปีภาษีแล้ว ให้เริ่มทำงานทันที
                 setTimeout(() => {
@@ -3341,20 +1360,20 @@
                 showAlert('info', 'กรุณาเลือกเดือนและปีภาษีก่อนเริ่มตรวจสอบ');
             }
         }
-
+        
         // โหลดข้อมูลภายในสาขา
         async function loadBranchInfo() {
             if (!selectedBranch) {
                 return;
             }
-
+            
             const branchInfoContent = document.getElementById('branchInfoContent');
             if (!branchInfoContent) {
                 return;
             }
-
+            
             branchInfoContent.innerHTML = '<div style="padding: 20px; text-align: center; color: #94a3b8;"><div style="font-size: 1.2em; margin-bottom: 10px;">⏳</div><div>กำลังโหลดข้อมูล...</div></div>';
-
+            
             try {
                 const response = await fetch('/api/auditcheck/branch-info', {
                     method: 'POST',
@@ -3365,12 +1384,12 @@
                         branch_path: selectedBranch.path
                     })
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (data.success) {
                     let html = '';
-
+                    
                     // แสดงโครงสร้างโฟลเดอร์
                     if (data.folders && data.folders.length > 0) {
                         html += '<div style="margin-bottom: 20px;">';
@@ -3379,7 +1398,7 @@
                         html += `<span>โฟลเดอร์ย่อย (${data.folders.length})</span>`;
                         html += '</div>';
                         html += '<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px;">';
-
+                        
                         data.folders.forEach((folder, idx) => {
                             html += `
                                 <div style="padding: 12px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; transition: all 0.3s;" onmouseover="this.style.borderColor='#3b82f6'; this.style.background='#1e293b';" onmouseout="this.style.borderColor='#334155'; this.style.background='#0f172a';">
@@ -3388,11 +1407,11 @@
                                 </div>
                             `;
                         });
-
+                        
                         html += '</div>';
                         html += '</div>';
                     }
-
+                    
                     // แสดงไฟล์ PDF
                     if (data.pdf_files && data.pdf_files.length > 0) {
                         html += '<div style="margin-bottom: 20px;">';
@@ -3401,12 +1420,12 @@
                         html += `<span>ไฟล์ PDF (${data.pdf_files.length})</span>`;
                         html += '</div>';
                         html += '<div style="max-height: 400px; overflow-y: auto; background: #0f172a; border-radius: 8px; padding: 10px;">';
-
+                        
                         data.pdf_files.forEach((file, idx) => {
                             const fileSizeKB = (file.size / 1024).toFixed(2);
                             const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
                             const sizeDisplay = file.size > 1024 * 1024 ? `${fileSizeMB} MB` : `${fileSizeKB} KB`;
-
+                            
                             html += `
                                 <div style="padding: 10px; margin-bottom: 8px; background: #1e293b; border-radius: 6px; border-left: 3px solid #10b981; display: flex; align-items: center; justify-content: space-between;">
                                     <div style="flex: 1; min-width: 0;">
@@ -3417,17 +1436,17 @@
                                 </div>
                             `;
                         });
-
+                        
                         html += '</div>';
                         html += '</div>';
                     }
-
+                    
                     if (!data.folders || data.folders.length === 0) {
                         if (!data.pdf_files || data.pdf_files.length === 0) {
                             html = '<div style="padding: 20px; text-align: center; color: #94a3b8;"><div style="font-size: 1.2em; margin-bottom: 10px;">📭</div><div>ไม่พบโฟลเดอร์หรือไฟล์ในสาขานี้</div></div>';
                         }
                     }
-
+                    
                     branchInfoContent.innerHTML = html;
                 } else {
                     branchInfoContent.innerHTML = `
@@ -3449,12 +1468,12 @@
                 `;
             }
         }
-
+        
         // ปิด modal เลือกสาขา
         function closeBranchSelectionModal() {
             const modal = document.getElementById('branchSelectionModal');
             modal.style.display = 'none';
-
+            
             // ถ้ายังไม่ได้เลือกสาขา ให้รีเซ็ต
             if (!selectedBranch && selectedCompanyForBranch) {
                 const input = document.getElementById('companySelect');
@@ -3463,15 +1482,15 @@
                 document.getElementById('clearCompany').style.display = 'none';
                 document.getElementById('companyInfoGroup').style.display = 'none';
             }
-
+            
             selectedCompanyForBranch = null;
         }
-
+        
         function clearCompany() {
             const input = document.getElementById('companySelect');
             const dropdown = document.getElementById('companyDropdown');
             const clearBtn = document.getElementById('clearCompany');
-
+            
             input.value = '';
             document.getElementById('companyValue').value = '';
             dropdown.classList.remove('show');
@@ -3480,88 +1499,88 @@
             selectedBranch = null; // รีเซ็ตสาขา
             selectedCompanyForBranch = null;
             baseCompanyName = null; // รีเซ็ตชื่อบริษัทหลัก
-
+            
             // ซ่อนส่วนข้อมูลบริษัทเมื่อล้างบริษัท
             document.getElementById('companyInfoGroup').style.display = 'none';
-
+            
             // ซ่อนส่วนข้อมูลภายในสาขา
             const branchInfoSection = document.getElementById('branchInfoSection');
             if (branchInfoSection) {
                 branchInfoSection.style.display = 'none';
             }
         }
-
+        
         // ฟังก์ชันแปลงวันที่จาก YYYY-MM-DD เป็น dd/mm/yyyy
         function formatDate(dateString) {
             if (!dateString || dateString === '-') {
                 return '-';
             }
-
+            
             try {
                 // แปลงจาก YYYY-MM-DD เป็น Date object
                 const date = new Date(dateString + 'T00:00:00');
-
+                
                 // ตรวจสอบว่า date ถูกต้องหรือไม่
                 if (isNaN(date.getTime())) {
                     return dateString; // ถ้าแปลงไม่ได้ให้คืนค่าเดิม
                 }
-
+                
                 // แปลงเป็น dd/mm/yyyy
                 const day = String(date.getDate()).padStart(2, '0');
                 const month = String(date.getMonth() + 1).padStart(2, '0');
                 const year = date.getFullYear();
-
+                
                 return `${day}/${month}/${year}`;
             } catch (error) {
                 console.error('Error formatting date:', error);
                 return dateString; // ถ้าเกิดข้อผิดพลาดให้คืนค่าเดิม
             }
         }
-
+        
         // ฟังก์ชันตัดคำหลัง "จำกัด" ออก
         function removeTextAfterLimited(companyName) {
             if (!companyName || companyName === '-') {
                 return companyName;
             }
-
+            
             // หาตำแหน่งของคำว่า "จำกัด"
             const limitedIndex = companyName.indexOf('จำกัด');
-
+            
             if (limitedIndex !== -1) {
                 // ตัดคำหลัง "จำกัด" ออก (รวมช่องว่างที่ตามมาด้วย)
                 return companyName.substring(0, limitedIndex + 'จำกัด'.length).trim();
             }
-
+            
             return companyName;
         }
-
+        
         // โหลดข้อมูลบริษัทที่บันทึกไว้
         async function loadCompanyInfo(company) {
             if (!company) {
                 document.getElementById('companyInfoGroup').style.display = 'none';
                 return;
             }
-
+            
             try {
                 // แยก Build และชื่อบริษัทจาก company string (รูปแบบ: "Build001 ชื่อบริษัท")
                 const parts = company.split(' ');
                 const build = parts[0]; // Build001
                 const companyName = parts.slice(1).join(' '); // ส่วนที่เหลือ
-
+                
                 // ตั้งค่า Build และชื่อบริษัทใน UI
                 document.getElementById('companyBuild').textContent = build;
                 document.getElementById('companyName').textContent = removeTextAfterLimited(companyName || company);
-
+                
                 // โหลดข้อมูลบริษัทจาก API (ส่ง customer parameter ด้วย)
                 const customer = companyName || company;
                 const apiUrl = `/api/auditcheck/company?build=${encodeURIComponent(build)}&company_name=${encodeURIComponent(companyName || company)}&customer=${encodeURIComponent(customer)}`;
                 console.log('🔍 เรียก API:', apiUrl);
                 console.log('📋 พารามิเตอร์:', { build, companyName, customer });
-
+                
                 const response = await fetch(apiUrl);
                 const data = await response.json();
                 console.log('📦 Response จาก API:', data);
-
+                
                 if (data.success && data.company) {
                     // แสดงข้อมูลบริษัท
                     const comp = data.company;
@@ -3572,7 +1591,7 @@
                     document.getElementById('companyAddress').textContent = comp.company_address || '-';
                     document.getElementById('companyVatStatus').textContent = comp.vat_status || '-';
                     document.getElementById('companyVatDate').textContent = formatDate(comp.vat_registration_date);
-
+                    
                     // ซ่อนข้อความ "ยังไม่มีข้อมูล"
                     document.getElementById('noCompanyData').style.display = 'none';
                 } else {
@@ -3594,28 +1613,28 @@
                 document.getElementById('noCompanyData').style.display = 'block';
             }
         }
-
+        
         // ===== ฟังก์ชันจัดการข้อมูลบริษัท =====
         let editingDbConfigId = null;
-
+        
         // ตรวจสอบเลขประจำตัวผู้เสียภาษี 13 หลัก
         function validateTaxId(input) {
             const taxId = input.value.trim();
             const errorDiv = document.getElementById('taxIdError');
-
+            
             if (taxId === '') {
                 errorDiv.style.display = 'none';
                 input.style.borderColor = '#334155';
                 return true;
             }
-
+            
             if (taxId.length !== 13) {
                 errorDiv.textContent = 'กรุณากรอกเลขประจำตัวผู้เสียภาษีให้ครบ 13 หลัก';
                 errorDiv.style.display = 'block';
                 input.style.borderColor = '#ef4444';
                 return false;
             }
-
+            
             // ตรวจสอบว่าเป็นตัวเลขทั้งหมด
             if (!/^\d{13}$/.test(taxId)) {
                 errorDiv.textContent = 'กรุณากรอกเฉพาะตัวเลขเท่านั้น';
@@ -3623,18 +1642,18 @@
                 input.style.borderColor = '#ef4444';
                 return false;
             }
-
+            
             errorDiv.style.display = 'none';
             input.style.borderColor = '#10b981';
             return true;
         }
-
+        
         // จัดการเมื่อเปลี่ยนสถานะภาษีมูลค่าเพิ่ม
         function handleVatStatusChange() {
             const vatStatus = document.getElementById('companyVatStatusInput').value;
             const vatDateInput = document.getElementById('companyVatDateInput');
             const vatDateRequired = document.getElementById('vatDateRequired');
-
+            
             if (vatStatus === 'จดภาษีมูลค่าเพิ่ม') {
                 // บังคับกรอกวันที่
                 vatDateInput.removeAttribute('disabled');
@@ -3662,23 +1681,23 @@
                 vatDateInput.style.cursor = 'text';
             }
         }
-
+        
         // เปิด modal เพิ่ม/แก้ไขข้อมูลบริษัท
         async function openDatabaseModal(dbId = null) {
             editingDbConfigId = dbId;
             const modal = document.getElementById('databaseModal');
             const form = document.getElementById('companyForm');
-
+            
             // รีเซ็ตฟอร์ม
             form.reset();
-
+            
             // โหลดรายการฐานข้อมูล
             await loadDatabasesForCompany();
-
+            
             // ถ้าเป็นการแก้ไข ให้โหลดข้อมูลบริษัทที่เลือกอยู่
             // สำหรับบริษัทพิเศษที่มีสาขา ให้ใช้ชื่อบริษัทหลัก (ไม่รวมสาขา)
             let company = null;
-
+            
             // ถ้ามี baseCompanyName (บริษัทพิเศษที่มีสาขา) ให้ใช้ชื่อนั้น
             if (baseCompanyName) {
                 company = baseCompanyName;
@@ -3686,7 +1705,7 @@
                 // สำหรับบริษัทปกติ
                 const companySelectValue = document.getElementById('companySelect')?.value || '';
                 const companyValueValue = document.getElementById('companyValue')?.value || '';
-
+                
                 // ถ้า companySelect มี " - " แสดงว่ามีสาขา ให้ตัดส่วนสาขาออก
                 const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
                 if (companySelectValue.includes(' - ') && companySelectValue.startsWith(specialCompany)) {
@@ -3699,19 +1718,19 @@
                     company = companySelectValue;
                 }
             }
-
+            
             if (company) {
                 try {
                     // แยก Build และชื่อบริษัท
                     const parts = company.split(' ');
                     const build = parts[0];
                     const companyName = parts.slice(1).join(' ');
-
+                    
                     // โหลดข้อมูลบริษัท
                     const customer = companyName || company;
                     const response = await fetch(`/api/auditcheck/company?build=${encodeURIComponent(build)}&company_name=${encodeURIComponent(companyName || company)}&customer=${encodeURIComponent(customer)}`);
                     const data = await response.json();
-
+                    
                     if (data.success && data.company) {
                         // แสดงข้อมูลบริษัทในฟอร์ม
                         const comp = data.company;
@@ -3721,7 +1740,7 @@
                         document.getElementById('companyVatStatusInput').value = comp.vat_status || '';
                         document.getElementById('companyVatDateInput').value = comp.vat_registration_date || '';
                         document.getElementById('companyAddressInput').value = comp.company_address || '';
-
+                        
                         // ตรวจสอบสถานะภาษีมูลค่าเพิ่มเพื่อบังคับกรอกวันที่
                         handleVatStatusChange();
                         // ตรวจสอบเลขประจำตัวผู้เสียภาษี
@@ -3731,7 +1750,7 @@
                         document.getElementById('companyBuildInput').value = build;
                         document.getElementById('companyNameInput').value = companyName || company;
                     }
-
+                    
                     // โหลดฐานข้อมูลที่เชื่อมโยงกับบริษัทนี้
                     await loadCompanyDatabase(company);
                 } catch (error) {
@@ -3742,30 +1761,30 @@
                     const companyName = parts.slice(1).join(' ');
                     document.getElementById('companyBuildInput').value = build;
                     document.getElementById('companyNameInput').value = companyName || company;
-
+                    
                     // โหลดฐานข้อมูลที่เชื่อมโยงกับบริษัทนี้
                     await loadCompanyDatabase(company);
                 }
             }
-
+            
             modal.style.display = 'flex';
         }
-
+        
         // โหลดรายการฐานข้อมูลทั้งหมด
         async function loadDatabasesForCompany() {
             try {
                 const response = await fetch('/api/auditcheck/databases');
                 const data = await response.json();
-
+                
                 const select = document.getElementById('companyDatabaseSelect');
                 // เก็บค่าเดิม
                 const currentValue = select.value;
-
+                
                 // ล้าง options (ยกเว้น option แรก)
                 while (select.options.length > 1) {
                     select.remove(1);
                 }
-
+                
                 if (data.success && data.databases && data.databases.length > 0) {
                     data.databases.forEach(db => {
                         const option = document.createElement('option');
@@ -3774,7 +1793,7 @@
                         select.appendChild(option);
                     });
                 }
-
+                
                 // คืนค่าที่เลือกไว้เดิม
                 if (currentValue) {
                     select.value = currentValue;
@@ -3783,13 +1802,13 @@
                 console.error('Error loading databases:', error);
             }
         }
-
+        
         // โหลดฐานข้อมูลที่เชื่อมโยงกับบริษัท
         async function loadCompanyDatabase(company) {
             try {
                 const response = await fetch(`/api/auditcheck/databases?company=${encodeURIComponent(company)}`);
                 const data = await response.json();
-
+                
                 if (data.success && data.companyDatabase) {
                     document.getElementById('companyDatabaseSelect').value = data.companyDatabase;
                 } else {
@@ -3800,13 +1819,13 @@
                 document.getElementById('companyDatabaseSelect').value = '';
             }
         }
-
+        
         // เปิด modal จัดการฐานข้อมูล (placeholder - ต้องสร้าง modal ใหม่)
         function openDatabaseManagementModal() {
             showAlert('info', 'ฟีเจอร์จัดการฐานข้อมูลจะเปิดในหน้าต่างใหม่\nกรุณาเพิ่มฐานข้อมูลผ่าน API หรือสร้างหน้าจัดการฐานข้อมูลแยก');
             // TODO: สร้าง modal สำหรับจัดการฐานข้อมูล (เพิ่ม/แก้ไข/ลบ)
         }
-
+        
         // ปิด modal
         function closeDatabaseModal() {
             document.getElementById('databaseModal').style.display = 'none';
@@ -3814,63 +1833,63 @@
             // รีเซ็ตฟอร์ม
             document.getElementById('companyForm').reset();
         }
-
+        
         // บันทึกข้อมูลบริษัทจากฟอร์ม
         async function saveCompanyConfigForm() {
             const form = document.getElementById('companyForm');
-
+            
             // ตรวจสอบ validation
             if (!form.checkValidity()) {
                 form.reportValidity();
                 return;
             }
-
+            
             const build = document.getElementById('companyBuildInput').value.trim();
             const companyName = document.getElementById('companyNameInput').value.trim();
             const taxId = document.getElementById('companyTaxIdInput').value.trim();
             const vatStatus = document.getElementById('companyVatStatusInput').value.trim();
             const vatDate = document.getElementById('companyVatDateInput').value.trim();
             const companyAddress = document.getElementById('companyAddressInput').value.trim();
-
+            
             // Validation
             if (!build) {
                 showAlert('warning', 'กรุณากรอก Build');
                 document.getElementById('companyBuildInput').focus();
                 return;
             }
-
+            
             if (!companyName) {
                 showAlert('warning', 'กรุณากรอกชื่อบริษัท');
                 document.getElementById('companyNameInput').focus();
                 return;
             }
-
+            
             if (!vatStatus) {
                 showAlert('warning', 'กรุณาเลือกสถานะภาษีมูลค่าเพิ่ม');
                 document.getElementById('companyVatStatusInput').focus();
                 return;
             }
-
+            
             // ถ้าเลือก "จดภาษีมูลค่าเพิ่ม" ต้องบังคับกรอกวันที่
             if (vatStatus === 'จดภาษีมูลค่าเพิ่ม' && !vatDate) {
                 showAlert('warning', 'กรุณากรอกวันที่จดภาษีมูลค่าเพิ่ม (จำเป็นเมื่อเลือก "จดภาษีมูลค่าเพิ่ม")');
                 document.getElementById('companyVatDateInput').focus();
                 return;
             }
-
+            
             if (!companyAddress) {
                 showAlert('warning', 'กรุณากรอกที่อยู่บริษัท');
                 document.getElementById('companyAddressInput').focus();
                 return;
             }
-
+            
             // ตรวจสอบ Tax ID ถ้ามีการกรอก ต้องเป็น 13 หลัก
             if (taxId && taxId.length !== 13) {
                 showAlert('warning', 'เลขประจำตัวผู้เสียภาษีต้องเป็น 13 หลัก');
                 document.getElementById('companyTaxIdInput').focus();
                 return;
             }
-
+            
             try {
                 // บันทึกข้อมูลบริษัท (Build และชื่อบริษัทจะเชื่อมโยงกัน)
                 // ส่ง customer parameter เพื่อแยกไฟล์ตาม customer
@@ -3889,14 +1908,14 @@
                         company_address: companyAddress
                     })
                 });
-
+                
                 const result = await response.json();
-
+                
                 if (result.success) {
                     // บันทึกการเชื่อมโยงฐานข้อมูล (ถ้ามีการเลือก)
                     const selectedDatabaseId = document.getElementById('companyDatabaseSelect').value.trim();
                     const newCompanyDisplay = `${build} ${companyName}`;
-
+                    
                     if (selectedDatabaseId) {
                         try {
                             const dbMappingResponse = await fetch('/api/auditcheck/company-database', {
@@ -3909,7 +1928,7 @@
                                     database_id: selectedDatabaseId
                                 })
                             });
-
+                            
                             const dbMappingResult = await dbMappingResponse.json();
                             if (dbMappingResult.success) {
                                 showAlert('success', `บันทึกข้อมูลบริษัทและฐานข้อมูลสำเร็จ\nBuild: ${build} และชื่อบริษัท: ${companyName} เชื่อมโยงกันแล้ว\nฐานข้อมูลถูกเชื่อมโยงแล้ว`);
@@ -3938,13 +1957,13 @@
                         }
                         showAlert('success', `บันทึกข้อมูลบริษัทสำเร็จ\nBuild: ${build} และชื่อบริษัท: ${companyName} เชื่อมโยงกันแล้ว`);
                     }
-
+                    
                     closeDatabaseModal();
-
+                    
                     // อัพเดทชื่อบริษัทใน dropdown ให้ตรงกับ Build และชื่อบริษัทที่บันทึก (เชื่อมโยงกัน)
                     document.getElementById('companySelect').value = newCompanyDisplay;
                     document.getElementById('companyValue').value = newCompanyDisplay;
-
+                    
                     // โหลดข้อมูลบริษัทใหม่เพื่อแสดงข้อมูลที่บันทึก (Build และชื่อบริษัทเชื่อมโยงกัน)
                     await loadCompanyInfo(newCompanyDisplay);
                 } else {
@@ -3955,38 +1974,38 @@
                 showAlert('error', 'เกิดข้อผิดพลาดในการบันทึก: ' + error.message);
             }
         }
-
+        
         // ปิด modal เมื่อคลิกนอก
-        document.addEventListener('click', function (e) {
+        document.addEventListener('click', function(e) {
             const modal = document.getElementById('databaseModal');
             if (e.target === modal) {
                 closeDatabaseModal();
             }
         });
-
+        
         async function startAudit() {
             const taxMonth = document.getElementById('taxMonth').value;
             const taxYear = document.getElementById('taxYear').value;
             const company = document.getElementById('companyValue').value || document.getElementById('companySelect').value;
-
+            
             if (!taxMonth || !taxYear) {
                 showAlert('warning', 'กรุณาเลือกเดือนและปีภาษี');
                 return;
             }
-
+            
             // สร้าง taxMonth ในรูปแบบ YYYY-MM
             const taxMonthFormatted = `${taxYear}-${taxMonth}`;
-
+            
             if (!company || company.trim() === '') {
                 showAlert('warning', 'กรุณาเลือกบริษัทที่ต้องการตรวจสอบ');
                 return;
             }
-
+            
             // ตรวจสอบว่าชื่อบริษัทที่เลือกอยู่ในรายการหรือไม่ (ข้ามการตรวจสอบสำหรับบริษัทพิเศษที่มีสาขา)
             // สำหรับบริษัทพิเศษที่มีสาขา companyValue จะเป็น path ของสาขา ไม่ใช่ชื่อบริษัท
             const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
             const isSpecialCompanyWithBranch = baseCompanyName === specialCompany && selectedBranch !== null;
-
+            
             if (!isSpecialCompanyWithBranch && !allCompanies.includes(company)) {
                 // ตรวจสอบว่า company เป็น path หรือไม่ (สำหรับสาขา)
                 if (!company.startsWith('V:/') && !company.startsWith('V:\\')) {
@@ -3994,26 +2013,26 @@
                     return;
                 }
             }
-
+            
             // Show steps container
             document.getElementById('stepsContainer').style.display = 'block';
-
+            
             // Reset all steps
             resetSteps();
-
+            
             // เริ่มตรวจสอบไฟล์ตามโครงสร้างโฟลเดอร์
             await checkFilesStructure(taxMonthFormatted, company);
         }
-
+        
         async function checkFilesStructure(taxMonth, company) {
             const step = document.getElementById('step1');
             const status = document.getElementById('step1Status');
             const details = document.getElementById('step1Details');
-
+            
             step.classList.add('active');
             status.textContent = 'กำลังตรวจสอบ...';
             status.className = 'step-status checking';
-
+            
             try {
                 const response = await fetch('/api/auditcheck/check-files', {
                     method: 'POST',
@@ -4025,14 +2044,14 @@
                         company: company
                     })
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (data.success) {
                     step.classList.remove('active');
-
+                    
                     let html = '';
-
+                    
                     // แสดงโครงสร้างโฟลเดอร์
                     if (data.folderStructure && data.folderStructure.length > 0) {
                         html += '<div style="margin-bottom: 15px;">';
@@ -4042,7 +2061,7 @@
                             html += `<div style="color: #10b981; font-weight: 600; margin-bottom: 8px;">✅ ${folder.month_year_folder_name || folder.month_year_folder}</div>`;
                             html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px;">📂 Path: ${folder.month_year_folder}</div>`;
                             html += `<div style="color: #fbbf24; font-size: 0.9em; margin-bottom: 10px;">📊 พบไฟล์ทั้งหมด: ${folder.files_count} ไฟล์</div>`;
-
+                            
                             // แสดงรายการไฟล์ในโฟลเดอร์นี้
                             if (folder.files && folder.files.length > 0) {
                                 html += `<div style="margin-top: 10px;">`;
@@ -4061,12 +2080,12 @@
                             } else {
                                 html += `<div style="color: #fbbf24; font-size: 0.9em; margin-top: 10px;">⚠️ ไม่พบไฟล์ในโฟลเดอร์นี้</div>`;
                             }
-
+                            
                             html += `</div>`;
                         });
                         html += '</div>';
                     }
-
+                    
                     // แสดงไฟล์ที่พบ
                     if (data.foundFiles && data.foundFiles.length > 0) {
                         html += '<div style="margin-bottom: 15px;">';
@@ -4081,7 +2100,7 @@
                         html += '</div>';
                         html += '</div>';
                     }
-
+                    
                     // แสดงไฟล์ที่ขาดหายไป
                     if (data.missingFiles && data.missingFiles.length > 0) {
                         html += '<div style="margin-bottom: 15px;">';
@@ -4091,7 +2110,7 @@
                             if (typeof missing === 'object') {
                                 html += `<div class="file-item error" style="padding: 15px;">`;
                                 html += `<strong>${missing.message}</strong><br>`;
-
+                                
                                 // แสดงโฟลเดอร์ที่มีอยู่
                                 if (missing.existing_folders && missing.existing_folders.length > 0) {
                                     html += `<span style="color: #fbbf24; margin-top: 8px; display: block;">📂 โฟลเดอร์ที่มีอยู่ใน "${missing.year_folder_path || missing.parent_path || 'โฟลเดอร์นี้'}":</span>`;
@@ -4101,7 +2120,7 @@
                                     });
                                     html += `</div>`;
                                 }
-
+                                
                                 // แสดงไฟล์ที่มีอยู่ (ถ้ามี)
                                 if (missing.existing_files && missing.existing_files.length > 0) {
                                     html += `<span style="color: #fbbf24; margin-top: 8px; display: block;">📄 ไฟล์ที่มีอยู่ใน "${missing.year_folder_path || missing.parent_path || 'โฟลเดอร์นี้'}":</span>`;
@@ -4114,7 +2133,7 @@
                                     }
                                     html += `</div>`;
                                 }
-
+                                
                                 // แสดง existing_items (สำหรับกรณีอื่นๆ)
                                 if (missing.existing_items && missing.existing_items.length > 0) {
                                     html += `<span style="color: #fbbf24; margin-top: 8px; display: block;">📂 โฟลเดอร์/ไฟล์ที่มีอยู่ใน "${missing.parent_path || 'โฟลเดอร์นี้'}":</span>`;
@@ -4124,22 +2143,22 @@
                                     });
                                     html += `</div>`;
                                 }
-
+                                
                                 // แสดงข้อความเมื่อไม่มีอะไรเลย
-                                if ((!missing.existing_folders || missing.existing_folders.length === 0) &&
-                                    (!missing.existing_files || missing.existing_files.length === 0) &&
+                                if ((!missing.existing_folders || missing.existing_folders.length === 0) && 
+                                    (!missing.existing_files || missing.existing_files.length === 0) && 
                                     (!missing.existing_items || missing.existing_items.length === 0)) {
                                     html += `<div style="margin-left: 20px; margin-top: 8px; color: #94a3b8; font-size: 0.9em;">ไม่มีโฟลเดอร์หรือไฟล์ใดๆ</div>`;
                                 }
-
+                                
                                 if (missing.expected) {
                                     html += `<div style="margin-top: 8px; color: #60a5fa; font-size: 0.9em;">💡 คาดหวัง: ${missing.expected}</div>`;
                                 }
-
+                                
                                 if (missing.expected_patterns && missing.expected_patterns.length > 0) {
                                     html += `<div style="margin-top: 8px; color: #60a5fa; font-size: 0.9em;">💡 รูปแบบที่คาดหวัง: ${missing.expected_patterns.join(', ')}</div>`;
                                 }
-
+                                
                                 html += `</div>`;
                             } else {
                                 html += `<div class="file-item error">${missing}</div>`;
@@ -4148,7 +2167,7 @@
                         html += '</div>';
                         html += '</div>';
                     }
-
+                    
                     if (data.hasFiles) {
                         step.classList.add('completed');
                         status.textContent = 'พบไฟล์';
@@ -4158,9 +2177,9 @@
                         status.textContent = 'ไม่พบไฟล์';
                         status.className = 'step-status error';
                     }
-
+                    
                     details.innerHTML = html || 'ไม่พบข้อมูล';
-
+                    
                     // ถ้ามีไฟล์ ให้ดำเนินการขั้นตอนถัดไป
                     if (data.hasFiles) {
                         await checkStep2(taxMonth, company);
@@ -4180,30 +2199,30 @@
                 details.textContent = '❌ เกิดข้อผิดพลาด: ' + error.message;
             }
         }
-
+        
         function resetSteps() {
             for (let i = 1; i <= 5; i++) {
                 const step = document.getElementById(`step${i}`);
                 step.classList.remove('active', 'completed', 'error');
-
+                
                 const status = document.getElementById(`step${i}Status`);
                 status.textContent = 'รอตรวจสอบ';
                 status.className = 'step-status pending';
-
+                
                 const details = document.getElementById(`step${i}Details`);
                 details.textContent = i === 1 ? 'กำลังตรวจสอบ...' : 'รอการตรวจสอบขั้นตอนก่อนหน้า...';
             }
         }
-
+        
         async function checkStep1(taxMonth, company) {
             const step = document.getElementById('step1');
             const status = document.getElementById('step1Status');
             const details = document.getElementById('step1Details');
-
+            
             step.classList.add('active');
             status.textContent = 'กำลังตรวจสอบ...';
             status.className = 'step-status checking';
-
+            
             try {
                 const response = await fetch('/api/auditcheck/check-trial-balance', {
                     method: 'POST',
@@ -4215,16 +2234,16 @@
                         company: company
                     })
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (data.success && data.exists) {
                     step.classList.remove('active');
                     step.classList.add('completed');
                     status.textContent = 'พบไฟล์';
                     status.className = 'step-status success';
                     details.innerHTML = `✅ พบไฟล์งบทดลอง: <strong>${data.filePath || 'N/A'}</strong>`;
-
+                    
                     // Continue to step 2 (เดิมเป็น Step 3 - ภาษีซื้อ)
                     await checkStep2(taxMonth, company);
                 } else {
@@ -4242,17 +2261,17 @@
                 details.textContent = '❌ เกิดข้อผิดพลาด: ' + error.message;
             }
         }
-
+        
         async function checkStep2(taxMonth, company) {
             // Step 2 ตอนนี้คือ ภาษีซื้อ (เดิมเป็น Step 3)
             const step = document.getElementById('step2');
             const status = document.getElementById('step2Status');
             const details = document.getElementById('step2Details');
-
+            
             step.classList.add('active');
             status.textContent = 'กำลังตรวจสอบ...';
             status.className = 'step-status checking';
-
+            
             try {
                 const response = await fetch('/api/auditcheck/check-purchase-tax', {
                     method: 'POST',
@@ -4264,12 +2283,12 @@
                         company: company
                     })
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (data.success && data.exists) {
                     step.classList.remove('active');
-
+                    
                     let html = '';
                     html += `<div style="margin-bottom: 15px;">`;
                     html += `<strong style="color: #60a5fa;">📄 ไฟล์ภาษีซื้อที่พบ:</strong><br>`;
@@ -4281,18 +2300,18 @@
                         html += `</div>`;
                     }
                     html += `</div>`;
-
+                    
                     // แสดงข้อมูลโฟลเดอร์ VAT เหมือน Step 4
                     if (data.vatFolderInfo) {
                         html += `<div style="margin-top: 15px; padding: 15px; background: #1e293b; border-radius: 5px; border-left: 4px solid #3b82f6;">`;
                         html += `<div style="color: #60a5fa; font-weight: 600; margin-bottom: 10px;">📂 ข้อมูลโฟลเดอร์ VAT:</div>`;
-
+                        
                         if (data.vatFolderInfo.month_year_folder) {
                             html += `<div style="margin-left: 20px; margin-top: 5px; color: #cbd5e1; font-size: 0.9em;">`;
                             html += `โฟลเดอร์เดือน-ปี: ${data.vatFolderInfo.month_year_folder}`;
                             html += `</div>`;
                         }
-
+                        
                         if (data.vatFolderInfo.found) {
                             html += `<div style="margin-left: 20px; margin-top: 10px; color: #10b981;">✅ พบโฟลเดอร์ VAT:</div>`;
                             if (data.vatFolderInfo.folders && data.vatFolderInfo.folders.length > 0) {
@@ -4308,7 +2327,7 @@
                         }
                         html += `</div>`;
                     }
-
+                    
                     // แสดงการเปรียบเทียบจำนวนรายการกับไฟล์ PDF
                     if (data.purchaseTaxRowCount !== undefined && data.pdfFilesCount !== undefined) {
                         html += `<div style="margin-top: 15px; padding: 15px; background: ${data.countMatch ? '#0f172a' : '#1e293b'}; border-radius: 5px; border-left: 4px solid ${data.countMatch ? '#10b981' : '#ef4444'};">`;
@@ -4324,7 +2343,7 @@
                         html += `</div>`;
                         html += `</div>`;
                     }
-
+                    
                     if (data.countMatch) {
                         step.classList.add('completed');
                         status.textContent = 'พบไฟล์และจำนวนตรงกัน';
@@ -4334,9 +2353,9 @@
                         status.textContent = 'พบไฟล์แต่จำนวนไม่ตรงกัน';
                         status.className = 'step-status error';
                     }
-
+                    
                     details.innerHTML = html;
-
+                    
                     // Continue to step 3 (เดิมเป็น Step 4 - งบทดลอง)
                     await checkStep3(taxMonth, company);
                 } else {
@@ -4354,17 +2373,17 @@
                 details.textContent = '❌ เกิดข้อผิดพลาด: ' + error.message;
             }
         }
-
+        
         async function checkStep3(taxMonth, company) {
             // Step 3 ตอนนี้คือ งบทดลอง (เดิมเป็น Step 4)
             const step = document.getElementById('step3');
             const status = document.getElementById('step3Status');
             const details = document.getElementById('step3Details');
-
+            
             step.classList.add('active');
             status.textContent = 'กำลังตรวจสอบ...';
             status.className = 'step-status checking';
-
+            
             try {
                 const response = await fetch('/api/auditcheck/compare-trial-balance-files', {
                     method: 'POST',
@@ -4376,14 +2395,14 @@
                         company: company
                     })
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (data.success) {
                     step.classList.remove('active');
-
+                    
                     let html = '';
-
+                    
                     // แสดงข้อมูลไฟล์งบทดลองที่พบ
                     if (data.trialBalanceFiles && data.trialBalanceFiles.length > 0) {
                         html += `<div style="margin-bottom: 15px;">`;
@@ -4394,13 +2413,13 @@
                         });
                         html += `</div>`;
                         html += `</div>`;
-
+                        
                         // แสดงข้อมูลที่อ่านได้จากงบทดลอง
                         if (data.trialBalanceData) {
                             const tbData = data.trialBalanceData;
                             html += `<div style="margin-bottom: 15px; padding: 15px; background: #0f172a; border-radius: 5px; border-left: 3px solid #60a5fa;">`;
                             html += `<strong style="color: #60a5fa; margin-bottom: 10px; display: block;">📋 ข้อมูลงบทดลอง:</strong>`;
-
+                            
                             if (tbData.company_name) {
                                 html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 5px;">🏢 ชื่อกิจการ: <strong>${tbData.company_name}</strong></div>`;
                             }
@@ -4410,20 +2429,20 @@
                             if (tbData.period) {
                                 html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px;">📆 ช่วงเวลา: <strong>${tbData.period}</strong></div>`;
                             }
-
+                            
                             html += `<div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #334155;">`;
                             html += `<strong style="color: #10b981; margin-bottom: 8px; display: block;">💰 ยอดคงเหลือ:</strong>`;
-
+                            
                             // ฟังก์ชันสำหรับตรวจสอบว่ายอดไม่เป็น 0 หรือไม่
                             function formatBalance(value, label) {
                                 const numValue = parseFloat(value) || 0;
                                 const isNonZero = numValue !== 0;
                                 const color = isNonZero ? '#ef4444' : '#cbd5e1';
                                 const fontWeight = isNonZero ? '600' : 'normal';
-                                const formatted = numValue.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                                const formatted = numValue.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2});
                                 return `<span style="color: ${color}; font-size: 0.9em; font-weight: ${fontWeight};">${label} ${formatted}</span>`;
                             }
-
+                            
                             // ภาษีซื้อ
                             const purchaseTaxDebit = parseFloat(tbData.purchase_tax?.debit || 0);
                             const purchaseTaxCredit = parseFloat(tbData.purchase_tax?.credit || 0);
@@ -4439,7 +2458,7 @@
                                 html += ` <span style="color: #ef4444; font-size: 0.85em; margin-left: 5px;">⚠️ ต้องตรวจสอบ</span>`;
                             }
                             html += `</div>`;
-
+                            
                             // ภาษีซื้อยังไม่ถึงกำหนด
                             const purchaseTaxNotDueDebit = parseFloat(tbData.purchase_tax_not_due?.debit || 0);
                             const purchaseTaxNotDueCredit = parseFloat(tbData.purchase_tax_not_due?.credit || 0);
@@ -4455,7 +2474,7 @@
                                 html += ` <span style="color: #ef4444; font-size: 0.85em; margin-left: 5px;">⚠️ ต้องตรวจสอบ</span>`;
                             }
                             html += `</div>`;
-
+                            
                             // ภาษีขาย ภ.พ.30
                             const salesTaxVat30Debit = parseFloat(tbData.sales_tax_vat30?.debit || 0);
                             const salesTaxVat30Credit = parseFloat(tbData.sales_tax_vat30?.credit || 0);
@@ -4471,7 +2490,7 @@
                                 html += ` <span style="color: #ef4444; font-size: 0.85em; margin-left: 5px;">⚠️ ต้องตรวจสอบ</span>`;
                             }
                             html += `</div>`;
-
+                            
                             html += `</div>`;
                             html += `</div>`;
                         }
@@ -4480,7 +2499,7 @@
                         html += `⚠️ ไม่พบไฟล์ Excel ที่มีคำว่า "งบทดลอง" ในโฟลเดอร์ VAT/vat/Vat`;
                         html += `</div>`;
                     }
-
+                    
                     // Step 3 ไม่ต้องเปรียบเทียบกับไฟล์ OCR - แสดงเฉพาะข้อมูลงบทดลองเท่านั้น
                     if (data.trialBalanceFiles && data.trialBalanceFiles.length > 0) {
                         step.classList.add('completed');
@@ -4497,9 +2516,9 @@
                         html += `❌ ไม่พบไฟล์งบทดลอง`;
                         html += `</div>`;
                     }
-
+                    
                     details.innerHTML = html;
-
+                    
                     // Continue to step 4 (เดิมเป็น Step 2 - รัน OCR)
                     await checkStep4(taxMonth, company);
                 } else {
@@ -4517,17 +2536,17 @@
                 details.textContent = '❌ เกิดข้อผิดพลาด: ' + error.message;
             }
         }
-
+        
         async function checkStep4(taxMonth, company) {
             // Step 4 ตอนนี้คือ รัน OCR (เดิมเป็น Step 2)
             const step = document.getElementById('step4');
             const status = document.getElementById('step4Status');
             const details = document.getElementById('step4Details');
-
+            
             step.classList.add('active');
             status.textContent = 'กำลังตรวจสอบ...';
             status.className = 'step-status checking';
-
+            
             try {
                 const response = await fetch('/api/auditcheck/check-excel-files', {
                     method: 'POST',
@@ -4539,18 +2558,18 @@
                         company: company
                     })
                 });
-
+                
                 const data = await response.json();
-
+                
                 if (data.success && data.exists) {
                     step.classList.remove('active');
                     step.classList.add('completed');
                     status.textContent = 'พบไฟล์ Excel';
                     status.className = 'step-status success';
-
+                    
                     let html = `<div style="margin-bottom: 15px;">`;
                     html += `<strong>✅ พบไฟล์ Excel ที่ส่งออกจากระบบ OCR:</strong><br>`;
-
+                    
                     // แสดงผลการค้นหา
                     if (data.searchResults && data.searchResults.length > 0) {
                         html += `<div style="margin-top: 10px; margin-bottom: 15px;">`;
@@ -4562,7 +2581,7 @@
                             } else if (result.search_method === 'year_then_month') {
                                 html += `✅ พบผ่านโฟลเดอร์ปี: ${result.year_folder} → ${result.folder_path} (รูปแบบ: ${result.pattern_found || 'N/A'})`;
                             }
-
+                            
                             // แสดงข้อมูลเกี่ยวกับโฟลเดอร์ VAT
                             if (result.vat_folder_info) {
                                 html += `<br><span style="color: #10b981; margin-left: 10px;">📁 โฟลเดอร์ VAT:</span> `;
@@ -4580,12 +2599,12 @@
                                     html += `<span style="color: #fbbf24;">⚠️ ไม่พบโฟลเดอร์ VAT (ค้นหาในโฟลเดอร์เดือน-ปีโดยตรง)</span>`;
                                 }
                             }
-
+                            
                             html += `</div>`;
                         });
                         html += `</div>`;
                     }
-
+                    
                     if (data.excelData && data.excelData.length > 0) {
                         data.excelData.forEach((excel, index) => {
                             if (excel.error) {
@@ -4597,18 +2616,18 @@
                                 const fileSizeKB = (excel.file_size / 1024).toFixed(2);
                                 const fileSizeMB = (excel.file_size / (1024 * 1024)).toFixed(2);
                                 const sizeDisplay = excel.file_size > 1024 * 1024 ? `${fileSizeMB} MB` : `${fileSizeKB} KB`;
-
+                                
                                 html += `<div style="margin-top: 10px; padding: 15px; background: #0f172a; border-radius: 5px; border-left: 3px solid #10b981;">`;
                                 html += `<div style="color: #10b981; font-weight: 600;">📊 ${excel.path}</div>`;
                                 html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-top: 8px;">`;
                                 html += `📈 จำนวนรายการ: <strong>${excel.row_count}</strong> รายการ<br>`;
                                 html += `📦 ขนาดไฟล์: ${sizeDisplay}`;
                                 html += `</div>`;
-
+                                
                                 if (excel.headers && excel.headers.length > 0) {
                                     html += `<div style="margin-top: 8px; color: #60a5fa; font-size: 0.85em;">📋 คอลัมน์: ${excel.headers.slice(0, 5).join(', ')}${excel.headers.length > 5 ? '...' : ''}</div>`;
                                 }
-
+                                
                                 html += `</div>`;
                             }
                         });
@@ -4622,10 +2641,10 @@
                             html += '</div>';
                         }
                     }
-
+                    
                     html += `</div>`;
                     details.innerHTML = html;
-
+                    
                     // Continue to step 5
                     await checkStep5(taxMonth, company);
                 } else {
@@ -4633,24 +2652,24 @@
                     step.classList.add('error');
                     status.textContent = 'ไม่พบไฟล์ Excel';
                     status.className = 'step-status error';
-
+                    
                     // เก็บข้อมูล Step 4 สำหรับใช้เมื่อกดยกเลิก
                     step4Data = {
                         taxMonth: taxMonth,
                         company: company
                     };
-
+                    
                     let html = `<div style="margin-bottom: 15px;">`;
                     html += `<strong>❌ ไม่พบไฟล์ Excel OCR ในโฟลเดอร์ VAT/vat/Vat สำหรับเดือน ${taxMonth}</strong><br>`;
                     html += `<div style="margin-top: 10px; color: #cbd5e1; font-size: 0.9em;">💡 ระบบค้นหาไฟล์ Excel ที่มีคำว่า "ocr" หรือ "invoice_data" ในชื่อไฟล์ภายในโฟลเดอร์ VAT/vat/Vat</div>`;
-
+                    
                     // แสดงรายการโฟลเดอร์ที่มีอยู่จริง
                     if (data.searchResults && data.searchResults.length > 0) {
                         data.searchResults.forEach((result, index) => {
                             if (result.search_method === 'not_found') {
                                 html += `<div style="margin-top: 15px; padding: 15px; background: #0f172a; border-radius: 5px; border-left: 3px solid #ef4444;">`;
                                 html += `<div style="color: #fbbf24; margin-bottom: 10px;">📂 โฟลเดอร์ที่มีอยู่ใน "${result.pv_folder}":</div>`;
-
+                                
                                 if (result.all_pv_folders && result.all_pv_folders.length > 0) {
                                     html += `<div style="margin-left: 20px; background: #1e293b; padding: 10px; border-radius: 5px; max-height: 200px; overflow-y: auto;">`;
                                     result.all_pv_folders.forEach(folder => {
@@ -4660,7 +2679,7 @@
                                 } else {
                                     html += `<div style="margin-left: 20px; color: #94a3b8; font-size: 0.9em;">ไม่มีโฟลเดอร์ใดๆ</div>`;
                                 }
-
+                                
                                 // แสดงโฟลเดอร์ปีที่พบ
                                 if (result.year_folders && result.year_folders.length > 0) {
                                     html += `<div style="margin-top: 10px; color: #60a5fa; margin-bottom: 5px;">📅 โฟลเดอร์ปีที่พบ:</div>`;
@@ -4669,7 +2688,7 @@
                                         html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 3px;">📁 ${yearFolder}</div>`;
                                     });
                                     html += `</div>`;
-
+                                    
                                     // แสดงโฟลเดอร์ย่อยในโฟลเดอร์ปี
                                     if (result.year_folder_subfolders && result.year_folder_subfolders.length > 0) {
                                         html += `<div style="margin-top: 10px; color: #60a5fa; margin-bottom: 5px;">📂 โฟลเดอร์ย่อยในโฟลเดอร์ปี:</div>`;
@@ -4680,7 +2699,7 @@
                                         html += `</div>`;
                                     }
                                 }
-
+                                
                                 if (data.monthYearPatterns && data.monthYearPatterns.length > 0) {
                                     html += `<div style="margin-top: 10px; color: #60a5fa; font-size: 0.9em;">💡 คาดหวังโฟลเดอร์: ${data.monthYearPatterns.join(', ')}</div>`;
                                 }
@@ -4690,7 +2709,7 @@
                                 html += `<div style="margin-top: 15px; padding: 15px; background: #0f172a; border-radius: 5px; border-left: 3px solid #ef4444;">`;
                                 html += `<div style="color: #fbbf24; margin-bottom: 10px;">📁 ข้อมูลโฟลเดอร์ VAT:</div>`;
                                 html += `<div style="margin-left: 20px; color: #cbd5e1; font-size: 0.9em;">โฟลเดอร์เดือน-ปี: ${result.vat_folder_info.month_year_folder}</div>`;
-
+                                
                                 if (result.vat_folder_info.found) {
                                     html += `<div style="margin-left: 20px; margin-top: 10px; color: #10b981;">✅ พบโฟลเดอร์ VAT:</div>`;
                                     if (result.vat_folder_info.folders && result.vat_folder_info.folders.length > 0) {
@@ -4713,12 +2732,12 @@
                             }
                         });
                     }
-
+                    
                     // เพิ่มตัวเลือกเมื่อไม่พบไฟล์ OCR
                     html += `<div style="margin-top: 20px; padding: 20px; background: #1e293b; border-radius: 8px; border: 2px solid #3b82f6;">`;
                     html += `<div style="color: #60a5fa; font-weight: 600; margin-bottom: 15px; font-size: 1.1em;">💡 ตัวเลือกการดำเนินการ:</div>`;
                     html += `<div style="display: flex; gap: 15px; flex-wrap: wrap;">`;
-
+                    
                     // ปุ่ม "ใช้ระบบ OCR" - ใช้ companyValue.value โดยตรงเพื่อหลีกเลี่ยงปัญหา escape
                     const currentCompany = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company || '';
                     // Escape สำหรับใช้ใน onclick attribute
@@ -4727,16 +2746,16 @@
                     html += `🤖 ใช้ระบบ OCR<br>`;
                     html += `<span style="font-size: 0.85em; opacity: 0.9;">รัน OCR จากไฟล์ PDF และสร้าง Excel</span>`;
                     html += `</button>`;
-
+                    
                     // ปุ่ม "เลือกไฟล์ Excel"
                     html += `<button onclick="uploadExcelForStep4('${taxMonth}', '${currentCompanyEscaped}')" class="btn" style="flex: 1; min-width: 200px; background: linear-gradient(90deg, #10b981 0%, #059669 100%);">`;
                     html += `📁 เลือกไฟล์ Excel<br>`;
                     html += `<span style="font-size: 0.85em; opacity: 0.9;">เลือกไฟล์ Excel ที่มีอยู่แล้ว</span>`;
                     html += `</button>`;
-
+                    
                     html += `</div>`;
                     html += `</div>`;
-
+                    
                     html += `</div>`;
                     details.innerHTML = html;
                 }
@@ -4748,28 +2767,28 @@
                 details.textContent = '❌ เกิดข้อผิดพลาด: ' + error.message;
             }
         }
-
+        
         async function checkStep5(taxMonth, company) {
             const step = document.getElementById('step5');
             const status = document.getElementById('step5Status');
             const details = document.getElementById('step5Details');
-
+            
             // ล้าง HTML เดิมทั้งหมดก่อนเพื่อป้องกันการสร้างซ้ำ
             if (details) {
                 details.innerHTML = '';
             }
-
+            
             step.classList.add('active');
             status.textContent = 'กำลังตรวจสอบ...';
             status.className = 'step-status checking';
-
+            
             try {
                 // ส่งข้อมูล OCR จาก Step 4 ไปด้วย (ถ้ามี)
                 const requestBody = {
                     taxMonth: taxMonth,
                     company: company
                 };
-
+                
                 // ถ้ามีข้อมูล OCR จาก Step 4 ให้ส่งไปด้วย
                 console.log('📊 checkStep5 - step4OCRData:', step4OCRData ? step4OCRData.length : 0, 'items');
                 if (step4OCRData && step4OCRData.length > 0) {
@@ -4778,7 +2797,7 @@
                 } else {
                     console.warn('⚠️ No step4OCRData available for Step 5');
                 }
-
+                
                 const response = await fetch('/api/auditcheck/compare-purchase-tax-ocr', {
                     method: 'POST',
                     headers: {
@@ -4786,21 +2805,21 @@
                     },
                     body: JSON.stringify(requestBody)
                 });
-
+                
                 const data = await response.json();
-
+                
                 // เก็บ path ของโฟลเดอร์ VAT
                 if (data.vatFolderPath) {
                     vatFolderPath = data.vatFolderPath;
                 }
-
+                
                 // เก็บ comparison results ไว้ในตัวแปร global
                 if (data.comparisons) {
                     window.comparisonResults = data.comparisons;
                 }
-
+                
                 step.classList.remove('active');
-
+                
                 if (data.success) {
                     if (data.allMatch) {
                         step.classList.add('completed');
@@ -4811,13 +2830,13 @@
                         status.textContent = 'พบข้อมูลไม่ตรงกัน';
                         status.className = 'step-status error';
                     }
-
+                    
                     // Display comparison table
                     let html = '';
-
+                    
                     // ประกาศตัวแปร uniqueComparisons ไว้ก่อนเพื่อให้ใช้ได้ใน setTimeout
                     let uniqueComparisons = [];
-
+                    
                     // แสดงข้อมูลไฟล์ที่ใช้
                     if (data.purchaseTaxFiles && data.purchaseTaxFiles.length > 0) {
                         html += `<div style="margin-bottom: 15px;">`;
@@ -4829,7 +2848,7 @@
                         html += `</div>`;
                         html += `</div>`;
                     }
-
+                    
                     if (data.ocrFiles && data.ocrFiles.length > 0) {
                         html += `<div style="margin-bottom: 15px;">`;
                         html += `<strong style="color: #60a5fa;">📄 ไฟล์ OCR ที่พบ (${data.ocrFileCount || 0} ไฟล์):</strong><br>`;
@@ -4840,7 +2859,7 @@
                         html += `</div>`;
                         html += `</div>`;
                     }
-
+                    
                     if (data.comparisons && data.comparisons.length > 0) {
                         // ลบรายการซ้ำออกจาก comparisons ก่อนใช้งาน
                         // ใช้ unique key จาก invoice_no หรือ document_no เพื่อตรวจสอบซ้ำ
@@ -4851,23 +2870,23 @@
                             const purchaseInvoiceNo = comp.purchase_data?.invoice_no || comp.invoice_no || '';
                             const ocrDocumentNo = comp.ocr_data?.document_no || comp.document_no || '';
                             const uniqueKey = `${purchaseInvoiceNo}_${ocrDocumentNo}_${comp.match_status || ''}`;
-
+                            
                             if (!seenKeys.has(uniqueKey)) {
                                 seenKeys.add(uniqueKey);
                                 uniqueComparisons.push(comp);
                             }
                         });
-
-
+                        
+                        
                         // แยกรายการตามสถานะ (ประกาศเป็น let เพื่อให้ใช้ได้ใน setTimeout)
                         let allComparisons = uniqueComparisons;
                         let fullMatchedComparisons = uniqueComparisons.filter(comp => comp.match_status === 'full_match');
                         let partialMatchedComparisons = uniqueComparisons.filter(comp => comp.match_status === 'partial_match');
                         let mismatchedComparisons = uniqueComparisons.filter(comp => comp.match_status === 'no_match');
                         let noOcrDataComparisons = uniqueComparisons.filter(comp => comp.match_status === 'no_ocr_data'); // ไม่มี OCR ใน cache
-
+                        
                         html += `<div style="margin-top: 15px;">`;
-
+                        
                         // Header พร้อมปุ่ม VAT-Info
                         html += `<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">`;
                         html += `<strong style="color: #cbd5e1; font-size: 1.1em;">📊 ผลการเปรียบเทียบ:</strong>`;
@@ -4875,7 +2894,7 @@
                         html += `<span style="font-size: 1.1em;">🔍</span> ไปยังหน้า VAT-Info`;
                         html += `</a>`;
                         html += `</div>`;
-
+                        
                         // สร้าง Tabs
                         html += `<div class="comparison-tabs">`;
                         html += `<button class="comparison-tab active" onclick="switchComparisonTab('all')">`;
@@ -4894,7 +2913,7 @@
                         html += `ข้อมูลที่ตรงกัน <span class="comparison-tab-badge match">${fullMatchedComparisons.length}</span>`;
                         html += `</button>`;
                         html += `</div>`;
-
+                        
                         // Search Box สำหรับค้นหาเลขที่เอกสารอ้างอิง
                         html += `<div style="margin: 15px 0; padding: 12px; background: #1e293b; border-radius: 8px; border: 1px solid #334155;">`;
                         html += `<div style="display: flex; align-items: center; gap: 10px;">`;
@@ -4904,7 +2923,7 @@
                         html += `</div>`;
                         html += `<div id="comparisonSearchResult" style="margin-top: 8px; color: #94a3b8; font-size: 0.85em; display: none;"></div>`;
                         html += `</div>`;
-
+                        
                         // ปุ่มย้ายเอกสารทั้งหมดที่ไม่ตรงกัน
                         const mismatchedCount = mismatchedComparisons.length + partialMatchedComparisons.length;
                         if (mismatchedCount > 0) {
@@ -4919,7 +2938,7 @@
                             html += `</div>`;
                             html += `</div>`;
                         }
-
+                        
                         // เก็บ initial_note ไว้ใน comparisonNotes และ initialNotes ก่อนแสดงผล และเก็บข้อมูล comparisons
                         allComparisonsData = allComparisons; // เก็บข้อมูล comparisons ทั้งหมด
                         allComparisons.forEach((comp, index) => {
@@ -4934,18 +2953,18 @@
                                     comparisonNotes[noteKey] = comp.initial_note;
                                 }
                             }
-
+                            
                             // ตรวจสอบว่า OCR อ่านไม่ได้หรือไม่ (ไม่มีข้อมูล OCR หรือ ocr_data เป็น null/empty)
                             const hasOcrData = comp.ocr_data && Object.keys(comp.ocr_data).length > 0 && comp.ocr_data.document_no;
                             const ocrReadFailed = !hasOcrData;
-
+                            
                             // ถ้า OCR อ่านไม่ได้ ให้เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ
                             if (ocrReadFailed && !selfCheckMode[index]) {
                                 selfCheckMode[index] = true;
                                 console.log(`🔍 [Debug] OCR อ่านไม่ได้สำหรับรายการที่ ${index + 1} (เลขที่ใบกำกับ: ${comp.purchase_data?.invoice_no || comp.invoice_no || 'N/A'}) - เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ`);
                             }
                         });
-
+                        
                         // Tab: ข้อมูลทั้งหมด
                         html += `<div class="comparison-tab-content active" id="comparison-tab-all">`;
                         let allCount = 0;
@@ -4954,7 +2973,7 @@
                             allCount++;
                         });
                         html += `</div>`;
-
+                        
                         // Tab: ข้อมูลไม่ตรงกัน
                         html += `<div class="comparison-tab-content" id="comparison-tab-mismatch">`;
                         if (mismatchedComparisons.length > 0) {
@@ -4970,7 +2989,7 @@
                             html += `</div>`;
                         }
                         html += `</div>`;
-
+                        
                         // Tab: ไม่มีข้อมูล OCR
                         html += `<div class="comparison-tab-content" id="comparison-tab-no_ocr_data">`;
                         if (noOcrDataComparisons.length > 0) {
@@ -4986,7 +3005,7 @@
                             html += `</div>`;
                         }
                         html += `</div>`;
-
+                        
                         // Tab: ตรงกันบางส่วน
                         html += `<div class="comparison-tab-content" id="comparison-tab-partial">`;
                         if (partialMatchedComparisons.length > 0) {
@@ -5002,7 +3021,7 @@
                             html += `</div>`;
                         }
                         html += `</div>`;
-
+                        
                         // Tab: ข้อมูลที่ตรงกัน
                         html += `<div class="comparison-tab-content" id="comparison-tab-match">`;
                         if (fullMatchedComparisons.length > 0) {
@@ -5018,10 +3037,10 @@
                             html += `</div>`;
                         }
                         html += `</div>`;
-
+                        
                         // Pagination Controls
                         html += `<div class="comparison-pagination-container" style="margin-top: 20px; padding: 15px; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">`;
-
+                        
                         // ตัวเลือกแสดงรายการต่อหน้า
                         html += `<div style="display: flex; align-items: center; gap: 10px;">`;
                         html += `<span style="color: #cbd5e1; font-size: 0.9em;">แสดงรายการ:</span>`;
@@ -5033,15 +3052,15 @@
                         html += `</select>`;
                         html += `<span style="color: #94a3b8; font-size: 0.85em;">รายการต่อหน้า</span>`;
                         html += `</div>`;
-
+                        
                         // Pagination Info และ Navigation
                         html += `<div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">`;
                         html += `<div id="comparisonPaginationInfo" style="color: #cbd5e1; font-size: 0.9em;"></div>`;
                         html += `<div id="comparisonPaginationNav" style="display: flex; gap: 5px;"></div>`;
                         html += `</div>`;
-
+                        
                         html += `</div>`;
-
+                        
                         html += `</div>`;
                     } else {
                         html += `<div style="color: #ef4444; margin-top: 15px;">`;
@@ -5060,43 +3079,43 @@
                         }
                         html += `</div>`;
                     }
-
+                    
                     // ล้าง HTML เดิมทั้งหมดก่อนเพื่อป้องกันการสร้างซ้ำ
                     if (details) {
                         // ลบ comparison elements ทั้งหมดก่อน (ใช้ data-index แทน id selector)
                         const existingComparisonElements = details.querySelectorAll('.comparison-tabs, .comparison-tab-content, .comparison-row, [data-index]');
                         existingComparisonElements.forEach(el => el.remove());
-
+                        
                         // ใช้ innerHTML = '' เพื่อล้างทั้งหมดก่อน
                         details.innerHTML = '';
-
+                        
                         // รอให้ DOM อัปเดตก่อน
                         await new Promise(resolve => setTimeout(resolve, 10));
-
+                        
                         // ตั้งค่า HTML ใหม่
                         details.innerHTML = html;
-
+                        
                         // ลบ duplicates ทันทีหลังจาก set HTML (ไม่ต้องรอ setTimeout)
                         const removeDuplicatesImmediately = () => {
                             const allTab = document.getElementById('comparison-tab-all');
                             if (allTab) {
                                 const rows = Array.from(allTab.querySelectorAll('.comparison-row'));
-
+                                
                                 if (rows.length === 0) {
                                     return;
                                 }
-
+                                
                                 const seenIndices = new Map(); // Map<index, firstRowElement>
                                 const duplicatesToRemove = [];
-
+                                
                                 rows.forEach((row, idx) => {
                                     let rowIndex = row.getAttribute('data-index');
-
+                                    
                                     // ถ้าไม่มี data-index ให้ข้าม (ไม่ควรลบ)
                                     if (rowIndex === null || rowIndex === undefined || rowIndex === '') {
                                         return;
                                     }
-
+                                    
                                     if (seenIndices.has(rowIndex)) {
                                         // พบ duplicate - เก็บไว้เพื่อลบ (เก็บเฉพาะตัวแรก)
                                         duplicatesToRemove.push(row);
@@ -5104,7 +3123,7 @@
                                         seenIndices.set(rowIndex, row);
                                     }
                                 });
-
+                                
                                 // ตรวจสอบว่ามี duplicates จริงๆ และไม่ลบทุกอย่าง
                                 if (duplicatesToRemove.length > 0 && duplicatesToRemove.length < rows.length) {
                                     duplicatesToRemove.forEach(row => row.remove());
@@ -5113,10 +3132,10 @@
                                 }
                             }
                         };
-
+                        
                         // รอให้ DOM อัปเดตก่อนตรวจสอบ (เพิ่ม delay เพื่อให้แน่ใจว่า HTML ถูก render แล้ว)
                         setTimeout(removeDuplicatesImmediately, 50);
-
+                        
                         // ตรวจสอบและตั้งค่า active tab ให้ถูกต้อง
                         setTimeout(() => {
                             const allTab = document.getElementById('comparison-tab-all');
@@ -5125,21 +3144,21 @@
                                 document.querySelectorAll('.comparison-tab-content').forEach(content => {
                                     content.classList.remove('active');
                                 });
-                                allTab.classList.add('active');
-
-                                // อัปเดต tab button
-                                document.querySelectorAll('.comparison-tab').forEach(tab => tab.classList.remove('active'));
-                                const allTabButton = document.querySelector('.comparison-tab[onclick*="switchComparisonTab(\'all\')"]');
-                                if (allTabButton) {
-                                    allTabButton.classList.add('active');
+                                    allTab.classList.add('active');
+                                    
+                                    // อัปเดต tab button
+                                    document.querySelectorAll('.comparison-tab').forEach(tab => tab.classList.remove('active'));
+                                    const allTabButton = document.querySelector('.comparison-tab[onclick*="switchComparisonTab(\'all\')"]');
+                                    if (allTabButton) {
+                                        allTabButton.classList.add('active');
+                                    }
                                 }
-                            }
-
+                            
                             // อัปเดต pagination หลังจากตั้งค่า tab
                             comparisonPagination.currentTab = 'all';
                             updateComparisonPagination();
                         }, 50);
-
+                        
                         // ตรวจสอบอีกครั้งหลังจาก set HTML
                         setTimeout(() => {
                             // ตรวจสอบและลบ duplicates จากทุก tab
@@ -5147,24 +3166,24 @@
                             allTabs.forEach(tabName => {
                                 const tabElement = document.getElementById(`comparison-tab-${tabName}`);
                                 if (!tabElement) return;
-
+                                
                                 const rows = Array.from(tabElement.querySelectorAll('.comparison-row'));
                                 if (rows.length === 0) return;
-
+                                
                                 // ตรวจสอบ duplicates โดยใช้ data-index
                                 const seenIndices = new Map(); // Map<index, firstRowElement>
                                 const duplicatesToRemove = [];
-
+                                
                                 rows.forEach((row, idx) => {
                                     let rowIndex = row.getAttribute('data-index');
-
+                                    
                                     // ถ้าไม่มี data-index ให้สร้างจาก index (แต่ต้องระวังว่าอาจทำให้ซ้ำได้)
                                     if (rowIndex === null || rowIndex === undefined || rowIndex === '') {
                                         // ใช้ index จากตำแหน่งใน DOM แทน
                                         rowIndex = String(idx);
                                         row.setAttribute('data-index', rowIndex);
                                     }
-
+                                    
                                     if (seenIndices.has(rowIndex)) {
                                         // พบ duplicate - เก็บไว้เพื่อลบ (เก็บเฉพาะตัวแรก)
                                         duplicatesToRemove.push(row);
@@ -5172,13 +3191,13 @@
                                         seenIndices.set(rowIndex, row);
                                     }
                                 });
-
+                                
                                 // ลบ duplicates เฉพาะถ้ามีจริงๆ และต้องไม่ลบทุกอย่าง
                                 if (duplicatesToRemove.length > 0 && duplicatesToRemove.length < rows.length) {
                                     duplicatesToRemove.forEach(row => row.remove());
                                 }
                             });
-
+                            
                             // ตรวจสอบว่า tab content แสดงผลหรือไม่
                             const activeTab = document.querySelector('.comparison-tab-content.active');
                             if (!activeTab) {
@@ -5193,17 +3212,17 @@
                                     }
                                 }
                             }
-
+                            
                             // อัปเดต pagination หลังจากตรวจสอบ duplicates
                             updateComparisonPagination();
                         }, 100);
                     }
-
+                    
                     // ตรวจสอบว่าข้อมูลแสดงผลหรือไม่หลังจาก 1 วินาที
                     setTimeout(() => {
                         const activeTab = document.querySelector('.comparison-tab-content.active');
                         const visibleRows = activeTab ? Array.from(activeTab.querySelectorAll('.comparison-row')) : [];
-
+                        
                         if (!activeTab) {
                             // พยายามตั้งค่า all tab เป็น active อีกครั้ง
                             const allTab = document.getElementById('comparison-tab-all');
@@ -5233,7 +3252,7 @@
                             }
                         }
                     }, 1000);
-
+                    
                     // แสดงปุ่มส่งออก Excel เมื่อมีข้อมูล
                     const exportBtn = document.getElementById('exportExcelBtn');
                     if (exportBtn && data.comparisons && data.comparisons.length > 0) {
@@ -5253,38 +3272,38 @@
                 details.textContent = '❌ เกิดข้อผิดพลาด: ' + error.message;
             }
         }
-
+        
         function generateComparisonRowHTML(comp, index, tabName = 'all') {
             const purchaseData = comp.purchase_data || {};
             const ocrData = comp.ocr_data || {};
             const matchDetails = comp.match_details || {};
-
+            
             // ดึงข้อมูลบริษัทจากระบบ
             const companyName = (document.getElementById('companyName')?.textContent || '').trim();
             const companyTaxId = (document.getElementById('companyTaxId')?.textContent || '').trim();
             const companyAddress = (document.getElementById('companyAddress')?.textContent || '').trim();
-
+            
             const buyerName = (ocrData.buyer_name || '').trim();
             const buyerTaxId = (ocrData.buyer_tax_id || '').trim();
             const buyerAddress = (ocrData.buyer_address || ocrData.address || ocrData.address_full || '').trim();
-
+            
             // ใช้ global functions normalizeText และ normalizeAddress ที่กำหนดไว้แล้ว
-
+            
             // คำนวณผลการเปรียบเทียบข้อมูลบริษัท
             let companyDataMatches = 0;
             let companyDataTotal = 0;
             let companyNameMatch = false;
             let companyTaxIdMatch = false;
             let companyAddressMatch = false;
-
+            
             // เปรียบเทียบชื่อ
             if (buyerName && buyerName !== '-' && companyName && companyName !== '-') {
                 companyDataTotal++;
                 const normalizedBuyerName = normalizeText(buyerName);
                 const normalizedCompanyName = normalizeText(companyName);
-
-                if (normalizedBuyerName === normalizedCompanyName ||
-                    normalizedBuyerName.includes(normalizedCompanyName) ||
+                
+                if (normalizedBuyerName === normalizedCompanyName || 
+                    normalizedBuyerName.includes(normalizedCompanyName) || 
                     normalizedCompanyName.includes(normalizedBuyerName)) {
                     companyNameMatch = true;
                     companyDataMatches++;
@@ -5305,7 +3324,7 @@
                         }
                     }
                 }
-
+                
                 // ตรวจสอบว่าถูกอนุมัติแล้วหรือไม่
                 const companyNameApprovalKey = `${index}-company_name_match`;
                 const isCompanyNameApproved = comparisonApprovals[companyNameApprovalKey] || false;
@@ -5313,7 +3332,7 @@
                     companyDataMatches++; // ถ้าถูกอนุมัติแล้วให้นับเป็น match
                 }
             }
-
+            
             // เปรียบเทียบเลขประจำตัวผู้เสียภาษี
             if (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') {
                 companyDataTotal++;
@@ -5323,7 +3342,7 @@
                     companyTaxIdMatch = true;
                     companyDataMatches++;
                 }
-
+                
                 // ตรวจสอบว่าถูกอนุมัติแล้วหรือไม่
                 const taxIdApprovalKey = `${index}-tax_id_match`;
                 const isTaxIdApproved = comparisonApprovals[taxIdApprovalKey] || false;
@@ -5331,13 +3350,13 @@
                     companyDataMatches++; // ถ้าถูกอนุมัติแล้วให้นับเป็น match
                 }
             }
-
+            
             // เปรียบเทียบที่อยู่
             if (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-') {
                 companyDataTotal++;
                 const normalizedBuyerAddress = normalizeAddress(buyerAddress);
                 const normalizedCompanyAddress = normalizeAddress(companyAddress);
-
+                
                 if (normalizedBuyerAddress === normalizedCompanyAddress) {
                     companyAddressMatch = true;
                     companyDataMatches++;
@@ -5345,112 +3364,25 @@
                     // ฟังก์ชันสำหรับแปลงคำภาษาอังกฤษเป็นภาษาไทย
                     const transliterateToThai = (text) => {
                         const map = {
-                            // กรุงเทพมหานคร
-                            'bangkok': 'กรุงเทพมหานคร', 'krungthep': 'กรุงเทพมหานคร', 'krung thep': 'กรุงเทพมหานคร',
-                            // เขต/แขวง กรุงเทพ
-                            'ladprao': 'ลาดพร้าว', 'lat phrao': 'ลาดพร้าว', 'latphrao': 'ลาดพร้าว',
-                            'bangkapi': 'บางกะปิ', 'bang kapi': 'บางกะปิ',
-                            'huaykwang': 'ห้วยขวาง', 'huai khwang': 'ห้วยขวาง', 'huay kwang': 'ห้วยขวาง',
-                            'chatuchak': 'จตุจักร', 'jatujak': 'จตุจักร',
-                            'bangkhen': 'บางเขน', 'bang khen': 'บางเขน',
-                            'donmuang': 'ดอนเมือง', 'don mueang': 'ดอนเมือง', 'don muang': 'ดอนเมือง',
-                            'laksi': 'หลักสี่', 'lak si': 'หลักสี่',
-                            'bangna': 'บางนา', 'bang na': 'บางนา',
-                            'suanluang': 'สวนหลวง', 'suan luang': 'สวนหลวง',
-                            'bangrak': 'บางรัก', 'bang rak': 'บางรัก',
-                            'sathorn': 'สาทร', 'sathon': 'สาทร',
-                            'silom': 'สีลม',
-                            'wattana': 'วัฒนา', 'watthana': 'วัฒนา',
-                            'klongtoey': 'คลองเตย', 'klong toei': 'คลองเตย', 'khlong toei': 'คลองเตย',
-                            'prakanong': 'พระโขนง', 'phra khanong': 'พระโขนง',
-                            'sukhum': 'สุขุมวิท', 'sukhumvit': 'สุขุมวิท',
-                            'phayathai': 'พญาไท', 'phaya thai': 'พญาไท',
-                            'ratchathewi': 'ราชเทวี',
-                            'dindaeng': 'ดินแดง', 'din daeng': 'ดินแดง',
-                            'bangphlat': 'บางพลัด', 'bang phlat': 'บางพลัด',
-                            'taling chan': 'ตลิ่งชัน', 'talingchan': 'ตลิ่งชัน',
-                            'bangkhae': 'บางแค', 'bang khae': 'บางแค',
-                            'thonburi': 'ธนบุรี',
-                            'khlong san': 'คลองสาน', 'klongsan': 'คลองสาน',
-                            'jomthong': 'จอมทอง', 'chom thong': 'จอมทอง',
-                            'bangbon': 'บางบอน', 'bang bon': 'บางบอน',
-                            'bangkhunthian': 'บางขุนเทียน', 'bang khun thian': 'บางขุนเทียน',
-                            'thungkhru': 'ทุ่งครุ', 'thung khru': 'ทุ่งครุ',
-                            'prawet': 'ประเวศ', 'pravet': 'ประเวศ',
-                            'saphansung': 'สะพานสูง', 'saphan sung': 'สะพานสูง',
-                            'minburi': 'มีนบุรี', 'min buri': 'มีนบุรี',
-                            'nongchok': 'หนองจอก', 'nong chok': 'หนองจอก',
-                            'ladkrabang': 'ลาดกระบัง', 'lat krabang': 'ลาดกระบัง',
-                            'kannayao': 'คันนายาว', 'khan na yao': 'คันนายาว',
-                            'buengkum': 'บึงกุ่ม', 'bueng kum': 'บึงกุ่ม',
-                            'saimai': 'สายไหม', 'sai mai': 'สายไหม',
-                            'bangkruai': 'บางกรวย', 'bang kruai': 'บางกรวย',
-                            // ปทุมธานี
-                            'pathumthani': 'ปทุมธานี', 'pathum thani': 'ปทุมธานี',
-                            'klongsong': 'คลองสอง', 'klong song': 'คลองสอง',
-                            'klongluang': 'คลองหลวง', 'klong luang': 'คลองหลวง',
-                            'thanyaburi': 'ธัญบุรี', 'rangsit': 'รังสิต',
-                            'lamlukka': 'ลำลูกกา', 'lam luk ka': 'ลำลูกกา',
-                            'samkhok': 'สามโคก', 'sam khok': 'สามโคก',
-                            // นนทบุรี
-                            'nonthaburi': 'นนทบุรี', 'nontburi': 'นนทบุรี',
-                            'bangbuathong': 'บางบัวทอง', 'bang bua thong': 'บางบัวทอง',
-                            'bangyai': 'บางใหญ่', 'bang yai': 'บางใหญ่',
-                            'pakkret': 'ปากเกร็ด', 'pak kret': 'ปากเกร็ด',
-                            'mueangnonthaburi': 'เมืองนนทบุรี',
-                            'phimonrat': 'พิมลราช', 'phimon rat': 'พิมลราช',
-                            // สมุทรปราการ
-                            'samutprakan': 'สมุทรปราการ', 'samut prakan': 'สมุทรปราการ',
-                            'bangphli': 'บางพลี', 'bang phli': 'บางพลี',
-                            'muangsamutprakan': 'เมืองสมุทรปราการ',
-                            'phrapradaeng': 'พระประแดง', 'phra pradaeng': 'พระประแดง',
-                            'bangbo': 'บางบ่อ', 'bang bo': 'บางบ่อ',
-                            // ชลบุรี
-                            'chonburi': 'ชลบุรี', 'chon buri': 'ชลบุรี',
-                            'siracha': 'ศรีราชา', 'si racha': 'ศรีราชา',
-                            'banglamung': 'บางละมุง', 'bang lamung': 'บางละมุง',
-                            'pattaya': 'พัทยา',
-                            'laemchabang': 'แหลมฉบัง', 'laem chabang': 'แหลมฉบัง',
-                            // เชียงใหม่
-                            'chiangmai': 'เชียงใหม่', 'chiang mai': 'เชียงใหม่',
-                            // นครราชสีมา
-                            'nakhonratchasima': 'นครราชสีมา', 'nakhon ratchasima': 'นครราชสีมา', 'korat': 'นครราชสีมา',
-                            // ขอนแก่น
-                            'khonkaen': 'ขอนแก่น', 'khon kaen': 'ขอนแก่น',
-                            // ภูเก็ต
-                            'phuket': 'ภูเก็ต',
-                            // สงขลา
-                            'songkhla': 'สงขลา', 'hatyai': 'หาดใหญ่', 'hat yai': 'หาดใหญ่',
-                            // ระยอง
-                            'rayong': 'ระยอง',
-                            // อยุธยา
-                            'ayutthaya': 'อยุธยา', 'phra nakhon si ayutthaya': 'พระนครศรีอยุธยา',
-                            // สมุทรสาคร
-                            'samutsakhon': 'สมุทรสาคร', 'samut sakhon': 'สมุทรสาคร',
-                            // นครปฐม
-                            'nakhonpathom': 'นครปฐม', 'nakhon pathom': 'นครปฐม',
-                            // คำทั่วไป
-                            'moo': 'หมู่', 'mooban': 'หมู่บ้าน', 'moo ban': 'หมู่บ้าน',
-                            'soi': 'ซอย', 'thanon': 'ถนน', 'road': 'ถนน', 'rd.': 'ถนน',
-                            'khet': 'เขต', 'khwaeng': 'แขวง', 'kwaeng': 'แขวง',
-                            'tambon': 'ตำบล', 'amphoe': 'อำเภอ', 'amphur': 'อำเภอ',
-                            'changwat': 'จังหวัด', 'province': 'จังหวัด',
-                            'district': 'อำเภอ', 'sub-district': 'ตำบล', 'subdistrict': 'ตำบล'
+                            'klongsong': 'คลองสอง',
+                            'klong song': 'คลองสอง',
+                            'klongluang': 'คลองหลวง',
+                            'klong luang': 'คลองหลวง',
+                            'pathumthani': 'ปทุมธานี',
+                            'pathum thani': 'ปทุมธานี'
                         };
                         let result = text.toLowerCase();
-                        // เรียงจากยาวไปสั้นเพื่อจับคู่คำยาวก่อน
-                        const sortedEntries = Object.entries(map).sort((a, b) => b[0].length - a[0].length);
-                        for (const [eng, thai] of sortedEntries) {
-                            result = result.replace(new RegExp(eng.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), thai);
+                        for (const [eng, thai] of Object.entries(map)) {
+                            result = result.replace(new RegExp(eng, 'gi'), thai);
                         }
                         return result;
                     };
-
+                    
                     const extractKeyParts = (addr) => {
                         const parts = [];
                         const addrNorm = (addr || '').replace(/^เลขที่\s*/i, '').trim();
                         const addrLower = addrNorm.toLowerCase();
-
+                        
                         // หาเลขที่บ้าน (ต้องตรงกันเป๊ะ)
                         const houseNoPatterns = [
                             /\d+\/\d+/,  // เช่น 5/29
@@ -5463,129 +3395,75 @@
                                 break; // หาแค่ตัวแรก
                             }
                         }
-
+                        
                         // หาเลขไปรษณีย์
                         const postalCode = addrNorm.match(/\b\d{5}\b/g);
                         if (postalCode) parts.push(...postalCode);
-
+                        
                         // หาหมู่ที่ (รองรับทั้ง M0015, M15, หมู่ที่ 15)
                         const mooMatch = addrNorm.match(/(?:m0*|หมู่ที่\s*)(\d+)/i);
                         if (mooMatch) {
                             parts.push(`หมู่${mooMatch[1]}`);
                         }
-
-                        // หาตำบล/แขวง อำเภอ/เขต จังหวัด (รองรับทั้งไทยและอังกฤษ)
-                        const locationPatterns = [
-                            /(?:ตำบล|แขวง|tambon|khwaeng|kwaeng|sub-?district)\s*([^\s,]+)/gi,
-                            /(?:อำเภอ|เขต|amphoe|amphur|khet|district)\s*([^\s,]+)/gi,
-                            /(?:จังหวัด|changwat|province)\s*([^\s,]+)/gi
-                        ];
-                        for (const pattern of locationPatterns) {
-                            const matches = addrLower.matchAll(pattern);
-                            for (const m of matches) {
-                                if (m[1]) parts.push(transliterateToThai(m[1].trim()));
-                            }
-                        }
-
-                        // หาชื่อตำบล อำเภอ จังหวัด (โดยตรง) — รวมทั้งไทยและอังกฤษที่พบบ่อย
+                        
+                        // หาตำบล อำเภอ จังหวัด (รองรับทั้งไทยและอังกฤษ)
+                        const locations = {
+                            'ตำบล': addrLower.match(/ตำบล\s*([^\s,]+)/i),
+                            'อำเภอ': addrLower.match(/อำเภอ\s*([^\s,]+)/i),
+                            'จังหวัด': addrLower.match(/จังหวัด\s*([^\s,]+)/i),
+                            'tambon': addrLower.match(/tambon\s*([^\s,]+)/i),
+                            'amphoe': addrLower.match(/amphoe\s*([^\s,]+)/i),
+                            'province': addrLower.match(/province\s*([^\s,]+)/i)
+                        };
+                        
+                        // หาชื่อตำบล อำเภอ จังหวัด (โดยตรง)
                         const locationNames = [
-                            // กรุงเทพ
-                            'กรุงเทพมหานคร', 'กรุงเทพ', 'bangkok', 'krungthep',
-                            'ลาดพร้าว', 'ladprao', 'lat phrao',
-                            'บางกะปิ', 'bangkapi', 'bang kapi',
-                            'ห้วยขวาง', 'huaykwang', 'huai khwang',
-                            'จตุจักร', 'chatuchak',
-                            'บางเขน', 'bangkhen', 'bang khen',
-                            'ดอนเมือง', 'donmuang', 'don mueang',
-                            'หลักสี่', 'laksi', 'lak si',
-                            'บางนา', 'bangna',
-                            'สาทร', 'sathorn', 'sathon',
-                            'วัฒนา', 'wattana', 'watthana',
-                            'คลองเตย', 'klongtoey', 'klong toei',
-                            'พระโขนง', 'prakanong',
-                            'พญาไท', 'phayathai',
-                            'ดินแดง', 'dindaeng',
-                            'ธนบุรี', 'thonburi',
-                            'ประเวศ', 'prawet',
-                            'มีนบุรี', 'minburi',
-                            'ลาดกระบัง', 'ladkrabang', 'lat krabang',
-                            'สายไหม', 'saimai',
-                            'บึงกุ่ม', 'buengkum',
-                            // ปทุมธานี
-                            'ปทุมธานี', 'pathumthani', 'pathum thani',
                             'คลองสอง', 'klongsong', 'klong song',
                             'คลองหลวง', 'klongluang', 'klong luang',
-                            'ธัญบุรี', 'thanyaburi',
-                            'ลำลูกกา', 'lamlukka',
-                            'รังสิต', 'rangsit',
-                            // นนทบุรี
-                            'นนทบุรี', 'nonthaburi',
-                            'บางบัวทอง', 'bangbuathong', 'bang bua thong',
-                            'บางใหญ่', 'bangyai',
-                            'ปากเกร็ด', 'pakkret',
-                            'พิมลราช', 'phimonrat',
-                            // สมุทรปราการ
-                            'สมุทรปราการ', 'samutprakan', 'samut prakan',
-                            'บางพลี', 'bangphli',
-                            'พระประแดง', 'phrapradaeng',
-                            // ชลบุรี
-                            'ชลบุรี', 'chonburi', 'chon buri',
-                            'ศรีราชา', 'siracha',
-                            'พัทยา', 'pattaya',
-                            // จังหวัดอื่นๆ
-                            'เชียงใหม่', 'chiangmai', 'chiang mai',
-                            'นครราชสีมา', 'nakhonratchasima', 'korat',
-                            'ขอนแก่น', 'khonkaen',
-                            'ภูเก็ต', 'phuket',
-                            'สงขลา', 'songkhla',
-                            'หาดใหญ่', 'hatyai',
-                            'ระยอง', 'rayong',
-                            'อยุธยา', 'ayutthaya',
-                            'สมุทรสาคร', 'samutsakhon',
-                            'นครปฐม', 'nakhonpathom'
+                            'ปทุมธานี', 'pathumthani', 'pathum thani'
                         ];
-
+                        
                         locationNames.forEach(name => {
                             const thaiName = transliterateToThai(name);
                             if (addrLower.includes(name.toLowerCase()) || addrLower.includes(thaiName)) {
                                 parts.push(thaiName);
                             }
                         });
-
+                        
                         return parts;
                     };
-
+                    
                     const buyerKeyParts = extractKeyParts(buyerAddress);
                     const companyKeyParts = extractKeyParts(companyAddress);
-
+                    
                     // แยกเลขที่บ้านออกมาเปรียบเทียบแยก
                     const buyerHouseNo = buyerKeyParts.find(p => /^\d+/.test(p));
                     const companyHouseNo = companyKeyParts.find(p => /^\d+/.test(p));
-
+                    
                     // ถ้าเลขที่บ้านไม่ตรงกัน ให้ถือว่าไม่ตรงกัน (ยกเว้นกรณีที่ไม่มีเลขที่บ้าน)
                     if (buyerHouseNo && companyHouseNo) {
                         // แปลง 5/29 เป็น 529 สำหรับเปรียบเทียบ
                         const normalizeHouseNo = (no) => no.replace(/\//g, '').replace(/\D/g, '');
                         const buyerNoNorm = normalizeHouseNo(buyerHouseNo);
                         const companyNoNorm = normalizeHouseNo(companyHouseNo);
-
+                        
                         // ถ้าเลขที่บ้านไม่ตรงกันเลย ให้ถือว่าไม่ตรงกัน
-                        if (buyerNoNorm !== companyNoNorm &&
-                            !buyerNoNorm.includes(companyNoNorm) &&
+                        if (buyerNoNorm !== companyNoNorm && 
+                            !buyerNoNorm.includes(companyNoNorm) && 
                             !companyNoNorm.includes(buyerNoNorm)) {
                             // ไม่ตรงกัน - ไม่ต้องทำอะไร (companyAddressMatch ยังเป็น false)
                         } else {
                             // เลขที่บ้านตรงกันหรือคล้ายกัน - เปรียบเทียบส่วนอื่นต่อ
                             const otherBuyerParts = buyerKeyParts.filter(p => p !== buyerHouseNo);
                             const otherCompanyParts = companyKeyParts.filter(p => p !== companyHouseNo);
-                            const matchingParts = otherBuyerParts.filter(part =>
+                            const matchingParts = otherBuyerParts.filter(part => 
                                 otherCompanyParts.some(cp => {
                                     const partNorm = transliterateToThai(part);
                                     const cpNorm = transliterateToThai(cp);
                                     return cpNorm === partNorm || cpNorm.includes(partNorm) || partNorm.includes(cpNorm);
                                 })
                             );
-
+                            
                             // ต้องมีส่วนอื่นๆ ตรงกันอย่างน้อย 3 ส่วน (เช่น หมู่ที่, ตำบล, อำเภอ, จังหวัด, รหัสไปรษณีย์)
                             if (matchingParts.length >= 3) {
                                 companyAddressMatch = true;
@@ -5594,7 +3472,7 @@
                         }
                     } else {
                         // ไม่มีเลขที่บ้าน - เปรียบเทียบส่วนอื่น
-                        const matchingParts = buyerKeyParts.filter(part =>
+                        const matchingParts = buyerKeyParts.filter(part => 
                             companyKeyParts.some(cp => {
                                 const partNorm = transliterateToThai(part);
                                 const cpNorm = transliterateToThai(cp);
@@ -5602,7 +3480,7 @@
                             })
                         );
                         const matchRatio = buyerKeyParts.length > 0 ? matchingParts.length / Math.max(buyerKeyParts.length, companyKeyParts.length) : 0;
-
+                        
                         // ต้องมีส่วนที่ตรงกันอย่างน้อย 70% หรืออย่างน้อย 3 ส่วน
                         if (matchRatio >= 0.7 || (matchingParts.length >= 3 && buyerKeyParts.length > 0)) {
                             companyAddressMatch = true;
@@ -5610,7 +3488,7 @@
                         }
                     }
                 }
-
+                
                 // ตรวจสอบว่าถูกอนุมัติแล้วหรือไม่
                 const addressApprovalKey = `${index}-address_match`;
                 const isAddressApproved = comparisonApprovals[addressApprovalKey] || false;
@@ -5618,14 +3496,14 @@
                     companyDataMatches++; // ถ้าถูกอนุมัติแล้วให้นับเป็น match
                 }
             }
-
+            
             // คำนวณสถานะเอกสาร (เดิม) - แยกจากข้อมูลบริษัท
             const documentMatchedCount = comp.matched_count || 0;
             const documentTotalCount = comp.total_count || 0;
-
+            
             // กำหนด match_status ของเอกสาร
             let documentMatchStatus = comp.match_status || (comp.match ? 'full_match' : 'no_match');
-
+            
             // คำนวณสถานะข้อมูลบริษัท (ใหม่) - แยกจากเอกสาร
             let companyDataMatchStatus = 'no_match';
             if (companyDataTotal > 0) {
@@ -5637,7 +3515,7 @@
                     companyDataMatchStatus = 'no_match';
                 }
             }
-
+            
             // กำหนดสีและข้อความตาม match_status ของเอกสาร
             let documentMatchClass, documentMatchText, documentMatchColor;
             if (documentMatchStatus === 'full_match') {
@@ -5653,7 +3531,7 @@
                 documentMatchText = 'ไม่ตรงกัน';
                 documentMatchColor = '#ef4444'; // สีแดง
             }
-
+            
             // กำหนดสีและข้อความตาม match_status ของข้อมูลบริษัท
             let companyDataMatchClass, companyDataMatchText, companyDataMatchColor;
             if (companyDataTotal > 0) {
@@ -5672,15 +3550,15 @@
                     companyDataMatchColor = '#ef4444'; // สีแดง
                 }
             }
-
+            
             let html = '';
-
+            
             // ใช้ tabName และ index เพื่อสร้าง unique ID สำหรับแต่ละ tab (แก้ปัญหา duplicate IDs)
             const uniqueId = `comparison-row-${tabName}-${index}`;
             // ดึง reference number สำหรับใช้ในการค้นหา
             const referenceNoForSearch = purchaseData?.reference_no || comp.invoice_no || ocrData?.document_no || '';
             html += `<div class="comparison-row" id="${uniqueId}" data-index="${index}" data-tab="${tabName}" data-reference="${referenceNoForSearch.toLowerCase()}">`;
-
+            
             // Header (คลิกได้)
             html += `<div class="comparison-row-header" onclick="toggleComparisonRow(${index})">`;
             html += `<div class="comparison-row-header-left">`;
@@ -5707,10 +3585,10 @@
             html += `</div>`;
             html += `</div>`;
             html += `</div>`;
-
+            
             // แสดงสถานะเอกสาร (เดิม)
             html += `<div class="comparison-row-status ${documentMatchClass}" style="color: ${documentMatchColor}; background-color: ${documentMatchColor}20; border: 1px solid ${documentMatchColor}; margin-right: 8px;">${documentMatchText}</div>`;
-
+            
             // แสดงสถานะข้อมูลบริษัท (ใหม่) - ถ้ามีข้อมูลบริษัท
             if (companyDataTotal > 0) {
                 html += `<div class="comparison-row-status ${companyDataMatchClass}" style="color: ${companyDataMatchColor}; background-color: ${companyDataMatchColor}20; border: 1px solid ${companyDataMatchColor}; margin-right: 8px;" title="สถานะข้อมูลบริษัท (ชื่อ, เลขประจำตัวผู้เสียภาษี, ที่อยู่)">`;
@@ -5718,26 +3596,26 @@
                 html += `${companyDataMatchText}`;
                 html += `</div>`;
             }
-
+            
             html += `<div class="comparison-row-toggle">▼</div>`;
             html += `</div>`;
-
+            
             // Content (ซ่อนไว้ก่อน)
             html += `<div class="comparison-row-content">`;
             html += `<div class="comparison-content-wrapper">`;
-
+            
             // ตรวจสอบว่า OCR อ่านไม่ได้หรือไม่ (ไม่มีข้อมูล OCR หรือ ocr_data เป็น null/empty)
             // ตรวจสอบหลายเงื่อนไข:
             // 1. comp.ocr_data เป็น null หรือ undefined
             // 2. comp.ocr_data เป็น object ว่างเปล่า
             // 3. comp.ocr_data ไม่มี document_no (เลขที่เอกสาร)
             // 4. comp.match_status === 'no_match' และไม่มี ocr_data
-            const hasOcrData = comp.ocr_data &&
-                typeof comp.ocr_data === 'object' &&
-                Object.keys(comp.ocr_data).length > 0 &&
-                (comp.ocr_data.document_no || comp.ocr_data.filename);
+            const hasOcrData = comp.ocr_data && 
+                               typeof comp.ocr_data === 'object' && 
+                               Object.keys(comp.ocr_data).length > 0 && 
+                               (comp.ocr_data.document_no || comp.ocr_data.filename);
             const ocrReadFailed = !hasOcrData || comp.match_status === 'no_match';
-
+            
             // ถ้า OCR อ่านไม่ได้ ให้เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ
             if (ocrReadFailed && !selfCheckMode[index]) {
                 selfCheckMode[index] = true;
@@ -5746,17 +3624,17 @@
                 console.log(`   - ocr_data:`, comp.ocr_data);
                 console.log(`   - match_status:`, comp.match_status);
             }
-
+            
             // ตรวจสอบว่า row นี้อยู่ในโหมด "ตรวจด้วยตัวเอง" หรือไม่
             const isSelfCheckMode = selfCheckMode[index] || false;
-
+            
             // Container สำหรับฝั่งภาษีซื้อและไฟล์ OCR
             html += `<div class="comparison-sides-container">`;
-
+            
             // ฝั่งภาษีซื้อ (เพิ่ม class self-check-mode ถ้าอยู่ในโหมด "ตรวจด้วยตัวเอง")
             html += `<div class="comparison-side purchase-tax${isSelfCheckMode ? ' self-check-mode' : ''}">`;
             html += `<div class="comparison-side-header">📄 ภาษีซื้อ${isSelfCheckMode ? ' (ตรวจด้วยตัวเอง)' : ''}</div>`;
-
+            
             if (comp.purchase_data) {
                 // ฟิลด์ที่สามารถอนุมัติได้
                 const approvableFields = [
@@ -5766,21 +3644,21 @@
                     { key: 'tax_id_match', label: 'เลขทะเบียนผู้เสียภาษี', value: purchaseData.tax_id || '-' },
                     { key: 'branch_match', label: 'สาขา/สำนักงานใหญ่', value: purchaseData.branch || '-' },
                     { key: 'reference_no_match', label: 'เลขที่เอกสารอ้างอิง', value: purchaseData.reference_no || '-' },
-                    { key: 'amount_before_vat_match', label: 'รายการภาษี 7%', value: (purchaseData.tax_7 || 0).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) },
-                    { key: 'vat_amount_match', label: 'ภาษีมูลค่าเพิ่ม', value: (purchaseData.vat || 0).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) },
+                    { key: 'amount_before_vat_match', label: 'รายการภาษี 7%', value: (purchaseData.tax_7 || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
+                    { key: 'vat_amount_match', label: 'ภาษีมูลค่าเพิ่ม', value: (purchaseData.vat || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) },
                     { key: 'total_amount_match', label: 'มูลค่ารวมภาษี', value: comp.purchaseTax || '0.00' },
                     { key: 'document_type_match', label: 'ประเภทใบกำกับ', value: purchaseData.invoice_type || '-' }
                 ];
-
+                
                 // แสดงฟิลด์ที่สามารถอนุมัติได้
                 approvableFields.forEach(field => {
                     const isMatch = matchDetails?.[field.key];
                     const isApproved = comparisonApprovals[`${index}-${field.key}`] || false;
-
+                    
                     html += `<div class="comparison-field" style="position: relative;" data-field-key="${field.key}" data-field-index="${index}">`;
                     html += `<span class="comparison-field-label">${field.label}:</span>`;
                     html += `<div style="display: flex; align-items: center; gap: 8px;">`;
-
+                    
                     // ถ้าอยู่ในโหมด "ตรวจด้วยตัวเอง":
                     // - เลขที่ใบกำกับภาษี (document_no_match) ให้แสดงเป็นสีเขียว
                     // - รายการอื่นๆ ให้แสดงเป็นสีแดง
@@ -5800,19 +3678,19 @@
                         valueColor = isMatch ? '#10b981' : (!isMatch && !isApproved ? '#ef4444' : '#10b981');
                         valueFontWeight = (!isMatch && !isApproved ? '600' : '400');
                     }
-
+                    
                     html += `<span class="comparison-field-value ${isMatch ? 'match' : (isApproved ? 'approved' : 'mismatch')}" style="color: ${valueColor}; font-weight: ${valueFontWeight};">${field.value}</span>`;
-
+                    
                     // ปุ่มอนุมัติ: ถ้าอยู่ในโหมด "ตรวจด้วยตัวเอง" ให้แสดงทุก field (ไม่ว่าจะ match หรือไม่ match), ถ้าไม่ใช่ให้แสดงเฉพาะ field ที่ไม่ match
                     const shouldShowApproveButton = isSelfCheckMode ? true : (!isMatch && !isApproved);
-
+                    
                     // ในโหมด "ตรวจด้วยตัวเอง": เลขที่ใบกำกับภาษีไม่ต้องแสดงปุ่มอนุมัติ (เพราะเป็นสีเขียวอยู่แล้ว)
                     // แต่รายการอื่นๆ ให้แสดงปุ่มอนุมัติ
                     let shouldShowButton = shouldShowApproveButton && !isApproved;
                     if (isSelfCheckMode && field.key === 'document_no_match') {
                         shouldShowButton = false; // ไม่แสดงปุ่มอนุมัติสำหรับเลขที่ใบกำกับภาษี
                     }
-
+                    
                     if (shouldShowButton) {
                         html += `<button onclick="approveField(${index}, '${field.key}', '${field.label}')" data-field-key="${field.key}" data-field-index="${index}" style="padding: 4px 10px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: 600; display: flex; align-items: center; gap: 4px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="อนุมัติความไม่ตรงกันนี้">`;
                         html += `<span style="font-size: 1em;">✓</span> อนุมัติ`;
@@ -5822,108 +3700,108 @@
                         html += `<span style="font-size: 1em;">✕</span> ยกเลิก`;
                         html += `</button>`;
                     }
-
+                    
                     html += `</div>`;
                     html += `</div>`;
                 });
-
+                
                 // ฟิลด์ที่ไม่สามารถอนุมัติได้ (แสดงอย่างเดียว)
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">รายการยกเว้นภาษี:</span>`;
                 const exemptColor = isSelfCheckMode ? '#ef4444' : '';
-                html += `<span class="comparison-field-value" style="${exemptColor ? `color: ${exemptColor}; font-weight: 600;` : ''}">${(purchaseData.exempt || 0).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+                html += `<span class="comparison-field-value" style="${exemptColor ? `color: ${exemptColor}; font-weight: 600;` : ''}">${(purchaseData.exempt || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
                 html += `</div>`;
-
+                
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">รายการภาษี 0%:</span>`;
                 const tax0Color = isSelfCheckMode ? '#ef4444' : '';
-                html += `<span class="comparison-field-value" style="${tax0Color ? `color: ${tax0Color}; font-weight: 600;` : ''}">${(purchaseData.tax_0 || 0).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+                html += `<span class="comparison-field-value" style="${tax0Color ? `color: ${tax0Color}; font-weight: 600;` : ''}">${(purchaseData.tax_0 || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
                 html += `</div>`;
-
+                
                 // ช่องหมายเหตุ
                 const initialNote = comp.initial_note || '';
                 const noteKey = String(index);
-
+                
                 // เก็บ initial note ไว้เพื่อ restore เมื่อยกเลิกการอนุมัติ
                 if (!initialNotes[noteKey] && initialNote) {
                     initialNotes[noteKey] = initialNote;
                 }
-
+                
                 if (!comparisonNotes[noteKey] && initialNote) {
                     comparisonNotes[noteKey] = initialNote;
                 }
                 const currentNote = comparisonNotes[noteKey] || initialNote;
-
+                
                 html += `<div class="comparison-field" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155;">`;
                 html += `<span class="comparison-field-label">📝 หมายเหตุ:</span>`;
                 html += `<textarea id="note-${index}" class="note-textarea" placeholder="กรอกหมายเหตุ (ถ้ามี)..." style="width: 100%; min-height: 60px; padding: 8px; background: #0f172a; border: 1px solid #334155; border-radius: 4px; color: #fafafa; font-size: 0.9em; font-family: inherit; resize: vertical;" onchange="saveNote(${index}, this.value)">${currentNote}</textarea>`;
                 html += `</div>`;
-
+                
                 // ปุ่มดู PDF และปุ่มอื่นๆ (ถ้ามีเลขที่เอกสารอ้างอิง)
                 const referenceNo = purchaseData.reference_no || comp.invoice_no || ocrData.document_no || '';
                 if (referenceNo) {
                     const isInvalid = invalidDocuments[index] || false;
                     html += `<div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155; display: flex; gap: 10px; flex-wrap: wrap;">`;
-
+                    
                     // ปุ่มดูไฟล์ (PDF/JPG/PNG)
                     html += `<button onclick="viewPdfPreview('${referenceNo}', ${index})" style="flex: 1; min-width: 120px; padding: 10px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(59, 130, 246, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">`;
                     html += `<span style="font-size: 1.1em;">📄</span> ดูไฟล์`;
                     html += `</button>`;
-
+                    
                     // ปุ่มตรวจสอบเพิ่ม
                     html += `<button onclick="moveDocumentToReview('${referenceNo}', ${index})" style="flex: 1; min-width: 120px; padding: 10px; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(245, 158, 11, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">`;
                     html += `<span style="font-size: 1.1em;">📋</span> ตรวจสอบเพิ่ม`;
                     html += `</button>`;
-
+                    
                     // ปุ่มเอกสารนี้ใช้งานไม่ได้
                     html += `<button onclick="markDocumentAsInvalid(${index}, '${referenceNo}')" style="flex: 1; min-width: 120px; padding: 10px; background: linear-gradient(135deg, ${isInvalid ? '#dc2626' : '#ef4444'} 0%, ${isInvalid ? '#991b1b' : '#dc2626'} 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; ${isInvalid ? 'opacity: 0.7;' : ''}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(239, 68, 68, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">`;
                     html += `<span style="font-size: 1.1em;">${isInvalid ? '✓' : '❌'}</span> ${isInvalid ? 'ใช้งานไม่ได้แล้ว' : 'เอกสารนี้ใช้งานไม่ได้'}`;
                     html += `</button>`;
-
+                    
                     // ปุ่มตรวจด้วยตัวเอง
                     const isSelfCheck = selfCheckMode[index] || false;
                     html += `<button onclick="toggleSelfCheckMode(${index}, '${referenceNo}')" style="flex: 1; min-width: 120px; padding: 10px; background: linear-gradient(135deg, ${isSelfCheck ? '#8b5cf6' : '#a855f7'} 0%, ${isSelfCheck ? '#7c3aed' : '#9333ea'} 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; ${isSelfCheck ? 'opacity: 0.9; border: 2px solid #a855f7;' : ''}" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(168, 85, 247, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">`;
                     html += `<span style="font-size: 1.1em;">${isSelfCheck ? '✓' : '🔍'}</span> ${isSelfCheck ? 'กำลังตรวจด้วยตัวเอง' : 'ตรวจด้วยตัวเอง'}`;
                     html += `</button>`;
-
+                    
                     // ปุ่มลบรายการ
                     html += `<button onclick="removeComparisonItem(${index}, '${referenceNo}')" style="flex: 1; min-width: 120px; padding: 10px; background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(107, 114, 128, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">`;
                     html += `<span style="font-size: 1.1em;">🗑️</span> ลบรายการ`;
                     html += `</button>`;
-
+                    
                     html += `</div>`;
                 }
             } else {
                 html += `<div style="color: #ef4444; text-align: center; padding: 20px;">ไม่พบข้อมูล</div>`;
             }
-
+            
             html += `</div>`; // ปิดฝั่งภาษีซื้อ
-
+            
             // ฝั่ง OCR (ย้ายมาด้านขวาบน)
             html += `<div class="comparison-side ocr">`;
             html += `<div class="comparison-side-header">🤖 ไฟล์ OCR</div>`;
-
+            
             // ตรวจสอบอีกครั้งว่า OCR อ่านได้หรือไม่ (สำหรับแสดงผล)
-            const hasOcrDataForDisplay = comp.ocr_data &&
-                typeof comp.ocr_data === 'object' &&
-                Object.keys(comp.ocr_data).length > 0 &&
-                (comp.ocr_data.document_no || comp.ocr_data.filename || comp.ocr_data.company_name);
-
+            const hasOcrDataForDisplay = comp.ocr_data && 
+                                         typeof comp.ocr_data === 'object' && 
+                                         Object.keys(comp.ocr_data).length > 0 && 
+                                         (comp.ocr_data.document_no || comp.ocr_data.filename || comp.ocr_data.company_name);
+            
             if (hasOcrDataForDisplay) {
                 // ตรวจสอบว่าชื่อบริษัทเป็น "บมจ.ธนาคารกสิกรไทย" หรือไม่
                 const isKasikornBank = ocrData.company_name && (
-                    ocrData.company_name.includes('บมจ.ธนาคารกสิกรไทย') ||
-                    ocrData.company_name.includes('ธนาคารกสิกรไทย') ||
+                    ocrData.company_name.includes('บมจ.ธนาคารกสิกรไทย') || 
+                    ocrData.company_name.includes('ธนาคารกสิกรไทย') || 
                     ocrData.company_name.includes('กสิกรไทย')
                 );
-
+                
                 // ตรวจสอบว่าชื่อบริษัทเป็น "มายออเดอร์ อินเทลลิเจนซ์" หรือไม่
                 const isMyOrderIntelligence = ocrData.company_name && (
-                    ocrData.company_name.includes('มายออเดอร์') ||
-                    ocrData.company_name.includes('MyOrder') ||
+                    ocrData.company_name.includes('มายออเดอร์') || 
+                    ocrData.company_name.includes('MyOrder') || 
                     ocrData.company_name.includes('MYORDER')
                 );
-
+                
                 // สำหรับบมจ.ธนาคารกสิกรไทย: ดึงค่าธรรมเนียมมาเป็นยอดก่อนภาษีมูลค่าเพิ่ม (ถ้ายังไม่มี)
                 if (isKasikornBank && (!ocrData.amount_before_vat || ocrData.amount_before_vat === 0)) {
                     // ค้นหาค่าธรรมเนียมจากรายการสินค้าหรือข้อมูลอื่นๆ
@@ -5942,7 +3820,7 @@
                         }
                     }
                 }
-
+                
                 // สำหรับมายออเดอร์ อินเทลลิเจนซ์: แปลงรายการสินค้าเป็น 2 บรรทัด
                 let myOrderLine1 = null, myOrderLine2 = null, hasMyOrderSplit = false;
                 if (isMyOrderIntelligence && ocrData.items && Array.isArray(ocrData.items) && ocrData.items.length > 0) {
@@ -5951,13 +3829,13 @@
                         const itemName = (item['รายการ'] || item['description'] || item['รายการสินค้า'] || '').toLowerCase();
                         return itemName.includes('ค่าบริการเรียกเก็บเงินปลายทาง') || itemName.includes('cod');
                     });
-
+                    
                     // หารายการ "ค่าขนส่งภายในประเทศ" (ไม่มีภาษีมูลค่าเพิ่ม)
                     const shippingItem = ocrData.items.find(item => {
                         const itemName = (item['รายการ'] || item['description'] || item['รายการสินค้า'] || '').toLowerCase();
                         return itemName.includes('ค่าขนส่งภายในประเทศ') || itemName.includes('shipping');
                     });
-
+                    
                     if (serviceItem && shippingItem) {
                         // รายการที่ 1: ค่าบริการเรียกเก็บเงินปลายทาง (มีภาษีมูลค่าเพิ่ม)
                         // ยอดก่อนภาษี = ราคาต่อหน่วย
@@ -5966,41 +3844,41 @@
                         const serviceBeforeVat = parseFloat((serviceItem['ราคาต่อหน่วย'] || serviceItem['unit_price'] || serviceItem['ราคา'] || serviceItem['price'] || '0').toString().replace(/,/g, '')) || 0;
                         const vatAmountFromOCR = ocrData.vat_amount || 0;
                         const serviceTotal = parseFloat((serviceItem['จำนวนเงิน'] || serviceItem['amount'] || '0').toString().replace(/,/g, '')) || 0;
-
+                        
                         myOrderLine1 = {
                             amount_before_vat: serviceBeforeVat,
                             vat_amount: vatAmountFromOCR,
                             total_amount: serviceTotal
                         };
-
+                        
                         // รายการที่ 2: ค่าขนส่งภายในประเทศ (ไม่มีภาษีมูลค่าเพิ่ม)
                         // ยอดก่อนภาษี = จำนวนเงิน
                         // ยอดภาษี = 0
                         // ยอดรวม = จำนวนเงิน
                         const shippingAmount = parseFloat((shippingItem['จำนวนเงิน'] || shippingItem['amount'] || '0').toString().replace(/,/g, '')) || 0;
-
+                        
                         myOrderLine2 = {
                             amount_before_vat: shippingAmount,
                             vat_amount: 0,
                             total_amount: shippingAmount
                         };
-
+                        
                         hasMyOrderSplit = true;
                         console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] รายการที่ 1: ${serviceBeforeVat} + ${vatAmountFromOCR} = ${serviceTotal}`);
                         console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] รายการที่ 2: ${shippingAmount} (ไม่มีภาษี)`);
                     }
                 }
-
+                
                 // คำนวณยอดหลังบวกภาษีมูลค่าเพิ่มเสมอ (ไม่ใช้ค่าจาก OCR สำหรับกรณีปกติ)
                 const amountBeforeVat = ocrData.amount_before_vat || 0;
                 const vatAmount = ocrData.vat_amount || 0;
-
+                
                 // ตรวจสอบกรณีพิเศษ
                 const isCustomsDepartment = ocrData.company_name && (ocrData.company_name.includes('กรมศุลกากร') || ocrData.company_name.includes('กรมศุล'));
-
+                
                 let ocrTotalAmount = 0;
                 let isAutoCalculated = false;
-
+                
                 // รายชื่อบริษัทที่อนุญาตให้คำนวณอัตโนมัติ
                 const allowedCompaniesForAutoCalc = [
                     'บมจ.ธนาคารกสิกรไทย',
@@ -6012,7 +3890,7 @@
                     'MYORDER INTELLIGENCE',
                     'MyOrder'
                 ];
-
+                
                 // รายชื่อประเภทเอกสารที่อนุญาตให้คำนวณอัตโนมัติ
                 const allowedDocumentTypesForAutoCalc = [
                     'ภ.พ.36',
@@ -6020,17 +3898,17 @@
                     'PP36',
                     'pp36'
                 ];
-
+                
                 // ตรวจสอบว่าบริษัทนี้อยู่ในรายชื่อที่อนุญาตหรือไม่
-                const isAllowedCompany = ocrData.company_name && allowedCompaniesForAutoCalc.some(company =>
+                const isAllowedCompany = ocrData.company_name && allowedCompaniesForAutoCalc.some(company => 
                     ocrData.company_name.includes(company)
                 );
-
+                
                 // ตรวจสอบว่าประเภทเอกสารนี้อยู่ในรายชื่อที่อนุญาตหรือไม่ (สำหรับ ภ.พ.36)
-                const isAllowedDocumentType = ocrData.document_type && allowedDocumentTypesForAutoCalc.some(docType =>
+                const isAllowedDocumentType = ocrData.document_type && allowedDocumentTypesForAutoCalc.some(docType => 
                     ocrData.document_type.includes(docType)
                 );
-
+                
                 // สำหรับมายออเดอร์ อินเทลลิเจนซ์: คำนวณยอดรวมทั้งสิ้นจาก line1 + line2
                 if (hasMyOrderSplit && myOrderLine1 && myOrderLine2) {
                     ocrTotalAmount = myOrderLine1.total_amount + myOrderLine2.total_amount;
@@ -6056,7 +3934,7 @@
                     // สำหรับกรณีปกติ: ใช้ค่าจาก OCR โดยตรง (ไม่คำนวณอัตโนมัติ)
                     ocrTotalAmount = ocrData.total_amount || 0;
                 }
-
+                
                 // ดีบัคสำหรับบมจ.ธนาคารกสิกรไทย
                 if (isKasikornBank) {
                     console.log(`🏦 [ดีบัค บมจ.ธนาคารกสิกรไทย] ชื่อบริษัท: ${ocrData.company_name}`);
@@ -6065,7 +3943,7 @@
                     console.log(`🏦 [ดีบัค บมจ.ธนาคารกสิกรไทย] ยอดหลังบวกภาษีมูลค่าเพิ่ม: ${ocrTotalAmount}`);
                     console.log(`🏦 [ดีบัค บมจ.ธนาคารกสิกรไทย] รายการสินค้า:`, ocrData.items);
                 }
-
+                
                 // ดีบัคสำหรับมายออเดอร์ อินเทลลิเจนซ์
                 if (hasMyOrderSplit && myOrderLine1 && myOrderLine2) {
                     console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] ชื่อบริษัท: ${ocrData.company_name}`);
@@ -6073,76 +3951,76 @@
                     console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] รายการที่ 2 - ยอดก่อนภาษี: ${myOrderLine2.amount_before_vat}, ยอดภาษี: ${myOrderLine2.vat_amount}, ยอดรวม: ${myOrderLine2.total_amount}`);
                     console.log(`📦 [ดีบัค มายออเดอร์ อินเทลลิเจนซ์] ยอดรวมทั้งสิ้น: ${ocrTotalAmount}`);
                 }
-
+                
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">เลขที่เอกสาร:</span>`;
                 html += `<span class="comparison-field-value ${matchDetails?.document_no_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.document_no_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.document_no_match ? '400' : '600'};">${ocrData.document_no || '-'}</span>`;
                 html += `</div>`;
-
+                
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">วันที่:</span>`;
                 html += `<span class="comparison-field-value ${matchDetails?.date_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.date_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.date_match ? '400' : '600'};">${ocrData.date || '-'}</span>`;
                 html += `</div>`;
-
+                
                 // หมายเหตุ: isCustomsDepartment ถูกประกาศไว้แล้วในส่วนการคำนวณยอดรวมด้านบน
-
+                
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">ชื่อบริษัท:</span>`;
                 html += `<span class="comparison-field-value ${matchDetails?.company_name_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.company_name_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.company_name_match ? '400' : '600'};">${ocrData.company_name || '-'}</span>`;
                 html += `</div>`;
-
+                
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">เลขประจำตัวผู้เสียภาษี:</span>`;
                 // สำหรับกรมศุลกากร: แสดง "ไม่มีข้อมูล" แทน "-"
                 const displayTaxId = isCustomsDepartment ? 'ไม่มีข้อมูล' : (ocrData.tax_id || '-');
                 html += `<span class="comparison-field-value ${matchDetails?.tax_id_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.tax_id_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.tax_id_match ? '400' : '600'};">${displayTaxId}</span>`;
                 html += `</div>`;
-
+                
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">สาขา:</span>`;
                 // สำหรับกรมศุลกากร: แสดง "ไม่มีข้อมูล" แทน "-"
                 const displayBranch = isCustomsDepartment ? 'ไม่มีข้อมูล' : (ocrData.branch || '-');
                 html += `<span class="comparison-field-value ${matchDetails?.branch_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.branch_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.branch_match ? '400' : '600'};">${displayBranch}</span>`;
                 html += `</div>`;
-
+                
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">เลขที่เอกสารอ้างอิง (จากชื่อไฟล์):</span>`;
                 html += `<span class="comparison-field-value ${matchDetails?.reference_no_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.reference_no_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.reference_no_match ? '400' : '600'};">${ocrData.reference_number || '-'}</span>`;
                 html += `</div>`;
-
+                
                 // สำหรับมายออเดอร์ อินเทลลิเจนซ์: แสดง 2 บรรทัดแยกกัน
                 if (hasMyOrderSplit && myOrderLine1 && myOrderLine2) {
                     html += `<div class="comparison-field" style="background: #1e3a5f; padding: 12px; border-radius: 5px; border-left: 3px solid #3b82f6; margin-bottom: 10px;">`;
                     html += `<div style="color: #60a5fa; font-weight: bold; margin-bottom: 8px;">📋 รายการที่ 1: ค่าบริการเรียกเก็บเงินปลายทาง</div>`;
                     html += `<div class="comparison-field" style="margin-left: 10px; margin-bottom: 5px;">`;
                     html += `<span class="comparison-field-label">ยอดก่อนภาษี:</span>`;
-                    html += `<span class="comparison-field-value ${matchDetails?.amount_before_vat_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.amount_before_vat_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.amount_before_vat_match ? '400' : '600'};">${myOrderLine1.amount_before_vat.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+                    html += `<span class="comparison-field-value ${matchDetails?.amount_before_vat_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.amount_before_vat_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.amount_before_vat_match ? '400' : '600'};">${myOrderLine1.amount_before_vat.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
                     html += `</div>`;
                     html += `<div class="comparison-field" style="margin-left: 10px; margin-bottom: 5px;">`;
                     html += `<span class="comparison-field-label">ยอดภาษี:</span>`;
-                    html += `<span class="comparison-field-value ${matchDetails?.vat_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.vat_amount_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.vat_amount_match ? '400' : '600'};">${myOrderLine1.vat_amount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+                    html += `<span class="comparison-field-value ${matchDetails?.vat_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.vat_amount_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.vat_amount_match ? '400' : '600'};">${myOrderLine1.vat_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
                     html += `</div>`;
                     html += `<div class="comparison-field" style="margin-left: 10px; margin-top: 8px; padding-top: 8px; border-top: 1px solid #475569;">`;
                     html += `<span class="comparison-field-label" style="font-weight: 600;">ยอดรวม:</span>`;
-                    html += `<span class="comparison-field-value" style="color: #10b981; font-weight: 600; font-size: 1.05em;">${myOrderLine1.total_amount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+                    html += `<span class="comparison-field-value" style="color: #10b981; font-weight: 600; font-size: 1.05em;">${myOrderLine1.total_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
                     html += `</div>`;
                     html += `</div>`;
-
+                    
                     html += `<div class="comparison-field" style="background: #1e3a5f; padding: 12px; border-radius: 5px; border-left: 3px solid #3b82f6; margin-bottom: 10px;">`;
                     html += `<div style="color: #60a5fa; font-weight: bold; margin-bottom: 8px;">📋 รายการที่ 2: ค่าขนส่งภายในประเทศ (ไม่มีภาษีมูลค่าเพิ่ม)</div>`;
                     html += `<div class="comparison-field" style="margin-left: 10px; margin-bottom: 5px;">`;
                     html += `<span class="comparison-field-label">ยอดก่อนภาษี:</span>`;
-                    html += `<span class="comparison-field-value ${matchDetails?.amount_before_vat_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.amount_before_vat_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.amount_before_vat_match ? '400' : '600'};">${myOrderLine2.amount_before_vat.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+                    html += `<span class="comparison-field-value ${matchDetails?.amount_before_vat_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.amount_before_vat_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.amount_before_vat_match ? '400' : '600'};">${myOrderLine2.amount_before_vat.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
                     html += `</div>`;
                     html += `<div class="comparison-field" style="margin-left: 10px; margin-top: 8px; padding-top: 8px; border-top: 1px solid #475569;">`;
                     html += `<span class="comparison-field-label" style="font-weight: 600;">ยอดรวม:</span>`;
-                    html += `<span class="comparison-field-value" style="color: #10b981; font-weight: 600; font-size: 1.05em;">${myOrderLine2.total_amount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+                    html += `<span class="comparison-field-value" style="color: #10b981; font-weight: 600; font-size: 1.05em;">${myOrderLine2.total_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
                     html += `</div>`;
                     html += `</div>`;
-
+                    
                     html += `<div class="comparison-field" style="margin-top: 12px; padding-top: 12px; border-top: 2px solid #475569;">`;
                     html += `<span class="comparison-field-label" style="font-weight: 600; font-size: 1.1em;">ยอดรวมทั้งสิ้น:</span>`;
-                    const totalAmountDisplay = ocrTotalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                    const totalAmountDisplay = ocrTotalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2});
                     html += `<span class="comparison-field-value ${matchDetails?.total_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.total_amount_match ? '#10b981' : '#ef4444'}; font-weight: 600; font-size: 1.1em;">
                         ${totalAmountDisplay}
                         ${isAutoCalculated ? ' <span style="color: #60a5fa; font-size: 0.85em;">(คำนวณอัตโนมัติ)</span>' : ''}
@@ -6152,60 +4030,60 @@
                     // กรณีปกติ: แสดงยอดเงินแบบปกติ
                     html += `<div class="comparison-field">`;
                     html += `<span class="comparison-field-label">ยอดก่อนภาษีมูลค่าเพิ่ม:</span>`;
-                    html += `<span class="comparison-field-value ${matchDetails?.amount_before_vat_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.amount_before_vat_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.amount_before_vat_match ? '400' : '600'};">${(ocrData.amount_before_vat || 0).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+                    html += `<span class="comparison-field-value ${matchDetails?.amount_before_vat_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.amount_before_vat_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.amount_before_vat_match ? '400' : '600'};">${(ocrData.amount_before_vat || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
                     html += `</div>`;
-
+                    
                     html += `<div class="comparison-field">`;
                     html += `<span class="comparison-field-label">ยอดภาษีมูลค่าเพิ่ม:</span>`;
-                    html += `<span class="comparison-field-value ${matchDetails?.vat_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.vat_amount_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.vat_amount_match ? '400' : '600'};">${(ocrData.vat_amount || 0).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+                    html += `<span class="comparison-field-value ${matchDetails?.vat_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.vat_amount_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.vat_amount_match ? '400' : '600'};">${(ocrData.vat_amount || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>`;
                     html += `</div>`;
-
+                    
                     html += `<div class="comparison-field">`;
                     html += `<span class="comparison-field-label">ยอดหลังบวกภาษีมูลค่าเพิ่ม:</span>`;
-                    const totalAmountDisplay = ocrTotalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                    const totalAmountDisplay = ocrTotalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2});
                     html += `<span class="comparison-field-value ${matchDetails?.total_amount_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.total_amount_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.total_amount_match ? '400' : '600'};">
                         ${totalAmountDisplay}
                         ${isAutoCalculated ? ' <span style="color: #60a5fa; font-size: 0.85em;">(คำนวณอัตโนมัติ)</span>' : ''}
                     </span>`;
                     html += `</div>`;
                 }
-
+                
                 // แสดงข้อมูลดีบัคสำหรับบมจ.ธนาคารกสิกรไทย
                 if (isKasikornBank) {
                     html += `<div class="comparison-field" style="background: #1e293b; padding: 10px; border-radius: 5px; border-left: 4px solid #60a5fa; margin-top: 10px;">`;
                     html += `<span class="comparison-field-label" style="color: #60a5fa; font-weight: 600;">🏦 ดีบัค - บมจ.ธนาคารกสิกรไทย:</span>`;
                     html += `<div style="margin-top: 5px; font-size: 0.9em; color: #cbd5e1;">`;
-                    html += `<div>• ยอดก่อนภาษีมูลค่าเพิ่ม (จากค่าธรรมเนียม): ${(ocrData.amount_before_vat || 0).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>`;
-                    html += `<div>• ยอดภาษีมูลค่าเพิ่ม: ${(ocrData.vat_amount || 0).toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>`;
-                    html += `<div>• ยอดหลังบวกภาษีมูลค่าเพิ่ม: ${ocrTotalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${isAutoCalculated ? '(คำนวณอัตโนมัติ)' : ''}</div>`;
+                    html += `<div>• ยอดก่อนภาษีมูลค่าเพิ่ม (จากค่าธรรมเนียม): ${(ocrData.amount_before_vat || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>`;
+                    html += `<div>• ยอดภาษีมูลค่าเพิ่ม: ${(ocrData.vat_amount || 0).toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>`;
+                    html += `<div>• ยอดหลังบวกภาษีมูลค่าเพิ่ม: ${ocrTotalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${isAutoCalculated ? '(คำนวณอัตโนมัติ)' : ''}</div>`;
                     html += `</div>`;
                     html += `</div>`;
                 }
-
+                
                 // แสดงข้อมูลดีบัคสำหรับมายออเดอร์ อินเทลลิเจนซ์
                 if (hasMyOrderSplit && myOrderLine1 && myOrderLine2) {
                     html += `<div class="comparison-field" style="background: #1e293b; padding: 10px; border-radius: 5px; border-left: 4px solid #3b82f6; margin-top: 10px;">`;
                     html += `<span class="comparison-field-label" style="color: #3b82f6; font-weight: 600;">📦 ดีบัค - มายออเดอร์ อินเทลลิเจนซ์:</span>`;
                     html += `<div style="margin-top: 5px; font-size: 0.9em; color: #cbd5e1;">`;
-                    html += `<div style="margin-bottom: 5px;"><strong>รายการที่ 1:</strong> ยอดก่อนภาษี: ${myOrderLine1.amount_before_vat.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}, ยอดภาษี: ${myOrderLine1.vat_amount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}, ยอดรวม: ${myOrderLine1.total_amount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>`;
-                    html += `<div style="margin-bottom: 5px;"><strong>รายการที่ 2:</strong> ยอดก่อนภาษี: ${myOrderLine2.amount_before_vat.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}, ยอดภาษี: ${myOrderLine2.vat_amount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}, ยอดรวม: ${myOrderLine2.total_amount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>`;
-                    html += `<div><strong>ยอดรวมทั้งสิ้น:</strong> ${ocrTotalAmount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ${isAutoCalculated ? '(คำนวณอัตโนมัติ)' : ''}</div>`;
+                    html += `<div style="margin-bottom: 5px;"><strong>รายการที่ 1:</strong> ยอดก่อนภาษี: ${myOrderLine1.amount_before_vat.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}, ยอดภาษี: ${myOrderLine1.vat_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}, ยอดรวม: ${myOrderLine1.total_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>`;
+                    html += `<div style="margin-bottom: 5px;"><strong>รายการที่ 2:</strong> ยอดก่อนภาษี: ${myOrderLine2.amount_before_vat.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}, ยอดภาษี: ${myOrderLine2.vat_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}, ยอดรวม: ${myOrderLine2.total_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>`;
+                    html += `<div><strong>ยอดรวมทั้งสิ้น:</strong> ${ocrTotalAmount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})} ${isAutoCalculated ? '(คำนวณอัตโนมัติ)' : ''}</div>`;
                     html += `</div>`;
                     html += `</div>`;
                 }
-
+                
                 // ย้ายประเภทเอกสารและสถานะเอกสารมาหลังยอดหลังบวกภาษีมูลค่าเพิ่ม
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">ประเภทเอกสาร:</span>`;
                 html += `<span class="comparison-field-value ${matchDetails?.document_type_match ? 'match' : 'mismatch'}" style="color: ${matchDetails?.document_type_match ? '#10b981' : '#ef4444'}; font-weight: ${matchDetails?.document_type_match ? '400' : '600'};">${ocrData.document_type || '-'}</span>`;
                 html += `</div>`;
-
+                
                 html += `<div class="comparison-field">`;
                 html += `<span class="comparison-field-label">สถานะเอกสาร:</span>`;
                 html += `<span class="comparison-field-value">${ocrData.document_status || '-'}</span>`;
                 html += `</div>`;
-
-
+                
+                
                 // แสดงรายการสินค้า (ถ้ามี)
                 if (ocrData.items && Array.isArray(ocrData.items) && ocrData.items.length > 0) {
                     html += `<div class="comparison-field" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #334155;">`;
@@ -6220,7 +4098,7 @@
                         const itemAmount = item['จำนวนเงิน'] || item['amount'] || item['ยอดรวม'] || '-';
                         const itemQuantity = item['จำนวน'] || item['quantity'] || '';
                         const itemPrice = item['ราคา'] || item['price'] || item['ราคาต่อหน่วย'] || item['unit_price'] || '';
-
+                        
                         // แปลงจำนวนเงินเป็นตัวเลข (ถ้าเป็น string ให้ลบ comma และแปลงเป็นตัวเลข)
                         let amountValue = itemAmount;
                         if (typeof itemAmount === 'string' && itemAmount !== '-') {
@@ -6228,15 +4106,15 @@
                         } else if (typeof itemAmount === 'number') {
                             amountValue = itemAmount;
                         }
-
+                        
                         html += `<div style="padding: 12px; margin-bottom: 10px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 6px; border-left: 4px solid #60a5fa; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); transition: all 0.2s;" onmouseover="this.style.transform='translateX(2px)'; this.style.boxShadow='0 4px 8px rgba(96, 165, 250, 0.3)';" onmouseout="this.style.transform='translateX(0)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.2)';">`;
-
+                        
                         // ชื่อรายการ
                         html += `<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">`;
                         html += `<span style="background: #60a5fa; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85em; font-weight: 600; flex-shrink: 0;">${itemIndex + 1}</span>`;
                         html += `<strong style="color: #fafafa; font-size: 0.95em; flex: 1;">${itemName}</strong>`;
                         html += `</div>`;
-
+                        
                         // จำนวนและราคา
                         if (itemQuantity || itemPrice) {
                             html += `<div style="display: flex; gap: 15px; margin-left: 32px; margin-bottom: 6px; flex-wrap: wrap;">`;
@@ -6254,66 +4132,66 @@
                             }
                             html += `</div>`;
                         }
-
+                        
                         // ยอดรวม
                         if (amountValue && amountValue !== '-' && amountValue !== 0) {
                             html += `<div style="margin-left: 32px; margin-top: 6px; padding-top: 8px; border-top: 1px solid #334155;">`;
                             html += `<div style="display: flex; align-items: center; gap: 8px;">`;
                             html += `<span style="color: #10b981; font-size: 0.9em; font-weight: 600;">ยอดรวม:</span>`;
-                            html += `<span style="color: #10b981; font-size: 1em; font-weight: 700;">${typeof amountValue === 'number' ? amountValue.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : amountValue}</span>`;
+                            html += `<span style="color: #10b981; font-size: 1em; font-weight: 700;">${typeof amountValue === 'number' ? amountValue.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : amountValue}</span>`;
                             html += `<span style="color: #10b981; font-size: 0.9em; font-weight: 500;">บาท</span>`;
                             html += `</div>`;
                             html += `</div>`;
                         }
-
+                        
                         html += `</div>`;
                     });
                     html += `</div>`;
                     html += `</div>`;
                 }
-
+                
                 // เพิ่มปุ่มลบรายการสำหรับกรณีที่อ่านได้แค่ OCR (ไม่มีข้อมูลภาษีซื้อ)
                 if (!comp.purchase_data && comp.ocr_data) {
                     const ocrReferenceNo = ocrData.reference_number || ocrData.document_no || '';
                     if (ocrReferenceNo) {
                         html += `<div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #334155; display: flex; gap: 10px; flex-wrap: wrap;">`;
-
+                        
                         // ปุ่มลบรายการ
                         html += `<button onclick="removeComparisonItem(${index}, '${ocrReferenceNo}')" style="flex: 1; min-width: 120px; padding: 10px; background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9em; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(107, 114, 128, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">`;
                         html += `<span style="font-size: 1.1em;">🗑️</span> ลบรายการ`;
                         html += `</button>`;
-
+                        
                         html += `</div>`;
                     }
                 }
             } else {
                 html += `<div style="color: #ef4444; text-align: center; padding: 20px;">ไม่พบข้อมูล</div>`;
             }
-
+            
             html += `</div>`; // ปิดฝั่ง OCR
-
+            
             html += `</div>`; // ปิด comparison-sides-container
-
+            
             // ส่วนข้อมูลบริษัท (แนวนอน) - วางไว้ด้านล่าง
             // ตรวจสอบว่ามีข้อมูลบริษัทในระบบหรือไม่
             const hasCompanyDataInSystem = (companyName && companyName !== '-') ||
-                (companyTaxId && companyTaxId !== '-') ||
-                (companyAddress && companyAddress !== '-');
-
+                                          (companyTaxId && companyTaxId !== '-') ||
+                                          (companyAddress && companyAddress !== '-');
+            
             // ตรวจสอบว่ามีข้อมูลบริษัทที่ต้องเปรียบเทียบหรือไม่
             const hasCompanyDataToCompare = (buyerName && buyerName !== '-' && companyName && companyName !== '-') ||
-                (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') ||
-                (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-');
-
+                                            (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') ||
+                                            (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-');
+            
             // ตรวจสอบว่าถูกอนุมัติข้อมูลบริษัททั้งหมดแล้วหรือไม่
             const companyDataApprovalKey = `${index}-company_data_all`;
             const isCompanyDataApproved = comparisonApprovals[companyDataApprovalKey] || false;
-
+            
             // ตรวจสอบว่ามีข้อมูลที่ไม่ตรงกันหรือไม่
             const hasMismatch = (!companyNameMatch && buyerName && buyerName !== '-' && companyName && companyName !== '-') ||
-                (!companyTaxIdMatch && buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') ||
-                (!companyAddressMatch && buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-');
-
+                               (!companyTaxIdMatch && buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') ||
+                               (!companyAddressMatch && buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-');
+            
             // แสดงสถานะ "ไม่มีข้อมูลบริษัท" ถ้าไม่มีข้อมูลบริษัทในระบบเลย
             if (!hasCompanyDataInSystem) {
                 html += `<div class="company-data-section" style="width: 100%; margin: 20px 0; padding: 15px; background: linear-gradient(135deg, #fbbf2415 0%, #f59e0b15 100%); border-radius: 10px; border: 2px solid #fbbf24; border-left: 5px solid #fbbf24;">`;
@@ -6328,7 +4206,7 @@
             } else if (hasCompanyDataToCompare) {
                 // แสดงข้อมูลบริษัทแบบแนวนอน
                 html += `<div class="company-data-section" style="width: 100%; margin: 20px 0; padding: 15px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border-radius: 10px; border: 2px solid #334155; border-left: 5px solid #60a5fa;">`;
-
+                
                 // ส่วนหัว
                 html += `<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">`;
                 html += `<div style="display: flex; align-items: center; gap: 10px;">`;
@@ -6338,7 +4216,7 @@
                 html += `<div style="color: #94a3b8; font-size: 0.85em;">เปรียบเทียบข้อมูลจาก OCR กับข้อมูลบริษัท</div>`;
                 html += `</div>`;
                 html += `</div>`;
-
+                
                 // ปุ่มอนุมัติข้อมูลบริษัททั้งหมด
                 if (hasMismatch && !isCompanyDataApproved) {
                     html += `<button onclick="approveCompanyData(${index})" data-field-key="company_data_all" data-field-index="${index}" style="padding: 10px 20px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9em; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.3s; white-space: nowrap; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(16, 185, 129, 0.3)';" title="อนุมัติข้อมูลบริษัททั้งหมด (ชื่อ, เลขประจำตัวผู้เสียภาษี, ที่อยู่)">`;
@@ -6351,26 +4229,26 @@
                     html += `<span>ยกเลิกการอนุมัติ</span>`;
                     html += `</button>`;
                 }
-
+                
                 html += `</div>`;
-
+                
                 // ส่วนแสดงผลการเปรียบเทียบแบบแนวนอน (3 คอลัมน์)
                 html += `<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 15px;">`;
-
+                
                 // คอลัมน์ที่ 1: ชื่อ
                 if (buyerName && buyerName !== '-' && companyName && companyName !== '-') {
                     const nameApprovalKey = `${index}-company_name_match`;
                     const isNameApproved = comparisonApprovals[nameApprovalKey] || false;
                     const nameMatchColor = isNameApproved ? '#10b981' : (companyNameMatch ? '#10b981' : '#ef4444');
                     const nameMatchText = isNameApproved ? '✅ อนุมัติแล้ว' : (companyNameMatch ? '✅ ตรงกัน' : '❌ ไม่ตรงกัน');
-
+                    
                     html += `<div style="padding: 12px; background: ${nameMatchColor}15; border-radius: 8px; border-left: 4px solid ${nameMatchColor}; flex: 1;">`;
                     html += `<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">`;
                     html += `<div style="display: flex; align-items: center; gap: 8px;">`;
                     html += `<span style="font-size: 1.1em;">🏢</span>`;
                     html += `<span style="font-weight: 600; color: ${nameMatchColor}; font-size: 0.95em;">ผลการเปรียบเทียบชื่อ: ${nameMatchText}</span>`;
                     html += `</div>`;
-
+                    
                     // ปุ่มอนุมัติชื่อ (แสดงเฉพาะเมื่อไม่ตรงกันหรือยังไม่ได้อนุมัติ)
                     if (!isNameApproved && !companyNameMatch) {
                         html += `<button onclick="approveField(${index}, 'company_name_match', 'ชื่อบริษัท')" data-field-key="company_name_match" data-field-index="${index}" style="padding: 6px 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="อนุมัติความไม่ตรงกันของชื่อ">`;
@@ -6381,13 +4259,13 @@
                         html += `<span style="font-size: 1em;">✕</span> ยกเลิก`;
                         html += `</button>`;
                     }
-
+                    
                     html += `</div>`;
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ชื่อจาก OCR:</div>`;
                     html += `<div style="color: ${isNameApproved || companyNameMatch ? '#10b981' : '#cbd5e1'}; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${buyerName}</div>`;
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ชื่อบริษัท:</div>`;
                     html += `<div style="color: ${isNameApproved || companyNameMatch ? '#10b981' : '#cbd5e1'}; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${companyName}</div>`;
-
+                    
                     // ปุ่มวิเคราะห์ความคล้ายคลึง (แสดงเฉพาะเมื่อไม่ตรงกัน)
                     if (!isNameApproved && !companyNameMatch) {
                         // Escape HTML และ quotes สำหรับชื่อบริษัท
@@ -6398,48 +4276,28 @@
                         html += `<span>วิเคราะห์ความคล้ายคลึง</span>`;
                         html += `</button>`;
                     }
-
-                    html += `</div>`;
-                } else if ((buyerName && buyerName !== '-') || (companyName && companyName !== '-')) {
-                    // กรณีมีข้อมูลเพียงฝั่งเดียว — แสดงข้อมูลพร้อมคำเตือน
-                    const hasBuyer = buyerName && buyerName !== '-';
-                    const hasCompany = companyName && companyName !== '-';
-                    const warningColor = '#fbbf24';
-                    html += `<div style="padding: 12px; background: ${warningColor}15; border-radius: 8px; border-left: 4px solid ${warningColor}; flex: 1;">`;
-                    html += `<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">`;
-                    html += `<span style="font-size: 1.1em;">⚠️</span>`;
-                    html += `<span style="font-weight: 600; color: ${warningColor}; font-size: 0.95em;">ข้อมูลชื่อไม่ครบ</span>`;
-                    html += `</div>`;
-                    if (hasBuyer) {
-                        html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ชื่อจาก OCR:</div>`;
-                        html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${buyerName}</div>`;
-                    }
-                    if (hasCompany) {
-                        html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ชื่อบริษัท:</div>`;
-                        html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px; word-break: break-word;">${companyName}</div>`;
-                    }
-                    html += `<div style="color: #94a3b8; font-size: 0.8em; font-style: italic; margin-top: 5px;">⚠ ${!hasBuyer ? 'OCR ไม่พบชื่อผู้ซื้อในเอกสาร' : 'ยังไม่มีข้อมูลชื่อบริษัทในระบบ'}</div>`;
+                    
                     html += `</div>`;
                 } else {
                     html += `<div style="padding: 12px; background: #33415515; border-radius: 8px; border-left: 4px solid #334155; flex: 1;">`;
                     html += `<div style="color: #94a3b8; font-size: 0.9em;">ไม่มีข้อมูลชื่อ</div>`;
                     html += `</div>`;
                 }
-
+                
                 // คอลัมน์ที่ 2: เลขประจำตัวผู้เสียภาษี
                 if (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') {
                     const taxIdApprovalKey = `${index}-company_tax_id_match`;
                     const isTaxIdApproved = comparisonApprovals[taxIdApprovalKey] || false;
                     const taxIdMatchColor = isTaxIdApproved ? '#10b981' : (companyTaxIdMatch ? '#10b981' : '#ef4444');
                     const taxIdMatchText = isTaxIdApproved ? '✅ อนุมัติแล้ว' : (companyTaxIdMatch ? '✅ ตรงกัน' : '❌ ไม่ตรงกัน');
-
+                    
                     html += `<div style="padding: 12px; background: ${taxIdMatchColor}15; border-radius: 8px; border-left: 4px solid ${taxIdMatchColor}; flex: 1;">`;
                     html += `<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">`;
                     html += `<div style="display: flex; align-items: center; gap: 8px;">`;
                     html += `<span style="font-size: 1.1em;">🆔</span>`;
                     html += `<span style="font-weight: 600; color: ${taxIdMatchColor}; font-size: 0.95em;">ผลการเปรียบเทียบเลขประจำตัวผู้เสียภาษี: ${taxIdMatchText}</span>`;
                     html += `</div>`;
-
+                    
                     // ปุ่มอนุมัติเลขประจำตัวผู้เสียภาษี (แสดงเฉพาะเมื่อไม่ตรงกันหรือยังไม่ได้อนุมัติ)
                     if (!isTaxIdApproved && !companyTaxIdMatch) {
                         html += `<button onclick="approveField(${index}, 'company_tax_id_match', 'เลขประจำตัวผู้เสียภาษี')" data-field-key="company_tax_id_match" data-field-index="${index}" style="padding: 6px 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="อนุมัติความไม่ตรงกันของเลขประจำตัวผู้เสียภาษี">`;
@@ -6450,53 +4308,33 @@
                         html += `<span style="font-size: 1em;">✕</span> ยกเลิก`;
                         html += `</button>`;
                     }
-
+                    
                     html += `</div>`;
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">เลขจาก OCR:</div>`;
                     html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px;">${buyerTaxId}</div>`;
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">เลขประจำตัวผู้เสียภาษี 13 หลัก:</div>`;
                     html += `<div style="color: #cbd5e1; font-size: 0.9em;">${companyTaxId}</div>`;
                     html += `</div>`;
-                } else if ((buyerTaxId && buyerTaxId !== '-') || (companyTaxId && companyTaxId !== '-')) {
-                    // กรณีมีข้อมูลเพียงฝั่งเดียว — แสดงข้อมูลพร้อมคำเตือน
-                    const hasBuyerTax = buyerTaxId && buyerTaxId !== '-';
-                    const hasCompanyTax = companyTaxId && companyTaxId !== '-';
-                    const warningColor = '#fbbf24';
-                    html += `<div style="padding: 12px; background: ${warningColor}15; border-radius: 8px; border-left: 4px solid ${warningColor}; flex: 1;">`;
-                    html += `<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">`;
-                    html += `<span style="font-size: 1.1em;">⚠️</span>`;
-                    html += `<span style="font-weight: 600; color: ${warningColor}; font-size: 0.95em;">ข้อมูลเลขประจำตัวผู้เสียภาษีไม่ครบ</span>`;
-                    html += `</div>`;
-                    if (hasBuyerTax) {
-                        html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">เลขจาก OCR:</div>`;
-                        html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px;">${buyerTaxId}</div>`;
-                    }
-                    if (hasCompanyTax) {
-                        html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">เลขประจำตัวผู้เสียภาษี 13 หลัก:</div>`;
-                        html += `<div style="color: #cbd5e1; font-size: 0.9em; margin-bottom: 10px;">${companyTaxId}</div>`;
-                    }
-                    html += `<div style="color: #94a3b8; font-size: 0.8em; font-style: italic; margin-top: 5px;">⚠ ${!hasBuyerTax ? 'OCR ไม่พบเลขประจำตัวผู้เสียภาษีในเอกสาร' : 'ยังไม่มีข้อมูลเลขประจำตัวผู้เสียภาษีในระบบ'}</div>`;
-                    html += `</div>`;
                 } else {
                     html += `<div style="padding: 12px; background: #33415515; border-radius: 8px; border-left: 4px solid #334155; flex: 1;">`;
                     html += `<div style="color: #94a3b8; font-size: 0.9em;">ไม่มีข้อมูลเลขประจำตัวผู้เสียภาษี</div>`;
                     html += `</div>`;
                 }
-
+                
                 // คอลัมน์ที่ 3: ที่อยู่
                 if (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-') {
                     const addressApprovalKey = `${index}-address_match`;
                     const isAddressApproved = comparisonApprovals[addressApprovalKey] || false;
                     const addressMatchColor = isAddressApproved ? '#10b981' : (companyAddressMatch ? '#10b981' : '#ef4444');
                     const addressMatchText = isAddressApproved ? '✅ อนุมัติแล้ว' : (companyAddressMatch ? '✅ ตรงกัน' : '❌ ไม่ตรงกัน');
-
+                    
                     html += `<div style="padding: 12px; background: ${addressMatchColor}15; border-radius: 8px; border-left: 4px solid ${addressMatchColor}; flex: 1;">`;
                     html += `<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">`;
                     html += `<div style="display: flex; align-items: center; gap: 8px;">`;
                     html += `<span style="font-size: 1.2em;">📍</span>`;
                     html += `<span style="font-weight: 600; color: ${addressMatchColor}; font-size: 0.95em;">ผลการเปรียบเทียบที่อยู่: ${addressMatchText}</span>`;
                     html += `</div>`;
-
+                    
                     // ปุ่มอนุมัติที่อยู่ (แสดงเฉพาะเมื่อไม่ตรงกันหรือยังไม่ได้อนุมัติ)
                     if (!isAddressApproved && !companyAddressMatch) {
                         html += `<button onclick="approveField(${index}, 'address_match', 'ที่อยู่บริษัท')" data-field-key="address_match" data-field-index="${index}" style="padding: 6px 12px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600; display: flex; align-items: center; gap: 6px; transition: all 0.3s; white-space: nowrap;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';" title="อนุมัติความไม่ตรงกันของที่อยู่">`;
@@ -6507,24 +4345,24 @@
                         html += `<span style="font-size: 1em;">✕</span> ยกเลิก`;
                         html += `</button>`;
                     }
-
+                    
                     html += `</div>`;
-
+                    
                     // แสดงที่อยู่ทั้งสองฝั่งเพื่อเปรียบเทียบ (แสดงเป็น 2 แถว)
                     html += `<div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">`;
-
+                    
                     // แถวที่ 1: ที่อยู่บริษัท
                     html += `<div>`;
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ที่อยู่บริษัท:</div>`;
                     html += `<div style="color: ${companyAddressMatch || isAddressApproved ? '#10b981' : '#ef4444'}; font-size: 0.9em; padding: 8px; background: #0f172a; border-radius: 4px; word-break: break-word; min-height: 40px; border: 1px solid ${companyAddressMatch || isAddressApproved ? '#10b981' : '#ef4444'}40;">${companyAddress}</div>`;
                     html += `</div>`;
-
+                    
                     // แถวที่ 2: ที่อยู่จาก OCR
                     html += `<div>`;
                     html += `<div style="color: #94a3b8; font-size: 0.85em; margin-bottom: 5px;">ที่อยู่จาก OCR:</div>`;
                     html += `<div style="color: ${companyAddressMatch || isAddressApproved ? '#10b981' : '#ef4444'}; font-size: 0.9em; padding: 8px; background: #0f172a; border-radius: 4px; word-break: break-word; min-height: 40px; border: 1px solid ${companyAddressMatch || isAddressApproved ? '#10b981' : '#ef4444'}40;">${buyerAddress}</div>`;
                     html += `</div>`;
-
+                    
                     html += `</div>`; // ปิด flex container
                     html += `</div>`;
                 } else if (buyerAddress && buyerAddress !== '-' && (!companyAddress || companyAddress === '-')) {
@@ -6539,36 +4377,36 @@
                     html += `<div style="color: #94a3b8; font-size: 0.9em;">ไม่มีข้อมูลที่อยู่</div>`;
                     html += `</div>`;
                 }
-
+                
                 html += `</div>`; // ปิด grid
                 html += `</div>`; // ปิด company-data-section
             }
-
+            
             // ปิด tag สำคัญทั้งหมด
             html += `</div>`; // ปิด comparison-content-wrapper
             html += `</div>`; // ปิด comparison-row-content
             html += `</div>`; // ปิด comparison-row
-
+            
             return html;
         }
-
+        
         function switchComparisonTab(tabName) {
             // ซ่อน tab content ทั้งหมด
             document.querySelectorAll('.comparison-tab-content').forEach(content => {
                 content.classList.remove('active');
             });
-
+            
             // ลบ active class จาก tab ทั้งหมด
             document.querySelectorAll('.comparison-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
-
+            
             // แสดง tab content ที่เลือก
             const selectedContent = document.getElementById(`comparison-tab-${tabName}`);
             if (selectedContent) {
                 selectedContent.classList.add('active');
             }
-
+            
             // เพิ่ม active class ให้ tab ที่เลือก
             const tabs = document.querySelectorAll('.comparison-tab');
             let tabIndex = -1;
@@ -6583,15 +4421,15 @@
             } else if (tabName === 'match') {
                 tabIndex = 4;
             }
-
+            
             if (tabIndex >= 0 && tabs[tabIndex]) {
                 tabs[tabIndex].classList.add('active');
             }
-
+            
             // อัปเดต pagination เมื่อเปลี่ยน tab
             comparisonPagination.currentTab = tabName;
             comparisonPagination.currentPage = 1; // รีเซ็ตหน้าเป็น 1 เมื่อเปลี่ยน tab
-
+            
             // รีเซ็ต search เมื่อเปลี่ยน tab (optional - ถ้าต้องการให้ search ค้างไว้ให้ comment บรรทัดนี้)
             // comparisonSearchTerm = '';
             // const searchInput = document.getElementById('comparisonReferenceSearch');
@@ -6600,31 +4438,31 @@
             // if (searchInput) searchInput.value = '';
             // if (clearBtn) clearBtn.style.display = 'none';
             // if (searchResult) searchResult.style.display = 'none';
-
+            
             updateComparisonPagination();
         }
-
+        
         // ฟังก์ชันสำหรับเปลี่ยนจำนวนรายการต่อหน้า
         function changeComparisonItemsPerPage(itemsPerPage) {
             comparisonPagination.itemsPerPage = parseInt(itemsPerPage);
             comparisonPagination.currentPage = 1; // รีเซ็ตหน้าเป็น 1 เมื่อเปลี่ยนจำนวนรายการต่อหน้า
             updateComparisonPagination();
         }
-
+        
         // ฟังก์ชันสำหรับเปลี่ยนหน้า
         function changeComparisonPage(page) {
             comparisonPagination.currentPage = parseInt(page);
             updateComparisonPagination();
         }
-
+        
         // ฟังก์ชันสำหรับอัปเดต pagination
         function updateComparisonPagination() {
             const activeTab = document.querySelector('.comparison-tab-content.active');
             if (!activeTab) return;
-
+            
             const allRows = Array.from(activeTab.querySelectorAll('.comparison-row'));
             const itemsPerPage = comparisonPagination.itemsPerPage;
-
+            
             // ถ้ามี search term ให้ filter rows ก่อน
             let visibleRows = allRows;
             if (comparisonSearchTerm) {
@@ -6633,32 +4471,32 @@
                     return referenceNo.includes(comparisonSearchTerm);
                 });
             }
-
+            
             const totalItems = visibleRows.length;
             const totalPages = Math.ceil(totalItems / itemsPerPage);
             const currentPage = Math.min(comparisonPagination.currentPage, totalPages || 1);
-
+            
             // อัปเดต currentPage ถ้ามันเกิน totalPages
             if (currentPage !== comparisonPagination.currentPage) {
                 comparisonPagination.currentPage = currentPage;
             }
-
+            
             // คำนวณ range ของรายการที่จะแสดง
             const startIndex = (currentPage - 1) * itemsPerPage;
             const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
-
+            
             // ซ่อน rows ทั้งหมดก่อน
             allRows.forEach(row => {
                 row.style.display = 'none';
             });
-
+            
             // แสดงเฉพาะ rows ที่อยู่ในหน้าที่เลือก
             visibleRows.forEach((row, visibleIndex) => {
                 if (visibleIndex >= startIndex && visibleIndex < endIndex) {
                     row.style.display = '';
                 }
             });
-
+            
             // อัปเดต pagination info
             const paginationInfo = document.getElementById('comparisonPaginationInfo');
             if (paginationInfo) {
@@ -6669,29 +4507,29 @@
                     paginationInfo.textContent = `แสดง ${startIndex + 1}-${endIndex} จาก ${totalItems} รายการ${searchText}`;
                 }
             }
-
+            
             // อัปเดต pagination navigation
             const paginationNav = document.getElementById('comparisonPaginationNav');
             if (paginationNav && totalPages > 1) {
                 let navHtml = '';
-
+                
                 // ปุ่ม Previous
                 if (currentPage > 1) {
                     navHtml += `<button onclick="changeComparisonPage(${currentPage - 1})" style="padding: 6px 12px; background: #334155; color: #fafafa; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">‹ ก่อนหน้า</button>`;
                 } else {
                     navHtml += `<button disabled style="padding: 6px 12px; background: #1e293b; color: #64748b; border: 1px solid #334155; border-radius: 6px; font-size: 0.85em; cursor: not-allowed;">‹ ก่อนหน้า</button>`;
                 }
-
+                
                 // แสดงหมายเลขหน้า
                 const maxVisiblePages = 5;
                 let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
                 let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-
+                
                 // ปรับ startPage ถ้า endPage ใกล้ totalPages
                 if (endPage - startPage < maxVisiblePages - 1) {
                     startPage = Math.max(1, endPage - maxVisiblePages + 1);
                 }
-
+                
                 // ปุ่มหน้าแรก
                 if (startPage > 1) {
                     navHtml += `<button onclick="changeComparisonPage(1)" style="padding: 6px 12px; background: #334155; color: #fafafa; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">1</button>`;
@@ -6699,7 +4537,7 @@
                         navHtml += `<span style="color: #94a3b8; padding: 0 5px;">...</span>`;
                     }
                 }
-
+                
                 // หมายเลขหน้า
                 for (let i = startPage; i <= endPage; i++) {
                     if (i === currentPage) {
@@ -6708,7 +4546,7 @@
                         navHtml += `<button onclick="changeComparisonPage(${i})" style="padding: 6px 12px; background: #334155; color: #fafafa; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">${i}</button>`;
                     }
                 }
-
+                
                 // ปุ่มหน้าสุดท้าย
                 if (endPage < totalPages) {
                     if (endPage < totalPages - 1) {
@@ -6716,29 +4554,29 @@
                     }
                     navHtml += `<button onclick="changeComparisonPage(${totalPages})" style="padding: 6px 12px; background: #334155; color: #fafafa; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">${totalPages}</button>`;
                 }
-
+                
                 // ปุ่ม Next
                 if (currentPage < totalPages) {
                     navHtml += `<button onclick="changeComparisonPage(${currentPage + 1})" style="padding: 6px 12px; background: #334155; color: #fafafa; border: 1px solid #475569; border-radius: 6px; cursor: pointer; font-size: 0.85em; transition: all 0.3s;" onmouseover="this.style.background='#475569';" onmouseout="this.style.background='#334155';">ถัดไป ›</button>`;
                 } else {
                     navHtml += `<button disabled style="padding: 6px 12px; background: #1e293b; color: #64748b; border: 1px solid #334155; border-radius: 6px; font-size: 0.85em; cursor: not-allowed;">ถัดไป ›</button>`;
                 }
-
+                
                 paginationNav.innerHTML = navHtml;
             } else if (paginationNav) {
                 paginationNav.innerHTML = '';
             }
         }
-
+        
         // ตัวแปรสำหรับเก็บ search term
         let comparisonSearchTerm = '';
-
+        
         // ฟังก์ชันสำหรับค้นหาเลขที่เอกสารอ้างอิง
         function filterComparisonByReference(searchTerm) {
             comparisonSearchTerm = searchTerm.trim().toLowerCase();
             const clearBtn = document.getElementById('clearSearchBtn');
             const searchResult = document.getElementById('comparisonSearchResult');
-
+            
             // แสดง/ซ่อนปุ่มล้าง
             if (comparisonSearchTerm) {
                 clearBtn.style.display = 'block';
@@ -6746,13 +4584,13 @@
                 clearBtn.style.display = 'none';
                 searchResult.style.display = 'none';
             }
-
+            
             // รีเซ็ตหน้าเป็น 1 เมื่อค้นหา
             comparisonPagination.currentPage = 1;
-
+            
             // อัปเดต pagination (จะ filter และแสดงผลให้อัตโนมัติ)
             updateComparisonPagination();
-
+            
             // แสดงผลการค้นหา
             const activeTab = document.querySelector('.comparison-tab-content.active');
             if (comparisonSearchTerm && activeTab) {
@@ -6761,7 +4599,7 @@
                     const referenceNo = row.getAttribute('data-reference') || '';
                     return referenceNo.includes(comparisonSearchTerm);
                 }).length;
-
+                
                 searchResult.style.display = 'block';
                 if (visibleCount === 0) {
                     searchResult.textContent = `ไม่พบรายการที่ตรงกับ "${searchTerm}"`;
@@ -6774,7 +4612,7 @@
                 searchResult.style.display = 'none';
             }
         }
-
+        
         // ฟังก์ชันสำหรับล้างการค้นหา
         function clearComparisonSearch() {
             const searchInput = document.getElementById('comparisonReferenceSearch');
@@ -6783,7 +4621,7 @@
                 filterComparisonByReference('');
             }
         }
-
+        
         // ฟังก์ชัน normalize สำหรับเปรียบเทียบข้อความ (global function)
         function normalizeText(text) {
             if (!text) return '';
@@ -6794,7 +4632,7 @@
                 .replace(/บริษัท|จำกัด|co\.?|ltd\.?/gi, '')
                 .trim();
         }
-
+        
         // ฟังก์ชัน normalize สำหรับเปรียบเทียบที่อยู่ (global function)
         function normalizeAddress(address) {
             if (!address) return '';
@@ -6802,7 +4640,7 @@
             let normalized = address.toLowerCase();
             // ลบคำนำหน้า "เลขที่" ที่ทำให้เปรียบเทียบไม่ตรง (บริษัทใช้ "เลขที่ 3/53" แต่ OCR ใช้ "3/53")
             normalized = normalized.replace(/^เลขที่\s*/i, '').replace(/\s*เลขที่\s*/g, ' ');
-
+            
             // แปลงคำภาษาอังกฤษเป็นภาษาไทย (สำหรับ OCR ที่อ่านเป็นภาษาอังกฤษ)
             const transliterationMap = {
                 'klongsong': 'คลองสอง',
@@ -6818,37 +4656,37 @@
                 'changwat': 'จังหวัด',
                 'province': 'จังหวัด'
             };
-
+            
             // แทนที่คำภาษาอังกฤษด้วยภาษาไทย
             for (const [eng, thai] of Object.entries(transliterationMap)) {
                 normalized = normalized.replace(new RegExp(eng, 'gi'), thai);
             }
-
+            
             // แปลงรูปแบบ M0015, M015, M15 เป็น หมู่ที่ 15
             normalized = normalized.replace(/m0*(\d+)/gi, 'หมู่ที่$1');
             normalized = normalized.replace(/m\s*(\d+)/gi, 'หมู่ที่$1');
-
+            
             // ลบคำนำหน้าที่ไม่จำเป็น (แต่เก็บเลขที่บ้านไว้)
             normalized = normalized.replace(/ห้องเลขที่\s*-\s*|ชั้นที่\s*-\s*|ถนน\s*-\s*/g, '');
             normalized = normalized.replace(/ห้องเลขที่|ชั้นที่/g, '');
-
+            
             // ลบช่องว่างซ้ำและเครื่องหมาย
             normalized = normalized.replace(/\s+/g, ' ');
             normalized = normalized.replace(/[.,\-_]/g, '');
-
+            
             return normalized.trim();
         }
-
+        
         // ฟังก์ชันสำหรับ normalize ชื่อบริษัท (แปลงรูปแบบต่างๆ ให้เป็นรูปแบบมาตรฐาน)
         function normalizeCompanyNameForComparison(name) {
             if (!name) return '';
-
+            
             let normalized = name.trim();
-
+            
             // แปลง "บจก." เป็น "บริษัท ... จำกัด"
             normalized = normalized.replace(/^บจก\.\s*/i, 'บริษัท ');
             normalized = normalized.replace(/^บจก\s*/i, 'บริษัท ');
-
+            
             // ถ้ายังไม่มี "จำกัด" ให้เพิ่ม
             if (!normalized.includes('จำกัด') && !normalized.includes('จํากัด')) {
                 // ถ้าไม่มี "บริษัท" อยู่แล้ว ให้เพิ่ม
@@ -6857,29 +4695,29 @@
                 }
                 normalized = normalized + ' จำกัด';
             }
-
+            
             // ลบช่องว่างซ้ำ
             normalized = normalized.replace(/\s+/g, ' ').trim();
-
+            
             // แปลงเป็นตัวพิมพ์เล็กสำหรับการเปรียบเทียบ
             normalized = normalized.toLowerCase();
-
+            
             // ลบอักขระพิเศษ
             normalized = normalized.replace(/[.,\-_()]/g, '');
-
+            
             return normalized;
         }
-
+        
         // ฟังก์ชันคำนวณความคล้ายคลึงระหว่างสองข้อความ (Levenshtein distance)
         function calculateSimilarity(str1, str2) {
             if (!str1 || !str2) return 0;
-
+            
             const len1 = str1.length;
             const len2 = str2.length;
-
+            
             if (len1 === 0) return len2 === 0 ? 1 : 0;
             if (len2 === 0) return 0;
-
+            
             // สร้าง matrix สำหรับ Levenshtein distance
             const matrix = [];
             for (let i = 0; i <= len1; i++) {
@@ -6888,7 +4726,7 @@
             for (let j = 0; j <= len2; j++) {
                 matrix[0][j] = j;
             }
-
+            
             // คำนวณ distance
             for (let i = 1; i <= len1; i++) {
                 for (let j = 1; j <= len2; j++) {
@@ -6900,14 +4738,14 @@
                     );
                 }
             }
-
+            
             const distance = matrix[len1][len2];
             const maxLen = Math.max(len1, len2);
             const similarity = 1 - (distance / maxLen);
-
+            
             return similarity;
         }
-
+        
         // ฟังก์ชันวิเคราะห์ความคล้ายคลึงของชื่อบริษัท
         function analyzeCompanyNameSimilarity(index, ocrName, companyName) {
             // Escape HTML เพื่อป้องกัน XSS
@@ -6916,31 +4754,31 @@
                 div.textContent = text;
                 return div.innerHTML;
             }
-
+            
             const safeOcrName = escapeHtml(ocrName);
             const safeCompanyName = escapeHtml(companyName);
-
+            
             // Normalize ชื่อทั้งสอง
             const normalizedOcr = normalizeCompanyNameForComparison(ocrName);
             const normalizedCompany = normalizeCompanyNameForComparison(companyName);
-
+            
             // คำนวณความคล้ายคลึง
             const similarity = calculateSimilarity(normalizedOcr, normalizedCompany);
             const similarityPercent = Math.round(similarity * 100);
-
+            
             // ตรวจสอบว่ามีคำสำคัญที่เหมือนกันหรือไม่
             const ocrWords = normalizedOcr.split(/\s+/).filter(w => w.length > 2);
             const companyWords = normalizedCompany.split(/\s+/).filter(w => w.length > 2);
             const commonWords = ocrWords.filter(w => companyWords.includes(w));
             const commonWordsPercent = ocrWords.length > 0 ? Math.round((commonWords.length / Math.max(ocrWords.length, companyWords.length)) * 100) : 0;
-
+            
             // ตรวจสอบรูปแบบพิเศษ
             const patterns = {
                 'บจก_แปลงเป็น_บริษัท': ocrName.includes('บจก') && companyName.includes('บริษัท') && companyName.includes('จำกัด'),
                 'บริษัท_แปลงเป็น_บจก': companyName.includes('บริษัท') && ocrName.includes('บจก'),
                 'คำสำคัญเหมือนกัน': commonWords.length >= Math.min(ocrWords.length, companyWords.length) * 0.7
             };
-
+            
             // สร้างข้อความวิเคราะห์
             let analysisHtml = `
                 <div style="max-width: 600px; padding: 20px;">
@@ -6971,13 +4809,13 @@
                             <div style="background: linear-gradient(90deg, ${similarity >= 0.8 ? '#10b981' : similarity >= 0.6 ? '#fbbf24' : '#ef4444'} 0%, ${similarity >= 0.8 ? '#059669' : similarity >= 0.6 ? '#d97706' : '#dc2626'} 100%); height: 100%; width: ${similarityPercent}%; transition: width 0.3s;"></div>
                         </div>
                         <div style="color: #94a3b8; font-size: 0.85em;">
-                            ${similarity >= 0.8 ? '✅ คล้ายคลึงกันมาก - น่าจะเป็นบริษัทเดียวกัน' :
-                    similarity >= 0.6 ? '⚠️ คล้ายคลึงกันปานกลาง - อาจเป็นบริษัทเดียวกัน' :
-                        '❌ คล้ายคลึงกันน้อย - อาจไม่ใช่บริษัทเดียวกัน'}
+                            ${similarity >= 0.8 ? '✅ คล้ายคลึงกันมาก - น่าจะเป็นบริษัทเดียวกัน' : 
+                              similarity >= 0.6 ? '⚠️ คล้ายคลึงกันปานกลาง - อาจเป็นบริษัทเดียวกัน' : 
+                              '❌ คล้ายคลึงกันน้อย - อาจไม่ใช่บริษัทเดียวกัน'}
                         </div>
                     </div>
             `;
-
+            
             // แสดงรูปแบบที่พบ
             if (patterns['บจก_แปลงเป็น_บริษัท'] || patterns['บริษัท_แปลงเป็น_บจก']) {
                 analysisHtml += `
@@ -6990,7 +4828,7 @@
                     </div>
                 `;
             }
-
+            
             // แสดงคำที่เหมือนกัน
             if (commonWords.length > 0) {
                 analysisHtml += `
@@ -7005,7 +4843,7 @@
                     </div>
                 `;
             }
-
+            
             // คำแนะนำ
             let recommendation = '';
             let recommendationColor = '';
@@ -7019,7 +4857,7 @@
                 recommendation = '❌ ไม่แนะนำให้อนุมัติ: ชื่อบริษัทคล้ายคลึงกันน้อย อาจไม่ใช่บริษัทเดียวกัน';
                 recommendationColor = '#ef4444';
             }
-
+            
             analysisHtml += `
                     <div style="background: ${recommendationColor}15; padding: 15px; border-radius: 8px; border-left: 4px solid ${recommendationColor}; margin-bottom: 15px;">
                         <div style="color: ${recommendationColor}; font-weight: 600; margin-bottom: 8px;">💡 คำแนะนำ:</div>
@@ -7032,7 +4870,7 @@
                     </div>
                 </div>
             `;
-
+            
             // สร้าง modal
             const modal = document.createElement('div');
             modal.id = 'companyNameAnalysisModal';
@@ -7042,24 +4880,24 @@
                     ${analysisHtml}
                 </div>
             `;
-
-            modal.onclick = function (e) {
+            
+            modal.onclick = function(e) {
                 if (e.target === modal) {
                     closeAnalysisModal();
                 }
             };
-
+            
             document.body.appendChild(modal);
-
+            
             // ฟังก์ชันปิด modal
-            window.closeAnalysisModal = function () {
+            window.closeAnalysisModal = function() {
                 const modal = document.getElementById('companyNameAnalysisModal');
                 if (modal) {
                     modal.remove();
                 }
             };
         }
-
+        
         // Helper function: หา row element ใน tab ที่ active อยู่
         function findRowInActiveTab(index) {
             const activeTabContent = document.querySelector('.comparison-tab-content.active');
@@ -7081,7 +4919,7 @@
             // Fallback: หา row แรกที่เจอ (สำหรับกรณีที่ไม่มี active tab)
             return document.querySelector(`[data-index="${index}"]`);
         }
-
+        
         function toggleComparisonRow(index) {
             const row = findRowInActiveTab(index);
             if (row) {
@@ -7092,39 +4930,39 @@
                 //         r.classList.remove('expanded');
                 //     }
                 // });
-
+                
                 row.classList.toggle('expanded');
                 console.log(`🔄 Toggled row ${index}, expanded: ${row.classList.contains('expanded')}`);
             } else {
                 console.warn(`⚠️ Row ${index} not found in active tab`);
             }
         }
-
+        
         // ฟังก์ชันสำหรับแสดง PDF Preview (เปิดในแท็บใหม่)
         async function viewPdfPreview(referenceNo, index) {
             console.log('📄 viewPdfPreview called:', referenceNo);
-
+            
             try {
                 // ดึงค่าจาก form
                 const taxMonth = document.getElementById('taxMonth')?.value;
                 const taxYear = document.getElementById('taxYear')?.value;
                 const company = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value;
-
+                
                 // ตรวจสอบว่ามีค่าครบถ้วนหรือไม่
                 if (!taxMonth || !taxYear || !company) {
                     alert('ไม่พบข้อมูลเดือนภาษีหรือบริษัท กรุณาเลือกข้อมูลก่อนดู PDF');
                     return;
                 }
-
+                
                 // สร้าง taxMonth ในรูปแบบ YYYY-MM
                 const taxMonthFormatted = `${taxYear}-${taxMonth}`;
-
+                
                 console.log('📊 Sending data:', {
                     referenceNo: referenceNo,
                     taxMonth: taxMonthFormatted,
                     company: company
                 });
-
+                
                 // เรียก API เพื่อค้นหาไฟล์ PDF
                 const response = await fetch('/api/auditcheck/find-pdf-by-reference', {
                     method: 'POST',
@@ -7137,10 +4975,10 @@
                         company: company
                     })
                 });
-
+                
                 const result = await response.json();
                 console.log('📊 API Response:', result);
-
+                
                 if (result.success && result.found) {
                     // เปิดไฟล์ในแท็บใหม่
                     const fileUrl = `/api/auditcheck/view-pdf/${encodeURIComponent(result.pdfPath)}`;
@@ -7153,14 +4991,14 @@
                 alert('เกิดข้อผิดพลาดในการค้นหาไฟล์: ' + error.message);
             }
         }
-
+        
         // ฟังก์ชันแสดง PDF/Image Modal
         function showPdfModal(filePath, filename, referenceNo) {
             // ตรวจสอบประเภทไฟล์จากนามสกุล
             const fileExtension = filename.split('.').pop().toLowerCase();
             const isImage = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'tiff', 'tif'].includes(fileExtension);
             const isPdf = fileExtension === 'pdf';
-
+            
             // กำหนด icon และ title ตามประเภทไฟล์
             let fileIcon = '📄';
             let fileTypeLabel = 'Preview';
@@ -7171,7 +5009,7 @@
                 fileIcon = '📄';
                 fileTypeLabel = 'Preview PDF';
             }
-
+            
             // สร้าง modal HTML
             let contentHtml = '';
             if (isImage) {
@@ -7193,7 +5031,7 @@
                     </div>
                 `;
             }
-
+            
             const modalHtml = `
                 <div id="pdfPreviewModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;">
                     <div style="background: #1e293b; border-radius: 12px; width: 95%; max-width: 1200px; height: 90vh; display: flex; flex-direction: column; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
@@ -7216,18 +5054,18 @@
                     </div>
                 </div>
             `;
-
+            
             // เพิ่ม modal เข้าไปใน body
             document.body.insertAdjacentHTML('beforeend', modalHtml);
-
+            
             // เพิ่ม event listener สำหรับปิด modal เมื่อคลิกนอก modal
-            document.getElementById('pdfPreviewModal').addEventListener('click', function (e) {
+            document.getElementById('pdfPreviewModal').addEventListener('click', function(e) {
                 if (e.target.id === 'pdfPreviewModal') {
                     closePdfModal();
                 }
             });
         }
-
+        
         // ฟังก์ชันปิด PDF Modal
         function closePdfModal() {
             const modal = document.getElementById('pdfPreviewModal');
@@ -7235,48 +5073,48 @@
                 modal.remove();
             }
         }
-
+        
         // เก็บหมายเหตุในตัวแปร global
         let comparisonNotes = {};
-
+        
         // เก็บ initial note (หมายเหตุเดิม) เพื่อ restore เมื่อยกเลิกการอนุมัติ
         let initialNotes = {};
-
+        
         // เก็บสถานะการอนุมัติในตัวแปร global
         let comparisonApprovals = {};
-
+        
         // เก็บ path ของโฟลเดอร์ VAT
         let vatFolderPath = null;
-
+        
         // เก็บสถานะเอกสารใช้ไม่ได้ (key = index, value = true/false)
         let invalidDocuments = {};
-
+        
         // เก็บสถานะโหมด "ตรวจด้วยตัวเอง" (key = index, value = true/false)
         let selfCheckMode = {};
-
+        
         // เก็บข้อมูล comparisons ทั้งหมดเพื่อใช้ในฟังก์ชัน markAllDocumentsAsInvalid
         let allComparisonsData = [];
-
+        
         // ตัวแปรสำหรับ pagination
         let comparisonPagination = {
             currentPage: 1,
             itemsPerPage: 25, // ค่าเริ่มต้น
             currentTab: 'all'
         };
-
+        
         // ========== ระบบบันทึกสถานะการตรวจสอบ (Auto-save/Auto-restore) ==========
-
+        
         // ตัวแปรสำหรับเก็บสถานะการบันทึก
         let saveStateTimeout = null;
         const SAVE_STATE_DEBOUNCE_MS = 2000; // บันทึกหลังจากไม่มีการเปลี่ยนแปลง 2 วินาที
-
+        
         /**
          * สร้าง key สำหรับเก็บสถานะใน LocalStorage
          * รองรับการแยกสาขาสำหรับบริษัทพิเศษ
          */
         function getStateKey(company, taxMonth) {
             if (!company || !taxMonth) return null;
-
+            
             // สำหรับบริษัทพิเศษที่มีสาขา ให้รวมสาขาเข้าไปใน key
             if (selectedBranch && baseCompanyName) {
                 const specialCompany = "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน";
@@ -7286,10 +5124,10 @@
                     return `auditcheck_state_${baseCompanyName}_${branchName}_${taxMonth}`;
                 }
             }
-
+            
             return `auditcheck_state_${company}_${taxMonth}`;
         }
-
+        
         /**
          * บันทึกสถานะการตรวจสอบทั้งหมดลง LocalStorage และ Backend
          */
@@ -7297,23 +5135,23 @@
             const taxMonth = document.getElementById('taxMonth')?.value;
             const taxYear = document.getElementById('taxYear')?.value;
             const company = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value;
-
+            
             if (!taxMonth || !taxYear || !company) {
                 console.log('⚠️ ไม่สามารถบันทึกสถานะ: ยังไม่ได้เลือกเดือนภาษีหรือบริษัท');
                 return;
             }
-
+            
             const taxMonthFormatted = `${taxYear}-${taxMonth}`;
             const stateKey = getStateKey(company, taxMonthFormatted);
-
+            
             if (!stateKey) {
                 console.error('❌ ไม่สามารถสร้าง state key ได้');
                 return;
             }
-
+            
             // รวบรวมข้อมูลสถานะทั้งหมด
             const now = new Date();
-
+            
             // สำหรับบริษัทพิเศษที่มีสาขา ให้เก็บข้อมูลสาขาด้วย
             let branchInfo = null;
             if (selectedBranch && baseCompanyName) {
@@ -7326,7 +5164,7 @@
                     };
                 }
             }
-
+            
             const auditState = {
                 version: '1.1', // เพิ่มเวอร์ชันเพื่อรองรับสาขา
                 timestamp: now.toISOString(),
@@ -7337,7 +5175,7 @@
                 taxMonth: taxMonthFormatted,
                 taxYear: taxYear,
                 taxMonthValue: taxMonth,
-
+                
                 // ข้อมูลการตรวจสอบ
                 comparisonNotes: comparisonNotes,
                 initialNotes: initialNotes, // เก็บ initial notes เพื่อ restore
@@ -7345,7 +5183,7 @@
                 invalidDocuments: invalidDocuments,
                 selfCheckMode: selfCheckMode, // เก็บสถานะโหมด "ตรวจด้วยตัวเอง"
                 vatFolderPath: vatFolderPath,
-
+                
                 // ข้อมูล Step 4 (OCR)
                 step4OCRData: step4OCRData ? {
                     count: step4OCRData.length,
@@ -7356,7 +5194,7 @@
                         company_name: item.company_name
                     }))
                 } : null,
-
+                
                 // ข้อมูล comparisons (เก็บเฉพาะ metadata)
                 comparisonResults: window.comparisonResults ? {
                     count: window.comparisonResults.length,
@@ -7367,7 +5205,7 @@
                         match_status: comp.match_status
                     }))
                 } : null,
-
+                
                 // Step ที่ทำเสร็จแล้ว
                 completedSteps: {
                     step1: document.getElementById('step1')?.classList.contains('completed') || false,
@@ -7377,7 +5215,7 @@
                     step5: document.getElementById('step5')?.classList.contains('completed') || false
                 }
             };
-
+            
             // บันทึกลง LocalStorage
             try {
                 localStorage.setItem(stateKey, JSON.stringify(auditState));
@@ -7385,13 +5223,13 @@
             } catch (error) {
                 console.error('❌ ไม่สามารถบันทึกลง LocalStorage:', error);
             }
-
+            
             // บันทึกลง Backend (async, ไม่ต้องรอ)
             saveAuditStateToBackend(auditState).catch(error => {
                 console.error('❌ ไม่สามารถบันทึกลง Backend:', error);
             });
         }
-
+        
         /**
          * บันทึกสถานะลง Backend
          */
@@ -7404,7 +5242,7 @@
                     },
                     body: JSON.stringify(auditState)
                 });
-
+                
                 if (response.ok) {
                     const result = await response.json();
                     console.log('✅ บันทึกสถานะลง Backend สำเร็จ:', result.message || 'OK');
@@ -7415,7 +5253,7 @@
                 console.error('❌ Error saving state to backend:', error);
             }
         }
-
+        
         /**
          * โหลดสถานะการตรวจสอบจาก LocalStorage และ Backend
          * รองรับการแยกสาขาสำหรับบริษัทพิเศษ
@@ -7431,14 +5269,14 @@
                     companyForStateKey = baseCompanyName;
                 }
             }
-
+            
             const stateKey = getStateKey(companyForStateKey, taxMonthFormatted);
-
+            
             if (!stateKey) {
                 console.log('⚠️ ไม่สามารถโหลดสถานะ: ไม่มี company หรือ taxMonth');
                 return null;
             }
-
+            
             // ลองโหลดจาก LocalStorage ก่อน
             let auditState = null;
             try {
@@ -7450,7 +5288,7 @@
             } catch (error) {
                 console.error('❌ ไม่สามารถโหลดจาก LocalStorage:', error);
             }
-
+            
             // ลองโหลดจาก Backend (ถ้า LocalStorage ไม่มีหรือเก่าเกินไป)
             try {
                 // สำหรับบริษัทพิเศษที่มีสาขา ให้ส่งข้อมูลสาขาไปด้วย
@@ -7461,13 +5299,13 @@
                         loadUrl += `&branch_name=${encodeURIComponent(selectedBranch.name)}&base_company=${encodeURIComponent(baseCompanyName)}`;
                     }
                 }
-
+                
                 const response = await fetch(loadUrl);
                 if (response.ok) {
                     const backendState = await response.json();
                     if (backendState.success && backendState.state) {
                         // เปรียบเทียบ timestamp (ใช้ backend ถ้าใหม่กว่า)
-                        if (!auditState || !auditState.timestamp ||
+                        if (!auditState || !auditState.timestamp || 
                             new Date(backendState.state.timestamp) > new Date(auditState.timestamp)) {
                             auditState = backendState.state;
                             console.log('✅ โหลดสถานะจาก Backend (ใหม่กว่า):', stateKey);
@@ -7479,10 +5317,10 @@
             } catch (error) {
                 console.error('❌ ไม่สามารถโหลดจาก Backend:', error);
             }
-
+            
             return auditState;
         }
-
+        
         /**
          * Restore สถานะการตรวจสอบ
          */
@@ -7491,9 +5329,9 @@
                 console.log('⚠️ ไม่มีสถานะที่บันทึกไว้');
                 return false;
             }
-
+            
             console.log('🔄 กำลัง restore สถานะการตรวจสอบ...');
-
+            
             // Restore ข้อมูลพื้นฐาน
             if (auditState.taxYear && document.getElementById('taxYear')) {
                 document.getElementById('taxYear').value = auditState.taxYear;
@@ -7505,38 +5343,38 @@
                 const companyInput = document.getElementById('companyValue') || document.getElementById('companySelect');
                 if (companyInput) companyInput.value = auditState.company;
             }
-
+            
             // Restore ข้อมูลการตรวจสอบ
             if (auditState.comparisonNotes) {
                 comparisonNotes = auditState.comparisonNotes;
                 console.log('✅ Restore comparisonNotes:', Object.keys(comparisonNotes).length, 'items');
             }
-
+            
             if (auditState.initialNotes) {
                 initialNotes = auditState.initialNotes;
                 console.log('✅ Restore initialNotes:', Object.keys(initialNotes).length, 'items');
             }
-
+            
             if (auditState.comparisonApprovals) {
                 comparisonApprovals = auditState.comparisonApprovals;
                 console.log('✅ Restore comparisonApprovals:', Object.keys(comparisonApprovals).length, 'items');
             }
-
+            
             if (auditState.invalidDocuments) {
                 invalidDocuments = auditState.invalidDocuments;
                 console.log('✅ Restore invalidDocuments:', Object.keys(invalidDocuments).length, 'items');
             }
-
+            
             if (auditState.selfCheckMode) {
                 selfCheckMode = auditState.selfCheckMode;
                 console.log('✅ Restore selfCheckMode:', Object.keys(selfCheckMode).length, 'items');
             }
-
+            
             if (auditState.vatFolderPath) {
                 vatFolderPath = auditState.vatFolderPath;
                 console.log('✅ Restore vatFolderPath:', vatFolderPath);
             }
-
+            
             // Restore Step ที่ทำเสร็จแล้ว (แสดง visual indicator)
             if (auditState.completedSteps) {
                 Object.keys(auditState.completedSteps).forEach(stepId => {
@@ -7547,11 +5385,11 @@
                     }
                 });
             }
-
+            
             console.log('✅ Restore สถานะเสร็จสิ้น');
             return true;
         }
-
+        
         /**
          * Auto-save ด้วย debounce (เรียกเมื่อมีการเปลี่ยนแปลงข้อมูล)
          */
@@ -7560,46 +5398,46 @@
             if (saveStateTimeout) {
                 clearTimeout(saveStateTimeout);
             }
-
+            
             // ตั้ง timeout ใหม่
             saveStateTimeout = setTimeout(() => {
                 saveAuditState();
                 saveStateTimeout = null;
             }, SAVE_STATE_DEBOUNCE_MS);
         }
-
+        
         // ========== จบระบบบันทึกสถานะ ==========
-
+        
         // ฟังก์ชันบันทึกหมายเหตุ (แก้ไขให้ trigger auto-save)
         function saveNote(index, noteText) {
             comparisonNotes[index] = noteText;
             console.log('📝 Note saved for index', index, ':', noteText);
             triggerAutoSave(); // Trigger auto-save
         }
-
+        
         // ฟังก์ชันอนุมัติฟิลด์เฉพาะจุด
         function approveField(index, fieldKey, fieldLabel) {
             const approvalKey = `${index}-${fieldKey}`;
-
+            
             // บันทึกสถานะการอนุมัติ (ไม่ต้องยืนยัน)
             comparisonApprovals[approvalKey] = true;
             console.log('✅ Field approved:', approvalKey, fieldLabel);
             console.log(`🔍 [Debug] comparisonApprovals หลังอนุมัติ:`, Object.keys(comparisonApprovals).filter(k => k.startsWith(`${index}-`)));
-
+            
             // รีเฟรชการแสดงผล (หา row ใน tab ที่ active อยู่)
             const row = findRowInActiveTab(index);
             if (row) {
                 // หาปุ่มอนุมัติที่ตรงกับ fieldKey โดยใช้ data attributes เป็นหลัก
                 // วิธีที่ 1: หาจาก data-field-key และ data-field-index และตรวจสอบว่าเป็นปุ่มอนุมัติ (รวมทั้งใน company-data-section)
-                let approveButtons = Array.from(row.querySelectorAll(`button[data-field-key="${fieldKey}"][data-field-index="${index}"]`)).filter(btn =>
+                let approveButtons = Array.from(row.querySelectorAll(`button[data-field-key="${fieldKey}"][data-field-index="${index}"]`)).filter(btn => 
                     btn.textContent && (btn.textContent.includes('อนุมัติ') || btn.textContent.includes('✓'))
                 );
-
+                
                 // วิธีที่ 2: ถ้าไม่เจอ ให้หาจาก onclick attribute (สำหรับปุ่มที่สร้างจาก HTML)
                 if (approveButtons.length === 0) {
                     approveButtons = Array.from(row.querySelectorAll(`button[onclick*="approveField(${index}, '${fieldKey}'"]`));
                 }
-
+                
                 // วิธีที่ 3: หาจาก field container ที่มี data-field-key ตรงกัน
                 if (approveButtons.length === 0) {
                     const fieldContainer = row.querySelector(`.comparison-field[data-field-key="${fieldKey}"][data-field-index="${index}"]`);
@@ -7610,12 +5448,12 @@
                         }
                     }
                 }
-
+                
                 // วิธีที่ 4: หาจาก company-data-section (สำหรับข้อมูลบริษัท)
                 if (approveButtons.length === 0 && (fieldKey === 'company_name_match' || fieldKey === 'tax_id_match' || fieldKey === 'address_match')) {
                     const companyDataSection = row.querySelector('.company-data-section');
                     if (companyDataSection) {
-                        const companyButtons = Array.from(companyDataSection.querySelectorAll(`button[data-field-key="${fieldKey}"][data-field-index="${index}"]`)).filter(btn =>
+                        const companyButtons = Array.from(companyDataSection.querySelectorAll(`button[data-field-key="${fieldKey}"][data-field-index="${index}"]`)).filter(btn => 
                             btn.textContent && (btn.textContent.includes('อนุมัติ') || btn.textContent.includes('✓'))
                         );
                         if (companyButtons.length > 0) {
@@ -7623,9 +5461,9 @@
                         }
                     }
                 }
-
+                
                 console.log(`🔍 Found ${approveButtons.length} approve buttons for field ${fieldKey} at index ${index}`);
-
+                
                 approveButtons.forEach(approveButton => {
                     // หา fieldContainer (อาจอยู่ใน comparison-field หรือ company-data-section)
                     let fieldContainer = approveButton.closest('.comparison-field');
@@ -7636,7 +5474,7 @@
                             fieldContainer = companyDataSection;
                         }
                     }
-
+                    
                     if (fieldContainer) {
                         // หา fieldValue ทั้งสองฝั่ง (ภาษีซื้อและ OCR) - สำหรับ comparison-field เท่านั้น
                         const fieldValue = fieldContainer.querySelector('.comparison-field-value');
@@ -7647,13 +5485,13 @@
                             fieldValue.classList.remove('mismatch');
                             fieldValue.classList.add('approved');
                         }
-
+                        
                         // เปลี่ยนปุ่มเป็นปุ่ม "ยกเลิก"
                         const cancelButton = document.createElement('button');
                         cancelButton.onclick = () => cancelApproval(index, fieldKey, fieldLabel);
                         cancelButton.setAttribute('data-field-key', fieldKey);
                         cancelButton.setAttribute('data-field-index', String(index));
-
+                        
                         // กำหนด style ตามตำแหน่งของปุ่ม (company-data-section หรือ comparison-field)
                         const isInCompanyData = approveButton.closest('.company-data-section') !== null;
                         if (isInCompanyData) {
@@ -7661,7 +5499,7 @@
                         } else {
                             cancelButton.style.cssText = 'padding: 4px 10px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8em; font-weight: 600; display: flex; align-items: center; gap: 4px; transition: all 0.3s; white-space: nowrap;';
                         }
-
+                        
                         cancelButton.setAttribute('onmouseover', "this.style.transform='scale(1.05)'; this.style.boxShadow='0 2px 8px rgba(239, 68, 68, 0.4)';");
                         cancelButton.setAttribute('onmouseout', "this.style.transform='scale(1)'; this.style.boxShadow='none';");
                         cancelButton.setAttribute('title', 'ยกเลิกการอนุมัติ');
@@ -7670,7 +5508,7 @@
                         console.log(`✅ เปลี่ยนปุ่มอนุมัติเป็นปุ่มยกเลิก: ${fieldKey} (ใน ${isInCompanyData ? 'company-data-section' : 'comparison-field'})`);
                     }
                 });
-
+                
                 // อัพเดทฝั่ง OCR ด้วย
                 const ocrSide = row.querySelector('.comparison-side.ocr');
                 if (ocrSide) {
@@ -7701,7 +5539,7 @@
                             } else if (fieldKey === 'reference_no_match' && ocrLabel.textContent.includes('เลขที่เอกสารอ้างอิง')) {
                                 isTargetField = true;
                             }
-
+                            
                             if (isTargetField) {
                                 const ocrValue = ocrField.querySelector('.comparison-field-value');
                                 if (ocrValue) {
@@ -7714,7 +5552,7 @@
                         }
                     });
                 }
-
+                
                 // อัพเดท UI ในส่วนข้อมูลบริษัท (company_name_match, tax_id_match, address_match)
                 const companyDataSection = row.querySelector('.company-data-section');
                 if (companyDataSection) {
@@ -7728,7 +5566,7 @@
                                 span.style.color = '#10b981';
                             }
                         });
-
+                        
                         // อัพเดทสีของชื่อทั้งสองฝั่ง (ใช้วิธีที่แม่นยำกว่า)
                         const allDivs = companyDataSection.querySelectorAll('div');
                         allDivs.forEach(div => {
@@ -7748,7 +5586,7 @@
                                 }
                             }
                         });
-
+                        
                         // อัพเดทสีของ container
                         const containers = companyDataSection.querySelectorAll('div[style*="border-left"]');
                         containers.forEach(container => {
@@ -7758,7 +5596,7 @@
                             }
                         });
                     }
-
+                    
                     // อัพเดทสถานะเลขประจำตัวผู้เสียภาษี
                     if (fieldKey === 'tax_id_match') {
                         // หา span ที่มีข้อความ "ผลการเปรียบเทียบเลขประจำตัวผู้เสียภาษี"
@@ -7769,7 +5607,7 @@
                                 span.style.color = '#10b981';
                             }
                         });
-
+                        
                         // อัพเดทสีของเลขประจำตัวผู้เสียภาษีทั้งสองฝั่ง
                         const taxIdLabels = companyDataSection.querySelectorAll('div');
                         taxIdLabels.forEach(div => {
@@ -7785,7 +5623,7 @@
                                 }
                             }
                         });
-
+                        
                         // อัพเดทสีของ container
                         const containers = companyDataSection.querySelectorAll('div[style*="border-left"]');
                         containers.forEach(container => {
@@ -7795,7 +5633,7 @@
                             }
                         });
                     }
-
+                    
                     // อัพเดทสถานะที่อยู่
                     if (fieldKey === 'address_match') {
                         // หา span ที่มีข้อความ "ผลการเปรียบเทียบที่อยู่"
@@ -7806,7 +5644,7 @@
                                 span.style.color = '#10b981';
                             }
                         });
-
+                        
                         // อัพเดทสีของที่อยู่ทั้งสองฝั่ง
                         const addressLabels = companyDataSection.querySelectorAll('div');
                         addressLabels.forEach(div => {
@@ -7823,7 +5661,7 @@
                                 }
                             }
                         });
-
+                        
                         // อัพเดทสีของ container
                         const containers = companyDataSection.querySelectorAll('div[style*="border-left"]');
                         containers.forEach(container => {
@@ -7833,7 +5671,7 @@
                             }
                         });
                     }
-
+                    
                     // อัพเดทปุ่มอนุมัติในส่วนข้อมูลบริษัท (หาจาก company-data-section)
                     if (fieldKey === 'company_name_match' || fieldKey === 'tax_id_match' || fieldKey === 'address_match') {
                         // หาปุ่มอนุมัติในส่วนข้อมูลบริษัท
@@ -7857,38 +5695,38 @@
                     }
                 }
             }
-
+            
             // ตรวจสอบว่าทุก field ที่ไม่ match ถูก approve แล้วหรือไม่
             console.log(`🔍 [Debug] ก่อนเรียก checkAndUpdateRowStatus: comparisonApprovals[${approvalKey}]=${comparisonApprovals[approvalKey]}`);
             console.log(`🔍 [Debug] comparisonApprovals object ก่อนเรียก checkAndUpdateRowStatus:`, comparisonApprovals);
             checkAndUpdateRowStatus(index);
             console.log(`🔍 [Debug] หลังเรียก checkAndUpdateRowStatus: comparisonApprovals[${approvalKey}]=${comparisonApprovals[approvalKey]}`);
-
+            
             // แสดง toast notification
             showToast('success', `✅ อนุมัติ "${fieldLabel}" เรียบร้อยแล้ว`);
-
+            
             // Trigger auto-save
             triggerAutoSave();
         }
-
+        
         /**
          * ตรวจสอบและอัพเดทสถานะ row (เปลี่ยนจาก "ตรงกันบางส่วน" เป็น "ตรงกัน" ถ้าทุก field ถูก approve)
          */
         function checkAndUpdateRowStatus(index) {
             const row = findRowInActiveTab(index);
             if (!row) return;
-
+            
             // หา comparison data จาก window.comparisonResults หรือ allComparisonsData
-            const comp = (window.comparisonResults && window.comparisonResults[index]) ||
-                (allComparisonsData && allComparisonsData[index]);
-
+            const comp = (window.comparisonResults && window.comparisonResults[index]) || 
+                        (allComparisonsData && allComparisonsData[index]);
+            
             if (!comp) {
                 console.warn(`⚠️ ไม่พบ comparison data สำหรับ index ${index}`);
                 return;
             }
-
+            
             const matchDetails = comp.match_details || {};
-
+            
             // รายการ fields ที่สามารถอนุมัติได้ (รวม address_match ด้วย)
             const approvableFieldKeys = [
                 'document_no_match',
@@ -7903,16 +5741,12 @@
                 'document_type_match',
                 'address_match'
             ];
-
+            
             // ตรวจสอบว่าทุก field ที่ไม่ match ถูก approve แล้วหรือไม่
             let allMismatchedFieldsApproved = true;
             let hasMismatchedFields = false;
-
+            
             approvableFieldKeys.forEach(fieldKey => {
-                // ข้ามfield ที่ไม่มีใน matchDetails (เช่น address_match ที่ backend ไม่ได้ส่งมา)
-                // ถ้า field ไม่มีในข้อมูล (undefined) ไม่ควรนับว่าไม่ตรงกัน
-                if (!(fieldKey in matchDetails)) return;
-
                 const isMatch = matchDetails[fieldKey];
                 if (!isMatch) {
                     hasMismatchedFields = true;
@@ -7922,19 +5756,19 @@
                     }
                 }
             });
-
+            
             // อัพเดทสถานะข้อมูลบริษัท badge ทุกครั้ง (ไม่ต้องรอให้ approve ทั้งหมด)
             // ตรวจสอบสถานะจาก UI ด้านล่าง (ผลการเปรียบเทียบ) แทนที่จะคำนวณจากข้อมูลดิบ
             const companyDataSection = row.querySelector('.company-data-section');
             let companyDataMatches = 0;
             let companyDataTotal = 0;
-
+            
             if (companyDataSection) {
                 // ตรวจสอบสถานะจาก UI elements ด้านล่าง
                 const allSpans = companyDataSection.querySelectorAll('span');
-
+                
                 // ตรวจสอบชื่อบริษัท
-                const nameSpan = Array.from(allSpans).find(span =>
+                const nameSpan = Array.from(allSpans).find(span => 
                     span.textContent && span.textContent.includes('ผลการเปรียบเทียบชื่อ')
                 );
                 if (nameSpan) {
@@ -7948,9 +5782,9 @@
                         console.log(`⚠️ [Debug] ชื่อบริษัท: ไม่ตรงกัน (จาก UI)`);
                     }
                 }
-
+                
                 // ตรวจสอบเลขประจำตัวผู้เสียภาษี
-                const taxIdSpan = Array.from(allSpans).find(span =>
+                const taxIdSpan = Array.from(allSpans).find(span => 
                     span.textContent && span.textContent.includes('ผลการเปรียบเทียบเลขประจำตัวผู้เสียภาษี')
                 );
                 if (taxIdSpan) {
@@ -7964,9 +5798,9 @@
                         console.log(`⚠️ [Debug] เลขประจำตัวผู้เสียภาษี: ไม่ตรงกัน (จาก UI)`);
                     }
                 }
-
+                
                 // ตรวจสอบที่อยู่
-                const addressSpan = Array.from(allSpans).find(span =>
+                const addressSpan = Array.from(allSpans).find(span => 
                     span.textContent && span.textContent.includes('ผลการเปรียบเทียบที่อยู่')
                 );
                 if (addressSpan) {
@@ -7985,12 +5819,12 @@
                 const companyName = (document.getElementById('companyName')?.textContent || '').trim();
                 const companyTaxId = (document.getElementById('companyTaxId')?.textContent || '').trim();
                 const companyAddress = (document.getElementById('companyAddress')?.textContent || '').trim();
-
+                
                 const ocrData = comp.ocr_data || {};
                 const buyerName = (ocrData.buyer_name || '').trim();
                 const buyerTaxId = (ocrData.buyer_tax_id || '').trim();
                 const buyerAddress = (ocrData.buyer_address || ocrData.address || ocrData.address_full || '').trim();
-
+                
                 // ตรวจสอบชื่อบริษัท
                 if (buyerName && buyerName !== '-' && companyName && companyName !== '-') {
                     companyDataTotal++;
@@ -7998,15 +5832,15 @@
                     const isCompanyNameApproved = comparisonApprovals[companyNameApprovalKey] || false;
                     const normalizedBuyerName = normalizeText(buyerName);
                     const normalizedCompanyName = normalizeText(companyName);
-                    const companyNameMatch = normalizedBuyerName === normalizedCompanyName ||
-                        normalizedBuyerName.includes(normalizedCompanyName) ||
+                    const companyNameMatch = normalizedBuyerName === normalizedCompanyName || 
+                        normalizedBuyerName.includes(normalizedCompanyName) || 
                         normalizedCompanyName.includes(normalizedBuyerName);
-
+                    
                     if (companyNameMatch || isCompanyNameApproved) {
                         companyDataMatches++;
                     }
                 }
-
+                
                 // ตรวจสอบเลขประจำตัวผู้เสียภาษี
                 if (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') {
                     companyDataTotal++;
@@ -8015,12 +5849,12 @@
                     const normalizedBuyerTaxId = buyerTaxId.replace(/\s+/g, '').replace(/[-\s]/g, '');
                     const normalizedCompanyTaxId = companyTaxId.replace(/\s+/g, '').replace(/[-\s]/g, '');
                     const taxIdMatch = normalizedBuyerTaxId === normalizedCompanyTaxId;
-
+                    
                     if (taxIdMatch || isTaxIdApproved) {
                         companyDataMatches++;
                     }
                 }
-
+                
                 // ตรวจสอบที่อยู่
                 if (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-') {
                     companyDataTotal++;
@@ -8029,31 +5863,31 @@
                     const normalizedBuyerAddress = normalizeAddress(buyerAddress);
                     const normalizedCompanyAddress = normalizeAddress(companyAddress);
                     const addressMatch = normalizedBuyerAddress === normalizedCompanyAddress;
-
+                    
                     if (addressMatch || isAddressApproved) {
                         companyDataMatches++;
                     }
                 }
             }
-
+            
             console.log(`🔍 [Debug] สรุป: companyDataMatches=${companyDataMatches}/${companyDataTotal} (ตรวจสอบจาก UI)`);
-
+            
             // ตรวจสอบว่าทุก field ตรงกันหรือถูกอนุมัติหมดแล้วหรือไม่
             const allCompanyDataMatched = companyDataMatches === companyDataTotal;
             console.log(`🔍 [Debug] ทุก field ตรงกันหรือถูกอนุมัติหมดแล้ว: ${allCompanyDataMatched} (${companyDataMatches} === ${companyDataTotal})`);
-
+            
             // อัพเดทสถานะข้อมูลบริษัท badge ทันที
             const statusElements = row.querySelectorAll('.comparison-row-status');
             console.log(`🔍 [Debug] หา status badge: พบ ${statusElements.length} elements`);
             console.log(`🔍 [Debug] companyDataMatches: ${companyDataMatches}, companyDataTotal: ${companyDataTotal}`);
             console.log(`🔍 [Debug] comparisonApprovals สำหรับ index ${index}:`, Object.keys(comparisonApprovals).filter(k => k.startsWith(`${index}-`)));
             console.log(`🔍 [Debug] comparisonApprovals object:`, comparisonApprovals);
-
+            
             let foundCompanyDataBadge = false;
             statusElements.forEach((statusElement, idx) => {
                 const elementText = statusElement.textContent || '';
                 console.log(`🔍 [Debug] Status element ${idx}: "${elementText.substring(0, 50)}..."`);
-
+                
                 if (elementText.includes('🏢')) {
                     foundCompanyDataBadge = true;
                     console.log(`🔍 [Debug] พบ badge ข้อมูลบริษัท!`);
@@ -8064,11 +5898,11 @@
                         let newColor = '';
                         let newBgColor = '';
                         let newBorderColor = '';
-
+                        
                         // ตรวจสอบว่าทุก field ตรงกันหรือถูกอนุมัติหมดแล้วหรือไม่
                         const isAllMatched = companyDataMatches === companyDataTotal;
                         console.log(`🔍 [Debug] ตรวจสอบสถานะ: companyDataMatches=${companyDataMatches}, companyDataTotal=${companyDataTotal}, isAllMatched=${isAllMatched}`);
-
+                        
                         if (isAllMatched) {
                             newClassName = 'comparison-row-status match';
                             newColor = '#10b981';
@@ -8092,15 +5926,15 @@
                             newStatusText = `ไม่ตรงกัน (${companyDataMatches}/${companyDataTotal})`;
                             console.log(`✅ อัพเดทสถานะข้อมูลบริษัท: "${oldText}" -> "🏢 ${newStatusText}"`);
                         }
-
+                        
                         // อัพเดท className
                         statusElement.className = newClassName;
-
+                        
                         // อัพเดท styles
                         statusElement.style.color = newColor;
                         statusElement.style.backgroundColor = newBgColor;
                         statusElement.style.border = `1px solid ${newBorderColor}`;
-
+                        
                         // อัพเดท innerHTML โดยเก็บ span 🏢 ไว้
                         // หา span ที่มี emoji 🏢
                         const emojiSpan = statusElement.querySelector('span[style*="font-size"]');
@@ -8111,21 +5945,21 @@
                             // ถ้าไม่มี span ให้สร้างใหม่
                             statusElement.innerHTML = `<span style="font-size: 0.9em;">🏢</span> ${newStatusText}`;
                         }
-
+                        
                         // Force reflow เพื่อให้ browser render ใหม่
                         statusElement.offsetHeight;
-
+                        
                         console.log(`✅ [Debug] อัพเดท badge สำเร็จ: "${oldText}" -> "${statusElement.textContent}"`);
                     } else {
                         console.warn(`⚠️ [Debug] companyDataTotal = 0 ไม่สามารถอัพเดทสถานะได้`);
                     }
                 }
             });
-
+            
             if (!foundCompanyDataBadge) {
                 console.warn(`⚠️ [Debug] ไม่พบ badge ข้อมูลบริษัท (🏢) ใน row ${index}`);
             }
-
+            
             // ถ้ามี field ที่ไม่ match และทุก field ถูก approve แล้ว
             if (hasMismatchedFields && allMismatchedFieldsApproved) {
                 // เปลี่ยนสถานะจาก "ตรงกันบางส่วน" เป็น "ตรงกัน"
@@ -8146,17 +5980,17 @@
                         const companyTaxId = ocrData.tax_id || '';
                         const buyerAddress = purchaseData.address || '';
                         const companyAddress = ocrData.address || '';
-
+                        
                         let companyDataMatches = 0;
                         let companyDataTotal = 0;
-
+                        
                         // ตรวจสอบชื่อบริษัท
                         if (buyerName && buyerName !== '-' && companyName && companyName !== '-') {
                             companyDataTotal++;
                             const normalizedBuyerName = normalizeText(buyerName);
                             const normalizedCompanyName = normalizeText(companyName);
-                            const companyNameMatch = normalizedBuyerName === normalizedCompanyName ||
-                                normalizedBuyerName.includes(normalizedCompanyName) ||
+                            const companyNameMatch = normalizedBuyerName === normalizedCompanyName || 
+                                normalizedBuyerName.includes(normalizedCompanyName) || 
                                 normalizedCompanyName.includes(normalizedBuyerName);
                             if (companyNameMatch) {
                                 companyDataMatches++;
@@ -8168,7 +6002,7 @@
                                 }
                             }
                         }
-
+                        
                         // ตรวจสอบเลขประจำตัวผู้เสียภาษี
                         if (buyerTaxId && buyerTaxId !== '-' && companyTaxId && companyTaxId !== '-') {
                             companyDataTotal++;
@@ -8185,7 +6019,7 @@
                                 }
                             }
                         }
-
+                        
                         // ตรวจสอบที่อยู่
                         if (buyerAddress && buyerAddress !== '-' && companyAddress && companyAddress !== '-') {
                             companyDataTotal++;
@@ -8202,7 +6036,7 @@
                                 }
                             }
                         }
-
+                        
                         if (companyDataTotal > 0) {
                             if (companyDataMatches === companyDataTotal) {
                                 statusElement.textContent = `🏢 ตรงกัน (${companyDataMatches}/${companyDataTotal})`;
@@ -8216,69 +6050,64 @@
                         // สถานะเอกสาร
                         statusElement.textContent = 'ตรงกัน';
                     }
-
+                    
                     console.log(`✅ เปลี่ยนสถานะ row ${index} จาก "ตรงกันบางส่วน" เป็น "ตรงกัน"`);
                 });
-
-                // ลบหมายเหตุทั้งในหน้าเว็บและใน comparisonNotes เมื่ออนุมัติทุกจุดแล้ว
+                
+                // ซ่อนหมายเหตุในหน้าเว็บ แต่เก็บหมายเหตุไว้เพื่อ Excel export
                 const noteKey = String(index);
                 const noteTextarea = document.getElementById(`note-${index}`);
                 if (noteTextarea) {
-                    // เก็บ initial note ไว้ถ้ายังไม่มี (สำหรับ restore เมื่อยกเลิกการอนุมัติ)
+                    // เก็บ initial note ไว้ถ้ายังไม่มี (เก็บจาก comparisonNotes ปัจจุบัน)
                     if (!initialNotes[noteKey] && comparisonNotes[noteKey]) {
                         initialNotes[noteKey] = comparisonNotes[noteKey];
                     }
-
-                    // ลบหมายเหตุทั้งหมด — ทั้งใน UI และ comparisonNotes
-                    // เพราะเมื่ออนุมัติทุกจุดแล้ว หมายเหตุไม่จำเป็นต้องแสดงใน Excel export
-                    comparisonNotes[noteKey] = '';
+                    
+                    // เก็บหมายเหตุปัจจุบันไว้ใน comparisonNotes เพื่อ Excel export
+                    // ถ้ามี initial note ให้ใช้ initial note, ถ้าไม่มีให้ใช้หมายเหตุปัจจุบัน
+                    const noteToKeep = initialNotes[noteKey] || comparisonNotes[noteKey] || '';
+                    comparisonNotes[noteKey] = noteToKeep;
+                    
+                    // ซ่อนในหน้าเว็บ (ลบจาก textarea) แต่เก็บไว้ใน comparisonNotes
                     noteTextarea.value = '';
-
-                    // ซ่อน container ของหมายเหตุทั้งหมด (ทั้ง label และ textarea)
-                    const noteContainer = noteTextarea.closest('div');
-                    if (noteContainer) {
-                        noteContainer.style.display = 'none';
-                    }
-
-                    console.log(`✅ ลบหมายเหตุสำหรับ row ${index} (อนุมัติทุกจุดแล้ว)`);
+                    
+                    console.log(`✅ ซ่อนหมายเหตุในหน้าเว็บสำหรับ row ${index} (เก็บไว้สำหรับ Excel export: "${noteToKeep.substring(0, 50)}...")`);
                 }
             }
             // หมายเหตุ: สถานะข้อมูลบริษัท badge ถูกอัพเดททุกครั้งที่เรียกฟังก์ชันนี้ (ไม่ต้องรอให้ approve ทั้งหมด)
         }
-
+        
         /**
          * Restore สถานะ row กลับเป็น "ตรงกันบางส่วน" และ restore หมายเหตุเดิม
          */
         function restoreRowStatus(index) {
             const row = findRowInActiveTab(index);
             if (!row) return;
-
+            
             // หา comparison data
-            const comp = (window.comparisonResults && window.comparisonResults[index]) ||
-                (allComparisonsData && allComparisonsData[index]);
-
+            const comp = (window.comparisonResults && window.comparisonResults[index]) || 
+                        (allComparisonsData && allComparisonsData[index]);
+            
             if (!comp) return;
-
+            
             const matchDetails = comp.match_details || {};
             const matchedCount = comp.matched_count || 0;
             const totalCount = comp.total_count || 0;
-
+            
             // ตรวจสอบว่ามี field ที่ไม่ match หรือไม่
             const approvableFieldKeys = [
                 'document_no_match', 'date_match', 'company_name_match', 'tax_id_match',
                 'branch_match', 'reference_no_match', 'amount_before_vat_match',
                 'vat_amount_match', 'total_amount_match', 'document_type_match'
             ];
-
+            
             let hasMismatchedFields = false;
             approvableFieldKeys.forEach(fieldKey => {
-                // ข้ามfield ที่ไม่มีใน matchDetails
-                if (!(fieldKey in matchDetails)) return;
                 if (!matchDetails[fieldKey]) {
                     hasMismatchedFields = true;
                 }
             });
-
+            
             // ถ้ามี field ที่ไม่ match ให้เปลี่ยนสถานะกลับเป็น "ตรงกันบางส่วน"
             if (hasMismatchedFields) {
                 const statusElement = row.querySelector('.comparison-row-status');
@@ -8288,41 +6117,35 @@
                     statusElement.style.backgroundColor = 'rgba(251, 191, 36, 0.2)';
                     statusElement.style.border = '1px solid #fbbf24';
                     statusElement.textContent = `ตรงกันบางส่วน (${matchedCount}/${totalCount})`;
-
+                    
                     console.log(`✅ เปลี่ยนสถานะ row ${index} กลับเป็น "ตรงกันบางส่วน"`);
                 }
             }
-
+            
             // Restore หมายเหตุเดิม
             const noteKey = String(index);
             const noteTextarea = document.getElementById(`note-${index}`);
             if (noteTextarea && initialNotes[noteKey]) {
                 comparisonNotes[noteKey] = initialNotes[noteKey];
                 noteTextarea.value = initialNotes[noteKey];
-
-                // แสดง container ของหมายเหตุกลับมา
-                const noteContainer = noteTextarea.closest('div');
-                if (noteContainer) {
-                    noteContainer.style.display = '';
-                }
-
+                
                 console.log(`✅ Restore หมายเหตุเดิมสำหรับ row ${index}`);
             }
         }
-
+        
         // ฟังก์ชันยกเลิกการอนุมัติฟิลด์เฉพาะจุด
         // ฟังก์ชันอนุมัติข้อมูลบริษัททั้งหมด (ชื่อ, เลขประจำตัวผู้เสียภาษี, ที่อยู่)
         function approveCompanyData(index) {
             const approvalKey = `${index}-company_data_all`;
-
+            
             // อนุมัติข้อมูลบริษัททั้งหมด
             comparisonApprovals[approvalKey] = true;
-
+            
             // อนุมัติแต่ละส่วนของข้อมูลบริษัทด้วย (ถ้ายังไม่ตรงกัน)
             const nameApprovalKey = `${index}-company_name_match`;
             const taxIdApprovalKey = `${index}-company_tax_id_match`;
             const addressApprovalKey = `${index}-address_match`;
-
+            
             // ตรวจสอบว่ามีข้อมูลที่ต้องอนุมัติหรือไม่
             const row = findRowInActiveTab(index);
             if (row) {
@@ -8331,51 +6154,51 @@
                 if (nameField && !comparisonApprovals[nameApprovalKey]) {
                     comparisonApprovals[nameApprovalKey] = true;
                 }
-
+                
                 // อนุมัติเลขประจำตัวผู้เสียภาษี (ถ้ามีและไม่ตรงกัน)
                 const taxIdField = row.querySelector('.comparison-field:has(.comparison-field-label:contains("เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ"))');
                 if (taxIdField && !comparisonApprovals[taxIdApprovalKey]) {
                     comparisonApprovals[taxIdApprovalKey] = true;
                 }
-
+                
                 // อนุมัติที่อยู่ (ถ้ามีและไม่ตรงกัน)
                 if (!comparisonApprovals[addressApprovalKey]) {
                     comparisonApprovals[addressApprovalKey] = true;
                 }
             }
-
+            
             console.log('✅ Company data approved:', approvalKey);
             triggerAutoSave();
-
+            
             // รีเฟรชการแสดงผล
             refreshComparisonRow(index);
         }
-
+        
         // ฟังก์ชันยกเลิกการอนุมัติข้อมูลบริษัททั้งหมด
         function cancelCompanyDataApproval(index) {
             const approvalKey = `${index}-company_data_all`;
-
+            
             // ยกเลิกการอนุมัติข้อมูลบริษัททั้งหมด
             delete comparisonApprovals[approvalKey];
-
+            
             // ยกเลิกการอนุมัติแต่ละส่วนด้วย (ถ้าถูกอนุมัติผ่านปุ่มนี้)
             const nameApprovalKey = `${index}-company_name_match`;
             const taxIdApprovalKey = `${index}-company_tax_id_match`;
             const addressApprovalKey = `${index}-address_match`;
-
+            
             // ตรวจสอบว่าถูกอนุมัติผ่านปุ่มนี้หรือไม่ (อาจจะต้องเก็บข้อมูลเพิ่มเติม)
             // สำหรับตอนนี้ให้ยกเลิกทั้งหมด
             delete comparisonApprovals[nameApprovalKey];
             delete comparisonApprovals[taxIdApprovalKey];
             delete comparisonApprovals[addressApprovalKey];
-
+            
             console.log('❌ Company data approval cancelled:', approvalKey);
             triggerAutoSave();
-
+            
             // รีเฟรชการแสดงผล
             refreshComparisonRow(index);
         }
-
+        
         // ฟังก์ชันรีเฟรช comparison row
         function refreshComparisonRow(index) {
             const row = findRowInActiveTab(index);
@@ -8383,20 +6206,20 @@
                 console.warn(`⚠️ Cannot find row with index: ${index}`);
                 return;
             }
-
+            
             // หา tab name จาก row element
             const tabName = row.getAttribute('data-tab') || 'all';
-
+            
             // หา comp data จาก allComparisonsData (ถ้ามี)
             if (typeof allComparisonsData !== 'undefined' && allComparisonsData && allComparisonsData[index]) {
                 const comp = allComparisonsData[index];
                 const newRowHTML = generateComparisonRowHTML(comp, index, tabName);
-
+                
                 // แทนที่ row เดิม
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = newRowHTML;
                 const newRow = tempDiv.firstElementChild;
-
+                
                 if (newRow) {
                     row.replaceWith(newRow);
                     console.log(`✅ Refreshed comparison row ${index} in tab ${tabName}`);
@@ -8407,27 +6230,27 @@
                 location.reload();
             }
         }
-
+        
         function cancelApproval(index, fieldKey, fieldLabel) {
             const approvalKey = `${index}-${fieldKey}`;
-
+            
             // ลบสถานะการอนุมัติ
             delete comparisonApprovals[approvalKey];
             console.log('❌ Field approval cancelled:', approvalKey, fieldLabel);
-
+            
             // รีเฟรชการแสดงผล (หา row ใน tab ที่ active อยู่)
             const row = findRowInActiveTab(index);
             if (!row) {
                 console.error('❌ Cannot find row:', `comparison-row-${index}`);
                 return;
             }
-
+            
             // หาปุ่มยกเลิกที่ตรงกับ fieldKey โดยใช้ data attribute เป็นหลัก
             // วิธีที่ 1: หาจาก data-field-key และ data-field-index และตรวจสอบว่าเป็นปุ่มยกเลิก
-            let cancelButtons = Array.from(row.querySelectorAll(`button[data-field-key="${fieldKey}"][data-field-index="${index}"]`)).filter(btn =>
+            let cancelButtons = Array.from(row.querySelectorAll(`button[data-field-key="${fieldKey}"][data-field-index="${index}"]`)).filter(btn => 
                 btn.textContent && (btn.textContent.includes('ยกเลิก') || btn.textContent.includes('✕'))
             );
-
+            
             // วิธีที่ 2: ถ้าไม่เจอ ให้หาจาก field container ที่มี data-field-key ตรงกัน
             if (cancelButtons.length === 0) {
                 const fieldContainer = row.querySelector(`.comparison-field[data-field-key="${fieldKey}"][data-field-index="${index}"]`);
@@ -8438,14 +6261,14 @@
                     }
                 }
             }
-
+            
             // วิธีที่ 3: ถ้ายังไม่เจอ ให้หาจาก onclick attribute (สำหรับปุ่มที่สร้างจาก HTML)
             if (cancelButtons.length === 0) {
                 cancelButtons = Array.from(row.querySelectorAll(`button[onclick*="cancelApproval(${index}, '${fieldKey}'"]`));
             }
-
+            
             console.log(`🔍 Found ${cancelButtons.length} cancel buttons for field ${fieldKey} at index ${index}`);
-
+            
             if (cancelButtons.length === 0) {
                 console.error(`❌ Cannot find cancel button for field ${fieldKey} at index ${index}`);
                 // ลองหา field container และปุ่มภายใน
@@ -8461,7 +6284,7 @@
                 }
                 return;
             }
-
+            
             cancelButtons.forEach(cancelButton => {
                 // หา fieldContainer
                 const fieldContainer = cancelButton.closest('.comparison-field');
@@ -8469,7 +6292,7 @@
                     console.error('❌ Cannot find field container for cancel button');
                     return;
                 }
-
+                
                 // หา fieldValue ทั้งสองฝั่ง (ภาษีซื้อและ OCR)
                 const fieldValue = fieldContainer.querySelector('.comparison-field-value');
                 if (fieldValue) {
@@ -8479,7 +6302,7 @@
                     fieldValue.classList.remove('approved');
                     fieldValue.classList.add('mismatch');
                 }
-
+                
                 // เปลี่ยนปุ่มเป็นปุ่ม "อนุมัติ"
                 const approveButton = document.createElement('button');
                 approveButton.onclick = () => approveField(index, fieldKey, fieldLabel);
@@ -8490,7 +6313,7 @@
                 approveButton.setAttribute('onmouseout', "this.style.transform='scale(1)'; this.style.boxShadow='none';");
                 approveButton.setAttribute('title', 'อนุมัติความไม่ตรงกันนี้');
                 approveButton.innerHTML = '<span style="font-size: 1em;">✓</span> อนุมัติ';
-
+                
                 // Replace ปุ่มยกเลิกด้วยปุ่มอนุมัติ
                 try {
                     cancelButton.replaceWith(approveButton);
@@ -8504,7 +6327,7 @@
                     }
                 }
             });
-
+            
             // อัพเดทฝั่ง OCR ด้วย
             const ocrSide = row.querySelector('.comparison-side.ocr');
             if (ocrSide) {
@@ -8535,7 +6358,7 @@
                         } else if (fieldKey === 'reference_no_match' && ocrLabel.textContent.includes('เลขที่เอกสารอ้างอิง')) {
                             isTargetField = true;
                         }
-
+                        
                         if (isTargetField) {
                             const ocrValue = ocrField.querySelector('.comparison-field-value');
                             if (ocrValue) {
@@ -8548,17 +6371,17 @@
                     }
                 });
             }
-
+            
             // Restore สถานะ row และหมายเหตุเดิม
             restoreRowStatus(index);
-
+            
             // แสดง toast notification
             showToast('success', `❌ ยกเลิกการอนุมัติ "${fieldLabel}" เรียบร้อยแล้ว`);
-
+            
             // Trigger auto-save
             triggerAutoSave();
         }
-
+        
         // ฟังก์ชันแสดง toast notification
         function showToast(type, message) {
             const toastHtml = `
@@ -8566,9 +6389,9 @@
                     ${message}
                 </div>
             `;
-
+            
             document.body.insertAdjacentHTML('beforeend', toastHtml);
-
+            
             // ลบ toast หลัง 3 วินาที
             setTimeout(() => {
                 const toast = document.getElementById('toast');
@@ -8578,15 +6401,15 @@
                 }
             }, 3000);
         }
-
+        
         // ฟังก์ชันย้ายเอกสารทั้งหมดที่ไม่ตรงกัน
         async function moveAllMismatchedDocuments() {
             // รวบรวม reference numbers จากรายการที่ไม่ตรงกันทั้งหมด
             const mismatchedReferenceNos = [];
-
+            
             // ดึงข้อมูลจาก comparison results ที่เก็บไว้ใน DOM หรือจากตัวแปร global
             const comparisonResults = window.comparisonResults || [];
-
+            
             comparisonResults.forEach(comp => {
                 // รวมรายการที่ไม่ตรงกัน (no_match และ partial_match)
                 if (comp.match_status === 'no_match' || comp.match_status === 'partial_match') {
@@ -8596,22 +6419,22 @@
                     }
                 }
             });
-
+            
             if (mismatchedReferenceNos.length === 0) {
                 alert('ไม่พบรายการที่ไม่ตรงกัน');
                 return;
             }
-
+            
             // ยืนยันการย้าย
             const confirmed = confirm(
                 `ต้องการย้ายเอกสารทั้งหมด ${mismatchedReferenceNos.length} รายการที่ไม่ตรงกันไปยังโฟลเดอร์ "ไฟล์ที่ต้องตรวจสอบ" ใช่หรือไม่?\n\n` +
                 `รายการที่จะย้าย:\n${mismatchedReferenceNos.slice(0, 5).join(', ')}${mismatchedReferenceNos.length > 5 ? ' ...' : ''}`
             );
-
+            
             if (!confirmed) {
                 return;
             }
-
+            
             // แสดง loading
             const loadingHtml = `
                 <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;" id="moveAllLoadingOverlay">
@@ -8622,28 +6445,28 @@
                 </div>
             `;
             document.body.insertAdjacentHTML('beforeend', loadingHtml);
-
+            
             try {
                 // ดึงค่าจาก form
                 const taxMonth = document.getElementById('taxMonth')?.value;
                 const taxYear = document.getElementById('taxYear')?.value;
                 const company = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value;
-
+                
                 if (!taxMonth || !taxYear || !company) {
                     document.getElementById('moveAllLoadingOverlay')?.remove();
                     alert('ไม่พบข้อมูลเดือนภาษีหรือบริษัท กรุณาเลือกข้อมูลก่อนย้ายเอกสาร');
                     return;
                 }
-
+                
                 const taxMonthFormatted = `${taxYear}-${taxMonth}`;
-
+                
                 console.log('📦 Sending move all request:', {
                     referenceNos: mismatchedReferenceNos,
                     taxMonth: taxMonthFormatted,
                     company: company,
                     vatFolderPath: vatFolderPath
                 });
-
+                
                 // เรียก API เพื่อย้ายไฟล์ทั้งหมด
                 const response = await fetch('/api/auditcheck/move-all-mismatched-documents', {
                     method: 'POST',
@@ -8657,13 +6480,13 @@
                         vatFolderPath: vatFolderPath
                     })
                 });
-
+                
                 const result = await response.json();
                 console.log('📦 API Response:', result);
-
+                
                 // ลบ loading
                 document.getElementById('moveAllLoadingOverlay')?.remove();
-
+                
                 if (result.success) {
                     // สร้างข้อความสรุปผล
                     let message = `✅ ย้ายเอกสารเสร็จสิ้น!\n\n`;
@@ -8675,7 +6498,7 @@
                     if (result.not_found_count > 0) {
                         message += `- ไม่พบไฟล์: ${result.not_found_count} รายการ\n`;
                     }
-
+                    
                     if (result.results.failed.length > 0 || result.results.not_found.length > 0) {
                         message += `\nรายละเอียด:\n`;
                         result.results.failed.forEach(item => {
@@ -8685,7 +6508,7 @@
                             message += `- ⚠️ ${item.reference_no}: ${item.message}\n`;
                         });
                     }
-
+                    
                     alert(message);
                 } else {
                     alert(result.error || 'ไม่สามารถย้ายเอกสารได้');
@@ -8696,17 +6519,17 @@
                 alert('เกิดข้อผิดพลาดในการย้ายเอกสาร: ' + error.message);
             }
         }
-
+        
         // ฟังก์ชันสำหรับย้ายเอกสารไปยังโฟลเดอร์ "ไฟล์ที่ต้องตรวจสอบ"
         async function moveDocumentToReview(referenceNo, index) {
             console.log('📋 moveDocumentToReview called:', referenceNo);
-
+            
             // ยืนยันการย้ายเอกสาร
             const confirmed = confirm(`ต้องการย้ายเอกสาร ${referenceNo} ไปยังโฟลเดอร์ "ไฟล์ที่ต้องตรวจสอบ" ใช่หรือไม่?`);
             if (!confirmed) {
                 return;
             }
-
+            
             // แสดง loading
             const loadingHtml = `
                 <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;" id="moveLoadingOverlay">
@@ -8717,13 +6540,13 @@
                 </div>
             `;
             document.body.insertAdjacentHTML('beforeend', loadingHtml);
-
+            
             try {
                 // ดึงค่าจาก form
                 const taxMonth = document.getElementById('taxMonth')?.value;
                 const taxYear = document.getElementById('taxYear')?.value;
                 const company = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value;
-
+                
                 // ตรวจสอบว่ามีค่าครบถ้วนหรือไม่
                 if (!taxMonth || !taxYear || !company) {
                     console.error('❌ Missing required data:', { taxMonth, taxYear, company });
@@ -8731,16 +6554,16 @@
                     alert('ไม่พบข้อมูลเดือนภาษีหรือบริษัท กรุณาเลือกข้อมูลก่อนย้ายเอกสาร');
                     return;
                 }
-
+                
                 // สร้าง taxMonth ในรูปแบบ YYYY-MM
                 const taxMonthFormatted = `${taxYear}-${taxMonth}`;
-
+                
                 console.log('📊 Sending move request:', {
                     referenceNo: referenceNo,
                     taxMonth: taxMonthFormatted,
                     company: company
                 });
-
+                
                 // เรียก API เพื่อย้ายไฟล์
                 const response = await fetch('/api/auditcheck/move-document-to-review', {
                     method: 'POST',
@@ -8753,13 +6576,13 @@
                         company: company
                     })
                 });
-
+                
                 const result = await response.json();
                 console.log('📊 API Response:', result);
-
+                
                 // ลบ loading
                 document.getElementById('moveLoadingOverlay')?.remove();
-
+                
                 if (result.success) {
                     alert(`✅ ย้ายเอกสารสำเร็จ!\n\nไฟล์: ${result.filename}\nย้ายไปยัง: ไฟล์ที่ต้องตรวจสอบ`);
                 } else {
@@ -8771,16 +6594,16 @@
                 alert('เกิดข้อผิดพลาดในการย้ายเอกสาร: ' + error.message);
             }
         }
-
+        
         // ฟังก์ชันเปิด/ปิดโหมด "ตรวจด้วยตัวเอง"
         async function toggleSelfCheckMode(index, referenceNo) {
             const isCurrentlyEnabled = selfCheckMode[index] || false;
-
+            
             // เก็บ scroll position และ expanded state ก่อน re-render
             const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             const rowElement = findRowInActiveTab(index);
             const wasExpanded = rowElement ? rowElement.classList.contains('expanded') : false;
-
+            
             if (isCurrentlyEnabled) {
                 // ปิดโหมด "ตรวจด้วยตัวเอง"
                 delete selfCheckMode[index];
@@ -8792,10 +6615,10 @@
                 console.log(`🔍 เปิดโหมด "ตรวจด้วยตัวเอง" สำหรับ row ${index}`);
                 showToast('success', '✅ เปิดโหมด "ตรวจด้วยตัวเอง" แล้ว - ทุกฟิลด์ในฝั่งภาษีซื้อจะแสดงปุ่มอนุมัติ');
             }
-
+            
             // Re-render เฉพาะ row ที่ต้องการ (ไม่ re-render ทั้งหน้า)
             await reRenderSingleRow(index);
-
+            
             // ทำให้ row เปิดอยู่ (expanded) หลังจาก re-render
             const newRowElement = findRowInActiveTab(index);
             if (newRowElement) {
@@ -8804,54 +6627,54 @@
                     newRowElement.classList.add('expanded');
                 }
             }
-
+            
             // Restore scroll position
             window.scrollTo(0, scrollPosition);
-
+            
             // Trigger auto-save
             triggerAutoSave();
         }
-
+        
         // ฟังก์ชัน re-render เฉพาะ row เดียว (ไม่ re-render ทั้งหน้า)
         async function reRenderSingleRow(index) {
             if (!allComparisonsData || !Array.isArray(allComparisonsData) || index < 0 || index >= allComparisonsData.length) {
                 return;
             }
-
+            
             const comp = allComparisonsData[index];
             if (!comp) {
                 return;
             }
-
+            
             // หา tab content ที่ active อยู่
             const activeTabContent = document.querySelector('.comparison-tab-content.active');
-
+            
             if (activeTabContent) {
                 // หา row element เฉพาะใน tab ที่ active อยู่โดยใช้ data-index
                 const rowElement = findRowInActiveTab(index);
-
+                
                 if (rowElement) {
                     // เก็บ expanded state และ tab name ก่อน replace
                     const wasExpanded = rowElement.classList.contains('expanded');
                     const tabName = rowElement.getAttribute('data-tab') || 'all';
-
+                    
                     // สร้าง HTML ใหม่สำหรับ row นี้โดยใช้ tabName ที่ถูกต้อง
                     const newRowHTML = generateComparisonRowHTML(comp, index, tabName);
-
+                    
                     // สร้าง temporary container เพื่อแปลง HTML string เป็น DOM
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = newRowHTML.trim();
                     const newRowElement = tempDiv.firstElementChild;
-
+                    
                     if (newRowElement && rowElement.parentElement) {
                         // Replace old row with new row
                         rowElement.parentElement.replaceChild(newRowElement, rowElement);
-
+                        
                         // Restore expanded state ถ้าเดิม expanded
                         if (wasExpanded) {
                             newRowElement.classList.add('expanded');
                         }
-
+                        
                     }
                 } else {
                     console.warn(`⚠️ ไม่พบ row element สำหรับ index ${index} ใน tab ที่ active`);
@@ -8859,19 +6682,19 @@
             } else {
                 // ถ้าไม่พบ active tab ให้ re-render ในทุก tab ที่มี row นี้ (fallback)
                 const rowElements = document.querySelectorAll(`[data-index="${index}"]`);
-
+                
                 if (rowElements.length > 0) {
                     rowElements.forEach(rowElement => {
                         const wasExpanded = rowElement.classList.contains('expanded');
                         const tabName = rowElement.getAttribute('data-tab') || 'all';
-
+                        
                         // สร้าง HTML ใหม่สำหรับ row นี้โดยใช้ tabName ที่ถูกต้อง
                         const newRowHTML = generateComparisonRowHTML(comp, index, tabName);
-
+                        
                         const tempDiv = document.createElement('div');
                         tempDiv.innerHTML = newRowHTML.trim();
                         const newRowElement = tempDiv.firstElementChild;
-
+                        
                         if (newRowElement && rowElement.parentElement) {
                             rowElement.parentElement.replaceChild(newRowElement, rowElement);
                             if (wasExpanded) {
@@ -8879,14 +6702,14 @@
                             }
                         }
                     });
-
+                    
                     console.log(`✅ Re-rendered row ${index} in ${rowElements.length} tab(s) (fallback)`);
                 } else {
                     console.warn(`⚠️ ไม่พบ row element สำหรับ index ${index}`);
                 }
             }
         }
-
+        
         // ฟังก์ชันสำหรับลบรายการออก
         async function removeComparisonItem(index, referenceNo) {
             // ยืนยันการลบ
@@ -8894,18 +6717,18 @@
             if (!confirmed) {
                 return;
             }
-
+            
             try {
                 // ลบรายการออกจาก allComparisonsData
                 if (allComparisonsData && Array.isArray(allComparisonsData)) {
                     allComparisonsData.splice(index, 1);
-
+                    
                     // ลบข้อมูลที่เกี่ยวข้องออกจาก comparisonNotes, invalidDocuments, และ selfCheckMode
                     // ต้องปรับ index ทั้งหมดที่มากกว่า index ที่ลบ
                     const newComparisonNotes = {};
                     const newInvalidDocuments = {};
                     const newSelfCheckMode = {};
-
+                    
                     for (let i = 0; i < allComparisonsData.length; i++) {
                         const oldIndex = i < index ? i : i + 1;
                         if (comparisonNotes[String(oldIndex)]) {
@@ -8918,14 +6741,14 @@
                             newSelfCheckMode[i] = selfCheckMode[oldIndex];
                         }
                     }
-
+                    
                     comparisonNotes = newComparisonNotes;
                     invalidDocuments = newInvalidDocuments;
                     selfCheckMode = newSelfCheckMode;
-
+                    
                     // Re-render หน้าใหม่
                     await reRenderComparisonResults();
-
+                    
                     showToast('ลบรายการสำเร็จ', 'success');
                 } else {
                     showToast('ไม่พบข้อมูลรายการ', 'error');
@@ -8935,7 +6758,7 @@
                 showToast('เกิดข้อผิดพลาดในการลบรายการ: ' + error.message, 'error');
             }
         }
-
+        
         // ฟังก์ชันแสดง modal ยืนยันการลบ
         function showDeleteConfirmModal(referenceNo) {
             return new Promise((resolve) => {
@@ -8959,8 +6782,8 @@
                     </div>
                 `;
                 document.body.insertAdjacentHTML('beforeend', modalHtml);
-
-                window.closeDeleteConfirmModal = function (confirmed) {
+                
+                window.closeDeleteConfirmModal = function(confirmed) {
                     const modal = document.getElementById('deleteConfirmModal');
                     if (modal) {
                         modal.style.animation = 'fadeOut 0.3s';
@@ -8973,13 +6796,13 @@
                 };
             });
         }
-
+        
         // ฟังก์ชัน re-render comparison results หลังจากลบรายการ
         async function reRenderComparisonResults() {
             if (!allComparisonsData || !Array.isArray(allComparisonsData)) {
                 return;
             }
-
+            
             // ลบรายการซ้ำออกก่อนใช้งาน (ป้องกัน duplicates)
             const seenKeys = new Set();
             const uniqueComparisons = [];
@@ -8987,28 +6810,28 @@
                 const purchaseInvoiceNo = comp.purchase_data?.invoice_no || comp.invoice_no || '';
                 const ocrDocumentNo = comp.ocr_data?.document_no || comp.document_no || '';
                 const uniqueKey = `${purchaseInvoiceNo}_${ocrDocumentNo}_${comp.match_status || ''}`;
-
+                
                 if (!seenKeys.has(uniqueKey)) {
                     seenKeys.add(uniqueKey);
                     uniqueComparisons.push(comp);
                 }
             });
-
+            
             // อัปเดต allComparisonsData ให้เป็น unique
             if (uniqueComparisons.length !== allComparisonsData.length) {
                 allComparisonsData = uniqueComparisons;
             }
-
+            
             // แยกรายการตามสถานะ
             const fullMatchedComparisons = allComparisonsData.filter(comp => comp.match_status === 'full_match');
             const partialMatchedComparisons = allComparisonsData.filter(comp => comp.match_status === 'partial_match');
             const mismatchedComparisons = allComparisonsData.filter(comp => comp.match_status === 'no_match');
-
+            
             let html = '';
-
+            
             if (allComparisonsData.length > 0) {
                 html += `<div style="margin-top: 15px;">`;
-
+                
                 // Header พร้อมปุ่ม VAT-Info
                 html += `<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">`;
                 html += `<strong style="color: #cbd5e1; font-size: 1.1em;">📊 ผลการเปรียบเทียบ:</strong>`;
@@ -9016,7 +6839,7 @@
                 html += `<span style="font-size: 1.1em;">🔍</span> ไปยังหน้า VAT-Info`;
                 html += `</a>`;
                 html += `</div>`;
-
+                
                 // สร้าง Tabs
                 html += `<div class="comparison-tabs">`;
                 html += `<button class="comparison-tab active" onclick="switchComparisonTab('all')">`;
@@ -9032,7 +6855,7 @@
                 html += `ข้อมูลที่ตรงกัน <span class="comparison-tab-badge match">${fullMatchedComparisons.length}</span>`;
                 html += `</button>`;
                 html += `</div>`;
-
+                
                 // Search Box สำหรับค้นหาเลขที่เอกสารอ้างอิง
                 html += `<div style="margin: 15px 0; padding: 12px; background: #1e293b; border-radius: 8px; border: 1px solid #334155;">`;
                 html += `<div style="display: flex; align-items: center; gap: 10px;">`;
@@ -9042,7 +6865,7 @@
                 html += `</div>`;
                 html += `<div id="comparisonSearchResult" style="margin-top: 8px; color: #94a3b8; font-size: 0.85em; display: none;"></div>`;
                 html += `</div>`;
-
+                
                 // ปุ่มย้ายเอกสารทั้งหมดที่ไม่ตรงกัน
                 const mismatchedCount = mismatchedComparisons.length + partialMatchedComparisons.length;
                 if (mismatchedCount > 0) {
@@ -9057,14 +6880,14 @@
                     html += `</div>`;
                     html += `</div>`;
                 }
-
+                
                 // Tab: ข้อมูลทั้งหมด
                 html += `<div class="comparison-tab-content active" id="comparison-tab-all">`;
                 allComparisonsData.forEach((comp, index) => {
                     html += generateComparisonRowHTML(comp, index, 'all');
                 });
                 html += `</div>`;
-
+                
                 // Tab: ข้อมูลไม่ตรงกัน
                 html += `<div class="comparison-tab-content" id="comparison-tab-mismatch">`;
                 if (mismatchedComparisons.length > 0) {
@@ -9078,7 +6901,7 @@
                     html += `</div>`;
                 }
                 html += `</div>`;
-
+                
                 // Tab: ตรงกันบางส่วน
                 html += `<div class="comparison-tab-content" id="comparison-tab-partial">`;
                 if (partialMatchedComparisons.length > 0) {
@@ -9092,7 +6915,7 @@
                     html += `</div>`;
                 }
                 html += `</div>`;
-
+                
                 // Tab: ข้อมูลที่ตรงกัน
                 html += `<div class="comparison-tab-content" id="comparison-tab-match">`;
                 if (fullMatchedComparisons.length > 0) {
@@ -9106,10 +6929,10 @@
                     html += `</div>`;
                 }
                 html += `</div>`;
-
+                
                 // Pagination Controls
                 html += `<div class="comparison-pagination-container" style="margin-top: 20px; padding: 15px; background: #1e293b; border-radius: 8px; border: 1px solid #334155; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">`;
-
+                
                 // ตัวเลือกแสดงรายการต่อหน้า
                 html += `<div style="display: flex; align-items: center; gap: 10px;">`;
                 html += `<span style="color: #cbd5e1; font-size: 0.9em;">แสดงรายการ:</span>`;
@@ -9121,29 +6944,29 @@
                 html += `</select>`;
                 html += `<span style="color: #94a3b8; font-size: 0.85em;">รายการต่อหน้า</span>`;
                 html += `</div>`;
-
+                
                 // Pagination Info และ Navigation
                 html += `<div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">`;
                 html += `<div id="comparisonPaginationInfo" style="color: #cbd5e1; font-size: 0.9em;"></div>`;
                 html += `<div id="comparisonPaginationNav" style="display: flex; gap: 5px;"></div>`;
                 html += `</div>`;
-
+                
                 html += `</div>`;
-
+                
                 html += `</div>`;
             } else {
                 html += `<div style="color: #ef4444; margin-top: 15px;">`;
                 html += `⚠️ ไม่พบข้อมูลสำหรับการเปรียบเทียบ`;
                 html += `</div>`;
             }
-
+            
             // อัปเดต HTML ใน details element
             const step5Details = document.getElementById('step5Details');
             if (step5Details) {
                 // ลบ comparison-tabs และ tab-content ทั้งหมดก่อนเพื่อป้องกันการสร้างซ้ำ (ใช้ data-index แทน id selector)
                 const existingComparisonElements = step5Details.querySelectorAll('.comparison-tabs, .comparison-tab-content, .comparison-row, [data-index], [style*="margin-top: 15px"]');
                 existingComparisonElements.forEach(el => el.remove());
-
+                
                 // หา element ที่มี comparison-tabs เพื่อแทนที่เฉพาะส่วนนั้น
                 const comparisonSection = step5Details.querySelector('[style*="margin-top: 15px"]');
                 if (comparisonSection) {
@@ -9153,8 +6976,8 @@
                     while (current && current.nextSibling) {
                         const next = current.nextSibling;
                         // หยุดถ้าเจอ element ที่ไม่ใช่ comparison-related
-                        if (!next.classList.contains('comparison-tabs') &&
-                            !next.classList.contains('comparison-tab-content') &&
+                        if (!next.classList.contains('comparison-tabs') && 
+                            !next.classList.contains('comparison-tab-content') && 
                             !next.classList.contains('comparison-row') &&
                             !next.querySelector('.comparison-tabs')) {
                             break;
@@ -9171,23 +6994,23 @@
                     }
                     console.log(`🗑️ Removed ${removedCount} elements before re-rendering`);
                 }
-
+                
                 // เพิ่ม HTML ใหม่ทั้งหมด (แทนที่ทั้งหมด)
                 step5Details.innerHTML = html;
-
+                
                 // ลบ duplicates ทันทีหลังจาก set HTML
                 const removeDuplicatesImmediately = () => {
                     const allTabs = ['all', 'mismatch', 'partial', 'match'];
                     allTabs.forEach(tabName => {
                         const tabElement = document.getElementById(`comparison-tab-${tabName}`);
                         if (!tabElement) return;
-
+                        
                         const rows = Array.from(tabElement.querySelectorAll('.comparison-row'));
                         if (rows.length === 0) return;
-
+                        
                         const seenIndices = new Set();
                         const duplicatesToRemove = [];
-
+                        
                         rows.forEach(row => {
                             const rowIndex = row.getAttribute('data-index');
                             if (rowIndex !== null && rowIndex !== undefined) {
@@ -9198,16 +7021,16 @@
                                 }
                             }
                         });
-
+                        
                         if (duplicatesToRemove.length > 0) {
                             duplicatesToRemove.forEach(row => row.remove());
                         }
                     });
                 };
-
+                
                 // รอให้ DOM อัปเดตก่อนตรวจสอบ
                 setTimeout(removeDuplicatesImmediately, 10);
-
+                
                 // ตรวจสอบและตั้งค่า active tab ให้ถูกต้อง
                 setTimeout(() => {
                     const allTab = document.getElementById('comparison-tab-all');
@@ -9217,7 +7040,7 @@
                             content.classList.remove('active');
                         });
                         allTab.classList.add('active');
-
+                        
                         // อัปเดต tab button
                         document.querySelectorAll('.comparison-tab').forEach(tab => tab.classList.remove('active'));
                         const allTabButton = document.querySelector('.comparison-tab[onclick*="switchComparisonTab(\'all\')"]');
@@ -9226,18 +7049,18 @@
                         }
                         console.log('✅ Set "all" tab as active after re-render');
                     }
-
+                    
                     // อัปเดต pagination หลังจากตั้งค่า tab
                     comparisonPagination.currentTab = 'all';
                     updateComparisonPagination();
                 }, 50);
             }
         }
-
+        
         // ฟังก์ชันสำหรับปุ่ม "เอกสารนี้ใช้งานไม่ได้" (แต่ละรายการ)
         async function markDocumentAsInvalid(index, referenceNo) {
             const isCurrentlyInvalid = invalidDocuments[index] || false;
-
+            
             if (isCurrentlyInvalid) {
                 // ถ้าใช้งานไม่ได้แล้ว ให้ถามว่าต้องการยกเลิกหรือไม่
                 const confirmed = await showCancelInvalidModal();
@@ -9252,14 +7075,14 @@
                 if (currentNote.includes('เอกสารใช้ไม่ได้ให้เอาออก')) {
                     comparisonNotes[noteKey] = currentNote.replace(/\n?เอกสารใช้ไม่ได้ให้เอาออก/g, '').trim();
                 }
-
+                
                 // อัปเดต UI (ใช้ findRowInActiveTab เพื่อหา row ใน tab ที่ active)
                 const row = findRowInActiveTab(index);
                 if (row) {
                     row.style.opacity = '1';
                     row.style.border = '';
                 }
-
+                
                 // อัปเดตปุ่ม
                 const button = event?.target?.closest('button');
                 if (button) {
@@ -9267,20 +7090,20 @@
                     button.innerHTML = '<span style="font-size: 1.1em;">❌</span> เอกสารนี้ใช้งานไม่ได้';
                     button.style.opacity = '1';
                 }
-
+                
                 showToast('success', '✅ ยกเลิกการทำเครื่องหมายเอกสารใช้งานไม่ได้แล้ว');
-
+                
                 // Trigger auto-save
                 triggerAutoSave();
                 return;
             }
-
+            
             // ถ้ายังไม่ได้ทำเครื่องหมาย ให้แสดง popup modal
             const confirmed = await showInvalidDocumentModal();
             if (!confirmed) {
                 return;
             }
-
+            
             // แสดง loading
             const loadingHtml = `
                 <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;" id="markInvalidLoadingOverlay-${index}">
@@ -9291,25 +7114,25 @@
                 </div>
             `;
             document.body.insertAdjacentHTML('beforeend', loadingHtml);
-
+            
             try {
                 // เตรียมข้อมูลส่งไป API
                 const taxMonth = document.getElementById('taxMonth')?.value;
                 const taxYear = document.getElementById('taxYear')?.value;
                 const company = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value;
-
+                
                 if (!taxMonth || !taxYear || !company) {
                     throw new Error('กรุณาเลือกเดือนภาษีและบริษัทก่อน');
                 }
-
+                
                 const taxMonthFormatted = `${taxYear}-${taxMonth}`;
-
+                
                 // ดึงข้อมูล OCR จาก comparison
                 const comp = allComparisonsData[index];
                 const ocrData = comp?.ocr_data || {};
                 const purchaseData = comp?.purchase_data || {};
                 const ocrFilename = ocrData.filename || ocrData.old_filename || '';
-
+                
                 const requestData = {
                     taxMonth: taxMonthFormatted,
                     company: company,
@@ -9323,7 +7146,7 @@
                         ocrData: ocrData
                     }]
                 };
-
+                
                 // เรียก API เพื่อย้ายไฟล์
                 const response = await fetch('/api/auditcheck/mark-documents-invalid', {
                     method: 'POST',
@@ -9332,32 +7155,32 @@
                     },
                     body: JSON.stringify(requestData)
                 });
-
+                
                 if (!response.ok) {
                     const errorData = await response.json().catch(() => ({ error: 'Failed to mark document as invalid' }));
                     throw new Error(errorData.error || 'ไม่สามารถทำเครื่องหมายเอกสารได้');
                 }
-
+                
                 const result = await response.json();
-
+                
                 document.getElementById(`markInvalidLoadingOverlay-${index}`)?.remove();
-
+                
                 if (result.success) {
                     // ทำเครื่องหมายว่าใช้ไม่ได้
                     invalidDocuments[index] = true;
-
+                    
                     // เพิ่มคอมเมนต์
                     const noteKey = String(index);
                     const existingNote = comparisonNotes[noteKey] || '';
                     comparisonNotes[noteKey] = existingNote ? existingNote + '\nเอกสารใช้ไม่ได้ให้เอาออก' : 'เอกสารใช้ไม่ได้ให้เอาออก';
-
+                    
                     // อัปเดต UI (ใช้ findRowInActiveTab เพื่อหา row ใน tab ที่ active)
                     const row = findRowInActiveTab(index);
                     if (row) {
                         row.style.opacity = '0.6';
                         row.style.border = '2px solid #ef4444';
                     }
-
+                    
                     // อัปเดตปุ่ม
                     const button = event?.target?.closest('button');
                     if (button) {
@@ -9365,9 +7188,9 @@
                         button.innerHTML = '<span style="font-size: 1.1em;">✓</span> ใช้งานไม่ได้แล้ว';
                         button.style.opacity = '0.7';
                     }
-
+                    
                     showToast('success', `✅ ทำเครื่องหมายเอกสารใช้งานไม่ได้สำเร็จ!\n\nย้ายไฟล์: ${result.movedCount || 0} ไฟล์`);
-
+                    
                     // Trigger auto-save
                     triggerAutoSave();
                 } else {
@@ -9379,7 +7202,7 @@
                 alert('เกิดข้อผิดพลาด: ' + error.message);
             }
         }
-
+        
         // ฟังก์ชันแสดง popup modal สำหรับยืนยันการทำเครื่องหมายเอกสารใช้งานไม่ได้
         function showInvalidDocumentModal() {
             return new Promise((resolve) => {
@@ -9416,13 +7239,13 @@
                         </div>
                     </div>
                 `;
-
+                
                 document.body.insertAdjacentHTML('beforeend', modalHtml);
-
+                
                 const modal = document.getElementById('invalidDocumentModal');
                 const cancelBtn = document.getElementById('cancelInvalidBtn');
                 const confirmBtn = document.getElementById('confirmInvalidBtn');
-
+                
                 // ปิด modal เมื่อคลิกปุ่มยกเลิกหรือคลิกนอก modal
                 const closeModal = (result) => {
                     modal.style.animation = 'fadeOut 0.3s ease-in';
@@ -9431,16 +7254,16 @@
                         resolve(result);
                     }, 300);
                 };
-
+                
                 cancelBtn.addEventListener('click', () => closeModal(false));
                 confirmBtn.addEventListener('click', () => closeModal(true));
-
+                
                 modal.addEventListener('click', (e) => {
                     if (e.target.id === 'invalidDocumentModal') {
                         closeModal(false);
                     }
                 });
-
+                
                 // ปิด modal เมื่อกด ESC
                 const handleEsc = (e) => {
                     if (e.key === 'Escape') {
@@ -9451,7 +7274,7 @@
                 document.addEventListener('keydown', handleEsc);
             });
         }
-
+        
         // ฟังก์ชันแสดง popup modal สำหรับยกเลิกการทำเครื่องหมายเอกสารใช้งานไม่ได้
         function showCancelInvalidModal() {
             return new Promise((resolve) => {
@@ -9483,13 +7306,13 @@
                         </div>
                     </div>
                 `;
-
+                
                 document.body.insertAdjacentHTML('beforeend', modalHtml);
-
+                
                 const modal = document.getElementById('cancelInvalidModal');
                 const cancelBtn = document.getElementById('cancelCancelBtn');
                 const confirmBtn = document.getElementById('confirmCancelBtn');
-
+                
                 // ปิด modal เมื่อคลิกปุ่มยกเลิกหรือคลิกนอก modal
                 const closeModal = (result) => {
                     modal.style.animation = 'fadeOut 0.3s ease-in';
@@ -9498,16 +7321,16 @@
                         resolve(result);
                     }, 300);
                 };
-
+                
                 cancelBtn.addEventListener('click', () => closeModal(false));
                 confirmBtn.addEventListener('click', () => closeModal(true));
-
+                
                 modal.addEventListener('click', (e) => {
                     if (e.target.id === 'cancelInvalidModal') {
                         closeModal(false);
                     }
                 });
-
+                
                 // ปิด modal เมื่อกด ESC
                 const handleEsc = (e) => {
                     if (e.key === 'Escape') {
@@ -9518,11 +7341,11 @@
                 document.addEventListener('keydown', handleEsc);
             });
         }
-
+        
         // ฟังก์ชันส่งออก Excel
         async function exportToExcel() {
             console.log('📊 Exporting to Excel...');
-
+            
             // แสดง loading
             const loadingHtml = `
                 <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;" id="exportLoadingOverlay">
@@ -9533,21 +7356,21 @@
                 </div>
             `;
             document.body.insertAdjacentHTML('beforeend', loadingHtml);
-
+            
             try {
                 // ดึงค่าจาก form
                 const taxMonth = document.getElementById('taxMonth')?.value;
                 const taxYear = document.getElementById('taxYear')?.value;
                 const company = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value;
-
+                
                 if (!taxMonth || !taxYear || !company) {
                     document.getElementById('exportLoadingOverlay')?.remove();
                     alert('กรุณาเลือกเดือนภาษีและบริษัทก่อนส่งออกรายงาน');
                     return;
                 }
-
+                
                 const taxMonthFormatted = `${taxYear}-${taxMonth}`;
-
+                
                 // เตรียมข้อมูลส่งไป API (รวมหมายเหตุและ path ของโฟลเดอร์ VAT)
                 const exportData = {
                     taxMonth: taxMonthFormatted,
@@ -9560,12 +7383,12 @@
                     comparisons: allComparisonsData || [],  // ส่งข้อมูล comparisons ที่ถูกกรองแล้ว (รวมรายการที่ลบออกแล้ว)
                     selfCheckMode: selfCheckMode || {}  // ส่งสถานะการกดปุ่ม "ตรวจสอบเพิ่ม"
                 };
-
+                
                 console.log('📊 Sending export request:', {
                     ...exportData,
                     ocrDataFromStep2: step4OCRData ? `${step4OCRData.length} items` : 'none'
                 });
-
+                
                 // เรียก API เพื่อสร้าง Excel
                 const response = await fetch('/api/auditcheck/export-excel', {
                     method: 'POST',
@@ -9574,23 +7397,23 @@
                     },
                     body: JSON.stringify(exportData)
                 });
-
+                
                 if (!response.ok) {
                     const errorData = await response.json().catch(() => ({ error: 'Failed to export Excel' }));
                     throw new Error(errorData.error || 'Failed to export Excel');
                 }
-
+                
                 // รับข้อมูลจาก API (ไม่ใช่ไฟล์)
                 const result = await response.json();
-
+                
                 document.getElementById('exportLoadingOverlay')?.remove();
-
+                
                 if (result.success) {
                     // แสดงข้อความแจ้งเตือนว่าบันทึกไว้ในโฟลเดอร์ ภ.พ.30 แล้ว
                     const filePath = result.filePath || result.pph30FolderPath || result.vatFolderPath || '';
                     const fileName = result.fileName || `รายงานตรวจภาษี_${company}_${taxMonthFormatted}.xlsx`;
                     const pph30FolderPath = result.pph30FolderPath || result.vatFolderPath || '';
-
+                    
                     // แสดง modal แจ้งเตือน
                     const alertHtml = `
                         <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; display: flex; align-items: center; justify-content: center;" id="exportSuccessModal">
@@ -9621,40 +7444,40 @@
                 } else {
                     throw new Error(result.error || 'ไม่สามารถบันทึกรายงานได้');
                 }
-
+                
             } catch (error) {
                 console.error('❌ Error exporting Excel:', error);
                 document.getElementById('exportLoadingOverlay')?.remove();
                 alert('เกิดข้อผิดพลาดในการส่งออก Excel: ' + error.message);
             }
         }
-
+        
         function showAlert(type, message) {
             // Remove existing alerts
             const existingAlerts = document.querySelectorAll('.alert');
             existingAlerts.forEach(alert => alert.remove());
-
+            
             // Create new alert
             const alert = document.createElement('div');
             alert.className = `alert ${type}`;
             alert.textContent = message;
-
+            
             // Insert at the top of the form section
             const formSection = document.querySelector('.form-section');
             formSection.insertBefore(alert, formSection.firstChild);
-
+            
             // Auto remove after 5 seconds
             setTimeout(() => {
                 alert.remove();
             }, 5000);
         }
-
+        
         // ตัวแปรสำหรับเก็บข้อมูล OCR confirmation
         let ocrConfirmData = null;
-
+        
         // ตัวแปรเก็บข้อมูลโฟลเดอร์ย่อย
         let subfoldersData = [];
-
+        
         function showOCRConfirmModal(taxMonth, companyName, totalFiles, estimatedTime, actualTaxMonth, actualCompany, subfolders = []) {
             console.log('🔍 showOCRConfirmModal called with:', {
                 taxMonth,
@@ -9665,10 +7488,10 @@
                 actualCompany,
                 subfolders
             });
-
+            
             // เก็บข้อมูลโฟลเดอร์ย่อย
             subfoldersData = subfolders || [];
-
+            
             // เก็บข้อมูลสำหรับใช้เมื่อกดตกลง
             ocrConfirmData = {
                 taxMonth: actualTaxMonth,
@@ -9677,7 +7500,7 @@
                 estimatedTime: estimatedTime,
                 subfolders: subfoldersData
             };
-
+            
             // แสดงข้อมูลใน modal
             const modalTaxMonthEl = document.getElementById('modalTaxMonth');
             const modalCompanyNameEl = document.getElementById('modalCompanyName');
@@ -9686,23 +7509,23 @@
             const modalEl = document.getElementById('ocrConfirmModal');
             const folderSelectionContainer = document.getElementById('folderSelectionContainer');
             const folderCheckboxes = document.getElementById('folderCheckboxes');
-
+            
             if (!modalEl) {
                 console.error('❌ Modal element not found!');
                 alert('ไม่พบ modal element กรุณารีเฟรชหน้าเว็บ');
                 return;
             }
-
+            
             if (modalTaxMonthEl) modalTaxMonthEl.textContent = taxMonth || '-';
             if (modalCompanyNameEl) modalCompanyNameEl.textContent = companyName || '-';
             if (modalTotalFilesEl) modalTotalFilesEl.textContent = totalFiles ? `${totalFiles} ไฟล์` : '-';
             if (modalEstimatedTimeEl) modalEstimatedTimeEl.textContent = estimatedTime || '-';
-
+            
             // แสดงรายการโฟลเดอร์ย่อย
             if (folderSelectionContainer && folderCheckboxes && subfoldersData.length > 0) {
                 folderSelectionContainer.style.display = 'block';
                 folderCheckboxes.innerHTML = '';
-
+                
                 subfoldersData.forEach((folder, index) => {
                     const checkboxId = `folderCheckbox_${index}`;
                     const checkboxHtml = `
@@ -9721,19 +7544,19 @@
             } else if (folderSelectionContainer) {
                 folderSelectionContainer.style.display = 'none';
             }
-
+            
             console.log('📊 Modal elements updated');
-
+            
             // แสดง modal
             modalEl.classList.add('show');
             console.log('📊 Modal shown (class added)');
-
+            
             // ตั้งค่า event listener สำหรับปุ่มตกลง
             const confirmBtn = document.getElementById('modalConfirmBtn');
             if (confirmBtn) {
                 // ใช้ closure เพื่อเก็บค่าพารามิเตอร์
-                (function (confirmTaxMonth, confirmCompany, confirmTotalFiles, confirmEstimatedTime) {
-                    confirmBtn.onclick = async function () {
+                (function(confirmTaxMonth, confirmCompany, confirmTotalFiles, confirmEstimatedTime) {
+                    confirmBtn.onclick = async function() {
                         // ใช้ companyValue.value โดยตรงเพื่อให้แน่ใจว่าได้ค่า path ที่ถูกต้อง
                         const actualCompanyForConfirm = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || confirmCompany;
                         console.log('✅ Confirm button clicked');
@@ -9745,24 +7568,24 @@
                             totalFiles: confirmTotalFiles,
                             estimatedTime: confirmEstimatedTime
                         });
-
+                        
                         // ดึงค่า OCR mode ที่เลือก
                         const ocrModeRadio = document.querySelector('input[name="ocrMode"]:checked');
                         const ocrMode = ocrModeRadio ? ocrModeRadio.value : 'new';
-
+                        
                         // ดึงรายการโฟลเดอร์ที่เลือก
                         const checkboxes = document.querySelectorAll('#folderCheckboxes input[type="checkbox"]:checked');
                         const selectedFolders = Array.from(checkboxes).map(cb => cb.value);
-
+                        
                         console.log('📊 Selected OCR Mode:', ocrMode);
                         console.log('📁 Selected Folders:', selectedFolders);
-
+                        
                         // ตรวจสอบว่ามีโฟลเดอร์ถูกเลือกหรือไม่
                         if (selectedFolders.length === 0 && subfoldersData.length > 0) {
                             alert('กรุณาเลือกโฟลเดอร์ที่ต้องการอ่านอย่างน้อย 1 โฟลเดอร์');
                             return;
                         }
-
+                        
                         // เก็บข้อมูลก่อนปิด modal
                         const confirmData = {
                             taxMonth: confirmTaxMonth,
@@ -9772,12 +7595,12 @@
                             ocrMode: ocrMode,  // เพิ่ม OCR mode
                             selectedFolders: selectedFolders.length > 0 ? selectedFolders : null  // เพิ่มรายการโฟลเดอร์ที่เลือก
                         };
-
+                        
                         console.log('📊 Stored confirmData:', confirmData);
-
+                        
                         // ปิด modal
                         closeOCRConfirmModal();
-
+                        
                         // รัน OCR จริงๆ (ใช้ข้อมูลที่เก็บไว้ก่อนปิด modal)
                         if (confirmData && confirmData.taxMonth && confirmData.company) {
                             console.log('🚀 Calling runOCRAfterConfirm with:', confirmData);
@@ -9795,7 +7618,7 @@
                 console.error('❌ Confirm button not found!');
             }
         }
-
+        
         // ฟังก์ชันเลือกโฟลเดอร์ทั้งหมด
         function selectAllFolders() {
             const checkboxes = document.querySelectorAll('#folderCheckboxes input[type="checkbox"]');
@@ -9804,7 +7627,7 @@
             });
             console.log('✅ เลือกโฟลเดอร์ทั้งหมด:', checkboxes.length, 'โฟลเดอร์');
         }
-
+        
         // ฟังก์ชันยกเลิกการเลือกโฟลเดอร์ทั้งหมด
         function deselectAllFolders() {
             const checkboxes = document.querySelectorAll('#folderCheckboxes input[type="checkbox"]');
@@ -9813,7 +7636,7 @@
             });
             console.log('❌ ยกเลิกการเลือกโฟลเดอร์ทั้งหมด');
         }
-
+        
         function closeOCRConfirmModal() {
             console.log('🔍 closeOCRConfirmModal called');
             const modalEl = document.getElementById('ocrConfirmModal');
@@ -9823,7 +7646,7 @@
             }
             ocrConfirmData = null;
             subfoldersData = [];
-
+            
             // กลับไปแสดงตัวเลือกของระบบ OCR เมื่อผู้ใช้กดยกเลิก
             if (step4Data && step4Data.taxMonth && step4Data.company) {
                 restoreStep4Options(step4Data.taxMonth, step4Data.company);
@@ -9832,7 +7655,7 @@
                 const step = document.getElementById('step4');
                 const status = document.getElementById('step4Status');
                 const details = document.getElementById('step4Details');
-
+                
                 if (step && status && details) {
                     step.classList.remove('active', 'completed', 'error');
                     status.textContent = 'รอตรวจสอบ';
@@ -9842,32 +7665,32 @@
                 }
             }
         }
-
+        
         // ฟังก์ชันสำหรับแสดงตัวเลือกของระบบ OCR อีกครั้ง
         function restoreStep4Options(taxMonth, company) {
             const step = document.getElementById('step4');
             const status = document.getElementById('step4Status');
             const details = document.getElementById('step4Details');
-
+            
             if (!step || !status || !details) {
                 console.error('❌ Step 4 elements not found!');
                 return;
             }
-
+            
             step.classList.remove('active', 'completed', 'error');
             status.textContent = 'ไม่พบไฟล์ Excel';
             status.className = 'step-status error';
-
+            
             // สร้าง HTML สำหรับแสดงตัวเลือก
             let html = `<div style="margin-bottom: 15px;">`;
             html += `<strong>❌ ไม่พบไฟล์ Excel OCR ในโฟลเดอร์ VAT/vat/Vat สำหรับเดือน ${taxMonth}</strong><br>`;
             html += `<div style="margin-top: 10px; color: #cbd5e1; font-size: 0.9em;">💡 ระบบค้นหาไฟล์ Excel ที่มีคำว่า "ocr" หรือ "invoice_data" ในชื่อไฟล์ภายในโฟลเดอร์ VAT/vat/Vat</div>`;
-
+            
             // เพิ่มตัวเลือกเมื่อไม่พบไฟล์ OCR
             html += `<div style="margin-top: 20px; padding: 20px; background: #1e293b; border-radius: 8px; border: 2px solid #3b82f6;">`;
             html += `<div style="color: #60a5fa; font-weight: 600; margin-bottom: 15px; font-size: 1.1em;">💡 ตัวเลือกการดำเนินการ:</div>`;
             html += `<div style="display: flex; gap: 15px; flex-wrap: wrap;">`;
-
+            
             // ปุ่ม "ใช้ระบบ OCR" - ใช้ companyValue.value โดยตรงเพื่อหลีกเลี่ยงปัญหา escape
             const currentCompany = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company || '';
             // Escape สำหรับใช้ใน onclick attribute
@@ -9876,44 +7699,44 @@
             html += `🤖 ใช้ระบบ OCR<br>`;
             html += `<span style="font-size: 0.85em; opacity: 0.9;">รัน OCR จากไฟล์ PDF และสร้าง Excel</span>`;
             html += `</button>`;
-
+            
             // ปุ่ม "เลือกไฟล์ Excel"
             html += `<button onclick="uploadExcelForStep4('${taxMonth}', '${currentCompanyEscaped}')" class="btn" style="flex: 1; min-width: 200px; background: linear-gradient(90deg, #10b981 0%, #059669 100%);">`;
             html += `📁 เลือกไฟล์ Excel<br>`;
             html += `<span style="font-size: 0.85em; opacity: 0.9;">เลือกไฟล์ Excel ที่มีอยู่แล้ว</span>`;
             html += `</button>`;
-
+            
             html += `</div>`;
             html += `</div>`;
             html += `</div>`;
-
+            
             details.innerHTML = html;
             console.log('📊 Step 4 options restored');
         }
-
+        
         async function runOCRAfterConfirm(taxMonth, company, totalFiles, estimatedTime, ocrMode = 'new', selectedFolders = null) {
             // ใช้ companyValue.value โดยตรงเพื่อให้แน่ใจว่าได้ค่า path ที่ถูกต้อง
             const actualCompany = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company;
             console.log('🚀 runOCRAfterConfirm called with:', { taxMonth, company, actualCompany, totalFiles, estimatedTime, ocrMode, selectedFolders });
-
+            
             const step = document.getElementById('step4');
             const status = document.getElementById('step4Status');
             const details = document.getElementById('step4Details');
-
+            
             if (!step || !status || !details) {
                 console.error('❌ Step 4 elements not found!');
                 alert('ไม่พบ elements ของ Step 4 กรุณารีเฟรชหน้าเว็บ');
                 return;
             }
-
+            
             // รัน OCR จริงๆ
             step.classList.add('active');
             status.textContent = 'กำลังรัน OCR...';
             status.className = 'step-status checking';
-
+            
             // สร้าง progress indicator แบบ spinner และ countdown
             let currentProgress = 0;
-
+            
             // แปลง estimatedTime เป็นวินาที (format: "1.5 นาที" หรือ "30 วินาที")
             let estimatedSeconds = 0;
             if (estimatedTime) {
@@ -9932,11 +7755,11 @@
             if (estimatedSeconds === 0) {
                 estimatedSeconds = totalFiles * 30;
             }
-
+            
             // ตัวแปรสำหรับ countdown
             let countdownSeconds = estimatedSeconds;
             var countdownInterval = null;
-
+            
             // ฟังก์ชันสำหรับ format เวลา
             function formatTime(seconds) {
                 const mins = Math.floor(seconds / 60);
@@ -9946,7 +7769,7 @@
                 }
                 return `${secs} วินาที`;
             }
-
+            
             const progressHtml = `
                 <div id="ocrProgressContainer" style="margin-bottom: 15px;">
                     <div style="color: #60a5fa; font-weight: 600; margin-bottom: 15px; text-align: center;">📊 ความคืบหน้า OCR:</div>
@@ -9973,7 +7796,7 @@
             `;
             const statusMessageHtml = `<div id="ocrStatusMessage" style="color: #cbd5e1; margin-top: 10px; text-align: center;">⏳ กำลังรันระบบ OCR สำหรับ ${totalFiles} ไฟล์ (คาดว่าจะใช้เวลา ${estimatedTime})...</div>`;
             details.innerHTML = progressHtml + statusMessageHtml;
-
+            
             // เริ่ม countdown timer
             const countdownTimerEl = document.getElementById('ocrCountdownTimer');
             countdownInterval = setInterval(() => {
@@ -9990,10 +7813,10 @@
                     }
                 }
             }, 1000);
-
+            
             try {
                 console.log('📤 Sending OCR request:', { taxMonth, company: actualCompany });
-
+                
                 const requestBody = {
                     taxMonth: taxMonth,
                     company: actualCompany,  // ใช้ actualCompany แทน company
@@ -10001,12 +7824,12 @@
                     ocrMode: ocrMode || 'new',  // ส่ง OCR mode (new หรือ continue)
                     include_subfolders: true  // อ่านไฟล์ PDF จากโฟลเดอร์ย่อยด้วย
                 };
-
+                
                 // ถ้ามีการเลือกโฟลเดอร์เฉพาะ ให้ส่งรายการโฟลเดอร์ที่เลือกไปด้วย
                 if (selectedFolders && selectedFolders.length > 0) {
                     requestBody.selectedFolders = selectedFolders;
                 }
-
+                
                 // ส่ง request (ไม่รอ response ทันที เพื่อให้สามารถ polling ได้ทันที)
                 const responsePromise = fetch('/api/auditcheck/run-ocr', {
                     method: 'POST',
@@ -10015,60 +7838,60 @@
                     },
                     body: JSON.stringify(requestBody)
                 });
-
+                
                 // เริ่ม polling ทันที (ไม่ต้องรอ response) โดยใช้ sessionId ที่จะได้จาก response
                 // แต่เราจะต้องรอ response ก่อนเพื่อให้ได้ sessionId
                 // ดังนั้นเราจะเริ่ม polling หลังจากได้ sessionId แล้ว
-
+                
                 // รอ response
                 const response = await responsePromise;
                 console.log('📥 OCR response status:', response.status);
-
+                
                 if (!response.ok) {
                     const errorText = await response.text();
                     console.error('❌ OCR response error:', errorText);
-
+                    
                     // หยุด countdown timer
                     if (countdownInterval) {
                         clearInterval(countdownInterval);
                         countdownInterval = null;
                     }
-
+                    
                     // หยุด progress polling
                     if (window.ocrProgressPollInterval) {
                         clearInterval(window.ocrProgressPollInterval);
                         window.ocrProgressPollInterval = null;
                     }
-
+                    
                     throw new Error(`HTTP ${response.status}: ${errorText}`);
                 }
-
+                
                 // อ่าน response
                 const data = await response.json();
                 console.log('📊 OCR response data:', data);
-
+                
                 // เก็บ sessionId สำหรับ polling progress
                 let sessionId = data.sessionId || null;
                 let progressPollInterval = null;
-
+                
                 // อัพเดท totalFiles จาก response (ถ้ามี) เพื่อให้ตรงกับจำนวนไฟล์จริงที่ OCR จะทำงาน
                 if (data.totalFiles !== undefined) {
                     totalFiles = data.totalFiles;
                     console.log('📊 Updated totalFiles from response:', totalFiles);
-
+                    
                     // อัพเดท estimatedSeconds จาก backend ถ้ามี
                     if (data.estimatedSeconds !== undefined) {
                         estimatedSeconds = data.estimatedSeconds;
                         countdownSeconds = estimatedSeconds;
                         console.log('📊 Updated estimatedSeconds from response:', estimatedSeconds);
-
+                        
                         // อัพเดท countdown timer
                         const countdownTimerEl = document.getElementById('ocrCountdownTimer');
                         if (countdownTimerEl) {
                             countdownTimerEl.textContent = formatTime(countdownSeconds);
                         }
                     }
-
+                    
                     // อัพเดท status message
                     const statusMessageEl = document.getElementById('ocrStatusMessage');
                     if (statusMessageEl) {
@@ -10076,11 +7899,11 @@
                         statusMessageEl.textContent = `⏳ กำลังรันระบบ OCR สำหรับ ${totalFiles} ไฟล์ (คาดว่าจะใช้เวลา ${updatedEstimatedTime})...`;
                     }
                 }
-
+                
                 // ถ้ามี sessionId ให้เริ่ม polling progress
                 if (sessionId) {
                     console.log('🔄 Starting progress polling for session:', sessionId);
-
+                    
                     // ฟังก์ชันสำหรับ polling progress
                     const pollProgress = async () => {
                         try {
@@ -10089,10 +7912,10 @@
                                 console.warn('⚠️ Failed to fetch progress:', progressResponse.status);
                                 return;
                             }
-
+                            
                             const progressData = await progressResponse.json();
                             console.log('📊 Progress data:', progressData);
-
+                            
                             // อัปเดตข้อมูล progress
                             if (progressData.current !== undefined && progressData.total !== undefined) {
                                 const currentFileEl = document.getElementById('ocrCurrentFile');
@@ -10100,7 +7923,7 @@
                                     currentFileEl.textContent = `กำลังประมวลผล: ${progressData.current}/${progressData.total} ไฟล์${progressData.filename ? ` - ${progressData.filename}` : ''}`;
                                 }
                             }
-
+                            
                             // อัปเดต current_step และ step_details
                             if (progressData.current_step) {
                                 const currentStepEl = document.getElementById('ocrCurrentStep');
@@ -10111,21 +7934,21 @@
                                     }
                                 }
                             }
-
+                            
                             // แสดงข้อมูลการพัก (ถ้ากำลังพักอยู่)
                             const pauseStatusEl = document.getElementById('ocrPauseStatus');
                             const isPaused = progressData.is_paused === true;
-
+                            
                             if (isPaused && pauseStatusEl) {
                                 pauseStatusEl.style.display = 'block';
-
+                                
                                 // อัปเดตเวลาที่เหลือในการพัก
                                 const pauseSecondsEl = document.getElementById('ocrPauseSeconds');
                                 const pauseCountdownEl = document.getElementById('ocrPauseCountdown');
                                 if (pauseSecondsEl && progressData.pause_remaining_seconds !== undefined) {
                                     const remainingSeconds = progressData.pause_remaining_seconds;
                                     pauseSecondsEl.textContent = remainingSeconds;
-
+                                    
                                     // แสดงเป็นนาที:วินาที หรือวินาที
                                     if (pauseCountdownEl) {
                                         if (remainingSeconds >= 60) {
@@ -10137,7 +7960,7 @@
                                         }
                                     }
                                 }
-
+                                
                                 // อัปเดตข้อมูลเอกสารที่เหลือและเวลาที่ต้องรอ
                                 const remainingFilesEl = document.getElementById('ocrRemainingFiles');
                                 const remainingMinutesEl = document.getElementById('ocrRemainingMinutes');
@@ -10150,7 +7973,7 @@
                             } else if (pauseStatusEl) {
                                 pauseStatusEl.style.display = 'none';
                             }
-
+                            
                             // ถ้าเสร็จแล้ว ให้หยุด polling
                             if (progressData.status === 'completed' || progressData.status === 'error') {
                                 if (progressPollInterval) {
@@ -10162,49 +7985,49 @@
                             console.error('❌ Error polling progress:', error);
                         }
                     };
-
+                    
                     // เริ่ม polling ทันทีครั้งแรก
                     pollProgress();
-
+                    
                     // Poll ทุก 1 วินาที (เพื่อให้เห็นการนับถอยหลังของการพัก)
                     progressPollInterval = setInterval(pollProgress, 1000);
-
+                    
                     // เก็บ reference เพื่อสามารถหยุดได้เมื่อเสร็จ
                     window.ocrProgressPollInterval = progressPollInterval;
                 }
-
+                
                 // ถ้ามี ocrData แสดงว่า OCR เสร็จแล้ว
                 if (data.ocrData && Array.isArray(data.ocrData)) {
                     console.log('📊 OCR completed');
-
+                    
                     // หยุด countdown timer
                     if (countdownInterval) {
                         clearInterval(countdownInterval);
                         countdownInterval = null;
                     }
-
+                    
                     // หยุด progress polling
                     if (window.ocrProgressPollInterval) {
                         clearInterval(window.ocrProgressPollInterval);
                         window.ocrProgressPollInterval = null;
                     }
-
+                    
                     // ซ่อน progress container ทันที
                     const progressContainer = document.getElementById('ocrProgressContainer');
                     if (progressContainer) {
                         progressContainer.style.display = 'none';
                     }
-
+                    
                     const statusMessage = document.getElementById('ocrStatusMessage');
                     if (statusMessage) {
                         statusMessage.style.display = 'none';
                     }
                 }
-
+                
                 // อัปเดต progress เมื่อได้รับข้อมูลสุดท้าย
                 if (data.ocrData && data.ocrData.length > 0) {
                     const successCount = data.successCount || data.ocrData.length;
-
+                    
                     // ถ้าเสร็จแล้ว (successCount >= totalFiles) ให้ซ่อน progress container ทันที
                     if (successCount >= totalFiles) {
                         // หยุด countdown timer
@@ -10212,36 +8035,36 @@
                             clearInterval(countdownInterval);
                             countdownInterval = null;
                         }
-
+                        
                         // หยุด progress polling
                         if (window.ocrProgressPollInterval) {
                             clearInterval(window.ocrProgressPollInterval);
                             window.ocrProgressPollInterval = null;
                         }
-
+                        
                         const progressContainer = document.getElementById('ocrProgressContainer');
                         if (progressContainer) {
                             progressContainer.style.display = 'none';
                         }
-
+                        
                         const statusMessage = document.getElementById('ocrStatusMessage');
                         if (statusMessage) {
                             statusMessage.style.display = 'none';
                         }
                     }
                 }
-
+                
                 if (data.success) {
                     // เก็บข้อมูล OCR จาก Step 2 เพื่อใช้ใน Step 5
                     step4OCRData = data.ocrData || [];
                     console.log('📊 Stored step4OCRData:', step4OCRData.length, 'items');
                     console.log('📊 First OCR item:', step4OCRData[0]);
-
+                    
                     step.classList.remove('active');
                     step.classList.add('completed');
                     status.textContent = 'รัน OCR สำเร็จ';
                     status.className = 'step-status success';
-
+                    
                     let html = `<div style="margin-bottom: 15px;">`;
                     html += `<strong>✅ รัน OCR สำเร็จ:</strong><br>`;
                     html += `<div style="margin-top: 10px; color: #10b981;">📁 โฟลเดอร์ VAT: ${data.vatFolder || 'N/A'}</div>`;
@@ -10253,8 +8076,8 @@
                     html += `✅ ประมวลผลสำเร็จ: ${data.successCount || 0} ไฟล์<br>`;
                     html += `❌ ประมวลผลไม่สำเร็จ: ${data.failedCount || 0} ไฟล์<br>`;
                     if (data.cacheHits !== undefined && data.cacheMisses !== undefined) {
-                        const cacheHitRate = data.cacheHits + data.cacheMisses > 0
-                            ? ((data.cacheHits / (data.cacheHits + data.cacheMisses)) * 100).toFixed(1)
+                        const cacheHitRate = data.cacheHits + data.cacheMisses > 0 
+                            ? ((data.cacheHits / (data.cacheHits + data.cacheMisses)) * 100).toFixed(1) 
                             : 0;
                         html += `<div style="margin-top: 8px; padding: 8px; background: #0f172a; border-radius: 5px; border-left: 3px solid #60a5fa;">`;
                         html += `💾 Cache Statistics:<br>`;
@@ -10264,17 +8087,17 @@
                         html += `</div>`;
                     }
                     html += `</div>`;
-
+                    
                     // แสดงข้อมูล OCR ที่ได้ (แสดงตัวอย่างบางส่วน)
                     if (data.ocrData && data.ocrData.length > 0) {
                         html += `<div style="margin-top: 15px; padding: 15px; background: #0f172a; border-radius: 5px; max-height: 400px; overflow-y: auto;">`;
                         html += `<div style="color: #60a5fa; font-weight: 600; margin-bottom: 10px;">📋 ข้อมูล OCR ที่ได้ (แสดง ${Math.min(5, data.ocrData.length)} ไฟล์แรก):</div>`;
-
+                        
                         data.ocrData.slice(0, 5).forEach((item, index) => {
                             if (item.success) {
                                 html += `<div style="margin-bottom: 15px; padding: 10px; background: #1e293b; border-radius: 5px; border-left: 3px solid #10b981;">`;
                                 html += `<div style="color: #10b981; font-weight: 600;">📄 ${item.filename}</div>`;
-
+                                
                                 // แสดงรายการสินค้า
                                 if (item.items && Array.isArray(item.items) && item.items.length > 0) {
                                     html += `<div style="margin-top: 8px; padding: 8px; background: #0f172a; border-radius: 3px;">`;
@@ -10292,8 +8115,8 @@
                                 if (item.tax_id) html += `🆔 เลขประจำตัวผู้เสียภาษี: ${item.tax_id}<br>`;
                                 if (item.document_number) html += `📋 เลขที่เอกสาร: ${item.document_number}<br>`;
                                 if (item.date) html += `📅 วันที่: ${item.date}<br>`;
-                                if (item.total_amount) html += `💰 ยอดรวม: ${item.total_amount.toLocaleString('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} บาท<br>`;
-
+                                if (item.total_amount) html += `💰 ยอดรวม: ${item.total_amount.toLocaleString('th-TH', {minimumFractionDigits: 2, maximumFractionDigits: 2})} บาท<br>`;
+                                
                                 // แสดงรายการสินค้า
                                 if (item.items && Array.isArray(item.items) && item.items.length > 0) {
                                     html += `<div style="margin-top: 8px; padding: 8px; background: #0f172a; border-radius: 3px;">`;
@@ -10305,7 +8128,7 @@
                                     });
                                     html += `</div>`;
                                 }
-
+                                
                                 html += `</div>`;
                                 html += `</div>`;
                             } else {
@@ -10315,17 +8138,17 @@
                                 html += `</div>`;
                             }
                         });
-
+                        
                         if (data.ocrData.length > 5) {
                             html += `<div style="color: #94a3b8; font-size: 0.85em; margin-top: 10px;">... และอีก ${data.ocrData.length - 5} ไฟล์</div>`;
                         }
-
+                        
                         html += `</div>`;
                     }
-
+                    
                     html += `</div>`;
                     details.innerHTML = html;
-
+                    
                     // Continue to step 5
                     await checkStep5(taxMonth, company);
                 } else {
@@ -10341,7 +8164,7 @@
                     clearInterval(countdownInterval);
                     countdownInterval = null;
                 }
-
+                
                 step.classList.remove('active');
                 step.classList.add('error');
                 status.textContent = 'เกิดข้อผิดพลาด';
@@ -10349,12 +8172,12 @@
                 details.innerHTML = `❌ เกิดข้อผิดพลาด: ${error.message}`;
             }
         }
-
+        
         // ปิด modal เมื่อคลิกที่ overlay
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('ocrConfirmModal');
             if (modal) {
-                modal.addEventListener('click', function (e) {
+                modal.addEventListener('click', function(e) {
                     if (e.target === modal) {
                         // เรียก closeOCRConfirmModal() ซึ่งจะรีเซ็ตสถานะ Step 2 ให้อัตโนมัติ
                         closeOCRConfirmModal();
@@ -10362,37 +8185,37 @@
                 });
             }
         });
-
+        
         async function runOCRForStep4(taxMonth, company) {
             // ใช้ companyValue.value โดยตรงเพื่อให้แน่ใจว่าได้ค่า path ที่ถูกต้อง
             const actualCompany = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company;
             console.log('🚀 runOCRForStep4 called with:', { taxMonth, company, actualCompany });
-
+            
             const step = document.getElementById('step4');
             const status = document.getElementById('step4Status');
             const details = document.getElementById('step4Details');
-
+            
             if (!step || !status || !details) {
                 console.error('❌ Step 4 elements not found!');
                 alert('ไม่พบ elements ของ Step 4 กรุณารีเฟรชหน้าเว็บ');
                 return;
             }
-
+            
             // เก็บข้อมูล Step 4 สำหรับใช้เมื่อกดยกเลิก
             step4Data = {
                 taxMonth: taxMonth,
                 company: actualCompany
             };
-
+            
             // ขั้นแรก: ตรวจสอบจำนวนไฟล์ PDF และคำนวณเวลา
             step.classList.add('active');
             status.textContent = 'กำลังตรวจสอบไฟล์...';
             status.className = 'step-status checking';
             details.innerHTML = '⏳ กำลังตรวจสอบไฟล์ PDF และคำนวณเวลา...';
-
+            
             try {
                 console.log('📤 Sending check request:', { taxMonth, company: actualCompany, checkOnly: true });
-
+                
                 // ตรวจสอบจำนวนไฟล์ PDF และคำนวณเวลา
                 const checkResponse = await fetch('/api/auditcheck/run-ocr', {
                     method: 'POST',
@@ -10406,19 +8229,19 @@
                         include_subfolders: true  // อ่านไฟล์ PDF จากโฟลเดอร์ย่อยด้วย
                     })
                 });
-
+                
                 console.log('📥 Check response status:', checkResponse.status);
-
+                
                 if (!checkResponse.ok) {
                     const errorText = await checkResponse.text();
                     console.error('❌ Check response error:', errorText);
                     throw new Error(`HTTP ${checkResponse.status}: ${errorText}`);
                 }
-
+                
                 const checkData = await checkResponse.json();
-
+                
                 console.log('📊 Check PDF Files Response:', checkData);
-
+                
                 if (!checkData.success) {
                     step.classList.remove('active');
                     step.classList.add('error');
@@ -10427,18 +8250,18 @@
                     details.innerHTML = `❌ เกิดข้อผิดพลาด: ${checkData.error || 'Unknown error'}`;
                     return;
                 }
-
+                
                 // แสดงข้อมูลจำนวนไฟล์และเวลาที่คาดว่าจะใช้
                 const totalFiles = checkData.totalPDFFiles || checkData.totalFiles || 0;
                 const estimatedTime = checkData.estimatedTime || '';
-
+                
                 console.log('📊 Total Files:', totalFiles, 'Estimated Time:', estimatedTime);
-
+                
                 // ดึงชื่อบริษัทจาก input field
                 const companyName = document.getElementById('companySelect').value || company || '-';
-
+                
                 console.log('📊 Company Name:', companyName, 'Tax Month:', taxMonth);
-
+                
                 // แสดง modal/popup แทน confirm dialog
                 console.log('📊 Showing OCR Confirm Modal...');
                 // ใช้ companyValue.value โดยตรงเพื่อให้แน่ใจว่าได้ค่า path ที่ถูกต้อง
@@ -10446,7 +8269,7 @@
                 console.log('📊 Using actualCompanyForModal:', actualCompanyForModal);
                 const subfolders = checkData.subfolders || [];
                 showOCRConfirmModal(taxMonth, companyName, totalFiles, estimatedTime, taxMonth, actualCompanyForModal, subfolders);
-
+                
                 // หยุดการทำงานที่นี่ รอให้ผู้ใช้ยืนยันใน modal
                 return;
             } catch (error) {
@@ -10457,58 +8280,58 @@
                 details.innerHTML = `❌ เกิดข้อผิดพลาด: ${error.message}`;
             }
         }
-
+        
         function uploadExcelForStep4(taxMonth, company) {
             // ใช้ companyValue.value โดยตรงเพื่อให้แน่ใจว่าได้ค่า path ที่ถูกต้อง
             const actualCompany = document.getElementById('companyValue')?.value || document.getElementById('companySelect')?.value || company;
             console.log('📤 uploadExcelForStep4 called with:', { taxMonth, company, actualCompany });
-
+            
             // สร้าง input element สำหรับเลือกไฟล์
             const input = document.createElement('input');
             input.type = 'file';
             input.accept = '.xlsx,.xls';
             input.style.display = 'none';
-
+            
             input.onchange = async (event) => {
                 const file = event.target.files[0];
                 if (!file) {
                     return;
                 }
-
+                
                 const step = document.getElementById('step4');
                 const status = document.getElementById('step4Status');
                 const details = document.getElementById('step4Details');
-
+                
                 step.classList.add('active');
                 status.textContent = 'กำลังอัปโหลด...';
                 status.className = 'step-status checking';
                 details.innerHTML = `⏳ กำลังอัปโหลดไฟล์: ${file.name}...`;
-
+                
                 try {
                     const formData = new FormData();
                     formData.append('file', file);
                     formData.append('taxMonth', taxMonth);
                     formData.append('company', actualCompany);  // ใช้ actualCompany แทน company
-
+                    
                     const response = await fetch('/api/auditcheck/upload-excel', {
                         method: 'POST',
                         body: formData
                     });
-
+                    
                     const data = await response.json();
-
+                    
                     if (data.success) {
                         step.classList.remove('active');
                         step.classList.add('completed');
                         status.textContent = 'อัปโหลดสำเร็จ';
                         status.className = 'step-status success';
-
+                        
                         let html = `<div style="margin-bottom: 15px;">`;
                         html += `<strong>✅ อัปโหลดไฟล์ Excel สำเร็จ:</strong><br>`;
                         html += `<div style="margin-top: 10px; color: #10b981;">📊 ${data.excelPath || file.name}</div>`;
                         html += `</div>`;
                         details.innerHTML = html;
-
+                        
                         // Continue to step 5
                         await checkStep5(taxMonth, company);
                     } else {
@@ -10528,61 +8351,7 @@
                     document.body.removeChild(input);
                 }
             };
-
+            
             document.body.appendChild(input);
             input.click();
         }
-        // =====================================================
-        // Password Protection Functions
-        // =====================================================
-        const ACCESS_CODE = 'admin123';
-
-        // กด Enter เพื่อยืนยันรหัส
-        document.getElementById('accessCodeInput')?.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') {
-                verifyAccessCode();
-            }
-            // ลบ error state เมื่อเริ่มพิมพ์ใหม่
-            this.classList.remove('error');
-            document.getElementById('passwordErrorMsg').classList.remove('show');
-        });
-
-        function verifyAccessCode() {
-            const input = document.getElementById('accessCodeInput');
-            const errorMsg = document.getElementById('passwordErrorMsg');
-            const code = input.value.trim();
-
-            if (code === ACCESS_CODE) {
-                // รหัสถูกต้อง
-                window._vatPasswordVerified = true;
-                const overlay = document.getElementById('passwordOverlay');
-                overlay.style.animation = 'fadeOut 0.3s ease-out';
-                setTimeout(() => {
-                    overlay.classList.add('hidden');
-                    // สลับไปยังแท็บ VAT
-                    switchTab('vat');
-                }, 250);
-            } else {
-                // รหัสผิด
-                input.classList.add('error');
-                errorMsg.classList.add('show');
-                input.value = '';
-                input.focus();
-            }
-        }
-
-        function togglePasswordVisibility() {
-            const input = document.getElementById('accessCodeInput');
-            const btn = event.currentTarget;
-            if (input.type === 'password') {
-                input.type = 'text';
-                btn.textContent = '🔒';
-            } else {
-                input.type = 'password';
-                btn.textContent = '🔍';
-            }
-        }
-    </script>
-</body>
-
-</html>
