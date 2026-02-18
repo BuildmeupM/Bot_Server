@@ -34907,5 +34907,120 @@
     "user_agent": null,
     "ip_address": null,
     "sent_time_old": "2026-02-18 17:36:04"
+  },
+  {
+    "id": "504f950d-50b0-4857-8b5f-8740229f0e1b",
+    "status": "success",
+    "sent_time": "2026-02-18T18:21:52.053086",
+    "created_at": "2026-02-18T18:21:52.053086",
+    "pattern_name": "171 ไมโคร พลัส 99",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "peerawat.ltd@gmail.com"
+    ],
+    "cc_emails": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท ไมโคร พลัส 99 จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ไมโคร พลัส 99 จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026: จำนวน 2,045.66 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 545027,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 171444,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท ไมโคร พลัส 99 จำกัด_PP30-202601_20260218-143444.pdf",
+        "size": 151735,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท ไมโคร พลัส 99 จำกัด_PP30-202601_20260218-143448.pdf",
+        "size": 338013,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-18T11-21-41.pdf",
+        "size": 107183,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 1313402,
+    "line_enabled": false,
+    "line_user_id": "Ucc6ff13ce978f8f26ff07eba22f7de89",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท ไมโคร พลัส 99 จำกัด",
+      "tax_id": "03555-65000-27-8",
+      "period": "ประจำเดือน 1/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "2,045.66"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-18T11-21-41.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-18 18:21:52"
+  },
+  {
+    "id": "5db9d989-283c-4aec-a615-22b6955b56a7",
+    "status": "success",
+    "sent_time": "2026-02-18T18:21:54.020495",
+    "created_at": "2026-02-18T18:21:54.020495",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล peerawat.ltd@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 2,045.66 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-18 18:21:54"
   }
 ]
