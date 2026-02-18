@@ -1,0 +1,189 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-18T03:05:13.357Z",
+  "last_saved": "2026-02-18T10:05:13.204823",
+  "company": "Build103 บริษัท กฤษณะ แอร์เซอร์วิส จำกัด รายเดือน",
+  "base_company": "Build103 บริษัท กฤษณะ แอร์เซอร์วิส จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "2": "",
+    "8": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท สายไหมคาร์แก๊ส จำกัด' แต่ OCR='บริษัท สามไมล์คาร์แก็ส จำกัด'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ.บี. ปิโตรเลียม จำกัด' แต่ OCR='บริษัท เอ.บี.ปิโตรเลียม จำกัด'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00007' แต่ OCR='00001'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์มีอัพ คอนซัลแทนท์จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "2-branch_match": true,
+    "2-company_name_match": true,
+    "4-company_name_match": true,
+    "5-company_name_match": true,
+    "8-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build103 บริษัท กฤษณะ แอร์เซอร์วิส จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 14,
+    "metadata": [
+      {
+        "filename": "18.01.2026_EXP-20260100011_530213_บิลน้ำมัน18-1-2569_VAT.pdf",
+        "company_name": "บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)"
+      },
+      {
+        "filename": "12.01.2026_WHT_EXP-20260100004_530401_ค่าบริการบัญชี_ RT-20260100101_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100007_510104_บิลอุปกรณ์7-1-2569_VAT.pdf",
+        "company_name": "บริษัท โชคชัย ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100008_510104_บิลอุปกรณ์8-1-2569_VAT.pdf",
+        "company_name": "บริษัท โชคชัย ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "20.12.2025_EXP-20251200019_530213_บิลน้ำมัน20-12-2568_VAT.pdf",
+        "company_name": "บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)"
+      },
+      {
+        "filename": "15.12.2025_EXP-20251200018_530213_บิลน้ำมัน15-12-2568_VAT.pdf",
+        "company_name": "บริษัท สามไมล์คาร์แก็ส จำกัด"
+      },
+      {
+        "filename": "02.01.2026_EXP-20260100001_บิลน้ำมัน2-1-2569_VAT.pdf",
+        "company_name": "บริษัท เอ.บี.ปิโตรเลียม จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100013_530213_บิลน้ำมัน22-1-2569_VAT.pdf",
+        "company_name": "บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100010_530213_บิลน้ำมัน9-1-2569_VAT.pdf",
+        "company_name": "บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)"
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100006_510104_บิลอุปกรณ์6-1-2569 (2)_VAT.pdf",
+        "company_name": "บริษัท โชคชัย ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100014_530213_บิลน้ำมัน26-1-2569_VAT.pdf",
+        "company_name": "บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100009_510104_บิลอุุปกรณ์9-1-2569_VAT.pdf",
+        "company_name": "บริษัท โชคชัย ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100012_510104_บิลอุปกรณ์20-1-2569_VAT.pdf",
+        "company_name": "บริษัท โชคชัย ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100015_530213_บิลน้ำมัน30-1-2569_VAT.pdf",
+        "company_name": "บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 14,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251200018",
+        "ocr_document_no": "TI2512-01416",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251200019",
+        "ocr_document_no": "101325",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "TIO000716901000014",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "6900115",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "6900228",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "6900343",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "100433",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "6900487",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "RT-20260100101",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "101030",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "6901559",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "101350",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "101641",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "101212",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

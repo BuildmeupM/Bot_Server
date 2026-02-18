@@ -6887,11 +6887,13 @@ def scan_duplicate_pdfs():
                 'error': f'ไม่พบโฟลเดอร์: {base_path}'
             }), 404
         
-        # แปลง skip_folders เป็น set สำหรับการค้นหาแบบเร็ว (case-insensitive)
+        # แปลง skip_folders เป็น set (case-insensitive สำหรับ Windows)
         skip_folders_set = set()
         if skip_folders:
             for folder in skip_folders:
-                skip_folders_set.add(folder.strip())
+                f = folder.strip()
+                if f:
+                    skip_folders_set.add(f.upper())
         
         # ฟังก์ชันสำหรับดึงคีย์เวิร์ดจากชื่อไฟล์
         def extract_keyword_from_filename(filename):
@@ -6934,11 +6936,10 @@ def scan_duplicate_pdfs():
             # สแกนแบบ recursive
             for pdf_file in base_folder.rglob('*.pdf'):
                 if pdf_file.is_file():
-                    # ตรวจสอบว่าอยู่ในโฟลเดอร์ที่ต้องข้ามหรือไม่
+                    # ตรวจสอบว่าอยู่ในโฟลเดอร์ที่ต้องข้ามหรือไม่ (case-insensitive)
                     should_skip = False
                     for part in pdf_file.parts:
-                        # ตรวจสอบว่าโฟลเดอร์ชื่อตรงกับ skip_folders หรือไม่
-                        if part in skip_folders_set:
+                        if part.upper() in skip_folders_set:
                             should_skip = True
                             break
                     
@@ -15489,18 +15490,49 @@ def run_ocr_for_audit():
                         'method': cached_data.get('method', 'cache')
                     }
                     # ใช้ข้อมูลที่ extract แล้วจาก cache
+                    # กรณี cache จาก ocr_reader_service มีแค่ text, raw_text, basic_info - ให้ parse จาก raw_text (JSON)
+                    buyer_name = cached_data.get('buyer_name', '')
+                    buyer_tax_id = cached_data.get('buyer_tax_id', '')
+                    buyer_address = (cached_data.get('buyer_address') or cached_data.get('address') or cached_data.get('address_full') or '')
+                    company_name = cached_data.get('company_name', '')
+                    tax_id = cached_data.get('tax_id', '')
+                    raw_text_str = cached_data.get('raw_text', '')
+                    text_str = cached_data.get('text', '')
+                    if raw_text_str and (not buyer_name or not buyer_tax_id or not buyer_address or not company_name or not tax_id):
+                        try:
+                            import json
+                            parsed = json.loads(raw_text_str) if isinstance(raw_text_str, str) else raw_text_str
+                            data = parsed.get('data', {}) if isinstance(parsed, dict) else {}
+                            if data:
+                                buyer_name = buyer_name or data.get('ชื่อผู้ซื้อ', '')
+                                buyer_tax_id = buyer_tax_id or data.get('เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ', '')
+                                buyer_address = buyer_address or data.get('ที่อยู่ผู้ซื้อ', '')
+                                company_name = company_name or data.get('ชื่อผู้ขาย', '') or data.get('ชื่อบริษัท', '')
+                                tax_id = tax_id or data.get('เลขประจำตัวผู้เสียภาษี - ผู้ขาย', '')
+                                if buyer_name or buyer_tax_id or buyer_address:
+                                    logger.info(f"✅ ดึง buyer/company จาก raw_text JSON: name={bool(buyer_name)}, tax_id={bool(buyer_tax_id)}, addr={bool(buyer_address)}")
+                        except Exception:
+                            pass
+                    if not buyer_address and (raw_text_str or text_str):
+                        import re
+                        for src in [raw_text_str, text_str]:
+                            addr_match = re.search(r'ที่อยู่ผู้ซื้อ\s*[:\s]+\s*(.+?)(?=\n[A-Za-z\u0e00-\u0e7f]|\n\n|\nยอด|\nรายการ|$)', str(src or ''), re.DOTALL)
+                            if addr_match:
+                                buyer_address = addr_match.group(1).strip()
+                                logger.info(f"✅ ดึงที่อยู่ผู้ซื้อจาก text: {buyer_address[:50]}...")
+                                break
                     extracted_data = {
-                        'company_name': cached_data.get('company_name', ''),
-                        'tax_id': cached_data.get('tax_id', ''),
+                        'company_name': company_name,
+                        'tax_id': tax_id,
                         'branch': cached_data.get('branch', ''),
                         'date': cached_data.get('date', ''),
                         'document_number': cached_data.get('document_number', ''),
                         'amount_before_vat': cached_data.get('amount_before_vat', 0),
                         'vat_amount': cached_data.get('vat_amount', 0),
                         'total_amount': cached_data.get('total_amount', 0),
-                        'buyer_name': cached_data.get('buyer_name', ''),
-                        'buyer_tax_id': cached_data.get('buyer_tax_id', ''),
-                        'buyer_address': cached_data.get('buyer_address', ''),
+                        'buyer_name': buyer_name,
+                        'buyer_tax_id': buyer_tax_id,
+                        'buyer_address': buyer_address,
                         'document_type': cached_data.get('document_type', ''),
                         'document_status': cached_data.get('document_status', ''),
                         'items': cached_data.get('items', []),  # เพิ่มรายการสินค้า
@@ -15545,7 +15577,7 @@ def run_ocr_for_audit():
                         'total_amount': extracted_data.get('total_amount', 0),
                         'buyer_name': extracted_data.get('buyer_name', ''),
                         'buyer_tax_id': extracted_data.get('buyer_tax_id', ''),
-                        'buyer_address': extracted_data.get('buyer_address', ''),
+                        'buyer_address': (extracted_data.get('buyer_address') or extracted_data.get('address') or extracted_data.get('address_full') or ''),
                         'document_type': extracted_data.get('document_type', ''),
                         'document_status': extracted_data.get('document_status', ''),
                         'items': extracted_data.get('items', []),  # เพิ่มรายการสินค้าจาก cache
@@ -15947,7 +15979,7 @@ def run_ocr_for_audit():
                     'total_amount': extracted_data.get('total_amount', 0),
                     'buyer_name': extracted_data.get('buyer_name', ''),
                     'buyer_tax_id': extracted_data.get('buyer_tax_id', ''),
-                    'buyer_address': extracted_data.get('buyer_address', ''),
+                    'buyer_address': (extracted_data.get('buyer_address') or extracted_data.get('address') or extracted_data.get('address_full') or ''),
                     'document_type': extracted_data.get('document_type', ''),
                     'document_status': extracted_data.get('document_status', ''),
                     'items': extracted_data.get('items', []),  # เพิ่มรายการสินค้า
@@ -16251,7 +16283,7 @@ def run_ocr_for_audit():
                         'total_amount': extracted_data.get('total_amount', 0),
                         'buyer_name': extracted_data.get('buyer_name', ''),
                         'buyer_tax_id': extracted_data.get('buyer_tax_id', ''),
-                        'buyer_address': extracted_data.get('buyer_address', ''),
+                        'buyer_address': (extracted_data.get('buyer_address') or extracted_data.get('address') or extracted_data.get('address_full') or ''),
                         'document_type': extracted_data.get('document_type', ''),
                         'document_status': extracted_data.get('document_status', ''),
                         'items': extracted_data.get('items', []),
@@ -16516,6 +16548,10 @@ def process_ocr_queue(queue_id: str, file_path: str, ocr_mode: str = 'new'):
                                     extracted_data['date'] = key_extract_data.get('วันที่', '')
                                     extracted_data['document_number'] = key_extract_data.get('เลขที่ใบกำกับภาษี', '')
                                     extracted_data['document_type'] = key_extract_data.get('ประเภทเอกสาร', '')
+                                    # ข้อมูลผู้ซื้อ (สำหรับเทียบที่อยู่กับบริษัท)
+                                    extracted_data['buyer_name'] = key_extract_data.get('ชื่อผู้ซื้อ', '')
+                                    extracted_data['buyer_tax_id'] = key_extract_data.get('เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ', '')
+                                    extracted_data['buyer_address'] = key_extract_data.get('ที่อยู่ผู้ซื้อ', '')
                                     
                                     # ยอดเงิน
                                     amount_before_vat_str = key_extract_data.get('ยอดรวมก่อนภาษี', '0') or '0'
@@ -16563,6 +16599,14 @@ def process_ocr_queue(queue_id: str, file_path: str, ocr_mode: str = 'new'):
                         vat_amount = extracted_data.get('vat_amount', 0)
                         total_amount = extracted_data.get('total_amount', 0)
                         document_type = extracted_data.get('document_type', '') or 'ไม่ระบุ'
+                        buyer_name = extracted_data.get('buyer_name', '') or ''
+                        buyer_tax_id = extracted_data.get('buyer_tax_id', '') or ''
+                        buyer_address = extracted_data.get('buyer_address', '') or ''
+                        # fallback: ดึงที่อยู่ผู้ซื้อจาก raw_text ถ้าไม่มีใน extracted (cache เก่า)
+                        if not buyer_address and raw_text:
+                            addr_match = re.search(r'ที่อยู่ผู้ซื้อ\s*[:\s]+\s*(.+?)(?=\n[A-Za-z\u0e00-\u0e7f]|\n\n|\nยอด|\nรายการ|$)', raw_text, re.DOTALL)
+                            if addr_match:
+                                buyer_address = addr_match.group(1).strip()
                         
                         # ดึง reference number จากชื่อไฟล์
                         reference_number = None
@@ -16664,7 +16708,7 @@ def process_ocr_queue(queue_id: str, file_path: str, ocr_mode: str = 'new'):
                                     'items': items
                                 })
                         
-                        # เก็บ cache (เก็บข้อมูลที่ extract แล้ว)
+                        # เก็บ cache (เก็บข้อมูลที่ extract แล้ว รวม buyer สำหรับเทียบที่อยู่)
                         cache_manager.set(
                             pdf_file.name,
                             str(pdf_file),
@@ -16683,6 +16727,9 @@ def process_ocr_queue(queue_id: str, file_path: str, ocr_mode: str = 'new'):
                                 'total_amount': total_amount,
                                 'document_type': document_type,
                                 'items': items,
+                                'buyer_name': buyer_name,
+                                'buyer_tax_id': buyer_tax_id,
+                                'buyer_address': buyer_address,
                                 'success': True
                             }
                         )

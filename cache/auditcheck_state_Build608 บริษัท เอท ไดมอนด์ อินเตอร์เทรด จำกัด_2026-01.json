@@ -1,0 +1,396 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-18T07:28:36.776Z",
+  "last_saved": "2026-02-18T14:28:36.189644",
+  "company": "Build608 บริษัท เอท ไดมอนด์ อินเตอร์เทรด จำกัด",
+  "base_company": "Build608 บริษัท เอท ไดมอนด์ อินเตอร์เทรด จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิ๊กซี ซูเปอร์เซ็นเตอร์ จำกัด (มหาชน)' แต่ OCR='บิ๊กซี ซูเปอร์เซ็นเตอร์ บมจ. (สาขา นครปฐม)'",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "8": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "12": "",
+    "13": "",
+    "14": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260107-0000773' แต่ OCR='TRSPEMKP00-00000-26'",
+    "16": "",
+    "17": "",
+    "18": "",
+    "19": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-26013101",
+    "21": "",
+    "23": "",
+    "25": "",
+    "26": "",
+    "28": "",
+    "29": "",
+    "30": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100025 (เลขที่ใบกำกับ: 69113471266) ไม่ได้แนบ",
+    "31": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20251200056 (เลขที่ใบกำกับ: PS029413706690000008212)",
+    "32": "",
+    "37": "",
+    "39": "",
+    "40": "",
+    "44": "",
+    "50": "",
+    "51": "",
+    "54": "",
+    "56": "",
+    "57": "",
+    "58": "",
+    "59": "",
+    "60": "",
+    "62": "",
+    "63": "",
+    "65": "",
+    "68": "",
+    "71": "",
+    "72": "",
+    "73": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260128-0021272' แต่ OCR='TRSPEMKP00-00000-26'",
+    "74": "",
+    "75": "",
+    "76": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260130-0001604' แต่ OCR='TRSPEMKP00-00000-26'",
+    "77": "",
+    "79": ""
+  },
+  "initialNotes": {
+    "0": "วันที่ไม่ตรงกัน: ภาษีซื้อ='11/12/2025' แต่ OCR='11/12/2023'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เคอีเอ็กซ์ เอ็กซ์เพรส (ประเทศไทย) จำกัด (มหาชน)' แต่ OCR='KEX Express (Thailand) Public Company Limited'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "3": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260101-0006278' แต่ OCR='TRSPEMKP00-00000-26'",
+    "4": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260101-0006291' แต่ OCR='TRSPEMKP00-00000-26'",
+    "5": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260102-0000174' แต่ OCR='TRSPEMKP00-00000-26'",
+    "6": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260102-0016588' แต่ OCR='TRSPEMKP00-00000-26'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260103-0016788' แต่ OCR='TRSPEMKP00-00000-26'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited (Head Office)'",
+    "10": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260104-0000785' แต่ OCR='TRSPEMKP00-00000-26'",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260105-0019136' แต่ OCR='TRSPEMKP00-00000-26'",
+    "12": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260106-0000758' แต่ OCR='TRSPEMKP00-00000-26'",
+    "13": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260106-0011840' แต่ OCR='TRSPEMKP00-00000-26'",
+    "14": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260107-0000773' แต่ OCR='TRSPEMKP00-00000-26'",
+    "16": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260108-0002239' แต่ OCR='TRSPEMKP00-00000-26'",
+    "17": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260108-0017131' แต่ OCR='TRSPEMKP00-00000-26'",
+    "18": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260109-0000056' แต่ OCR='TRSPEMKP00-00000-26'",
+    "19": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260109-0014334' แต่ OCR='TRSPEMKP00-00000-26'",
+    "21": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260110-0013835' แต่ OCR='TRSPEMKP00-00000-26'",
+    "23": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited (Head Office)'",
+    "25": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260111-0005350' แต่ OCR='TRSPEMKP00-00000-26'",
+    "26": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260111-0013169' แต่ OCR='TRSPEMKP00-00000-26-0111-0013169'",
+    "28": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260112-0019316' แต่ OCR='TRSPEMKP00-00000-26'",
+    "29": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เคอีเอ็กซ์ เอ็กซ์เพรส (ประเทศไทย) จำกัด (มหาชน)' แต่ OCR='KEX Express (Thailand) Public Company Limited'",
+    "30": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100025 (เลขที่ใบกำกับ: 69113471266)",
+    "31": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20251200056 (เลขที่ใบกำกับ: PS029413706690000008212)",
+    "32": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260113-0004422' แต่ OCR='TRSPEMKP00-00000-26'",
+    "37": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260115-0000692' แต่ OCR='TRSPEMKP00-00000-26'",
+    "39": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260115-0024105' แต่ OCR='TRSPEMKP00-00000-26'",
+    "40": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260116-0000573' แต่ OCR='TRSPEMKP00-00000-26'",
+    "44": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited'",
+    "50": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260120-0011760' แต่ OCR='TRSPEMKP00-00000-26'",
+    "51": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260120-0014688' แต่ OCR='TRSPEMKP00-00000-26'",
+    "54": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260122-0002892' แต่ OCR='TRSPEMKP00-00000-26'",
+    "56": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260123-0000599' แต่ OCR='TRSPEMKP00-00000-26'",
+    "57": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260123-0005809' แต่ OCR='TRSPEMKP00-00000-26'",
+    "58": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260123-0008830' แต่ OCR='TRSPEMKP00-00000-26'",
+    "59": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท สยาม พีเจพี ปริ้นท์ติ้ง จำกัด' แต่ OCR='บริษัท สยาม พีเจพี ปริ้นติ้ง จำกัด'",
+    "60": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260124-0000278' แต่ OCR='TRSPEMKP00-00000-26'",
+    "62": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260124-0023205' แต่ OCR='TRSPEMKP00-00000-26'",
+    "63": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited (Head Office)'",
+    "65": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260125-0011254' แต่ OCR='TRSPEMKP00-00000-26'",
+    "68": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260127-0000540' แต่ OCR='TRSPEMKP00-00000-26'",
+    "71": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260128-0005233' แต่ OCR='TRSPEMKP00-00000-26'",
+    "72": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260128-0008880' แต่ OCR='TRSPEMKP00-00000-26'",
+    "73": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260128-0021272' แต่ OCR='TRSPEMKP00-00000-26'",
+    "74": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260129-0000166' แต่ OCR='TRSPEMKP00-00000-26'",
+    "75": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260129-0011683' แต่ OCR='TRSPEMKP00-00000-26'",
+    "76": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260130-0001604' แต่ OCR='TRSPEMKP00-00000-26'",
+    "77": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260130-0004807' แต่ OCR='TRSPEMKP00-00000-26'",
+    "79": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited'"
+  },
+  "comparisonApprovals": {
+    "0-date_match": true,
+    "1-company_name_match": true,
+    "2-company_name_match": true,
+    "3-document_no_match": true,
+    "4-document_no_match": true,
+    "5-document_no_match": true,
+    "6-document_no_match": true,
+    "8-document_no_match": true,
+    "9-company_name_match": true,
+    "10-document_no_match": true,
+    "11-document_no_match": true,
+    "12-document_no_match": true,
+    "13-document_no_match": true,
+    "32-document_no_match": true,
+    "37-document_no_match": true,
+    "39-document_no_match": true,
+    "40-document_no_match": true,
+    "44-company_name_match": true,
+    "50-document_no_match": true,
+    "51-document_no_match": true,
+    "54-document_no_match": true,
+    "56-document_no_match": true,
+    "57-document_no_match": true,
+    "58-document_no_match": true,
+    "59-company_name_match": true,
+    "60-document_no_match": true,
+    "62-document_no_match": true,
+    "63-company_name_match": true,
+    "65-document_no_match": true,
+    "68-document_no_match": true,
+    "71-document_no_match": true,
+    "72-document_no_match": true,
+    "74-document_no_match": true,
+    "75-document_no_match": true,
+    "77-document_no_match": true,
+    "79-company_name_match": true,
+    "16-document_no_match": true,
+    "17-document_no_match": true,
+    "18-document_no_match": true,
+    "19-document_no_match": true,
+    "21-document_no_match": true,
+    "23-company_name_match": true,
+    "25-document_no_match": true,
+    "26-document_no_match": true,
+    "28-document_no_match": true,
+    "29-company_name_match": true,
+    "18-date_match": true,
+    "18-company_name_match": true,
+    "18-tax_id_match": true,
+    "18-branch_match": true,
+    "18-reference_no_match": true,
+    "18-amount_before_vat_match": true,
+    "18-vat_amount_match": true,
+    "18-total_amount_match": true,
+    "18-document_type_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {
+    "18": true,
+    "19": true,
+    "30": true,
+    "31": true
+  },
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build608 บริษัท เอท ไดมอนด์ อินเตอร์เทรด จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 20,
+    "metadata": [
+      {
+        "filename": "31.01.2026_WHT_EXP-26013101_RT-20260100402.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-26011603_RT-20260102531.pdf",
+        "company_name": "บริษัท พี ยู ยู เอ็น อินเทลลิเจนท์ จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-26010801_ซื้อสินค้า.jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-26010501_05.1.2569(1).jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "02.01.2026_EXP-26010202_S__114876423.jpg",
+        "company_name": "บิ๊กซี ซูเปอร์เซ็นเตอร์ บมจ. (สาขา นครปฐม)"
+      },
+      {
+        "filename": "05.01.2026_EXP-26010504_05.1.2569(2).jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-26010601_06.1.2569(1).jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-26011201_ซื้อสินค้า.jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-26010604_06.1.2569(2).jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-26010701_ซื้อสินค้า.jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "23.01.2026_EXP-26012301_ซื้อสินค้า.jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-26011601_ซื้อสินค้า.jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-26010901_ซื้อสินค้า.jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "30.01.2026_EXP-26013001_ซื้ออุปกรณ์.jpg",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "27.01.2026_EXP-26012803_ซื้ออุปกรณ์.jpg"
+      },
+      {
+        "filename": "28.01.2026_EXP-26012801_ซื้อสินค้า.jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "02.01.2026_EXP-26010201_S__114868252.jpg",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "21.01.2026_EXP-26012101_ซื้อสินค้า.jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "14.01.2026_EXP-26011401_ซื้อสินค้า.jpg",
+        "company_name": "บริษัท กิตติชัยมหานคร จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-26012803_ซื้ออุปกรณ์.jpg",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 20,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-26010201",
+        "ocr_document_no": "101913",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-26010202",
+        "ocr_document_no": "11107111000797",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-26010501",
+        "ocr_document_no": "IV00256901/009",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-26010504",
+        "ocr_document_no": "IV00256901/020",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-26010601",
+        "ocr_document_no": "IV00256901/025",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-26010604",
+        "ocr_document_no": "IV00256901/048",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-26010701",
+        "ocr_document_no": "IV00256901/061",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-26010801",
+        "ocr_document_no": "IV00256901/075",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-26010901",
+        "ocr_document_no": "IV00256901/107",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-26011201",
+        "ocr_document_no": "IV00256901/147",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-26011401",
+        "ocr_document_no": "IV00256901/175",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-26011601",
+        "ocr_document_no": "IV00256901/200",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-26011603",
+        "ocr_document_no": "RT-20260102531",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-26012101",
+        "ocr_document_no": "IV00256901/267",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-26012301",
+        "ocr_document_no": "IV00256901/307",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-26012803",
+        "ocr_document_no": "104076",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-26012801",
+        "ocr_document_no": "IV00256901/402",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-26013001",
+        "ocr_document_no": "103247",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-26013102",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 19,
+        "ocr_document_no": "RT-20260100402",
+        "match_status": "no_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

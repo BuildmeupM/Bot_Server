@@ -451,13 +451,19 @@
             
             <div class="form-group">
                 <label>Path โฟลเดอร์ที่จะสแกน</label>
-                <input type="text" id="basePathInput" placeholder="พิมพ์หรือวาง path โฟลเดอร์ เช่น V:\A.โฟร์เดอร์หลัก\Build000">
+                <input type="text" id="basePathInput" placeholder="พิมพ์ path โฟลเดอร์ (ต้องเป็น path ของเครื่อง Server) เช่น V:\A.โฟร์เดอร์หลัก\Build000 หรือ \\server\share\folder">
             </div>
             
             <div class="checkbox-container">
                 <input type="checkbox" id="includeSubfolders" checked>
                 <label for="includeSubfolders">สแกนโฟลเดอร์ย่อยทั้งหมด (Recursive)</label>
             </div>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="skipKeywordFolders">
+                <label for="skipKeywordFolders">ข้ามโฟลเดอร์ NONE_VAT, VAT, WHT (โฟลเดอร์ที่จัดไว้แล้ว)</label>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.85em; margin: -5px 0 10px 0;">☝️ ปล่อย unchecked ถ้าต้องการสแกนทุกไฟล์</p>
             
             <div class="skip-folders">
                 <label>โฟลเดอร์ที่จะข้าม (Skip Folders)</label>
@@ -504,7 +510,7 @@
             const cancelBtn = document.getElementById('popupCancelBtn');
             
             // ลบ class ประเภทเดิม
-            modal.classList.remove('popup-success', 'popup-error', 'popup-warning', 'popup-info');
+            modal.classList.remove('popup-success', 'popup-error', 'popup-warning', 'popup-info', 'large');
             
             // กำหนดประเภทและไอคอน
             let iconText = 'ℹ️';
@@ -537,6 +543,43 @@
             titleText.textContent = title || titleDefault;
             icon.textContent = iconText;
             body.textContent = message;
+            
+            // ตั้งค่าปุ่ม
+            if (callback) {
+                popupCallback = callback;
+                confirmBtn.textContent = 'ยืนยัน';
+                cancelBtn.style.display = 'none';
+                
+                // ลบ event listener เก่า
+                const newConfirmBtn = confirmBtn.cloneNode(true);
+                confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+                
+                newConfirmBtn.onclick = function() {
+                    const cb = callback;
+                    closePopupWithoutCallback();
+                    setTimeout(() => {
+                        if (cb) cb();
+                    }, 100);
+                };
+            } else {
+                popupCallback = null;
+                confirmBtn.textContent = 'ตกลง';
+                cancelBtn.style.display = 'none';
+                
+                // ลบ event listener เก่า
+                const newConfirmBtn = confirmBtn.cloneNode(true);
+                confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
+                
+                newConfirmBtn.onclick = function() {
+                    closePopupWithoutCallback();
+                };
+            }
+            
+            // แสดง popup
+            overlay.classList.add('show');
+            
+            // ปิดเมื่อกด ESC
+            document.addEventListener('keydown', handlePopupEsc);
         }
         
         function showPopupHTML(htmlContent, type = 'info', title = null, callback = null) {
@@ -787,16 +830,15 @@
             }
             
             try {
-                // เพิ่มโฟลเดอร์คีย์เวิร์ดเข้าไปใน skip_folders โดยอัตโนมัติ
-                const keywordFolders = ['NONE_VAT', 'VAT', 'WHT'];
-                const allSkipFolders = [...skipFolders];
-                
-                // เพิ่มโฟลเดอร์คีย์เวิร์ดถ้ายังไม่มี
-                keywordFolders.forEach(keywordFolder => {
-                    if (!allSkipFolders.includes(keywordFolder)) {
-                        allSkipFolders.push(keywordFolder);
-                    }
-                });
+                // เพิ่มโฟลเดอร์คีย์เวิร์ด (NONE_VAT, VAT, WHT) เฉพาะเมื่อผู้ใช้เลือกเท่านั้น
+                let allSkipFolders = [...skipFolders];
+                const skipKeywordFolders = document.getElementById('skipKeywordFolders')?.checked;
+                if (skipKeywordFolders) {
+                    const keywordFolders = ['NONE_VAT', 'VAT', 'WHT'];
+                    keywordFolders.forEach(kf => {
+                        if (!allSkipFolders.includes(kf)) allSkipFolders.push(kf);
+                    });
+                }
                 
                 const response = await fetch('/api/document-sorting/scan', {
                     method: 'POST',
@@ -822,6 +864,16 @@
                     displayStats(data.stats);
                     displayFilesByKeyword(data.files_by_keyword || {});
                     displayDuplicates(data.duplicates);
+                    if (data.stats.total_pdf_files === 0) {
+                        showPopup(
+                            'ไม่พบไฟล์ PDF ใน path ที่ระบุ\n\n' +
+                            'ลองตรวจสอบ:\n' +
+                            '• Path ถูกต้องหรือไม่ (path ต้องเป็นของเครื่อง Server ที่รันระบบ)\n' +
+                            '• มีไฟล์ .pdf ในโฟลเดอร์หรือโฟลเดอร์ย่อยหรือไม่\n' +
+                            '• ถ้าเปิด "ข้ามโฟลเดอร์ NONE_VAT, VAT, WHT" ลองปิดแล้วสแกนใหม่',
+                            'warning', 'ไม่พบข้อมูล'
+                        );
+                    }
                 } else {
                     showPopup('เกิดข้อผิดพลาด: ' + data.error, 'error');
                     statsPanel.style.display = 'none';

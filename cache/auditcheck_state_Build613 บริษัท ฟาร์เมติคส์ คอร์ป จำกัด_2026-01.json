@@ -1,0 +1,67 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-17T10:08:40.624Z",
+  "last_saved": "2026-02-17T17:08:37.916123",
+  "company": "Build613 บริษัท ฟาร์เมติคส์ คอร์ป จำกัด",
+  "base_company": "Build613 บริษัท ฟาร์เมติคส์ คอร์ป จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {},
+  "initialNotes": {},
+  "comparisonApprovals": {
+    "2-company_data_all": true,
+    "2-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build613 บริษัท ฟาร์เมติคส์ คอร์ป จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "26.01.2026_WHT_EXP-20260100004_530401_ค่าบริการทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "15.01.2026_WHT_EXP-20260100002_530408_ค่าบริการ_VAT..pdf",
+        "company_name": "บริษัท ราฟิอิโก้ ครีเอทีฟ สตูดิโอ จำกัด"
+      },
+      {
+        "filename": "15.01.2026_WHT_EXP-20260100003_530408_ค่าบริการ_VAT.pdf",
+        "company_name": "บริษัท ราฟิอิโก้ ครีเอทีฟ สตูดิโอ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 3,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "INV2026010001",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "INV2026010002",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "RT-20260100373",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": true
+  }
+}

@@ -4859,7 +4859,7 @@
             
             const buyerName = (ocrData.buyer_name || '').trim();
             const buyerTaxId = (ocrData.buyer_tax_id || '').trim();
-            const buyerAddress = (ocrData.buyer_address || '').trim();
+            const buyerAddress = (ocrData.buyer_address || ocrData.address || ocrData.address_full || '').trim();
             
             // ใช้ global functions normalizeText และ normalizeAddress ที่กำหนดไว้แล้ว
             
@@ -4954,7 +4954,8 @@
                     
                     const extractKeyParts = (addr) => {
                         const parts = [];
-                        const addrLower = addr.toLowerCase();
+                        const addrNorm = (addr || '').replace(/^เลขที่\s*/i, '').trim();
+                        const addrLower = addrNorm.toLowerCase();
                         
                         // หาเลขที่บ้าน (ต้องตรงกันเป๊ะ)
                         const houseNoPatterns = [
@@ -4962,7 +4963,7 @@
                             /\b\d{2,}\b/  // เช่น 129 (เลขที่บ้าน 2 หลักขึ้นไป)
                         ];
                         for (const pattern of houseNoPatterns) {
-                            const matches = addr.match(pattern);
+                            const matches = addrNorm.match(pattern);
                             if (matches) {
                                 parts.push(...matches.map(m => m.trim()));
                                 break; // หาแค่ตัวแรก
@@ -4970,11 +4971,11 @@
                         }
                         
                         // หาเลขไปรษณีย์
-                        const postalCode = addr.match(/\b\d{5}\b/g);
+                        const postalCode = addrNorm.match(/\b\d{5}\b/g);
                         if (postalCode) parts.push(...postalCode);
                         
                         // หาหมู่ที่ (รองรับทั้ง M0015, M15, หมู่ที่ 15)
-                        const mooMatch = addr.match(/(?:m0*|หมู่ที่\s*)(\d+)/i);
+                        const mooMatch = addrNorm.match(/(?:m0*|หมู่ที่\s*)(\d+)/i);
                         if (mooMatch) {
                             parts.push(`หมู่${mooMatch[1]}`);
                         }
@@ -6211,6 +6212,8 @@
             if (!address) return '';
             // แปลงเป็นตัวพิมพ์เล็ก
             let normalized = address.toLowerCase();
+            // ลบคำนำหน้า "เลขที่" ที่ทำให้เปรียบเทียบไม่ตรง (บริษัทใช้ "เลขที่ 3/53" แต่ OCR ใช้ "3/53")
+            normalized = normalized.replace(/^เลขที่\s*/i, '').replace(/\s*เลขที่\s*/g, ' ');
             
             // แปลงคำภาษาอังกฤษเป็นภาษาไทย (สำหรับ OCR ที่อ่านเป็นภาษาอังกฤษ)
             const transliterationMap = {
@@ -7394,7 +7397,7 @@
                 const ocrData = comp.ocr_data || {};
                 const buyerName = (ocrData.buyer_name || '').trim();
                 const buyerTaxId = (ocrData.buyer_tax_id || '').trim();
-                const buyerAddress = (ocrData.buyer_address || '').trim();
+                const buyerAddress = (ocrData.buyer_address || ocrData.address || ocrData.address_full || '').trim();
                 
                 // ตรวจสอบชื่อบริษัท
                 if (buyerName && buyerName !== '-' && companyName && companyName !== '-') {

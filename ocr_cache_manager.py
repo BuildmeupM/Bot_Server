@@ -331,6 +331,7 @@ class OCRCacheManager:
     def get(self, filename: str, filepath: str) -> Optional[Dict[str, Any]]:
         """
         ดึงข้อมูลจาก cache (จะใช้ cache manager ของบริษัทที่ระบุใน filepath)
+        ตรวจสอบทั้ง exact match (filename+path) และ filename เท่านั้น - ถ้าเคยอ่านชื่อไฟล์นี้แล้วไม่ต้องอ่านซ้ำ
         
         Args:
             filename: ชื่อไฟล์
@@ -344,28 +345,54 @@ class OCRCacheManager:
             company_manager = self._get_company_cache_manager(filepath)
             return company_manager.get(filename, filepath)
         
-        # ใช้ cache manager ปัจจุบัน
+        # ขั้นตอน 1: ลอง exact match (filename + filepath) ก่อน
         cache_key = self._get_cache_key(filename, filepath)
-        
-        if cache_key not in self.cache_data:
-            return None
-        
-        cache_entry = self.cache_data[cache_key]
-        
-        # ตรวจสอบว่า cache หมดอายุหรือไม่
-        cached_time = cache_entry.get('cached_at', 0)
         current_time = time.time()
-        age_hours = (current_time - cached_time) / 3600
         
-        if age_hours > self.cache_ttl_hours:
-            logger.debug(f"⏰ Cache หมดอายุสำหรับ {filename} (อายุ {age_hours:.2f} ชั่วโมง)")
-            # ลบ cache ที่หมดอายุ
-            del self.cache_data[cache_key]
+        if cache_key in self.cache_data:
+            cache_entry = self.cache_data[cache_key]
+            cached_time = cache_entry.get('cached_at', 0)
+            age_hours = (current_time - cached_time) / 3600
+            
+            if age_hours <= self.cache_ttl_hours:
+                logger.debug(f"✅ พบ cache (exact match) สำหรับ {filename} (อายุ {age_hours:.2f} ชั่วโมง)")
+                return cache_entry.get('data')
+            else:
+                del self.cache_data[cache_key]
+                self._save_cache()
+        
+        # ขั้นตอน 2: ค้นหาจากชื่อไฟล์เท่านั้น - ถ้าเคยอ่านไฟล์ชื่อนี้แล้ว ไม่ต้องอ่านซ้ำ
+        return self._get_by_filename(filename)
+    
+    def _get_by_filename(self, filename: str) -> Optional[Dict[str, Any]]:
+        """
+        ค้นหา cache จากชื่อไฟล์เท่านั้น (ไม่สนใจ path)
+        ใช้เมื่อ exact match ไม่เจอ - เช็คว่าเคยอ่านชื่อไฟล์นี้ไปแล้วหรือไม่
+        
+        Args:
+            filename: ชื่อไฟล์
+            
+        Returns:
+            ข้อมูล OCR หรือ None ถ้าไม่มีหรือหมดอายุ
+        """
+        current_time = time.time()
+        found_key = None
+        
+        for cache_key, cache_entry in self.cache_data.items():
+            if cache_entry.get('filename') == filename:
+                cached_time = cache_entry.get('cached_at', 0)
+                age_hours = (current_time - cached_time) / 3600
+                if age_hours <= self.cache_ttl_hours:
+                    logger.debug(f"✅ พบ cache (จากชื่อไฟล์) สำหรับ {filename} - ไม่ต้องอ่านซ้ำ (อายุ {age_hours:.2f} ชม.)")
+                    return cache_entry.get('data')
+                else:
+                    found_key = cache_key
+                    break
+        
+        if found_key:
+            del self.cache_data[found_key]
             self._save_cache()
-            return None
-        
-        logger.debug(f"✅ พบ cache สำหรับ {filename} (อายุ {age_hours:.2f} ชั่วโมง)")
-        return cache_entry.get('data')
+        return None
     
     def set(self, filename: str, filepath: str, ocr_data: Dict[str, Any]):
         """

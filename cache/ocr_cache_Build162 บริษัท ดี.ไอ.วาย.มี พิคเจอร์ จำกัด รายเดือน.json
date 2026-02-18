@@ -1,0 +1,250 @@
+{
+  "647d8fa9695b16caccb23af6a7a796c1": {
+    "filename": "04.01.2026_EXP-20260100008_f75d03170cea584c5935dea5a3a9b81f_VAT.pdf",
+    "filepath": "Z:\\Build162 บริษัท ดี.ไอ.วาย.มี พิคเจอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\04.01.2026_EXP-20260100008_f75d03170cea584c5935dea5a3a9b81f_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: THMPTI2026010000027624\nวันที่: 04/01/2026\nชื่อผู้ขาย: Lazada Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขตสวนหลวง อำเภอ/เขต Suan Luang Bangkok 10250\nยอดรวมก่อนภาษี: 50.08\nภาษีมูลค่าเพิ่ม: 3.49\nยอดรวมสุทธิ: 53.57\n\nรายการสินค้า/บริการ:\n  - Payment Fee: 8.90\n  - Premium Package: 10.35\n  - LazCoins Discount Participation Fee: 2.64\n  - Commission: 28.19",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: THMPTI2026010000027624\nวันที่: 04/01/2026\nชื่อผู้ขาย: Lazada Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขตสวนหลวง อำเภอ/เขต Suan Luang Bangkok 10250\nยอดรว",
+      "company_name": "Lazada Limited",
+      "tax_id": "0105555040244",
+      "branch": "00000",
+      "date": "04/01/2026",
+      "document_number": "THMPTI2026010000027624",
+      "reference_number": "EXP-20260100008",
+      "document_status": "",
+      "amount_before_vat": 50.08,
+      "vat_amount": 3.49,
+      "total_amount": 53.57,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "8.90",
+          "รายการ": "Payment Fee",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "10.35",
+          "รายการ": "Premium Package",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวนเงิน": "2.64",
+          "รายการ": "LazCoins Discount Participation Fee",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวนเงิน": "28.19",
+          "รายการ": "Commission",
+          "ลำดับ": "4"
+        }
+      ],
+      "success": true
+    },
+    "cached_at": 1771398686.4919486
+  },
+  "e3b1d2ddb2af806ab74f9e0e4effc92c": {
+    "filename": "11.01.2026_CNX-20260100001_6f13f180f9496df9f42d39f71dd6fc39_VAT.pdf",
+    "filepath": "Z:\\Build162 บริษัท ดี.ไอ.วาย.มี พิคเจอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\11.01.2026_CNX-20260100001_6f13f180f9496df9f42d39f71dd6fc39_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: CREDIT NOTE\nเลขที่ใบกำกับภาษี: THMPTC2026010000022336\nวันที่: 11/01/2026\nชื่อผู้ขาย: Lazada Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขตสวนหลวง อำเภอ/เขต Suan Luang Bangkok 10250\nยอดรวมก่อนภาษี: 37.29\nภาษีมูลค่าเพิ่ม: 2.61\nยอดรวมสุทธิ: 39.90\n\nรายการสินค้า/บริการ:\n  - Reverse - Premium Package: 10.01\n  - Reversal Commission: 27.28",
+      "raw_text_preview": "ประเภทเอกสาร: CREDIT NOTE\nเลขที่ใบกำกับภาษี: THMPTC2026010000022336\nวันที่: 11/01/2026\nชื่อผู้ขาย: Lazada Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขตสวนหลวง อำเภอ/เขต Suan Luang Bangkok 10250\nยอดรวมก่อนภาษี: 37.29\nภาษีมูลค่าเพิ่ม: 2.",
+      "company_name": "Lazada Limited",
+      "tax_id": "0105555040244",
+      "branch": "00000",
+      "date": "11/01/2026",
+      "document_number": "THMPTC2026010000022336",
+      "reference_number": "CNX-20260100001",
+      "document_status": "",
+      "amount_before_vat": 37.29,
+      "vat_amount": 2.61,
+      "total_amount": 39.9,
+      "document_type": "CREDIT NOTE",
+      "items": [
+        {
+          "จำนวนเงิน": "10.01",
+          "รายการ": "Reverse - Premium Package",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "27.28",
+          "รายการ": "Reversal Commission",
+          "ลำดับ": "2"
+        }
+      ],
+      "success": true
+    },
+    "cached_at": 1771398697.6762123
+  },
+  "5f5092f8811b6193c6c9657f21a1d439": {
+    "filename": "11.01.2026_EXP-20260100012_ซ้ำ_f9a968067af7745506334e21b1e29212.pdf",
+    "filepath": "Z:\\Build162 บริษัท ดี.ไอ.วาย.มี พิคเจอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\11.01.2026_EXP-20260100012_ซ้ำ_f9a968067af7745506334e21b1e29212.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: TAX INVOICE / RECEIPT\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: THMPTI2026010000126983\nวันที่: 11/01/2026\nชื่อผู้ขาย: Lazada Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขต สวนหลวง อำเภอ/เขต Suan Luang Bangkok 10250\nยอดรวมก่อนภาษี: 94.72\nภาษีมูลค่าเพิ่ม: 6.64\nยอดรวมสุทธิ: 101.36\n\nรายการสินค้า/บริการ:\n  - Payment Fee: 16.92\n  - Premium Package: 19.90\n  - LazCoins Discount Participation Fee: 3.68\n  - Commission: 54.22",
+      "raw_text_preview": "ประเภทเอกสาร: TAX INVOICE / RECEIPT\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: THMPTI2026010000126983\nวันที่: 11/01/2026\nชื่อผู้ขาย: Lazada Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขต สวนหลวง อำเภอ/เขต Suan Luang Bangkok 10250\nยอดรวมก่อน",
+      "company_name": "Lazada Limited",
+      "tax_id": "0105555040244",
+      "branch": "00000",
+      "date": "11/01/2026",
+      "document_number": "THMPTI2026010000126983",
+      "reference_number": "EXP-20260100012",
+      "document_status": "",
+      "amount_before_vat": 94.72,
+      "vat_amount": 6.64,
+      "total_amount": 101.36,
+      "document_type": "TAX INVOICE / RECEIPT",
+      "items": [
+        {
+          "จำนวนเงิน": "16.92",
+          "รายการ": "Payment Fee",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "19.90",
+          "รายการ": "Premium Package",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวนเงิน": "3.68",
+          "รายการ": "LazCoins Discount Participation Fee",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวนเงิน": "54.22",
+          "รายการ": "Commission",
+          "ลำดับ": "4"
+        }
+      ],
+      "success": true
+    },
+    "cached_at": 1771398708.7727995
+  },
+  "db0dbbbe479b2aba5da0a27b6419a8aa": {
+    "filename": "18.01.2026_EXP-20260100005_690d2f2b5b510cce8b136573e348f601_VAT.pdf",
+    "filepath": "Z:\\Build162 บริษัท ดี.ไอ.วาย.มี พิคเจอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\18.01.2026_EXP-20260100005_690d2f2b5b510cce8b136573e348f601_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: TAX INVOICE / RECEIPT\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: THMPTI2026010000253453\nวันที่: 18/01/2026\nชื่อผู้ขาย: Lazada Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขตสวนหลวง อำเภอ/เขต Suan Luang Bangkok 10250\nยอดรวมก่อนภาษี: 431.92\nภาษีมูลค่าเพิ่ม: 30.23\nยอดรวมสุทธิ: 462.15\n\nรายการสินค้า/บริการ:\n  - Payment Fee: 66.96\n  - Premium Package: 84.78\n  - LazCoins Discount Participation Fee: 49.22\n  - Commission: 230.96",
+      "raw_text_preview": "ประเภทเอกสาร: TAX INVOICE / RECEIPT\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: THMPTI2026010000253453\nวันที่: 18/01/2026\nชื่อผู้ขาย: Lazada Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขตสวนหลวง อำเภอ/เขต Suan Luang Bangkok 10250\nยอดรวมก่อนภ",
+      "company_name": "Lazada Limited",
+      "tax_id": "0105555040244",
+      "branch": "00000",
+      "date": "18/01/2026",
+      "document_number": "THMPTI2026010000253453",
+      "reference_number": "EXP-20260100005",
+      "document_status": "",
+      "amount_before_vat": 431.92,
+      "vat_amount": 30.23,
+      "total_amount": 462.15,
+      "document_type": "TAX INVOICE / RECEIPT",
+      "items": [
+        {
+          "จำนวนเงิน": "66.96",
+          "รายการ": "Payment Fee",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "84.78",
+          "รายการ": "Premium Package",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวนเงิน": "49.22",
+          "รายการ": "LazCoins Discount Participation Fee",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวนเงิน": "230.96",
+          "รายการ": "Commission",
+          "ลำดับ": "4"
+        }
+      ],
+      "success": true
+    },
+    "cached_at": 1771398718.6666563
+  },
+  "43404e0473ef7ef291170043916a1744": {
+    "filename": "25.01.2026_EXP-20260100007_e028d30fce4ae6aeb24329b0431d9e6a_VAT.pdf",
+    "filepath": "Z:\\Build162 บริษัท ดี.ไอ.วาย.มี พิคเจอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\25.01.2026_EXP-20260100007_e028d30fce4ae6aeb24329b0431d9e6a_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: TAX INVOICE / RECEIPT\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: THMPTI2026010000388764\nวันที่: 25/01/2026\nชื่อผู้ขาย: Lazada Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขตสวนหลวง อำเภอ/เขต Suan Luang Bangkok 10250\nยอดรวมก่อนภาษี: 58.66\nภาษีมูลค่าเพิ่ม: 4.11\nยอดรวมสุทธิ: 62.77\n\nรายการสินค้า/บริการ:\n  - Payment Fee: 10.42\n  - Premium Package: 12.39\n  - LazCoins Discount Participation Fee: 2.09\n  - Commission: 33.76",
+      "raw_text_preview": "ประเภทเอกสาร: TAX INVOICE / RECEIPT\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: THMPTI2026010000388764\nวันที่: 25/01/2026\nชื่อผู้ขาย: Lazada Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขตสวนหลวง อำเภอ/เขต Suan Luang Bangkok 10",
+      "company_name": "Lazada Limited (Head Office)",
+      "tax_id": "0105555040244",
+      "branch": "00000",
+      "date": "25/01/2026",
+      "document_number": "THMPTI2026010000388764",
+      "reference_number": "EXP-20260100007",
+      "document_status": "",
+      "amount_before_vat": 58.66,
+      "vat_amount": 4.11,
+      "total_amount": 62.77,
+      "document_type": "TAX INVOICE / RECEIPT",
+      "items": [
+        {
+          "จำนวนเงิน": "10.42",
+          "รายการ": "Payment Fee",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "12.39",
+          "รายการ": "Premium Package",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวนเงิน": "2.09",
+          "รายการ": "LazCoins Discount Participation Fee",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวนเงิน": "33.76",
+          "รายการ": "Commission",
+          "ลำดับ": "4"
+        }
+      ],
+      "success": true
+    },
+    "cached_at": 1771398729.557868
+  },
+  "28511d8ca243ac2dada06554534fdd58": {
+    "filename": "31.01.2026_EXP-20260100006_df7bea8b0d20300ba54d8535dd7fd921_VAT.pdf",
+    "filepath": "Z:\\Build162 บริษัท ดี.ไอ.วาย.มี พิคเจอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\31.01.2026_EXP-20260100006_df7bea8b0d20300ba54d8535dd7fd921_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: TAX INVOICE / RECEIPT\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: THMPTI2026010000575055\nวันที่: 31/01/2026\nชื่อผู้ขาย: Lazada Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขต สวนหลวง อำเภอ/เขต Suan Luang Bangkok 10250\nยอดรวมก่อนภาษี: 88.67\nภาษีมูลค่าเพิ่ม: 6.21\nยอดรวมสุทธิ: 94.88\n\nรายการสินค้า/บริการ:\n  - Payment Fee: 16.81\n  - Premium Package: 17.87\n  - LazCoins Discount Participation Fee: 5.31\n  - Commission: 48.68",
+      "raw_text_preview": "ประเภทเอกสาร: TAX INVOICE / RECEIPT\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: THMPTI2026010000575055\nวันที่: 31/01/2026\nชื่อผู้ขาย: Lazada Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105555040244\nที่อยู่ผู้ขาย: Unit 2901, 29th Fl. Bhiraj Tower, 689 Sukhumvit Rd. North Klongthon, Vadhana Bangkok 10110\nชื่อผู้ซื้อ: บริษัท ดี.ไอ.วาย. มีพิคเจอร์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0105565191962\nที่อยู่ผู้ซื้อ: 682/4 ซ. พัฒนาการ 44 แขวงพัฒนาการ เขต สวนหลวง อำเภอ/เขต Suan Luang Bangkok 1",
+      "company_name": "Lazada Limited (Head Office)",
+      "tax_id": "0105555040244",
+      "branch": "00000",
+      "date": "31/01/2026",
+      "document_number": "THMPTI2026010000575055",
+      "reference_number": "EXP-20260100006",
+      "document_status": "",
+      "amount_before_vat": 88.67,
+      "vat_amount": 6.21,
+      "total_amount": 94.88,
+      "document_type": "TAX INVOICE / RECEIPT",
+      "items": [
+        {
+          "จำนวนเงิน": "16.81",
+          "รายการ": "Payment Fee",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "17.87",
+          "รายการ": "Premium Package",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวนเงิน": "5.31",
+          "รายการ": "LazCoins Discount Participation Fee",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวนเงิน": "48.68",
+          "รายการ": "Commission",
+          "ลำดับ": "4"
+        }
+      ],
+      "success": true
+    },
+    "cached_at": 1771398740.9659007
+  }
+}
