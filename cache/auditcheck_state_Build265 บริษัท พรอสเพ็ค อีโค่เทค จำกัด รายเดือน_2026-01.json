@@ -1,0 +1,112 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T11:31:38.812Z",
+  "last_saved": "2026-02-19T18:31:41.054358",
+  "company": "Build265 บริษัท พรอสเพ็ค อีโค่เทค จำกัด รายเดือน",
+  "base_company": "Build265 บริษัท พรอสเพ็ค อีโค่เทค จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='00037-000003406' แต่ OCR='000271042601100809'",
+    "3": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วัง อินเตอร์เทรด จำกัด' แต่ OCR='บริษัท วังอินเตอร์เทรด จำกัด'",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='00037-000003406' แต่ OCR='000271042601100809'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte.Ltd.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=584.03 แต่ OCR=35.86 (ต่างกัน 548.17)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "0-address_match": true,
+    "2-address_match": true,
+    "3-company_name_match": true,
+    "3-tax_id_match": true,
+    "3-branch_match": true,
+    "3-total_amount_match": true,
+    "3-document_type_match": true,
+    "3-address_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build265 บริษัท พรอสเพ็ค อีโค่เทค จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 6,
+    "metadata": [
+      {
+        "filename": "05.01.2026_EXP-20251200004_ใบเสร็จรับเงิน_ค่าเช่าโชว์รูม (เดือน 01.2026)_VAT.pdf",
+        "company_name": "บริษัท วังอินเตอร์เทรด จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100012_PC-202601-012 กรรมการสำรองจ่าย (ค่าเครื่องเขียนสำหรับใช้ในสำนักงาน_9Jan2026)_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท (ไทย) จำกัด"
+      },
+      {
+        "filename": "15.01.2026_WHT_EXP-20260100001_PC-202601-015 กรรมการสำรองจ่าย (ค่ามือถือบริษัท เดือน 12.2025)_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด"
+      },
+      {
+        "filename": "15.01.2026_WHT_EXP-20260100002_IV-20260100444 ค่าบริการทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "05.01.2026_WHT_EXP-20251200005_ค่าเช่าออฟฟิศ (เดือน 01.2569)_VAT.pdf",
+        "company_name": "บริษัท พูลวณิชย์ จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100010_1. ภาพแบบ ภ.พ.36 เดือน 12.2025 (Google)_VAT.pdf",
+        "company_name": "Google Asia Pacific Pte.Ltd."
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 6,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251200004",
+        "ocr_document_no": "0002-69",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251200005",
+        "ocr_document_no": "IW 69-0040",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "000271042601100809",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "69114089259",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "RT-20260100188",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "W-CS-1181-6901-10000524",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

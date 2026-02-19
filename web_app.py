@@ -16486,19 +16486,25 @@ def process_ocr_queue(queue_id: str, file_path: str, ocr_mode: str = 'new'):
         cache_manager = OCRCacheManager(cache_ttl_hours=720, company_name=company_name)
         processor = TaxOCRProcessor(page_context='auditcheck')
         
-        # ค้นหาไฟล์ PDF ใน path
+        # ค้นหาไฟล์ที่รองรับ OCR ใน path (PDF, JPG, PNG, etc.)
+        supported_extensions = {'.pdf', '.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.tif'}
         path_obj = Path(file_path)
-        pdf_files = []
+        ocr_files = []
         
-        if path_obj.is_file() and path_obj.suffix.lower() == '.pdf':
-            pdf_files = [path_obj]
+        if path_obj.is_file() and path_obj.suffix.lower() in supported_extensions:
+            ocr_files = [path_obj]
         elif path_obj.is_dir():
-            pdf_files = list(path_obj.glob('**/*.pdf'))
+            for ext in supported_extensions:
+                ocr_files.extend(path_obj.glob(f'**/*{ext}'))
+                ocr_files.extend(path_obj.glob(f'**/*{ext.upper()}'))
         else:
             with ocr_queue_lock:
                 ocr_queue_storage[queue_id]['status'] = 'failed'
                 ocr_queue_storage[queue_id]['error'] = 'ไม่พบไฟล์หรือโฟลเดอร์ที่ระบุ'
             return
+        
+        ocr_files = list(dict.fromkeys(ocr_files))
+        pdf_files = ocr_files
         
         total_files = len(pdf_files)
         
@@ -16940,7 +16946,7 @@ def submit_ocr_queue():
 
 @app.route('/api/auditcheck/ocr-queue/check', methods=['POST'])
 def check_ocr_queue_path():
-    """ตรวจสอบ path และนับจำนวนไฟล์ PDF พร้อมคำนวณเวลาที่คาดว่าจะใช้"""
+    """ตรวจสอบ path และนับจำนวนไฟล์ที่รองรับ OCR พร้อมคำนวณเวลาที่คาดว่าจะใช้"""
     try:
         data = request.json
         file_path = data.get('path', '').strip()
@@ -16959,16 +16965,20 @@ def check_ocr_queue_path():
                 'error': 'ไม่พบไฟล์หรือโฟลเดอร์ที่ระบุ'
             }), 400
         
-        # นับจำนวนไฟล์ PDF
+        # นับจำนวนไฟล์ที่รองรับ OCR (PDF, JPG, PNG, etc.)
+        supported_extensions = {'.pdf', '.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.tif'}
         pdf_files = []
-        if path_obj.is_file() and path_obj.suffix.lower() == '.pdf':
+        if path_obj.is_file() and path_obj.suffix.lower() in supported_extensions:
             pdf_files = [path_obj]
         elif path_obj.is_dir():
-            pdf_files = list(path_obj.glob('**/*.pdf'))
+            for ext in supported_extensions:
+                pdf_files.extend(path_obj.glob(f'**/*{ext}'))
+                pdf_files.extend(path_obj.glob(f'**/*{ext.upper()}'))
+            pdf_files = list(dict.fromkeys(pdf_files))
         else:
             return jsonify({
                 'success': False,
-                'error': 'ไม่พบไฟล์ PDF ใน path ที่ระบุ'
+                'error': 'ไฟล์ที่ระบุไม่ใช่ประเภทที่รองรับ (PDF/JPG/PNG)'
             }), 400
         
         total_files = len(pdf_files)

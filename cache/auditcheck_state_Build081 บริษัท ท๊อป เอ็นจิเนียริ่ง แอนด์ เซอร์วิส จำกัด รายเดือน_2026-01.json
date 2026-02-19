@@ -1,0 +1,46 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T02:22:56.847Z",
+  "last_saved": "2026-02-19T09:22:57.375818",
+  "company": "Build081 บริษัท ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส จำกัด รายเดือน",
+  "base_company": "Build081 บริษัท ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {},
+  "initialNotes": {},
+  "comparisonApprovals": {
+    "0-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build081 บริษัท ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 1,
+    "metadata": [
+      {
+        "filename": "22.01.2026_WHT_EXP-20260100001_530401_ค่าบริการทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 1,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "RT-20260100314",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": true
+  }
+}

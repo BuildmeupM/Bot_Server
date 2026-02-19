@@ -1,0 +1,383 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T11:18:41.686Z",
+  "last_saved": "2026-02-19T18:18:44.033049",
+  "company": "Build018 บริษัท เอสท์ เซเรนด์ เอ็นจิเนียริ่ง จำกัด รายเดือน",
+  "base_company": "Build018 บริษัท เอสท์ เซเรนด์ เอ็นจิเนียริ่ง จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "7": "",
+    "8": "",
+    "9": "",
+    "10": "",
+    "16": "",
+    "18": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='503320250057454' แต่ OCR='503320260057454'",
+    "20": "",
+    "21": "",
+    "22": "",
+    "23": "",
+    "25": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอคอมเมิร์ซ จำกัด' แต่ OCR='บริษัท เอคอมเมิรซ จํากัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=476.00 แต่ OCR=357.00 (ต่างกัน 119.00)",
+    "1": "วันที่ไม่ตรงกัน: ภาษีซื้อ='03/01/2026' แต่ OCR='03/01/2069'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีพี ออลล์ จำกัด (มหาชน)' แต่ OCR='บมจ. ซีพี ออลล์'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มหาจักรดีเวลอปเมนท์ จำกัด' แต่ OCR='บริษัท มหาจักรกีเวอลอปเมนท์ จำกัด'",
+    "9": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=120.00 แต่ OCR=110.00 (ต่างกัน 10.00)",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ดี.เอช.เอ.สยามวาลา จำกัด' แต่ OCR='บริษัท ดี. เอช. เอ สยามวาลา จำกัด'",
+    "16": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='113/5611' แต่ OCR='5611'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='19/01/2026' แต่ OCR='19/01/2024'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=91.56 แต่ OCR=91.58 (ต่างกัน 0.02)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=6.44 แต่ OCR=6.42 (ต่างกัน 0.02)",
+    "18": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='503320250057454' แต่ OCR='503320260057454'",
+    "20": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอส ซี เปเปอร์ - แพ็ค จำกัด' แต่ OCR='บริษัท เอส ซี เปเปอร์-แพ็ค จำกัด'",
+    "21": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='นาง ภิญญาพร หงวนศิริ' แต่ OCR='ภิญญาพร หวนศิริ (ร้าน วินเวิร์ดสตอรี่)'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='260120HV7NWSSJ' แต่ OCR='260120HV7NW5SJ'",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอส.ที. (ไทยแลนด์) จำกัด' แต่ OCR='S.T. (THAILAND) CO., LTD.'",
+    "23": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไอทีโซน บางสะพาน จำกัด' แต่ OCR='บริษัท ไอทีโซน บางสะพาน จำกัด (สำนักงานใหญ่)'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='6901/0078' แต่ OCR='0078'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='21/01/2026' แต่ OCR='21/1/2026'",
+    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท อิชิเนน เคมีคอลส์ (ไทยแลนด์) จำกัด' แต่ OCR='บริษัท อิจิเนน เคมีคอลส์ (ไทยแลนด์) จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "0-total_amount_match": true,
+    "1-date_match": true,
+    "7-company_name_match": true,
+    "8-company_name_match": true,
+    "9-total_amount_match": true,
+    "10-company_name_match": true,
+    "16-document_no_match": true,
+    "16-date_match": true,
+    "16-amount_before_vat_match": true,
+    "16-vat_amount_match": true,
+    "20-company_name_match": true,
+    "21-company_name_match": true,
+    "21-document_no_match": true,
+    "21-branch_match": true,
+    "22-company_name_match": true,
+    "23-company_name_match": true,
+    "23-date_match": true,
+    "23-document_no_match": true,
+    "25-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build018 บริษัท เอสท์ เซเรนด์ เอ็นจิเนียริ่ง จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 30,
+    "metadata": [
+      {
+        "filename": "19.01.2026_EXP-2601042_530213_ใบกำกับภาษีค่ากล่องพัสดุ (19-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท เอส ซี เปเปอร์-แพ็ค จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-2601019_530213_ใบกำกับภาษีค่าหมึกตราประทับ (9-01-2026)_ใช้ในงาน.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ศรีบุญตรายาง"
+      },
+      {
+        "filename": "18.01.2026_WHT_EXP-2601044_530401_RT-20260100208_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-2601018_530213_ใบกำกับภาษีค่าอุปกรณ์ทำความสะอาด (7-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บมจ. ซีพี ออลล์"
+      },
+      {
+        "filename": "23.01.2026_EXP-2601033_510114_ใบกำกับภาษีค่าอะไหล่ (23-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท พีจี ออโต้โมบิล จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-2601016_510114_ใบกำกับภาษีค่าถุงมือ (5-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท ผลธัญญะ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "19.01.2569_EXP-2601027_530213_ใบกำกับภาษีกระดาษชำระ (19-01-2026)_ใช้ในสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "06.01.2026_EXP-2601037_510114 _ใบกำกับภาษีค่ากล่องเก็บสายไฟ (6-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท เพื่อนช่าง อิเล็คทริค จำกัด"
+      },
+      {
+        "filename": "14.01.2026_EXP-2601041_510114_ใบกำกับภาษีค่าอะไหล่ (14-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท อาร์. ที. ออโต้พาร์ท 2018 จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-2601021_510114 _ใบกำกับภาษีค่าแบตเตอรี่ (5-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท ซี เอ็ม ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-2601029_530213_ใบกำกับภาษีค่าน้ำหอมปรับอากาศ (21-01-2026)_ใช้ในสำนักงาน_VAT.pdf",
+        "company_name": "S.T. (THAILAND) CO., LTD."
+      },
+      {
+        "filename": "05.01.2026_EXP-2601038_510114 _ใบกำกับภาษีค่าตะกั่วบัดกรี (5-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท วงจร จำกัด"
+      },
+      {
+        "filename": "31.01.2026_EXP-2601035_530117_ใบกำกับภาษีค่าเสื้อทำงาน (PO-2601002)_31-01-2026.pdf",
+        "company_name": "บริษัท โอบีวัน เอ็นเตอร์ไพรส์ จำกัด"
+      },
+      {
+        "filename": "13.01.2026_EXP-2601040_510114_ใบกำกับภาษีถ่าน AA (13-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท คิวคิว คอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-2601039_510114 _ใบกำกับภาษีค่าเทปกาวสองหน้า (9-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท ดี. เอช. เอ สยามวาลา จำกัด"
+      },
+      {
+        "filename": "01.01.2026_EXP-2601036_530213 _ใบกำกับภาษีค่าแปรงเช็ดกระจก (1-01-2026)_ใช้ในสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท เอคอมเมิรซ จํากัด"
+      },
+      {
+        "filename": "23.01.2026_EXP-2601032_510114_ใบกำกับภาษีค่า Leak foamer spray (23-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท อิจิเนน เคมีคอลส์ (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-2601030_530213_ใบกำกับภาษีค่าสันรูด (21-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท ไอทีโซน บางสะพาน จำกัด (สำนักงานใหญ่)"
+      },
+      {
+        "filename": "24.01.2026_EXP-2601034_510114_ใบกำกับภาษีค่าตลับหมึก Ricoh สีเหลือง (24-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท อิงค์ ซัพพลาย (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-2601023_510114 _ใบกำกับภาษีค่าสติ๊กเกอร์ (15-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท สินทวีการพิมพ์ จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-2601028_530213_ใบกำกับภาษีค่าซองใส่บัตร (20-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "ภิญญาพร หวนศิริ (ร้าน วินเวิร์ดสตอรี่)"
+      },
+      {
+        "filename": "31.01.2026_EXP-2601043_510114_ใบกำกับภาษีค่าถ่าน AA (31-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท คิวคิว คอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-2601026_530213_ใบกำกับภาษีค่าหมึกพิมพ์(สีดำ) (19-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท โปรเฟสชั่นนัล โกลบอล เซอร์วิส จำกัด"
+      },
+      {
+        "filename": "06.01.2025_EXP-2601017_530213_ใบกำกับภาษีค่าไส้กรองน้ำ (6-01-2026)_ใช้ในสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ตั้งสุวรรณ วิชั่น กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "08.01.2025_WHT_EXP-2601001_ใบกำกับภาษี PO2601001 (8-01-2026)ส่วนต่าง75.70โอนคืน แล้ว 3.269.pdf",
+        "company_name": "บริษัท มหาจักรกีเวอลอปเมนท์ จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-2601031_530213_ใบกำกับภาษีค่ากระดาษถ่ายเอกสาร (22-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท รีมส์ แอนด์ โรลส์ จำกัด"
+      },
+      {
+        "filename": "11.01.2026_EXP-2601022_510114 _ใบกำกับภาษีค่าอะไหล่ (11-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท พีจี ออโต้โมบิล จำกัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-2601025_510114 _ใบกำกับภาษีค่าอะไหล่ (19-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท ทริปเปิ้ลดี ออโต้ กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "03.01.2026_EXP-2601020_530213 _ใบกำกับภาษีค่าเครื่องทำความสะอาดพื้น (3-01-2026)_ใช้ในสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท นาดา อินเตอร์กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-2601024_510114 _ใบกำกับภาษีค่าแผ่นใส (19-01-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท ชัยรุ่งเรืองรัชดา จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 30,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-2601036",
+        "ocr_document_no": "ACE26010007394",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-2601020",
+        "ocr_document_no": "IV6901030017",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-2601038",
+        "ocr_document_no": "CA2026010305",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-2601016",
+        "ocr_document_no": "OL26/00084",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-2601021",
+        "ocr_document_no": "ORVM69010019",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-2601037",
+        "ocr_document_no": "HS6900191",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-2601017",
+        "ocr_document_no": "INV2026010002",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-2601018",
+        "ocr_document_no": "H085386901070001",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-2601001",
+        "ocr_document_no": "PTV2601-0004",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-2601019",
+        "ocr_document_no": "CA2026011346",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-2601039",
+        "ocr_document_no": "IVKK00260102293",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-2601022",
+        "ocr_document_no": "INV2026010034",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-2601040",
+        "ocr_document_no": "RT-202601230873",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-2601041",
+        "ocr_document_no": "SHP260106676",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-2601023",
+        "ocr_document_no": "REC6901015",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-2601044",
+        "ocr_document_no": "RT-20260100208",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-2601025",
+        "ocr_document_no": "5611",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-2601026",
+        "ocr_document_no": "4410243980",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-2601027",
+        "ocr_document_no": "503320260057454",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-2601024",
+        "ocr_document_no": "HS6900127",
+        "match_status": "full_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-2601042",
+        "ocr_document_no": "IR 6901728",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-2601028",
+        "ocr_document_no": "260120HV7NW5SJ",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-2601029",
+        "ocr_document_no": "2026910000071/5",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-2601030",
+        "ocr_document_no": "0078",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-2601031",
+        "ocr_document_no": "IV6901-4382",
+        "match_status": "full_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-2601032",
+        "ocr_document_no": "2026012313221916",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-2601033",
+        "ocr_document_no": "INV2026010112",
+        "match_status": "full_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-2601034",
+        "ocr_document_no": "690010709",
+        "match_status": "full_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-2601035",
+        "ocr_document_no": "OB2026010012",
+        "match_status": "full_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-2601043",
+        "ocr_document_no": "RT-202601233034",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

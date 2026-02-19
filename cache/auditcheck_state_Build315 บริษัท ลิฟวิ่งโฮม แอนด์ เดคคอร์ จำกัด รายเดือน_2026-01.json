@@ -1,0 +1,112 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T11:42:10.909Z",
+  "last_saved": "2026-02-19T18:42:13.102911",
+  "company": "Build315 บริษัท ลิฟวิ่งโฮม แอนด์ เดคคอร์ จำกัด รายเดือน",
+  "base_company": "Build315 บริษัท ลิฟวิ่งโฮม แอนด์ เดคคอร์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "4": "ประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'"
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท 89 ท๊อปวู้ด จำกัด' แต่ OCR='บริษัท 89 ท็อปปู้ด จำกัด'",
+    "4": "ประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build315 บริษัท ลิฟวิ่งโฮม แอนด์ เดคคอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 7,
+    "metadata": [
+      {
+        "filename": "28.01.2026_EXP-20260100006_510110_ใบกำกับภาษีเดือนมกราคม69-6_VAT.pdf",
+        "company_name": "บริษัท แนวหน้าค้าไม้ จำกัด"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100007_510110_ใบกำกับภาษีเดือนมกราคม69-5_VAT.pdf",
+        "company_name": "บริษัท แนวหน้าค้าไม้ จำกัด"
+      },
+      {
+        "filename": "11.01.2026_EXP-20260100004_520311_ใบกำกับภาษีเดือนมกราคม69-1_VAT.pdf",
+        "company_name": "บริษัท เค.ซี.ลาดกระบัง จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100005_510110_ใบกำกับภาษีเดือนมกราคม69-2_VAT.pdf",
+        "company_name": "บริษัท สีสัน สุวินทวงศ์ จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100008_510110_ใบกำกับภาษีเดือนมกราคม69-7_VAT.pdf",
+        "company_name": "บริษัท แนวหน้าค้าไม้ จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100003_510110_ใบกำกับภาษีเดือนมกราคม69-4_VAT.pdf",
+        "company_name": "บริษัท แนวหน้าค้าไม้ จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100002_510110_ใบกำกับภาษีเดือนมกราคม69-3_VAT.pdf",
+        "company_name": "บริษัท 89 ท็อปปู้ด จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 7,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "IV69-1-017",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "CS690109004",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "TIO000116901000414",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "CS690122009",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "TAX69010644",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "CS690128005",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "CS690129021",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

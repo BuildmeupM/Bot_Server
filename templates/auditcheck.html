@@ -4939,10 +4939,8 @@
                             const hasOcrData = comp.ocr_data && Object.keys(comp.ocr_data).length > 0 && comp.ocr_data.document_no;
                             const ocrReadFailed = !hasOcrData;
 
-                            // ถ้า OCR อ่านไม่ได้ ให้เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ
-                            if (ocrReadFailed && !selfCheckMode[index]) {
-                                selfCheckMode[index] = true;
-                                console.log(`🔍 [Debug] OCR อ่านไม่ได้สำหรับรายการที่ ${index + 1} (เลขที่ใบกำกับ: ${comp.purchase_data?.invoice_no || comp.invoice_no || 'N/A'}) - เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ`);
+                            if (ocrReadFailed) {
+                                console.log(`🔍 [Debug] OCR อ่านไม่ได้สำหรับรายการที่ ${index + 1} (เลขที่ใบกำกับ: ${comp.purchase_data?.invoice_no || comp.invoice_no || 'N/A'}) - ผู้ใช้สามารถกดปุ่ม "ตรวจด้วยตัวเอง" เพื่อตรวจสอบได้`);
                             }
                         });
 
@@ -5738,11 +5736,9 @@
                 (comp.ocr_data.document_no || comp.ocr_data.filename);
             const ocrReadFailed = !hasOcrData || comp.match_status === 'no_match';
 
-            // ถ้า OCR อ่านไม่ได้ ให้เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ
-            if (ocrReadFailed && !selfCheckMode[index]) {
-                selfCheckMode[index] = true;
+            if (ocrReadFailed) {
                 const invoiceNo = comp.purchase_data?.invoice_no || comp.invoice_no || 'N/A';
-                console.log(`🔍 [Debug] OCR อ่านไม่ได้สำหรับรายการที่ ${index + 1} (เลขที่ใบกำกับ: ${invoiceNo}) - เปิดโหมด "ตรวจด้วยตัวเอง" อัตโนมัติ`);
+                console.log(`🔍 [Debug] OCR อ่านไม่ได้สำหรับรายการที่ ${index + 1} (เลขที่ใบกำกับ: ${invoiceNo}) - ผู้ใช้สามารถกดปุ่ม "ตรวจด้วยตัวเอง" เพื่อตรวจสอบได้`);
                 console.log(`   - ocr_data:`, comp.ocr_data);
                 console.log(`   - match_status:`, comp.match_status);
             }

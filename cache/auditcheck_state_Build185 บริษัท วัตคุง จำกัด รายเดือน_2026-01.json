@@ -1,0 +1,195 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T09:26:44.576Z",
+  "last_saved": "2026-02-19T16:26:44.105090",
+  "company": "Build185 บริษัท วัตคุง จำกัด รายเดือน",
+  "base_company": "Build185 บริษัท วัตคุง จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "7": "",
+    "8": "",
+    "11": "",
+    "12": "",
+    "15": "",
+    "17": "",
+    "19": "",
+    "22": "",
+    "24": "",
+    "31": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260129-0022783' แต่ OCR='TRSPEMKP00-00000-26'",
+    "34": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260100017"
+  },
+  "initialNotes": {
+    "0": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEKOA00-00000-260106-000286' แต่ OCR='TRSPEKOA00-00000-26'",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260103-0012310' แต่ OCR='TRSPEMKP00-00000-26'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='OpenAI,LLC'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='69113013358' แต่ OCR='P360004940348'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='11/01/2026' แต่ OCR='30/12/2025'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=780.06 แต่ OCR=47.90 (ต่างกัน 732.16)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='แบบนำส่งภาษีมูลค่าเพิ่ม'",
+    "4": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260105-0013662' แต่ OCR='TRSPEMKP00-00000-26'",
+    "5": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260106-0022800' แต่ OCR='TRSPEMKP00-00000-26'",
+    "6": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260107-0011715' แต่ OCR='TRSPEMKP00-00000-26'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไทเกอร์เพอร่า จำกัด' แต่ OCR='บริษัท ไทเกอร์เพอร์ร่า จำกัด'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260109-0017036' แต่ OCR='TRSPEMKP00-00000-26'",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260112-0003076' แต่ OCR='TRSPEMKP00-00000-26'",
+    "12": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0115553014882' แต่ OCR='011553014882'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='358-17852' แต่ OCR='17852'",
+    "15": "วันที่ไม่ตรงกัน: ภาษีซื้อ='15/01/2026' แต่ OCR='15/01/1983'",
+    "17": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260115-0021232' แต่ OCR='TRSPEMKP00-00000-26'",
+    "19": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260117-0018900' แต่ OCR='TRSPEMKP00-00000-26'",
+    "22": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105558019581' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='ไม่พบ'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260120-0025346' แต่ OCR='ไม่พบ'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='20/01/2026' แต่ OCR='ไม่พบ'",
+    "24": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260122-0002017' แต่ OCR='TRSPEMKP00-00000-26'",
+    "31": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260129-0022783' แต่ OCR='TRSPEMKP00-00000-26'",
+    "34": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260100017"
+  },
+  "comparisonApprovals": {
+    "0-address_match": true,
+    "1-address_match": true,
+    "2-address_match": true,
+    "3-address_match": true,
+    "4-address_match": true,
+    "5-address_match": true,
+    "6-address_match": true,
+    "7-company_data_all": true,
+    "7-address_match": true,
+    "8-document_no_match": true,
+    "8-company_data_all": true,
+    "8-address_match": true,
+    "9-address_match": true,
+    "10-address_match": true,
+    "11-document_no_match": true,
+    "11-address_match": true,
+    "12-document_no_match": true,
+    "12-tax_id_match": true,
+    "13-address_match": true,
+    "14-address_match": true,
+    "15-date_match": true,
+    "16-address_match": true,
+    "17-document_no_match": true,
+    "17-address_match": true,
+    "18-company_name_match": true,
+    "18-address_match": true,
+    "19-document_no_match": true,
+    "19-address_match": true,
+    "19-company_name_match": true,
+    "20-address_match": true,
+    "21-address_match": true,
+    "22-document_no_match": true,
+    "22-date_match": true,
+    "22-tax_id_match": true,
+    "22-branch_match": true,
+    "22-address_match": true,
+    "23-address_match": true,
+    "24-document_no_match": true,
+    "24-address_match": true,
+    "1-company_name_match": true,
+    "4-document_no_match": true,
+    "4-company_name_match": true,
+    "6-document_no_match": true,
+    "6-company_name_match": true,
+    "7-company_name_match": true,
+    "0-document_no_match": true,
+    "0-company_name_match": true,
+    "2-document_no_match": true,
+    "2-company_name_match": true,
+    "2-tax_id_match": true,
+    "2-branch_match": true,
+    "2-total_amount_match": true,
+    "2-document_type_match": true,
+    "3-total_amount_match": true,
+    "3-document_type_match": true,
+    "3-branch_match": true,
+    "3-tax_id_match": true,
+    "3-company_name_match": true,
+    "3-date_match": true,
+    "3-document_no_match": true,
+    "5-document_no_match": true,
+    "5-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {
+    "34": true
+  },
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build185 บริษัท วัตคุง จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 6,
+    "metadata": [
+      {
+        "filename": "11.01.2026_EXP-20260100008_ภพ.36(OpenAI)_VAT.pdf",
+        "company_name": "OpenAI,LLC"
+      },
+      {
+        "filename": "10.01.2026_WHT_EXP-20260100001_520103_ค่าบริการaffiliate_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "12.01.2026_WHT_EXP-20260100007_530401_ค่าบริการบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "11.011.2026_EXP-20260100009_ภ.พ.36(Meta)_VAT.pdf",
+        "company_name": "Meta Platforms Ireland Limited"
+      },
+      {
+        "filename": "24.01.2026_WHT_EXP-20260100003_520103_ค่าบริการaffiliate_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "06.01.2026_WHT_EXP-20260100002_520103_ค่าบริการaffiliate_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 6,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "TRSPEKOA00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "TRSPEKOA00-00000-260110-029137",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "69113013220",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "P360004940348",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "RT-20260100103",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "TRSPEKOA00-00000-26 0124-019615",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

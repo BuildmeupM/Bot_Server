@@ -1,0 +1,348 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T12:41:35.423Z",
+  "last_saved": "2026-02-19T19:41:34.499451",
+  "company": "Build084 บริษัท เอสซีที คูลลิ่ง ทาวเวอร์ จำกัด รายเดือน",
+  "base_company": "Build084 บริษัท เอสซีที คูลลิ่ง ทาวเวอร์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "ยอดเงินผิด ",
+    "3": "",
+    "5": "",
+    "6": "",
+    "8": "",
+    "9": "",
+    "14": "",
+    "15": "",
+    "16": "",
+    "17": "",
+    "19": "",
+    "20": "ไม่มีเอกสาร หรือตั้งชื่อEXP ผิด",
+    "22": "",
+    "23": "",
+    "24": "",
+    "25": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-2026010002"
+  },
+  "initialNotes": {
+    "0": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=2,700.00 แต่ OCR=6,500.00 (ต่างกัน 3,800.00)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=189.00 แต่ OCR=455.00 (ต่างกัน 266.00)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=2,889.00 แต่ OCR=6,955.00 (ต่างกัน 4,066.00)",
+    "3": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=7,581.55 แต่ OCR=7,275.36 (ต่างกัน 306.19)",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ช.พานิช (ไทย) จำกัด' แต่ OCR='บริษัท ช.พานิช (ไทย) จำกัด (สำนักงานใหญ่)'",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='นาง อ้อมเดือน ทำบุญ' แต่ OCR='นางอ้อมเดือน ทำบุญ ไฟเบอร์ทีม'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='63/3149' แต่ OCR='3149'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='08/01/2026' แต่ OCR='08/01/2024'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โกลเด้น สตีล จำกัด' แต่ OCR='บริษัท โกลเด้นสตีล จำกัด'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ดูโฮม จำกัด (มหาชน)' แต่ OCR='บริษัท ดูโฮม จํากัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0107561000196' แต่ OCR='0107561000296'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท พีเค อินเตอร์เฟรด จำกัด' แต่ OCR='PK INTERFREIGHT CO.,LTD.'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='IV-2512-000177' แต่ OCR='RC-2601-000032'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='10/01/2026' แต่ OCR='08/01/2026'",
+    "15": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ถุงมือหนัง กริชกำชัย แอนด์ ซัพพลาย' แต่ OCR='หจก.ถุงมือหนัง กริชกำชัย แอนด์ ซัพพลาย'",
+    "16": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='26/012' แต่ OCR='012'",
+    "17": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด(สาขาสระบุรี)'",
+    "19": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด(สาขาสระบุรี)'",
+    "20": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100024 (เลขที่ใบกำกับ: SBRIE26010090504)",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'",
+    "23": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'",
+    "24": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=1,490.00 แต่ OCR=1,057.00 (ต่างกัน 433.00)",
+    "25": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-2026010002"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "3-total_amount_match": true,
+    "4-company_name_match": true,
+    "5-company_name_match": true,
+    "6-company_name_match": true,
+    "6-date_match": true,
+    "6-document_no_match": true,
+    "8-company_name_match": true,
+    "9-company_name_match": true,
+    "9-tax_id_match": true,
+    "11-company_name_match": true,
+    "14-document_no_match": true,
+    "14-date_match": true,
+    "14-company_name_match": true,
+    "15-company_name_match": true,
+    "16-document_no_match": true,
+    "17-company_name_match": true,
+    "19-company_name_match": true,
+    "22-company_name_match": true,
+    "23-company_name_match": true,
+    "24-total_amount_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {
+    "20": true,
+    "25": true
+  },
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build084 บริษัท เอสซีที คูลลิ่ง ทาวเวอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 25,
+    "metadata": [
+      {
+        "filename": "09.01.2026_WHT_EXP-20260100004_ ค่าเช่าเต้นท์ ออกใบหัก (สำรองจ่าย)_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด มาบตาพุดเต็นท์"
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100026_ อุปกรณ์ใช้ในการทำงาน (สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท เอกสตีล สี่แยกนพวงศ์ จำกัด"
+      },
+      {
+        "filename": "08.01.2026_WHT_EXP-20260100001_ Shipping-1-2_VAT.pdf",
+        "company_name": "PK INTERFREIGHT CO.,LTD."
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100006_ วัสดุใช้ในงานลูกค้า(สำรองจ่าย)_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ธีร์-ธาม มาร์เก็ตติ้ง"
+      },
+      {
+        "filename": "16.01.2026_EXP-2026010002_ วัสดุ(สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด(สาขาสระบุรี)"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100014_ วัสดุ (สำรองจ่าย)_VAT.pdf",
+        "company_name": "หจก.ถุงมือหนัง กริชกำชัย แอนด์ ซัพพลาย"
+      },
+      {
+        "filename": "05.01.2026_WHT_EXP-20260100020_ ค่าเช่าห้อง ไม่ได้หักไว้ค่ะ (สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท สินแสนสุขสิริ จำกัด"
+      },
+      {
+        "filename": "25.12.2026_EXP-20251200046_วัสดุใช้ในงานลูกค้า(สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท ดูโฮม จำกัด (มหาชน)"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100005_ วัสดุใช้ในงานลูกค้า_VAT.pdf",
+        "company_name": "นางอ้อมเดือน ทำบุญ ไฟเบอร์ทีม"
+      },
+      {
+        "filename": "28.11.2025_EXP-20251100075_ Shipping-3_VAT.pdf",
+        "company_name": "การท่าเรือแห่งประเทศไทย"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100022_ อินเตอร์เน็ตบริษัท(สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100010_ วัสดุใช้ในงานลูกค้า(สำรองจ่าย)(3)_VAT.pdf",
+        "company_name": "บริษัท โค้วเลี่ยงเซ้ง จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100015_ วัสดุสิ้นเปลือง ใช้ซ่อมเครื่องมือช่าง (สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท สมบูรณ์การไฟฟ้า คลองหลวง จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100025_ วัสดุใช้ในการทำงาน(สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด(สาขาสระบุรี)"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100023_วัสดุใช้ในงานลูกค้า(สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด(สาขาสระบุรี)"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100007_ วัสดุใช้ในงานลูกค้า(สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท ช.พานิช (ไทย) จำกัด (สำนักงานใหญ่)"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100011_ วัสดุใช้ในงานลูกค้า(สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท โกลเด้นสตีล จำกัด"
+      },
+      {
+        "filename": "17.01.2026_WHT_EXP-20260100002_ค่าบริการบัญชี_RT-20260100178_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100012_ วัสดุใช้ในงานลูกค้า(สำรองจ่าย)(1)_VAT.pdf",
+        "company_name": "บริษัท ช.พานิช (ไทย) จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100009_ วัสดุใช้ในงานลูกค้า(สำรองจ่าย)(2)_VAT.pdf",
+        "company_name": "บริษัท ดูโฮม จํากัด (มหาชน)"
+      },
+      {
+        "filename": "14.01.2026_WHT_EXP-20260100003_ ค่าบริการ มีหักณทึ่จ่ายไว้(1) (สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท เอ.พี.เค เมนเทนแนนซ์ แอนด์ เซอร์วิส จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100013_ วัสดุใช้ในงานลูกค้า(สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท อินเตอร์ โบลท์ แอนด์ ฟิตติ้ง จำกัด"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100021_ ค่าโทรศัพท์มือถือบริษัท(สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "26.11.2025_WHT_EXP-20251100009__มีใบลดหนี้_ค่าเช่าอุปกรณ์_หัก5_ออกใบหักให้ด้วยค่ะ(1)(สำรองจ่าย)_VAT.pdf",
+        "company_name": "บริษัท พีพีเอส เทค จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100008_ วัสดุใช้ในงานลูกค้า(สำรองจ่าย)(1)_VAT.pdf",
+        "company_name": "บริษัท ช.พานิช (ไทย) จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 26,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251100009",
+        "ocr_document_no": "IV202511056",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251100075",
+        "ocr_document_no": "2026-22-003144",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20251200046",
+        "ocr_document_no": "MPTX-20251225-0106",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "BCA1350H2159-882130-V104602701",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "TTM6901008",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "CS-RYA1-26010010",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "3149",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "CS-RYA1-26010014",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "INV2026010108",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "MPTX-20260108-0251",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "TX6901000151",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "CS-RYA1-26010019",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "OSV69010115",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "RE6900014",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "RC-2601-000032",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "INV2026010138",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "012",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260100023",
+        "ocr_document_no": "SBRIE26010090247",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "FV2601-0738",
+        "match_status": "full_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260100025",
+        "ocr_document_no": "SBRIE26010090477",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260100024",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "RT-20260100178",
+        "match_status": "full_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260100021",
+        "ocr_document_no": "W-TS-84439-6901-10023739",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "W-TS-84439-6901-10023740",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260100026",
+        "ocr_document_no": "INV2026011146",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "ocr_document_no": "SBRIE26010090504",
+        "match_status": "no_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

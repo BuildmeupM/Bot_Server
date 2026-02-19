@@ -1,0 +1,61 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T07:44:00.734Z",
+  "last_saved": "2026-02-19T14:44:00.499704",
+  "company": "Build096 บริษัท ทีพี อินฟินิตี้ อินเตอร์เนชั่นแนล จำกัด",
+  "base_company": "Build096 บริษัท ทีพี อินฟินิตี้ อินเตอร์เนชั่นแนล จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "1": ""
+  },
+  "initialNotes": {
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลค์ มี เอ๊กซ์ จำกัด' แต่ OCR='บริษัท ไลค์ มี เอ็กซ์ จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build096 บริษัท ทีพี อินฟินิตี้ อินเตอร์เนชั่นแนล จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 2,
+    "metadata": [
+      {
+        "filename": "21.01.2026_WHT_EXP-20260100001_RT-20260100295_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100006_ครอส มค 69-1_VAT.pdf",
+        "company_name": "บริษัท ไลค์ มี เอ็กซ์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 2,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "RT-20260100295",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "RECS260101574",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

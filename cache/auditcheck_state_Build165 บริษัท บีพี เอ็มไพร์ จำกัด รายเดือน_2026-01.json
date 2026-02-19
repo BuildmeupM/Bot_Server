@@ -1,0 +1,309 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T03:43:51.531Z",
+  "last_saved": "2026-02-19T10:43:50.956078",
+  "company": "Build165 บริษัท บีพี เอ็มไพร์ จำกัด รายเดือน",
+  "base_company": "Build165 บริษัท บีพี เอ็มไพร์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=11,700.93 แต่ OCR=11,700.94 (ต่างกัน 0.01)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=819.07 แต่ OCR=819.06 (ต่างกัน 0.01)",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "7": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='ORRVLC26010019' แต่ OCR='ORRV LC26010019'",
+    "10": "",
+    "18": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RT-2026100288' แต่ OCR='RT-20260100288'"
+  },
+  "initialNotes": {
+    "0": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260105-0005784' แต่ OCR='TRSPEMKP00-00000-26'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=3.74 แต่ OCR=3.73 (ต่างกัน 0.01)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=0.26 แต่ OCR=0.27 (ต่างกัน 0.01)",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Meta Platforms Ireland Limited'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=16,312.44 แต่ OCR=1,001.64 (ต่างกัน 15,310.80)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ไม่ระบุ'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte. Ltd.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=4,467.36 แต่ OCR=274.31 (ต่างกัน 4,193.05)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='แบบนำส่งภาษีมูลค่าเพิ่ม (ภ.พ.36)'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท' แต่ OCR='[PKO]ทรัสต์เพื่อการลงทุนในสิทธิการเช่า อสังหาริมทรัพย์ CPN รีเทล โกรท'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บลู เปเปอร์ จำกัด' แต่ OCR='บริษัท บลู เปเปอร์จำกัด'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ธนารมณ์ จำกัด' แต่ OCR='บริษัท ธนาธมณ์ จำกัด'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=5,500.00 แต่ OCR=11,000.00 (ต่างกัน 5,500.00)",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ธนารมณ์ จำกัด' แต่ OCR='บริษัท ธนาธรณ์ จำกัด'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00004' แต่ OCR='00000'",
+    "7": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='ORRVLC26010019' แต่ OCR='ORRV LC26010019'",
+    "10": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105565010968' แต่ OCR='0105565010963'",
+    "18": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RT-2026100288' แต่ OCR='RT-20260100288'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "0-tax_id_match": true,
+    "0-branch_match": true,
+    "0-total_amount_match": true,
+    "0-document_type_match": true,
+    "1-company_name_match": true,
+    "1-tax_id_match": true,
+    "1-branch_match": true,
+    "1-total_amount_match": true,
+    "1-document_type_match": true,
+    "2-company_name_match": true,
+    "2-tax_id_match": true,
+    "2-branch_match": true,
+    "2-total_amount_match": true,
+    "2-document_type_match": true,
+    "4-company_name_match": true,
+    "3-company_name_match": true,
+    "5-amount_before_vat_match": true,
+    "5-company_name_match": true,
+    "6-company_name_match": true,
+    "6-branch_match": true,
+    "10-tax_id_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build165 บริษัท บีพี เอ็มไพร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 23,
+    "metadata": [
+      {
+        "filename": "09.01.2026_EXP-20260100017_510110_V_PM_260109_4880_ENVTH000002452_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "05.01.2026_WHT_EXP-20260100002_530201,530221_2V_Charn1_260105_11920_THB-1_VAt.pdf",
+        "company_name": "บริษัท ธนาธมณ์ จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100008_510110_V_PM_260108_2610_ENVTH000300259_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100010_530223_V_CENPIN_260105_12840_W047-46-58588_VAT.pdf",
+        "company_name": "ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท"
+      },
+      {
+        "filename": "05.01.2026_WHT_EXP-20260100003_530116__United_260105_6240_บาท_ยูไนเต็ด_VAT.pdf",
+        "company_name": "บริษัท ยูไนเต็ด เซ็นเตอร์ จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100009_510110_V_Qhouse_260105_10700 บาท_VAT_VAT.pdf",
+        "company_name": "ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ ควอลิตี้ เฮ้าส์ บิสซิเนส คอมเพล็กซ์"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100021_510110_V_PM_260122_8110_ENVTH000300186_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "04.01.2026_EXP-20260100007_510110_V_PM_260114_12520_ENVTH001000088_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100012_530301_V_Charn1_260105_11920_THB-2_VAT.pdf",
+        "company_name": "บริษัท ธนาธรณ์ จำกัด"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100020_510110_V_BP_260114_4328_บาท_VAT.pdf",
+        "company_name": "บริษัท ดิจิตอล คอมเมิร์ซ จำกัด"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100023_510110_V_PM_260122_3300_ENVTH001000095_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100024_510110_V_PM_260123_3300_ENVTH000500173_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100018_510110_V_PM_260108_4880_ENVTH000002927_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100019_510110_V_PM_260123_6670_ENVTH000700046_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100022_510110_V_PM_260122_3300_ENVTH000500125_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100014_510110_V_PM_250108_9760_ENVTH000002926_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100039_510110_V_PM_260108_4880_ENVTH000002928_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "04.01.2026_EXP-20260100006_510110_V_PM_260106_2100_ENVTH001000018_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "20.01.2026_WHT_EXP-20260100005_ค่าบริการบัญชี_ RT-20260100288_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100015_510110_V_PM_260108_4880_ENVTH000002925_VAT.pdf",
+        "company_name": "บริษัท ป๊อป มาร์ท (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100011_530301_V_CENPIN_260105_160.50_W855-50-50740_VAT.pdf",
+        "company_name": "[PKO]ทรัสต์เพื่อการลงทุนในสิทธิการเช่า อสังหาริมทรัพย์ CPN รีเทล โกรท"
+      },
+      {
+        "filename": "05.01.2026_WHT_EXP-20260100004_530201,530223_V_Charn2_260105_10485-1_VAT.pdf",
+        "company_name": "บริษัท เอ็กเซลซัส กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100013_530301V_Charn2_260105_10485-2_VAT.pdf",
+        "company_name": "บริษัท เอ็กเซลซัส กรุ๊ป จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 23,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "ENVTH001000018",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "ENVTH001000088",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "2026-10100131",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "2026-10100132",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "ENVTH000300259",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "IVCWN2601008",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "IVCWN2601009",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "ORRV LC26010019",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "RE164/010",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "RT-20260100036",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "RT-20260100037",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "ENVTH000002925",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "ENVTH000002926",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100039",
+        "ocr_document_no": "ENVTH000002928",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "ENVTH000002452",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "ENVTH000002927",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "ENVTH000700046",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "INF132601-0010",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "RT-20260100288",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260100021",
+        "ocr_document_no": "ENVTH000300186",
+        "match_status": "full_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "ENVTH000500125",
+        "match_status": "full_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260100024",
+        "ocr_document_no": "ENVTH000500173",
+        "match_status": "full_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260100023",
+        "ocr_document_no": "ENVTH001000095",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

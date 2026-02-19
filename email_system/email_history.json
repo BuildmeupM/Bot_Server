@@ -35022,5 +35022,2577 @@
     "user_agent": null,
     "ip_address": null,
     "sent_time_old": "2026-02-18 18:21:54"
+  },
+  {
+    "id": "9ec04afd-dc9c-42ae-84b7-6e066ece320a",
+    "status": "success",
+    "sent_time": "2026-02-19T10:12:33.828107",
+    "created_at": "2026-02-19T10:12:33.828107",
+    "pattern_name": "392 ร็อคเก็ต ลิ้ง เอ็นเตอร์เทนเม้นท์",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "rocketlinkent@gmail.com"
+    ],
+    "cc_emails": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท ร็อคเก็ต ลิ้ง เอ็นเตอร์เทนเม้นท์ จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ร็อคเก็ต ลิ้ง เอ็นเตอร์เทนเม้นท์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026: จำนวน 16,397.77 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระ ภพ.30.เดือน 01.2026.pdf",
+        "size": 547597,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 171157,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.pdf",
+        "size": 410394,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.pdf",
+        "size": 916186,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T03-12-24.pdf",
+        "size": 109724,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 2155058,
+    "line_enabled": false,
+    "line_user_id": "U873400226073949929249f176d8ff60f",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท ร็อคเก็ต ลิ้ง เอ็นเตอร์เทนเม้นท์ จำกัด",
+      "tax_id": "01055-67025-94-6",
+      "period": "ประจำเดือน 1/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "16,397.77"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-19T03-12-24.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 10:12:33"
+  },
+  {
+    "id": "ff7eed23-6adb-4dce-8a30-5702ccf7e4a5",
+    "status": "success",
+    "sent_time": "2026-02-19T10:12:35.003301",
+    "created_at": "2026-02-19T10:12:35.003301",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล rocketlinkent@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 16,397.77 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 10:12:35"
+  },
+  {
+    "id": "d64d9462-11e2-47f6-837f-2dad8fbd9feb",
+    "status": "success",
+    "sent_time": "2026-02-19T10:24:46.025777",
+    "created_at": "2026-02-19T10:24:46.025777",
+    "pattern_name": "387 วอเตอร์ อินโนเวชั่น แอนด์ คอนซัลแทนท์",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "half.ratthikorn@gmail.com"
+    ],
+    "cc_emails": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท วอเตอร์ อินโนเวชั่น แอนด์ คอนซัลแทนท์ จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท วอเตอร์ อินโนเวชั่น แอนด์ คอนซัลแทนท์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n-ไม่มียอดชำระ // ขอบคุณค่ะ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 222567,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 163791,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.pdf",
+        "size": 221762,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน01.2026.pdf",
+        "size": 289907,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T03-24-37.pdf",
+        "size": 109326,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 1007353,
+    "line_enabled": false,
+    "line_user_id": "Ud3dd14c758dfb484e5c18fe524e7fc76",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 1/2026",
+      "company_name": "บริษัท วอเตอร์ อินโนเวชั่น แอนด์ คอนซัลแทนท์ จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 1/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T03-24-37.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-02-19 10:24:46"
+  },
+  {
+    "id": "fba43537-6787-4457-85ca-d7ce1729e769",
+    "status": "success",
+    "sent_time": "2026-02-19T10:24:47.303605",
+    "created_at": "2026-02-19T10:24:47.303605",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01.2026\nให้ทางอีเมล half.ratthikorn@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01.2026\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 10:24:47"
+  },
+  {
+    "id": "ab308056-9db0-4874-b0c8-9dc4e1e292a7",
+    "status": "success",
+    "sent_time": "2026-02-19T10:51:15.323200",
+    "created_at": "2026-02-19T10:51:15.323200",
+    "pattern_name": "580 บริษัท ช็อปดิท จำกัด",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "tee.wu@teacorp.co.th",
+      "account@teacorp.co.th"
+    ],
+    "cc_emails": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท ช็อปดิท จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ช็อปดิท จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 15,838.53 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ภ.พ.30  ชำระภาษี 01.2026.pdf",
+        "size": 548764,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 173691,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.pdf",
+        "size": 220880,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.pdf",
+        "size": 223371,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T03-51-07.pdf",
+        "size": 106291,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 1272997,
+    "line_enabled": false,
+    "line_user_id": "Ce94eb40c6f279a63909291575df2e64c",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 1/2026",
+      "company_name": "บริษัท ช็อปดิท จำกัด",
+      "tax_id": "01055-60174-34-2",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "15,838.53"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-19T03-51-07.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-02-19 10:51:15"
+  },
+  {
+    "id": "fe60e872-413c-4865-a16c-6b7eed3bd095",
+    "status": "success",
+    "sent_time": "2026-02-19T10:51:16.665376",
+    "created_at": "2026-02-19T10:51:16.665376",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01.2026\nให้ทางอีเมล tee.wu@teacorp.co.th , account@teacorp.co.th แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01.2026\nยอดกรมสรรพากรที่ต้องชำระ 15,838.53 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 10:51:16"
+  },
+  {
+    "id": "19cb2a33-529d-4e0d-a407-d877f5ba6fc1",
+    "status": "success",
+    "sent_time": "2026-02-19T11:35:37.638149",
+    "created_at": "2026-02-19T11:35:37.638149",
+    "pattern_name": "592 ชางไห่ เยาซู คอนสตรัคชั่น เอ็นจิเนียร์ริ่ง",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "shanghai.pat01@gmail.com"
+    ],
+    "cc_emails": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท ชางไห่ เยาซู คอนสตรัคชั่น เอ็นจิเนียร์ริ่ง จำกัด ประจำเดือน 01/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ชางไห่ เยาซู คอนสตรัคชั่น เอ็นจิเนียร์ริ่ง จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 01/2026 โดยมีรายการดังต่อไปนี้\n\n- ภาพแบบ , ใบเสร็จ\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 01/2026 : ไม่มียอดที่ต้องชำระ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 223028,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท ชางไห่ เยาซู คอนสตรัคชั่น เอ็นจิเนียร์ริ่ง จำกัด_PP30-202601_20260218-114802.pdf",
+        "size": 64669,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 165545,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท ชางไห่ เยาซู คอนสตรัคชั่น เอ็นจิเนียร์ริ่ง จำกัด_PP30-202601_20260218-114746.pdf",
+        "size": 128900,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T04-35-29.pdf",
+        "size": 87225,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 669367,
+    "line_enabled": false,
+    "line_user_id": "Ca86fc44888f8a79614305b5961976caa",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "01/2026",
+      "company_name": "",
+      "tax_id": "",
+      "period": "",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T04-35-29.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 11:35:37"
+  },
+  {
+    "id": "5582c924-a55e-403d-a18a-1e23742bae3a",
+    "status": "success",
+    "sent_time": "2026-02-19T11:35:38.806644",
+    "created_at": "2026-02-19T11:35:38.806644",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล shanghai.pat01@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 11:35:38"
+  },
+  {
+    "id": "1246d49f-93ce-447e-9679-76f96b32a576",
+    "status": "success",
+    "sent_time": "2026-02-19T11:44:35.196224",
+    "created_at": "2026-02-19T11:44:35.196224",
+    "pattern_name": "410 เมก้า พาร์ท เอ็นจิเนียร์",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "megaparts.e@gmail.com"
+    ],
+    "cc_emails": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท เมก้า พาร์ท เอ็นจิเนียร์ จำกัด ประจำเดือน 01/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท เมก้า พาร์ท เอ็นจิเนียร์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 01/2026 โดยมีรายการดังต่อไปนี้\n\n- ภาพแบบ , ใบเสร็จ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 01/2026:ไม่มียอดที่ต้องชำระ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 223624,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 167499,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท  เมก้า พาร์ท เอ็นจิเนียร์ จำกัด_PP30-202601_20260218-135947.pdf",
+        "size": 135103,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท  เมก้า พาร์ท เอ็นจิเนียร์ จำกัด_PP30-202601_20260218-135937.pdf",
+        "size": 69423,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T04-44-27.pdf",
+        "size": 87225,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 682874,
+    "line_enabled": false,
+    "line_user_id": "Uc9c71b83552f006bd9f01fe42d8242e0",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "01/2026",
+      "company_name": "",
+      "tax_id": "",
+      "period": "ประจำเดือน 01/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T04-44-27.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 11:44:35"
+  },
+  {
+    "id": "17e24197-847e-4f1e-a1f1-ad9473c5c64b",
+    "status": "success",
+    "sent_time": "2026-02-19T11:44:36.723079",
+    "created_at": "2026-02-19T11:44:36.723079",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล megaparts.e@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 11:44:36"
+  },
+  {
+    "id": "eb540b99-5ea9-4fae-991d-9a7f9d3f2467",
+    "status": "success",
+    "sent_time": "2026-02-19T13:55:13.808655",
+    "created_at": "2026-02-19T13:55:13.808655",
+    "pattern_name": "81 ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "surawee.por@gmail.com"
+    ],
+    "cc_emails": [
+      "nattida.w@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026:ไม่มียอดที่ต้องชำระ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 228712,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส จำกัด_PP30-202601_20260217-134045.pdf",
+        "size": 130194,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส จำกัด_01022026_17022026_20260217-133652.pdf",
+        "size": 64147,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 165747,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T06-55-05.pdf",
+        "size": 107633,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 696433,
+    "line_enabled": false,
+    "line_user_id": "U923c2aa802d724db88400d0319d783e7",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท ท๊อป เอ็นจิเนียริ่ง แอนด์ เซอร์วิส จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 1/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T06-55-05.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 13:55:13"
+  },
+  {
+    "id": "06483511-a628-420a-aa7e-730f1663f523",
+    "status": "success",
+    "sent_time": "2026-02-19T13:55:14.868605",
+    "created_at": "2026-02-19T13:55:14.868605",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล surawee.por@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 13:55:14"
+  },
+  {
+    "id": "062f2657-3548-46e5-96ae-b7e9b64e7702",
+    "status": "success",
+    "sent_time": "2026-02-19T14:19:10.766663",
+    "created_at": "2026-02-19T14:19:10.766663",
+    "pattern_name": "455 ปลายจวัก ฟู้ด แอนด์ เบเวอเรจ",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "pjw.foodandbev@gmail.com"
+    ],
+    "cc_emails": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท ปลายจวัก ฟู้ด แอนด์ เบเวอเรจ จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ปลายจวัก ฟู้ด แอนด์ เบเวอเรจ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- ภาพแบบ , ใบเสร็จ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026: ไม่มียอดที่ต้องชำระ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 224211,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท  ปลายจวัก ฟู้ด แอนด์ เบเวอเรจ จำกัด_PP30-202601_20260219-131705.pdf",
+        "size": 348879,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 164386,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท  ปลายจวัก ฟู้ด แอนด์ เบเวอเรจ จำกัด_PP30-202601_20260217-160850.pdf",
+        "size": 388595,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T07-19-02.pdf",
+        "size": 103858,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 1229929,
+    "line_enabled": false,
+    "line_user_id": "C50804db44eed17a4aefa6abe55c975d8",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท ปลายจวัก ฟู้ด แอนด์ เบเวอเรจ จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 1/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T07-19-02.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 14:19:10"
+  },
+  {
+    "id": "bce9800a-97fc-417b-bbea-f326a685f0ac",
+    "status": "success",
+    "sent_time": "2026-02-19T14:19:11.964461",
+    "created_at": "2026-02-19T14:19:11.964461",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล pjw.foodandbev@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 14:19:11"
+  },
+  {
+    "id": "fa97e033-1f71-45cd-a4f4-2c2bfa57736e",
+    "status": "success",
+    "sent_time": "2026-02-19T14:43:14.931395",
+    "created_at": "2026-02-19T14:43:14.931395",
+    "pattern_name": "388 รักษาความปลอดภัย ดับบลิว.เอ็น. ซีเคียวริตี้ การ์ด",
+    "signature_name": "วุ้นเส้น",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "wn.secarity.guard@gmail.com"
+    ],
+    "cc_emails": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท รักษาความปลอดภัย ดับบลิว.เอ็น. ซีเคียวริตี้ การ์ด จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท รักษาความปลอดภัย ดับบลิว.เอ็น. ซีเคียวริตี้ การ์ด จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน 01.2026\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 54,045.48 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 548451,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 173718,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.xlsx",
+        "size": 5910,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.xlsx",
+        "size": 5808,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T07-43-08.pdf",
+        "size": 113356,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 847243,
+    "line_enabled": false,
+    "line_user_id": "C83482c13ce19a600ec4a87ffd2e346a4",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท รักษาความปลอดภัย ดับบลิว.เอ็น. ซีเคียวริตี้ การ์ด จำกัด",
+      "tax_id": "07055-66004-61-3",
+      "period": "ประจำเดือน 1/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "54,045.48"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-19T07-43-08.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.132",
+    "sent_time_old": "2026-02-19 14:43:14"
+  },
+  {
+    "id": "d55dc821-b006-461a-b5b4-cdd81c46815d",
+    "status": "success",
+    "sent_time": "2026-02-19T14:43:16.062082",
+    "created_at": "2026-02-19T14:43:16.062082",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01.2026\nให้ทางอีเมล wn.secarity.guard@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01.2026\n\nยอดกรมสรรพากรที่ต้องชำระ 54,045.48 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\n\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\n\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 14:43:16"
+  },
+  {
+    "id": "2c1a7d64-a9e4-4851-afce-e90303aaf8bf",
+    "status": "success",
+    "sent_time": "2026-02-19T14:50:49.876702",
+    "created_at": "2026-02-19T14:50:49.876702",
+    "pattern_name": "63 เอสเคเอส แอดวานซ์",
+    "signature_name": "วุ้นเส้น",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "Suttipak.S@gmail.com"
+    ],
+    "cc_emails": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท เอสเคเอส แอดวานซ์ จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท เอสเคเอส แอดวานซ์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน 01.2026\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน  01.2026 ไม่มียอดชำระ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 222332,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 163491,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.xlsx",
+        "size": 5305,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.xlsx",
+        "size": 4809,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T07-50-43.pdf",
+        "size": 104690,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 500627,
+    "line_enabled": false,
+    "line_user_id": "U10130c1e608b256cc28f176918618103",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท เอสเคเอส แอดวานซ์ จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 1/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T07-50-43.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.132",
+    "sent_time_old": "2026-02-19 14:50:49"
+  },
+  {
+    "id": "3578be4d-d0b1-4a40-88e3-bf2ffdaebcc3",
+    "status": "success",
+    "sent_time": "2026-02-19T14:50:50.983106",
+    "created_at": "2026-02-19T14:50:50.983106",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01.2026\nให้ทางอีเมล Suttipak.S@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน  01.2026\n\nไม่มียอดชำระ\n\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 14:50:50"
+  },
+  {
+    "id": "1818f308-d136-4f35-8c43-a27d6566b709",
+    "status": "success",
+    "sent_time": "2026-02-19T15:26:14.306684",
+    "created_at": "2026-02-19T15:26:14.306684",
+    "pattern_name": "578 ทีเอ็นพี ไฟท์ คอนสตรัคชั่น",
+    "signature_name": "วุ้นเส้น",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "patchax97@gmail.com"
+    ],
+    "cc_emails": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท ทีเอ็นพี ไฟท์ คอนสตรัคชั่น จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ทีเอ็นพี ไฟท์ คอนสตรัคชั่น จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 6,420.77 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 544778,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 174663,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.xlsx",
+        "size": 13019,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.xlsx",
+        "size": 11936,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T08-26-08.pdf",
+        "size": 113197,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 857593,
+    "line_enabled": false,
+    "line_user_id": "Ue129ef137fa3c8f452ab09d0a6753e47",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท ทีเอ็นพี ไฟท์ คอนสตรัคชั่น จำกัด",
+      "tax_id": "02055-68047-63-2",
+      "period": "ประจำเดือน 1/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "6,420.77"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-19T08-26-08.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.132",
+    "sent_time_old": "2026-02-19 15:26:14"
+  },
+  {
+    "id": "6b2fd4cb-e353-4fa3-8382-cbdfd89909c7",
+    "status": "success",
+    "sent_time": "2026-02-19T15:26:15.348809",
+    "created_at": "2026-02-19T15:26:15.348809",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01.2026\nให้ทางอีเมล patchax97@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01.2026\n\nยอดกรมสรรพากรที่ต้องชำระ 6,420.77 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\n\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\n\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 15:26:15"
+  },
+  {
+    "id": "6b052aee-6391-4267-95f6-33a5cf25b062",
+    "status": "success",
+    "sent_time": "2026-02-19T15:51:16.589027",
+    "created_at": "2026-02-19T15:51:16.589027",
+    "pattern_name": "96 ทีพี อินฟินิตี้ อินเตอร์เนชั่นแนล",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "tpinfinity.inter@gmail.com",
+      "penpinyada.pnr@gmail.com"
+    ],
+    "cc_emails": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท ทีพี อินฟินิตี้ อินเตอร์เนชั่นแนล จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ทีพี อินฟินิตี้ อินเตอร์เนชั่นแนล จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 20,044.21 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in (ภพ.30) เดือน 01.2026.pdf",
+        "size": 549616,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 172097,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท ทีพี อินฟินิตี้ อินเตอร์เนชั่นเนล จำกัด_PP30-202601_20260218-150759.pdf",
+        "size": 138475,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท ทีพี อินฟินิตี้ อินเตอร์เนชั่นเนล จำกัด_PP30-202601_20260218-150655.pdf",
+        "size": 132913,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T08-51-07.pdf",
+        "size": 110867,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 1103968,
+    "line_enabled": false,
+    "line_user_id": "U158ddde1f698842d734b2c6cf7059ab9",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท ทีพี อินฟินิตี้ อินเตอร์เนชั่นแนล จำกัด",
+      "tax_id": "02255-65000-63-5",
+      "period": "ประจำเดือน 1/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "20,044.21"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-19T08-51-07.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 15:51:16"
+  },
+  {
+    "id": "494da028-3b98-447d-aba7-4ed1700c1f2a",
+    "status": "success",
+    "sent_time": "2026-02-19T15:51:18.066321",
+    "created_at": "2026-02-19T15:51:18.066321",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล  tpinfinity.inter@gmail.com,penpinyada.pnr@gmail.com  แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 20,044.21 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 15:51:18"
+  },
+  {
+    "id": "2cf6c251-2008-4d86-8414-6ad2c9e60265",
+    "status": "success",
+    "sent_time": "2026-02-19T15:56:49.986719",
+    "created_at": "2026-02-19T15:56:49.986719",
+    "pattern_name": "197 มิตรร่วมชัย ออโตพาร์ท",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "naphath.mrc@gmail.com"
+    ],
+    "cc_emails": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท มิตรร่วมชัย ออโตพาร์ท จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท มิตรร่วมชัย ออโตพาร์ท จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- ภาพแบบ , ใบเสร็จ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026:ไม่มียอดที่ต้องชำระ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 225895,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท มิตรร่วมชัย ออโตพาร์ท จำกัด_PP30-202601_20260218-173413.pdf",
+        "size": 138067,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท มิตรร่วมชัย ออโตพาร์ท จำกัด_PP30-202601_20260218-173423.pdf",
+        "size": 70102,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 165663,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T08-56-43.pdf",
+        "size": 105518,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 705245,
+    "line_enabled": false,
+    "line_user_id": "U963de252a77efc2046b3d7d965a05665",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท มิตรร่วมชัย ออโตพาร์ท จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 1/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T08-56-43.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 15:56:49"
+  },
+  {
+    "id": "47d71ac9-7469-4e7d-8c3b-2d6b3511762d",
+    "status": "success",
+    "sent_time": "2026-02-19T15:56:51.165727",
+    "created_at": "2026-02-19T15:56:51.165727",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล naphath.mrc@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 15:56:51"
+  },
+  {
+    "id": "b89493c8-39cb-4a51-a932-442a84396f7e",
+    "status": "success",
+    "sent_time": "2026-02-19T16:03:45.209781",
+    "created_at": "2026-02-19T16:03:45.209781",
+    "pattern_name": "247 แอมมิรี ไร้ขีด",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "Pyt.lews@gmail.com",
+      "Sarapao.k@gmail.com"
+    ],
+    "cc_emails": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท แอมมิรี ไร้ขีด จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท แอมมิรี ไร้ขีด จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026: จำนวน 36,745.37 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี (ภพ.30) เดือน 01.2026.pdf",
+        "size": 549533,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 171093,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท แอมมิรี ไร้ขีด จำกัด_PP30-202601_20260219-135325.pdf",
+        "size": 166696,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท แอมมิรี ไร้ขีด จำกัด_PP30-202601_20260210-164204.pdf",
+        "size": 134360,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T09-03-35.pdf",
+        "size": 106201,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 1127883,
+    "line_enabled": false,
+    "line_user_id": "Cd46316640ba3a41da70e6f262bf1c525",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท แอมมิรี ไร้ขีด จำกัด",
+      "tax_id": "02155-66006-61-1",
+      "period": "ประจำเดือน 1/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "36,745.37"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-19T09-03-35.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 16:03:45"
+  },
+  {
+    "id": "a069ed9a-f5fb-40dc-84dd-e32ff4a54342",
+    "status": "success",
+    "sent_time": "2026-02-19T16:03:46.374359",
+    "created_at": "2026-02-19T16:03:46.374359",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล Pyt.lews@gmail.com , Sarapao.k@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 36,745.37 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 16:03:46"
+  },
+  {
+    "id": "15fdd962-bcc2-45e8-ad59-80e7e5eb54a2",
+    "status": "success",
+    "sent_time": "2026-02-19T16:22:11.697184",
+    "created_at": "2026-02-19T16:22:11.697184",
+    "pattern_name": "512 โบ มี กรุ๊ป",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "bome.officiathailand@gmail.com"
+    ],
+    "cc_emails": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท โบ มี กรุ๊ป จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริิษัท โบ มี กรุ๊ป จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026: จำนวน 40,649.37 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 550009,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 175485,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.pdf",
+        "size": 215596,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.pdf",
+        "size": 3051176,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T09-21-57.pdf",
+        "size": 106749,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 4099015,
+    "line_enabled": false,
+    "line_user_id": "C3b34180da6f7d0c426bdee6c33153967",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 1/2026",
+      "company_name": "บริษัท โบ มี กรุ๊ป จำกัด",
+      "tax_id": "01055-67130-50-2",
+      "period": "ประจำเดือน 1/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "40,649.37"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-19T09-21-57.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-02-19 16:22:11"
+  },
+  {
+    "id": "e97e5c21-a288-4ef5-82d1-02b0695bbfdd",
+    "status": "success",
+    "sent_time": "2026-02-19T16:22:12.983124",
+    "created_at": "2026-02-19T16:22:12.983124",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01.2026\nให้ทางอีเมล bome.officiathailand@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01.2026\nยอดกรมสรรพากรที่ต้องชำระ 40,649.37 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 16:22:12"
+  },
+  {
+    "id": "bcdbc19e-bc86-41aa-8637-55ad4da8b8ef",
+    "status": "success",
+    "sent_time": "2026-02-19T16:29:05.912233",
+    "created_at": "2026-02-19T16:29:05.912233",
+    "pattern_name": "273 กลอรี่ คอนซัลแทนท์",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "glory.consult88@gmail.com"
+    ],
+    "cc_emails": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท กลอรี่ คอนซัลแทนท์ จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท กลอรี่ คอนซัลแทนท์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026: จำนวน 31,297.20 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 549064,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 173733,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.pdf",
+        "size": 212138,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.pdf",
+        "size": 229618,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 4,
+    "total_size": 1164553,
+    "line_enabled": false,
+    "line_user_id": "C5c41df547cf4847a213d5cfad7956ef5",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-02-19 16:29:05"
+  },
+  {
+    "id": "9f518124-577a-4e3e-9e6e-de95e22dddce",
+    "status": "success",
+    "sent_time": "2026-02-19T16:29:07.087750",
+    "created_at": "2026-02-19T16:29:07.087750",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01.2026\nให้ทางอีเมล glory.consult88@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01.2026\nยอดกรมสรรพากรที่ต้องชำระ 31,297.20 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 16:29:07"
+  },
+  {
+    "id": "3faa3fb7-85ad-406e-91f4-c24db596b0ae",
+    "status": "success",
+    "sent_time": "2026-02-19T16:50:11.415694",
+    "created_at": "2026-02-19T16:50:11.415694",
+    "pattern_name": "165 บีพี เอ็มไพร์",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "bp.empire68@gmail.com"
+    ],
+    "cc_emails": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท บีพี เอ็มไพร์ จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท บีพี เอ็มไพร์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026: จำนวน 1,325.20 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 546536,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 173672,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท บีพี เอ็มไพร์  จำกัด_PP30-202601_20260219-121706.pdf",
+        "size": 158739,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท บีพี เอ็มไพร์  จำกัด_PP30-202601_20260219-121710.pdf",
+        "size": 180892,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T09-50-04.pdf",
+        "size": 106582,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 1166421,
+    "line_enabled": false,
+    "line_user_id": "C739e24ed7eabad05c2dd53641290fdd1",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 1/2026",
+      "company_name": "บริษัท บีพี เอ็มไพร์ จำกัด",
+      "tax_id": "01255-65028-24-7",
+      "period": "ประจำเดือน 1/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "1,325.20"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-19T09-50-04.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-02-19 16:50:11"
+  },
+  {
+    "id": "df98b23e-f725-4eee-8e30-b47467acd412",
+    "status": "success",
+    "sent_time": "2026-02-19T16:50:12.675573",
+    "created_at": "2026-02-19T16:50:12.675573",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01.2026\nให้ทางอีเมล bp.empire68@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01.2026\nยอดกรมสรรพากรที่ต้องชำระ 1,325.20 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 16:50:12"
+  },
+  {
+    "id": "595aeb36-d46e-447f-b185-fcc2776453a1",
+    "status": "success",
+    "sent_time": "2026-02-19T16:57:02.216646",
+    "created_at": "2026-02-19T16:57:02.216646",
+    "pattern_name": "219 พราว โซลูชั่น เทคโนโลยี ",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "anchalee.s@ratchata.com"
+    ],
+    "cc_emails": [
+      "Panatta.K@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท พราว โซลูชั่น เทคโนโลยี จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท พราว โซลูชั่น เทคโนโลยี จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n-ไม่มียอดชำระ // ขอบคุณค่ะ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 223400,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.pdf",
+        "size": 110592,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 166110,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.pdf",
+        "size": 218664,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T09-56-56.pdf",
+        "size": 109163,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 827929,
+    "line_enabled": false,
+    "line_user_id": "U5ade5937f7551a756f9be12fe639f729",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 1/2026",
+      "company_name": "บริษัท พราว โซลูชั่น เทคโนโลยี จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 1/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T09-56-56.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-02-19 16:57:02"
+  },
+  {
+    "id": "17fa215c-7081-46f8-ba75-8a5bb59f251b",
+    "status": "success",
+    "sent_time": "2026-02-19T16:57:03.452504",
+    "created_at": "2026-02-19T16:57:03.452504",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01.2026\nให้ทางอีเมล anchalee.s@ratchata.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01.2026\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 16:57:03"
+  },
+  {
+    "id": "4132127c-3443-4d04-8143-dc43ace2d405",
+    "status": "success",
+    "sent_time": "2026-02-19T17:00:56.224333",
+    "created_at": "2026-02-19T17:00:56.224333",
+    "pattern_name": "190 ไอแซดซี เทรดดิ้ง",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "izctrading@outlook.com"
+    ],
+    "cc_emails": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท ไอแซดซี เทรดดิ้ง จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ไอแซดซี เทรดดิ้ง จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026:ไม่มียอดที่ต้องชำระ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 222541,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 165488,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.pdf",
+        "size": 154953,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.pdf",
+        "size": 140386,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T10-00-48.pdf",
+        "size": 102014,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 785382,
+    "line_enabled": false,
+    "line_user_id": "Cac636b854757a738e47398c3a7536ed7",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท บริษัท ไอแซดซี เทรดดิ้ง จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 1/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T10-00-48.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 17:00:56"
+  },
+  {
+    "id": "444d25ac-cb91-46d4-8bcf-23994d2eb3bc",
+    "status": "success",
+    "sent_time": "2026-02-19T17:00:57.408415",
+    "created_at": "2026-02-19T17:00:57.408415",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล izctrading@outlook.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 17:00:57"
+  },
+  {
+    "id": "6cc228da-ce04-4b66-bbc6-03ab216cc0fe",
+    "status": "success",
+    "sent_time": "2026-02-19T17:05:04.287638",
+    "created_at": "2026-02-19T17:05:04.287638",
+    "pattern_name": "431 พลอยดาว",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "ploydaoproduction@gmail.com"
+    ],
+    "cc_emails": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท พลอยดาว จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท พลอยดาว จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ไม่มียอดชำระ // ขอบคุณค่ะ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 224448,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 164268,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.pdf",
+        "size": 209559,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.pdf",
+        "size": 217142,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T10-04-58.pdf",
+        "size": 103236,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 918653,
+    "line_enabled": false,
+    "line_user_id": "Ucff8564a0a25928605922328b0009dd8",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 1/2026",
+      "company_name": "บริษัท พลอยดาว จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 1/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T10-04-58.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-02-19 17:05:04"
+  },
+  {
+    "id": "d14bf2df-2ff0-4737-b420-bc8c891b2b38",
+    "status": "success",
+    "sent_time": "2026-02-19T17:05:05.493408",
+    "created_at": "2026-02-19T17:05:05.493408",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01.2026\nให้ทางอีเมล ploydaoproduction@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01.2026\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 17:05:05"
+  },
+  {
+    "id": "eed2ca65-0b2b-4015-b4c9-c213ae2d8527",
+    "status": "success",
+    "sent_time": "2026-02-19T17:10:28.925325",
+    "created_at": "2026-02-19T17:10:28.925325",
+    "pattern_name": "344 คอนเน็กซ์บุ๊ค",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "connexbook@gmail.com"
+    ],
+    "cc_emails": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท คอนเน็กซ์บุ๊ค จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท คอนเน็กซ์บุ๊ค จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026: จำนวน 29,593.11 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 547350,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 172958,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.pdf",
+        "size": 587443,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.pdf",
+        "size": 1771336,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T10-10-19.pdf",
+        "size": 111765,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 3190852,
+    "line_enabled": false,
+    "line_user_id": "Ce41c53c02b8d3f79ffdcef17d6b3b9ee",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท คอนเน็กซ์บุ๊ค จำกัด",
+      "tax_id": "01955-62002-04-2",
+      "period": "ประจำเดือน 1/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "29,593.11"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-19T10-10-19.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 17:10:28"
+  },
+  {
+    "id": "3a7ac961-8a90-415a-b6df-533955e98f2b",
+    "status": "success",
+    "sent_time": "2026-02-19T17:10:29.997386",
+    "created_at": "2026-02-19T17:10:29.997386",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล connexbook@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 29,593.11 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 17:10:29"
+  },
+  {
+    "id": "38b59a44-8e6c-4d2f-b3dc-d108d30be8ea",
+    "status": "success",
+    "sent_time": "2026-02-19T17:16:49.639071",
+    "created_at": "2026-02-19T17:16:49.639071",
+    "pattern_name": "396 กะทิ กะลา",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "info@katikala.com",
+      "paungmaneeboonlieng@gmail.com",
+      "somjaa@katikala.com"
+    ],
+    "cc_emails": [
+      "Sitthikorn.S@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท กะทิ กะลา จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท กะทิ กะลา จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- ภาพแบบ , ใบเสร็จ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026:ไม่มียอดที่ต้องชำระ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 223684,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 164253,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 01.2026.pdf",
+        "size": 533642,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 01.2026.pdf",
+        "size": 623134,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T10-16-40.pdf",
+        "size": 99529,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 1644242,
+    "line_enabled": false,
+    "line_user_id": "Cd9873f670e8478bffd19d15b3b96440b",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท กะทิ กะลา จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 1/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T10-16-40.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 17:16:49"
+  },
+  {
+    "id": "e94137b7-7cac-4760-a03b-c0214999574a",
+    "status": "success",
+    "sent_time": "2026-02-19T17:16:50.796230",
+    "created_at": "2026-02-19T17:16:50.796230",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล info@katikala.com \nCC. paungmaneeboonlieng@gmail.com , somjaa@katikala.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 17:16:50"
+  },
+  {
+    "id": "472cda54-29cc-4a9a-b502-f835998d3b6a",
+    "status": "success",
+    "sent_time": "2026-02-19T17:23:55.738192",
+    "created_at": "2026-02-19T17:23:55.738192",
+    "pattern_name": "185 วัตคุง",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "S.satawatj@hotmail.com"
+    ],
+    "cc_emails": [
+      "Chanida.S@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท วัตคุง จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท วัตคุง จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- ภาพแบบ , ใบเสร็จ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026: ไม่มียอดที่ต้องชำระ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 1.2026.pdf",
+        "size": 222278,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท วัตคุง จำกัด_PP30-202601_20260219-140942.pdf",
+        "size": 144437,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จ ภ.พ.30 เดือน 1.2026.pdf",
+        "size": 164650,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท วัตคุง จำกัด_PP30-202601_20260219-140932.pdf",
+        "size": 134418,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T10-23-48.pdf",
+        "size": 101538,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 767321,
+    "line_enabled": false,
+    "line_user_id": "Uc560d7f67d256aa659d7178ca532fd58",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท วัตคุง จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 1/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-02-19T10-23-48.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 17:23:55"
+  },
+  {
+    "id": "08cfac5f-bf6c-4f2b-bb36-76bfb8a0b8ee",
+    "status": "success",
+    "sent_time": "2026-02-19T17:23:57.891649",
+    "created_at": "2026-02-19T17:23:57.891649",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล S.satawatj@hotmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 17:23:57"
+  },
+  {
+    "id": "6b4932d6-fb92-4488-bdf4-c24cb8ec8bab",
+    "status": "success",
+    "sent_time": "2026-02-19T17:32:09.192108",
+    "created_at": "2026-02-19T17:32:09.192108",
+    "pattern_name": "230 โคซี่แอนด์ริช",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "cozyrich.co@gmail.com"
+    ],
+    "cc_emails": [
+      "nattida.w@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท โคซี่แอนด์ริช จำกัด ประจำเดือน 1/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท โคซี่แอนด์ริช จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 1/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 1/2026: จำนวน 14,289.84 บาท\nกรุณาชำระภายในวันที่ 23/02/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 550029,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 01.2026.pdf",
+        "size": 171100,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท โคซี่แอนด์ริช จำกัด_PP30-202601_20260217-173148.pdf",
+        "size": 130223,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท โคซี่แอนด์ริช จำกัด_PP30-202601_20260217-173155.pdf",
+        "size": 138111,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-02-19T10-32-00.pdf",
+        "size": 112633,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 1102096,
+    "line_enabled": false,
+    "line_user_id": "U808d280d66706859d75c8af35a582603",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท โคซี่แอนด์ริช จำกัด",
+      "tax_id": "02055-66022-81-1",
+      "period": "ประจำเดือน 1/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "14,289.84"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-02-19T10-32-00.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-02-19 17:32:09"
+  },
+  {
+    "id": "8543f014-d607-4bb3-8024-e5f0a2af7abe",
+    "status": "success",
+    "sent_time": "2026-02-19T17:32:10.383317",
+    "created_at": "2026-02-19T17:32:10.383317",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 01/2026\nให้ทางอีเมล cozyrich.co@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 01/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 14,289.84 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/02/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-02-19 17:32:10"
   }
 ]

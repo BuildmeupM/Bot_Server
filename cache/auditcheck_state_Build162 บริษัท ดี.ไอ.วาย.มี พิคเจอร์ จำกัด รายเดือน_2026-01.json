@@ -1,0 +1,119 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T02:44:16.066Z",
+  "last_saved": "2026-02-19T09:44:16.529202",
+  "company": "Build162 บริษัท ดี.ไอ.วาย.มี พิคเจอร์ จำกัด รายเดือน",
+  "base_company": "Build162 บริษัท ดี.ไอ.วาย.มี พิคเจอร์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-37.29 แต่ OCR=37.29 (ต่างกัน 74.58)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-2.61 แต่ OCR=2.61 (ต่างกัน 5.22)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-39.90 แต่ OCR=39.90 (ต่างกัน 79.80)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบลดหนี้' แต่ OCR='CREDIT NOTE'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited (Head Office)'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited (Head Office)'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "2-company_name_match": true,
+    "2-amount_before_vat_match": true,
+    "2-vat_amount_match": true,
+    "2-total_amount_match": true,
+    "2-document_type_match": true,
+    "3-company_name_match": true,
+    "4-company_name_match": true,
+    "5-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build162 บริษัท ดี.ไอ.วาย.มี พิคเจอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 6,
+    "metadata": [
+      {
+        "filename": "04.01.2026_EXP-20260100008_f75d03170cea584c5935dea5a3a9b81f_VAT.pdf",
+        "company_name": "Lazada Limited"
+      },
+      {
+        "filename": "11.01.2026_CNX-20260100001_6f13f180f9496df9f42d39f71dd6fc39_VAT.pdf",
+        "company_name": "Lazada Limited"
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100005_690d2f2b5b510cce8b136573e348f601_VAT.pdf",
+        "company_name": "Lazada Limited"
+      },
+      {
+        "filename": "11.01.2026_EXP-20260100012_ซ้ำ_f9a968067af7745506334e21b1e29212.pdf",
+        "company_name": "Lazada Limited"
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100006_df7bea8b0d20300ba54d8535dd7fd921_VAT.pdf",
+        "company_name": "Lazada Limited (Head Office)"
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100007_e028d30fce4ae6aeb24329b0431d9e6a_VAT.pdf",
+        "company_name": "Lazada Limited (Head Office)"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 6,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "THMPTI2026010000027624",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "THMPTI2026010000126983",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "CNX-20260100001",
+        "ocr_document_no": "THMPTC2026010000022336",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "THMPTI2026010000253453",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "THMPTI2026010000388764",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "THMPTI2026010000575055",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

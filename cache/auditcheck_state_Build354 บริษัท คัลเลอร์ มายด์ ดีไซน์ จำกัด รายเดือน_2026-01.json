@@ -1,0 +1,212 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T10:13:01.786Z",
+  "last_saved": "2026-02-19T17:13:01.207052",
+  "company": "Build354 บริษัท คัลเลอร์ มายด์ ดีไซน์ จำกัด รายเดือน",
+  "base_company": "Build354 บริษัท คัลเลอร์ มายด์ ดีไซน์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100001 (เลขที่ใบกำกับ: RT-20260100392)",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "7": "",
+    "8": "",
+    "11": "",
+    "12": "",
+    "15": "",
+    "17": "",
+    "19": "",
+    "22": "",
+    "24": "",
+    "31": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260129-0022783' แต่ OCR='TRSPEMKP00-00000-26'",
+    "34": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260100017"
+  },
+  "initialNotes": {
+    "0": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEKOA00-00000-260106-000286' แต่ OCR='TRSPEKOA00-00000-26'",
+    "1": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: RT-20260100392",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260103-0012310' แต่ OCR='TRSPEMKP00-00000-26'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='OpenAI,LLC'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='69113013358' แต่ OCR='P360004940348'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='11/01/2026' แต่ OCR='30/12/2025'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=780.06 แต่ OCR=47.90 (ต่างกัน 732.16)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='แบบนำส่งภาษีมูลค่าเพิ่ม'",
+    "4": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260105-0013662' แต่ OCR='TRSPEMKP00-00000-26'",
+    "5": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260106-0022800' แต่ OCR='TRSPEMKP00-00000-26'",
+    "6": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260107-0011715' แต่ OCR='TRSPEMKP00-00000-26'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไทเกอร์เพอร่า จำกัด' แต่ OCR='บริษัท ไทเกอร์เพอร์ร่า จำกัด'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260109-0017036' แต่ OCR='TRSPEMKP00-00000-26'",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260112-0003076' แต่ OCR='TRSPEMKP00-00000-26'",
+    "12": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0115553014882' แต่ OCR='011553014882'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='358-17852' แต่ OCR='17852'",
+    "15": "วันที่ไม่ตรงกัน: ภาษีซื้อ='15/01/2026' แต่ OCR='15/01/1983'",
+    "17": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260115-0021232' แต่ OCR='TRSPEMKP00-00000-26'",
+    "19": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260117-0018900' แต่ OCR='TRSPEMKP00-00000-26'",
+    "22": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105558019581' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='ไม่พบ'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260120-0025346' แต่ OCR='ไม่พบ'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='20/01/2026' แต่ OCR='ไม่พบ'",
+    "24": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260122-0002017' แต่ OCR='TRSPEMKP00-00000-26'",
+    "31": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260129-0022783' แต่ OCR='TRSPEMKP00-00000-26'",
+    "34": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260100017"
+  },
+  "comparisonApprovals": {
+    "0-address_match": true,
+    "1-address_match": true,
+    "2-address_match": true,
+    "3-address_match": true,
+    "4-address_match": true,
+    "5-address_match": true,
+    "6-address_match": true,
+    "7-company_data_all": true,
+    "7-address_match": true,
+    "8-document_no_match": true,
+    "8-company_data_all": true,
+    "8-address_match": true,
+    "9-address_match": true,
+    "10-address_match": true,
+    "11-document_no_match": true,
+    "11-address_match": true,
+    "12-document_no_match": true,
+    "12-tax_id_match": true,
+    "13-address_match": true,
+    "14-address_match": true,
+    "15-date_match": true,
+    "16-address_match": true,
+    "17-document_no_match": true,
+    "17-address_match": true,
+    "18-company_name_match": true,
+    "18-address_match": true,
+    "19-document_no_match": true,
+    "19-address_match": true,
+    "19-company_name_match": true,
+    "20-address_match": true,
+    "21-address_match": true,
+    "22-document_no_match": true,
+    "22-date_match": true,
+    "22-tax_id_match": true,
+    "22-branch_match": true,
+    "22-address_match": true,
+    "23-address_match": true,
+    "24-document_no_match": true,
+    "24-address_match": true,
+    "6-document_no_match": true,
+    "6-company_name_match": true,
+    "7-company_name_match": true,
+    "2-document_no_match": true,
+    "2-company_name_match": true,
+    "2-tax_id_match": true,
+    "2-branch_match": true,
+    "2-total_amount_match": true,
+    "2-document_type_match": true,
+    "5-document_no_match": true,
+    "5-company_name_match": true,
+    "3-document_type_match": true,
+    "3-total_amount_match": true,
+    "3-branch_match": true,
+    "3-tax_id_match": true,
+    "3-company_name_match": true,
+    "3-date_match": true,
+    "3-document_no_match": true,
+    "0-document_no_match": true,
+    "0-date_match": true,
+    "0-company_name_match": true,
+    "0-tax_id_match": true,
+    "0-branch_match": true,
+    "0-total_amount_match": true,
+    "0-document_type_match": true,
+    "4-document_no_match": true,
+    "4-company_name_match": true,
+    "1-date_match": true,
+    "1-tax_id_match": true,
+    "1-branch_match": true,
+    "1-reference_no_match": true,
+    "1-amount_before_vat_match": true,
+    "1-vat_amount_match": true,
+    "1-total_amount_match": true,
+    "1-document_type_match": true,
+    "1-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {
+    "0": true,
+    "1": true,
+    "34": true
+  },
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build354 บริษัท คัลเลอร์ มายด์ ดีไซน์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 6,
+    "metadata": [
+      {
+        "filename": "20.01.2026_EXP-20260100008_530214_ค่าหมึกพิมพ์2_VAT.pdf",
+        "company_name": "บริษัท จี.พี. คอมพิวเตอร์ ช้อป จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100006_530214_ค่าอุปกรณ์ออฟฟิศ_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100009_530214_ค่าหมึกพิมพ์_VAT.pdf",
+        "company_name": "บริษัท เนบิวลา เทคโนโลยี แอนด์ คอมเมิร์ส จำกัด"
+      },
+      {
+        "filename": "12.12.2026_WHT_EXP-20251200021_510111_ค่าผลิตแผ่นพับ(ตัดจ่าย 30.01.2026)_VAT.pdf",
+        "company_name": "บริษัท พี เอ็นเตอร์ไพรส์ ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "21.01.2026_WHT_EXP-20260100005_530401_ค่าบริการบัญชี_ RT-20260100292_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100007_530214_ค่าจอสำหรับงานpresent_VAT.pdf",
+        "company_name": "บริษัท เดอะมอลล์ กรุ๊ป จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 6,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251200021",
+        "ocr_document_no": "IV6812076",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "DP0000309992, DP0000309995",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "1077858134402352",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "103298",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "2026/IV0305",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "RT-20260100292",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

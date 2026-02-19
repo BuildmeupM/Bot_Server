@@ -1,0 +1,629 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T04:15:11.697Z",
+  "last_saved": "2026-02-19T11:15:11.061356",
+  "company": "Build545 บริษัท ดิสโพซิชั่น จำกัด",
+  "base_company": "Build545 บริษัท ดิสโพซิชั่น จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "1": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=11,700.93 แต่ OCR=11,700.94 (ต่างกัน 0.01)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=819.07 แต่ OCR=819.06 (ต่างกัน 0.01)",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "5": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "7": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='ORRVLC26010019' แต่ OCR='ORRV LC26010019'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "10": "",
+    "11": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "15": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "16": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "17": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "18": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RT-2026100288' แต่ OCR='RT-20260100288'",
+    "19": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "20": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "21": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd (Head Office)'",
+    "23": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "24": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='บริษัท บีม ดาต้า จำกัด (สำนักงานใหญ่)'",
+    "25": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105558019581' แต่ OCR='010558019581'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "26": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "28": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "29": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd (Head Office)'",
+    "30": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260122-0018647' แต่ OCR='TRSPEMKP00-00000-26-0122-0018647'",
+    "31": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='บริษัท บีม ดาต้า จำกัด (สำนักงานใหญ่)'",
+    "32": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "33": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "34": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "36": "",
+    "38": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "39": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "41": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "42": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "43": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "44": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "45": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "46": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "47": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'"
+  },
+  "initialNotes": {
+    "0": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260105-0005784' แต่ OCR='TRSPEMKP00-00000-26'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=3.74 แต่ OCR=3.73 (ต่างกัน 0.01)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=0.26 แต่ OCR=0.27 (ต่างกัน 0.01)",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Meta Platforms Ireland Limited'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=16,312.44 แต่ OCR=1,001.64 (ต่างกัน 15,310.80)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ไม่ระบุ'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte. Ltd.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=4,467.36 แต่ OCR=274.31 (ต่างกัน 4,193.05)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='แบบนำส่งภาษีมูลค่าเพิ่ม (ภ.พ.36)'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท' แต่ OCR='[PKO]ทรัสต์เพื่อการลงทุนในสิทธิการเช่า อสังหาริมทรัพย์ CPN รีเทล โกรท'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บลู เปเปอร์ จำกัด' แต่ OCR='บริษัท บลู เปเปอร์จำกัด'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ธนารมณ์ จำกัด' แต่ OCR='บริษัท ธนาธมณ์ จำกัด'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=5,500.00 แต่ OCR=11,000.00 (ต่างกัน 5,500.00)",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ธนารมณ์ จำกัด' แต่ OCR='บริษัท ธนาธรณ์ จำกัด'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00004' แต่ OCR='00000'",
+    "7": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='ORRVLC26010019' แต่ OCR='ORRV LC26010019'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "10": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105565010968' แต่ OCR='0105565010963'",
+    "11": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "15": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "16": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "17": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "18": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RT-2026100288' แต่ OCR='RT-20260100288'",
+    "19": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "20": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "21": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd (Head Office)'",
+    "23": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "24": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='บริษัท บีม ดาต้า จำกัด (สำนักงานใหญ่)'",
+    "25": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105558019581' แต่ OCR='010558019581'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "26": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "28": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "29": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd (Head Office)'",
+    "30": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260122-0018647' แต่ OCR='TRSPEMKP00-00000-26-0122-0018647'",
+    "31": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='บริษัท บีม ดาต้า จำกัด (สำนักงานใหญ่)'",
+    "32": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "33": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "34": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "36": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซี.เอ.เทรดดิ้ง จำกัด' แต่ OCR='บริษัท ซี.เอ. เทรดดิ้ง จำกัด'",
+    "38": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "39": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "41": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "42": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "43": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "44": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "45": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "46": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'",
+    "47": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีม เดต้า จำกัด' แต่ OCR='Beam Data Co., Ltd'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "0-tax_id_match": true,
+    "0-branch_match": true,
+    "0-total_amount_match": true,
+    "0-document_type_match": true,
+    "1-company_name_match": true,
+    "1-tax_id_match": true,
+    "1-branch_match": true,
+    "1-total_amount_match": true,
+    "1-document_type_match": true,
+    "2-company_name_match": true,
+    "2-tax_id_match": true,
+    "2-branch_match": true,
+    "2-total_amount_match": true,
+    "2-document_type_match": true,
+    "4-company_name_match": true,
+    "3-company_name_match": true,
+    "5-amount_before_vat_match": true,
+    "5-company_name_match": true,
+    "6-company_name_match": true,
+    "6-branch_match": true,
+    "10-tax_id_match": true,
+    "36-company_name_match": true,
+    "40-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build545 บริษัท ดิสโพซิชั่น จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 48,
+    "metadata": [
+      {
+        "filename": "30.01.2026_EXP-20260100070_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100050_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100067_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100032_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100043_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "26.01.2026_WHT_EXP-20260100017_ค่าเช่าเครื่องถ่ายเอกสาร.pdf",
+        "company_name": "บริษัท ซี.เอ. เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100027_AIS_Receipt_12012026_190904(internet)_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100024_ค่าบำรุงสมาชิกFTI_VAT_rotated.pdf",
+        "company_name": "สภาอุตสาหกรรมแห่งประเทศไทย"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100026_AIS_Receipt_12012026_190757(PHONE)_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100068_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100059_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100063_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100056_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100038_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100057_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100053_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100060_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "01.01.2026_EXP-20260100031_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "21.01.2026_EXP-20260200011_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100049_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100051_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100036_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100025_etax_mea1769593981229 ค่าไฟ0126_VAT.pdf",
+        "company_name": "การไฟฟ้านครหลวง"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100023_ค่าน้ำ_VAT.pdf",
+        "company_name": "การประปานครหลวง"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100045_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100034_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100033_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100035_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "19.01.2026_EXP-20260200010_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100066_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100061_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd (Head Office)"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100054_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100046_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100064_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd (Head Office)"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100047_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100065_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "บริษัท บีม ดาต้า จำกัด (สำนักงานใหญ่)"
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100044_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "12.01.2026_WHT_EXP-20260100016_ค่าทำบัญชีDPS.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100062_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "บริษัท บีม ดาต้า จำกัด (สำนักงานใหญ่)"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100042_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100069_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100055_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100071_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100052_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100022_TS25690121_บริษัท พีโฟร์กรุ๊ป1988 จำกัด_INV2026010707_บริษัท ดิสโพซิชั่น จำกัด(กล่อง)_VAT.pdf",
+        "company_name": "บริษัท พีโฟร์กรุ๊ป1988 จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100041_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100058_ค่าบริการ_Beam_VAT.pdf",
+        "company_name": "Beam Data Co., Ltd"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100039_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 48,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100031",
+        "ocr_document_no": "TRSPEMKP00-00000-260101-0016811",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100050",
+        "ocr_document_no": "260105000366",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100051",
+        "ocr_document_no": "260106000370",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100052",
+        "ocr_document_no": "260107000368",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100053",
+        "ocr_document_no": "260108000367",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100032",
+        "ocr_document_no": "TRSPEMKP00-00000-260108-0003820",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100054",
+        "ocr_document_no": "260109000368",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100055",
+        "ocr_document_no": "260110000371",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100056",
+        "ocr_document_no": "260112000371",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100023",
+        "ocr_document_no": "E0597595784",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "RT-20260100128",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100033",
+        "ocr_document_no": "TRSPEMKP00-00000-260112-0018104",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100026",
+        "ocr_document_no": "W-BS-1067-6901-10585461",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100027",
+        "ocr_document_no": "W-BS-1067-6901-10585488",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260100057",
+        "ocr_document_no": "260113000380",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260100034",
+        "ocr_document_no": "TRSPEMKP00-00000-260113-0011065",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260100058",
+        "ocr_document_no": "260114000378",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260100059",
+        "ocr_document_no": "260115000365",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100060",
+        "ocr_document_no": "260116000383",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260100035",
+        "ocr_document_no": "TRSPEMKP00-00000-260116-0009204",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260100036",
+        "ocr_document_no": "TRSPEMKP00-00000-260117-0012339",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260100038",
+        "ocr_document_no": "TRSPEMKP00-00000-260118-0014011",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260100061",
+        "ocr_document_no": "260119000391",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "TRSPEMKP00-00000-260119-0020628",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260100062",
+        "ocr_document_no": "260120000404",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260100039",
+        "ocr_document_no": "TRSPEMKP00-00000-260120-0013620",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260100063",
+        "ocr_document_no": "260121000383",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "INV2026010707",
+        "match_status": "full_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "TRSPEMKP00-00000-260121-0006418",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260100064",
+        "ocr_document_no": "260122000381",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260100041",
+        "ocr_document_no": "TRSPEMKP00-00000-26-0122-0018647",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260100065",
+        "ocr_document_no": "260123000386",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260100042",
+        "ocr_document_no": "TRSPEMKP00-00000-260123-0007838",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260100043",
+        "ocr_document_no": "TRSPEMKP00-00000-260124-0023001",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260100044",
+        "ocr_document_no": "TRSPEMKP00-00000-260125-0019221",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260100066",
+        "ocr_document_no": "260126000381",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "69/0245",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXP-20260100025",
+        "ocr_document_no": "O0102510652",
+        "match_status": "full_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-20260100045",
+        "ocr_document_no": "TRSPEMKP00-00000-260126-0000286",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-20260100067",
+        "ocr_document_no": "260127000394",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXP-20260100024",
+        "ocr_document_no": "RC16901007723",
+        "match_status": "full_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXP-20260100046",
+        "ocr_document_no": "TRSPEMKP00-00000-260127-0011507",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 42,
+        "purchase_reference": "EXP-20260100068",
+        "ocr_document_no": "260128000399",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 43,
+        "purchase_reference": "EXP-20260100047",
+        "ocr_document_no": "TRSPEMKP00-00000-260128-0017916",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 44,
+        "purchase_reference": "EXP-20260100069",
+        "ocr_document_no": "260129000406",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 45,
+        "purchase_reference": "EXP-20260100049",
+        "ocr_document_no": "TRSPEMKP00-00000-260129-0009533",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 46,
+        "purchase_reference": "EXP-20260100070",
+        "ocr_document_no": "260130000399",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 47,
+        "purchase_reference": "EXP-20260100071",
+        "ocr_document_no": "260131000410",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T10:24:07.803Z",
+  "last_saved": "2026-02-19T17:24:11.659194",
+  "company": "Build384 บริษัท รักษาความปลอดภัย ที.เอ็น.พี.โปรดักชั่น จำกัด รายเดือน",
+  "base_company": "Build384 บริษัท รักษาความปลอดภัย ที.เอ็น.พี.โปรดักชั่น จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "2": ""
+  },
+  "initialNotes": {
+    "0": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=2,680.00 แต่ OCR=2,675.00 (ต่างกัน 5.00)",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิทคอมไบน์ จำกัด' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='ไม่พบ'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='10/01/2026' แต่ OCR='ไม่พบ'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=1,990.00 แต่ OCR=0.00 (ต่างกัน 1,990.00)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=139.30 แต่ OCR=0.00 (ต่างกัน 139.30)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=2,129.30 แต่ OCR=0.00 (ต่างกัน 2,129.30)"
+  },
+  "comparisonApprovals": {
+    "0-total_amount_match": true,
+    "2-date_match": true,
+    "2-company_name_match": true,
+    "2-branch_match": true,
+    "2-amount_before_vat_match": true,
+    "2-vat_amount_match": true,
+    "2-total_amount_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build384 บริษัท รักษาความปลอดภัย ที.เอ็น.พี.โปรดักชั่น จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 4,
+    "metadata": [
+      {
+        "filename": "05.01.2026_WHT_EXP-20260100005_530408_ค่าบริการ_VAT.pdf",
+        "company_name": "บริษัท เดอะ ลีฟวิ่ง โอเอส คอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "10.01.2026_WHT_EXP-20260100007_530204_ค่าเช่าอุปกรณ์_VAT.pdf",
+        "company_name": "ไม่พบ"
+      },
+      {
+        "filename": "28.01.2026_WHT_EXP-20260100008_530408_ค่าบริการ_VAT.pdf",
+        "company_name": "บริษัท ต้นข้าว การพิมพ์ จำกัด"
+      },
+      {
+        "filename": "10.01.2026_WHT_EXP-20260100006_530204_ค่าเช่าอุปกรณ์_VAT..pdf",
+        "company_name": "บริษัท บิทคอมไบน์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 4,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "INV2026010166",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "TA69-01188",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "TA69-01189",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "TKP6901116",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

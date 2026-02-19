@@ -1,0 +1,163 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T10:32:35.388Z",
+  "last_saved": "2026-02-19T17:32:37.828151",
+  "company": "Build186 บริษัท เดอะการ์ตูน พาร์ทเนอร์ จำกัด รายเดือน",
+  "base_company": "Build186 บริษัท เดอะการ์ตูน พาร์ทเนอร์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "1": "",
+    "3": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='3501-050059' แต่ OCR='69011000372500000172'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=201,342.85 แต่ OCR=9,588.00 (ต่างกัน 191,754.85)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=225,024.85 แต่ OCR=23,682.00 (ต่างกัน 201,342.85)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'"
+  },
+  "initialNotes": {
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท สรรพสินค้าเซ็นทรัล จำกัด (สาขาอุดรธานี)' แต่ OCR='บริษัท สรรพสินค้าเซ็นทรัล จำกัด'",
+    "3": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='3501-050059' แต่ OCR='69011000372500000172'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=201,342.85 แต่ OCR=9,588.00 (ต่างกัน 191,754.85)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=225,024.85 แต่ OCR=23,682.00 (ต่างกัน 201,342.85)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'"
+  },
+  "comparisonApprovals": {
+    "1-company_name_match": true,
+    "1-address_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build186 บริษัท เดอะการ์ตูน พาร์ทเนอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 12,
+    "metadata": [
+      {
+        "filename": "19.01.2026_EXP-20260100010_010550_OFIN_eTax_CDGPDB_B2P_220260119120109_LBV118694_67799cfd-4427-425c-a5ad-1527086b_0125566002993_20260119_VAT.pdf",
+        "company_name": "บริษัท สรรพสินค้าเซ็นทรัล จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100011_530213_Easy print_VAT.pdf",
+        "company_name": "บริษัท อีซี่ ปริ้นเตอร์ (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100008_520215_0105517005330_OFIN_eTax_CDGPDB_B2P_220251_LBV1464_1d8b9415-3504-47cd-8821-bd3da79_0125566002993_20260105_VAT.pdf",
+        "company_name": "บริษัท สรรพสินค้าเซ็นทรัล จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100022_LBV118345_VAT.pdf",
+        "company_name": "บริษัท สรรพสินค้าเซ็นทรัล จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100009_215_0105517005330_OFIN_eTax___220251226011246_LBV118097_4ae58f93-9f46-462b-b7aa-ff09658c5d07_0125566002993_20260105.pdf",
+        "company_name": "บริษัท สรรพสินค้าเซ็นทรัล จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100019_530401_RT-20260100228_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "14.01.2026_WHT_EXP-20260100020_530214_JPM_VAT.pdf",
+        "company_name": "บริษัท เจพีเอ็ม ชิปปิ้ง อินเตอร์เนชั่นแนล จำกัด"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100001_ใบเสร็จรับเงิน กรมศุลกากร_VAT.pdf",
+        "company_name": "กรมศุลกากร"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100007_510112_Inkiprint_VAT.pdf",
+        "company_name": "บริษัท อิงกิ ดิจิทัล ปริ้นท์ติ้ง จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100004_510110_433819_0_VAT.jpg",
+        "company_name": "บริษัท วิน วิน แมนเนจเม้นท์ (1965) จำกัด"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100006_510110_433821_0_VAT.jpg",
+        "company_name": "บริษัท วิน วิน แมนเนจเม้นท์ (1965) จำกัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100005_510110_433820_0_VAT.jpg",
+        "company_name": "บริษัท วิน วิน แมนเนจเม้นท์ (1965) จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 12,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "LBV118097",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "LBV1464",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "WIN26-01-029",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "69011000372500000172",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "LBV118345",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "RE-2601007",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "LBV118694",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "WIN26-01-148",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "RT-20260100228",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "INV2026010146",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "INV2026011186",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "WIN26-01-196",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

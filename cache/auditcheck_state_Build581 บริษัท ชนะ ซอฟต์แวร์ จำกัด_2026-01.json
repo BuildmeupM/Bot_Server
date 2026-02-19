@@ -1,0 +1,76 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-19T10:11:15.713Z",
+  "last_saved": "2026-02-19T17:11:18.075923",
+  "company": "Build581 บริษัท ชนะ ซอฟต์แวร์ จำกัด",
+  "base_company": "Build581 บริษัท ชนะ ซอฟต์แวร์ จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอปเปิ้ล เซาท์ เอเชีย (ประเทศไทย) จำกัด' แต่ OCR='Apple South Asia (Thailand) Limited'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00002'",
+    "1": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอปเปิ้ล เซาท์ เอเชีย (ประเทศไทย) จำกัด' แต่ OCR='Apple South Asia (Thailand) Limited'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00002'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Porkbun LLC'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=408.87 แต่ OCR=25.11 (ต่างกัน 383.76)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'"
+  },
+  "comparisonApprovals": {
+    "1-company_name_match": true,
+    "1-tax_id_match": true,
+    "1-branch_match": true,
+    "1-total_amount_match": true,
+    "1-document_type_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build581 บริษัท ชนะ ซอฟต์แวร์ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "16.01.2026_WHT_EXP-20260100002_530401_RT-20260100192_ค่าทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100005_ภาพแบบ ภ.พ.36_เดือน 12.2025_VAT.pdf",
+        "company_name": "Porkbun LLC"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100001_124106_ค่าคอมพิวเตอร์บริษัท_VAT.pdf",
+        "company_name": "Apple South Asia (Thailand) Limited"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 3,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "20260110R7331183074001",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "69113285866",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "RT-20260100192",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}
