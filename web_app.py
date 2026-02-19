@@ -20588,16 +20588,16 @@ def export_audit_report_to_excel():
         # ฟอนต์สำหรับข้อมูลในตาราง (ใช้ขนาดเดียวกันทุกเซลล์)
         data_font = Font(name='TH Sarabun New', size=11, bold=False, italic=False)
         
-        # สีสำหรับสถานะ (ปรับเป็นสีอ่อนตามที่ผู้ใช้ต้องการ)
-        match_fill = PatternFill(start_color="FFF9E6", end_color="FFF9E6", fill_type="solid")  # เหลืองอ่อน (ข้อมูลตรงกัน)
-        partial_fill = PatternFill(start_color="FFF4E6", end_color="FFF4E6", fill_type="solid")  # เหลือง (ตรงกันบางส่วน)
-        mismatch_fill = PatternFill(start_color="FFE8E8", end_color="FFE8E8", fill_type="solid")  # แดงอ่อน (ข้อมูลไม่ตรงกัน)
+        # สีสำหรับสถานะ (สีเข้มชัดเจน)
+        match_fill = PatternFill(start_color="FFD54F", end_color="FFD54F", fill_type="solid")  # เหลืองเข้ม (ข้อมูลตรงกัน)
+        partial_fill = PatternFill(start_color="FFB74D", end_color="FFB74D", fill_type="solid")  # ส้มเหลือง (ตรงกันบางส่วน)
+        mismatch_fill = PatternFill(start_color="EF5350", end_color="EF5350", fill_type="solid")  # แดงเข้ม (ข้อมูลไม่ตรงกัน)
         
-        # สีสำหรับไฮไลท์
-        yellow_light_fill = PatternFill(start_color="FFF9E6", end_color="FFF9E6", fill_type="solid")  # เหลืองอ่อน (ข้อมูลตรงกัน)
-        red_light_fill = PatternFill(start_color="FFE8E8", end_color="FFE8E8", fill_type="solid")  # แดงอ่อน (ข้อมูลไม่ตรงกัน, เอกสารใช้ไม่ได้)
-        orange_light_fill = PatternFill(start_color="FFEBD6", end_color="FFEBD6", fill_type="solid")  # ส้มอ่อน (ตรวจสอบเพิ่ม)
-        green_approved_fill = PatternFill(start_color="E8F5E9", end_color="E8F5E9", fill_type="solid")  # เขียวอ่อน (จุดที่อนุมัติแล้ว)
+        # สีสำหรับไฮไลท์ (สีเข้ม)
+        yellow_light_fill = PatternFill(start_color="FFD54F", end_color="FFD54F", fill_type="solid")  # เหลืองเข้ม (ข้อมูลตรงกัน)
+        red_light_fill = PatternFill(start_color="EF5350", end_color="EF5350", fill_type="solid")  # แดงเข้ม (ข้อมูลไม่ตรงกัน, เอกสารใช้ไม่ได้)
+        orange_light_fill = PatternFill(start_color="FF9800", end_color="FF9800", fill_type="solid")  # ส้มเข้ม (ตรวจสอบเพิ่ม)
+        green_approved_fill = PatternFill(start_color="66BB6A", end_color="66BB6A", fill_type="solid")  # เขียวเข้ม (จุดที่อนุมัติแล้ว)
         
         border = Border(
             left=Side(style='thin'),
@@ -21007,7 +21007,7 @@ def export_audit_report_to_excel():
                         ws.cell(row=row, column=col).number_format = '#,##0.00'
             
             ws.cell(row=row, column=14, value='OCR Data').alignment = Alignment(horizontal='center')
-            ws.cell(row=row, column=14).fill = PatternFill(start_color="E8F4F8", end_color="E8F4F8", fill_type="solid")
+            ws.cell(row=row, column=14).fill = PatternFill(start_color="42A5F5", end_color="42A5F5", fill_type="solid")  # ฟ้าเข้ม
             ws.cell(row=row, column=14).font = data_font
             ws.cell(row=row, column=15, value='').font = data_font
             
