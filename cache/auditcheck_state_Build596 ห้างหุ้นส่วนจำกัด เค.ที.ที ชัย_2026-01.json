@@ -1,0 +1,320 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-20T11:07:51.696Z",
+  "last_saved": "2026-02-20T18:07:52.772158",
+  "company": "Build596 ห้างหุ้นส่วนจำกัด เค.ที.ที ชัย",
+  "base_company": "Build596 ห้างหุ้นส่วนจำกัด เค.ที.ที ชัย",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท รอแยลฟู้ดส์ จำกัด' แต่ OCR='บริษัท รอยัลฟู้ดส์ จำกัด'",
+    "3": "",
+    "4": "",
+    "6": "",
+    "8": "",
+    "12": "",
+    "14": "",
+    "17": "",
+    "18": "",
+    "22": "",
+    "23": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาจันทบุรี)'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลดมีอัพ คอนซัลแทนทจํากัด'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=384.22 แต่ OCR=373.43 (ต่างกัน 10.79)",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ตั้ง ซุ่น ฮวด ผลิตภัณฑ์ จำกัด' แต่ OCR='บริษัท ตั้งธนโชคผลิตภัณฑ์ จำกัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=13,296.62 แต่ OCR=13,296.82 (ต่างกัน 0.20)",
+    "6": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105553045044' แต่ OCR='0106553045044'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='PS029408306690000006686' แต่ OCR='P5029408306690000006686'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท รอแยลฟู้ดส์ จำกัด' แต่ OCR='บริษัท รอยัลฟู้ดส์ จำกัด'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การประปาส่วนภูมิภาค' แต่ OCR='การประปาส่วนภูมิภาคสาขาจันทบุรี'",
+    "14": "วันที่ไม่ตรงกัน: ภาษีซื้อ='19/01/2026' แต่ OCR='19/01/2069'",
+    "17": "วันที่ไม่ตรงกัน: ภาษีซื้อ='22/01/2026' แต่ OCR='22/01/2069'",
+    "18": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาค' แต่ OCR='การไฟฟ้าส่วนภูมิภาค (PEA)'",
+    "22": "วันที่ไม่ตรงกัน: ภาษีซื้อ='30/01/2026' แต่ OCR='30/01/2069'",
+    "23": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วันลิ้งค์ เทคโนโลยี่ จำกัด' แต่ OCR='บริษัท วันลิ้งค์ เทคโนโลยี จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "1-address_match": true,
+    "3-company_name_match": true,
+    "3-total_amount_match": true,
+    "3-address_match": true,
+    "4-company_name_match": true,
+    "4-total_amount_match": true,
+    "1-company_data_all": true,
+    "6-tax_id_match": true,
+    "6-document_no_match": true,
+    "6-address_match": true,
+    "8-company_name_match": true,
+    "12-company_name_match": true,
+    "14-date_match": true,
+    "17-date_match": true,
+    "18-company_name_match": true,
+    "22-date_match": true,
+    "23-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build596 ห้างหุ้นส่วนจำกัด เค.ที.ที ชัย\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 24,
+    "metadata": [
+      {
+        "filename": "09.01.2026_EXP-20260100005_ใบกำกับภาษีซื้อ090169_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100002_ใบกำกับภาษีซื้อ060169_VAT.pdf",
+        "company_name": "บริษัท รอยัลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100008_ใบกำกับภาษีซื้อ130169_VAT.pdf",
+        "company_name": "บริษัท รอยัลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100026_530303_ค่าโทรศัพท์_007ค่าใช้จ่ายเบ็ดเตล็ด_2_VAT.pdf",
+        "company_name": "บริษัท ทรู มูฟ เอช ยูนิเวอร์แซล คอมมิวนิเคชั่น จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100017_ใบกำกับภาษีซื้อ69000234_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100007_ใบกำกับภาษีซื้อ120169_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100014_ใบกำกับภาษีซื้อ69000168_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100003_ใบกำกับภาษีซื้อ070169.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100006_ใบกำกับภาษีซื้อ100169_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100013_ใบกำกับภาษีซื้อ69000140_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100028_530301_ค่าไฟฟ้า_012 ค่าใช้จ่าย 2_VAT.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาค (PEA)"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100004_ใบกำกับภาษีซื้อ080169_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "13.01.2026_WHT_EXP-20260100023_530401_ค่าบริการทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100015_ใบกำกับภาษีซื้อ69000169_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100018_ใบกำกับภาษีซื้อ69000247_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100016_ใบกำกับภาษีซื้อ69000215_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100009_ใบกำกับภาษีซื้อ140169_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100027_530302_ค่าน้ำ_012 ค่าใช้จ่าย 3_VAT.pdf",
+        "company_name": "การประปาส่วนภูมิภาคสาขาจันทบุรี"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100001_ใบกำกีบภาษีซื้อ050169_VAT.pdf",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "30.01.2026_WHT_EXP-20260100025_ค่าบริการ onetrack (ทำเบิกแล้ว บิลเพิ่งมา)_VAT.pdf",
+        "company_name": "บริษัท วันลิ้งค์ เทคโนโลยี จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100019_ปลากระป๋อง 262820_0_VAT.jpg",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100020_262821_0_VAT.jpg",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100021_262822_0_VAT.jpg",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100022_262823_0_VAT.jpg",
+        "company_name": "บริษัท รอแยลฟู้ดส์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 24,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "69/000001",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "69/000019",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "69/000044",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "69/000058",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "69/000072",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "69/000079",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100026",
+        "ocr_document_no": "P5029408306690000006686",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "69/000083",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "69/000109",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100023",
+        "ocr_document_no": "RT-20260100164",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "69/000120",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "69/000140",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100027",
+        "ocr_document_no": "WE1115/690000358",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "69/000168",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "69/000169",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "69/000215",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "69/000234",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "69/000247",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100028",
+        "ocr_document_no": "YZMH02613684252",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "69/000318",
+        "match_status": "full_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "69/000340",
+        "match_status": "full_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260100021",
+        "ocr_document_no": "69/000347",
+        "match_status": "full_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "69/000349",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260100025",
+        "ocr_document_no": "RS26011316",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

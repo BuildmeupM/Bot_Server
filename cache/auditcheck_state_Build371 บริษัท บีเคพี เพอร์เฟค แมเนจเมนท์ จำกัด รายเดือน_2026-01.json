@@ -1,7 +1,7 @@
 {
   "version": "1.1",
-  "timestamp": "2026-02-19T04:50:09.784Z",
-  "last_saved": "2026-02-19T11:50:12.783982",
+  "timestamp": "2026-02-20T08:57:26.768Z",
+  "last_saved": "2026-02-20T15:57:28.055624",
   "company": "Build371 บริษัท บีเคพี เพอร์เฟค แมเนจเมนท์ จำกัด รายเดือน",
   "base_company": "Build371 บริษัท บีเคพี เพอร์เฟค แมเนจเมนท์ จำกัด รายเดือน",
   "branch_info": null,
@@ -9,48 +9,35 @@
   "taxYear": "2026",
   "taxMonthValue": "01",
   "comparisonNotes": {
-    "0": "เอกสารใช้ไม่ได้ให้เอาออก",
-    "1": "เอกสารใช้ไม่ได้ให้เอาออก",
-    "2": "",
-    "3": "",
-    "24": "",
-    "25": "",
-    "36": "",
-    "37": "",
-    "38": "",
-    "46": ""
+    "0": "",
+    "1": "",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไทยน้ำทิพย์ คอร์ปอเรชั่น จำกัด' แต่ OCR='บริษัท ไทยน้ำทิพย์ คอร์ปอเรชั่น จำกัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105565193515' แต่ OCR='0107568000027'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00009' แต่ OCR='00000'",
+    "23": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์อัพ คอนซัลแทนท์ จำกัด'",
+    "34": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ออฟฟิศเมท (ไทย) จำกัด' แต่ OCR='บริษัท ออฟฟิศเมท(ไทย) จำกัด'",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขารัตนาธิเบศร์)'",
+    "36": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0107566000151' แต่ OCR='0107566000181'",
+    "44": "วันที่ไม่ตรงกัน: ภาษีซื้อ='30/01/2026' แต่ OCR='30/01/2023'",
+    "49": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็น.เอ.พี.เซอร์วิส แอนด์ เทรดดิ้ง จำกัด' แต่ OCR='บริษัท เอ็น.เอ.พี. เซอร์วิส แอนด์ เทรดดิ้ง จำกัด'",
+    "50": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็น.เอ.พี.เซอร์วิส แอนด์ เทรดดิ้ง จำกัด' แต่ OCR='บริษัท เอ็น.เอ.พี. เซอร์วิส แอนด์ เทรดดิ้ง จำกัด'"
   },
   "initialNotes": {
-    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็น.เอ.พี.เซอร์วิส แอนด์ เทรดดิ้ง จำกัด' แต่ OCR='บริษัท เอ็น.เอ.พี. เซอร์วิส แอนด์ เทรดดิ้ง จำกัด'",
-    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็น.เอ.พี.เซอร์วิส แอนด์ เทรดดิ้ง จำกัด' แต่ OCR='บริษัท เอ็น.เอ.พี. เซอร์วิส แอนด์ เทรดดิ้ง จำกัด'",
-    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอส.บี.เคมิคอล ซัพพลาย เซอร์วิส จำกัด' แต่ OCR='บริษัท เอส.บี. เคมีคอล ซัพพลาย เซอร์วิส จำกัด'",
-    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ทรู มูฟ เอช ยูนิเวอร์แซล คอมมิวนิเคชั่น จำกัด' แต่ OCR='บริษัท ทรู มูฟ เอช ยูนิเวอร์แซล คอมมูนิเคชั่น จำกัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=494.32 แต่ OCR=480.43 (ต่างกัน 13.89)",
-    "24": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไทยน้ำทิพย์ คอร์ปอเรชั่น จำกัด' แต่ OCR='บริษัท ไทยน้ำทิพย์ คอร์ปอเรชั่น จำกัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105565193515' แต่ OCR='0107568000027'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00009' แต่ OCR='00000'",
-    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์อัพ คอนซัลแทนท์ จำกัด'",
-    "36": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ออฟฟิศเมท (ไทย) จำกัด' แต่ OCR='บริษัท ออฟฟิศเมท(ไทย) จำกัด'",
-    "37": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขารัตนาธิเบศร์)'",
-    "38": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0107566000151' แต่ OCR='0107566000181'",
-    "46": "วันที่ไม่ตรงกัน: ภาษีซื้อ='30/01/2026' แต่ OCR='30/01/2023'"
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอส.บี.เคมิคอล ซัพพลาย เซอร์วิส จำกัด' แต่ OCR='บริษัท เอส.บี. เคมีคอล ซัพพลาย เซอร์วิส จำกัด'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ทรู มูฟ เอช ยูนิเวอร์แซล คอมมิวนิเคชั่น จำกัด' แต่ OCR='บริษัท ทรู มูฟ เอช ยูนิเวอร์แซล คอมมูนิเคชั่น จำกัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=494.32 แต่ OCR=480.43 (ต่างกัน 13.89)",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไทยน้ำทิพย์ คอร์ปอเรชั่น จำกัด' แต่ OCR='บริษัท ไทยน้ำทิพย์ คอร์ปอเรชั่น จำกัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105565193515' แต่ OCR='0107568000027'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00009' แต่ OCR='00000'",
+    "23": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์อัพ คอนซัลแทนท์ จำกัด'",
+    "34": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ออฟฟิศเมท (ไทย) จำกัด' แต่ OCR='บริษัท ออฟฟิศเมท(ไทย) จำกัด'",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขารัตนาธิเบศร์)'",
+    "36": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0107566000151' แต่ OCR='0107566000181'",
+    "44": "วันที่ไม่ตรงกัน: ภาษีซื้อ='30/01/2026' แต่ OCR='30/01/2023'",
+    "49": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็น.เอ.พี.เซอร์วิส แอนด์ เทรดดิ้ง จำกัด' แต่ OCR='บริษัท เอ็น.เอ.พี. เซอร์วิส แอนด์ เทรดดิ้ง จำกัด'",
+    "50": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็น.เอ.พี.เซอร์วิส แอนด์ เทรดดิ้ง จำกัด' แต่ OCR='บริษัท เอ็น.เอ.พี. เซอร์วิส แอนด์ เทรดดิ้ง จำกัด'"
   },
   "comparisonApprovals": {
     "0-company_name_match": true,
     "1-company_name_match": true,
-    "2-company_name_match": true,
-    "3-company_name_match": true,
-    "3-total_amount_match": true,
-    "24-branch_match": true,
-    "24-tax_id_match": true,
-    "24-company_name_match": true,
-    "25-company_name_match": true,
-    "36-company_name_match": true,
-    "37-company_name_match": true,
-    "38-tax_id_match": true,
-    "46-date_match": true
+    "1-total_amount_match": true
   },
-  "invalidDocuments": {
-    "0": true,
-    "1": true
-  },
+  "invalidDocuments": {},
   "selfCheckMode": {},
   "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build371 บริษัท บีเคพี เพอร์เฟค แมเนจเมนท์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
   "step4OCRData": {
@@ -95,10 +82,6 @@
       {
         "filename": "21.01.2026_WHT_EXP-20260100008_530401_หัก3 ค่าทำบัญชี A0126-005_VAT.pdf",
         "company_name": "บริษัท บิลด์อัพ คอนซัลแทนท์ จำกัด"
-      },
-      {
-        "filename": "01.10.2025_WHT_EXP-20251000075_A1025-001-2_VAT.pdf",
-        "company_name": "บริษัท เอ็น.เอ.พี. เซอร์วิส แอนด์ เทรดดิ้ง จำกัด"
       },
       {
         "filename": "30.01.2026_WHT_EXP-20260100054_ใบเสร็จรับเงินเพิ่มเติม-j Park-7_VAT.pdf",
@@ -153,11 +136,11 @@
         "company_name": "บริษัท เจนก้องไกล จำกัด (มหาชน)"
       },
       {
-        "filename": "30.01.2026_WHT_EXP-20260100056_ใบเสร็จรับเงินเพิ่มเติม-j Park-9_VAT.pdf",
+        "filename": "25.01.2026_EXP-20260100040_530214_ค่าที่จอดรถ B0126-018-26_VAT.pdf",
         "company_name": "บริษัท เจนก้องไกล จำกัด (มหาชน)"
       },
       {
-        "filename": "25.01.2026_EXP-20260100040_530214_ค่าที่จอดรถ B0126-018-26_VAT.pdf",
+        "filename": "30.01.2026_WHT_EXP-20260100056_ใบเสร็จรับเงินเพิ่มเติม-j Park-9_VAT.pdf",
         "company_name": "บริษัท เจนก้องไกล จำกัด (มหาชน)"
       },
       {
@@ -179,10 +162,6 @@
       {
         "filename": "09.01.2026_EXP-20260100024_530214_ค่าที่จอดรถ B0126-018-10_VAT.pdf",
         "company_name": "บริษัท เจนก้องไกล จำกัด (มหาชน)"
-      },
-      {
-        "filename": "01.10.2025_WHT_EXP-20251000074_A1025-001-6_VAT.pdf",
-        "company_name": "บริษัท เอ็น.เอ.พี. เซอร์วิส แอนด์ เทรดดิ้ง จำกัด"
       },
       {
         "filename": "03.01.2026_EXP-20260100018_530214_ค่าที่จอดรถ B0126-018-4_VAT.pdf",
@@ -259,314 +238,616 @@
       {
         "filename": "07.01.2026_EXP-20260100022_530214_ค่าที่จอดรถ B0126-018-8_VAT.pdf",
         "company_name": "บริษัท เจนก้องไกล จำกัด (มหาชน)"
+      },
+      {
+        "filename": "01.10.2025_WHT_EXP-20251000075_A1025-001-2_VAT.pdf",
+        "company_name": "บริษัท เอ็น.เอ.พี. เซอร์วิส แอนด์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "01.10.2025_WHT_EXP-20251000074_A1025-001-6_VAT.pdf",
+        "company_name": "บริษัท เอ็น.เอ.พี. เซอร์วิส แอนด์ เทรดดิ้ง จำกัด"
       }
     ]
   },
   "comparisonResults": {
-    "count": 51,
+    "count": 100,
     "metadata": [
       {
         "index": 0,
-        "purchase_reference": "EXP-20251000074",
-        "ocr_document_no": "TIS2510-0449",
-        "match_status": "partial_match"
-      },
-      {
-        "index": 1,
-        "purchase_reference": "EXP-20251000075",
-        "ocr_document_no": "TIS2510-0450",
-        "match_status": "partial_match"
-      },
-      {
-        "index": 2,
         "purchase_reference": "EXP-20251200056",
         "ocr_document_no": "IV6812735",
         "match_status": "partial_match"
       },
       {
-        "index": 3,
+        "index": 1,
         "purchase_reference": "EXP-20260100009",
         "ocr_document_no": "RFTKBKO01012026000029468",
         "match_status": "partial_match"
       },
       {
-        "index": 4,
+        "index": 2,
         "purchase_reference": "EXP-20260100016",
         "ocr_document_no": "S-RE2601-000198",
         "match_status": "full_match"
       },
       {
-        "index": 5,
+        "index": 3,
         "purchase_reference": "EXP-20260100017",
         "ocr_document_no": "S-RE2601-000203",
         "match_status": "full_match"
       },
       {
-        "index": 6,
+        "index": 4,
         "purchase_reference": "EXP-20260100018",
         "ocr_document_no": "S-RE2601-000262",
         "match_status": "full_match"
       },
       {
-        "index": 7,
+        "index": 5,
         "purchase_reference": "EXP-20260100019",
         "ocr_document_no": "S-RE2601-000351",
         "match_status": "full_match"
       },
       {
-        "index": 8,
+        "index": 6,
         "purchase_reference": "EXP-20260100020",
         "ocr_document_no": "S-RE2601-000356",
         "match_status": "full_match"
       },
       {
-        "index": 9,
+        "index": 7,
         "purchase_reference": "EXP-20260100021",
         "ocr_document_no": "S-RE2601-000390",
         "match_status": "full_match"
       },
       {
-        "index": 10,
+        "index": 8,
         "purchase_reference": "EXP-20260100022",
         "ocr_document_no": "S-RE2601-000393",
         "match_status": "full_match"
       },
       {
-        "index": 11,
+        "index": 9,
         "purchase_reference": "EXP-20260100023",
         "ocr_document_no": "S-RE2601-000412",
         "match_status": "full_match"
       },
       {
-        "index": 12,
+        "index": 10,
         "purchase_reference": "EXP-20260100024",
         "ocr_document_no": "S-RE2601-000416",
         "match_status": "full_match"
       },
       {
-        "index": 13,
+        "index": 11,
         "purchase_reference": "EXP-20260100025",
         "ocr_document_no": "S-RE2601-000423",
         "match_status": "full_match"
       },
       {
-        "index": 14,
+        "index": 12,
         "purchase_reference": "EXP-20260100026",
         "ocr_document_no": "S-RE2601-000455",
         "match_status": "full_match"
       },
       {
-        "index": 15,
+        "index": 13,
         "purchase_reference": "EXP-20260100027",
         "ocr_document_no": "S-RE2601-000457",
         "match_status": "full_match"
       },
       {
-        "index": 16,
+        "index": 14,
         "purchase_reference": "EXP-20260100028",
         "ocr_document_no": "S-RE2601-000460",
         "match_status": "full_match"
       },
       {
-        "index": 17,
+        "index": 15,
         "purchase_reference": "EXP-20260100029",
         "ocr_document_no": "S-RE2601-000481",
         "match_status": "full_match"
       },
       {
-        "index": 18,
+        "index": 16,
         "purchase_reference": "EXP-20260100030",
         "ocr_document_no": "S-RE2601-000498",
         "match_status": "full_match"
       },
       {
-        "index": 19,
+        "index": 17,
         "purchase_reference": "EXP-20260100031",
         "ocr_document_no": "S-RE2601-000500",
         "match_status": "full_match"
       },
       {
-        "index": 20,
+        "index": 18,
         "purchase_reference": "EXP-20260100012",
         "ocr_document_no": "ORVM6901P010280",
         "match_status": "full_match"
       },
       {
-        "index": 21,
+        "index": 19,
         "purchase_reference": "EXP-20260100032",
         "ocr_document_no": "S-RE2601-000517",
         "match_status": "full_match"
       },
       {
-        "index": 22,
+        "index": 20,
         "purchase_reference": "EXP-20260100033",
         "ocr_document_no": "S-RE2601-000519",
         "match_status": "full_match"
       },
       {
-        "index": 23,
+        "index": 21,
         "purchase_reference": "EXP-20260100034",
         "ocr_document_no": "S-RE2601-000541",
         "match_status": "full_match"
       },
       {
-        "index": 24,
+        "index": 22,
         "purchase_reference": "EXP-20260100010",
         "ocr_document_no": "1433785646",
         "match_status": "partial_match"
       },
       {
-        "index": 25,
+        "index": 23,
         "purchase_reference": "EXP-20260100008",
         "ocr_document_no": "RT-20260100233",
         "match_status": "partial_match"
       },
       {
-        "index": 26,
+        "index": 24,
         "purchase_reference": "EXP-20260100035",
         "ocr_document_no": "S-RE2601-000543",
         "match_status": "full_match"
       },
       {
-        "index": 27,
+        "index": 25,
         "purchase_reference": "EXP-20260100036",
         "ocr_document_no": "S-RE2601-000557",
         "match_status": "full_match"
       },
       {
-        "index": 28,
+        "index": 26,
         "purchase_reference": "EXP-20260100037",
         "ocr_document_no": "S-RE2601-000559",
         "match_status": "full_match"
       },
       {
-        "index": 29,
+        "index": 27,
         "purchase_reference": "EXP-20260100013",
         "ocr_document_no": "00244012610000053",
         "match_status": "full_match"
       },
       {
-        "index": 30,
+        "index": 28,
         "purchase_reference": "EXP-20260100038",
         "ocr_document_no": "S-RE2601-000572",
         "match_status": "full_match"
       },
       {
-        "index": 31,
+        "index": 29,
         "purchase_reference": "EXP-20260100039",
         "ocr_document_no": "S-RE2601-000574",
         "match_status": "full_match"
       },
       {
-        "index": 32,
+        "index": 30,
         "purchase_reference": "EXP-20260100040",
         "ocr_document_no": "S-RE2601-000632",
         "match_status": "full_match"
       },
       {
-        "index": 33,
+        "index": 31,
         "purchase_reference": "EXP-20260100014",
         "ocr_document_no": "CA2026016940",
         "match_status": "full_match"
       },
       {
-        "index": 34,
+        "index": 32,
         "purchase_reference": "EXP-20260100041",
         "ocr_document_no": "S-RE2601-000634",
         "match_status": "full_match"
       },
       {
-        "index": 35,
+        "index": 33,
         "purchase_reference": "EXP-20260100042",
         "ocr_document_no": "S-RE2601-000659",
         "match_status": "full_match"
       },
       {
-        "index": 36,
+        "index": 34,
         "purchase_reference": "EXP-20260100015",
         "ocr_document_no": "00021260110106383",
         "match_status": "partial_match"
       },
       {
-        "index": 37,
+        "index": 35,
         "purchase_reference": "EXP-20260100011",
         "ocr_document_no": "RNBIE26010002687",
         "match_status": "partial_match"
       },
       {
-        "index": 38,
+        "index": 36,
         "purchase_reference": "EXP-20260100043",
         "ocr_document_no": "S-RE2601-000690",
         "match_status": "partial_match"
       },
       {
-        "index": 39,
+        "index": 37,
         "purchase_reference": "EXP-20260100044",
         "ocr_document_no": "S-RE2601-000697",
         "match_status": "full_match"
       },
       {
-        "index": 40,
+        "index": 38,
         "purchase_reference": "EXP-20260100054",
         "ocr_document_no": "RCT2601-000160",
         "match_status": "full_match"
       },
       {
-        "index": 41,
+        "index": 39,
         "purchase_reference": "EXP-20260100055",
         "ocr_document_no": "RCT2601-000161",
         "match_status": "full_match"
       },
       {
-        "index": 42,
+        "index": 40,
         "purchase_reference": "EXP-20260100056",
         "ocr_document_no": "RCT2601-000162",
         "match_status": "full_match"
       },
       {
-        "index": 43,
+        "index": 41,
         "purchase_reference": "EXP-20260100057",
         "ocr_document_no": "RCT2601-000163",
         "match_status": "full_match"
       },
       {
-        "index": 44,
+        "index": 42,
         "purchase_reference": "EXP-20260100058",
         "ocr_document_no": "RCT2601-000164",
         "match_status": "full_match"
       },
       {
-        "index": 45,
+        "index": 43,
         "purchase_reference": "EXP-20260100059",
         "ocr_document_no": "RCT2601-000165",
         "match_status": "full_match"
       },
       {
-        "index": 46,
+        "index": 44,
         "purchase_reference": "EXP-20260100050",
         "ocr_document_no": "RCT2601-000166",
         "match_status": "partial_match"
       },
       {
-        "index": 47,
+        "index": 45,
         "purchase_reference": "EXP-20260100051",
         "ocr_document_no": "RCT2601-000168",
         "match_status": "full_match"
       },
       {
-        "index": 48,
+        "index": 46,
         "purchase_reference": "EXP-20260100052",
         "ocr_document_no": "RCT2601-000169",
         "match_status": "full_match"
       },
       {
-        "index": 49,
+        "index": 47,
         "purchase_reference": "EXP-20260100045",
         "ocr_document_no": "S-RE2601-000746",
         "match_status": "full_match"
       },
       {
+        "index": 48,
+        "purchase_reference": "EXP-20260100046",
+        "ocr_document_no": "S-RE2601-000754",
+        "match_status": "full_match"
+      },
+      {
+        "index": 49,
+        "purchase_reference": "EXP-20251000074",
+        "ocr_document_no": "TIS2510-0449",
+        "match_status": "partial_match"
+      },
+      {
         "index": 50,
+        "purchase_reference": "EXP-20251000075",
+        "ocr_document_no": "TIS2510-0450",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 51,
+        "purchase_reference": "EXP-20251200056",
+        "ocr_document_no": "IV6812735",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 52,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "RFTKBKO01012026000029468",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 53,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "S-RE2601-000198",
+        "match_status": "full_match"
+      },
+      {
+        "index": 54,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "S-RE2601-000203",
+        "match_status": "full_match"
+      },
+      {
+        "index": 55,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "S-RE2601-000262",
+        "match_status": "full_match"
+      },
+      {
+        "index": 56,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "S-RE2601-000351",
+        "match_status": "full_match"
+      },
+      {
+        "index": 57,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "S-RE2601-000356",
+        "match_status": "full_match"
+      },
+      {
+        "index": 58,
+        "purchase_reference": "EXP-20260100021",
+        "ocr_document_no": "S-RE2601-000390",
+        "match_status": "full_match"
+      },
+      {
+        "index": 59,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "S-RE2601-000393",
+        "match_status": "full_match"
+      },
+      {
+        "index": 60,
+        "purchase_reference": "EXP-20260100023",
+        "ocr_document_no": "S-RE2601-000412",
+        "match_status": "full_match"
+      },
+      {
+        "index": 61,
+        "purchase_reference": "EXP-20260100024",
+        "ocr_document_no": "S-RE2601-000416",
+        "match_status": "full_match"
+      },
+      {
+        "index": 62,
+        "purchase_reference": "EXP-20260100025",
+        "ocr_document_no": "S-RE2601-000423",
+        "match_status": "full_match"
+      },
+      {
+        "index": 63,
+        "purchase_reference": "EXP-20260100026",
+        "ocr_document_no": "S-RE2601-000455",
+        "match_status": "full_match"
+      },
+      {
+        "index": 64,
+        "purchase_reference": "EXP-20260100027",
+        "ocr_document_no": "S-RE2601-000457",
+        "match_status": "full_match"
+      },
+      {
+        "index": 65,
+        "purchase_reference": "EXP-20260100028",
+        "ocr_document_no": "S-RE2601-000460",
+        "match_status": "full_match"
+      },
+      {
+        "index": 66,
+        "purchase_reference": "EXP-20260100029",
+        "ocr_document_no": "S-RE2601-000481",
+        "match_status": "full_match"
+      },
+      {
+        "index": 67,
+        "purchase_reference": "EXP-20260100030",
+        "ocr_document_no": "S-RE2601-000498",
+        "match_status": "full_match"
+      },
+      {
+        "index": 68,
+        "purchase_reference": "EXP-20260100031",
+        "ocr_document_no": "S-RE2601-000500",
+        "match_status": "full_match"
+      },
+      {
+        "index": 69,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "ORVM6901P010280",
+        "match_status": "full_match"
+      },
+      {
+        "index": 70,
+        "purchase_reference": "EXP-20260100032",
+        "ocr_document_no": "S-RE2601-000517",
+        "match_status": "full_match"
+      },
+      {
+        "index": 71,
+        "purchase_reference": "EXP-20260100033",
+        "ocr_document_no": "S-RE2601-000519",
+        "match_status": "full_match"
+      },
+      {
+        "index": 72,
+        "purchase_reference": "EXP-20260100034",
+        "ocr_document_no": "S-RE2601-000541",
+        "match_status": "full_match"
+      },
+      {
+        "index": 73,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "1433785646",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 74,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "RT-20260100233",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 75,
+        "purchase_reference": "EXP-20260100035",
+        "ocr_document_no": "S-RE2601-000543",
+        "match_status": "full_match"
+      },
+      {
+        "index": 76,
+        "purchase_reference": "EXP-20260100036",
+        "ocr_document_no": "S-RE2601-000557",
+        "match_status": "full_match"
+      },
+      {
+        "index": 77,
+        "purchase_reference": "EXP-20260100037",
+        "ocr_document_no": "S-RE2601-000559",
+        "match_status": "full_match"
+      },
+      {
+        "index": 78,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "00244012610000053",
+        "match_status": "full_match"
+      },
+      {
+        "index": 79,
+        "purchase_reference": "EXP-20260100038",
+        "ocr_document_no": "S-RE2601-000572",
+        "match_status": "full_match"
+      },
+      {
+        "index": 80,
+        "purchase_reference": "EXP-20260100039",
+        "ocr_document_no": "S-RE2601-000574",
+        "match_status": "full_match"
+      },
+      {
+        "index": 81,
+        "purchase_reference": "EXP-20260100040",
+        "ocr_document_no": "S-RE2601-000632",
+        "match_status": "full_match"
+      },
+      {
+        "index": 82,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "CA2026016940",
+        "match_status": "full_match"
+      },
+      {
+        "index": 83,
+        "purchase_reference": "EXP-20260100041",
+        "ocr_document_no": "S-RE2601-000634",
+        "match_status": "full_match"
+      },
+      {
+        "index": 84,
+        "purchase_reference": "EXP-20260100042",
+        "ocr_document_no": "S-RE2601-000659",
+        "match_status": "full_match"
+      },
+      {
+        "index": 85,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "00021260110106383",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 86,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "RNBIE26010002687",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 87,
+        "purchase_reference": "EXP-20260100043",
+        "ocr_document_no": "S-RE2601-000690",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 88,
+        "purchase_reference": "EXP-20260100044",
+        "ocr_document_no": "S-RE2601-000697",
+        "match_status": "full_match"
+      },
+      {
+        "index": 89,
+        "purchase_reference": "EXP-20260100054",
+        "ocr_document_no": "RCT2601-000160",
+        "match_status": "full_match"
+      },
+      {
+        "index": 90,
+        "purchase_reference": "EXP-20260100055",
+        "ocr_document_no": "RCT2601-000161",
+        "match_status": "full_match"
+      },
+      {
+        "index": 91,
+        "purchase_reference": "EXP-20260100056",
+        "ocr_document_no": "RCT2601-000162",
+        "match_status": "full_match"
+      },
+      {
+        "index": 92,
+        "purchase_reference": "EXP-20260100057",
+        "ocr_document_no": "RCT2601-000163",
+        "match_status": "full_match"
+      },
+      {
+        "index": 93,
+        "purchase_reference": "EXP-20260100058",
+        "ocr_document_no": "RCT2601-000164",
+        "match_status": "full_match"
+      },
+      {
+        "index": 94,
+        "purchase_reference": "EXP-20260100059",
+        "ocr_document_no": "RCT2601-000165",
+        "match_status": "full_match"
+      },
+      {
+        "index": 95,
+        "purchase_reference": "EXP-20260100050",
+        "ocr_document_no": "RCT2601-000166",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 96,
+        "purchase_reference": "EXP-20260100051",
+        "ocr_document_no": "RCT2601-000168",
+        "match_status": "full_match"
+      },
+      {
+        "index": 97,
+        "purchase_reference": "EXP-20260100052",
+        "ocr_document_no": "RCT2601-000169",
+        "match_status": "full_match"
+      },
+      {
+        "index": 98,
+        "purchase_reference": "EXP-20260100045",
+        "ocr_document_no": "S-RE2601-000746",
+        "match_status": "full_match"
+      },
+      {
+        "index": 99,
         "purchase_reference": "EXP-20260100046",
         "ocr_document_no": "S-RE2601-000754",
         "match_status": "full_match"
@@ -575,7 +856,7 @@
   },
   "completedSteps": {
     "step1": true,
-    "step2": true,
+    "step2": false,
     "step3": true,
     "step4": true,
     "step5": false

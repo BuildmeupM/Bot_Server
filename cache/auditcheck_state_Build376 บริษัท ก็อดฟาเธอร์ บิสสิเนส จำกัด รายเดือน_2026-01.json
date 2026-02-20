@@ -1,0 +1,125 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-20T03:02:00.224Z",
+  "last_saved": "2026-02-20T10:02:04.729386",
+  "company": "Build376 บริษัท ก็อดฟาเธอร์ บิสสิเนส จำกัด รายเดือน",
+  "base_company": "Build376 บริษัท ก็อดฟาเธอร์ บิสสิเนส จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "5": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte. Ltd.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=31,416.76 แต่ OCR=2,055.30 (ต่างกัน 29,361.46)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ไม่ระบุ'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='TIKTOK'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=66,182.73 แต่ OCR=4,329.71 (ต่างกัน 61,853.02)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ไม่ระบุ'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Meta Platforms Ireland Limited'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=134,563.62 แต่ OCR=8,803.23 (ต่างกัน 125,760.39)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ธนศิลป์ ไทยอาร์ต เด็คคอเรท แอนด์ ดีไซน์ จำกัด' แต่ OCR='บริษัท ธนศิลป์ ไทยอาร์ต เดคคอเรท แอนด์ ดีไซน์ จำกัด'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='31/01/2026' แต่ OCR='31/1/2026'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=82,925.00 แต่ OCR=80,600.00 (ต่างกัน 2,325.00)"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "0-tax_id_match": true,
+    "0-branch_match": true,
+    "0-total_amount_match": true,
+    "0-document_type_match": true,
+    "1-company_name_match": true,
+    "1-tax_id_match": true,
+    "1-branch_match": true,
+    "1-total_amount_match": true,
+    "1-document_type_match": true,
+    "5-date_match": true,
+    "5-company_name_match": true,
+    "5-total_amount_match": true,
+    "2-company_name_match": true,
+    "2-tax_id_match": true,
+    "2-branch_match": true,
+    "2-total_amount_match": true,
+    "2-document_type_match": true,
+    "2-address_match": true,
+    "1-address_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build376 บริษัท ก็อดฟาเธอร์ บิสสิเนส จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 6,
+    "metadata": [
+      {
+        "filename": "15.01.2026_EXP-20260100004_ภาพแบบ ภ.พ.36 เดือน 12.2025 (Meta)_VAT.pdf",
+        "company_name": "Meta Platforms Ireland Limited"
+      },
+      {
+        "filename": "31.01.2026_WHT_EXP-20260100013_MGT06) ค่าที่ปรึกษา บจ.นิก้า จ่าย31.01.69 WH.pdf",
+        "company_name": "บริษัท นิก้า จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100002_ภาพแบบ ภ.พ.36 เดือน 12.2025 (Tiktok)_VAT.pdf",
+        "company_name": "TIKTOK"
+      },
+      {
+        "filename": "31.01.2026_WHT_EXP-20260100008_SCB 07) ค่ามัดจำทำบูธ บจ.ธนศิลป์ฯ จ่าย 3.1.69 WH_VAT.pdf",
+        "company_name": "บริษัท ธนศิลป์ ไทยอาร์ต เดคคอเรท แอนด์ ดีไซน์ จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100003_ภาพแบบ ภ.พ.36 เดือน 12.2025 (Google)_VAT.pdf",
+        "company_name": "Google Asia Pacific Pte. Ltd."
+      },
+      {
+        "filename": "15.01.2026_WHT_EXP-20260100007_SCB 04) ค่าทำบัญชี บจ.บิลด์มีอัพฯ จ่าย 15.1.69 WH_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 6,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "69114329822",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "69114329855",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "69114329856",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "RT-20260100149",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "RT-20260100001",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "TN 31/1/2569",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

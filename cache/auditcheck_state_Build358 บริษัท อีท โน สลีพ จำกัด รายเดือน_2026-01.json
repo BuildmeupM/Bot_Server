@@ -1,0 +1,1114 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-20T04:46:44.201Z",
+  "last_saved": "2026-02-20T11:46:48.515856",
+  "company": "Build358 บริษัท อีท โน สลีพ จำกัด รายเดือน",
+  "base_company": "Build358 บริษัท อีท โน สลีพ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00003'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "8": "",
+    "9": "",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "12": "",
+    "13": "",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd. (Head Office)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105556090377' แต่ OCR='010556090377'",
+    "15": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "16": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260106-000753' แต่ OCR='TRSPEFHM00-00000-26 0106-000753'",
+    "17": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "18": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "19": "",
+    "20": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='202601310642' แต่ OCR='202601310612'",
+    "21": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "22": "",
+    "23": "",
+    "24": "",
+    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "26": "",
+    "27": "",
+    "28": "",
+    "29": "",
+    "30": "",
+    "31": "",
+    "32": "",
+    "33": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd. (Head Office)'",
+    "34": "",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "36": "",
+    "37": "",
+    "39": "",
+    "40": "",
+    "41": "",
+    "42": "",
+    "43": "",
+    "45": "",
+    "46": "",
+    "47": "",
+    "48": "",
+    "49": "",
+    "50": "",
+    "51": "",
+    "53": "",
+    "55": "",
+    "56": "",
+    "57": "",
+    "58": "",
+    "59": "",
+    "60": "",
+    "61": "",
+    "62": "",
+    "63": "",
+    "64": "",
+    "65": "",
+    "66": "",
+    "67": "",
+    "68": "",
+    "69": "",
+    "70": "",
+    "71": "",
+    "72": "",
+    "73": "",
+    "74": "",
+    "76": "",
+    "77": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte. Ltd.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=31,416.76 แต่ OCR=2,055.30 (ต่างกัน 29,361.46)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ไม่ระบุ'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='TIKTOK'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=66,182.73 แต่ OCR=4,329.71 (ต่างกัน 61,853.02)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ไม่ระบุ'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Meta Platforms Ireland Limited'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=134,563.62 แต่ OCR=8,803.23 (ต่างกัน 125,760.39)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'",
+    "3": "ไม่พบข้อมูล OCR ที่ตรงกับเลขที่ใบกำกับ: RT-20260100339 (ไม่มีเลขที่เอกสารอ้างอิงในข้อมูลภาษีซื้อ)",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ธนศิลป์ ไทยอาร์ต เด็คคอเรท แอนด์ ดีไซน์ จำกัด' แต่ OCR='บริษัท ธนศิลป์ ไทยอาร์ต เดคคอเรท แอนด์ ดีไซน์ จำกัด'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='31/01/2026' แต่ OCR='31/1/2026'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=82,925.00 แต่ OCR=80,600.00 (ต่างกัน 2,325.00)",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ภูเก็ตเสรีเซ็นเตอร์' แต่ OCR='หจก.ภูเก็ตเสรีเซ็นเตอร์'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='iCloud'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=118.79 แต่ OCR=7.29 (ต่างกัน 111.50)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Adobe Systems Software Ireland Ltd.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=2,966.27 แต่ OCR=2,784.13 (ต่างกัน 182.14)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google LLC'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='15/01/2026' แต่ OCR='15/01/2024'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=63,840.00 แต่ OCR=59,920.00 (ต่างกัน 3,920.00)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='OpenAI, L.L.C'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=838.81 แต่ OCR=51.51 (ต่างกัน 787.30)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Meta Platforms Ireland Limited'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=4,883.74 แต่ OCR=299.88 (ต่างกัน 4,583.86)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Endel Focus Sleep Relax'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=937.47 แต่ OCR=879.91 (ต่างกัน 57.56)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ไม่ระบุ'",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Teachable, Inc.'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=1,334.89 แต่ OCR=81.97 (ต่างกัน 1,252.92)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google LLC'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=82.79 แต่ OCR=5.08 (ต่างกัน 77.71)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "15": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "16": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260106-000753' แต่ OCR='TRSPEFHM00-00000-26 0106-000753'",
+    "17": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วีโซลด์ สไมล์ จำกัด' แต่ OCR='บริษัท วีโชลด์ สไมล์ จำกัด'",
+    "18": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เพย์ โซลูชั่น จำกัด' แต่ OCR='บริษัท เพย โซลูชั่น จํากัด'",
+    "19": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260107-000736' แต่ OCR='TRSPEFHM00-00000-26'",
+    "20": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='202601310642' แต่ OCR='202601310612'",
+    "21": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "22": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260108-000730' แต่ OCR='TRSPEFHM00-00000-26 0108-000730'",
+    "23": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เค.เอ็น.เท็กซ์ไทล์ จำกัด' แต่ OCR='บริษัท เค.เอ็น. เท็กซ์ไทล์ จำกัด'",
+    "24": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd. (Head Office)'",
+    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ฟาสต์ คาร์โก้ โลจิสติกส์ จำกัด' แต่ OCR='บริษัท ฟาสต คารโก โลจิสติกส จํากัด'",
+    "26": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=1,093.46 แต่ OCR=1,698.46 (ต่างกัน 605.00)",
+    "27": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260110-000752' แต่ OCR='TRSPEFHM00-00000-26 0110-000752'",
+    "28": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='138071022085' แต่ OCR='38071022085'",
+    "29": "วันที่ไม่ตรงกัน: ภาษีซื้อ='22/01/2026' แต่ OCR='14/01/2026'",
+    "30": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "31": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มีเจริญ พรีเมียม ดริ้งค์ จำกัด' แต่ OCR='บริษัท มีเจริญ พรีเมี่ยม ดริ๊งค์ จำกัด'",
+    "32": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd. (Head Office)'",
+    "33": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd. (Head Office)'",
+    "34": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วีโซลด์ สไมล์ จำกัด' แต่ OCR='บริษัท วีซอร์ด สไมล์ จำกัด'",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "36": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "37": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เค.เอ็น.เท็กซ์ไทล์ จำกัด' แต่ OCR='บริษัท เค.เอ็น. เท็กซ์ไทล์ จำกัด'",
+    "39": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "40": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "41": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260114-000739' แต่ OCR='TRSPEFHM00-00000-26 0114-000739'",
+    "42": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "43": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd. (Head Office)'",
+    "45": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260116-000751' แต่ OCR='TRSPEFHM00-00000-26 0116-000751'",
+    "46": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260117-000747' แต่ OCR='TRSPEFHM00-00000-26 0117-000747'",
+    "47": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "48": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "49": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260118-000761' แต่ OCR='TRSPEFHM00-00000-26'",
+    "50": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "51": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260119-000741' แต่ OCR='TRSPEFHM00-00000-26 0119-000741'",
+    "53": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260120-000753' แต่ OCR='TRSPEFHM00-00000-26 0120-000753'",
+    "55": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260121-000763' แต่ OCR='TRSPEFHM00-00000-26 0121-000763'",
+    "56": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "57": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "58": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260122-000766' แต่ OCR='TRSPEFHM00-00000-26 0122-000766'",
+    "59": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260123-000758' แต่ OCR='TRSPEFHM00-00000-26 0123-000758'",
+    "60": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd. (Head Office)'",
+    "61": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "62": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260124-000760' แต่ OCR='TRSPEFHM00-00000-26 0124-000760'",
+    "63": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "64": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260125-000763' แต่ OCR='TRSPEFHM00-00000-26 0125-000763'",
+    "65": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "66": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "67": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260126-000749' แต่ OCR='TRSPEFHM00-00000-26 0126-000749'",
+    "68": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd. (Head Office)'",
+    "69": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105558019581' แต่ OCR='010558019581'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260127-000734' แต่ OCR='TRSPEFHM00-00000-26 0127-000734'",
+    "70": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "71": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "72": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260128-000748' แต่ OCR='TRSPEFHM00-00000-26 0128-000748'",
+    "73": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "74": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260129-000757' แต่ OCR='TRSPEFHM00-00000-26 0129-000757'",
+    "76": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด' แต่ OCR='Grabtaxi (Thailand) Co., Ltd.'",
+    "77": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEFHM00-00000-260131-000757' แต่ OCR='TRSPEFHM00-00000-26-0131-000757'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "0-tax_id_match": true,
+    "0-branch_match": true,
+    "0-total_amount_match": true,
+    "0-document_type_match": true,
+    "1-company_name_match": true,
+    "1-tax_id_match": true,
+    "1-branch_match": true,
+    "1-total_amount_match": true,
+    "1-document_type_match": true,
+    "5-date_match": true,
+    "5-company_name_match": true,
+    "5-total_amount_match": true,
+    "2-company_name_match": true,
+    "2-tax_id_match": true,
+    "2-branch_match": true,
+    "2-total_amount_match": true,
+    "2-document_type_match": true,
+    "2-address_match": true,
+    "1-address_match": true,
+    "6-company_name_match": true,
+    "7-company_name_match": true,
+    "7-tax_id_match": true,
+    "7-branch_match": true,
+    "7-total_amount_match": true,
+    "7-document_type_match": true,
+    "8-tax_id_match": true,
+    "8-company_name_match": true,
+    "8-total_amount_match": true,
+    "8-document_type_match": true,
+    "8-branch_match": true,
+    "9-date_match": true,
+    "9-company_name_match": true,
+    "9-tax_id_match": true,
+    "9-branch_match": true,
+    "9-document_type_match": true,
+    "9-total_amount_match": true,
+    "10-company_name_match": true,
+    "10-tax_id_match": true,
+    "10-branch_match": true,
+    "10-total_amount_match": true,
+    "10-document_type_match": true,
+    "11-company_name_match": true,
+    "11-tax_id_match": true,
+    "11-branch_match": true,
+    "11-total_amount_match": true,
+    "11-document_type_match": true,
+    "12-company_name_match": true,
+    "12-tax_id_match": true,
+    "12-branch_match": true,
+    "12-total_amount_match": true,
+    "12-document_type_match": true,
+    "13-company_name_match": true,
+    "13-tax_id_match": true,
+    "13-branch_match": true,
+    "13-total_amount_match": true,
+    "13-document_type_match": true,
+    "14-company_name_match": true,
+    "14-branch_match": true,
+    "14-total_amount_match": true,
+    "14-document_type_match": true,
+    "14-tax_id_match": true,
+    "18-company_name_match": true,
+    "0-amount_before_vat_match": true,
+    "1-amount_before_vat_match": true,
+    "2-amount_before_vat_match": true,
+    "7-amount_before_vat_match": true,
+    "8-amount_before_vat_match": true,
+    "13-amount_before_vat_match": true,
+    "14-amount_before_vat_match": true,
+    "15-company_name_match": true,
+    "16-company_name_match": true,
+    "17-company_name_match": true,
+    "19-company_name_match": true,
+    "20-company_name_match": true,
+    "21-company_name_match": true,
+    "22-company_name_match": true,
+    "23-company_name_match": true,
+    "25-company_name_match": true,
+    "26-company_name_match": true,
+    "27-company_name_match": true,
+    "28-company_name_match": true,
+    "31-company_name_match": true,
+    "32-company_name_match": true,
+    "33-company_name_match": true,
+    "34-company_name_match": true,
+    "35-company_name_match": true,
+    "36-company_name_match": true,
+    "37-company_name_match": true,
+    "0-document_no_match": true,
+    "1-date_match": true,
+    "1-document_no_match": true,
+    "2-document_no_match": true,
+    "3-company_name_match": true,
+    "4-company_name_match": true,
+    "5-document_no_match": true,
+    "8-document_no_match": true,
+    "13-document_no_match": true,
+    "19-document_no_match": true,
+    "22-document_no_match": true,
+    "23-document_no_match": true,
+    "24-company_name_match": true,
+    "26-amount_before_vat_match": true,
+    "27-document_no_match": true,
+    "29-company_name_match": true,
+    "28-document_no_match": true,
+    "30-company_name_match": true,
+    "31-document_no_match": true,
+    "32-address_match": true,
+    "34-document_no_match": true,
+    "36-address_match": true,
+    "37-amount_before_vat_match": true,
+    "39-company_name_match": true,
+    "40-company_name_match": true,
+    "41-document_no_match": true,
+    "42-company_name_match": true,
+    "43-company_name_match": true,
+    "45-document_no_match": true,
+    "46-document_no_match": true,
+    "47-company_name_match": true,
+    "48-company_name_match": true,
+    "48-address_match": true,
+    "49-document_no_match": true,
+    "50-company_name_match": true,
+    "51-document_no_match": true,
+    "53-document_no_match": true,
+    "55-document_no_match": true,
+    "56-company_name_match": true,
+    "57-company_name_match": true,
+    "58-document_no_match": true,
+    "59-document_no_match": true,
+    "60-company_name_match": true,
+    "61-company_name_match": true,
+    "77-document_no_match": true,
+    "76-company_name_match": true,
+    "74-document_no_match": true,
+    "73-company_name_match": true,
+    "72-document_no_match": true,
+    "71-company_name_match": true,
+    "70-company_name_match": true,
+    "69-document_no_match": true,
+    "69-tax_id_match": true,
+    "68-company_name_match": true,
+    "67-document_no_match": true,
+    "66-company_name_match": true,
+    "65-company_name_match": true,
+    "64-document_no_match": true,
+    "63-company_name_match": true,
+    "62-document_no_match": true
+  },
+  "invalidDocuments": {
+    "5": true
+  },
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build358 บริษัท อีท โน สลีพ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 78,
+    "metadata": [
+      {
+        "filename": "11.01.2026_EXP-20260100073_510110_11.01.26_CP Axtra_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100072_510110_10.01.26_Central Food Wholesales_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด โฮลเซลล์ จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100076_530214_05.01.26_Homepro_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100074_510110_13.01.26_Central Food Wholesales_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด โฮลเซลล์ จำกัด"
+      },
+      {
+        "filename": "20.01.2026_WHT_EXP-20260100068_RT-20260100229_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100075_510113_05.01.26_V pack_VAT.pdf",
+        "company_name": "บริษัท วี แพ็ก จำกัด"
+      },
+      {
+        "filename": "24.12.2026_EXP-20251200111_510110_24.12.26_CP Axtra_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "31.12.2025_EXP-20251200112_510111_31.12.68_Gas_VAT.pdf",
+        "company_name": "บริษัท นิวห้วยขวางแก๊ส จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100006_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100007_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100016_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100025_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "23.01.2026_EXP-20260200004_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100014_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "28.01.2026_EXP-20260200007_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100017_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "08.01.2026_EXP-20260200002_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "11.01.2026_EXP-20260100009_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100022_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "09.01.2026_EXP-20260200003_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100021_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100024_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100010_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "01.01.2026_EXP-20260100003_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100008_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100020_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100011_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100013_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100018_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100005_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100023_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100012_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "04.01.2026_EXP-20260200001_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "27.01.2026_EXP-20260200006_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100015_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "25.01.2026_EXP-20260200005_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100019_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "03.01.2026_EXP-20260100004_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100049_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd. (Head Office)"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100052_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd. (Head Office)"
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100055_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100056_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100060_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd. (Head Office)"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100057_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100063_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd. (Head Office)"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100064_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100051_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "03.01.2026_EXP-20260100046_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100059_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100061_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100062_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100058_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100048_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100050_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100054_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd. (Head Office)"
+      },
+      {
+        "filename": "11.01.2026_EXP-20260100053_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100065_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "04.01.2026_EXP-20260100047_ค่าโฆษณา Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100042_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "11.01.2026_EXP-20260100033_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100035_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100028_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100030_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100031_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100034_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd. (Head Office)"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100036_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100032_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100038_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "04.01.2026_EXP-20260100027_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100029_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100040_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "บริษัท แกร็บแท็กซี่ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100043_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100041_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "03.01.2026_EXP-20260100026_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100044_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100039_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100045_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100037_ค่าบริการ Grab_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd. (Head Office)"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 78,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251200111",
+        "ocr_document_no": "38061716859",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251200112",
+        "ocr_document_no": "0059",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0101-000654",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100046",
+        "ocr_document_no": "GFAD20260103001904",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100026",
+        "ocr_document_no": "IM20260103051288",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "TRSPEFHM00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100047",
+        "ocr_document_no": "GFAD20260104001946",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100027",
+        "ocr_document_no": "IM20260104034885",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0104-000739",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100076",
+        "ocr_document_no": "104284",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100048",
+        "ocr_document_no": "GFAD20260105002108",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100028",
+        "ocr_document_no": "IM20260105008184",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100075",
+        "ocr_document_no": "IV6900002",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "TRSPEFHM00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260100049",
+        "ocr_document_no": "GFAD20260106002130",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260100029",
+        "ocr_document_no": "IM20260106008374",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0106-000753",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260100050",
+        "ocr_document_no": "GFAD20260107002161",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100030",
+        "ocr_document_no": "IM20260107055153",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "TRSPEFHM00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260100051",
+        "ocr_document_no": "GFAD20260108002238",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260100031",
+        "ocr_document_no": "IM20260108039142",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0108-000730",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0109-000754",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260100052",
+        "ocr_document_no": "GFAD20260110002193",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260100032",
+        "ocr_document_no": "IM20260110039153",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260100072",
+        "ocr_document_no": "RSTIE26010085555",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0110-000752",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260100073",
+        "ocr_document_no": "38071022085",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260100053",
+        "ocr_document_no": "GFAD20260111002082",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260100033",
+        "ocr_document_no": "IM20260111000497",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0111-000750",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260100054",
+        "ocr_document_no": "GFAD20260112002145",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260100034",
+        "ocr_document_no": "IM20260112047632",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0112-000739",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260100055",
+        "ocr_document_no": "GFAD20260113002212",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260100035",
+        "ocr_document_no": "IM20260113029479",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXP-20260100074",
+        "ocr_document_no": "RSTIE26010086190",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "TRSPEFHM00-00000-260113-000741",
+        "match_status": "full_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-20260100056",
+        "ocr_document_no": "GFAD20260114002199",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXP-20260100036",
+        "ocr_document_no": "IM20260114038651",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0114-000739",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 42,
+        "purchase_reference": "EXP-20260100057",
+        "ocr_document_no": "GFAD20260115002266",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 43,
+        "purchase_reference": "EXP-20260100037",
+        "ocr_document_no": "IM20260115082319",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 44,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "TRSPEFHM00-00000-260115-000741",
+        "match_status": "full_match"
+      },
+      {
+        "index": 45,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0116-000751",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 46,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0117-000747",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 47,
+        "purchase_reference": "EXP-20260100058",
+        "ocr_document_no": "GFAD20260118002165",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 48,
+        "purchase_reference": "EXP-20260100038",
+        "ocr_document_no": "IM20260118018828",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 49,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "TRSPEFHM00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 50,
+        "purchase_reference": "EXP-20260100039",
+        "ocr_document_no": "IM20260119011550",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 51,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0119-000741",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 52,
+        "purchase_reference": "EXP-20260100068",
+        "ocr_document_no": "RT-20260100229",
+        "match_status": "full_match"
+      },
+      {
+        "index": 53,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0120-000753",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 54,
+        "purchase_reference": "EXP-20260100040",
+        "ocr_document_no": "IM20260121019365",
+        "match_status": "full_match"
+      },
+      {
+        "index": 55,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0121-000763",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 56,
+        "purchase_reference": "EXP-20260100059",
+        "ocr_document_no": "GFAD20260122002280",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 57,
+        "purchase_reference": "EXP-20260100041",
+        "ocr_document_no": "IM20260122062244",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 58,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0122-000766",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 59,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0123-000758",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 60,
+        "purchase_reference": "EXP-20260100060",
+        "ocr_document_no": "GFAD20260124002291",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 61,
+        "purchase_reference": "EXP-20260100042",
+        "ocr_document_no": "IM20260124070133",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 62,
+        "purchase_reference": "EXP-20260100021",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0124-000760",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 63,
+        "purchase_reference": "EXP-20260100061",
+        "ocr_document_no": "GFAD20260125002181",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 64,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0125-000763",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 65,
+        "purchase_reference": "EXP-20260100062",
+        "ocr_document_no": "GFAD20260126002159",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 66,
+        "purchase_reference": "EXP-20260100045",
+        "ocr_document_no": "IM20260126039718",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 67,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0126-000749",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 68,
+        "purchase_reference": "EXP-20260100063",
+        "ocr_document_no": "GFAD20260127002264",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 69,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0127-000734",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 70,
+        "purchase_reference": "EXP-20260100064",
+        "ocr_document_no": "GFAD20260128002281",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 71,
+        "purchase_reference": "EXP-20260100043",
+        "ocr_document_no": "IM20260128044416",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 72,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0128-000748",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 73,
+        "purchase_reference": "EXP-20260100044",
+        "ocr_document_no": "IM20260129052951",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 74,
+        "purchase_reference": "EXP-20260100023",
+        "ocr_document_no": "TRSPEFHM00-00000-26 0129-000757",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 75,
+        "purchase_reference": "EXP-20260100024",
+        "ocr_document_no": "TRSPEFHM00-00000-260130-000754",
+        "match_status": "full_match"
+      },
+      {
+        "index": 76,
+        "purchase_reference": "EXP-20260100065",
+        "ocr_document_no": "GFAD20260131002325",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 77,
+        "purchase_reference": "EXP-20260100025",
+        "ocr_document_no": "TRSPEFHM00-00000-26-0131-000757",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

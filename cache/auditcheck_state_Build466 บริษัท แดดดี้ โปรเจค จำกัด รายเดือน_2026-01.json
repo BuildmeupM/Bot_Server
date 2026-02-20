@@ -1,0 +1,92 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-20T08:39:10.034Z",
+  "last_saved": "2026-02-20T15:39:09.899110",
+  "company": "Build466 บริษัท แดดดี้ โปรเจค จำกัด รายเดือน",
+  "base_company": "Build466 บริษัท แดดดี้ โปรเจค จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "1": "เลข13คู่ค้าผิด  ",
+    "2": ""
+  },
+  "initialNotes": {
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ซี แอล. อีควิปเม้นท์' แต่ OCR='บริษัท ซีแอล. อีควิปเม้นท์ (ประเทศไทย) จำกัด'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0103542024880' แต่ OCR='0105556102103'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ซี แอล. อีควิปเม้นท์' แต่ OCR='ห้างหุ้นส่วนจำกัด ซี แอล.อีควิปเม้นท์'"
+  },
+  "comparisonApprovals": {
+    "2-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build466 บริษัท แดดดี้ โปรเจค จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 5,
+    "metadata": [
+      {
+        "filename": "28.01.2026_EXP-20260100017_8.28-01-26 ซื้อจอSWIT_VAT.pdf",
+        "company_name": "บริษัท ซีแอล. อีควิปเม้นท์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100016_7.28-01-26 ซื้อแบต_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ซี แอล.อีควิปเม้นท์"
+      },
+      {
+        "filename": "31.01.2026_WHT_EXP-20260100004_บจ.คาเมร่าบี CIV2026010037_VAT.pdf",
+        "company_name": "บริษัท คาเมร่าบี จำกัด"
+      },
+      {
+        "filename": "31.01.2026_WHT_EXP-20260100005_ บจ.คาเมร่าบี CIV2026010045_VAT.pdf",
+        "company_name": "บริษัท คาเมร่าบี จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100003_ค่าน้ำและค่าไฟฟ้า (ธ.ค.68) IV6901004_VAT.pdf",
+        "company_name": "บริษัท สตรีม อาคิเทคเทอรัล แอนด์ เอ็นจิเนียริ่ง จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 5,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "RE6901006",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "69/01-014",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "69/01-023",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "INV2026010038",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "INV2026010039",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

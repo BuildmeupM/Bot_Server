@@ -1,0 +1,1127 @@
+{
+  "452fec1a97a27d3658c41207945ac1c5": {
+    "filename": "09.01.2026_EXP-20260100021_510111_tax invoice mixue Jan 26_1_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\09.01.2026_EXP-20260100021_510111_tax invoice mixue Jan 26_1_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: SI260109000139\nวันที่: 09/01/2026\nชื่อผู้ขาย: MIXUE (THAILAND) COMPANY LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565146649\nที่อยู่ผู้ขาย: No. 3 Fortune Town Building, 22 Floor, Zone BC4, Ratchadaphisek Road, Din DaengKhwaeng KhetDin Daeng Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok\nยอดรวมก่อนภาษี: 30,871.96\nภาษีมูลค่าเพิ่ม: 2,161.04\nยอดรวมสุทธิ: 35,313.00\n\nรายการสินค้า/บริการ:\n  - NON-DAIRY CREAMER (SWEET): 6,074.77\n  - NON-DAIRY CREAMER: 2,523.36\n  - Non-Dairy Creamer (Taro Flavor): 11,514.02\n  - TAPIOCA PEARLS: 738.32\n  - FRUCTOSE SYRUP: 1,132.71\n  - SUGAR SYRUP: 880.37\n  - 400 U TYPE CUP: 1,048.60\n  - 500 PLASTIC CUP(FROSTED): 957.01\n  - 700 PLASTIC CUP(FROSTED): 1,396.26\n  - PAPER SEALING FILM: 2,363.55\n  - Lemon: 2,280.00\n  - Oreo crumbs: 2,242.99",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: SI260109000139\nวันที่: 09/01/2026\nชื่อผู้ขาย: MIXUE (THAILAND) COMPANY LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565146649\nที่อยู่ผู้ขาย: No. 3 Fortune Town Building, 22 Floor, Zone BC4, Ratchadaphisek Road, Din DaengKhwaeng KhetDin Daeng Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdi",
+      "company_name": "MIXUE (THAILAND) COMPANY LIMITED",
+      "tax_id": "0105565146649",
+      "branch": "00000",
+      "date": "09/01/2026",
+      "document_number": "SI260109000139",
+      "reference_number": "EXP-20260100021",
+      "document_status": "",
+      "amount_before_vat": 30871.96,
+      "vat_amount": 2161.04,
+      "total_amount": 35313.0,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "6,074.77",
+          "ราคาต่อหน่วย": "3,037.38",
+          "รายการ": "NON-DAIRY CREAMER (SWEET)",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "2,523.36",
+          "ราคาต่อหน่วย": "2,523.36",
+          "รายการ": "NON-DAIRY CREAMER",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "4.00",
+          "จำนวนเงิน": "11,514.02",
+          "ราคาต่อหน่วย": "2,878.50",
+          "รายการ": "Non-Dairy Creamer (Taro Flavor)",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "738.32",
+          "ราคาต่อหน่วย": "738.32",
+          "รายการ": "TAPIOCA PEARLS",
+          "ลำดับ": "4"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,132.71",
+          "ราคาต่อหน่วย": "1,132.71",
+          "รายการ": "FRUCTOSE SYRUP",
+          "ลำดับ": "5"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "880.37",
+          "ราคาต่อหน่วย": "880.37",
+          "รายการ": "SUGAR SYRUP",
+          "ลำดับ": "6"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,048.60",
+          "ราคาต่อหน่วย": "1,048.60",
+          "รายการ": "400 U TYPE CUP",
+          "ลำดับ": "7"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "957.01",
+          "ราคาต่อหน่วย": "957.01",
+          "รายการ": "500 PLASTIC CUP(FROSTED)",
+          "ลำดับ": "8"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,396.26",
+          "ราคาต่อหน่วย": "1,396.26",
+          "รายการ": "700 PLASTIC CUP(FROSTED)",
+          "ลำดับ": "9"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "2,363.55",
+          "ราคาต่อหน่วย": "2,363.55",
+          "รายการ": "PAPER SEALING FILM",
+          "ลำดับ": "10"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "2,280.00",
+          "ราคาต่อหน่วย": "1,140.00",
+          "รายการ": "Lemon",
+          "ลำดับ": "11"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "2,242.99",
+          "ราคาต่อหน่วย": "2,242.99",
+          "รายการ": "Oreo crumbs",
+          "ลำดับ": "12"
+        }
+      ],
+      "buyer_name": "Techinnolife Co., Ltd.",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok",
+      "success": true
+    },
+    "cached_at": 1771561901.1143384
+  },
+  "0fb24153d673809f0c6c454293e1a7ba": {
+    "filename": "12.01.2026_EXP-20260100022_510111_tax invoice mixue Jan 26_2_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\12.01.2026_EXP-20260100022_510111_tax invoice mixue Jan 26_2_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: SI260112000268\nวันที่: 12/01/2026\nชื่อผู้ขาย: MIXUE (THAILAND) COMPANY LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565146649\nที่อยู่ผู้ขาย: No. 3 Fortune Town Building, 22 Floor, Zone BC4, Ratchadaphisek Road, Din DaengKhwaeng KhetDin Daeng Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok\nยอดรวมก่อนภาษี: 24,854.21\nภาษีมูลค่าเพิ่ม: 1,739.79\nยอดรวมสุทธิ: 30,014.00\n\nรายการสินค้า/บริการ:\n  - NON-DAIRY CREAMER (SWEET): 6,074.77\n  - NON-DAIRY CREAMER: 2,523.36\n  - TAPIOCA PEARLS: 1,476.64\n  - FRUCTOSE SYRUP: 2,265.42\n  - SUGAR SYRUP: 1,760.75\n  - BROWN SUGAR SYRUP: 1,295.33\n  - 400 U TYPE CUP: 1,048.60\n  - 500 PLASTIC CUP(FROSTED): 957.01\n  - 700 PLASTIC CUP(FROSTED): 2,792.52\n  - SINGLE CUP BAG: 2,370.09\n  - THERMAL BAG(DOUBLE CUP): 1,542.06\n  - Snow King Wobbling Doll: 747.66\n  - Lemon: 3,420.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: SI260112000268\nวันที่: 12/01/2026\nชื่อผู้ขาย: MIXUE (THAILAND) COMPANY LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565146649\nที่อยู่ผู้ขาย: No. 3 Fortune Town Building, 22 Floor, Zone BC4, Ratchadaphisek Road, Din DaengKhwaeng KhetDin Daeng Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdi",
+      "company_name": "MIXUE (THAILAND) COMPANY LIMITED",
+      "tax_id": "0105565146649",
+      "branch": "00000",
+      "date": "12/01/2026",
+      "document_number": "SI260112000268",
+      "reference_number": "EXP-20260100022",
+      "document_status": "",
+      "amount_before_vat": 24854.21,
+      "vat_amount": 1739.79,
+      "total_amount": 30014.0,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "6,074.77",
+          "ราคาต่อหน่วย": "3,037.38",
+          "รายการ": "NON-DAIRY CREAMER (SWEET)",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "2,523.36",
+          "ราคาต่อหน่วย": "2,523.36",
+          "รายการ": "NON-DAIRY CREAMER",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "1,476.64",
+          "ราคาต่อหน่วย": "738.32",
+          "รายการ": "TAPIOCA PEARLS",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "2,265.42",
+          "ราคาต่อหน่วย": "1,132.71",
+          "รายการ": "FRUCTOSE SYRUP",
+          "ลำดับ": "4"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "1,760.75",
+          "ราคาต่อหน่วย": "880.37",
+          "รายการ": "SUGAR SYRUP",
+          "ลำดับ": "5"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,295.33",
+          "ราคาต่อหน่วย": "1,295.33",
+          "รายการ": "BROWN SUGAR SYRUP",
+          "ลำดับ": "6"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,048.60",
+          "ราคาต่อหน่วย": "1,048.60",
+          "รายการ": "400 U TYPE CUP",
+          "ลำดับ": "7"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "957.01",
+          "ราคาต่อหน่วย": "957.01",
+          "รายการ": "500 PLASTIC CUP(FROSTED)",
+          "ลำดับ": "8"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "2,792.52",
+          "ราคาต่อหน่วย": "1,396.26",
+          "รายการ": "700 PLASTIC CUP(FROSTED)",
+          "ลำดับ": "9"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "2,370.09",
+          "ราคาต่อหน่วย": "2,370.09",
+          "รายการ": "SINGLE CUP BAG",
+          "ลำดับ": "10"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,542.06",
+          "ราคาต่อหน่วย": "1,542.06",
+          "รายการ": "THERMAL BAG(DOUBLE CUP)",
+          "ลำดับ": "11"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "747.66",
+          "ราคาต่อหน่วย": "747.66",
+          "รายการ": "Snow King Wobbling Doll",
+          "ลำดับ": "12"
+        },
+        {
+          "จำนวน": "3.00",
+          "จำนวนเงิน": "3,420.00",
+          "ราคาต่อหน่วย": "1,140.00",
+          "รายการ": "Lemon",
+          "ลำดับ": "13"
+        }
+      ],
+      "buyer_name": "Techinnolife Co., Ltd.",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok",
+      "success": true
+    },
+    "cached_at": 1771561915.921821
+  },
+  "76364faad11390f2ebc046282f74bad1": {
+    "filename": "12.1.2026_EXP-20260100026_510111_tax invoice Tai Xing De Hui Jan 26-2_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\12.1.2026_EXP-20260100026_510111_tax invoice Tai Xing De Hui Jan 26-2_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RET20260100513\nวันที่: 12/01/2026\nชื่อผู้ขาย: Tai Xing De Hui (Thailand) Co.,Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565096218\nที่อยู่ผู้ขาย: No. 3, C.P. Tower 2 (Fortune Town) 22nd Floor, Zone G, Ratchadapisek Road, Din Daeng, Din Daeng, Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok\nยอดรวมก่อนภาษี: 6310.84\nภาษีมูลค่าเพิ่ม: 441.76\nยอดรวมสุทธิ: 6752.60\n\nรายการสินค้า/บริการ:\n  - STRAWBERRY JAM: 1262.62\n  - BLACK TEA: 3000.00\n  - ELECTRONIC HOUSEHOLD SCALE: 224.30\n  - CRYSTAL JELLY: 780.37\n  - NATA DE COCO: 660.75\n  - HONG KONG -STYLE MILK TEA STRAINER: 302.80\n  - STRAINER: 80.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RET20260100513\nวันที่: 12/01/2026\nชื่อผู้ขาย: Tai Xing De Hui (Thailand) Co.,Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565096218\nที่อยู่ผู้ขาย: No. 3, C.P. Tower 2 (Fortune Town) 22nd Floor, Zone G, Ratchadapisek Road, Din Daeng, Din Daeng, Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdis",
+      "company_name": "Tai Xing De Hui (Thailand) Co.,Ltd.",
+      "tax_id": "0105565096218",
+      "branch": "00000",
+      "date": "12/01/2026",
+      "document_number": "RET20260100513",
+      "reference_number": "EXP-20260100026",
+      "document_status": "",
+      "amount_before_vat": 6310.84,
+      "vat_amount": 441.76,
+      "total_amount": 6752.6,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1262.62",
+          "ราคาต่อหน่วย": "1351.00",
+          "รายการ": "STRAWBERRY JAM",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "3000.00",
+          "ราคาต่อหน่วย": "3210.00",
+          "รายการ": "BLACK TEA",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "224.30",
+          "ราคาต่อหน่วย": "240.00",
+          "รายการ": "ELECTRONIC HOUSEHOLD SCALE",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "780.37",
+          "ราคาต่อหน่วย": "835.00",
+          "รายการ": "CRYSTAL JELLY",
+          "ลำดับ": "4"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "660.75",
+          "ราคาต่อหน่วย": "707.00",
+          "รายการ": "NATA DE COCO",
+          "ลำดับ": "5"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "302.80",
+          "ราคาต่อหน่วย": "324.00",
+          "รายการ": "HONG KONG -STYLE MILK TEA STRAINER",
+          "ลำดับ": "6"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "80.00",
+          "ราคาต่อหน่วย": "85.60",
+          "รายการ": "STRAINER",
+          "ลำดับ": "7"
+        }
+      ],
+      "buyer_name": "Techinnolife Co., Ltd.",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok",
+      "success": true
+    },
+    "cached_at": 1771561934.5345688
+  },
+  "4dbb03f39c25118f7ada2ecb5cdce501": {
+    "filename": "15.1.2026_EXP-20260100014_510112_tax invoice LQ light box 15 jan 26_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\15.1.2026_EXP-20260100014_510112_tax invoice LQ light box 15 jan 26_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบกำกับภาษี/ใบแจ้งหนี้\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: LQ2026/01-125\nวันที่: 15/01/2026\nชื่อผู้ขาย: บริษัท แอล คิว ไลท์บ็อก จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105558160119\nที่อยู่ผู้ขาย: 46/20 หมู่ที่ 9 ตำบลโคกขาม อำเภอเมืองสมุทรสาคร จังหวัดสมุทรสาคร 74000\nชื่อผู้ซื้อ: บริษัท เทค อินโนไลฟ์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 ชั้นที่ 4 ห้องเลขที่ เค420 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย กรุงเทพมหานคร 10700\nยอดรวมก่อนภาษี: 119.63\nภาษีมูลค่าเพิ่ม: 8.37\nยอดรวมสุทธิ: 128.00\n\nรายการสินค้า/บริการ:\n  - โปร Love Certificate (1.1 Backlit film (Love Certificate) ขนาด 160 x 20 ชม., 1.2 Sticker PP Board (Love Certificate) ขนาด 29.7 x 21 ชม.): 119.63",
+      "raw_text_preview": "ประเภทเอกสาร: ใบกำกับภาษี/ใบแจ้งหนี้\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: LQ2026/01-125\nวันที่: 15/01/2026\nชื่อผู้ขาย: บริษัท แอล คิว ไลท์บ็อก จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105558160119\nที่อยู่ผู้ขาย: 46/20 หมู่ที่ 9 ตำบลโคกขาม อำเภอเมืองสมุทรสาคร จังหวัดสมุทรสาคร 74000\nชื่อผู้ซื้อ: บริษัท เทค อินโนไลฟ์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 ชั้นที่ 4 ห้องเลขที่ เค420 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย กรุงเทพมหานคร 10700\nยอดรวมก่อนภาษี",
+      "company_name": "บริษัท แอล คิว ไลท์บ็อก จำกัด",
+      "tax_id": "0105558160119",
+      "branch": "00000",
+      "date": "15/01/2026",
+      "document_number": "LQ2026/01-125",
+      "reference_number": "EXP-20260100014",
+      "document_status": "",
+      "amount_before_vat": 119.63,
+      "vat_amount": 8.37,
+      "total_amount": 128.0,
+      "document_type": "ใบกำกับภาษี/ใบแจ้งหนี้",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "119.63",
+          "ราคาต่อหน่วย": "119.63",
+          "รายการ": "โปร Love Certificate (1.1 Backlit film (Love Certificate) ขนาด 160 x 20 ชม., 1.2 Sticker PP Board (Love Certificate) ขนาด 29.7 x 21 ชม.)",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "บริษัท เทค อินโนไลฟ์ จำกัด",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 ชั้นที่ 4 ห้องเลขที่ เค420 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย กรุงเทพมหานคร 10700",
+      "success": true
+    },
+    "cached_at": 1771561954.4209101
+  },
+  "7600839d893af7b18726bc86bd15f4da": {
+    "filename": "19.1.2026_EXP-20260100028_510111_tax invoice Tai Xing De Hui Jan 26-3_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\19.1.2026_EXP-20260100028_510111_tax invoice Tai Xing De Hui Jan 26-3_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Tax Invoice/Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RET20260101017\nวันที่: 19/01/2026\nชื่อผู้ขาย: Tai Xing De Hui (Thailand) Co.,Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565096218\nที่อยู่ผู้ขาย: No. 3, C.P. Tower 2 (Fortune Town) 22nd Floor, Zone G, Ratchadapisek Road, Din Daeng, Din Daeng, Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok\nยอดรวมก่อนภาษี: 7006.55\nภาษีมูลค่าเพิ่ม: 490.45\nยอดรวมสุทธิ: 7497.00\n\nรายการสินค้า/บริการ:\n  - STRAWBERRY JAM: 1262.62\n  - BLACK TEA: 3000.00\n  - PEACH JAM: 1448.60\n  - YELLOW PEACH JAM: 1295.33",
+      "raw_text_preview": "ประเภทเอกสาร: Tax Invoice/Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RET20260101017\nวันที่: 19/01/2026\nชื่อผู้ขาย: Tai Xing De Hui (Thailand) Co.,Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565096218\nที่อยู่ผู้ขาย: No. 3, C.P. Tower 2 (Fortune Town) 22nd Floor, Zone G, Ratchadapisek Road, Din Daeng, Din Daeng, Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdis",
+      "company_name": "Tai Xing De Hui (Thailand) Co.,Ltd.",
+      "tax_id": "0105565096218",
+      "branch": "00000",
+      "date": "19/01/2026",
+      "document_number": "RET20260101017",
+      "reference_number": "EXP-20260100028",
+      "document_status": "",
+      "amount_before_vat": 7006.55,
+      "vat_amount": 490.45,
+      "total_amount": 7497.0,
+      "document_type": "Tax Invoice/Receipt",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1262.62",
+          "ราคาต่อหน่วย": "1351.00",
+          "รายการ": "STRAWBERRY JAM",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "3000.00",
+          "ราคาต่อหน่วย": "3210.00",
+          "รายการ": "BLACK TEA",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1448.60",
+          "ราคาต่อหน่วย": "1550.00",
+          "รายการ": "PEACH JAM",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1295.33",
+          "ราคาต่อหน่วย": "1386.00",
+          "รายการ": "YELLOW PEACH JAM",
+          "ลำดับ": "4"
+        }
+      ],
+      "buyer_name": "Techinnolife Co., Ltd.",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok",
+      "success": true
+    },
+    "cached_at": 1771562102.115506
+  },
+  "7ce71b7ecb68f6786c54c820188cba82": {
+    "filename": "23.1.2026_EXP-20260100027_510111_tax invoice Tai Xing De Hui Jan 26-4_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\23.1.2026_EXP-20260100027_510111_tax invoice Tai Xing De Hui Jan 26-4_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Tax Invoice/Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RET20260101528\nวันที่: 23/01/2026\nชื่อผู้ขาย: Tai Xing De Hui (Thailand) Co.,Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565096218\nที่อยู่ผู้ขาย: No. 3, C.P. Tower 2 (Fortune Town) 22nd Floor, Zone G, Ratchadapisek Road, Din Daeng, Din Daeng, Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok\nยอดรวมก่อนภาษี: 552.34\nภาษีมูลค่าเพิ่ม: 38.66\nยอดรวมสุทธิ: 591.00\n\nรายการสินค้า/บริการ:\n  - DUSTER CLOTH (BLUE): 36.45\n  - MEASURING PITCHER 5000CC: 397.20\n  - DUSTER CLOTH (PINK): 36.45\n  - EGG BEATER: 82.24\n  - Cashier counter display board: 0.00\n  - Table sticker + storefront contact phone number: 0.00\n  - Wall sticker: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Tax Invoice/Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RET20260101528\nวันที่: 23/01/2026\nชื่อผู้ขาย: Tai Xing De Hui (Thailand) Co.,Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565096218\nที่อยู่ผู้ขาย: No. 3, C.P. Tower 2 (Fortune Town) 22nd Floor, Zone G, Ratchadapisek Road, Din Daeng, Din Daeng, Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdis",
+      "company_name": "Tai Xing De Hui (Thailand) Co.,Ltd.",
+      "tax_id": "0105565096218",
+      "branch": "00000",
+      "date": "23/01/2026",
+      "document_number": "RET20260101528",
+      "reference_number": "EXP-20260100027",
+      "document_status": "",
+      "amount_before_vat": 552.34,
+      "vat_amount": 38.66,
+      "total_amount": 591.0,
+      "document_type": "Tax Invoice/Receipt",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "36.45",
+          "ราคาต่อหน่วย": "39.00",
+          "รายการ": "DUSTER CLOTH (BLUE)",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "5",
+          "จำนวนเงิน": "397.20",
+          "ราคาต่อหน่วย": "85.00",
+          "รายการ": "MEASURING PITCHER 5000CC",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "36.45",
+          "ราคาต่อหน่วย": "39.00",
+          "รายการ": "DUSTER CLOTH (PINK)",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "82.24",
+          "ราคาต่อหน่วย": "88.00",
+          "รายการ": "EGG BEATER",
+          "ลำดับ": "4"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.01",
+          "รายการ": "Cashier counter display board",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.01",
+          "รายการ": "Table sticker + storefront contact phone number",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.01",
+          "รายการ": "Wall sticker",
+          "ลำดับ": "3"
+        }
+      ],
+      "buyer_name": "Techinnolife Co., Ltd.",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok",
+      "success": true
+    },
+    "cached_at": 1771562155.0890455
+  },
+  "335258cbdbf48350752d89ad511b4ce5": {
+    "filename": "26.1.2026_EXP-20260100024_510111_tax invoice mixue Jan 26_5_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\26.1.2026_EXP-20260100024_510111_tax invoice mixue Jan 26_5_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: SI260126000863\nวันที่: 26/01/2026\nชื่อผู้ขาย: MIXUE (THAILAND) COMPANY LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565146649\nที่อยู่ผู้ขาย: No. 3 Fortune Town Building, 22 Floor, Zone BC4, Ratchadaphisek Road, Din DaengKhwaeng KhetDin Daeng Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok\nยอดรวมก่อนภาษี: 27,930.84\nภาษีมูลค่าเพิ่ม: 1,955.16\nยอดรวมสุทธิ: 32,166.00\n\nรายการสินค้า/บริการ:\n  - ICE CREAM CONE: 4,403.74\n  - NON-DAIRY CREAMER (SWEET): 3,037.38\n  - NON-DAIRY CREAMER: 5,046.73\n  - TAPIOCA PEARLS: 2,214.95\n  - FRUCTOSE SYRUP: 2,265.42\n  - SUGAR SYRUP: 1,760.75\n  - BROWN SUGAR SYRUP: 1,295.33\n  - CHOCOLATE SYRUP: 1,887.85\n  - 500 PLASTIC CUP(FROSTED): 957.01\n  - 700 PLASTIC CUP(FROSTED): 1,396.26\n  - SINGLE CUP BAG: 2,370.09\n  - SUNDAE SPOON: 1,295.33\n  - Lemon: 2,280.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: SI260126000863\nวันที่: 26/01/2026\nชื่อผู้ขาย: MIXUE (THAILAND) COMPANY LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565146649\nที่อยู่ผู้ขาย: No. 3 Fortune Town Building, 22 Floor, Zone BC4, Ratchadaphisek Road, Din DaengKhwaeng KhetDin Daeng Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdi",
+      "company_name": "MIXUE (THAILAND) COMPANY LIMITED",
+      "tax_id": "0105565146649",
+      "branch": "00000",
+      "date": "26/01/2026",
+      "document_number": "SI260126000863",
+      "reference_number": "EXP-20260100024",
+      "document_status": "",
+      "amount_before_vat": 27930.84,
+      "vat_amount": 1955.16,
+      "total_amount": 32166.0,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวน": "8.00",
+          "จำนวนเงิน": "4,403.74",
+          "ราคาต่อหน่วย": "550.47",
+          "รายการ": "ICE CREAM CONE",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "3,037.38",
+          "ราคาต่อหน่วย": "3,037.38",
+          "รายการ": "NON-DAIRY CREAMER (SWEET)",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "5,046.73",
+          "ราคาต่อหน่วย": "2,523.36",
+          "รายการ": "NON-DAIRY CREAMER",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "3.00",
+          "จำนวนเงิน": "2,214.95",
+          "ราคาต่อหน่วย": "738.32",
+          "รายการ": "TAPIOCA PEARLS",
+          "ลำดับ": "4"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "2,265.42",
+          "ราคาต่อหน่วย": "1,132.71",
+          "รายการ": "FRUCTOSE SYRUP",
+          "ลำดับ": "5"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "1,760.75",
+          "ราคาต่อหน่วย": "880.37",
+          "รายการ": "SUGAR SYRUP",
+          "ลำดับ": "6"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,295.33",
+          "ราคาต่อหน่วย": "1,295.33",
+          "รายการ": "BROWN SUGAR SYRUP",
+          "ลำดับ": "7"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,887.85",
+          "ราคาต่อหน่วย": "1,887.85",
+          "รายการ": "CHOCOLATE SYRUP",
+          "ลำดับ": "8"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "957.01",
+          "ราคาต่อหน่วย": "957.01",
+          "รายการ": "500 PLASTIC CUP(FROSTED)",
+          "ลำดับ": "9"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,396.26",
+          "ราคาต่อหน่วย": "1,396.26",
+          "รายการ": "700 PLASTIC CUP(FROSTED)",
+          "ลำดับ": "10"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "2,370.09",
+          "ราคาต่อหน่วย": "2,370.09",
+          "รายการ": "SINGLE CUP BAG",
+          "ลำดับ": "11"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,295.33",
+          "ราคาต่อหน่วย": "1,295.33",
+          "รายการ": "SUNDAE SPOON",
+          "ลำดับ": "12"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "2,280.00",
+          "ราคาต่อหน่วย": "1,140.00",
+          "รายการ": "Lemon",
+          "ลำดับ": "13"
+        }
+      ],
+      "buyer_name": "Techinnolife Co., Ltd.",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok",
+      "success": true
+    },
+    "cached_at": 1771562195.7141287
+  },
+  "c9d957c963ae7b31809190e9caa8e4c0": {
+    "filename": "26.1.2026_EXP-20260100029_510111_tax invoice Tai Xing De Hui Jan 26-5_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\26.1.2026_EXP-20260100029_510111_tax invoice Tai Xing De Hui Jan 26-5_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RET20260101785\nวันที่: 26/01/2026\nชื่อผู้ขาย: Tai Xing De Hui (Thailand) Co.,Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565096218\nที่อยู่ผู้ขาย: No. 3, C.P. Tower 2 (Fortune Town) 22nd Floor, Zone G, Ratchadapisek Road, Din Daeng, Din Daeng, Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok\nยอดรวมก่อนภาษี: 7188.80\nภาษีมูลค่าเพิ่ม: 503.20\nยอดรวมสุทธิ: 7692.00\n\nรายการสินค้า/บริการ:\n  - STRAWBERRY JAM: 1262.62\n  - DRINKING POWDER: 2028.04\n  - PEACH JAM: 1448.60\n  - NATA DE COCO: 660.75\n  - Love Certificate: 364.49\n  - CASH REGISTER PAPER: 1424.30",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RET20260101785\nวันที่: 26/01/2026\nชื่อผู้ขาย: Tai Xing De Hui (Thailand) Co.,Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565096218\nที่อยู่ผู้ขาย: No. 3, C.P. Tower 2 (Fortune Town) 22nd Floor, Zone G, Ratchadapisek Road, Din Daeng, Din Daeng, Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdis",
+      "company_name": "Tai Xing De Hui (Thailand) Co.,Ltd.",
+      "tax_id": "0105565096218",
+      "branch": "00000",
+      "date": "26/01/2026",
+      "document_number": "RET20260101785",
+      "reference_number": "EXP-20260100029",
+      "document_status": "",
+      "amount_before_vat": 7188.8,
+      "vat_amount": 503.2,
+      "total_amount": 7692.0,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1262.62",
+          "ราคาต่อหน่วย": "1351.00",
+          "รายการ": "STRAWBERRY JAM",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "2028.04",
+          "ราคาต่อหน่วย": "2170.00",
+          "รายการ": "DRINKING POWDER",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1448.60",
+          "ราคาต่อหน่วย": "1550.00",
+          "รายการ": "PEACH JAM",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "660.75",
+          "ราคาต่อหน่วย": "707.00",
+          "รายการ": "NATA DE COCO",
+          "ลำดับ": "4"
+        },
+        {
+          "จำนวน": "3",
+          "จำนวนเงิน": "364.49",
+          "ราคาต่อหน่วย": "130.00",
+          "รายการ": "Love Certificate",
+          "ลำดับ": "5"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1424.30",
+          "ราคาต่อหน่วย": "1524.00",
+          "รายการ": "CASH REGISTER PAPER",
+          "ลำดับ": "6"
+        }
+      ],
+      "buyer_name": "Techinnolife Co., Ltd.",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok",
+      "success": true
+    },
+    "cached_at": 1771562243.5694833
+  },
+  "d992c9fd7f8e8065edeba1a50021d8df": {
+    "filename": "27.1.2026_EXP-20260100016_530215_tax invoice makro 27 jan 26_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100016_530215_tax invoice makro 27 jan 26_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: 55141054039\nวันที่: 27/01/2026\nชื่อผู้ขาย: บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0107567000414\nที่อยู่ผู้ขาย: 636 ถ.บรมราชชนนี แขวงบางบำหรุ เขตบางพลัด กรุงเทพ 10700\nชื่อผู้ซื้อ: บริษัท เทค อินโนไลฟ์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 ชั้น4 ห้องเลขที่ เค420 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย กรุงเทพมหานคร 10700\nยอดรวมก่อนภาษี: 274.77\nภาษีมูลค่าเพิ่ม: 19.23\nยอดรวมสุทธิ: 294.00\n\nรายการสินค้า/บริการ:\n  - CHAMPIONถุงขยะหนาเกรดA 30X40\" 12ใบ12 ชน: 294.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: 55141054039\nวันที่: 27/01/2026\nชื่อผู้ขาย: บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0107567000414\nที่อยู่ผู้ขาย: 636 ถ.บรมราชชนนี แขวงบางบำหรุ เขตบางพลัด กรุงเทพ 10700\nชื่อผู้ซื้อ: บริษัท เทค อินโนไลฟ์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 ชั้น4 ห้องเลขที่ เค420 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย กรุงเทพมหานคร 10700\nยอดรวมก่อนภาษี: 274.77\nภ",
+      "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)",
+      "tax_id": "0107567000414",
+      "branch": "00150",
+      "date": "27/01/2026",
+      "document_number": "55141054039",
+      "reference_number": "EXP-20260100016",
+      "document_status": "",
+      "amount_before_vat": 274.77,
+      "vat_amount": 19.23,
+      "total_amount": 294.0,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวน": "6",
+          "จำนวนเงิน": "294.00",
+          "ราคาต่อหน่วย": "49.00",
+          "รายการ": "CHAMPIONถุงขยะหนาเกรดA 30X40\" 12ใบ12 ชน",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "บริษัท เทค อินโนไลฟ์ จำกัด",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 ชั้น4 ห้องเลขที่ เค420 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย กรุงเทพมหานคร 10700",
+      "success": true
+    },
+    "cached_at": 1771562277.766441
+  },
+  "a7c08da43344d0d0273c4474d70beb4b": {
+    "filename": "9.1.2026_EXP-20260100030_510111_tax invoice Tai Xing De Hui Jan 26-1_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\9.1.2026_EXP-20260100030_510111_tax invoice Tai Xing De Hui Jan 26-1_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RET20260100261\nวันที่: 09/01/2026\nชื่อผู้ขาย: Tai Xing De Hui (Thailand) Co.,Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565096218\nที่อยู่ผู้ขาย: No. 3, C.P. Tower 2 (Fortune Town) 22nd Floor, Zone G, Ratchadapisek Road, Din Daeng, Din Daeng, Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok\nยอดรวมก่อนภาษี: 9282.25\nภาษีมูลค่าเพิ่ม: 649.75\nยอดรวมสุทธิ: 9932.00\n\nรายการสินค้า/บริการ:\n  - STRAWBERRY JAM: 1262.62\n  - BLACK TEA: 3000.00\n  - MANGO JAM: 2129.91\n  - CRYSTAL JELLY: 780.37\n  - NATA DE COCO: 660.75\n  - KIWI JAM: 1448.60",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RET20260100261\nวันที่: 09/01/2026\nชื่อผู้ขาย: Tai Xing De Hui (Thailand) Co.,Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565096218\nที่อยู่ผู้ขาย: No. 3, C.P. Tower 2 (Fortune Town) 22nd Floor, Zone G, Ratchadapisek Road, Din Daeng, Din Daeng, Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdis",
+      "company_name": "Tai Xing De Hui (Thailand) Co.,Ltd.",
+      "tax_id": "0105565096218",
+      "branch": "00000",
+      "date": "09/01/2026",
+      "document_number": "RET20260100261",
+      "reference_number": "EXP-20260100030",
+      "document_status": "",
+      "amount_before_vat": 9282.25,
+      "vat_amount": 649.75,
+      "total_amount": 9932.0,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1262.62",
+          "ราคาต่อหน่วย": "1351.00",
+          "รายการ": "STRAWBERRY JAM",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "3000.00",
+          "ราคาต่อหน่วย": "3210.00",
+          "รายการ": "BLACK TEA",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "2129.91",
+          "ราคาต่อหน่วย": "2279.00",
+          "รายการ": "MANGO JAM",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "780.37",
+          "ราคาต่อหน่วย": "835.00",
+          "รายการ": "CRYSTAL JELLY",
+          "ลำดับ": "4"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "660.75",
+          "ราคาต่อหน่วย": "707.00",
+          "รายการ": "NATA DE COCO",
+          "ลำดับ": "5"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1448.60",
+          "ราคาต่อหน่วย": "1550.00",
+          "รายการ": "KIWI JAM",
+          "ลำดับ": "6"
+        }
+      ],
+      "buyer_name": "Techinnolife Co., Ltd.",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok",
+      "success": true
+    },
+    "cached_at": 1771562378.4073677
+  },
+  "9ef0d596eaaa1ae9aa701c3aaf699f49": {
+    "filename": "23.01.2026_EXP-20260100025_510111_tax invoice mixue Jan 26_4_VAT.pdf",
+    "filepath": "Z:\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\23.01.2026_EXP-20260100025_510111_tax invoice mixue Jan 26_4_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: SI260123000821\nวันที่: 23/01/2026\nชื่อผู้ขาย: MIXUE (THAILAND) COMPANY LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565146649\nที่อยู่ผู้ขาย: No. 3 Fortune Town Building, 22 Floor, Zone BC4, Ratchadaphisek Road, Din DaengKhwaeng KhetDin Daeng Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok\nยอดรวมก่อนภาษี: 11,514.02\nภาษีมูลค่าเพิ่ม: 805.98\nยอดรวมสุทธิ: 12,320.00\n\nรายการสินค้า/บริการ:\n  - Non-Dairy Creamer (Taro Flavor): 11,514.02",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: SI260123000821\nวันที่: 23/01/2026\nชื่อผู้ขาย: MIXUE (THAILAND) COMPANY LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565146649\nที่อยู่ผู้ขาย: No. 3 Fortune Town Building, 22 Floor, Zone BC4, Ratchadaphisek Road, Din DaengKhwaeng KhetDin Daeng Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdi",
+      "company_name": "MIXUE (THAILAND) COMPANY LIMITED",
+      "tax_id": "0105565146649",
+      "branch": "00000",
+      "date": "23/01/2026",
+      "document_number": "SI260123000821",
+      "reference_number": "EXP-20260100025",
+      "document_status": "",
+      "amount_before_vat": 11514.02,
+      "vat_amount": 805.98,
+      "total_amount": 12320.0,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวน": "4.00",
+          "จำนวนเงิน": "11,514.02",
+          "ราคาต่อหน่วย": "2,878.50",
+          "รายการ": "Non-Dairy Creamer (Taro Flavor)",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "Techinnolife Co., Ltd.",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok",
+      "success": true
+    },
+    "cached_at": 1771562125.595391
+  },
+  "e84f38761031916fb0ba023e5f0f554d": {
+    "filename": "19.1.2026_EXP-20260100023_510111_tax invoice mixue Jan 26_3_VAT.pdf",
+    "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\19.1.2026_EXP-20260100023_510111_tax invoice mixue Jan 26_3_VAT.pdf",
+    "data": {
+      "filename": "19.1.2026_EXP-20260100023_510111_tax invoice mixue Jan 26_3_VAT.pdf",
+      "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\19.1.2026_EXP-20260100023_510111_tax invoice mixue Jan 26_3_VAT.pdf",
+      "success": true,
+      "company_name": "MIXUE (THAILAND) COMPANY LIMITED",
+      "tax_id": "0105565146649",
+      "branch": "00000",
+      "date": "19/01/2026",
+      "document_number": "SI260119000530",
+      "reference_number": "EXP-20260100023",
+      "amount_before_vat": 22022.43,
+      "vat_amount": 1541.57,
+      "total_amount": 26984.0,
+      "buyer_name": "Techinnolife Co., Ltd.",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdistrict, Bangkok Noi District, Bangkok",
+      "document_type": "Receipt/Tax Invoice",
+      "document_status": "ต้นฉบับ",
+      "items": [
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "3,037.38",
+          "ราคาต่อหน่วย": "3,037.38",
+          "รายการ": "NON-DAIRY CREAMER (SWEET)",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "2,523.36",
+          "ราคาต่อหน่วย": "2,523.36",
+          "รายการ": "NON-DAIRY CREAMER",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "2,265.42",
+          "ราคาต่อหน่วย": "1,132.71",
+          "รายการ": "FRUCTOSE SYRUP",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "1,760.75",
+          "ราคาต่อหน่วย": "880.37",
+          "รายการ": "SUGAR SYRUP",
+          "ลำดับ": "4"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "1,048.60",
+          "ราคาต่อหน่วย": "1,048.60",
+          "รายการ": "400 U TYPE CUP",
+          "ลำดับ": "5"
+        },
+        {
+          "จำนวน": "2.00",
+          "จำนวนเงิน": "2,792.52",
+          "ราคาต่อหน่วย": "1,396.26",
+          "รายการ": "700 PLASTIC CUP(FROSTED)",
+          "ลำดับ": "6"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "2,324.30",
+          "ราคาต่อหน่วย": "2,324.30",
+          "รายการ": "DOUBLE CUP BAG",
+          "ลำดับ": "7"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "2,363.55",
+          "ราคาต่อหน่วย": "2,363.55",
+          "รายการ": "PAPER SEALING FILM",
+          "ลำดับ": "8"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "915.89",
+          "ราคาต่อหน่วย": "915.89",
+          "รายการ": "PAPER TRAY",
+          "ลำดับ": "9"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "747.66",
+          "ราคาต่อหน่วย": "747.66",
+          "รายการ": "Snow King Wobbling Doll",
+          "ลำดับ": "10"
+        },
+        {
+          "จำนวน": "3.00",
+          "จำนวนเงิน": "3,420.00",
+          "ราคาต่อหน่วย": "1,140.00",
+          "รายการ": "Lemon",
+          "ลำดับ": "11"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "2,242.99",
+          "ราคาต่อหน่วย": "2,242.99",
+          "รายการ": "Oreo crumbs",
+          "ลำดับ": "12"
+        }
+      ],
+      "customs_duty": 0.0,
+      "has_customs_duty": false,
+      "is_customs_department": false,
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: SI260119000530\nวันที่: 19/01/2026\nชื่อผู้ขาย: MIXUE (THAILAND) COMPANY LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565146649\nที่อยู่ผู้ขาย: No. 3 Fortune Town Building, 22 Floor, Zone BC4, Ratchadaphisek Road, Din DaengKhwaeng KhetDin Daeng Bangkok 10400\nชื่อผู้ซื้อ: Techinnolife Co., Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: 7/222 4th floor Unit K420 Borommaratchachonnani Road Arun Amarin Subdi...",
+      "method": "aksonocr"
+    },
+    "cached_at": 1771567292.448752
+  },
+  "718a3eaf666f27c999cc0a31c006d3e0": {
+    "filename": "27.1.2026_EXP-20260100020_530506_tax invoice CPN ภาษีที่ดินและสิ่งปลูกสร้าง 1 aug - 31 dec 25_VAT_unlocked.pdf",
+    "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100020_530506_tax invoice CPN ภาษีที่ดินและสิ่งปลูกสร้าง 1 aug - 31 dec 25_VAT_unlocked.pdf",
+    "data": {
+      "filename": "27.1.2026_EXP-20260100020_530506_tax invoice CPN ภาษีที่ดินและสิ่งปลูกสร้าง 1 aug - 31 dec 25_VAT_unlocked.pdf",
+      "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100020_530506_tax invoice CPN ภาษีที่ดินและสิ่งปลูกสร้าง 1 aug - 31 dec 25_VAT_unlocked.pdf",
+      "success": true,
+      "company_name": "ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท",
+      "tax_id": "0994002091181",
+      "branch": "00003",
+      "date": "27/01/2026",
+      "document_number": "2026-10101046",
+      "reference_number": "EXP-20260100020",
+      "amount_before_vat": 25387.31,
+      "vat_amount": 1777.11,
+      "total_amount": 27164.42,
+      "buyer_name": "บริษัท เทค อินโนไซท์ จำกัด",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "ห้องเลขที่ K 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย จังหวัด กรุงเทพมหานคร 10700",
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "document_status": "ต้นฉบับ",
+      "items": [
+        {
+          "จำนวนเงิน": "27,164.42",
+          "รายการ": "*01.08.2025-31.12.2025-ภาษีที่ดินและสิ่งปลูกสร้าง",
+          "ลำดับ": "1"
+        }
+      ],
+      "customs_duty": 0.0,
+      "has_customs_duty": false,
+      "is_customs_department": false,
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: 2026-10101046\nวันที่: 27/01/2026\nชื่อผู้ขาย: ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0994002091181\nที่อยู่ผู้ขาย: 7/222,7/129, 7/3, 7/553 ถ.บรมราชชนนี แขวงอรุณอมรินทร์ บางกอกน้อย จังหวัด กรุงเทพมหานคร 10700\nชื่อผู้ซื้อ: บริษัท เทค อินโนไซท์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: ห้องเลขที่ K 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี ...",
+      "method": "aksonocr"
+    },
+    "cached_at": 1771584058.567139
+  },
+  "94b878ef46d656b39ae42b9c2344b343": {
+    "filename": "27.1.2026_EXP-20260100017_530217_540190_tax invoice CPN ค่าบริการสถานที่ 1-31 Jan 26_1_VAT_unlocked.pdf",
+    "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100017_530217_540190_tax invoice CPN ค่าบริการสถานที่ 1-31 Jan 26_1_VAT_unlocked.pdf",
+    "data": {
+      "filename": "27.1.2026_EXP-20260100017_530217_540190_tax invoice CPN ค่าบริการสถานที่ 1-31 Jan 26_1_VAT_unlocked.pdf",
+      "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100017_530217_540190_tax invoice CPN ค่าบริการสถานที่ 1-31 Jan 26_1_VAT_unlocked.pdf",
+      "success": true,
+      "company_name": "ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท",
+      "tax_id": "0994002091181",
+      "branch": "00003",
+      "date": "27/01/2026",
+      "document_number": "2026-10101052",
+      "reference_number": "EXP-20260100017",
+      "amount_before_vat": 64991.49,
+      "vat_amount": 4549.41,
+      "total_amount": 69540.9,
+      "buyer_name": "บริษัท เพท อินโนไลฟ์ จำกัด",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "ห้องเลขที่ เค 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย จังหวัด กรุงเทพมหานคร 10700",
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "document_status": "ต้นฉบับ",
+      "items": [
+        {
+          "จำนวนเงิน": "69,540.91",
+          "รายการ": "*01.01.2026-31.01.2026-ค่าบริการสถานที่",
+          "ลำดับ": "R1"
+        },
+        {
+          "จำนวนเงิน": "-0.01",
+          "รายการ": "เงินเกินจากการปัดเศษ",
+          "ลำดับ": "D0"
+        }
+      ],
+      "customs_duty": 0.0,
+      "has_customs_duty": false,
+      "is_customs_department": false,
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: 2026-10101052\nวันที่: 27/01/2026\nชื่อผู้ขาย: ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0994002091181\nที่อยู่ผู้ขาย: 7/222,7/129, 7/3, 7/553 ถ.บรมราชชนนี แขวงอรุณอมรินทร์ บางกอกน้อย จังหวัด กรุงเทพมหานคร 10700\nชื่อผู้ซื้อ: บริษัท เพท อินโนไลฟ์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: ห้องเลขที่ เค 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี...",
+      "method": "aksonocr"
+    },
+    "cached_at": 1771584071.4314525
+  },
+  "e4697aa2256a484d6a08d906c98d1e18": {
+    "filename": "27.1.2026_EXP-20260100018_530217_tax invoice CPN ค่าบริการสถานที่ 1-31 Jan 26_VAT_unlocked.pdf",
+    "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100018_530217_tax invoice CPN ค่าบริการสถานที่ 1-31 Jan 26_VAT_unlocked.pdf",
+    "data": {
+      "filename": "27.1.2026_EXP-20260100018_530217_tax invoice CPN ค่าบริการสถานที่ 1-31 Jan 26_VAT_unlocked.pdf",
+      "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100018_530217_tax invoice CPN ค่าบริการสถานที่ 1-31 Jan 26_VAT_unlocked.pdf",
+      "success": true,
+      "company_name": "[PKO]ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท",
+      "tax_id": "0994002091181",
+      "branch": "00003",
+      "date": "27/01/2026",
+      "document_number": "2026-10101051",
+      "reference_number": "EXP-20260100018",
+      "amount_before_vat": 16247.9,
+      "vat_amount": 1137.35,
+      "total_amount": 17385.25,
+      "buyer_name": "บริษัท เพท อินโนไลท์ จำกัด",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "ห้องเลขที่ เค 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย จังหวัด กรุงเทพมหานคร 10700",
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "document_status": "",
+      "items": [
+        {
+          "จำนวนเงิน": "17,385.25",
+          "รายการ": "*01.01.2026-31.01.2026-ค่าบริการสถานที่",
+          "ลำดับ": "R1"
+        }
+      ],
+      "customs_duty": 0.0,
+      "has_customs_duty": false,
+      "is_customs_department": false,
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nเลขที่ใบกำกับภาษี: 2026-10101051\nวันที่: 27/01/2026\nชื่อผู้ขาย: [PKO]ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0994002091181\nที่อยู่ผู้ขาย: 7/222,7/129, 7/3, 7/553 ถ.บรมราชชนนี แขวงอรุณอมรินทร์ บางกอกน้อย จังหวัด กรุงเทพมหานคร 10700\nชื่อผู้ซื้อ: บริษัท เพท อินโนไลท์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: ห้องเลขที่ เค 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี แขวงอรุณอมรินทร...",
+      "method": "aksonocr"
+    },
+    "cached_at": 1771584082.4629884
+  },
+  "f0521b5ec16c0322253b1127849b9ea3": {
+    "filename": "27.1.2026_EXP-20260100015_510114_tax invoice CPN เบี้ยประกันภัย 1 aug - 31 Dec 25_VAT_unlocked.pdf",
+    "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100015_510114_tax invoice CPN เบี้ยประกันภัย 1 aug - 31 Dec 25_VAT_unlocked.pdf",
+    "data": {
+      "filename": "27.1.2026_EXP-20260100015_510114_tax invoice CPN เบี้ยประกันภัย 1 aug - 31 Dec 25_VAT_unlocked.pdf",
+      "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100015_510114_tax invoice CPN เบี้ยประกันภัย 1 aug - 31 Dec 25_VAT_unlocked.pdf",
+      "success": true,
+      "company_name": "[PKO]ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท",
+      "tax_id": "0994002091181",
+      "branch": "00003",
+      "date": "27/01/2026",
+      "document_number": "2026-10101053",
+      "reference_number": "EXP-20260100015",
+      "amount_before_vat": 998.53,
+      "vat_amount": 69.9,
+      "total_amount": 1068.43,
+      "buyer_name": "บริษัท พัท อินโนไลฟ์ จำกัด",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "ห้องเลขที่ เค 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย จังหวัดกรุงเทพมหานคร 10700",
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "document_status": "ต้นฉบับ",
+      "items": [
+        {
+          "จำนวนเงิน": "1,068.43",
+          "รายการ": "*01.08.2025-31.12.2025-ค่าเบี้ยประกันภัย",
+          "ลำดับ": "R1"
+        }
+      ],
+      "customs_duty": 0.0,
+      "has_customs_duty": false,
+      "is_customs_department": false,
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: 2026-10101053\nวันที่: 27/01/2026\nชื่อผู้ขาย: [PKO]ทรัสต์เพื่อการลงทุนในสิทธิการเช่าอสังหาริมทรัพย์ CPN รีเทล โกรท\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0994002091181\nที่อยู่ผู้ขาย: 7/222, 7/129, 7/3, 7/553 ถ.บรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย จังหวัดกรุงเทพมหานคร 10700\nชื่อผู้ซื้อ: บริษัท พัท อินโนไลฟ์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: ห้องเลขที่ เค 420 ชั้น 4 เลขที่ 7/222 ถนนบร...",
+      "method": "aksonocr"
+    },
+    "cached_at": 1771584092.9396162
+  },
+  "58e7707401c31c2549165b50632cc8f7": {
+    "filename": "27.1.2026_EXP-20260100019_530301_530302_tax invoice CPN ค่าไฟ ค่าน้ำ 10 nov -10 Dec 25_VAT_unlocked.pdf",
+    "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100019_530301_530302_tax invoice CPN ค่าไฟ ค่าน้ำ 10 nov -10 Dec 25_VAT_unlocked.pdf",
+    "data": {
+      "filename": "27.1.2026_EXP-20260100019_530301_530302_tax invoice CPN ค่าไฟ ค่าน้ำ 10 nov -10 Dec 25_VAT_unlocked.pdf",
+      "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\27.1.2026_EXP-20260100019_530301_530302_tax invoice CPN ค่าไฟ ค่าน้ำ 10 nov -10 Dec 25_VAT_unlocked.pdf",
+      "success": true,
+      "company_name": "ทรัสต์เพื่อการลงทุนในสิทธิการเช่า อสังหาริมทรัพย์ CPN รีเทล โกรท",
+      "tax_id": "0994002091181",
+      "branch": "00003",
+      "date": "27/01/2026",
+      "document_number": "2026-10101045",
+      "reference_number": "EXP-20260100019",
+      "amount_before_vat": 10442.64,
+      "vat_amount": 730.99,
+      "total_amount": 11173.63,
+      "buyer_name": "บริษัท เพท อินโนไลท์ จำกัด",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "ห้องเลขที่ เค 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย กรุงเทพมหานคร 10700",
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "document_status": "ต้นฉบับ",
+      "items": [
+        {
+          "จำนวนเงิน": "9,582.75",
+          "ราคาต่อหน่วย": "8,955.84",
+          "รายการ": "ค่าน้ำไฟฟ้า:1011-10122025|20053.00|21877.00|",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "1,590.88",
+          "ราคาต่อหน่วย": "1,486.80",
+          "รายการ": "ค่าน้ำ:1011-10122025|2777.00|2849.00|",
+          "ลำดับ": "2"
+        }
+      ],
+      "customs_duty": 0.0,
+      "has_customs_duty": false,
+      "is_customs_department": false,
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: 2026-10101045\nวันที่: 27/01/2026\nชื่อผู้ขาย: ทรัสต์เพื่อการลงทุนในสิทธิการเช่า อสังหาริมทรัพย์ CPN รีเทล โกรท\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0994002091181\nที่อยู่ผู้ขาย: 7/222,7/129, 7/3, 7/553 ถ.บรมราชชนนี แขวงอรุณอมรินทร์ บางกอกน้อย กรุงเทพมหานคร 10700\nชื่อผู้ซื้อ: บริษัท เพท อินโนไลท์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: ห้องเลขที่ เค 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี แขวงอร...",
+      "method": "aksonocr"
+    },
+    "cached_at": 1771584105.577571
+  },
+  "15506b1365f2d66219f7d92b684f995f": {
+    "filename": "25.12.2025_CNX-20251200001_tax invoice CPN ส๋วนลดค่าบริการสถานที่ dec 25_unlocked.pdf",
+    "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\25.12.2025_CNX-20251200001_tax invoice CPN ส๋วนลดค่าบริการสถานที่ dec 25_unlocked.pdf",
+    "data": {
+      "filename": "25.12.2025_CNX-20251200001_tax invoice CPN ส๋วนลดค่าบริการสถานที่ dec 25_unlocked.pdf",
+      "filepath": "V:\\A.โฟร์เดอร์หลัก\\Build224 บริษัท เทค อินโนไลฟ์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT\\25.12.2025_CNX-20251200001_tax invoice CPN ส๋วนลดค่าบริการสถานที่ dec 25_unlocked.pdf",
+      "success": true,
+      "company_name": "ทรัสต์เพื่อการลงทุนในสิทธิการเช่า อสังหาริมทรัพย์ CPN รีเทล โกรท",
+      "tax_id": "0994002091181",
+      "branch": "00003",
+      "date": "25/12/2025",
+      "document_number": "2025-21200142",
+      "reference_number": "CNX-20251200001",
+      "amount_before_vat": 16247.9,
+      "vat_amount": 1137.35,
+      "total_amount": 17385.25,
+      "buyer_name": "บริษัท เทท อินโนไลฟ์ จำกัด",
+      "buyer_tax_id": "0125566014851",
+      "buyer_address": "ห้องเลขที่ เค 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ เขตบางกอกน้อย จังหวัด กรุงเทพมหานคร 10700",
+      "document_type": "ใบลดหนี้ / ใบกำกับภาษี",
+      "document_status": "ต้นฉบับ",
+      "items": [
+        {
+          "จำนวนเงิน": "16,247.90",
+          "รายการ": "ส่วนลดค่าบริการสถานที่ (*01.12.2025-01.12.2025)"
+        }
+      ],
+      "customs_duty": 0.0,
+      "has_customs_duty": false,
+      "is_customs_department": false,
+      "raw_text_preview": "ประเภทเอกสาร: ใบลดหนี้ / ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: 2025-21200142\nวันที่: 25/12/2025\nชื่อผู้ขาย: ทรัสต์เพื่อการลงทุนในสิทธิการเช่า อสังหาริมทรัพย์ CPN รีเทล โกรท\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0994002091181\nที่อยู่ผู้ขาย: 7/222,7/129, 7/3, 7/553 ถนนบรมราชชนนี แขวงอรุณอมรินทร์ บางกอกน้อย จังหวัด กรุงเทพมหานคร 10700\nชื่อผู้ซื้อ: บริษัท เทท อินโนไลฟ์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0125566014851\nที่อยู่ผู้ซื้อ: ห้องเลขที่ เค 420 ชั้น 4 เลขที่ 7/222 ถนนบรมราชชนนี แ...",
+      "method": "aksonocr"
+    },
+    "cached_at": 1771584117.842703
+  }
+}

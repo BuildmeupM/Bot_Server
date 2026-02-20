@@ -1,0 +1,72 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-20T13:12:18.960Z",
+  "last_saved": "2026-02-20T20:12:18.725343",
+  "company": "Build472 บริษัท กำไรมีไม่ จำกัด รายเดือน",
+  "base_company": "Build472 บริษัท กำไรมีไม่ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "1": "",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาสุขสวัสดิ์)'"
+  },
+  "initialNotes": {
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์มีอัพ คอนซัลแทนท์จำกัด'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาสุขสวัสดิ์)'"
+  },
+  "comparisonApprovals": {
+    "1-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build472 บริษัท กำไรมีไม่ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "19.01.2026_EXP-20260100005_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาสุขสวัสดิ์)"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100004_530108_ค่าสวัสดิการอาหารและเครื่องดื่ม_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "08.01.2026_WHT_EXP-20260100003_530401_ค่าทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 3,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "14322601002996",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "RT-20260100069",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "SSWIE26010132961",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

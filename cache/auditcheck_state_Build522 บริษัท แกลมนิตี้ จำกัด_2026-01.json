@@ -1,0 +1,165 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-20T03:19:23.621Z",
+  "last_saved": "2026-02-20T10:19:24.234572",
+  "company": "Build522 บริษัท แกลมนิตี้ จำกัด",
+  "base_company": "Build522 บริษัท แกลมนิตี้ จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "3": "",
+    "5": "",
+    "6": "",
+    "8": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "13": "",
+    "15": "",
+    "20": "",
+    "24": "",
+    "28": "",
+    "33": "",
+    "39": "",
+    "40": "",
+    "41": "",
+    "47": "",
+    "48": "",
+    "49": ""
+  },
+  "initialNotes": {
+    "0": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260101-0005235' แต่ OCR='TRSPEMKP00-00000-26'",
+    "1": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=490.00 แต่ OCR=1,470.00 (ต่างกัน 980.00)",
+    "3": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260103-0002810' แต่ OCR='TRSPEMKP00-00000-26'",
+    "5": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260105-0002258' แต่ OCR='TRSPEMKP00-00000-26'",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็นดีพี กรุ๊ป จำกัด' แต่ OCR='บริษัท เอ็นดีพีกรุ๊ป จำกัด (สำนักงานใหญ่)'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ออฟฟิศเมท (ไทย) จำกัด' แต่ OCR='บริษัท ออฟฟิศเมท(ไทย) จำกัด'",
+    "9": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260107-0021921' แต่ OCR='TRSPEMKP00-00000-26'",
+    "10": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260108-0000911' แต่ OCR='TRSPEMKP00-00000-26'",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260109-0013052' แต่ OCR='TRSPEMKP00-00000-26'",
+    "13": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260110-0005419' แต่ OCR='TRSPEMKP00-00000-26'",
+    "15": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260112-0016939' แต่ OCR='TRSPEMKP00-00000-26'",
+    "20": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Meta Platforms Ireland Limited'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=34,131.89 แต่ OCR=2,232.93 (ต่างกัน 31,898.96)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'",
+    "24": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260114-0002943' แต่ OCR='TRSPEMKP00-00000-26'",
+    "28": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260115-0005864' แต่ OCR='TRSPEMKP00-00000-26'",
+    "33": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260120-0004503' แต่ OCR='TRSPEMKP00-00000-26'",
+    "39": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260124-0025915' แต่ OCR='TRSPEMKP00-00000-26'",
+    "40": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท กากันท์ (ประเทศไทย) จำกัด' แต่ OCR='GAGAN (Thailand) Co., Ltd.'",
+    "41": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท กากันท์ (ประเทศไทย) จำกัด' แต่ OCR='บริษัท กากั้น (ประเทศไทย) จำกัด'",
+    "47": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260129-0010957' แต่ OCR='TRSPEMKP00-00000-26'",
+    "48": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็นดีพี กรุ๊ป จำกัด' แต่ OCR='บริษัทเอ็นดีพีกรุ๊ปจำกัด'",
+    "49": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260130-0011615' แต่ OCR='TRSPEMKP00-00000-26'"
+  },
+  "comparisonApprovals": {
+    "0-document_no_match": true,
+    "0-company_name_match": true,
+    "1-total_amount_match": true,
+    "3-document_no_match": true,
+    "5-document_no_match": true,
+    "5-company_name_match": true,
+    "6-company_name_match": true,
+    "7-company_name_match": true,
+    "8-company_name_match": true,
+    "8-company_data_all": true,
+    "9-document_no_match": true,
+    "10-document_no_match": true,
+    "11-document_no_match": true,
+    "13-document_no_match": true,
+    "15-document_no_match": true,
+    "16-company_name_match": true,
+    "17-company_name_match": true,
+    "20-company_name_match": true,
+    "20-tax_id_match": true,
+    "20-branch_match": true,
+    "20-total_amount_match": true,
+    "20-document_type_match": true,
+    "21-company_name_match": true,
+    "24-document_no_match": true,
+    "24-company_name_match": true,
+    "25-company_name_match": true,
+    "27-company_name_match": true,
+    "28-document_no_match": true,
+    "28-company_name_match": true,
+    "33-document_no_match": true,
+    "37-company_name_match": true,
+    "38-company_name_match": true,
+    "39-document_no_match": true,
+    "40-company_name_match": true,
+    "41-company_name_match": true,
+    "42-company_name_match": true,
+    "43-company_name_match": true,
+    "44-company_name_match": true,
+    "45-company_name_match": true,
+    "47-document_no_match": true,
+    "48-company_name_match": true,
+    "49-document_no_match": true,
+    "50-company_name_match": true,
+    "1-tax_id_match": true,
+    "2-company_name_match": true,
+    "3-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build522 บริษัท แกลมนิตี้ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 4,
+    "metadata": [
+      {
+        "filename": "23.01.2026_WHT_EXP-20260100001_RT-20260100347_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100003_งานเมืองพล LTAS_VAT.pdf",
+        "company_name": "บริษัท รอยัลเทค อินเตอร์เนชั่นแนล จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100005_งานสัตหีบ CR2 Tower Tank_VAT.pdf",
+        "company_name": "บริษัท รอยัลเทค อินเตอร์เนชั่นแนล จำกัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100004_งาน สัตหีบ Lot 1 Tower Tank_VAT.pdf",
+        "company_name": "บริษัท รอยัลเทค อินเตอร์เนชั่นแนล จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 4,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "RIN/26010643",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "RIN/26010757",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "RIN/26010857",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "RT-20260100347",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

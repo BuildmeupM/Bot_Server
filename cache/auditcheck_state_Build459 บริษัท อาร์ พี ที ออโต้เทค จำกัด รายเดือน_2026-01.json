@@ -1,0 +1,92 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-20T06:50:06.075Z",
+  "last_saved": "2026-02-20T13:50:06.203639",
+  "company": "Build459 บริษัท อาร์ พี ที ออโต้เทค จำกัด รายเดือน",
+  "base_company": "Build459 บริษัท อาร์ พี ที ออโต้เทค จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "เอกสารใช้ไม่ได้ให้เอาออก",
+    "1": "เอกสารใช้ไม่ได้ให้เอาออก",
+    "2": "",
+    "3": ""
+  },
+  "initialNotes": {
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไทยวาณิชวัสดุก่อสร้าง จำกัด' แต่ OCR='บริษัท ไทยวานิชวัสดุก่อสร้าง จำกัด'",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RFTKBKO15012026000022999' แต่ OCR='RFTKBK013012023000622993'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='15/01/2026' แต่ OCR='15/01/2023'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ทูทีเชิ้ต จำกัด' แต่ OCR='บริษัท ทูทีเซิต จำกัด'"
+  },
+  "comparisonApprovals": {
+    "1-company_name_match": true,
+    "2-document_no_match": true,
+    "2-date_match": true,
+    "2-company_name_match": true,
+    "3-company_name_match": true
+  },
+  "invalidDocuments": {
+    "0": true,
+    "1": true
+  },
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build459 บริษัท อาร์ พี ที ออโต้เทค จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 4,
+    "metadata": [
+      {
+        "filename": "12.01.2026_EXP-20260100003_510101_IMG_20260202_0005_ไทยวาณิช วัสดุก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท ไทยวานิชวัสดุก่อสร้าง จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100004_530112_IMG_20260202_0006_ทูทีเชิ้ต_VAT.pdf",
+        "company_name": "บริษัท ทูทีเซิต จำกัด"
+      },
+      {
+        "filename": "15.01.2026_WHT_EXP-20260100001_510111_IMG_20260202_0007_ค่าบริการทรู_VAT.pdf",
+        "company_name": "บริษัท ทรู มูฟ เอช ยูนิเวอร์แซล คอมมิวนิเคชั่น จำกัด"
+      },
+      {
+        "filename": "05.01.2025_EXP-20260100002_530304_ใบเสร้จเน็ตทรู เดือน11,12_VAT.pdf",
+        "company_name": "บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 4,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "TITKBKO05012026000011585",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "HS690112002",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "RFTKBK013012023000622993",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "TT69037",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

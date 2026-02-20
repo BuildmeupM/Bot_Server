@@ -1,0 +1,252 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-20T08:18:46.960Z",
+  "last_saved": "2026-02-20T15:18:48.320637",
+  "company": "Build499 บริษัท บี-ฟอร์ม เอ็นจิเนียริ่ง จำกัด",
+  "base_company": "Build499 บริษัท บี-ฟอร์ม เอ็นจิเนียริ่ง จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "3": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TT5265F0347A-2601-000308' แต่ OCR='ABS265F0317A-2601-000308'",
+    "5": "",
+    "6": "",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI52910361A-2601-000768' แต่ OCR='T15292J0361A-2601-000768'",
+    "9": "",
+    "12": "",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด โมบาย ฮาร์ดแวร์' แต่ OCR='ห้างหุ้นส่วนจำกัด เอ็มบี ทูลส์'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0743558000262' แต่ OCR='0743562000476'",
+    "14": "",
+    "17": ""
+  },
+  "initialNotes": {
+    "3": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TT5265F0347A-2601-000308' แต่ OCR='ABS265F0317A-2601-000308'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=1,043.24 แต่ OCR=1,013.93 (ต่างกัน 29.31)",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขามหาชัย)'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI52910361A-2601-000768' แต่ OCR='T15292J0361A-2601-000768'",
+    "9": "ประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด โมบาย ฮาร์ดแวร์' แต่ OCR='ห้างหุ้นส่วนจำกัด โมบายฮาร์ดแวร์'",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด โมบาย ฮาร์ดแวร์' แต่ OCR='ห้างหุ้นส่วนจำกัด เอ็มบี ทูลส์'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0743558000262' แต่ OCR='0743562000476'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขามหาชัย)'",
+    "17": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาบางบอน)'"
+  },
+  "comparisonApprovals": {
+    "5-company_name_match": true,
+    "5-total_amount_match": true,
+    "6-company_name_match": true,
+    "9-document_type_match": true,
+    "12-company_name_match": true,
+    "14-company_name_match": true,
+    "17-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build499 บริษัท บี-ฟอร์ม เอ็นจิเนียริ่ง จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 19,
+    "metadata": [
+      {
+        "filename": "22.01.2026_EXP-20260100015_510110_บจก.ซีอาร์22.01.69.00_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขามหาชัย)"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100016_510110_หจก.โมบายฮาร์ดแวร์22.01.69.01_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด โมบายฮาร์ดแวร์"
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100013_520310 _ค่าน้ำมัน 17.01.69.00_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100018_510110_บจก.ซาคอน-ไทย24.01.69.00_VAT.pdf",
+        "company_name": "บริษัท ซาคอน-ไทย จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100019_520310 _ค่าน้ำมัน 24.01.69.00_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100021_510110_บจก.เอ็น ซี ซี29.01.69.00_Vat.pdf",
+        "company_name": "บริษัท เอ็น.ซี.ซี. สตีล จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100007_510110_หจก.เอ็มบี07.01.69.00_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด เอ็มบี ทูลส์"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100012_510110_ดูโฮม14.01.69.01_VAT.pdf",
+        "company_name": "บริษัท ดูโฮม จำกัด (มหาชน)"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100006_510110_บจก.เอ ทู 07.01.69.01_VAT.pdf",
+        "company_name": "บริษัท เอ ทู เอ็น เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "12.01.2026_WHT_EXP-20260100003_530401_RT-20260100125_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100010_520310 _ค่าน้ำมัน 10.01.69.00_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "13.01.2026_WHT_EXP-20260100005_530304_AIS_Receipt_13.01.69.00_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100008_510104_ค่าสินค้า บจก.กนกธร_VAT.pdf",
+        "company_name": "บริษัท กนกธร อินฟินิตี้ กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100014_510110_บจก.เอ็น ซี ซี20.01.69.00_VAT.pdf",
+        "company_name": "บริษัท เอ็น.ซี.ซี. สตีล จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100020_510110_บจก.ซีอาร์27.01.69.00_Vat.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาบางบอน)"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100017_510110_หจก.เอ็มบี ทูลส์22.01.69.02_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด เอ็มบี ทูลส์"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100011_510110_ซีอาร์ซี14.01.69.00_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขามหาชัย)"
+      },
+      {
+        "filename": "04.01.2026_EXP-20260100009_510110_ดูโฮม04.01.69.00_VAT.pdf",
+        "company_name": "บริษัท ดูโฮม จำกัด (มหาชน)"
+      },
+      {
+        "filename": "19.01.2026_WHT_EXP-20260100004_530408_ใบสำคัญจ่าย(ค่าจ้าง)26.01.2026_VAT.pdf",
+        "company_name": "บริษัท กนกธร อินฟินิตี้ กรุ๊ป จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 19,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "PKTX-20260104-0084",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "69010044",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "HS6900025",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "ABS265F0317A-2601-000308",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "RT-20260100125",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "W-BK-1067-6901-11148450",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "MHAIE26010077631",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "SKTX-20260114-0002",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "T15292J0361A-2601-000768",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "002/69",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "003/69",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "IV6901407",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "69010176",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "69010307",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "MHAIE26010079268",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "HS-2600206",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "TI5206S0893A-2601-001124",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "BBOIE26010061672",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100021",
+        "ocr_document_no": "IV6901600",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}
