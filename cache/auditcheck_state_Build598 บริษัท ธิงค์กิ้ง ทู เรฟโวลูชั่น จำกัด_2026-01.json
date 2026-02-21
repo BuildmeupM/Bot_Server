@@ -1,0 +1,109 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-21T03:54:54.074Z",
+  "last_saved": "2026-02-21T10:54:53.864654",
+  "company": "Build598 บริษัท ธิงค์กิ้ง ทู เรฟโวลูชั่น จำกัด",
+  "base_company": "Build598 บริษัท ธิงค์กิ้ง ทู เรฟโวลูชั่น จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "2": "",
+    "3": "",
+    "4": ""
+  },
+  "initialNotes": {
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็นเตอร์ไพรส์ เน็ตเวอร์ค เทคโนโลยี่ จำกัด' แต่ OCR='บริษัท เอ็นเตอร์ไพรส์ เน็ตเวิร์ค เทคโนโลยี จำกัด'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ดีเวลล็อปเม้นท์ 01 (ประเทศไทย) จำกัด' แต่ OCR='บริษัท ดีเวลลอปเม้นท์ 01 (ประเทศไทย) จำกัด'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00002' แต่ OCR='00001'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ดีเวลล็อปเม้นท์ 01 (ประเทศไทย) จำกัด' แต่ OCR='บริษัท ดีเวลลอปเม้นท์ 01 (ประเทศไทย) จำกัด'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00002' แต่ OCR='00001'"
+  },
+  "comparisonApprovals": {
+    "1-company_name_match": true,
+    "2-company_name_match": true,
+    "3-company_name_match": true,
+    "3-branch_match": true,
+    "4-branch_match": true,
+    "4-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build598 บริษัท ธิงค์กิ้ง ทู เรฟโวลูชั่น จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 6,
+    "metadata": [
+      {
+        "filename": "18.01.2026_EXP-20260100005_124106_อุปกรณ์สำนักงาน_VAT.pdf",
+        "company_name": "บริษัท เอ็นเตอร์ไพรส์ เน็ตเวิร์ค เทคโนโลยี จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100016_530108_ค่าสวัสดิการอาหารและเครื่งดื่ม_VAT.pdf",
+        "company_name": "บริษัท คอฟฟี่ คอนเซ็ปต์ รีเทล จำกัด"
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100004_530206_ค่าเครื่องเขียน_VAT.pdf",
+        "company_name": "บริษัท บีทูเอส จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100017_530401_ค่าบริการบัญชีเดิม_VAT.pdf",
+        "company_name": "บริษัท เอสเอ็มอีมูฟ จำกัด"
+      },
+      {
+        "filename": "21.01.2026_WHT_EXP-20260100014_530205_ค่าบริการสำนักงานเสมือน_VAT.pdf",
+        "company_name": "บริษัท ดีเวลลอปเม้นท์ 01 (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "21.01.2026_WHT_EXP-20260100013_530205_ค่าบริการสำนักงานเสมือน_VAT.pdf",
+        "company_name": "บริษัท ดีเวลลอปเม้นท์ 01 (ประเทศไทย) จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 6,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "14099-2600011",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "50100012610000567",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "RT-20260118180",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "7523/1241",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "7523/1242",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "BI-260101957",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

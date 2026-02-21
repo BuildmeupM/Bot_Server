@@ -1,0 +1,145 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-21T05:40:49.729Z",
+  "last_saved": "2026-02-21T12:40:49.283793",
+  "company": "Build602 ห้างหุ้นส่วนจำกัด โปร แพค",
+  "base_company": "Build602 ห้างหุ้นส่วนจำกัด โปร แพค",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "สาขาผิด ",
+    "1": "สาขาผิด",
+    "2": "",
+    "3": "",
+    "4": "",
+    "7": "ชื่อคู่ค้าผิด ",
+    "9": "",
+    "12": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด สมาร์ทเน็ต คอนซัลแทนท์' แต่ OCR='Smartnet Consultant Part., Ltd. (หจก. สมาร์ทเน็ต คอนซัลแทนท์)'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=5,350.00 แต่ OCR=5,200.00 (ต่างกัน 150.00)",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Atlassian Pty Ltd,'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=799.73 แต่ OCR=49.11 (ต่างกัน 750.62)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Canva Pty.Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=2,481.17 แต่ OCR=152.35 (ต่างกัน 2,328.82)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดไวเซอรี่ อัลไลแอนซ์ แอนด์ พาร์ทเนอร์ส จำกัด' แต่ OCR='บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105554038301' แต่ OCR='0107565000620'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัดหางาน จ๊อบส์ ดีบี (ประเทศไทย) จำกัด' แต่ OCR='Jobs DB Recruitment (Thailand) Limited'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท 89 ท๊อปวู้ด จำกัด' แต่ OCR='บริษัท 89 ท๊อปวู๊ด จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "2-total_amount_match": true,
+    "3-tax_id_match": true,
+    "3-branch_match": true,
+    "3-total_amount_match": true,
+    "3-document_type_match": true,
+    "4-company_name_match": true,
+    "4-tax_id_match": true,
+    "4-branch_match": true,
+    "4-total_amount_match": true,
+    "4-document_type_match": true,
+    "9-company_name_match": true,
+    "5-company_data_all": true,
+    "0-document_no_match": true,
+    "0-date_match": true,
+    "2-company_name_match": true,
+    "7-company_name_match": true,
+    "12-company_name_match": true,
+    "8-company_name_match": true,
+    "2-amount_before_vat_match": true,
+    "3-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build602 ห้างหุ้นส่วนจำกัด โปร แพค\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 7,
+    "metadata": [
+      {
+        "filename": "21.01.2026_EXP-20260100009_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท เอฟพี อินดัสตรี้ จำกัด"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100007_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท เอฟพี อินดัสตรี จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100006_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท บี ดับบลิว ฮั่วไท่ชิง เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "15.01.2026_WHT_EXP-20260100003_530401_ใบเสร็จค่าทำบัญชีเดือน1ปี2569_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "22.12.2025_EXP-20251200002_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท 3 เอ เซ็นเตอร์ จำกัด"
+      },
+      {
+        "filename": "22.12.2025_EXP-20251200001_510110_ซื้อสินค้า_(1)_VAT.pdf",
+        "company_name": "บริษัท 3 เอ เซ็นเตอร์ จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100008_510110_ซื้อสินค้า_(1)_VAT.pdf",
+        "company_name": "บริษัท เฟมัส เพอร์เฟค คัพ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 7,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251200001",
+        "ocr_document_no": "ORVC6812000666",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251200002",
+        "ocr_document_no": "ORVC6812000667",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "69-01/0057",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "IV6901-00079",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "RT-20260100165",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "INV2026010193",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "IV6901-00154",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

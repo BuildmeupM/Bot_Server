@@ -1,0 +1,203 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-21T09:02:32.636Z",
+  "last_saved": "2026-02-21T16:02:30.986104",
+  "company": "Build620 บริษัท ชานางใน จำกัด",
+  "base_company": "Build620 บริษัท ชานางใน จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='000000LP03000087960' แต่ OCR='LP26011880'",
+    "2": "",
+    "3": "",
+    "5": "",
+    "7": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "12": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เมธาวี แฟคทอรี่ จำกัด' แต่ OCR='MAYTAVEE FACTORY CO.,LTD'",
+    "1": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='000000LP03000087960' แต่ OCR='LP26011880'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ออฟฟิศเมท (ไทย) จำกัด' แต่ OCR='บริษัท ออฟฟิศเมท(ไทย) จำกัด'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เน็กซ์ (ประเทศไทย) จำกัด' แต่ OCR='บริษัท เม็กซ์ (ประเทศไทย) จำกัด'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เมธาวี แฟคทอรี่ จำกัด' แต่ OCR='MAYTAVEE FACTORY CO.,LTD'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แพ็คซัมธิง จำกัด' แต่ OCR='บริษัท แพ็คต้มฮิง จำกัด'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แพ็คซัมธิง จำกัด' แต่ OCR='บริษัท แพ็คซัมซิง จำกัด'",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เมธาวี แฟคทอรี่ จำกัด' แต่ OCR='MAYTAVEE FACTORY CO.,LTD'",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บ้านไม้ณิชา จำกัด' แต่ OCR='บริษัท บ้านไม้นิชา จำกัด'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ออฟฟิศเมท (ไทย) จำกัด' แต่ OCR='บริษัท ออฟฟิศเมท(ไทย) จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-address_match": true,
+    "1-address_match": true,
+    "2-company_name_match": true,
+    "3-company_name_match": true,
+    "4-company_name_match": true,
+    "5-company_name_match": true,
+    "5-address_match": true,
+    "7-company_name_match": true,
+    "9-company_name_match": true,
+    "10-company_name_match": true,
+    "10-address_match": true,
+    "11-company_name_match": true,
+    "11-reference_no_match": true,
+    "11-address_match": true,
+    "12-company_name_match": true,
+    "0-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build620 บริษัท ชานางใน จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 13,
+    "metadata": [
+      {
+        "filename": "14.01.2026_PA-20260100001_124106_อุปกรณ์สำนักงาน_VAT.pdf",
+        "company_name": "บริษัท เชียงใหม่สยามทีวี จำกัด"
+      },
+      {
+        "filename": "23.01.2026_EXP20260100020_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท บ้านไม้นิชา จำกัด"
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100011_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท(ไทย) จำกัด"
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100019_510109_ค่าใช้จ่ายในการซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท แพ็คซัมธิง จำกัด"
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100015_510111_ซื้อสินค้า_VAT.pdf",
+        "company_name": "MAYTAVEE FACTORY CO.,LTD"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100009_510109_ค่าใช้จ่ายในการซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท เน็กซ์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "01.01.2026_EXP-20260100013_510111_ซื้อสินค้า_VAT.pdf",
+        "company_name": "MAYTAVEE FACTORY CO.,LTD"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100014_510111_ซื้อสินค้า_VAT.pdf",
+        "company_name": "MAYTAVEE FACTORY CO.,LTD"
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100017_510109_ค่าใช้จ่ายในการซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท แพ็คซัมธิง จำกัด"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100010_510109_ค่าใช้จ่ายในการซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท เม็กซ์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100018_510109_ค่าใช้จ่ายในการซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท แพ็คซัมซิง จำกัด"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100012_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท(ไทย) จำกัด"
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100016_510109_ค่าใช้จ่ายในการซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท แพ็คต้มฮิง จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 13,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "S05680037",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "PA-20260100001",
+        "ocr_document_no": "LP26011880",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "00055260110096045",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "INV2026010353",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "INV2026010356",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "S05680039",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "2601179HH944BY",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "2601179HH944C0",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "2601179HH944C1",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "2601179HH944C2",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "S05680041",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "HS6901037",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "00055260110107815",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

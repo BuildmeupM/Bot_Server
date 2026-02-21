@@ -1,0 +1,187 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-21T04:34:06.556Z",
+  "last_saved": "2026-02-21T11:34:06.263933",
+  "company": "Build198 บริษัท ไอสาม เกทเวย์ จำกัด รายเดือน",
+  "base_company": "Build198 บริษัท ไอสาม เกทเวย์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "7": "ชื่อคู่ค้าผิด ",
+    "9": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด สมาร์ทเน็ต คอนซัลแทนท์' แต่ OCR='Smartnet Consultant Part., Ltd. (หจก. สมาร์ทเน็ต คอนซัลแทนท์)'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=5,350.00 แต่ OCR=5,200.00 (ต่างกัน 150.00)",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Atlassian Pty Ltd,'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=799.73 แต่ OCR=49.11 (ต่างกัน 750.62)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Canva Pty.Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=2,481.17 แต่ OCR=152.35 (ต่างกัน 2,328.82)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดไวเซอรี่ อัลไลแอนซ์ แอนด์ พาร์ทเนอร์ส จำกัด' แต่ OCR='บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105554038301' แต่ OCR='0107565000620'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัดหางาน จ๊อบส์ ดีบี (ประเทศไทย) จำกัด' แต่ OCR='Jobs DB Recruitment (Thailand) Limited'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "2-company_name_match": true,
+    "2-total_amount_match": true,
+    "3-company_name_match": true,
+    "3-tax_id_match": true,
+    "3-branch_match": true,
+    "3-total_amount_match": true,
+    "3-document_type_match": true,
+    "4-company_name_match": true,
+    "4-tax_id_match": true,
+    "4-branch_match": true,
+    "4-total_amount_match": true,
+    "4-document_type_match": true,
+    "9-company_name_match": true,
+    "5-company_data_all": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build198 บริษัท ไอสาม เกทเวย์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 12,
+    "metadata": [
+      {
+        "filename": "15.01.2026_EXP-20260100025_ภาพแบบ ภ.พ.36 เดือน 12.2025 (ATLASSIAN)_VAT.pdf",
+        "company_name": "Atlassian Pty Ltd,"
+      },
+      {
+        "filename": "07.01.2026_WHT_EXP-20251200042 ใบเสร็จรับเงินใบกำกับภาษี สมาร์ทเน็ต 07-01-69_VAT.pdf",
+        "company_name": "Smartnet Consultant Part., Ltd. (หจก. สมาร์ทเน็ต คอนซัลแทนท์)"
+      },
+      {
+        "filename": "23.01.2026_WHT_EXP-20251200015 ใบเสร็จรับเงินใบกำกับภาษี - JobDB_23-01-69_VAT.pdf",
+        "company_name": "Jobs DB Recruitment (Thailand) Limited"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100004 ใบเสร็จรับเงินใบกำกับภาษี ทรูมูฟ เอช 23-01-69_VAT.pdf",
+        "company_name": "บริษัท ทรู มูฟ เอช ยูนิเวอร์แซล คอมมิวนิเคชั่น จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100024_ภาพแบบ ภ.พ.36 เดือน 12.2025 (Canva)_VAT.pdf",
+        "company_name": "Canva Pty.Ltd"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100015_ใบเสร็จรับเงินใบกำกับภาษี_JIB-16-01-69_VAT.pdf",
+        "company_name": "บริษัท เจ.ไอ.บี. คอมพิวเตอร์ กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "01.01.2026_WHT_EXP-20260100032_LINE-VTRC-Kcmh-Jan69_VAT.pdf",
+        "company_name": "LINE COMPANY (THAILAND) LIMITED"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100014_ใบเสร็จรับเงินใบกำกับภาษี บริษัท แอดไวซ์ (อุปกรณ์งานPmac) งามทิพย์สำรองจ่ายPay date 22-01-69.pdf",
+        "company_name": "บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน)"
+      },
+      {
+        "filename": "01.01.2026_WHT_EXP-20260100031_LINE-VTRC-Jan69_VAT.pdf",
+        "company_name": "LINE COMPANY (THAILAND) LIMITED"
+      },
+      {
+        "filename": "22.01.2026_WHT_EXP-20260100002_ค่าทำบัญชี RT-20260100329_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100049_ใบเสร็จรับเงิน การประปาส่วนภูมิภาค(ค่าขายเอกสารโครงการBMS)21-01-69_VAT.pdf",
+        "company_name": "การประปาส่วนภูมิภาค"
+      },
+      {
+        "filename": "23.01.2026_WHT_EXP-20251200028 ใบเสร็จรับเงินใบกำกับภาษี - อันดีไฟน์ 23-01-69_VAT.pdf",
+        "company_name": "บริษัท อันดีไฟนด์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 12,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100032",
+        "ocr_document_no": "ONTX20260101-005528",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100031",
+        "ocr_document_no": "ONTX20260101-008306",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20251200042",
+        "ocr_document_no": "2601001",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100025",
+        "ocr_document_no": "69114564225",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100024",
+        "ocr_document_no": "69114564226",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "IX00108-6901-002709",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100049",
+        "ocr_document_no": "OT1001/690000175",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "BNAVI00000690100009727",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "RT-20260100329",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20251200015",
+        "ocr_document_no": "C2016-RCP-000048327",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20251200028",
+        "ocr_document_no": "INV-20260004",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "PS029416406690000013837",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

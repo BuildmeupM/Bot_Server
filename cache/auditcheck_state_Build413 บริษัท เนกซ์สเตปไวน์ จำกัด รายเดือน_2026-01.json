@@ -1,0 +1,99 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-21T04:53:39.791Z",
+  "last_saved": "2026-02-21T11:53:39.450691",
+  "company": "Build413 บริษัท เนกซ์สเตปไวน์ จำกัด รายเดือน",
+  "base_company": "Build413 บริษัท เนกซ์สเตปไวน์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "7": "ชื่อคู่ค้าผิด ",
+    "9": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด สมาร์ทเน็ต คอนซัลแทนท์' แต่ OCR='Smartnet Consultant Part., Ltd. (หจก. สมาร์ทเน็ต คอนซัลแทนท์)'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=5,350.00 แต่ OCR=5,200.00 (ต่างกัน 150.00)",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Atlassian Pty Ltd,'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=799.73 แต่ OCR=49.11 (ต่างกัน 750.62)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Canva Pty.Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=2,481.17 แต่ OCR=152.35 (ต่างกัน 2,328.82)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดไวเซอรี่ อัลไลแอนซ์ แอนด์ พาร์ทเนอร์ส จำกัด' แต่ OCR='บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105554038301' แต่ OCR='0107565000620'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัดหางาน จ๊อบส์ ดีบี (ประเทศไทย) จำกัด' แต่ OCR='Jobs DB Recruitment (Thailand) Limited'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "2-company_name_match": true,
+    "2-total_amount_match": true,
+    "3-company_name_match": true,
+    "3-tax_id_match": true,
+    "3-branch_match": true,
+    "3-total_amount_match": true,
+    "3-document_type_match": true,
+    "4-company_name_match": true,
+    "4-tax_id_match": true,
+    "4-branch_match": true,
+    "4-total_amount_match": true,
+    "4-document_type_match": true,
+    "9-company_name_match": true,
+    "5-company_data_all": true,
+    "0-document_no_match": true,
+    "0-date_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build413 บริษัท เนกซ์สเตปไวน์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "14.01.2026_EXP-20260100007_510110_14012026_VAT.pdf",
+        "company_name": "บริษัท เอส.ซี. บางกอก มาร์เก็ตติ้ง จำกัด"
+      },
+      {
+        "filename": "20.01.2026_WHT_EXP-20260100001_RT-20260100215_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100006_124106_09012026_VAT.pdf",
+        "company_name": "บริษัท เจมาร์ท โมบาย จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 3,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "311327260100004",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "2601076",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "RT-20260100215",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

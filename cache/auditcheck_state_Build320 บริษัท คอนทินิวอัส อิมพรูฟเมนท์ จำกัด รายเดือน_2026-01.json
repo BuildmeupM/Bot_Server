@@ -1,0 +1,999 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-21T10:03:53.392Z",
+  "last_saved": "2026-02-21T17:03:51.580461",
+  "company": "Build320 บริษัท คอนทินิวอัส อิมพรูฟเมนท์ จำกัด รายเดือน",
+  "base_company": "Build320 บริษัท คอนทินิวอัส อิมพรูฟเมนท์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI-25HO073785' แต่ OCR='TI-25H0073785'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แฮปปี้ แอนด์ ชิล จำกัด' แต่ OCR='Happy & Chill.Co.,Ltd'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=33,000.00 แต่ OCR=24,000.00 (ต่างกัน 9,000.00)",
+    "4": "",
+    "5": "",
+    "7": "",
+    "8": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "12": "",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท อุบลเทค อินเตอร์เทรด จำกัด' แต่ OCR='บริษัท อุบลเทคนิคอินเตอร์เทรด จำกัด'",
+    "15": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด เพาเวอร์ เบสท์ คอนสตรัคชั่น' แต่ OCR='ห้างหุ้นส่วนจำกัด เพาเวอร์เบสท์ คอนสตรัคชั่น'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=22,470.00 แต่ OCR=21,840.00 (ต่างกัน 630.00)",
+    "16": "ใบกำกับผิด",
+    "17": "",
+    "18": "",
+    "19": "",
+    "20": "",
+    "22": "",
+    "24": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='Z1CN6009001102' แต่ OCR='Z1CN 6009001102'",
+    "27": "",
+    "28": "",
+    "31": "",
+    "35": "",
+    "38": "",
+    "40": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอสซีลอร์ลูซอตติกา โฮลเซล (ประเทศไทย) จำกัด' แต่ OCR='บริษัท เอสซีลอร์ลูซอตติก้า โฮลเซล (ประเทศไทย) จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='Z1CN6009001501' แต่ OCR='Z1CN 6009001501'",
+    "41": "",
+    "43": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='Z1CN6009001743' แต่ OCR='Z1CN 6009001743'",
+    "44": "",
+    "47": "",
+    "50": "",
+    "51": "",
+    "52": "",
+    "56": "",
+    "57": "",
+    "58": "",
+    "59": "",
+    "60": "",
+    "61": "",
+    "62": "",
+    "63": "",
+    "64": "",
+    "65": "",
+    "66": "",
+    "67": "",
+    "68": "",
+    "69": "",
+    "71": "",
+    "72": "",
+    "73": "",
+    "75": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แฮปปี้ แอนด์ ชิล จำกัด' แต่ OCR='Happy & Chill.Co.,Ltd'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แฮปปี้ แอนด์ ชิล จำกัด' แต่ OCR='Happy & Chill.Co.,Ltd'",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI-25HO073785' แต่ OCR='TI-25H0073785'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แฮปปี้ แอนด์ ชิล จำกัด' แต่ OCR='Happy & Chill.Co.,Ltd'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=33,000.00 แต่ OCR=24,000.00 (ต่างกัน 9,000.00)",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='SIWV26010018' แต่ OCR='SIWW26010018'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แฮปปี้ แอนด์ ชิล จำกัด' แต่ OCR='Happy & Chill.Co.,Ltd'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='SIWV26010019' แต่ OCR='SIWW26010019'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='301/15040' แต่ OCR='15040'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซี - ไมเนอร์ อินทิเกรชั่น จำกัด' แต่ OCR='บริษัท ซี-ไมเนอร์ อินทิเกรชั่น จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='PO2511-2835' แต่ OCR='IV260100010'",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด เอ แอนด์ จี ซัน' แต่ OCR='หจก. เอ แอนด์ จี ซัน'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์มีอัพ คอนซัลแทนท์จำกัด'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท อุบลเทค อินเตอร์เทรด จำกัด' แต่ OCR='บริษัท อุบลเทคนิคอินเตอร์เทรด จำกัด'",
+    "15": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด เพาเวอร์ เบสท์ คอนสตรัคชั่น' แต่ OCR='ห้างหุ้นส่วนจำกัด เพาเวอร์เบสท์ คอนสตรัคชั่น'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=22,470.00 แต่ OCR=21,840.00 (ต่างกัน 630.00)",
+    "16": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=14,552.00 แต่ OCR=14,144.00 (ต่างกัน 408.00)",
+    "17": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไพรม์โซลาร์พลัส จำกัด' แต่ OCR='บริษัท ไพรมโซลาร์พลัส จำกัด'",
+    "18": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไพรม์โซลาร์พลัส จำกัด' แต่ OCR='บริษัท ไพรมโซล่าร์พลัส จำกัด'",
+    "19": "วันที่ไม่ตรงกัน: ภาษีซื้อ='28/01/2026' แต่ OCR='28/01/1983'",
+    "20": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='SIWV26010040' แต่ OCR='SIWV/26010040'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=52,000.00 แต่ OCR=55,640.00 (ต่างกัน 3,640.00)",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'",
+    "24": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอสซีลอร์ลูซอตติกา โฮลเซล (ประเทศไทย) จำกัด' แต่ OCR='EssilorLuxottica Wholesale (Thailand) Ltd.'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='Z1CN6009001102' แต่ OCR='Z1CN 6009001102'",
+    "27": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ตี๋ระยอง 2018 จำกัด' แต่ OCR='บริษัท ดีระยอง 2018 จำกัด'",
+    "28": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPECPS00-00000-260119-0000023' แต่ OCR='TRSPECPS00-00000-26'",
+    "31": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'",
+    "35": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=13,051.40 แต่ OCR=13,965.00 (ต่างกัน 913.60)",
+    "38": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'",
+    "40": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอสซีลอร์ลูซอตติกา โฮลเซล (ประเทศไทย) จำกัด' แต่ OCR='บริษัท เอสซีลอร์ลูซอตติก้า โฮลเซล (ประเทศไทย) จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='Z1CN6009001501' แต่ OCR='Z1CN 6009001501'",
+    "41": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ควอด ทเวนตี้ทู จำกัด' แต่ OCR='บริษัท ควอด ทเวนตี้ จำกัด'",
+    "43": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='Z1CN6009001743' แต่ OCR='Z1CN 6009001743'",
+    "44": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260123-0018871' แต่ OCR='TRSPEMKP00-00000-26'",
+    "47": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'",
+    "50": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ควอด ทเวนตี้ทู จำกัด' แต่ OCR='บริษัท ควอด ทเวนตี้ ทู จำกัด'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105553119820' แต่ OCR='0105553119320'",
+    "51": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'",
+    "52": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='SIWV26010061' แต่ OCR='SIW26010061'",
+    "56": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "57": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "58": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "59": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "60": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "61": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited (Head Office)'",
+    "62": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "63": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "64": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "65": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "66": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "67": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "68": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "69": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "71": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='SIWV26010066' แต่ OCR='SIW26010066'",
+    "72": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='SIWV26010067' แต่ OCR='SIWW26010067'",
+    "73": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='SIWV26010068' แต่ OCR='SIWW26010068'",
+    "75": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาร์เวล วิชชั่น จำกัด' แต่ OCR='บริษัท มาร์เวล วิชั่น จำกัด'"
+  },
+  "comparisonApprovals": {
+    "4-company_name_match": true,
+    "4-document_no_match": true,
+    "5-document_no_match": true,
+    "5-company_name_match": true,
+    "0-company_name_match": true,
+    "0-tax_id_match": true,
+    "0-address_match": true,
+    "1-date_match": true,
+    "1-address_match": true,
+    "7-document_no_match": true,
+    "7-company_name_match": true,
+    "7-company_tax_id_match": true,
+    "7-address_match": true,
+    "8-document_no_match": true,
+    "8-company_name_match": true,
+    "9-document_no_match": true,
+    "10-company_name_match": true,
+    "11-amount_before_vat_match": true,
+    "12-document_no_match": true,
+    "16-company_name_match": true,
+    "16-address_match": true,
+    "17-document_no_match": true,
+    "17-company_name_match": true,
+    "17-amount_before_vat_match": true,
+    "17-vat_amount_match": true,
+    "17-total_amount_match": true,
+    "18-amount_before_vat_match": true,
+    "19-company_name_match": true,
+    "19-document_no_match": true,
+    "20-amount_before_vat_match": true,
+    "20-document_no_match": true,
+    "22-company_name_match": true,
+    "24-company_name_match": true,
+    "24-address_match": true,
+    "27-company_name_match": true,
+    "28-document_no_match": true,
+    "31-company_name_match": true,
+    "32-company_name_match": true,
+    "32-company_tax_id_match": true,
+    "32-address_match": true,
+    "33-company_name_match": true,
+    "33-company_tax_id_match": true,
+    "35-amount_before_vat_match": true,
+    "38-company_name_match": true,
+    "40-company_name_match": true,
+    "40-address_match": true,
+    "41-company_name_match": true,
+    "44-document_no_match": true,
+    "47-company_name_match": true,
+    "50-tax_id_match": true,
+    "50-company_name_match": true,
+    "51-company_name_match": true,
+    "52-company_name_match": true,
+    "52-document_no_match": true,
+    "54-company_tax_id_match": true,
+    "55-company_name_match": true,
+    "55-address_match": true,
+    "56-company_name_match": true,
+    "57-company_name_match": true,
+    "58-company_name_match": true,
+    "59-company_name_match": true,
+    "60-company_name_match": true,
+    "61-company_name_match": true,
+    "62-company_name_match": true,
+    "63-company_name_match": true,
+    "64-company_name_match": true,
+    "65-company_name_match": true,
+    "66-company_name_match": true,
+    "67-company_name_match": true,
+    "68-company_name_match": true,
+    "69-company_name_match": true,
+    "71-document_no_match": true,
+    "71-company_name_match": true,
+    "72-document_no_match": true,
+    "72-company_name_match": true,
+    "73-document_no_match": true,
+    "73-company_name_match": true,
+    "75-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build320 บริษัท คอนทินิวอัส อิมพรูฟเมนท์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 78,
+    "metadata": [
+      {
+        "filename": "19.01.2026_EXP-20260100118_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100117_ค่าบริการ_Shopee-TIV-TRSPEMKP00-00000-260118-0020153_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "16.01.2026_CNX-20260100001_IMG_20260204_0048_VAT.pdf",
+        "company_name": "Marvel Vision Co., Ltd."
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100120_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100063_IMG_20260204_0036_VAT.pdf",
+        "company_name": "บริษัท ควอด ทเวนตี้ทู จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100124_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100047_IMG_20260204_0007_VAT.pdf",
+        "company_name": "บริษัท ควอด ทเวนตี้ทู จำกัด"
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100131_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100126_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100069_IMG_20260204_0046_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชชั่น จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100083_IMG_20260204_0078_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100044_STOMTH202601251050_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100034_STOMTH202601071108_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100116_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100076_IMG_20260204_0062_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100064_IMG_20260204_0038_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชชั่น จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100042_STOMTH202601211165_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100122_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100038_STOMTH202601141206_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100041_STOMTH202601191159_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100066_IMG_20260204_0043_VAT.pdf",
+        "company_name": "EssilorLuxottica Wholesale (Thailand) Ltd."
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100060_IMG_20260204_0030_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชชั่น จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100061_IMG_20260204_0031_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชชั่น จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100080_IMG_20260204_0069_VAT.pdf",
+        "company_name": "บริษัท ควอด ทเวนตี้ จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100067_IMG_20260204_0044_VAT.pdf",
+        "company_name": "บริษัท ควอด ทเวนตี้ทู จำกัด"
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100125_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100130_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100036_STOMTH202601091163_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100090_IMG_20260204_0091_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100074_IMG_20260204_0059_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชชั่น จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100059_IMG_20260204_0029_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100062_IMG_20260204_0033_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100077_IMG_20260204_0064_VAT.pdf",
+        "company_name": "บริษัท เอสซีลอร์ลูซอตติก้า โฮลเซล (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100045_STOMTH202601261192_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100084_IMG_20260204_0079_VAT.pdf",
+        "company_name": "บริษัท ควอด ทเวนตี้ทู จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100033_STOMTH202601061355_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100068_IMG_20260204_0045_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100031_STOMTH202601041040_VAT.pdf",
+        "company_name": "บริษัท โอมิเซะ จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100121_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "21.01.2026_WHT_EXP-20260100012_ค่าบริการทำบัญชี RT-20260100313_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100119_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100039_STOMTH202601161153_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100113_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100082_IMG_20260204_0077_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100037_STOMTH202601121118_VAT.pdf",
+        "company_name": "Omise Company Limited (Head Office)"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100093_530108_0300-TX-อีส มี เฮิร์บ-วัสดุสิ้นเปลือง-INV003007_VAT.pdf",
+        "company_name": "บริษัท อีส มี เฮิร์บ จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100043_STOMTH202601241065_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100035_STOMTH202601081221_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100046_530215_0300-TX-LS-ชา ของแถม-ORVM690120000003_c1bd009ec796487b81a6d338203572e5_receipt_or_tax_invoice_VAT.pdf",
+        "company_name": "บริษัท แอลเอส-คอมเมิร์ซ จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100065_IMG_20260204_0041_VAT.pdf",
+        "company_name": "EssilorLuxottica Wholesale (Thailand) Ltd."
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100094_530215_0300-TX-พีซี-หมึกเครื่องพิมพ์-IMG_20260204_0040_VAT.pdf",
+        "company_name": "บริษัท พีซี เมคเกอร์ กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100129_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100056_IMG_20260204_0023_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100075_IMG_20260204_0060_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชชั่น จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100032_STOMTH202601051178_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100081_IMG_20260204_0074_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100085_IMG_20260204_0080_VAT.pdf",
+        "company_name": "บริษัท ควอด ทเวนตี้ ทู จำกัด"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100088_IMG_20260204_0088_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100078_IMG_20260204_0065_VAT.pdf",
+        "company_name": "บริษัท ควอด ทเวนตี้ทู จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100132_IMG_20260204_0068_VAT.pdf",
+        "company_name": "บริษัท เอสซีลอร์ลูซอตติกา โฮลเซล (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100128_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100040_STOMTH202601181028_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100087_IMG_20260204_0087_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100058_IMG_20260204_0028_VAT.pdf",
+        "company_name": "บริษัท ควอด ทเวนตี้ทู จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100073-IMG_20260204_0058_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100079_IMG_20260204_0066_VAT.pdf",
+        "company_name": "บริษัท ควอด ทเวนตี้ทู จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100115_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100086_IMG_20260204_0083_VAT.pdf",
+        "company_name": "บริษัท ควอด ทเวนตี้ทู จำกัด"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100123_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100089_IMG_20260204_0089_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100095_520310_0300-TX-ตี๋ระยอง-ถุงแพ็คสินค้า-IMG_20260204_0051_VAT.pdf",
+        "company_name": "บริษัท ดีระยอง 2018 จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100071_IMG_20260204_0049_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชั่น จำกัด"
+      },
+      {
+        "filename": "26.12.2026_EXP-20251200195_530215_0300-Tx-ไทนีออน-อปก ออฟฟิศ-IMG_20260205_0006_VAT.pdf",
+        "company_name": "บริษัท ไทนีออนฮาร์ดแวร์ จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100114_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100057_IMG_20260204_0027_VAT.pdf",
+        "company_name": "บริษัท ควอด เวนตี้ทู จำกัด"
+      },
+      {
+        "filename": "11.12.2025_EXP-20251200194_530215_IMG_20260211_0001_VAT.pdf",
+        "company_name": "บริษัท ย่งฮงโลหะกิจ ฟิตติ้ง แอนด์ ฮาร์ดแวร์ จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100070_IMG_20260204_0047_VAT.pdf",
+        "company_name": "บริษัท มาร์เวล วิชชั่น จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100127_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 78,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251200194",
+        "ocr_document_no": "IV68-08834",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251200195",
+        "ocr_document_no": "TNHO6812000017",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100047",
+        "ocr_document_no": "IV202600003",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100093",
+        "ocr_document_no": "INV003007",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100056",
+        "ocr_document_no": "SIWW26010018",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100057",
+        "ocr_document_no": "IV202000037",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100058",
+        "ocr_document_no": "IV202600039",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100059",
+        "ocr_document_no": "SIWW26010019",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100060",
+        "ocr_document_no": "SIWW26010021",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100061",
+        "ocr_document_no": "SIW26010022",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100062",
+        "ocr_document_no": "SIWV26010023",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100063",
+        "ocr_document_no": "IV202600050",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100064",
+        "ocr_document_no": "SIWW26010026",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100113",
+        "ocr_document_no": "TRSPEMKP00-00000-260114-0012442",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260100094",
+        "ocr_document_no": "PSH69010270",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260100114",
+        "ocr_document_no": "TRSPEMKP00-00000-260115-0014126",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260100065",
+        "ocr_document_no": "Z1CN 6009000720",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "CNX-20260100001",
+        "ocr_document_no": "CNWS25010017",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100067",
+        "ocr_document_no": "IV202600057",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260100068",
+        "ocr_document_no": "SIWV25010038",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260100069",
+        "ocr_document_no": "SIWV/26010040",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260100070",
+        "ocr_document_no": "SIWV26010043",
+        "match_status": "full_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260100071",
+        "ocr_document_no": "SIWV26010046",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260100115",
+        "ocr_document_no": "TRSPEMKP00-00000-260116-0025842",
+        "match_status": "full_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260100066",
+        "ocr_document_no": "Z1CN 6009001102",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260100116",
+        "ocr_document_no": "TRSPEMKP00-00000-260117-0022089",
+        "match_status": "full_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260100117",
+        "ocr_document_no": "TRSPEMKP00-00000-260118-0020153",
+        "match_status": "full_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260100095",
+        "ocr_document_no": "V6901-0370",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260100118",
+        "ocr_document_no": "TRSPECPS00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260100119",
+        "ocr_document_no": "TRSPEMKP00-00000-260119-0018182",
+        "match_status": "full_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260100046",
+        "ocr_document_no": "ORVM690120000003",
+        "match_status": "full_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260100073",
+        "ocr_document_no": "SIWV26010048",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260100074",
+        "ocr_document_no": "SIWV26010049",
+        "match_status": "full_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260100075",
+        "ocr_document_no": "SIWV26010051",
+        "match_status": "full_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260100120",
+        "ocr_document_no": "TRSPEMKP00-00000-260120-0000090",
+        "match_status": "full_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260100078",
+        "ocr_document_no": "IV202600071",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260100079",
+        "ocr_document_no": "IV202600074",
+        "match_status": "full_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "RT-20260100313",
+        "match_status": "full_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-20260100076",
+        "ocr_document_no": "SIWV26010053",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-20260100121",
+        "ocr_document_no": "TRSPEMKP00-00000-260121-0024566",
+        "match_status": "full_match"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXP-20260100077",
+        "ocr_document_no": "Z1CN 6009001501",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXP-20260100080",
+        "ocr_document_no": "IV202600079",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 42,
+        "purchase_reference": "EXP-20260100122",
+        "ocr_document_no": "TRSPEMKP00-00000-260122-0016989",
+        "match_status": "full_match"
+      },
+      {
+        "index": 43,
+        "purchase_reference": "EXP-20260100132",
+        "ocr_document_no": "Z1CN 6009001743",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 44,
+        "purchase_reference": "EXP-20260100123",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 45,
+        "purchase_reference": "EXP-20260100124",
+        "ocr_document_no": "TRSPEMKP00-00000-260124-0019938",
+        "match_status": "full_match"
+      },
+      {
+        "index": 46,
+        "purchase_reference": "EXP-20260100125",
+        "ocr_document_no": "TRSPEMKP00-00000-260125-0009391",
+        "match_status": "full_match"
+      },
+      {
+        "index": 47,
+        "purchase_reference": "EXP-20260100081",
+        "ocr_document_no": "SIWV26010055",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 48,
+        "purchase_reference": "EXP-20260100126",
+        "ocr_document_no": "TRSPEMKP00-00000-260126-0000384",
+        "match_status": "full_match"
+      },
+      {
+        "index": 49,
+        "purchase_reference": "EXP-20260100084",
+        "ocr_document_no": "IV202600101",
+        "match_status": "full_match"
+      },
+      {
+        "index": 50,
+        "purchase_reference": "EXP-20260100085",
+        "ocr_document_no": "IV202600108",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 51,
+        "purchase_reference": "EXP-20260100082",
+        "ocr_document_no": "SIWV26010058",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 52,
+        "purchase_reference": "EXP-20260100083",
+        "ocr_document_no": "SIW26010061",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 53,
+        "purchase_reference": "EXP-20260100127",
+        "ocr_document_no": "TRSPEMKP00-00000-260127-0016614",
+        "match_status": "full_match"
+      },
+      {
+        "index": 54,
+        "purchase_reference": "EXP-20260100086",
+        "ocr_document_no": "IV202600112",
+        "match_status": "full_match"
+      },
+      {
+        "index": 55,
+        "purchase_reference": "EXP-20260100031",
+        "ocr_document_no": "STOMTH202601041040",
+        "match_status": "full_match"
+      },
+      {
+        "index": 56,
+        "purchase_reference": "EXP-20260100032",
+        "ocr_document_no": "STOMTH202601051178",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 57,
+        "purchase_reference": "EXP-20260100033",
+        "ocr_document_no": "STOMTH202601061355",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 58,
+        "purchase_reference": "EXP-20260100034",
+        "ocr_document_no": "STOMTH202601071108",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 59,
+        "purchase_reference": "EXP-20260100035",
+        "ocr_document_no": "STOMTH202601081221",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 60,
+        "purchase_reference": "EXP-20260100036",
+        "ocr_document_no": "STOMTH202601091163",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 61,
+        "purchase_reference": "EXP-20260100037",
+        "ocr_document_no": "STOMTH202601121118",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 62,
+        "purchase_reference": "EXP-20260100038",
+        "ocr_document_no": "STOMTH202601141206",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 63,
+        "purchase_reference": "EXP-20260100039",
+        "ocr_document_no": "STOMTH202601161153",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 64,
+        "purchase_reference": "EXP-20260100040",
+        "ocr_document_no": "STOMTH202601181028",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 65,
+        "purchase_reference": "EXP-20260100041",
+        "ocr_document_no": "STOMTH202601191159",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 66,
+        "purchase_reference": "EXP-20260100042",
+        "ocr_document_no": "STOMTH202601211165",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 67,
+        "purchase_reference": "EXP-20260100043",
+        "ocr_document_no": "STOMTH202601241065",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 68,
+        "purchase_reference": "EXP-20260100044",
+        "ocr_document_no": "STOMTH202601251050",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 69,
+        "purchase_reference": "EXP-20260100045",
+        "ocr_document_no": "STOMTH202601261192",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 70,
+        "purchase_reference": "EXP-20260100128",
+        "ocr_document_no": "TRSPEMKP00-00000-260128-0015236",
+        "match_status": "full_match"
+      },
+      {
+        "index": 71,
+        "purchase_reference": "EXP-20260100087",
+        "ocr_document_no": "SIW26010066",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 72,
+        "purchase_reference": "EXP-20260100088",
+        "ocr_document_no": "SIWW26010067",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 73,
+        "purchase_reference": "EXP-20260100089",
+        "ocr_document_no": "SIWW26010068",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 74,
+        "purchase_reference": "EXP-20260100129",
+        "ocr_document_no": "TRSPEMKP00-00000-260129-0014371",
+        "match_status": "full_match"
+      },
+      {
+        "index": 75,
+        "purchase_reference": "EXP-20260100090",
+        "ocr_document_no": "SIWV26010073",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 76,
+        "purchase_reference": "EXP-20260100130",
+        "ocr_document_no": "TRSPEMKP00-00000-260130-0014124",
+        "match_status": "full_match"
+      },
+      {
+        "index": 77,
+        "purchase_reference": "EXP-20260100131",
+        "ocr_document_no": "TRSPEMKP00-00000-260131-0012095",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-21T05:04:20.830Z",
+  "last_saved": "2026-02-21T12:04:20.463323",
+  "company": "Build599 บริษัท กเณล์ฌาฐิ์ จำกัด",
+  "base_company": "Build599 บริษัท กเณล์ฌาฐิ์ จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'",
+    "4": "",
+    "7": "ชื่อคู่ค้าผิด ",
+    "9": "",
+    "12": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด สมาร์ทเน็ต คอนซัลแทนท์' แต่ OCR='Smartnet Consultant Part., Ltd. (หจก. สมาร์ทเน็ต คอนซัลแทนท์)'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=5,350.00 แต่ OCR=5,200.00 (ต่างกัน 150.00)",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Atlassian Pty Ltd,'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=799.73 แต่ OCR=49.11 (ต่างกัน 750.62)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Canva Pty.Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=2,481.17 แต่ OCR=152.35 (ต่างกัน 2,328.82)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดไวเซอรี่ อัลไลแอนซ์ แอนด์ พาร์ทเนอร์ส จำกัด' แต่ OCR='บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105554038301' แต่ OCR='0107565000620'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัดหางาน จ๊อบส์ ดีบี (ประเทศไทย) จำกัด' แต่ OCR='Jobs DB Recruitment (Thailand) Limited'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท 89 ท๊อปวู้ด จำกัด' แต่ OCR='บริษัท 89 ท๊อปวู๊ด จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "2-total_amount_match": true,
+    "3-company_name_match": true,
+    "3-tax_id_match": true,
+    "3-branch_match": true,
+    "3-total_amount_match": true,
+    "3-document_type_match": true,
+    "4-company_name_match": true,
+    "4-tax_id_match": true,
+    "4-branch_match": true,
+    "4-total_amount_match": true,
+    "4-document_type_match": true,
+    "9-company_name_match": true,
+    "5-company_data_all": true,
+    "0-document_no_match": true,
+    "0-date_match": true,
+    "2-company_name_match": true,
+    "7-company_name_match": true,
+    "12-company_name_match": true,
+    "8-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build599 บริษัท กเณล์ฌาฐิ์ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 13,
+    "metadata": [
+      {
+        "filename": "28.01.2026_EXP-20260100019_530213_ค่าอุปกรณ์ทำร้าน HomePro Jan'26 III_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100004_530107_ค่าอบรมผู้สัมผัสอาหาร 2 _VAT.pdf",
+        "company_name": "บริษัท ฟู้ดแพชชั่น จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100017_530213_ค่าอุปกรณ์ทำร้าน HomePro Jan'26_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "02.01.2026_EXP-20260100014_Coffee Filter_VAT.pdf",
+        "company_name": "บริษัท เมก้า อินโนฟู๊ด จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100016_530213_ค่าอุปกรณ์ทำร้าน HomePro Jan'26 II_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "05.01.2026_WHT_EXP-20260100009_520310_Grab Merchant service Fee 5Jan2026_VAT.pdf",
+        "company_name": "Grabtaxi (Thailand) Co., Ltd. (Head Office)"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100020_530213_ค่าอุปกรณ์ทำร้าน Jan'26_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "04.01.2026_EXP-20260100013_B2S 4 Jan 2026_VAT.pdf",
+        "company_name": "บริษัท บีทูเอส จำกัด"
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100018_540101_Tops Jan'26_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ฟู้ด รีเทล จำกัด"
+      },
+      {
+        "filename": "15.01.2026_WHT_EXP-20260100008_530401_ค่าบัญชี Jan'26_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100005_530213_ค่าไม้ ทำร้าน_VAT.pdf",
+        "company_name": "บริษัท 89 ท๊อปวู๊ด จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100003_530303_AIS Tax Invoice for Jan'26 service_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100015_530107_ค่าอบรมผู้สัมผัสอาหาร _VAT.pdf",
+        "company_name": "บริษัท ฟู้ดแพชชั่น จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 13,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "IV-2026010030",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "50096012610000049",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "IM20260105008460",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "W-BK-1067-6901-10606012",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "RT-20260100169",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "RA3IE26010125319",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "7260120000243",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "106550",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "106551",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "00110012610001816",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "7260126000184",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "605516",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "IV69-1-175",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}
