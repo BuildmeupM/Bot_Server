@@ -11759,6 +11759,173 @@ def process_pnd1k_employee_data():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+def correct_id_card(id_card_raw, reference_ids, name_hint=''):
+    """ตรวจสอบและแก้ไขเลขบัตรประชาชนที่ไม่ครบ 13 หลัก
+    
+    Args:
+        id_card_raw: เลขบัตรที่ต้องการตรวจสอบ
+        reference_ids: set ของเลขบัตรอ้างอิง 13 หลักที่ถูกต้อง
+        name_hint: ชื่อพนักงาน (สำหรับ logging)
+    
+    Returns:
+        tuple: (corrected_id_card, was_corrected, original_id_card)
+    """
+    id_card = str(id_card_raw).replace(' ', '').replace('-', '').strip()
+    
+    # ลบตัวอักษรที่ไม่ใช่ตัวเลข
+    id_card_digits = ''.join(c for c in id_card if c.isdigit())
+    
+    if not id_card_digits:
+        return id_card, False, id_card
+    
+    # ถ้าครบ 13 หลักแล้ว ไม่ต้องแก้ไข
+    if len(id_card_digits) == 13:
+        return id_card_digits, False, id_card_digits
+    
+    # พยายาม match กับ reference_ids
+    best_match = None
+    match_score = 0
+    
+    for ref_id in reference_ids:
+        if len(ref_id) != 13:
+            continue
+        
+        # กรณี 1: เลขบัตรผิด (สั้นกว่า) เป็น substring ของเลขบัตรถูก
+        if len(id_card_digits) < 13 and id_card_digits in ref_id:
+            score = len(id_card_digits)  # ยิ่งยาวยิ่งดี
+            if score > match_score:
+                best_match = ref_id
+                match_score = score
+        
+        # กรณี 2: เลขบัตรผิด (ยาวกว่า) มี ref_id เป็น substring
+        elif len(id_card_digits) > 13 and ref_id in id_card_digits:
+            score = 13
+            if score > match_score:
+                best_match = ref_id
+                match_score = score
+        
+        # กรณี 3: ต่างกันแค่ 1-2 ตัว (edit distance)
+        elif abs(len(id_card_digits) - 13) <= 2:
+            # เช็คว่ามีตัวเลขที่ตรงกันกี่ตัว (longest common subsequence แบบง่าย)
+            matching_chars = 0
+            ref_idx = 0
+            for c in id_card_digits:
+                while ref_idx < len(ref_id):
+                    if c == ref_id[ref_idx]:
+                        matching_chars += 1
+                        ref_idx += 1
+                        break
+                    ref_idx += 1
+            
+            # ต้อง match อย่างน้อย 10 ตัวจาก 13
+            if matching_chars >= 10 and matching_chars > match_score:
+                best_match = ref_id
+                match_score = matching_chars
+    
+    if best_match:
+        name_info = f" ({name_hint})" if name_hint else ""
+        logger.info(f"🔧 แก้ไขเลขบัตรอัตโนมัติ{name_info}: {id_card_digits} ({len(id_card_digits)} หลัก) → {best_match} (13 หลัก)")
+        return best_match, True, id_card_digits
+    else:
+        name_info = f" ({name_hint})" if name_hint else ""
+        logger.warning(f"⚠️ เลขบัตรไม่ครบ 13 หลัก{name_info}: {id_card_digits} ({len(id_card_digits)} หลัก) - ไม่สามารถแก้ไขอัตโนมัติได้")
+        return id_card_digits, False, id_card_digits
+
+
+@app.route('/api/pnd1k/validate-id-cards', methods=['POST'])
+def validate_id_cards():
+    """ตรวจสอบเลขบัตรประชาชนในข้อมูล attachment ว่าครบ 13 หลักหรือไม่"""
+    try:
+        import json
+        from pathlib import Path
+        import re
+        
+        company = request.json.get('company', '').strip()
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+        
+        # แยก Build และชื่อบริษัท
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        
+        def sanitize_filename(name):
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        safe_company_name = sanitize_filename(company_name or company)
+        pnd1k_data_dir = Path('data_pnd1k')
+        
+        # โหลดข้อมูล ID card (เป็นเลขบัตรอ้างอิงที่ถูกต้อง)
+        id_card_file = pnd1k_data_dir / f"pnd1k_id_cards_{safe_company_name}.json"
+        reference_ids = set()
+        if id_card_file.exists():
+            try:
+                with open(id_card_file, 'r', encoding='utf-8') as f:
+                    id_cards = json.load(f)
+                if not isinstance(id_cards, list):
+                    id_cards = [id_cards] if id_cards else []
+                for card in id_cards:
+                    card_id = str(card.get('id_card_number', '')).replace(' ', '').strip()
+                    card_id_digits = ''.join(c for c in card_id if c.isdigit())
+                    if len(card_id_digits) == 13:
+                        reference_ids.add(card_id_digits)
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ ID card: {e}")
+        
+        # โหลดข้อมูล attachment
+        attachment_file = pnd1k_data_dir / f"pnd1k_attachments_{safe_company_name}.json"
+        attachments = []
+        if attachment_file.exists():
+            try:
+                with open(attachment_file, 'r', encoding='utf-8') as f:
+                    attachments = json.load(f)
+                if not isinstance(attachments, list):
+                    attachments = [attachments] if attachments else []
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ attachment: {e}")
+        
+        # ตรวจสอบเลขบัตรทั้งหมด
+        warnings = []
+        checked_ids = set()  # ป้องกันรายงานซ้ำ
+        
+        for att in attachments:
+            id_card_raw = att.get('recipient_id_card', '')
+            id_card = str(id_card_raw).replace(' ', '').strip() if id_card_raw else ''
+            id_card_digits = ''.join(c for c in id_card if c.isdigit())
+            
+            if not id_card_digits or id_card_digits in checked_ids:
+                continue
+            checked_ids.add(id_card_digits)
+            
+            if len(id_card_digits) != 13:
+                name = att.get('recipient_name', 'ไม่ทราบชื่อ')
+                corrected, was_corrected, original = correct_id_card(id_card_digits, reference_ids, name)
+                
+                warning = {
+                    'original_id': id_card_digits,
+                    'digit_count': len(id_card_digits),
+                    'name': name,
+                    'can_auto_correct': was_corrected,
+                    'corrected_id': corrected if was_corrected else None
+                }
+                warnings.append(warning)
+        
+        return jsonify({
+            'success': True,
+            'warnings': warnings,
+            'total_checked': len(checked_ids),
+            'total_warnings': len(warnings),
+            'reference_count': len(reference_ids)
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการตรวจสอบเลขบัตร: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 @app.route('/api/pnd1k/generate-rd-prep', methods=['POST'])
 def generate_rd_prep():
     """สร้างไฟล์ RD Prep สำหรับนำส่งภาษี"""
@@ -11841,6 +12008,17 @@ def generate_rd_prep():
             except Exception as e:
                 logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูล ID card: {e}")
         
+        # สร้าง reference set ของเลขบัตร 13 หลักที่ถูกต้อง (จาก ID card JSON)
+        reference_ids = set()
+        for card in id_cards:
+            card_id = str(card.get('id_card_number', '')).replace(' ', '').strip()
+            card_id_digits = ''.join(c for c in card_id if c.isdigit())
+            if len(card_id_digits) == 13:
+                reference_ids.add(card_id_digits)
+        
+        # เก็บ log เลขบัตรที่แก้ไข
+        id_card_corrections = {}  # original -> corrected
+        
         # สร้าง map สำหรับรวบรวมข้อมูลตาม ID card และประเภทภาษี
         employee_data_map = {}  # key: {id_card}_{income_type}
         
@@ -11850,6 +12028,19 @@ def generate_rd_prep():
             id_card = str(id_card_raw).replace(' ', '').strip() if id_card_raw else ''
             if not id_card:
                 continue
+            
+            # ตรวจสอบและแก้ไขเลขบัตรที่ไม่ครบ 13 หลัก
+            id_card_digits = ''.join(c for c in id_card if c.isdigit())
+            if len(id_card_digits) != 13 and reference_ids:
+                name_hint = att.get('recipient_name', '')
+                corrected, was_corrected, original = correct_id_card(id_card, reference_ids, name_hint)
+                if was_corrected:
+                    id_card_corrections[original] = corrected
+                    id_card = corrected
+                else:
+                    id_card = id_card_digits
+            else:
+                id_card = id_card_digits if id_card_digits else id_card
             
             # ใช้ income_type จาก income_type_overrides ก่อน (priority สูงสุด)
             income_type = income_type_overrides.get(id_card)
@@ -12227,6 +12418,26 @@ def generate_50_tawi():
         attachment_file = pnd1k_data_dir / f"pnd1k_attachments_{safe_company_name}.json"
         id_card_file = pnd1k_data_dir / f"pnd1k_id_cards_{safe_company_name}.json"
         
+        # สร้าง reference set ของเลขบัตร 13 หลักที่ถูกต้อง (จาก ID card JSON)
+        reference_ids = set()
+        if id_card_file.exists():
+            try:
+                with open(id_card_file, 'r', encoding='utf-8') as f:
+                    id_cards_data = json.load(f)
+                if not isinstance(id_cards_data, list):
+                    id_cards_data = [id_cards_data] if id_cards_data else []
+                for card in id_cards_data:
+                    card_id = str(card.get('id_card_number', '')).replace(' ', '').strip()
+                    card_id_digits = ''.join(c for c in card_id if c.isdigit())
+                    if len(card_id_digits) == 13:
+                        reference_ids.add(card_id_digits)
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ ID card สำหรับ reference: {e}")
+        
+        # เพิ่ม id_card ที่ส่งมาจาก frontend เข้า reference_ids ด้วย (เพราะน่าจะถูกต้อง)
+        if len(id_card) == 13:
+            reference_ids.add(id_card)
+        
         # หาข้อมูลพนักงานจาก attachment
         employee_attachments = []
         if attachment_file.exists():
@@ -12240,6 +12451,19 @@ def generate_50_tawi():
                 for att in attachments:
                     att_id_card = str(att.get('recipient_id_card', '')).replace(' ', '').replace('-', '').strip()
                     att_income_type = str(att.get('income_type', '40(1)')).strip()
+                    
+                    # ตรวจสอบและแก้ไขเลขบัตรที่ไม่ครบ 13 หลัก
+                    att_id_digits = ''.join(c for c in att_id_card if c.isdigit())
+                    if len(att_id_digits) != 13 and reference_ids:
+                        name_hint = att.get('recipient_name', '')
+                        corrected, was_corrected, original = correct_id_card(att_id_card, reference_ids, name_hint)
+                        if was_corrected:
+                            att_id_card = corrected
+                        else:
+                            att_id_card = att_id_digits
+                    else:
+                        att_id_card = att_id_digits if att_id_digits else att_id_card
+                    
                     # เปรียบเทียบให้ตรงกันทุกประการ (case-sensitive)
                     if att_id_card == id_card and att_income_type == income_type:
                         employee_attachments.append(att)
@@ -12445,6 +12669,13 @@ def generate_50_tawi():
                 logger.info(f"✅ กรอกข้อมูล 40(2): รายได้={total_income}, ภาษี={total_tax}")
             else:
                 logger.warning(f"⚠️ ประเภทภาษีไม่รู้จัก: {income_type}")
+            
+            # ตั้งค่าเซลล์เพื่อป้องกัน ## (คอลัมน์แคบเกินไป)
+            for cell_ref in ['AS30', 'BA30', 'AS31', 'BA31', 'AS54', 'BA54']:
+                cell = worksheet.Range(cell_ref)
+                cell.NumberFormat = '#,##0.00'
+                cell.ShrinkToFit = True
+                cell.WrapText = False
             
             # 8. กรอกข้อมูลรวม (เฉพาะประเภทภาษีที่ระบุ)
             worksheet.Range('AS54').Value = total_income

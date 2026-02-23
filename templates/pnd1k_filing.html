@@ -1124,6 +1124,18 @@
                     </table>
                 </div>
                 
+                <!-- คำเตือนเลขบัตรประชาชนที่ผิดพลาด -->
+                <div id="idCardWarningBanner" style="display: none; margin-top: 15px; padding: 12px 16px; background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid #f59e0b; border-radius: 8px; color: #92400e; font-size: 13px;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-weight: 600; font-size: 14px;">
+                        <span>⚠️</span>
+                        <span>พบเลขบัตรประชาชนที่อาจผิดพลาดจาก OCR</span>
+                    </div>
+                    <div id="idCardWarningList" style="margin-left: 24px;"></div>
+                    <div style="margin-top: 8px; margin-left: 24px; font-size: 12px; color: #78350f; font-style: italic;">
+                        💡 ระบบจะพยายามแก้ไขอัตโนมัติเมื่อสร้างเอกสาร 50 ทวิ หรือ RD Prep
+                    </div>
+                </div>
+                
                 <!-- ปุ่มสำหรับออกเอกสาร 50 ทวิพร้อมกันทุกคน และ ออกเอกสาร RD Prep -->
                 <div style="margin-top: 20px; text-align: center; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                     <button type="button" onclick="generate50TawiForAll()" 
@@ -2932,6 +2944,8 @@
             updateUploadedDataTable();
             updateEmployeeDataTable();
             updateKT20DataTable();
+            // ตรวจสอบเลขบัตรประชาชนที่ OCR อ่านผิด (async - ไม่ block UI)
+            validateIdCards();
         }
         
         // ฟังก์ชันสำหรับสลับ Tab
@@ -5606,6 +5620,48 @@
             }
             
             closeEditEmployeeModal();
+        }
+        
+        // ตรวจสอบเลขบัตรประชาชนที่ OCR อ่านผิด
+        async function validateIdCards() {
+            const company = document.getElementById('companySelect').value;
+            if (!company) return;
+            
+            const banner = document.getElementById('idCardWarningBanner');
+            const warningList = document.getElementById('idCardWarningList');
+            if (!banner || !warningList) return;
+            
+            try {
+                const response = await fetch('/api/pnd1k/validate-id-cards', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ company })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success && result.warnings && result.warnings.length > 0) {
+                    let html = '';
+                    result.warnings.forEach(w => {
+                        const statusIcon = w.can_auto_correct ? '🔧' : '❌';
+                        const statusText = w.can_auto_correct 
+                            ? `แก้ไขอัตโนมัติ → <strong>${w.corrected_id}</strong>` 
+                            : 'ไม่สามารถแก้ไขอัตโนมัติได้ กรุณาตรวจสอบ';
+                        html += `<div style="margin-bottom: 4px;">
+                            ${statusIcon} <strong>${w.name}</strong>: เลขบัตร <code style="background:#fef3c7; padding:1px 4px; border-radius:3px;">${w.original_id}</code> (${w.digit_count} หลัก) — ${statusText}
+                        </div>`;
+                    });
+                    warningList.innerHTML = html;
+                    banner.style.display = 'block';
+                    console.log(`⚠️ พบเลขบัตรที่อาจผิดพลาด ${result.total_warnings} รายการ จากทั้งหมด ${result.total_checked} รายการ`);
+                } else {
+                    banner.style.display = 'none';
+                    warningList.innerHTML = '';
+                }
+            } catch (error) {
+                console.error('Error validating ID cards:', error);
+                banner.style.display = 'none';
+            }
         }
         
         async function generate50Tawi(idCard, incomeType = null) {
