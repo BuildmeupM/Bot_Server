@@ -1,0 +1,597 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-23T05:01:30.889Z",
+  "last_saved": "2026-02-23T12:01:32.933166",
+  "company": "Build551 บริษัท บางยี่ขัน ซัพพลาย แอนด์ เซอร์วิส จำกัด",
+  "base_company": "Build551 บริษัท บางยี่ขัน ซัพพลาย แอนด์ เซอร์วิส จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "9": "",
+    "12": "",
+    "14": "",
+    "16": "",
+    "17": "",
+    "18": "",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไอคิวเอ โฮลดิ้ง จำกัด' แต่ OCR='บริษัท ไอทีแอล โฮลดิ้ง จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='20000265' แต่ OCR='2000265'",
+    "28": "",
+    "33": "",
+    "37": "",
+    "38": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016901000330' แต่ OCR='TI0000016901000330'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='24/01/2026' แต่ OCR='09/01/2026'",
+    "40": "เอกสารใช้ไม่ได้ให้เอาออก",
+    "47": "",
+    "48": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด รุ่งดำรงค์' แต่ OCR='ห้างหุ้นส่วนจำกัดรุ่งดำรงค์'",
+    "1": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016901000094' แต่ OCR='TI0000016901000094'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ปิโตรเลียม (ช่างอากาศอุทิศ) จำกัด' แต่ OCR='บริษัท ปีโตรเลียม (ช่างอากาศอุทิศ) จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016901000176' แต่ OCR='TI0000016901000176'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ส.มงคลวนิช' แต่ OCR='ห้างหุ้นส่วนจำกัด ส.มงคลวานิช'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='073/3603' แต่ OCR='3603'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาศรีสมาน)'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ปิโตรเลียม (ช่างอากาศอุทิศ) จำกัด' แต่ OCR='บริษัท ปิโตรเลียม (บางจากสรงประภา) จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016901000332' แต่ OCR='TI0000016901000332'",
+    "16": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)' แต่ OCR='บริษัท โฮม โปรดักส์ เซ็นเตอร์ จํากัด (มหาชน)'",
+    "17": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016901000582' แต่ OCR='TI0000016901000582'",
+    "18": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซี. เค. ฮาร์ดแวร์ แอนด์ เพ้นท์ จำกัด' แต่ OCR='บริษัท ซี.เค. ฮาร์ดแวร์ แอนด์ เพ้นท์ จำกัด'",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไอคิวเอ โฮลดิ้ง จำกัด' แต่ OCR='บริษัท ไอทีแอล โฮลดิ้ง จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='20000265' แต่ OCR='2000265'",
+    "28": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไอคิวเอ โฮลดิ้ง จำกัด' แต่ OCR='บริษัท ไอดีเอเอ เซลส์ จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016901000597' แต่ OCR='TI0000016901000597'",
+    "33": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด อินดี้ซัพพลายแอนด์เซอร์วิส' แต่ OCR='หจก.อินดี้ซัพพลายแอนด์เซอร์วิส'",
+    "37": "สาขาไม่ตรงกัน: ภาษีซื้อ='01798' แต่ OCR='00001'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI52Y66254A-2601-001040' แต่ OCR='T152Y662541A-2601-001040'",
+    "38": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016901000330' แต่ OCR='TI0000016901000330'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='24/01/2026' แต่ OCR='09/01/2026'",
+    "40": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='120/5988' แต่ OCR='5988'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='26/01/2026' แต่ OCR='26/07/2024'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=2,380.00 แต่ OCR=2,390.00 (ต่างกัน 10.00)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=2,546.60 แต่ OCR=2,556.60 (ต่างกัน 10.00)",
+    "47": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ปิโตรเลียม (ช่างอากาศอุทิศ) จำกัด' แต่ OCR='บริษัท บีโตรเลียม (ช่างอากาศอุทิศ) จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016901001341' แต่ OCR='TI0000016901001341'",
+    "48": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TIO000016901001342' แต่ OCR='TI0000016901001342'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "48-document_no_match": true,
+    "48-company_tax_id_match": true,
+    "47-company_name_match": true,
+    "47-document_no_match": true,
+    "46-company_tax_id_match": true,
+    "40-company_name_match": true,
+    "40-amount_before_vat_match": true,
+    "40-total_amount_match": true,
+    "40-document_no_match": true,
+    "40-date_match": true,
+    "38-document_no_match": true,
+    "37-branch_match": true,
+    "37-document_no_match": true,
+    "33-company_name_match": true,
+    "29-company_tax_id_match": true,
+    "28-document_no_match": true,
+    "28-company_name_match": true,
+    "22-company_name_match": true,
+    "19-address_match": true,
+    "19-company_name_match": true,
+    "18-company_name_match": true,
+    "17-document_no_match": true,
+    "16-company_name_match": true,
+    "14-company_name_match": true,
+    "14-document_no_match": true,
+    "15-company_tax_id_match": true,
+    "12-company_name_match": true,
+    "11-company_tax_id_match": true,
+    "9-document_no_match": true,
+    "9-company_name_match": true,
+    "2-document_no_match": true,
+    "2-company_name_match": true,
+    "1-document_no_match": true
+  },
+  "invalidDocuments": {
+    "40": true
+  },
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build551 บริษัท บางยี่ขัน ซัพพลาย แอนด์ เซอร์วิส จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 49,
+    "metadata": [
+      {
+        "filename": "18.01.2026_EXP-20260100025_124106_Home Pro1 18.1.26.30012569_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100027_510111_ซี.เค.ฮาร์ดแวร์แอนด์เพ้น จำกัด 15.1.26.03022569_VAT.pdf",
+        "company_name": "บริษัท ซี.เค. ฮาร์ดแวร์ แอนด์ เพ้นท์ จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100041_530214 _อิงค์เฮ้าส์ เซอร์วิส 21.1.2629012569_VAT.pdf",
+        "company_name": "บริษัท อิงค์เฮ้าส์ เซอร์วิส (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100044_GAW_EE0112826012600660_20260127_131755_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "07.01.2026_WHT_EXP-20260100006_ค่าบริการบัญชีRT-20260100026_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100019_530307_น้ำมัน  ฮค7009 6.1.26.17012569_VAT.pdf",
+        "company_name": "บริษัท ปีโตรเลียม (ช่างอากาศอุทิศ) จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100039_530214 _ออฟฟิศเมท 8.1.26.28012569_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท (ไทย) จำกัด"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100003_ห้างหุ้นส่วนจำกัด โบ๊ทเต็นท์ผ้าใบ 28.1.26.29012569 -.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด โบ๊ทเต็นท์ผ้าใบ"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100034_510111_หจก.อินดี้ซัพพลายแอนด์เซอร์วิส 22.1.26.29012569_VAT.pdf",
+        "company_name": "หจก.อินดี้ซัพพลายแอนด์เซอร์วิส"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100028_510111_ซีอาร์ซี ไทวัสดุ 8.1.26.29012569_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาศรีสมาน)"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100047_GAW_EE0224126012601636_20260127_152338_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100050_GAW_EE0224226012603650_20260127_170252_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100048_GAW_EE0224226010701728_20260108_150138_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100045_GAW_EE0224126010701594_20260108_143413_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100021_530307_น้ำมัน อย8033 9.1.26.17012569_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียม (ช่างอากาศอุทิศ) จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100015_510104_น้ำมันตัดหญ้า ดอนเมือง 24.1.26.29012569_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียม (ช่างอากาศอุทิศ) จำกัด"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100053_GAW_EE0224526012601081_20260127_151737_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100026_510111__เอ็ม เอส สแควร์ 21.1.26.22012569.pdf",
+        "company_name": "บริษัท เอ็ม เอส สแควร์ จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100046_GAW_EE0224126012001928_20260122_181959_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100040_530214 _อิงค์เฮ้าส์ เซอร์วิส 20.1.26.22012569_VAT.pdf",
+        "company_name": "บริษัท อิงค์เฮ้าส์ เซอร์วิส (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100051_GAW_EE0224526010701134_20260108_142815_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100042_GAW_EE0111126010701428_20260108_120253_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100038_510111_โฮมโปรดักส์ เซ็นเตอร์ 10.1.26.19012569_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จํากัด (มหาชน)"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100018_530307_ค่าน้ำมัน 1นช2449 20.1.2622012569.pdf",
+        "company_name": "บริษัท ไอทีแอล โฮลดิ้ง จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100017_530307__น้ำมัน 1นช2449 6.1.2613012569.pdf",
+        "company_name": "บริษัท ไอคิวเอ โฮลดิ้ง จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100030_510111_บจก.ทีมเซฟตี้เซลส์ 24.1.2629012569_VAT.pdf",
+        "company_name": "บริษัท ทีมเซฟตี้เซลส์ จำกัด"
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100024_124106_Home Pro 18.1.26.30012569_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100031_510111_บริษัท ดำรงรังสิต 22.1.26.29012569.pdf",
+        "company_name": "บริษัท ดำรงรังสิต อินเตอร์กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100035_510111_หน้ากากครึ่งหน้าไส้กรองคู่ 20.1.26.22012569_VAT.pdf",
+        "company_name": "บริษัท ยู.เอ็น. ซัพพลาย (2018) จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100049_GAW_EE0224226012001947_20260122_184549_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100009_510104_ค่าน้ำมันตัดหญ้า 21.1.26.22012569_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100052_GAW_EE0224526012001248_20260122_180835_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100032_510111_บริษัท ไทยแสงเจริญโลหะ 26.1.26.30012569_VAT.pdf",
+        "company_name": "บริษัท ไทยแสงเจริญโลหะ (1998) จำกัด"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100010_510104_ค่าน้ำมันตัดหญ้า+บ้านคุณชาย  อย8033 29.1.26.30012569.pdf",
+        "company_name": "บริษัท บีโตรเลียม (ช่างอากาศอุทิศ) จำกัด"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100033_510111_ปะเก็น 26.1.26.30012569_VAT.pdf",
+        "company_name": "เอกไชยปะเก็น"
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100022_530307_น้ำมัน ฮค7009 17.1.2629012569_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียม (ช่างอากาศอุทิศ) จำกัด"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100023_530307_น้ำมันรถ อย8033 14.1.26.29012569_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียม (ช่างอากาศอุทิศ) จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100013_510104_น้ำมันตัดหญ้า 20.1.26.22012569_VAT.pdf",
+        "company_name": "บริษัท ไอดีเอเอ เซลส์ จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100014_510104_น้ำมันตัดหญ้า 24.1.26.29012569.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100011_510104_ค่าน้ำมันตัดหญ้า+บ้านคุณชาย1  อย8033 29.1.26.30012569_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียม (ช่างอากาศอุทิศ) จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100029_510111_ดำรงรังสิต อินเตอร์กรุ๊ป 8.1.26.29012569_VAT.pdf",
+        "company_name": "บริษัท ดำรงรังสิต อินเตอร์กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100043_GAW_EE0112626012000363_20260122_120839_VAT.pdf",
+        "company_name": "การทางพิเศษแห่งประเทศไทย"
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100020_530307_น้ำมัน อย8033 6.1.26.17012569_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียม (ช่างอากาศอุทิศ) จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100012_510104_น้ำมันตัดหญ้า 9.1.26.19012569_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียม (บางจากสรงประภา) จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100037_510111_ห้างหุ้นส่วนจำกัดไทยศรีไพศาล 8.1.2614012569_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ไทยศรีไพศาล"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100004_ห้างหุ้นส่วนจำกัด โบ๊ทเต็นท์ผ้าใบ1 28.1.26.29012569 -_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด โบ๊ทเต็นท์ผ้าใบ"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100036_510111_ห้างหุ้นส่วน จำกัด ส.มงคลวนิช 8.1.26.30012569_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ส.มงคลวานิช"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100016_510104_น้ำมันตัดหญ้า1 9.1.26.19012569.pdf",
+        "company_name": "บริษัท ปิโตรเลียม (ช่างอากาศอุทิศ) จำกัด"
+      },
+      {
+        "filename": "29.12.2025_EXP-20251200132_510111_ห้างหุ้นส่วนจำกัดรุ่งดำรงค์ 29.12.25.29012569_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัดรุ่งดำรงค์"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 49,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251200132",
+        "ocr_document_no": "INV2025120111",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "TI0000016901000094",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "TI0000016901000176",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "TIO000016901000193",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100042",
+        "ocr_document_no": "EE0111126010701428",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100045",
+        "ocr_document_no": "EE0224126010701594",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100048",
+        "ocr_document_no": "EE0224226010701728",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100051",
+        "ocr_document_no": "EE0224526010701134",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "RT-20260100026",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100036",
+        "ocr_document_no": "3603",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100037",
+        "ocr_document_no": "69/01059",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100039",
+        "ocr_document_no": "SI2601022845",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100028",
+        "ocr_document_no": "SSMIE26010091681",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100029",
+        "ocr_document_no": "VA 690108005",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "TI0000016901000332",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260100021",
+        "ocr_document_no": "TIO000016901000333",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260100038",
+        "ocr_document_no": "106041",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260100023",
+        "ocr_document_no": "TI0000016901000582",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100027",
+        "ocr_document_no": "OLL690100236",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "189059221601170272",
+        "match_status": "full_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260100024",
+        "ocr_document_no": "107198",
+        "match_status": "full_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260100025",
+        "ocr_document_no": "107206",
+        "match_status": "full_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "2000265",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260100043",
+        "ocr_document_no": "EE0112626012000363",
+        "match_status": "full_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260100046",
+        "ocr_document_no": "EE0224126012001928",
+        "match_status": "full_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260100049",
+        "ocr_document_no": "EE0224226012001947",
+        "match_status": "full_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260100052",
+        "ocr_document_no": "EE0224526012001248",
+        "match_status": "full_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260100040",
+        "ocr_document_no": "IV6901188",
+        "match_status": "full_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "TI0000016901000597",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260100035",
+        "ocr_document_no": "UNSORVM690120003",
+        "match_status": "full_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260100041",
+        "ocr_document_no": "IV6901212",
+        "match_status": "full_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260100026",
+        "ocr_document_no": "MS69/023",
+        "match_status": "full_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "TI52Y662541A-2601-000891",
+        "match_status": "full_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260100034",
+        "ocr_document_no": "INV2026010205",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260100031",
+        "ocr_document_no": "VA 690122007",
+        "match_status": "full_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "IV6901049",
+        "match_status": "full_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260100030",
+        "ocr_document_no": "IV 0139308",
+        "match_status": "full_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "T152Y662541A-2601-001040",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "TI0000016901000330",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "TIO000016901001097",
+        "match_status": "full_match"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXP-20260100033",
+        "ocr_document_no": "5988",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXP-20260100032",
+        "ocr_document_no": "CA2026010187",
+        "match_status": "full_match"
+      },
+      {
+        "index": 42,
+        "purchase_reference": "EXP-20260100044",
+        "ocr_document_no": "EE0112826012600660",
+        "match_status": "full_match"
+      },
+      {
+        "index": 43,
+        "purchase_reference": "EXP-20260100047",
+        "ocr_document_no": "EE0224126012601636",
+        "match_status": "full_match"
+      },
+      {
+        "index": 44,
+        "purchase_reference": "EXP-20260100050",
+        "ocr_document_no": "EE0224226012603650",
+        "match_status": "full_match"
+      },
+      {
+        "index": 45,
+        "purchase_reference": "EXP-20260100053",
+        "ocr_document_no": "EE0224526012601081",
+        "match_status": "full_match"
+      },
+      {
+        "index": 46,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "IV6901076",
+        "match_status": "full_match"
+      },
+      {
+        "index": 47,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "TI0000016901001341",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 48,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "TI0000016901001342",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

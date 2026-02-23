@@ -1,0 +1,176 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-23T09:34:00.437Z",
+  "last_saved": "2026-02-23T16:33:58.557551",
+  "company": "Build483 บริษัท ด้อนท์รัช จำกัด รายเดือน",
+  "base_company": "Build483 บริษัท ด้อนท์รัช จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "1": "",
+    "9": "",
+    "11": ""
+  },
+  "initialNotes": {
+    "1": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260122-0025600' แต่ OCR='TRSPEMKP00-00000-26'",
+    "9": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260128-0011373' แต่ OCR='TRSPEMKP00-00000-26'",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260130-0019160' แต่ OCR='TRSPEMKP00-00000-26'"
+  },
+  "comparisonApprovals": {
+    "1-document_no_match": true,
+    "9-document_no_match": true,
+    "11-document_no_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build483 บริษัท ด้อนท์รัช จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 13,
+    "metadata": [
+      {
+        "filename": "23.01.2026_EXP-20260100017_Shopee_Expense_Jan_26-23.pdf",
+        "company_name": "บริษัท ช้อปปี้ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100021_Shopee_Expense_Jan_26-27.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100025_Shopee_Expense_Jan_26-31.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100023_Shopee_Expense_Jan_26-29.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100019_Shopee_Expense_Jan_26-25.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100018_Shopee_Expense_Jan_26-24.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100022_Shopee_Expense_Jan_26-28.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100024_Shopee_Expense_Jan_26-30.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100014_บริษัท โอ้ มีเดีย จำกัด_INV2026010084_บริษัท ด้อนท์รัช จำกัด_VAT.pdf",
+        "company_name": "บริษัท โอ้ มีเดีย จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100015_Shopee_Expense_Jan_26-21.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100013_9bb86ee02ecad541f757bc3237503f08b4b92b87_VAT.pdf",
+        "company_name": "บริษัท มัลติคัลเลอร์ แล็บ จำกัด"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100020_Shopee_Expense_Jan_26-26.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100016_Shopee_Expense_Jan_26-22.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 13,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "TRSPEMKP00-00000-260121-0006160",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "IV2601230005",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "TRSPEMKP00-00000-260123-0007937",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "TRSPEMKP00-00000-260124-0023579",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "TRSPEMKP00-00000-260125-0020456",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "TRSPEMKP00-00000-260126-0018725",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "INV2026010084",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100021",
+        "ocr_document_no": "TRSPEMKP00-00000-260127-0011305",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100023",
+        "ocr_document_no": "TRSPEMKP00-00000-260129-0006650",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100024",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100025",
+        "ocr_document_no": "TRSPEMKP00-00000-260131-0015954",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

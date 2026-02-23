@@ -1,0 +1,203 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-23T10:02:15.089Z",
+  "last_saved": "2026-02-23T17:02:16.537359",
+  "company": "Build571 บริษัท อร่อยเดสุ จำกัด",
+  "base_company": "Build571 บริษัท อร่อยเดสุ จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100005 (เลขที่ใบกำกับ: MNT-V69/01/0028)",
+    "1": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100006 (เลขที่ใบกำกับ: MNT-V69/1/0064)",
+    "3": "",
+    "5": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100009 (เลขที่ใบกำกับ: MNT-V69/01/0077)",
+    "6": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100010 (เลขที่ใบกำกับ: 69010207)",
+    "9": "",
+    "10": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100013 (เลขที่ใบกำกับ: MNT-V69/01/0171)"
+  },
+  "initialNotes": {
+    "0": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100005 (เลขที่ใบกำกับ: MNT-V69/01/0028)",
+    "1": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100006 (เลขที่ใบกำกับ: MNT-V69/1/0064)",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์มีอัพ คอนซัลแทนท์จำกัด'",
+    "5": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100009 (เลขที่ใบกำกับ: MNT-V69/01/0077)",
+    "6": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100010 (เลขที่ใบกำกับ: 69010207)",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เจ.ที.แพ็ค ออฟ ฟู้ดส์ จำกัด' แต่ OCR='บริษัท เจ.ที. แพ็ค ออฟ ฟู้ดส์ จำกัด'",
+    "10": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260100013 (เลขที่ใบกำกับ: MNT-V69/01/0171)"
+  },
+  "comparisonApprovals": {
+    "3-company_name_match": true,
+    "9-company_name_match": true,
+    "0-date_match": true,
+    "0-company_name_match": true,
+    "0-tax_id_match": true,
+    "0-branch_match": true,
+    "0-reference_no_match": true,
+    "0-amount_before_vat_match": true,
+    "0-vat_amount_match": true,
+    "0-total_amount_match": true,
+    "1-document_no_match": true,
+    "1-date_match": true,
+    "1-company_name_match": true,
+    "1-tax_id_match": true,
+    "1-branch_match": true,
+    "1-reference_no_match": true,
+    "1-amount_before_vat_match": true,
+    "1-vat_amount_match": true,
+    "1-document_type_match": true,
+    "1-total_amount_match": true,
+    "5-document_no_match": true,
+    "5-date_match": true,
+    "5-company_name_match": true,
+    "5-tax_id_match": true,
+    "5-branch_match": true,
+    "5-reference_no_match": true,
+    "5-amount_before_vat_match": true,
+    "5-vat_amount_match": true,
+    "5-total_amount_match": true,
+    "5-document_type_match": true,
+    "6-company_name_match": true,
+    "6-tax_id_match": true,
+    "6-branch_match": true,
+    "6-reference_no_match": true,
+    "6-document_no_match": true,
+    "6-date_match": true,
+    "6-amount_before_vat_match": true,
+    "6-vat_amount_match": true,
+    "6-total_amount_match": true,
+    "6-document_type_match": true,
+    "10-document_no_match": true,
+    "10-date_match": true,
+    "10-company_name_match": true,
+    "10-tax_id_match": true,
+    "10-branch_match": true,
+    "10-reference_no_match": true,
+    "10-amount_before_vat_match": true,
+    "10-vat_amount_match": true,
+    "10-total_amount_match": true,
+    "10-document_type_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {
+    "0": true
+  },
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build571 บริษัท อร่อยเดสุ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 11,
+    "metadata": [
+      {
+        "filename": "14.01.2026_EXP-20260100007_510104 - ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท โกลโบ ฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100014_510104 - ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท เจ.ที. แพ็ค ออฟ ฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100005_510104 - ต้นทุนการให้บริการ_VAT.pdf"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100013_510104 - ต้นทุนการให้บริการ_VAT.pdf"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100011_510104 - ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท เคลฟเวอร์ กู๊ดส์ จำกัด"
+      },
+      {
+        "filename": "14.01.2026_WHT_EXP-20260100002_530401_ค่าบริการทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์จำกัด"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100010_510104 - ต้นทุนการให้บริการ_VAT.pdf"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100009_510104 - ต้นทุนการให้บริการ_VAT.pdf"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100012_124106 - อุปกรณ์สำนักงาน_VAT.pdf",
+        "company_name": "บริษัท คอมเซเว่น จำกัด (มหาชน)"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100008_510104 - ต้นทุนการให้บริการ.pdf",
+        "company_name": "บริษัท สปริงกรีนอีโวลูชั่น จำกัด"
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100006_510104 - ต้นทุนการให้บริการ_VAT.pdf"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 11,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100005",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100006",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "1126000357",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "RT-20260100151",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "IV260110947",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100009",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100010",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "69010231",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "6901-BR306-02810",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "IV260128398",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100013",
+        "match_status": "no_ocr_data"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,423 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-23T07:08:05.092Z",
+  "last_saved": "2026-02-23T14:08:04.571890",
+  "company": "Build519 บริษัท คัลติเวชั่น จำกัด",
+  "base_company": "Build519 บริษัท คัลติเวชั่น จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "12": "",
+    "27": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด' แต่ OCR='บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เมนท์ (ประเทศไทย) จำกัด'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด' แต่ OCR='บริษัท เอ็นทีที เดต้า ฟิกิทัล เพย์เม้นท์ (ประเทศไทย) จำกัด'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด' แต่ OCR='บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เมนท์ (ประเทศไทย) จำกัด'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด' แต่ OCR='บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เมนท์ (ประเทศไทย) จำกัด'",
+    "27": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จิกิจ จำกัด' แต่ OCR='บริษัท กิกิจ จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "2-company_name_match": true,
+    "10-company_name_match": true,
+    "12-company_name_match": true,
+    "27-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build519 บริษัท คัลติเวชั่น จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 37,
+    "metadata": [
+      {
+        "filename": "07.01.2026_EXP-20260100043_530302_INV_2062395_83540_20251231_VAT.pdf",
+        "company_name": "บริษัท สวนลุม พร็อพเพอร์ตี้ จำกัด"
+      },
+      {
+        "filename": "07.01.2026_WHT_EXP-20260100004_pay_bill_YYYY0107_142455 (2)_VAT.pdf",
+        "company_name": "บริษัท สวนลุม พร็อพเพอร์ตี้ จำกัด"
+      },
+      {
+        "filename": "07.01.2026_WHT_EXP-20260100006_RT-20260100092_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "19.01.2026_WHT_EXP-20260100007_Issa Solution_VAT.pdf",
+        "company_name": "บริษัท อิสสะ โซลูชั่นส์ จำกัด"
+      },
+      {
+        "filename": "31.01.2026_WHT_EXP-20260100008_LINE MAN_VAT.pdf",
+        "company_name": "บริษัท ไลน์แมน (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "07.01.2026_WHT_EXP-20260100005_pay_bill_YYYY0107_142455_VAT.pdf",
+        "company_name": "บริษัท สวนลุม พร็อพเพอร์ตี้ จำกัด"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100011_530214_ค่าใช้จ่ายสำนักงาน Gikit_VAT.pdf",
+        "company_name": "บริษัท กิกิจ จำกัด"
+      },
+      {
+        "filename": "02.01.2026_EXP-20260100013_530504_ค่าธรรมเนียม 02.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ฟิกิทัล เพย์เม้นท์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100030_530504_ค่าธรรมเนียม 19.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100025_530504_ค่าธรรมเนียม 14.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.01.2026_EXP-20260100038_530504_ค่าธรรมเนียม 28.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100026_530504_ค่าธรรมเนียม 15.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100019_530504_ค่าธรรมเนียม 08.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100024_530504_ค่าธรรมเนียม 13.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100018_530504_ค่าธรรมเนียม 07.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "18.01.2026_EXP-20260100029_530504_ค่าธรรมเนียม 18.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100041_530504_ค่าธรรมเนียม 31.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "03.01.2026_EXP-20260100014_530504_ค่าธรรมเนียม 03.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เมนท์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "01.01.2026_EXP-20260100012_530504_ค่าธรรมเนียม 01.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เมนท์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "11.01.2026_EXP-20260100022_530504_ค่าธรรมเนียม 11.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100040_530504_ค่าธรรมเนียม 30.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100023_530504_ค่าธรรมเนียม 12.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100039_530504_ค่าธรรมเนียม 29.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "05.01.2026_EXP-20260100016_530504_ค่าธรรมเนียม 05.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100017_530504_ค่าธรรมเนียม 06.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100037_530504_ค่าธรรมเนียม 27.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100033_530504_ค่าธรรมเนียม 22.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100027_530504_ค่าธรรมเนียม 16.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100034_530504_ค่าธรรมเนียม 24.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100035_530504_ค่าธรรมเนียม 25.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100021_530504_ค่าธรรมเนียม 10.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "20.01.2026_EXP-20260100031_530504_ค่าธรรมเนียม 20.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100028_530504_ค่าธรรมเนียม 17.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100036_530504_ค่าธรรมเนียม 26.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "21.01.2026_EXP-20260100032_530504_ค่าธรรมเนียม 21.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "09.01.2026_EXP-20260100020_530504_ค่าธรรมเนียม 09.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เมนท์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "04.01.2026_EXP-20260100015_530504_ค่าธรรมเนียม 04.01_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 37,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "M202601-003225",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "M202601-004827",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "M202601-006507",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "M202601-008331",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "M202601-010190",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "M202601-011956",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100043",
+        "ocr_document_no": "2026-10100302",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "2026-10100411",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "2026-10100412",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "M202601-015471",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100006",
+        "ocr_document_no": "RT-20260100092",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "M202601-017316",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "M202601-013745",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100021",
+        "ocr_document_no": "M202601-019151",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "M202601-021115",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260100023",
+        "ocr_document_no": "M202601-025006",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260100024",
+        "ocr_document_no": "M202601-022896",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260100025",
+        "ocr_document_no": "M202601-026669",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100026",
+        "ocr_document_no": "M202601-028518",
+        "match_status": "full_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260100027",
+        "ocr_document_no": "M202601-030347",
+        "match_status": "full_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260100028",
+        "ocr_document_no": "M202601-034179",
+        "match_status": "full_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260100029",
+        "ocr_document_no": "M202601-036254",
+        "match_status": "full_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "IV-20260100009",
+        "match_status": "full_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260100030",
+        "ocr_document_no": "M202601-032249",
+        "match_status": "full_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260100031",
+        "ocr_document_no": "M202601-038012",
+        "match_status": "full_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260100032",
+        "ocr_document_no": "M202601-039823",
+        "match_status": "full_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260100033",
+        "ocr_document_no": "M202601-041692",
+        "match_status": "full_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "GS26010509",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260100034",
+        "ocr_document_no": "M202601-047320",
+        "match_status": "full_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260100035",
+        "ocr_document_no": "M202601-043696",
+        "match_status": "full_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260100036",
+        "ocr_document_no": "M202601-049422",
+        "match_status": "full_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260100037",
+        "ocr_document_no": "M202601-053081",
+        "match_status": "full_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260100038",
+        "ocr_document_no": "M202601-051248",
+        "match_status": "full_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260100039",
+        "ocr_document_no": "M202601-054912",
+        "match_status": "full_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260100040",
+        "ocr_document_no": "M202601-056779",
+        "match_status": "full_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "LMRN202601148334",
+        "match_status": "full_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260100041",
+        "ocr_document_no": "M202601-060605",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,572 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-23T03:05:03.342Z",
+  "last_saved": "2026-02-23T10:05:02.110083",
+  "company": "Build049 บริษัท โอฬารทรัพย์ จำกัด2568  รายเดือน",
+  "base_company": "Build049 บริษัท โอฬารทรัพย์ จำกัด2568  รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "19": "",
+    "20": "",
+    "21": "",
+    "25": "",
+    "28": "",
+    "34": "",
+    "35": "",
+    "38": "",
+    "42": "",
+    "44": "",
+    "47": ""
+  },
+  "initialNotes": {
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ส.เลิศวัฒนนนท์' แต่ OCR='ส.เลิศรัตนนนท์'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "3": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "4": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "5": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "6": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "19": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ส.เลิศวัฒนนนท์' แต่ OCR='ส.เลิศวัฒนธนท์'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "20": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Meta Platforms Ireland Limited'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=84,255.83 แต่ OCR=5,173.60 (ต่างกัน 79,082.23)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ไม่ระบุ'",
+    "21": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท อินเตอร์วู้ด ทิมเบอร์ จำกัด' แต่ OCR='บริษัท อินเตอร์วู๊ด ทิมเบอร์ จำกัด'",
+    "25": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "28": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "34": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ส.เลิศวัฒนนนท์' แต่ OCR='ส.เลิศวัฒนยนต์'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "38": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาภูเก็ต เฟสติวัล)'",
+    "42": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด สาขาภูเก็ต (ฉลอง)'",
+    "44": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด สาขาภูเก็ต (ฉลอง)'",
+    "47": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'"
+  },
+  "comparisonApprovals": {
+    "2-company_name_match": true,
+    "2-branch_match": true,
+    "3-branch_match": true,
+    "4-branch_match": true,
+    "5-branch_match": true,
+    "6-branch_match": true,
+    "19-company_name_match": true,
+    "19-branch_match": true,
+    "20-total_amount_match": true,
+    "20-document_type_match": true,
+    "20-branch_match": true,
+    "20-tax_id_match": true,
+    "20-company_name_match": true,
+    "21-company_name_match": true,
+    "25-branch_match": true,
+    "28-branch_match": true,
+    "34-branch_match": true,
+    "35-company_name_match": true,
+    "35-branch_match": true,
+    "38-company_name_match": true,
+    "42-company_name_match": true,
+    "44-company_name_match": true,
+    "47-branch_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build049 บริษัท โอฬารทรัพย์ จำกัด2568  รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 48,
+    "metadata": [
+      {
+        "filename": "09.01.2026_EXP-20260100002_51011_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100038_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100047_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100024_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "22.01.2026_DP-20260100004_115104_จ่ายเงินมัดจำ_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100025_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "22.01.2026_DP-20260100003_115104_จ่ายเงินมัดจำ_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "16.01.2026_DP-20260100002_115104_จ่ายเงินมัดจำ_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100045_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100018_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด สาขาภูเก็ต (ฉลอง)"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100044_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "31.01.2026_DP-20260100005_115104_จ่ายเงินมัดจำ_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "22.01.2026_EXP-20260100028_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศวัฒนนนท์"
+      },
+      {
+        "filename": "08.01.2025_EXP-20260100003_51011_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท เอ็ม.ซี. คอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100019_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "18.12.2025_EXP-20251200037_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศวัฒนนนท์"
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100029_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศวัฒนนนท์"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100026_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศวัฒนยนต์"
+      },
+      {
+        "filename": "14.11.2025_EXP-20251100041_510110_ค่าสินค้า_VAT.pdf",
+        "company_name": "บริษัท ตรังไม้ยางพารา จำกัด"
+      },
+      {
+        "filename": "15.01.2026_EXP-20260100008_ภาพแบบ_ภ.พ.36_เดือน_12.2025_(Meta)_VAT.pdf",
+        "company_name": "Meta Platforms Ireland Limited"
+      },
+      {
+        "filename": "22.12.2025_EXP-20251200035_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศวัฒนนนท์"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100042_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100020_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด สาขาภูเก็ต (ฉลอง)"
+      },
+      {
+        "filename": "14.01.2026_EXP-20260100030_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศวัฒนธนท์"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100036_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท อินเตอร์วู๊ด ทิมเบอร์ จำกัด"
+      },
+      {
+        "filename": "19.12.2025_EXP-20251200036_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศวัฒนนนท์"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100048_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท (ไทย) จำกัด"
+      },
+      {
+        "filename": "15.12.2025_EXP-20251200038_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศวัฒนนนท์"
+      },
+      {
+        "filename": "20.11.2025_EXP-20251100040_510110_ค่าสินค้า_VAT.pdf",
+        "company_name": "บริษัท ตรังไม้ยางพารา จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100043_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100027_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศวัฒนนนท์"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100040_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "16.01.2026_DP-20260100001_115104_จ่ายเงินมัดจำ_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100035_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100017_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-20260100001_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท พีบี เฟอร์นิเจอร์ จำกัด"
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100023_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "17.01.2026_EXP-20260100012_WHT_530409_ค่าบริการ_VAT.pdf",
+        "company_name": "บริษัท ยอดขุนพล เอ็นเตอร์เทนเมนต์ จำกัด"
+      },
+      {
+        "filename": "05.12.2025_EXP-20251200039_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศรัตนนนท์"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100022_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาภูเก็ต เฟสติวัล)"
+      },
+      {
+        "filename": "08.01.2026_EXP-20260100037_51011_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท อินเตอร์วู้ด ทิมเบอร์ จำกัด"
+      },
+      {
+        "filename": "12.01.2026_EXP-20260100039_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "29.01.2026_EXP-20260100021_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100046_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "07.01.2026_EXP-20260100014_WHT_530401_ค่าบริการทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100041_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "บริษัท สยาม ไฟเบอร์บอร์ด จำกัด"
+      },
+      {
+        "filename": "31.01.2026_EXP-20260100031_510110_ซื้อสินค้า_VAT.pdf",
+        "company_name": "ส.เลิศวัฒนนนท์"
+      },
+      {
+        "filename": "25.12.2025_EXP-20251200034_WHT_530201_ค่าเช่า_VAT.pdf",
+        "company_name": "บริษัท วี วี พี พร็อพเพอร์ตี้ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 48,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251100041",
+        "ocr_document_no": "B6811015",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251100040",
+        "ocr_document_no": "B6811020",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20251200039",
+        "ocr_document_no": "SL6812046",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20251200038",
+        "ocr_document_no": "SL6812123",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20251200037",
+        "ocr_document_no": "SL6812157",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20251200036",
+        "ocr_document_no": "SL6812176",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20251200035",
+        "ocr_document_no": "SL6812203",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20251200034",
+        "ocr_document_no": "HM68122604",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "IV6901008",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "RT-20260100053",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "INV2026010035",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260100037",
+        "ocr_document_no": "IV69010209",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260100002",
+        "ocr_document_no": "BYIIE26010110325",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260100038",
+        "ocr_document_no": "A6901-057",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260100039",
+        "ocr_document_no": "A6901-064",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260100040",
+        "ocr_document_no": "A6901-065",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260100048",
+        "ocr_document_no": "SI2601030841",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260100041",
+        "ocr_document_no": "A6901-068",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100025",
+        "ocr_document_no": "BYIIE26010111685",
+        "match_status": "full_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260100030",
+        "ocr_document_no": "SL6901090",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "69114049480",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260100036",
+        "ocr_document_no": "IV69010545",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "DP-20260100001",
+        "ocr_document_no": "RI2601-008",
+        "match_status": "full_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "DP-20260100002",
+        "ocr_document_no": "RI2601-009",
+        "match_status": "full_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "INV202601170001",
+        "match_status": "full_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260100029",
+        "ocr_document_no": "SL6901129",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "DP-20260100003",
+        "ocr_document_no": "RI2601-013",
+        "match_status": "full_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "DP-20260100004",
+        "ocr_document_no": "RI2601-014",
+        "match_status": "full_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260100028",
+        "ocr_document_no": "SL6901172",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260100042",
+        "ocr_document_no": "A6901-116",
+        "match_status": "full_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260100043",
+        "ocr_document_no": "A6901-117",
+        "match_status": "full_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260100024",
+        "ocr_document_no": "BYIIE26010115033",
+        "match_status": "full_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260100023",
+        "ocr_document_no": "BYIIE26010115034",
+        "match_status": "full_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260100044",
+        "ocr_document_no": "A6901-126",
+        "match_status": "full_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260100027",
+        "ocr_document_no": "SL6901192",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260100026",
+        "ocr_document_no": "SL6901200",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260100035",
+        "ocr_document_no": "108286",
+        "match_status": "full_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXP-20260100045",
+        "ocr_document_no": "A6901-128",
+        "match_status": "full_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-20260100022",
+        "ocr_document_no": "PKFIE26010049075",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-20260100021",
+        "ocr_document_no": "PKCIE26010062385",
+        "match_status": "full_match"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXP-20260100046",
+        "ocr_document_no": "A6901-140",
+        "match_status": "full_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXP-20260100047",
+        "ocr_document_no": "A6901-141",
+        "match_status": "full_match"
+      },
+      {
+        "index": 42,
+        "purchase_reference": "EXP-20260100020",
+        "ocr_document_no": "PKCIE26010062802",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 43,
+        "purchase_reference": "EXP-20260100019",
+        "ocr_document_no": "PKCIE26010062806",
+        "match_status": "full_match"
+      },
+      {
+        "index": 44,
+        "purchase_reference": "EXP-20260100018",
+        "ocr_document_no": "PKCIE26010062822",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 45,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "PKCIE26010062823",
+        "match_status": "full_match"
+      },
+      {
+        "index": 46,
+        "purchase_reference": "DP-20260100005",
+        "ocr_document_no": "RI2601-022",
+        "match_status": "full_match"
+      },
+      {
+        "index": 47,
+        "purchase_reference": "EXP-20260100031",
+        "ocr_document_no": "SL6901260",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

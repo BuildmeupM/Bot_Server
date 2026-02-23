@@ -1,0 +1,81 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-23T12:16:19.598Z",
+  "last_saved": "2026-02-23T19:16:18.407979",
+  "company": "Build001 บริษัท เน็กซ์สเต็ป แมเนจเม้นท์ จำกัด รายเดือน",
+  "base_company": "Build001 บริษัท เน็กซ์สเต็ป แมเนจเม้นท์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "1": ""
+  },
+  "initialNotes": {
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'"
+  },
+  "comparisonApprovals": {
+    "0-company_tax_id_match": true,
+    "1-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build001 บริษัท เน็กซ์สเต็ป แมเนจเม้นท์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 4,
+    "metadata": [
+      {
+        "filename": "30.01.2026_EXP-20260100009_RT-20260100394.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "08.01.2026_WHT_EXP-20260100012_HR202601012_ใบสำคัญจ่าย ค่าแพ็กเกจ ไลน์ OA นอตติ้ง ฮิลล์ สุขุมวิท-แพรกษา_VAT.pdf",
+        "company_name": "LINE COMPANY (THAILAND) LIMITED"
+      },
+      {
+        "filename": "05.01.2026_WHT_EXP-20260100014_HR202601014_ใบสำคัญจ่าย ค่าแพ็กเกจ ไลน์ OA ดิ เอ็กเซล ไฮด์อะเวย์ สุขุมวิท 50_VAT.pdf",
+        "company_name": "บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "15.01.2026_WHT_EXP-20260100013_HR202601013_ใบสำคัญจ่าย ค่าแพ็กเกจ ไลน์ OA นอตติ้ง ฮิลล์ สุขุมวิท-แพรกษา.pdf",
+        "company_name": "บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 4,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "ONTX20260105-000632",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "ONTX20260108-000303",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "ONTX20260115-000047",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "RT-20260100394",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

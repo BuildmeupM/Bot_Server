@@ -1,0 +1,272 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-23T04:33:32.117Z",
+  "last_saved": "2026-02-23T11:33:30.763701",
+  "company": "Build542 บริษัท ซีซีบี ขายส่ง จำกัด",
+  "base_company": "Build542 บริษัท ซีซีบี ขายส่ง จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "6": "",
+    "15": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=33,612.15 แต่ OCR=35,965.00 (ต่างกัน 2,352.85)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=2,352.85 แต่ OCR=2,517.55 (ต่างกัน 164.70)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=35,965.00 แต่ OCR=38,482.55 (ต่างกัน 2,517.55)"
+  },
+  "initialNotes": {
+    "6": "วันที่ไม่ตรงกัน: ภาษีซื้อ='26/11/2025' แต่ OCR='26/11/68'",
+    "15": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=33,612.15 แต่ OCR=35,965.00 (ต่างกัน 2,352.85)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=2,352.85 แต่ OCR=2,517.55 (ต่างกัน 164.70)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=35,965.00 แต่ OCR=38,482.55 (ต่างกัน 2,517.55)"
+  },
+  "comparisonApprovals": {
+    "6-date_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build542 บริษัท ซีซีบี ขายส่ง จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 23,
+    "metadata": [
+      {
+        "filename": "27.11.2025_EXP-20251100066_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.11.68-2_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "11.11.2025_EXP-20251100074_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.11.68-10_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "26.11.2025_EXP-20251100067_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.11.68-4_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "18.12.2025_EXP-20251200068_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-9_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "20.11.2025_EXP-20251100072_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.11.68-8_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "08.12.2025_EXP-20251200044_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-21_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "10.12.2025_EXP-20251200043_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-19_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "31.10.2025_EXP-20251000005_114102_ใบแจ้งหนี้-ใบกำกับ-TLINE.10.68._VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "16.12.2025_EXP-20251200040_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-13_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "13.12.2025_EXP-20251200041_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-15_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "25.12.2025_EXP-20251200064_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-3_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "21.11.2025_EXP-20251100070_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.11.68-6_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "07.11.2025_EXP-20251100076_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.11.68-12_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "04.12.2025_EXP-20251200046_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-25_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "03.12.2025_EXP-20251200047_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-27_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "01.12.2025_EXP-20251200048_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-29_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "17.12.2025_EXP-20251200039_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-11_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "22.12.2025_EXP-20251200066_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-5_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "20.12.2025_EXP-20251200067_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-7_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "11.12.2025_EXP-20251200042_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-17_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "14.12.2025_EXP-20251200033_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-1_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "05.12.2025_EXP-20251200045_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.12.68-23_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "08.10.2025_EXP-20251000004_114120_ใบแจ้งหนี้-ใบกำกับ-TLINE.10.68_VAT.pdf",
+        "company_name": "บริษัท ทีไลน์ เทรดดิ้ง จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 23,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251000004",
+        "ocr_document_no": "IV6810012",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251000005",
+        "ocr_document_no": "IV6810054",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20251100076",
+        "ocr_document_no": "IV6811011",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20251100074",
+        "ocr_document_no": "IV6811018",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20251100072",
+        "ocr_document_no": "IV6811033",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20251100070",
+        "ocr_document_no": "IV6811036",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20251100067",
+        "ocr_document_no": "IV6811044",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20251100066",
+        "ocr_document_no": "IV6811047",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20251200048",
+        "ocr_document_no": "IV6812001",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20251200047",
+        "ocr_document_no": "IV6812005",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20251200046",
+        "ocr_document_no": "IV6812007",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20251200045",
+        "ocr_document_no": "IV6812009",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20251200044",
+        "ocr_document_no": "IV6812014",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20251200043",
+        "ocr_document_no": "IV6812017",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20251200042",
+        "ocr_document_no": "IV6812020",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20251200041",
+        "ocr_document_no": "IV6812023",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20251200033",
+        "ocr_document_no": "IV6812051",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20251200040",
+        "ocr_document_no": "IV6812028",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20251200039",
+        "ocr_document_no": "IV6812030",
+        "match_status": "full_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20251200068",
+        "ocr_document_no": "IV6812032",
+        "match_status": "full_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20251200067",
+        "ocr_document_no": "IV6812036",
+        "match_status": "full_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20251200066",
+        "ocr_document_no": "IV6812038",
+        "match_status": "full_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20251200064",
+        "ocr_document_no": "IV6812043",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": false,
+    "step4": true,
+    "step5": false
+  }
+}

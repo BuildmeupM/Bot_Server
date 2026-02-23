@@ -1,0 +1,73 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-23T02:51:50.356Z",
+  "last_saved": "2026-02-23T09:51:49.143878",
+  "company": "Build553 บริษัท ไอเอเจเนอเรทีฟ  จำกัด",
+  "base_company": "Build553 บริษัท ไอเอเจเนอเรทีฟ  จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "0": "",
+    "2": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท สรรพสินค้าเซ็นทรัล จำกัด' แต่ OCR='บริษัท เซ็นทรัล ดีพาร์ทเมนท์สโตร์ จำกัด'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มิสเตอร์. ดี.ไอ.วาย. (กรุงเทพ) จำกัด' แต่ OCR='บริษัท มิสเตอร์.ดี.ไอ.วาย. (กรุงเทพ) จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "2-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build553 บริษัท ไอเอเจเนอเรทีฟ  จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "10.1.2026_EXP-20260100015_124106_Scan2026-02-03_112720-2_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัล ดีพาร์ทเมนท์สโตร์ จำกัด"
+      },
+      {
+        "filename": "26.1.2026_EXP-20260100016_530206_Scan2026-02-03_112720-1_VAT.pdf",
+        "company_name": "บริษัท มิสเตอร์.ดี.ไอ.วาย. (กรุงเทพ) จำกัด"
+      },
+      {
+        "filename": "18.01.2026_WHT_EXP-20260100001_RT-20260100370_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 3,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "10204012610000231",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "RT-20260100370",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "0000015536",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": false,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-02-23T10:31:49.300Z",
+  "last_saved": "2026-02-23T17:31:47.350863",
+  "company": "Build605 บริษัท กินดีอยู่ดี 4289 จำกัด",
+  "base_company": "Build605 บริษัท กินดีอยู่ดี 4289 จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-01",
+  "taxYear": "2026",
+  "taxMonthValue": "01",
+  "comparisonNotes": {
+    "1": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00009'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=342.76 แต่ OCR=124.30 (ต่างกัน 218.46)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=23.99 แต่ OCR=8.70 (ต่างกัน 15.29)",
+    "2": "",
+    "4": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RT-2026/113003' แต่ OCR='RT-20260113003'",
+    "5": "",
+    "6": "",
+    "7": "",
+    "8": "",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท คัทบอย จำกัด' แต่ OCR='CUTBOY Co., Ltd.'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=7,799.07 แต่ OCR=7,990.66 (ต่างกัน 191.59)"
+  },
+  "initialNotes": {
+    "1": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00009'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=342.76 แต่ OCR=124.30 (ต่างกัน 218.46)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=23.99 แต่ OCR=8.70 (ต่างกัน 15.29)",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด' แต่ OCR='บริษัท บิลด์มีอัพ คอนซัลแทนท์จำกัด'",
+    "4": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RT-2026/113003' แต่ OCR='RT-20260113003'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วีเจซัพพลาย ยูโรเนชั่น จำกัด' แต่ OCR='VJ SUPPLIES EURONATIONS CO.,LTD'",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วีเจซัพพลาย ยูโรเนชั่น จำกัด' แต่ OCR='VJ SUPPLIES EURONATIONS CO.,LTD'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วีเจซัพพลาย ยูโรเนชั่น จำกัด' แต่ OCR='บริษัท วีเจซัพพลาย ยูโรเช็นชั่น จำกัด'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาโคโตะยะ (ประเทศไทย) จำกัด' แต่ OCR='MAKOTOYA (THAILAND) CO., LTD.'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=119.63 แต่ OCR=1,246.00 (ต่างกัน 1,126.37)",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท คัทบอย จำกัด' แต่ OCR='CUTBOY Co., Ltd.'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=7,799.07 แต่ OCR=7,990.66 (ต่างกัน 191.59)"
+  },
+  "comparisonApprovals": {
+    "2-company_name_match": true,
+    "5-company_name_match": true,
+    "6-company_name_match": true,
+    "7-company_name_match": true,
+    "8-company_name_match": true,
+    "8-amount_before_vat_match": true,
+    "9-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build605 บริษัท กินดีอยู่ดี 4289 จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-01\\VAT",
+  "step4OCRData": {
+    "count": 10,
+    "metadata": [
+      {
+        "filename": "03.01.2026_EXP-20260100010_124106 - อุปกรณ์สำนักงาน_VAT.pdf",
+        "company_name": "บริษัท โฮม แอนด์ มอร์ จำกัด"
+      },
+      {
+        "filename": "25.01.2026_EXP-20260100016_510104 - ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "MAKOTOYA (THAILAND) CO., LTD."
+      },
+      {
+        "filename": "11.01.2026_WHT_EXP-20260100009.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์จำกัด"
+      },
+      {
+        "filename": "13.01.2026_WHT_EXP-20260100008_VAT.pdf",
+        "company_name": "บริษัท ซูเปอร์ โคโค่นัท จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100015_124106 - อุปกรณ์สำนักงาน_VAT.pdf",
+        "company_name": "บริษัท วีเจซัพพลาย ยูโรเช็นชั่น จำกัด"
+      },
+      {
+        "filename": "27.01.2026_EXP-20260100017_124106 - อุปกรณ์สำนักงาน_VAT.pdf",
+        "company_name": "CUTBOY Co., Ltd."
+      },
+      {
+        "filename": "10.01.2026_EXP-20260100011_510104 - ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท วิลล่า มาร์เก็ท เจพี จำกัด"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100014_124106 - อุปกรณ์สำนักงาน_VAT (3).pdf",
+        "company_name": "VJ SUPPLIES EURONATIONS CO.,LTD"
+      },
+      {
+        "filename": "24.01.2026_EXP-20260100013_124106 - อุปกรณ์สำนักงาน_VAT (2).pdf",
+        "company_name": "VJ SUPPLIES EURONATIONS CO.,LTD"
+      },
+      {
+        "filename": "11.01.2026_EXP-20260100012_510104 - ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท ฟู้ดแลนด์ซุปเปอร์มาร์เก็ต จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 10,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "IV2601002",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100011",
+        "ocr_document_no": "722570",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "RT-20260100096",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "S0000237986",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "RT-20260113003",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100014",
+        "ocr_document_no": "000201068813",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "000201068816",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "CS202601/0300",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260100016",
+        "ocr_document_no": "SR001POS0012601-000286",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260100017",
+        "ocr_document_no": "00000024792",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}
