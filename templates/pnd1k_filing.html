@@ -1704,6 +1704,9 @@
         </div>
     </div>
     
+    <!-- SheetJS Library for Excel Export -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+    
     <script>
         // ===== ฟังก์ชันจัดการบริษัท =====
         let allCompanies = [];
@@ -2338,7 +2341,7 @@
                 dropZone.querySelector('.file-drop-zone-text').textContent = '⏳ กำลังอ่าน: ' + file.name;
                 dropZone.querySelector('.file-drop-zone-hint').textContent = 'รอสักครู่...';
                 fileInfo.style.display = 'none';
-                await processSocialSecurityOCR(file);
+                await processSocialSecurityAttachmentOCR(file);
                 checkAllFilesUploaded();
                 updateSummary();
                 return;
@@ -2546,10 +2549,17 @@
             if (month) formData.append('month', month);
             if (year) formData.append('year', year);
             try {
+                // ตั้ง timeout 200 วินาที เพราะ OCR อาจใช้เวลานาน
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 200000);
+                
                 const response = await fetch('/api/pnd1k/ocr-social-security', {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    signal: controller.signal
                 });
+                clearTimeout(timeoutId);
+                
                 const result = await response.json();
                 if (result.success) {
                     await loadSocialSecurity(company);
@@ -2567,7 +2577,10 @@
                 }
             } catch (error) {
                 console.error('Error processing social security OCR:', error);
-                alert('เกิดข้อผิดพลาดในการอ่านข้อมูล: ' + error.message);
+                const errMsg = error.name === 'AbortError' 
+                    ? 'หมดเวลาในการอ่านข้อมูล (เกิน 200 วินาที) กรุณาลองใหม่อีกครั้ง' 
+                    : error.message;
+                alert('เกิดข้อผิดพลาดในการอ่านข้อมูล: ' + errMsg);
                 dropZone.querySelector('.file-drop-zone-text').textContent = file.name;
                 dropZone.querySelector('.file-drop-zone-hint').textContent = formatFileSize(file.size);
             }
@@ -3666,6 +3679,38 @@
                     }
                 });
             });
+            
+            // Sync employeeByTypeMap กลับไปที่ global employeeMap
+            // เพื่อให้ generateRDPrepForAll และ generate50TawiForAll ใช้ได้
+            for (const [, emp] of employeeByTypeMap) {
+                const normalizedId = (emp.idCard || '').toString().replace(/\s/g, '').trim();
+                if (!normalizedId) continue;
+                if (!employeeMap.has(normalizedId)) {
+                    employeeMap.set(normalizedId, {
+                        idCard: normalizedId,
+                        name: emp.name || '-',
+                        address: emp.address || '-',
+                        birthDate: emp.birthDate || '-',
+                        issueDate: emp.issueDate || '-',
+                        expiryDate: emp.expiryDate || '-',
+                        months: emp.months || new Set(),
+                        totalIncome: emp.totalIncome || 0,
+                        totalTax: emp.totalTax || 0,
+                        totalContribution: emp.totalContribution || 0,
+                        incomeType: emp.incomeType || '40(1)'
+                    });
+                } else {
+                    // อัปเดตข้อมูลที่ขาดหาย
+                    const existing = employeeMap.get(normalizedId);
+                    if (existing.name === '-' && emp.name !== '-') existing.name = emp.name;
+                    if (existing.address === '-' && emp.address !== '-') existing.address = emp.address;
+                    // รวมยอดรวม
+                    if (emp.totalIncome) existing.totalIncome = (existing.totalIncome || 0) + emp.totalIncome;
+                    if (emp.totalTax) existing.totalTax = (existing.totalTax || 0) + emp.totalTax;
+                    if (emp.totalContribution) existing.totalContribution = (existing.totalContribution || 0) + emp.totalContribution;
+                    if (emp.months) emp.months.forEach(m => existing.months.add(m));
+                }
+            }
             
             const employees = Array.from(employeeByTypeMap.values());
             
@@ -5748,6 +5793,34 @@
             try {
                 showStatusMessage('⏳ กำลังสร้างเอกสาร 50 ทวิ...', 'info');
                 
+                const normalizedIdCard = (idCard || '').toString().replace(/\s/g, '').trim();
+                
+                // หาที่อยู่พนักงาน
+                let employeeAddress = '';
+                const empInMap = employeeMap.get(normalizedIdCard);
+                if (empInMap && empInMap.address && empInMap.address.trim() !== '' && empInMap.address !== '-') {
+                    employeeAddress = empInMap.address.trim();
+                }
+                if (!employeeAddress) {
+                    const overrideKey = `${normalizedIdCard}_${incomeType}`;
+                    const overrideForAddr = employeeOverrides.get(overrideKey) || employeeOverrides.get(normalizedIdCard);
+                    if (overrideForAddr && overrideForAddr.address && overrideForAddr.address.trim() !== '' && overrideForAddr.address !== '-') {
+                        employeeAddress = overrideForAddr.address.trim();
+                    }
+                }
+                
+                // คำนวณยอดประกันสังคมรวม
+                let totalContribution = 0;
+                if (socialSecurityData && socialSecurityData.length > 0) {
+                    socialSecurityData.forEach(ss => {
+                        const ssIdCard = (ss.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                        if (ssIdCard === normalizedIdCard) {
+                            const contrib = parseFloat(String(ss.social_security_contribution || '0').replace(/,/g, '')) || 0;
+                            totalContribution += contrib;
+                        }
+                    });
+                }
+                
                 const response = await fetch('/api/pnd1k/generate-50-tawi', {
                     method: 'POST',
                     headers: {
@@ -5757,7 +5830,14 @@
                         company: company,
                         id_card: idCard,
                         income_type: incomeType,
-                        save_path: savePath
+                        save_path: savePath,
+                        employee_address: employeeAddress,
+                        // ส่งข้อมูลบริษัทจากส่วน "ข้อมูลบริษัท" ไปด้วย
+                        company_name_override: (document.getElementById('companyName')?.textContent || '').trim(),
+                        company_address_override: (document.getElementById('companyAddress')?.textContent || '').trim(),
+                        company_tax_id_override: (document.getElementById('companyTaxId')?.textContent || '').trim(),
+                        // ส่งยอดประกันสังคมจาก frontend
+                        social_security_total: totalContribution
                     })
                 });
                 
@@ -5983,7 +6063,8 @@
                         company: company,
                         save_path: savePath,
                         address_overrides: addressOverrides,
-                        income_type_overrides: incomeTypeOverrides
+                        income_type_overrides: incomeTypeOverrides,
+                        company_tax_id_override: (document.getElementById('companyTaxId')?.textContent || '').trim()
                     })
                 });
                 
@@ -6286,108 +6367,102 @@
                 loadingModal.style.display = 'flex';
             }
             
-            showStatusMessage(`⏳ กำลังสร้างเอกสาร 50 ทวิสำหรับ ${employees.length} คน...`, 'info');
+            const MAX_RETRIES = 2; // จำนวนรอบ retry สูงสุด
+            const RETRY_DELAY = 2000; // รอ 2 วินาทีก่อน retry
             
             let successCount = 0;
-            let failCount = 0;
-            const errors = [];
-            const totalEmployees = employees.length;
+            let finalErrors = [];
+            let pendingEmployees = [...employees]; // พนักงานที่ต้องสร้างเอกสาร
+            let totalEmployees = employees.length;
+            let currentRound = 1;
             
-            // วนลูปสร้างเอกสารทีละคน
-            for (let i = 0; i < employees.length; i++) {
-                const emp = employees[i];
+            // ฟังก์ชันสร้างเอกสารสำหรับพนักงานแต่ละคน
+            async function processEmployee(emp, index, total, round) {
                 const idCard = emp.idCard;
-                const currentIndex = i + 1;
+                const currentIndex = index + 1;
                 
                 // อัพเดท loading modal
+                const roundText = round > 1 ? ` [รอบที่ ${round}]` : '';
                 if (loadingMessage) {
-                    loadingMessage.textContent = `กำลังสร้างเอกสาร 50 ทวิ... (${currentIndex}/${totalEmployees})\n${emp.name || idCard}`;
+                    loadingMessage.textContent = `กำลังสร้างเอกสาร 50 ทวิ${roundText}... (${currentIndex}/${total})\n${emp.name || idCard}`;
                 }
                 if (loadingProgress) {
-                    loadingProgress.textContent = `${currentIndex} / ${totalEmployees}`;
+                    loadingProgress.textContent = `${currentIndex} / ${total}`;
                 }
                 if (loadingProgressBar) {
-                    const progressPercent = (currentIndex / totalEmployees) * 100;
-                    loadingProgressBar.style.width = progressPercent + '%';
+                    const overallDone = successCount + index;
+                    const progressPercent = (overallDone / totalEmployees) * 100;
+                    loadingProgressBar.style.width = Math.min(progressPercent, 100) + '%';
                 }
                 
                 if (!idCard || idCard === '-') {
-                    failCount++;
-                    errors.push(`${emp.name || idCard}: ไม่พบเลขบัตรประชาชน`);
-                    continue;
+                    return { success: false, error: `${emp.name || idCard}: ไม่พบเลขบัตรประชาชน`, noRetry: true };
                 }
                 
-                // Normalize idCard (ลบช่องว่าง)
                 const normalizedIdCard = (idCard || '').toString().replace(/\s/g, '').trim();
-                
-                // ใช้ประเภทภาษีจาก emp.incomeType (เพราะเราแยกตามประเภทภาษีแล้ว)
                 let incomeType = emp.incomeType || '40(1)';
                 
-                // ถ้ามีการ override ใน employeeOverrides ให้ใช้ค่า override
-                // ลองหา override โดยใช้ key: {idCard}_{incomeType} ก่อน
                 const overrideKey = `${normalizedIdCard}_${incomeType}`;
                 let employeeOverride = employeeOverrides.get(overrideKey);
-                
-                // ถ้าไม่มี override ที่ตรงกัน ให้ลองหาโดยใช้แค่ idCard
                 if (!employeeOverride || !employeeOverride.income_type) {
                     employeeOverride = employeeOverrides.get(normalizedIdCard);
                 }
-                
                 if (employeeOverride && employeeOverride.income_type) {
                     incomeType = employeeOverride.income_type;
                 }
                 
-                // ใช้ incomeType จาก emp.incomeType เป็นหลัก (เพราะเราแยกตามประเภทภาษีแล้ว)
-                // และ override จะใช้เมื่อมีการแก้ไขเท่านั้น
-                
                 try {
-                    // ดึงที่อยู่พนักงานจาก employeeMap หรือ employeeOverrides (ดึงใหม่ทุกครั้งเพื่อให้ได้ข้อมูลล่าสุด)
                     let employeeAddress = '';
-                    
-                    // ลองดึงจาก employeeMap ก่อน (ข้อมูลล่าสุด)
                     const empInMap = employeeMap.get(normalizedIdCard);
                     if (empInMap && empInMap.address && empInMap.address.trim() !== '' && empInMap.address !== '-') {
                         employeeAddress = empInMap.address.trim();
                     }
-                    
-                    // ถ้ายังไม่มี ให้ลองดึงจาก employeeOverrides
                     if (!employeeAddress) {
-                        const override = employeeOverrides.get(normalizedIdCard);
-                        if (override && override.address && override.address.trim() !== '' && override.address !== '-') {
-                            employeeAddress = override.address.trim();
+                        // ลองหาจาก override ด้วย key ที่มี incomeType ก่อน
+                        const overrideForAddr = employeeOverrides.get(overrideKey) || employeeOverrides.get(normalizedIdCard);
+                        if (overrideForAddr && overrideForAddr.address && overrideForAddr.address.trim() !== '' && overrideForAddr.address !== '-') {
+                            employeeAddress = overrideForAddr.address.trim();
                         }
                     }
-                    
-                    // ถ้ายังไม่มี ให้ลองดึงจาก emp object ที่ส่งมา
                     if (!employeeAddress && emp && emp.address && emp.address.trim() !== '' && emp.address !== '-') {
                         employeeAddress = emp.address.trim();
                     }
                     
-                    console.log(`Employee ${normalizedIdCard} address:`, employeeAddress || '(empty)');
-                    console.log(`Employee ${normalizedIdCard} address length:`, employeeAddress ? employeeAddress.length : 0);
+                    // คำนวณยอดประกันสังคมรวมจาก frontend socialSecurityData
+                    let totalContribution = 0;
+                    if (socialSecurityData && socialSecurityData.length > 0) {
+                        socialSecurityData.forEach(ss => {
+                            const ssIdCard = (ss.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                            if (ssIdCard === normalizedIdCard) {
+                                const contrib = parseFloat(String(ss.social_security_contribution || '0').replace(/,/g, '')) || 0;
+                                totalContribution += contrib;
+                            }
+                        });
+                    }
                     
                     const requestBody = {
                         company: company,
                         id_card: normalizedIdCard,
                         income_type: incomeType,
                         save_path: savePath,
-                        employee_address: employeeAddress  // ส่งที่อยู่พนักงานไปยัง backend
+                        employee_address: employeeAddress,
+                        // ส่งข้อมูลบริษัทจากส่วน "ข้อมูลบริษัท" ไปด้วย
+                        company_name_override: (document.getElementById('companyName')?.textContent || '').trim(),
+                        company_address_override: (document.getElementById('companyAddress')?.textContent || '').trim(),
+                        company_tax_id_override: (document.getElementById('companyTaxId')?.textContent || '').trim(),
+                        // ส่งยอดประกันสังคมจาก frontend
+                        social_security_total: totalContribution
                     };
-                    
-                    console.log('Request body employee_address length:', requestBody.employee_address ? requestBody.employee_address.length : 0);
                     
                     const response = await fetch('/api/pnd1k/generate-50-tawi', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(requestBody)
                     });
                     
                     const result = await response.json();
                     
                     if (result.success) {
-                        // ดาวน์โหลดไฟล์ PDF (ถ้ามี download_url)
                         if (result.download_url) {
                             const link = document.createElement('a');
                             link.href = result.download_url;
@@ -6397,19 +6472,64 @@
                             link.click();
                             document.body.removeChild(link);
                         }
-                        
-                        successCount++;
-                        
-                        // รอสักครู่เพื่อไม่ให้ browser block การดาวน์โหลดหลายไฟล์
                         await new Promise(resolve => setTimeout(resolve, 500));
+                        return { success: true };
                     } else {
-                        failCount++;
-                        errors.push(`${emp.name || idCard}: ${result.error || 'ไม่สามารถสร้างเอกสารได้'}`);
+                        return { success: false, error: `${emp.name || idCard}: ${result.error || 'ไม่สามารถสร้างเอกสารได้'}` };
                     }
                 } catch (error) {
                     console.error(`Error generating 50 Tawi for ${idCard}:`, error);
-                    failCount++;
-                    errors.push(`${emp.name || idCard}: ${error.message || 'เกิดข้อผิดพลาด'}`);
+                    return { success: false, error: `${emp.name || idCard}: ${error.message || 'เกิดข้อผิดพลาด'}` };
+                }
+            }
+            
+            // ===== รอบแรก: สร้างเอกสารทั้งหมด =====
+            showStatusMessage(`⏳ กำลังสร้างเอกสาร 50 ทวิสำหรับ ${totalEmployees} คน...`, 'info');
+            
+            let failedEmployees = [];
+            
+            for (let i = 0; i < pendingEmployees.length; i++) {
+                const result = await processEmployee(pendingEmployees[i], i, pendingEmployees.length, currentRound);
+                if (result.success) {
+                    successCount++;
+                } else {
+                    if (!result.noRetry) {
+                        failedEmployees.push(pendingEmployees[i]);
+                    }
+                    finalErrors.push(result.error);
+                }
+            }
+            
+            // ===== รอบ Retry: ลองใหม่สำหรับพนักงานที่ล้มเหลว =====
+            while (failedEmployees.length > 0 && currentRound < MAX_RETRIES + 1) {
+                currentRound++;
+                
+                console.log(`🔄 Retry round ${currentRound}: ${failedEmployees.length} employees`);
+                
+                if (loadingMessage) {
+                    loadingMessage.textContent = `⏳ รอ ${RETRY_DELAY/1000} วินาที ก่อนลองใหม่รอบที่ ${currentRound}...\n(${failedEmployees.length} คนที่ยังไม่สำเร็จ)`;
+                }
+                showStatusMessage(`🔄 รอลองใหม่รอบที่ ${currentRound} สำหรับ ${failedEmployees.length} คน...`, 'info');
+                
+                await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
+                
+                const retryList = [...failedEmployees];
+                failedEmployees = [];
+                // ลบ error เก่าของพนักงานที่กำลังจะ retry
+                const retryNames = new Set(retryList.map(e => e.name || e.idCard));
+                finalErrors = finalErrors.filter(err => {
+                    const errName = err.split(':')[0].trim();
+                    return !retryNames.has(errName);
+                });
+                
+                for (let i = 0; i < retryList.length; i++) {
+                    const result = await processEmployee(retryList[i], i, retryList.length, currentRound);
+                    if (result.success) {
+                        successCount++;
+                    } else {
+                        failedEmployees.push(retryList[i]);
+                        finalErrors.push(result.error);
+                    }
                 }
             }
             
@@ -6419,21 +6539,25 @@
             }
             
             // แสดงผลลัพธ์
+            const finalFailCount = finalErrors.length;
             let message = `สร้างเอกสารสำเร็จ ${successCount} คน`;
             let detailMessage = '';
-            if (failCount > 0) {
-                message += `, ไม่สำเร็จ ${failCount} คน`;
-                if (errors.length > 0) {
-                    console.error('Errors:', errors);
-                    detailMessage = `\n\nข้อผิดพลาด:\n${errors.slice(0, 10).join('\n')}${errors.length > 10 ? '\n... และอีก ' + (errors.length - 10) + ' รายการ' : ''}`;
+            if (currentRound > 1) {
+                message += ` (ลองใหม่ ${currentRound - 1} รอบ)`;
+            }
+            if (finalFailCount > 0) {
+                message += `, ไม่สำเร็จ ${finalFailCount} คน`;
+                if (finalErrors.length > 0) {
+                    console.error('Final errors:', finalErrors);
+                    detailMessage = `\n\nข้อผิดพลาด:\n${finalErrors.slice(0, 10).join('\n')}${finalErrors.length > 10 ? '\n... และอีก ' + (finalErrors.length - 10) + ' รายการ' : ''}`;
                 }
             }
-            showStatusMessage(message, failCount > 0 ? 'warning' : 'success');
+            showStatusMessage(message, finalFailCount > 0 ? 'warning' : 'success');
             showNotificationModal(
-                failCount > 0 ? '⚠️ เสร็จสิ้น (มีข้อผิดพลาดบางส่วน)' : '✅ เสร็จสิ้น',
+                finalFailCount > 0 ? '⚠️ เสร็จสิ้น (มีข้อผิดพลาดบางส่วน)' : '✅ เสร็จสิ้น',
                 message + detailMessage,
-                failCount > 0 ? '⚠️' : '✅',
-                failCount > 0 ? 'warning' : 'success'
+                finalFailCount > 0 ? '⚠️' : '✅',
+                finalFailCount > 0 ? 'warning' : 'success'
             );
         }
         
@@ -7011,67 +7135,338 @@
                 return;
             }
             
-            // ถาม path ที่จะเก็บไฟล์
-            showPathInputModal(
-                '📊 ส่งออกข้อมูลทั้งหมดเป็น Excel',
-                'กรุณาระบุ path ที่จะเก็บไฟล์รายงาน Excel\nตัวอย่าง: C:\\Users\\USER\\Documents\\reports',
-                '',
-                async (savePath) => {
-                    await exportAllDataToExcelWithPath(company, savePath);
-                }
-            );
-        }
-        
-        async function exportAllDataToExcelWithPath(company, savePath) {
+            // ตรวจสอบว่า SheetJS โหลดมาแล้วหรือยัง
+            if (typeof XLSX === 'undefined') {
+                showNotificationModal('❌ ข้อผิดพลาด', 'ไม่พบ SheetJS library กรุณารีเฟรชหน้าเว็บแล้วลองใหม่', '❌', 'error');
+                return;
+            }
+            
             try {
                 showStatusMessage('⏳ กำลังสร้างไฟล์ Excel...', 'info');
                 
-                const response = await fetch('/api/pnd1k/export-all-data', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        company: company,
-                        save_path: savePath
-                    })
-                });
+                // สร้าง Workbook ใหม่
+                const wb = XLSX.utils.book_new();
                 
-                const result = await response.json();
+                // ชื่อเดือนย่อ
+                const monthNames = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
                 
-                if (result.success) {
-                    showStatusMessage('✅ สร้างไฟล์ Excel สำเร็จ', 'success');
+                // ===== Sheet 1: ข้อมูลใบแนบ (Pivot - เดือนเป็นคอลัมน์) =====
+                // Helper: หาประเภทภาษีจาก employeeOverrides (ใช้ logic เดียวกับหน้าเว็บ)
+                function resolveIncomeType(idCard, attIncomeType) {
+                    let incomeType = attIncomeType;
+                    const normalizedId = idCard.toString().replace(/\s/g, '').trim();
                     
-                    // ดาวน์โหลดไฟล์ (ถ้ามี download_url)
-                    if (result.download_url) {
-                        const link = document.createElement('a');
-                        link.href = result.download_url;
-                        link.download = result.filename || 'pnd1k_all_data.xlsx';
-                        link.target = '_blank';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                    } else if (result.file_path) {
-                        // ถ้าเป็น network path ให้แสดงข้อความแนะนำ
-                        showNotificationModal(
-                            '✅ สำเร็จ',
-                            `สร้างไฟล์ Excel สำเร็จ\n\nไฟล์ถูกบันทึกไว้ที่:\n${result.file_path}\n\n${result.filename ? `ชื่อไฟล์: ${result.filename}` : ''}\n\nกรุณาเปิดไฟล์จาก path ด้านบน`,
-                            '✅',
-                            'success'
-                        );
-                        return; // ไม่ต้องแสดง notification ซ้ำ
+                    if (!incomeType || incomeType === '-' || incomeType === '') {
+                        let foundOverride = null;
+                        for (const [key, override] of employeeOverrides.entries()) {
+                            if (key.startsWith(`${normalizedId}_`)) {
+                                if (override && override.income_type) {
+                                    foundOverride = override.income_type;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!foundOverride) {
+                            const fallbackOverride = employeeOverrides.get(normalizedId);
+                            if (fallbackOverride && fallbackOverride.income_type) {
+                                foundOverride = fallbackOverride.income_type;
+                            }
+                        }
+                        incomeType = foundOverride || '40(1)';
+                    }
+                    return incomeType;
+                }
+                
+                // Group ข้อมูลตาม เลขบัตร (รวมข้อมูลทุกเดือนของพนักงานแต่ละคน)
+                const attPivotMap = new Map();
+                (attachmentData || []).forEach(att => {
+                    const id = (att.recipient_id_card || '').toString().trim();
+                    const incomeType = resolveIncomeType(id, att.income_type);
+                    const key = `${id}||${incomeType}`;
+                    const month = parseInt(att.payment_month) || 0;
+                    
+                    if (!attPivotMap.has(key)) {
+                        attPivotMap.set(key, {
+                            id_card: id,
+                            name: (att.recipient_name || '').trim(),
+                            income_type: incomeType,
+                            months: {} // { monthNum: { income, tax } }
+                        });
                     }
                     
-                    showNotificationModal(
-                        '✅ สำเร็จ',
-                        `สร้างไฟล์ Excel สำเร็จ\n\nไฟล์ถูกบันทึกไว้ที่:\n${result.file_path || savePath}\n\n${result.filename ? `ชื่อไฟล์: ${result.filename}` : ''}`,
-                        '✅',
-                        'success'
-                    );
-                } else {
-                    showStatusMessage(`⚠️ ${result.error || 'เกิดข้อผิดพลาด'}`, 'warning');
-                    showNotificationModal('⚠️ เกิดข้อผิดพลาด', result.error || 'ไม่สามารถสร้างไฟล์ Excel ได้', '⚠️', 'warning');
+                    const entry = attPivotMap.get(key);
+                    if (!entry.name && att.recipient_name) entry.name = att.recipient_name.trim();
+                    
+                    if (month >= 1 && month <= 12) {
+                        const income = parseFloat(String(att.income_amount || '0').replace(/,/g, '')) || 0;
+                        const tax = parseFloat(String(att.tax_amount || '0').replace(/,/g, '')) || 0;
+                        if (!entry.months[month]) {
+                            entry.months[month] = { income: 0, tax: 0 };
+                        }
+                        entry.months[month].income += income;
+                        entry.months[month].tax += tax;
+                    }
+                });
+                
+                // สร้าง Header สำหรับ Sheet 1
+                const attHeaders = ['เลขบัตรประชาชน', 'ชื่อ-นามสกุล', 'ประเภทภาษี'];
+                for (let m = 1; m <= 12; m++) {
+                    attHeaders.push(`รายได้ ${monthNames[m-1]}`);
+                    attHeaders.push(`ภาษี ${monthNames[m-1]}`);
                 }
+                attHeaders.push('รวมรายได้', 'รวมภาษี');
+                
+                // สร้าง Data rows
+                const attPivotRows = [];
+                for (const [, data] of attPivotMap) {
+                    const row = {
+                        'เลขบัตรประชาชน': data.id_card,
+                        'ชื่อ-นามสกุล': data.name || '-',
+                        'ประเภทภาษี': data.income_type
+                    };
+                    let totalIncome = 0, totalTax = 0;
+                    for (let m = 1; m <= 12; m++) {
+                        const mData = data.months[m];
+                        const income = mData ? mData.income : 0;
+                        const tax = mData ? mData.tax : 0;
+                        row[`รายได้ ${monthNames[m-1]}`] = income || '';
+                        row[`ภาษี ${monthNames[m-1]}`] = tax || '';
+                        totalIncome += income;
+                        totalTax += tax;
+                    }
+                    row['รวมรายได้'] = totalIncome || '';
+                    row['รวมภาษี'] = totalTax || '';
+                    attPivotRows.push(row);
+                }
+                
+                // เรียงตามเลขบัตร
+                attPivotRows.sort((a, b) => (a['เลขบัตรประชาชน'] || '').localeCompare(b['เลขบัตรประชาชน'] || ''));
+                
+                const ws1 = XLSX.utils.json_to_sheet(
+                    attPivotRows.length > 0 ? attPivotRows : [Object.fromEntries(attHeaders.map(h => [h, '']))],
+                    { header: attHeaders }
+                );
+                
+                // ตั้งค่าความกว้างคอลัมน์
+                const attColWidths = [{ wch: 18 }, { wch: 25 }, { wch: 14 }];
+                for (let m = 0; m < 12; m++) {
+                    attColWidths.push({ wch: 14 }); // รายได้
+                    attColWidths.push({ wch: 12 }); // ภาษี
+                }
+                attColWidths.push({ wch: 14 }, { wch: 14 }); // รวม
+                ws1['!cols'] = attColWidths;
+                XLSX.utils.book_append_sheet(wb, ws1, 'ข้อมูลใบแนบ');
+                
+                // ===== Sheet 2: ข้อมูลประกันสังคม (Pivot - เดือนเป็นคอลัมน์) =====
+                const ssPivotMap = new Map();
+                (socialSecurityData || []).forEach(ss => {
+                    const id = (ss.recipient_id_card || '').toString().trim();
+                    const month = parseInt(ss.payment_month) || 0;
+                    
+                    if (!ssPivotMap.has(id)) {
+                        ssPivotMap.set(id, {
+                            id_card: id,
+                            name: (ss.recipient_name || '').trim(),
+                            months: {} // { monthNum: { salary, contribution } }
+                        });
+                    }
+                    
+                    const entry = ssPivotMap.get(id);
+                    if (!entry.name && ss.recipient_name) entry.name = ss.recipient_name.trim();
+                    
+                    if (month >= 1 && month <= 12) {
+                        const salary = parseFloat(String(ss.salary || '0').replace(/,/g, '')) || 0;
+                        const contribution = parseFloat(String(ss.social_security_contribution || '0').replace(/,/g, '')) || 0;
+                        if (!entry.months[month]) {
+                            entry.months[month] = { salary: 0, contribution: 0 };
+                        }
+                        entry.months[month].salary += salary;
+                        entry.months[month].contribution += contribution;
+                    }
+                });
+                
+                // สร้าง Header สำหรับ Sheet 2
+                const ssHeaders = ['เลขบัตรประชาชน', 'ชื่อ-นามสกุล'];
+                for (let m = 1; m <= 12; m++) {
+                    ssHeaders.push(`เงินเดือน ${monthNames[m-1]}`);
+                    ssHeaders.push(`สมทบ ${monthNames[m-1]}`);
+                }
+                ssHeaders.push('รวมเงินเดือน', 'รวมเงินสมทบ');
+                
+                // สร้าง Data rows
+                const ssPivotRows = [];
+                for (const [, data] of ssPivotMap) {
+                    const row = {
+                        'เลขบัตรประชาชน': data.id_card,
+                        'ชื่อ-นามสกุล': data.name || '-'
+                    };
+                    let totalSalary = 0, totalContrib = 0;
+                    for (let m = 1; m <= 12; m++) {
+                        const mData = data.months[m];
+                        const salary = mData ? mData.salary : 0;
+                        const contribution = mData ? mData.contribution : 0;
+                        row[`เงินเดือน ${monthNames[m-1]}`] = salary || '';
+                        row[`สมทบ ${monthNames[m-1]}`] = contribution || '';
+                        totalSalary += salary;
+                        totalContrib += contribution;
+                    }
+                    row['รวมเงินเดือน'] = totalSalary || '';
+                    row['รวมเงินสมทบ'] = totalContrib || '';
+                    ssPivotRows.push(row);
+                }
+                
+                // เรียงตามเลขบัตร
+                ssPivotRows.sort((a, b) => (a['เลขบัตรประชาชน'] || '').localeCompare(b['เลขบัตรประชาชน'] || ''));
+                
+                const ws2 = XLSX.utils.json_to_sheet(
+                    ssPivotRows.length > 0 ? ssPivotRows : [Object.fromEntries(ssHeaders.map(h => [h, '']))],
+                    { header: ssHeaders }
+                );
+                const ssColWidths = [{ wch: 18 }, { wch: 25 }];
+                for (let m = 0; m < 12; m++) {
+                    ssColWidths.push({ wch: 14 }); // เงินเดือน
+                    ssColWidths.push({ wch: 12 }); // สมทบ
+                }
+                ssColWidths.push({ wch: 14 }, { wch: 14 }); // รวม
+                ws2['!cols'] = ssColWidths;
+                XLSX.utils.book_append_sheet(wb, ws2, 'ข้อมูลประกันสังคม');
+                
+                // ===== Sheet 3: ข้อมูลบัตรประชาชน =====
+                // รวมข้อมูลจาก idCardData + attachmentData (merge ชื่อพนักงาน)
+                const empMap = new Map();
+                
+                // เก็บข้อมูลจาก attachmentData ก่อน
+                (attachmentData || []).forEach(att => {
+                    const id = (att.recipient_id_card || '').toString().trim();
+                    const name = (att.recipient_name || '').trim();
+                    if (id && id !== '-' && !empMap.has(id)) {
+                        empMap.set(id, {
+                            'เลขบัตรประชาชน': id,
+                            'ชื่อ-นามสกุล': name || '-',
+                            'ที่อยู่': '-',
+                            'วันเกิด': '-',
+                            'วันที่ออกบัตร': '-',
+                            'วันหมดอายุ': '-',
+                            'วันที่สร้าง': '-',
+                            'วันที่อัพเดท': '-'
+                        });
+                    }
+                });
+                
+                // อัปเดตด้วยข้อมูลจาก idCardData (ข้อมูลครบกว่า)
+                (idCardData || []).forEach(card => {
+                    const id = (card.id_card_number || '').toString().trim();
+                    if (!id || id === '-') return;
+                    
+                    const existing = empMap.get(id) || {
+                        'เลขบัตรประชาชน': id,
+                        'ชื่อ-นามสกุล': '-',
+                        'ที่อยู่': '-',
+                        'วันเกิด': '-',
+                        'วันที่ออกบัตร': '-',
+                        'วันหมดอายุ': '-',
+                        'วันที่สร้าง': '-',
+                        'วันที่อัพเดท': '-'
+                    };
+                    
+                    if (card.full_name) existing['ชื่อ-นามสกุล'] = card.full_name;
+                    if (card.address) existing['ที่อยู่'] = card.address;
+                    if (card.birth_date) existing['วันเกิด'] = card.birth_date;
+                    if (card.issue_date) existing['วันที่ออกบัตร'] = card.issue_date;
+                    if (card.expiry_date) existing['วันหมดอายุ'] = card.expiry_date;
+                    if (card.created_at) existing['วันที่สร้าง'] = card.created_at;
+                    if (card.updated_at) existing['วันที่อัพเดท'] = card.updated_at;
+                    
+                    empMap.set(id, existing);
+                });
+                
+                // รวม employeeOverrides (ข้อมูลที่ user แก้ไข)
+                for (const [key, override] of employeeOverrides.entries()) {
+                    const id = key.split('_')[0]; // ตัด _incomeType ออก
+                    if (empMap.has(id)) {
+                        const emp = empMap.get(id);
+                        if (override.name) emp['ชื่อ-นามสกุล'] = override.name;
+                        if (override.address) emp['ที่อยู่'] = override.address;
+                    }
+                }
+                
+                const idCardRows = Array.from(empMap.values()).sort((a, b) => 
+                    (a['เลขบัตรประชาชน'] || '').localeCompare(b['เลขบัตรประชาชน'] || '')
+                );
+                
+                const ws3 = XLSX.utils.json_to_sheet(idCardRows.length > 0 ? idCardRows : [{
+                    'เลขบัตรประชาชน': '', 'ชื่อ-นามสกุล': '', 'ที่อยู่': '', 'วันเกิด': '',
+                    'วันที่ออกบัตร': '', 'วันหมดอายุ': '', 'วันที่สร้าง': '', 'วันที่อัพเดท': ''
+                }]);
+                ws3['!cols'] = [
+                    { wch: 18 }, { wch: 25 }, { wch: 45 }, { wch: 14 },
+                    { wch: 14 }, { wch: 14 }, { wch: 20 }, { wch: 20 }
+                ];
+                XLSX.utils.book_append_sheet(wb, ws3, 'ข้อมูลบัตรประชาชน');
+                
+                // ===== Sheet 4: ข้อมูลแบบภาษี =====
+                const formsList = pnd1kFormsList || [];
+                if (formsList.length > 0) {
+                    const sortedForms = [...formsList].sort((a, b) => {
+                        const yearA = a.payment_year || 0;
+                        const yearB = b.payment_year || 0;
+                        if (yearA !== yearB) return yearB - yearA;
+                        return (b.payment_month || 0) - (a.payment_month || 0);
+                    });
+                    
+                    const formRows = sortedForms.map(form => {
+                        const sectionTotal = form.section_total || {};
+                        return {
+                            'เดือน': form.payment_month || '',
+                            'ปี': form.payment_year || '',
+                            'ประเภทรายได้': form.income_type || '',
+                            'จำนวนพนักงาน': sectionTotal.count || '',
+                            'รายได้รวม': sectionTotal.total_income || '',
+                            'ภาษีรวม': sectionTotal.total_tax || '',
+                            'ชื่อไฟล์': form.file_name || '',
+                            'วันที่สร้าง': form.created_at || ''
+                        };
+                    });
+                    
+                    const ws4 = XLSX.utils.json_to_sheet(formRows);
+                    ws4['!cols'] = [
+                        { wch: 8 }, { wch: 8 }, { wch: 16 }, { wch: 14 },
+                        { wch: 15 }, { wch: 15 }, { wch: 30 }, { wch: 20 }
+                    ];
+                    XLSX.utils.book_append_sheet(wb, ws4, 'ข้อมูลแบบภาษี');
+                }
+                
+                // สร้างชื่อไฟล์
+                const parts = company.split(' ');
+                const companyName = parts.slice(1).join(' ') || company;
+                const safeName = companyName.replace(/[<>:"/\\|?*]/g, '_').replace(/\s+/g, '_').substring(0, 100);
+                const now = new Date();
+                const timestamp = now.getFullYear() + 
+                    String(now.getMonth() + 1).padStart(2, '0') + 
+                    String(now.getDate()).padStart(2, '0') + '_' + 
+                    String(now.getHours()).padStart(2, '0') + 
+                    String(now.getMinutes()).padStart(2, '0') + 
+                    String(now.getSeconds()).padStart(2, '0');
+                const filename = `pnd1k_all_data_${safeName}_${timestamp}.xlsx`;
+                
+                // ดาวน์โหลดไฟล์ Excel ผ่าน Browser
+                XLSX.writeFile(wb, filename);
+                
+                const stats = {
+                    attachments: (attachmentData || []).length,
+                    socialSecurity: (socialSecurityData || []).length,
+                    idCards: idCardRows.length,
+                    forms: formsList.length
+                };
+                
+                showStatusMessage('✅ สร้างไฟล์ Excel สำเร็จ', 'success');
+                showNotificationModal(
+                    '✅ สำเร็จ',
+                    `สร้างไฟล์ Excel สำเร็จ\n\nชื่อไฟล์: ${filename}\n\n📊 สรุป:\n- ข้อมูลใบแนบ: ${stats.attachments} รายการ\n- ข้อมูลประกันสังคม: ${stats.socialSecurity} รายการ\n- ข้อมูลพนักงาน: ${stats.idCards} คน\n- ข้อมูลแบบภาษี: ${stats.forms} รายการ`,
+                    '✅',
+                    'success'
+                );
+                
             } catch (error) {
                 console.error('Error exporting data:', error);
                 showStatusMessage('⚠️ เกิดข้อผิดพลาดในการส่งออกข้อมูล', 'warning');

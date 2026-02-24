@@ -11949,6 +11949,9 @@ def generate_rd_prep():
         if not isinstance(income_type_overrides, dict):
             income_type_overrides = {}
         
+        # รับเลขผู้เสียภาษีจากส่วน "ข้อมูลบริษัท" (ถ้ามี)
+        company_tax_id_fe = request.json.get('company_tax_id_override', '').strip()
+        
         # แยก Build และชื่อบริษัท
         parts = company.split(' ')
         build = parts[0] if parts else ''
@@ -11967,19 +11970,27 @@ def generate_rd_prep():
         
         # ดึงข้อมูลบริษัทเพื่อหาเลขประจำตัวผู้เสียภาษี
         company_tax_id = ''
-        try:
-            companies_file = Path('Customer_data') / 'auditcheck_companies.json'
-            if companies_file.exists():
-                with open(companies_file, 'r', encoding='utf-8') as f:
-                    companies = json.load(f)
-                    if isinstance(companies, list):
-                        for comp in companies:
-                            comp_name = comp.get('company_name', '')
-                            if company_name in comp_name or comp_name in company_name:
-                                company_tax_id = comp.get('tax_id', '').replace('-', '').replace(' ', '').strip()
-                                break
-        except Exception as e:
-            logger.warning(f"⚠️ ไม่สามารถอ่านข้อมูลบริษัท: {e}")
+        
+        # ใช้เลขผู้เสียภาษีจาก frontend (ข้อมูลบริษัท section) เป็น override ถ้ามี
+        if company_tax_id_fe and company_tax_id_fe != '-':
+            company_tax_id = company_tax_id_fe.replace('-', '').replace(' ', '').strip()
+            logger.info(f"✅ ใช้เลขผู้เสียภาษีจาก frontend (ข้อมูลบริษัท): {company_tax_id}")
+        
+        # ถ้ายังไม่มี ให้หาจากไฟล์
+        if not company_tax_id or len(company_tax_id) != 13:
+            try:
+                companies_file = Path('Customer_data') / 'auditcheck_companies.json'
+                if companies_file.exists():
+                    with open(companies_file, 'r', encoding='utf-8') as f:
+                        companies = json.load(f)
+                        if isinstance(companies, list):
+                            for comp in companies:
+                                comp_name = comp.get('company_name', '')
+                                if company_name in comp_name or comp_name in company_name:
+                                    company_tax_id = comp.get('tax_id', '').replace('-', '').replace(' ', '').strip()
+                                    break
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านข้อมูลบริษัท: {e}")
         
         if not company_tax_id or len(company_tax_id) != 13:
             return jsonify({'success': False, 'error': 'ไม่พบเลขประจำตัวผู้เสียภาษี 13 หลักของบริษัท'}), 400
@@ -12377,6 +12388,13 @@ def generate_50_tawi():
         income_type = data.get('income_type', '40(1)').strip()
         save_path = data.get('save_path', '').strip()
         employee_address_override = data.get('employee_address', '').strip()  # ที่อยู่ที่ส่งมาจาก frontend
+        company_name_fe = data.get('company_name_override', '').strip()  # ชื่อบริษัทจากส่วน "ข้อมูลบริษัท"
+        company_address_fe = data.get('company_address_override', '').strip()  # ที่อยู่บริษัทจากส่วน "ข้อมูลบริษัท"
+        company_tax_id_fe = data.get('company_tax_id_override', '').strip()  # เลขผู้เสียภาษีจากส่วน "ข้อมูลบริษัท"
+        
+        logger.info(f"📋 50 Tawi - company_name_fe: '{company_name_fe}'")
+        logger.info(f"📋 50 Tawi - company_address_fe: '{company_address_fe}'")
+        logger.info(f"📋 50 Tawi - company_tax_id_fe: '{company_tax_id_fe}'")
         
         if not company or not id_card:
             return jsonify({'success': False, 'error': 'กรุณาระบุบริษัทและเลขบัตรประชาชน'}), 400
@@ -12413,6 +12431,14 @@ def generate_50_tawi():
                     company_address = form.get('address', '')
             except Exception as e:
                 logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ form: {e}")
+        
+        # ใช้ข้อมูลบริษัทจาก frontend (ข้อมูลบริษัท section) เป็น override ถ้ามี
+        if company_address_fe and company_address_fe != '-':
+            company_address = company_address_fe
+            logger.info(f"✅ ใช้ที่อยู่บริษัทจาก frontend (ข้อมูลบริษัท): {company_address[:80]}...")
+        if company_tax_id_fe and company_tax_id_fe != '-':
+            company_tax_id = company_tax_id_fe
+            logger.info(f"✅ ใช้เลขผู้เสียภาษีจาก frontend (ข้อมูลบริษัท): {company_tax_id}")
         
         # โหลดข้อมูลพนักงาน
         attachment_file = pnd1k_data_dir / f"pnd1k_attachments_{safe_company_name}.json"
@@ -12526,8 +12552,17 @@ def generate_50_tawi():
             except:
                 pass
         
-        # โหลดข้อมูล Social Security
+        # โหลดข้อมูล Social Security (ลองทั้ง 2 naming patterns)
         ss_file = pnd1k_data_dir / f"pnd1k_social_security_{safe_company_name}.json"
+        if not ss_file.exists():
+            ss_file = pnd1k_data_dir / f"pnd1k_social_security_form_{safe_company_name}.json"
+        if not ss_file.exists():
+            # ลอง build name
+            ss_file = pnd1k_data_dir / f"pnd1k_social_security_{build}.json"
+        if not ss_file.exists():
+            ss_file = pnd1k_data_dir / f"pnd1k_social_security_form_{build}.json"
+        
+        logger.info(f"📋 Social Security file lookup: {ss_file} (exists: {ss_file.exists()})")
         if ss_file.exists():
             try:
                 with open(ss_file, 'r', encoding='utf-8') as f:
@@ -12542,6 +12577,21 @@ def generate_50_tawi():
                         total_contribution += contrib
             except Exception as e:
                 logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ Social Security: {e}")
+        
+        # ใช้ยอดประกันสังคมจาก frontend เป็น override ถ้า backend หาไม่เจอ
+        ss_total_fe = data.get('social_security_total', 0)
+        try:
+            ss_total_fe = float(ss_total_fe) if ss_total_fe else 0
+        except (ValueError, TypeError):
+            ss_total_fe = 0
+        
+        if total_contribution == 0 and ss_total_fe > 0:
+            total_contribution = ss_total_fe
+            logger.info(f"✅ ใช้ยอดประกันสังคมจาก frontend: {total_contribution}")
+        elif total_contribution > 0:
+            logger.info(f"📋 ยอดประกันสังคมจากไฟล์: {total_contribution}")
+        else:
+            logger.info(f"📋 ไม่พบข้อมูลประกันสังคม (backend: {total_contribution}, frontend: {ss_total_fe})")
         
         # โหลดไฟล์ Excel template
         excel_template_path = Path('Excel_pnd1k') / 'excel_data_pnd1k.xlsx'
@@ -12615,16 +12665,23 @@ def generate_50_tawi():
                     if i < len(tax_id_clean):
                         worksheet.Range(cell_ref).Value = tax_id_clean[i]
             
-            # 2. กรอกชื่อกิจการ (ตัดข้อความหลัง "จำกัด" ออก)
-            # ตัดข้อความหลัง "จำกัด" ออก (เช่น "รายเดือน", "รายปี" ฯลฯ)
-            cleaned_company_name = company_name_full
-            if 'จำกัด' in cleaned_company_name:
-                # หาตำแหน่งของ "จำกัด" และตัดทุกอย่างหลังนั้นออก
-                index = cleaned_company_name.find('จำกัด')
-                cleaned_company_name = cleaned_company_name[:index + len('จำกัด')].strip()
+            # 2. กรอกชื่อกิจการ
+            # ใช้ชื่อบริษัทจาก frontend (ข้อมูลบริษัท section) เป็น priority สูงสุด
+            if company_name_fe and company_name_fe != '-':
+                cleaned_company_name = company_name_fe
+                logger.info(f"✅ ใช้ชื่อบริษัทจาก frontend (ข้อมูลบริษัท): {cleaned_company_name}")
+            else:
+                # ตัดข้อความหลัง "จำกัด" ออก (เช่น "รายเดือน", "รายปี" ฯลฯ)
+                cleaned_company_name = company_name_full
+                if 'จำกัด' in cleaned_company_name:
+                    index = cleaned_company_name.find('จำกัด')
+                    cleaned_company_name = cleaned_company_name[:index + len('จำกัด')].strip()
             worksheet.Range('D10').Value = cleaned_company_name
             
-            # 3. กรอกที่อยู่กิจการ
+            # 3. กรอกที่อยู่กิจการ (รวมหลายบรรทัดเป็นบรรทัดเดียว)
+            if company_address:
+                company_address = ' '.join(company_address.replace('\r\n', '\n').replace('\r', '\n').split('\n')).strip()
+                company_address = ' '.join(company_address.split())  # ลบช่องว่างซ้ำ
             worksheet.Range('D12').Value = company_address
             
             # 4. กรอกเลขบัตรประชาชนของพนักงาน (13 หลัก)
@@ -12637,10 +12694,12 @@ def generate_50_tawi():
             # 5. กรอกชื่อพนักงาน (รวมคำนำหน้า)
             worksheet.Range('D18').Value = employee_name
             
-            # 6. กรอกที่อยู่ของพนักงาน
+            # 6. กรอกที่อยู่ของพนักงาน (รวมหลายบรรทัดเป็นบรรทัดเดียว)
             if employee_address:
+                employee_address = ' '.join(employee_address.replace('\r\n', '\n').replace('\r', '\n').split('\n')).strip()
+                employee_address = ' '.join(employee_address.split())  # ลบช่องว่างซ้ำ
                 worksheet.Range('D20').Value = employee_address
-                logger.info(f"✅ กรอกที่อยู่พนักงานใน D20: {employee_address[:100]}...")
+                logger.info(f"✅ กรอกที่อยู่พนักงานใน D20: {employee_address[:100]}")
             else:
                 logger.warning(f"⚠️ ไม่พบที่อยู่พนักงานสำหรับ {id_card} - D20 จะว่างเปล่า")
                 worksheet.Range('D20').Value = ''
@@ -13123,12 +13182,16 @@ def _extract_social_security_with_custom_fields(file_path):
         content_type_map = {'.pdf': 'application/pdf', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png'}
         content_type = content_type_map.get(file_ext, 'application/octet-stream')
         logger.info(f"🔄 กำลังใช้ AksonOCR (key-extract) อ่านใบแนบประกันสังคม: {file_name}")
+        import time
+        start_time = time.time()
         with open(file_path, 'rb') as f:
             files = {'file': (file_name, f, content_type)}
             headers = {'X-API-Key': api_key}
             response = requests.post(url, headers=headers, data=payload, files=files, timeout=180)
+        elapsed = time.time() - start_time
+        logger.info(f"⏱️ AksonOCR ตอบกลับใน {elapsed:.1f} วินาที (status: {response.status_code})")
         if response.status_code not in [200, 201]:
-            logger.error(f"❌ AksonOCR ส่งกลับ {response.status_code}")
+            logger.error(f"❌ AksonOCR ส่งกลับ {response.status_code}: {response.text[:500]}")
             return '', '', None
         result = response.json()
         raw_content = json.dumps(result, ensure_ascii=False, indent=2)
@@ -13138,6 +13201,9 @@ def _extract_social_security_with_custom_fields(file_path):
             data = result['data']
             structured_data = data
             raw_text = json.dumps(data, ensure_ascii=False)
+            logger.info(f"✅ AksonOCR อ่านใบแนบประกันสังคมสำเร็จ: {list(data.keys()) if isinstance(data, dict) else 'list'}")
+        else:
+            logger.warning(f"⚠️ AksonOCR ตอบกลับแต่ไม่สำเร็จ: success={result.get('success')}, keys={list(result.keys())}")
         return raw_text, raw_content, structured_data
     except Exception as e:
         logger.error(f"❌ เกิดข้อผิดพลาดในการอ่านใบแนบประกันสังคมด้วย key-extract: {e}", exc_info=True)
@@ -13243,7 +13309,7 @@ def _extract_social_security_from_structured_data(structured_data, raw_content=N
     
     # Parse รายการค่าจ้าง
     parsed_salary_amounts = []
-    if salary_list and len(salary_list) >= person_count:
+    if salary_list and len(salary_list) > 1:
         for salary_str in salary_list[:person_count]:
             try:
                 salary_str = re.sub(r'(\d)\s+(\d{2})$', r'\1.\2', salary_str)
@@ -13266,7 +13332,7 @@ def _extract_social_security_from_structured_data(structured_data, raw_content=N
     
     # Parse รายการเงินสมทบ
     parsed_contrib_amounts = []
-    if contrib_list and len(contrib_list) >= person_count:
+    if contrib_list and len(contrib_list) > 1:
         for contrib_str in contrib_list[:person_count]:
             try:
                 contrib_str = re.sub(r'(\d)\s+(\d{2})$', r'\1.\2', contrib_str)
@@ -13364,9 +13430,11 @@ def ocr_pnd1k_social_security():
         file.save(str(temp_file))
 
         try:
+            logger.info(f"🔄 เริ่มอ่านใบแนบประกันสังคม: {file.filename}")
             raw_text, raw_content, structured_data = _extract_social_security_with_custom_fields(temp_file)
+            logger.info(f"📋 ผลการอ่าน OCR: structured_data={'มี' if structured_data else 'ไม่มี'}")
             if not structured_data:
-                return jsonify({'success': False, 'error': 'ไม่สามารถอ่านข้อมูลใบแนบประกันสังคมได้'}), 400
+                return jsonify({'success': False, 'error': 'ไม่สามารถอ่านข้อมูลใบแนบประกันสังคมได้ (AksonOCR อาจไม่ตอบกลับ หรือ API key หมดอายุ)'}), 400
             individuals = _extract_social_security_from_structured_data(structured_data, raw_content, raw_text)
             if not individuals:
                 return jsonify({'success': False, 'error': 'ไม่พบข้อมูลรายบุคคลในใบแนบประกันสังคม'}), 400
@@ -13989,8 +14057,22 @@ def get_pnd1k_social_security():
             return sanitized[:100] if len(sanitized) > 100 else sanitized
 
         safe_name = sanitize_filename(company_name or company)
-        ss_file = Path('data_pnd1k') / f"pnd1k_social_security_{safe_name}.json"
-        if not ss_file.exists():
+        build = parts[0] if parts else company
+        safe_build = sanitize_filename(build)
+        
+        # ลองหาไฟล์หลาย naming patterns
+        ss_file = None
+        for candidate in [
+            Path('data_pnd1k') / f"pnd1k_social_security_{safe_name}.json",
+            Path('data_pnd1k') / f"pnd1k_social_security_form_{safe_name}.json",
+            Path('data_pnd1k') / f"pnd1k_social_security_{safe_build}.json",
+            Path('data_pnd1k') / f"pnd1k_social_security_form_{safe_build}.json",
+        ]:
+            if candidate.exists():
+                ss_file = candidate
+                break
+        
+        if not ss_file:
             return jsonify({'success': True, 'social_security': []}), 200
         with open(ss_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
