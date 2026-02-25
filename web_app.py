@@ -11356,16 +11356,17 @@ def parse_thai_name(full_name):
             'last_name': ''
         }
     
-    # คำนำหน้าชื่อไทย
-    thai_prefixes = ['นาย', 'นาง', 'นางสาว', 'ด.ช.', 'ด.ญ.', 'เด็กชาย', 'เด็กหญิง', 'พัน', 'ร้อย', 'สิบ', 'พล', 'จ่า', 'ส.ต.', 'ส.อ.', 'ร.ต.', 'ร.ท.', 'ร.อ.', 'พ.ต.', 'พ.ท.', 'พ.อ.', 'น.ต.', 'น.ท.', 'น.อ.', 'พล.ต.', 'พล.ท.', 'พล.อ.']
+    # คำนำหน้าชื่อ
+    thai_prefixes = ['นาย', 'นาง', 'นางสาว', 'ด.ช.', 'ด.ญ.', 'เด็กชาย', 'เด็กหญิง', 'พัน', 'ร้อย', 'สิบ', 'พล', 'จ่า', 'ส.ต.', 'ส.อ.', 'ร.ต.', 'ร.ท.', 'ร.อ.', 'พ.ต.', 'พ.ท.', 'พ.อ.', 'น.ต.', 'น.ท.', 'น.อ.', 'พล.ต.', 'พล.ท.', 'พล.อ.', 'คุณ', 'mr.', 'mrs.', 'ms.', 'miss', 'mr', 'mrs', 'ms']
     
     prefix = ''
     remaining_name = full_name
     
-    # หาคำนำหน้าชื่อ
-    for p in sorted(thai_prefixes, key=len, reverse=True):  # เรียงตามความยาว (ยาวก่อน) เพื่อจับ "นางสาว" ก่อน "นาย"
-        if full_name.startswith(p):
-            prefix = p
+    # หาคำนำหน้าชื่อ (แบบ case-insensitive)
+    full_name_lower = full_name.lower()
+    for p in sorted(thai_prefixes, key=len, reverse=True):  # เรียงตามความยาว (ยาวก่อน)
+        if full_name_lower.startswith(p.lower()):
+            prefix = full_name[:len(p)]
             remaining_name = full_name[len(p):].strip()
             break
     
@@ -11512,10 +11513,10 @@ def parse_thai_address(address_str):
             break
     
     # หาหมู่ที่
-    moo_match = re.search(r'หมู่ที่\s*(\d+)', address_str)
+    moo_match = re.search(r'หมู่(?:ที่)?\s*(\d+)', address_str)
     if moo_match:
         result['moo'] = moo_match.group(1)
-        address_str = re.sub(r'หมู่ที่\s*\d+', '', address_str).strip()
+        address_str = address_str.replace(moo_match.group(0), '', 1).strip()
     
     # หาหมู่บ้าน
     village_match = re.search(r'หมู่บ้าน\s*([^\s]+)', address_str)
@@ -11556,10 +11557,10 @@ def parse_thai_address(address_str):
             break
     
     # หาเลขที่ (มักอยู่ต้นสุด)
-    house_match = re.match(r'^(\d+(?:/\d+)?)', address_str)
+    house_match = re.search(r'(?:บ้านเลขที่|เลขที่)?\s*(\d+(?:/\d+)?)', address_str)
     if house_match:
         result['house_number'] = house_match.group(1)
-        address_str = address_str[len(house_match.group(0)):].strip()
+        address_str = address_str.replace(house_match.group(0), '', 1).strip()
     
     # หาอาคาร (ถ้ามี)
     building_match = re.search(r'อาคาร\s*([^\s]+)', address_str)
@@ -11574,10 +11575,10 @@ def parse_thai_address(address_str):
         address_str = re.sub(r'ห้อง\s*\d+', '', address_str).strip()
     
     # หาชั้นที่
-    floor_match = re.search(r'ชั้น\s*(\d+)', address_str)
+    floor_match = re.search(r'ชั้น(?:ที่)?\s*([0-9\-]+|[ก-ฮa-zA-Z0-9]+)', address_str)
     if floor_match:
         result['floor'] = floor_match.group(1)
-        address_str = re.sub(r'ชั้น\s*\d+', '', address_str).strip()
+        address_str = address_str.replace(floor_match.group(0), '', 1).strip()
     
     return result
 
