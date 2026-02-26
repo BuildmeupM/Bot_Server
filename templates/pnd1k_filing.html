@@ -914,6 +914,27 @@
                            onchange="handleFileSelect(event, 'fileInput6', 'dropZone6', 'fileInfo6')">
                     <div id="fileInfo6" class="file-info" style="display: none;"></div>
                 </div>
+                
+                <!-- อัพโหลด Excel ภ.ง.ด.1ก -->
+                <div class="upload-card" style="flex: 1; min-width: 300px; max-width: 500px;">
+                    <h3>📊 อัพโหลด Excel ภ.ง.ด.1ก</h3>
+                    <div class="file-drop-zone" 
+                         id="dropZone7"
+                         onclick="document.getElementById('fileInput7').click()"
+                         ondrop="handleFileDrop(event, 'fileInput7', 'dropZone7')"
+                         ondragover="handleDragOver(event)"
+                         ondragleave="handleDragLeave(event)">
+                        <div class="file-drop-zone-icon">📊</div>
+                        <div class="file-drop-zone-text">ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์</div>
+                        <div class="file-drop-zone-hint">รองรับไฟล์ Excel เท่านั้น (.xls, .xlsx)</div>
+                    </div>
+                    <input type="file" 
+                           id="fileInput7" 
+                           class="file-input" 
+                           accept=".xls,.xlsx"
+                           onchange="handleFileSelect(event, 'fileInput7', 'dropZone7', 'fileInfo7')">
+                    <div id="fileInfo7" class="file-info" style="display: none;"></div>
+                </div>
             </div>
             
             <div class="progress-bar" id="progressBar">
@@ -2067,9 +2088,9 @@
             
             const fileIndex = inputId.slice(-1);
             // สำหรับ fileIndex 1-4 ให้ใช้ไฟล์แรกเท่านั้น (อัพโหลดทีละไฟล์)
-            // สำหรับ fileIndex 5-6 ยังคงรองรับหลายไฟล์
+            // สำหรับ fileIndex 5-7 ยังคงรองรับหลายไฟล์
             const file = files[0];
-            const isMulti = (fileIndex === '5' || fileIndex === '6') && files.length > 1;
+            const isMulti = (fileIndex === '5' || fileIndex === '6' || fileIndex === '7') && files.length > 1;
             fileData[`file${fileIndex}`] = file;
             
             const dropZone = document.getElementById(dropZoneId);
@@ -2129,6 +2150,26 @@
                 dropZone.querySelector('.file-drop-zone-text').textContent = '✅ ' + file.name;
                 dropZone.querySelector('.file-drop-zone-hint').textContent = 'ไฟล์งบทดลองพร้อมใช้งาน';
                 processTrialBalanceExcel(file);
+                checkAllFilesUploaded();
+                updateSummary();
+                return;
+            }
+            
+            if (fileIndex === '7') {
+                // ตรวจสอบว่าเป็นไฟล์ Excel หรือไม่
+                const validExtensions = ['.xls', '.xlsx'];
+                const fileName = file.name.toLowerCase();
+                const isValidExcel = validExtensions.some(ext => fileName.endsWith(ext));
+                
+                if (!isValidExcel) {
+                    showNotificationModal('⚠️ ข้อผิดพลาด', 'กรุณาอัพโหลดไฟล์ Excel เท่านั้น (.xls หรือ .xlsx)', '⚠️', 'warning');
+                    removeFile(inputId, dropZoneId, fileInfoId, fileIndex);
+                    return;
+                }
+                
+                dropZone.querySelector('.file-drop-zone-text').textContent = '✅ ' + file.name;
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'ไฟล์ Excel ภ.ง.ด.1ก พร้อมใช้งาน';
+                processPnd1kExcel(file);
                 checkAllFilesUploaded();
                 updateSummary();
                 return;
@@ -2428,6 +2469,73 @@
             const fileInfo = document.getElementById('fileInfo6');
             if (fileInput) fileInput.value = '';
             fileData.file6 = null;
+            if (dropZone) {
+                dropZone.classList.remove('has-file');
+                dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รองรับไฟล์ Excel เท่านั้น (.xls, .xlsx)';
+            }
+            if (fileInfo) fileInfo.style.display = 'none';
+            checkAllFilesUploaded();
+            updateSummary();
+        }
+        
+        // ===== ฟังก์ชันจัดการ PND1K Excel =====
+        async function processPnd1kExcel(file) {
+            const company = document.getElementById('companySelect')?.value || '';
+            if (!company) {
+                showNotificationModal('⚠️ ข้อผิดพลาด', 'กรุณาเลือกบริษัทก่อนอัพโหลดไฟล์ Excel ภ.ง.ด.1ก', '⚠️', 'warning');
+                resetPnd1kExcelDropZone();
+                return;
+            }
+            
+            const dropZone = document.getElementById('dropZone7');
+            const fileInfo = document.getElementById('fileInfo7');
+            
+            try {
+                dropZone.querySelector('.file-drop-zone-text').textContent = '⏳ กำลังอัพโหลดและอ่านข้อมูล: ' + file.name;
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'รอสักครู่...';
+                
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('company', company);
+                
+                const response = await fetch('/api/pnd1k/upload-pnd1k-excel', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    dropZone.querySelector('.file-drop-zone-text').textContent = '✅ ' + file.name;
+                    dropZone.querySelector('.file-drop-zone-hint').textContent = `แยกข้อมูลพนักงานสำเร็จ: ${result.employees.length} รายการ`;
+                    
+                    // Fetch all existing employee records in "tab-content-employee" table
+                    // and merge or add the new Excel parsed items.
+                    await loadPnd1kExcelData(company); 
+                    
+                    showNotificationModal('✅ นำเข้าข้อมูลสำเร็จ', `อ่านข้อมูลจาก Excel ສຳเร็จ ${result.employees.length} รายการ\nกรุณาตรวจสอบข้อมูลในแท็บ "ข้อมูลพนักงาน"`, '✅', 'success');
+                } else {
+                    dropZone.querySelector('.file-drop-zone-text').textContent = '❌ ' + file.name;
+                    dropZone.querySelector('.file-drop-zone-hint').textContent = 'เกิดข้อผิดพลาด';
+                    showNotificationModal('❌ เกิดข้อผิดพลาด', result.error || 'ไม่สามารถอัพโหลดไฟล์ได้', '❌', 'error');
+                    resetPnd1kExcelDropZone();
+                }
+            } catch (error) {
+                console.error('Error uploading PND1K Excel:', error);
+                dropZone.querySelector('.file-drop-zone-text').textContent = '❌ ' + file.name;
+                dropZone.querySelector('.file-drop-zone-hint').textContent = 'เกิดข้อผิดพลาด';
+                showNotificationModal('❌ เกิดข้อผิดพลาด', error.message || 'ไม่สามารถอัพโหลดไฟล์ได้', '❌', 'error');
+                resetPnd1kExcelDropZone();
+            }
+        }
+        
+        function resetPnd1kExcelDropZone() {
+            const fileInput = document.getElementById('fileInput7');
+            const dropZone = document.getElementById('dropZone7');
+            const fileInfo = document.getElementById('fileInfo7');
+            if (fileInput) fileInput.value = '';
+            fileData.file7 = null;
             if (dropZone) {
                 dropZone.classList.remove('has-file');
                 dropZone.querySelector('.file-drop-zone-text').textContent = 'ลากไฟล์มาวางที่นี่ หรือคลิกเพื่อเลือกไฟล์';
@@ -2845,6 +2953,7 @@
         let attachmentData = [];
         let socialSecurityData = [];
         let socialSecurityFormData = [];
+        let pnd1kExcelData = []; // ข้อมูลที่ได้จากไฟล์ Excel ภ.ง.ด.1ก
         let employeeOverrides = new Map();
         let employeeMap = new Map(); // เก็บข้อมูลพนักงานสำหรับใช้ในฟังก์ชันอื่นๆ
         let selectedMonth = 'all'; // 'all' หรือ '1'-'12'
@@ -2948,6 +3057,31 @@
             }
         }
         
+        async function loadPnd1kExcelData(company) {
+            if (!company) {
+                pnd1kExcelData = [];
+                updateUploadedDataTable();
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/pnd1k/excel-data?company=${encodeURIComponent(company)}&_t=${new Date().getTime()}`);
+                const result = await response.json();
+                
+                if (result.success && result.data) {
+                    pnd1kExcelData = Array.isArray(result.data) ? result.data : [result.data];
+                    updateAllTabs();
+                } else {
+                    pnd1kExcelData = [];
+                    updateAllTabs();
+                }
+            } catch (error) {
+                console.error('Error loading PND1K Excel data:', error);
+                pnd1kExcelData = [];
+                updateUploadedDataTable();
+            }
+        }
+
         let pnd1kFormData = null;
         let pnd1kFormsList = [];
         
@@ -3618,6 +3752,71 @@
                 const mk = `${att.payment_year}-${String(att.payment_month).padStart(2, '0')}`;
                 const ssKey = `${idCard}|${mk}`;
                 if (ssMapEmp.has(ssKey)) emp.totalContribution += ssMapEmp.get(ssKey);
+            });
+            
+            // นำข้อมูลจาก pnd1kExcelData มารวม
+            pnd1kExcelData.forEach(excelItem => {
+                // excelItem: { row, no, name, tax_id, total_income }
+                const excelIdCard = (excelItem.tax_id || '').toString().replace(/\s/g, '').replace(/-/g, '').trim();
+                const excelName = (excelItem.name || '').trim();
+                const excelTotalIncome = parseFloat(excelItem.total_income) || 0;
+                
+                // ข้ามถ้าไม่มีทั้ง ID และ Name
+                if (!excelIdCard && !excelName) return;
+                
+                // ใช้ 40(1) เป็น default สำหรับข้อมูลจาก Excel (หรือถ้ามี override ก็จะครอบคลุม logic นี้ด้านล่าง)
+                let incomeType = '40(1)'; 
+                const fallbackIncomeTypeOverride = employeeOverrides.get(`${excelIdCard}_40(1)`) || employeeOverrides.get(excelIdCard);
+                if (fallbackIncomeTypeOverride && fallbackIncomeTypeOverride.income_type) {
+                    incomeType = fallbackIncomeTypeOverride.income_type;
+                }
+                
+                let foundKey = null;
+                // ถ้ามี tax_id ให้ตามหา key
+                if (excelIdCard) {
+                    foundKey = `${excelIdCard}_${incomeType}`;
+                } else if (excelName) {
+                    // ถ้ามีแต่ชื่อให้หาแบบ loop
+                    for (const [k, v] of employeeByTypeMap.entries()) {
+                        if (v.name === excelName) {
+                            foundKey = k;
+                            break;
+                        }
+                    }
+                }
+                
+                if (!foundKey && excelIdCard) {
+                     foundKey = `${excelIdCard}_${incomeType}`;
+                }
+                
+                if (foundKey) {
+                    if (!employeeByTypeMap.has(foundKey)) {
+                        employeeByTypeMap.set(foundKey, {
+                            idCard: excelIdCard || '-',
+                            incomeType: incomeType,
+                            name: excelName || '-',
+                            address: '-',
+                            birthDate: '-',
+                            issueDate: '-',
+                            expiryDate: '-',
+                            months: new Set(),
+                            totalIncome: 0,
+                            totalTax: 0,
+                            totalContribution: 0
+                        });
+                    }
+                    
+                    const emp = employeeByTypeMap.get(foundKey);
+                    // ทับ totalIncome ถ้ามากกว่า 0 (หรือตาม logic ที่ต้องการ: ที่นี่เลือกสมมติให้ทดแทน ถ้ายอดเก่าเป็น 0 แต่ถ้ามีของเดิม จะบวกหรือไม่บวก? Excel นำเสนอ Total ตลอดทั้งปี ให้แทนที่ยอดรายเดือน หรือเอามาแทนที่แค่ display) 
+                    // ถ้าต้องการบวกเพิ่ม: emp.totalIncome += excelTotalIncome;
+                    // ถ้าต้องการยึดจาก Excel เป็นหลัก:
+                    if (excelTotalIncome > 0 && emp.totalIncome === 0) {
+                        emp.totalIncome = excelTotalIncome;
+                    }
+                    if (excelName && emp.name === '-') {
+                        emp.name = excelName;
+                    }
+                }
             });
             
             // รวมข้อมูลจาก idCardData ที่ยังไม่มีใน employeeByTypeMap
@@ -5881,12 +6080,150 @@
                 return;
             }
             
-            // ดึงรายชื่อพนักงานทั้งหมด
-            const employees = Array.from(employeeMap.values());
-            if (employees.length === 0) {
-                showNotificationModal('⚠️ ข้อผิดพลาด', 'ไม่พบข้อมูลพนักงาน', '⚠️', 'warning');
-                return;
+        // สร้าง employeeByTypeMap เพื่อรวบรวมข้อมูลจากทุกแหล่ง
+        const employeeByTypeMap = new Map();
+        
+        // 1. ดึงข้อมูลจาก attachmentData
+        attachmentData.forEach(att => {
+            const idCard = (att.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+            if (!idCard) return;
+            
+            // หาประเภทภาษีจาก attachment โดยตรวจสอบ employeeOverrides ก่อน
+            const normalizedIdCard = idCard.toString().replace(/\s/g, '').trim();
+            let incomeType = att.income_type;
+            
+            // ถ้า income_type เป็น null, undefined, '', หรือ '-' ให้ตรวจสอบ employeeOverrides
+            if (!incomeType || incomeType === '-' || incomeType === '') {
+                // ลองหาจาก employeeOverrides โดยใช้ key: {idCard}_{incomeType} สำหรับทุกประเภท
+                let foundOverride = null;
+                for (const [key, override] of employeeOverrides.entries()) {
+                    if (key.startsWith(`${normalizedIdCard}_`)) {
+                        if (override && override.income_type) {
+                            foundOverride = override.income_type;
+                            break;
+                        }
+                    }
+                }
+                // ถ้าไม่มี override ให้ลองหาโดยใช้แค่ idCard
+                if (!foundOverride) {
+                    const fallbackOverride = employeeOverrides.get(normalizedIdCard);
+                    if (fallbackOverride && fallbackOverride.income_type) {
+                        foundOverride = fallbackOverride.income_type;
+                    }
+                }
+                incomeType = foundOverride || '40(1)';
             }
+            
+            const key = `${idCard}_${incomeType}`;
+            
+            if (!employeeByTypeMap.has(key)) {
+                // หาข้อมูลพื้นฐานจาก idCardData หรือ attachmentData
+                let baseName = '-';
+                let baseAddress = '-';
+                
+                const card = idCardData.find(c => (c.id_card_number || '').toString().trim() === idCard);
+                if (card) {
+                    baseName = (card.full_name || '').trim() || '-';
+                    baseAddress = (card.address || '').trim() || '-';
+                } else {
+                    const firstAtt = attachmentData.find(a => {
+                        const attIdCard = (a.recipient_id_card || '').toString().replace(/\s/g, '').trim();
+                        return attIdCard === idCard;
+                    });
+                    if (firstAtt) {
+                        baseName = (firstAtt.recipient_name || '').trim() || '-';
+                    }
+                }
+                
+                employeeByTypeMap.set(key, {
+                    idCard: idCard,
+                    incomeType: incomeType,
+                    name: baseName,
+                    address: baseAddress
+                });
+            }
+        });
+        
+        // 2. รวมข้อมูลจาก idCardData ที่ยังไม่มีใน employeeByTypeMap
+        idCardData.forEach(card => {
+            const idCard = (card.id_card_number || '').toString().trim();
+            if (!idCard) return;
+            
+            const normalizedIdCard = idCard.toString().replace(/\s/g, '').trim();
+            let types = [...new Set(attachmentData
+                .filter(a => (a.recipient_id_card || '').toString().replace(/\s/g, '').trim() === normalizedIdCard)
+                .map(a => {
+                    let type = a.income_type;
+                    if (!type || type === '-' || type === '') {
+                        let foundOverride = null;
+                        for (const [key, override] of employeeOverrides.entries()) {
+                            if (key.startsWith(`${normalizedIdCard}_`)) {
+                                if (override && override.income_type) {
+                                    foundOverride = override.income_type;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!foundOverride) {
+                            const fallbackOverride = employeeOverrides.get(normalizedIdCard);
+                            if (fallbackOverride && fallbackOverride.income_type) {
+                                foundOverride = fallbackOverride.income_type;
+                            }
+                        }
+                        type = foundOverride || '40(1)';
+                    }
+                    return type;
+                })
+                .filter(t => t && t !== '-'))];
+            
+            if (types.length === 0) types.push('40(1)');
+            
+            types.forEach(incomeType => {
+                const key = `${idCard}_${incomeType}`;
+                if (!employeeByTypeMap.has(key)) {
+                    employeeByTypeMap.set(key, {
+                        idCard: idCard,
+                        incomeType: incomeType,
+                        name: (card.full_name || '').trim() || '-',
+                        address: (card.address || '').trim() || '-'
+                    });
+                }
+            });
+        });
+        
+        // 3. รวมข้อมูลจาก pnd1kExcelData
+        pnd1kExcelData.forEach(excelItem => {
+            const idCard = (excelItem.tax_id || '').toString().trim();
+            if (!idCard) return;
+            
+            const normalizedIdCard = idCard.replace(/\s/g, '');
+            // สำหรับ Excel อาจจะไม่มี income_type แนบมา แต่เป็น 40(1) โดย default
+            const incomeType = '40(1)'; 
+            const key = `${idCard}_${incomeType}`;
+            
+            if (!employeeByTypeMap.has(key)) {
+                // ข้อมูลเบื้องต้นจาก Excel
+                employeeByTypeMap.set(key, {
+                    idCard: idCard,
+                    incomeType: incomeType,
+                    name: (excelItem.name || '').trim() || '-',
+                    address: '-' 
+                });
+            } else {
+                // ถ้ามีอยู่แล้วแต่ชื่อยังไม่มีค่า อัปเดตจาก Excel
+                const existing = employeeByTypeMap.get(key);
+                if (existing.name === '-' || !existing.name) {
+                    existing.name = (excelItem.name || '').trim() || '-';
+                }
+            }
+        });
+
+        // ดึงรายชื่อพนักงานทั้งหมด
+        const employees = Array.from(employeeByTypeMap.values());
+        if (employees.length === 0) {
+            showNotificationModal('⚠️ ข้อผิดพลาด', 'ไม่พบข้อมูลพนักงาน', '⚠️', 'warning');
+            return;
+        }
             
             // ถาม path ที่จะเก็บไฟล์ผ่าน modal
             showPathInputModal(
@@ -6054,6 +6391,34 @@
                     loadingModal.style.display = 'flex';
                 }
                 
+                const payloadEmployees = employees.map(emp => {
+                    const normalizedIdCard = (emp.idCard || '').toString().replace(/\s/g, '').trim();
+                    const empIncomeType = emp.incomeType || '40(1)';
+                    
+                    let overrideIncomeType = incomeTypeOverrides[normalizedIdCard];
+                    let finalIncomeType = overrideIncomeType || empIncomeType;
+
+                    let finalAddress = emp.address;
+                    if (addressOverrides[normalizedIdCard]) {
+                        finalAddress = addressOverrides[normalizedIdCard];
+                    }
+                    
+                    let finalName = emp.name;
+                    let o = employeeOverrides.get(`${normalizedIdCard}_${empIncomeType}`) || employeeOverrides.get(normalizedIdCard) || {};
+                    if (o.name !== undefined && o.name !== '') {
+                        finalName = o.name;
+                    }
+
+                    return {
+                        idCard: normalizedIdCard,
+                        name: finalName,
+                        address: finalAddress,
+                        incomeType: finalIncomeType,
+                        totalIncome: emp.totalIncome || 0,
+                        totalTax: emp.totalTax || 0
+                    };
+                });
+                
                 const response = await fetch('/api/pnd1k/generate-rd-prep', {
                     method: 'POST',
                     headers: {
@@ -6062,8 +6427,7 @@
                     body: JSON.stringify({
                         company: company,
                         save_path: savePath,
-                        address_overrides: addressOverrides,
-                        income_type_overrides: incomeTypeOverrides,
+                        employee_data: payloadEmployees,
                         company_tax_id_override: (document.getElementById('companyTaxId')?.textContent || '').trim()
                     })
                 });

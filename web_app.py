@@ -12026,207 +12026,312 @@ def generate_rd_prep():
         
         if not company_tax_id or len(company_tax_id) != 13:
             return jsonify({'success': False, 'error': 'ไม่พบเลขประจำตัวผู้เสียภาษี 13 หลักของบริษัท'}), 400
-        
-        # โหลดข้อมูล attachment เพื่อดึงประเภทภาษี
-        attachment_file = pnd1k_data_dir / f"pnd1k_attachments_{safe_company_name}.json"
-        attachments = []
-        if attachment_file.exists():
-            try:
-                with open(attachment_file, 'r', encoding='utf-8') as f:
-                    attachments = json.load(f)
-                if not isinstance(attachments, list):
-                    attachments = [attachments] if attachments else []
-            except Exception as e:
-                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูล attachment: {e}")
-        
-        # โหลดข้อมูล ID card
-        id_card_file = pnd1k_data_dir / f"pnd1k_id_cards_{safe_company_name}.json"
-        id_cards = []
-        if id_card_file.exists():
-            try:
-                with open(id_card_file, 'r', encoding='utf-8') as f:
-                    id_cards = json.load(f)
-                if not isinstance(id_cards, list):
-                    id_cards = [id_cards] if id_cards else []
-            except Exception as e:
-                logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูล ID card: {e}")
-        
-        # สร้าง reference set ของเลขบัตร 13 หลักที่ถูกต้อง (จาก ID card JSON)
-        reference_ids = set()
-        for card in id_cards:
-            card_id = str(card.get('id_card_number', '')).replace(' ', '').strip()
-            card_id_digits = ''.join(c for c in card_id if c.isdigit())
-            if len(card_id_digits) == 13:
-                reference_ids.add(card_id_digits)
-        
-        # เก็บ log เลขบัตรที่แก้ไข
-        id_card_corrections = {}  # original -> corrected
-        
-        # สร้าง map สำหรับรวบรวมข้อมูลตาม ID card และประเภทภาษี
-        employee_data_map = {}  # key: {id_card}_{income_type}
-        
-        # ประมวลผลข้อมูลจาก attachments
-        for att in attachments:
-            id_card_raw = att.get('recipient_id_card', '')
-            id_card = str(id_card_raw).replace(' ', '').strip() if id_card_raw else ''
-            if not id_card:
-                continue
             
-            # ตรวจสอบและแก้ไขเลขบัตรที่ไม่ครบ 13 หลัก
-            id_card_digits = ''.join(c for c in id_card if c.isdigit())
-            if len(id_card_digits) != 13 and reference_ids:
-                name_hint = att.get('recipient_name', '')
-                corrected, was_corrected, original = correct_id_card(id_card, reference_ids, name_hint)
-                if was_corrected:
-                    id_card_corrections[original] = corrected
-                    id_card = corrected
-                else:
-                    id_card = id_card_digits
-            else:
-                id_card = id_card_digits if id_card_digits else id_card
-            
-            # ใช้ income_type จาก income_type_overrides ก่อน (priority สูงสุด)
-            income_type = income_type_overrides.get(id_card)
-            if not income_type:
-                # ถ้าไม่มีใน income_type_overrides ให้ใช้จาก attachment
-                income_type = att.get('income_type', '40(1)') or '40(1)'
-            
-            key = f"{id_card}_{income_type}"
-            
-            if key not in employee_data_map:
-                employee_data_map[key] = {
-                    'id_card': id_card,
-                    'income_type': income_type,
-                    'name_parts': {},
-                    'address_parts': {},
-                    'total_income_year': 0.0,
-                    'total_tax_year': 0.0
-                }
-            
-            # แยกชื่อ
-            recipient_name = att.get('recipient_name', '')
-            if recipient_name:
-                name_parts = parse_thai_name(recipient_name)
-                if not employee_data_map[key]['name_parts'].get('prefix'):
-                    employee_data_map[key]['name_parts'] = name_parts
-            
-            # แยกที่อยู่ (ถ้ามี) - ใช้ address_overrides ก่อน ถ้าไม่มีค่อยใช้จาก attachment
-            recipient_address = ''
-            # ตรวจสอบ address_overrides ก่อน (priority สูงสุด)
-            if id_card in address_overrides:
-                recipient_address = str(address_overrides[id_card]).strip()
-                if recipient_address and recipient_address != '-':
-                    logger.info(f"✅ ใช้ที่อยู่จาก address_overrides สำหรับ {id_card} (จาก attachments)")
-                    address_parts = parse_thai_address(recipient_address)
-                    employee_data_map[key]['address_parts'] = address_parts
-            else:
-                # ถ้าไม่มีใน address_overrides ให้ใช้จาก attachment
-                recipient_address = att.get('recipient_address', '')
-                if recipient_address and recipient_address != '-':
-                    address_parts = parse_thai_address(recipient_address)
-                    if not employee_data_map[key]['address_parts'].get('house_number'):
-                        employee_data_map[key]['address_parts'] = address_parts
-            
-            # คำนวณยอดรวมทั้งปี (เฉพาะประเภทภาษีนี้)
-            income_amount = att.get('income_amount', '0')
-            tax_amount = att.get('tax_amount', '0')
-            att_income_type = att.get('income_type', '40(1)') or '40(1)'
-            
-            try:
-                income_value = float(str(income_amount).replace(',', '').replace(' ', '')) if income_amount else 0.0
-                tax_value = float(str(tax_amount).replace(',', '').replace(' ', '')) if tax_amount else 0.0
-                
-                # รวมเฉพาะถ้าประเภทภาษีตรงกัน
-                if att_income_type == income_type:
-                    employee_data_map[key]['total_income_year'] += income_value
-                    employee_data_map[key]['total_tax_year'] += tax_value
-            except:
-                pass
-        
-        # ประมวลผลข้อมูลจาก ID cards (เพื่อดึงที่อยู่และชื่อที่ครบถ้วนกว่า)
-        for card in id_cards:
-            id_card = str(card.get('id_card_number', '')).replace(' ', '').strip()
-            if not id_card:
-                continue
-            
-            # อัพเดทข้อมูลสำหรับทุกประเภทภาษีที่มี
-            for key in employee_data_map.keys():
-                if key.startswith(f"{id_card}_"):
-                    # แยกชื่อจาก ID card
-                    full_name = card.get('full_name', '')
-                    if full_name:
-                        name_parts = parse_thai_name(full_name)
-                        if not employee_data_map[key]['name_parts'].get('prefix') or (name_parts.get('last_name') and not employee_data_map[key]['name_parts'].get('last_name')):
-                            employee_data_map[key]['name_parts'].update(name_parts)
-                    
-                    # แยกที่อยู่จาก ID card (ใช้ address_overrides ก่อน ถ้าไม่มีค่อยใช้จาก card)
-                    address = ''
-                    # ตรวจสอบ address_overrides ก่อน (priority สูงสุด)
-                    if id_card in address_overrides:
-                        address = str(address_overrides[id_card]).strip()
-                        if address and address != '-':
-                            logger.info(f"✅ ใช้ที่อยู่จาก address_overrides สำหรับ {id_card}")
-                            address_parts = parse_thai_address(address)
-                            employee_data_map[key]['address_parts'] = address_parts
-                    else:
-                        # ถ้าไม่มีใน address_overrides ให้ใช้จาก ID card
-                        address = card.get('address', '')
-                        if address and address != '-':
-                            address_parts = parse_thai_address(address)
-                            if not employee_data_map[key]['address_parts'].get('house_number') or (address_parts.get('province') and not employee_data_map[key]['address_parts'].get('province')):
-                                employee_data_map[key]['address_parts'].update(address_parts)
-        
-        # อัพเดทที่อยู่จาก address_overrides สำหรับพนักงานที่ไม่มีใน id_cards แต่มีใน attachments
-        for key, data in employee_data_map.items():
-            id_card = data['id_card']
-            # ถ้ายังไม่มีที่อยู่ (หรือมีแต่ไม่ครบ) และมีใน address_overrides
-            if id_card in address_overrides:
-                override_address = str(address_overrides[id_card]).strip()
-                if override_address and override_address != '-':
-                    # ตรวจสอบว่ามีที่อยู่แล้วหรือยัง
-                    current_address_parts = data['address_parts']
-                    has_address = current_address_parts.get('house_number') or current_address_parts.get('province')
-                    
-                    # ถ้ายังไม่มีที่อยู่ หรือมีแต่ไม่ครบ ให้ใช้จาก address_overrides
-                    if not has_address:
-                        logger.info(f"✅ ใช้ที่อยู่จาก address_overrides สำหรับ {id_card} (ไม่มีใน id_cards)")
-                        address_parts = parse_thai_address(override_address)
-                        employee_data_map[key]['address_parts'] = address_parts
-        
-        # แยกข้อมูลตามประเภทภาษี
+        employee_data_fe = request.json.get('employee_data', [])
         employees_40_1 = []
         employees_40_2 = []
         
-        for key, data in employee_data_map.items():
-            if data['total_income_year'] > 0 or data['total_tax_year'] > 0:
+        if employee_data_fe and isinstance(employee_data_fe, list):
+            logger.info(f"✅ สร้างไฟล์ RD Prep ข้อมูลจากหน้าเว็บ ({len(employee_data_fe)} รายการ)")
+            for fe_emp in employee_data_fe:
+                total_income = float(fe_emp.get('totalIncome', 0))
+                total_tax = float(fe_emp.get('totalTax', 0))
+                # ข้ามคนที่ไม่มีรายได้
+                if total_income <= 0 and total_tax <= 0:
+                    continue
+                    
+                income_type = fe_emp.get('incomeType', '40(1)')
+                id_card = str(fe_emp.get('idCard', '')).replace(' ', '').replace('-', '').strip()
+                name = fe_emp.get('name', '')
+                address = fe_emp.get('address', '')
+                
+                name_parts = parse_thai_name(name) if name and name != '-' else {}
+                address_parts = parse_thai_address(address) if address and address != '-' else {}
+                
                 emp_data = {
-                    'id_card': data['id_card'],
-                    'income_type': data['income_type'],
-                    'name_prefix': data['name_parts'].get('prefix', ''),
-                    'name_first': data['name_parts'].get('first_name', ''),
-                    'name_middle': data['name_parts'].get('middle_name', ''),
-                    'name_last': data['name_parts'].get('last_name', ''),
-                    'address_building': data['address_parts'].get('building', ''),
-                    'address_room_number': data['address_parts'].get('room_number', ''),
-                    'address_floor': data['address_parts'].get('floor', ''),
-                    'address_village': data['address_parts'].get('village', ''),
-                    'address_house_number': data['address_parts'].get('house_number', ''),
-                    'address_moo': data['address_parts'].get('moo', ''),
-                    'address_soi': data['address_parts'].get('soi', ''),
-                    'address_intersection': data['address_parts'].get('intersection', ''),
-                    'address_road': data['address_parts'].get('road', ''),
-                    'address_province': data['address_parts'].get('province', ''),
-                    'address_district': data['address_parts'].get('district', ''),
-                    'address_subdistrict': data['address_parts'].get('subdistrict', ''),
-                    'address_postal_code': data['address_parts'].get('postal_code', ''),
-                    'total_income_year': round(data['total_income_year'], 2),
-                    'total_tax_year': round(data['total_tax_year'], 2)
+                    'id_card': id_card,
+                    'income_type': income_type,
+                    'name_prefix': name_parts.get('prefix', '') or 'คุณ',
+                    'name_first': name_parts.get('first_name', ''),
+                    'name_middle': name_parts.get('middle_name', ''),
+                    'name_last': name_parts.get('last_name', ''),
+                    'address_building': address_parts.get('building', ''),
+                    'address_room_number': address_parts.get('room_number', ''),
+                    'address_floor': address_parts.get('floor', ''),
+                    'address_village': address_parts.get('village', ''),
+                    'address_house_number': address_parts.get('house_number', ''),
+                    'address_moo': address_parts.get('moo', ''),
+                    'address_soi': address_parts.get('soi', ''),
+                    'address_intersection': address_parts.get('intersection', ''),
+                    'address_road': address_parts.get('road', ''),
+                    'address_province': address_parts.get('province', ''),
+                    'address_district': address_parts.get('district', ''),
+                    'address_subdistrict': address_parts.get('subdistrict', ''),
+                    'address_postal_code': address_parts.get('postal_code', ''),
+                    'total_income_year': round(total_income, 2),
+                    'total_tax_year': round(total_tax, 2)
                 }
                 
-                if data['income_type'] == '40(2)':
+                if income_type == '40(2)':
                     employees_40_2.append(emp_data)
                 else:
                     employees_40_1.append(emp_data)
+        else:
+            # โหลดข้อมูล attachment เพื่อดึงประเภทภาษี
+            attachment_file = pnd1k_data_dir / f"pnd1k_attachments_{safe_company_name}.json"
+            attachments = []
+            if attachment_file.exists():
+                try:
+                    with open(attachment_file, 'r', encoding='utf-8') as f:
+                        attachments = json.load(f)
+                    if not isinstance(attachments, list):
+                        attachments = [attachments] if attachments else []
+                except Exception as e:
+                    logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูล attachment: {e}")
+            
+            # โหลดข้อมูล ID card
+            id_card_file = pnd1k_data_dir / f"pnd1k_id_cards_{safe_company_name}.json"
+            id_cards = []
+            if id_card_file.exists():
+                try:
+                    with open(id_card_file, 'r', encoding='utf-8') as f:
+                        id_cards = json.load(f)
+                    if not isinstance(id_cards, list):
+                        id_cards = [id_cards] if id_cards else []
+                except Exception as e:
+                    logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูล ID card: {e}")
+                    
+            # โหลดข้อมูล Excel
+            excel_file = pnd1k_data_dir / f"pnd1k_excel_data_{safe_company_name}.json"
+            excel_data = []
+            if excel_file.exists():
+                try:
+                    with open(excel_file, 'r', encoding='utf-8') as f:
+                        excel_data = json.load(f)
+                    if not isinstance(excel_data, list):
+                        excel_data = [excel_data] if excel_data else []
+                except Exception as e:
+                    logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ข้อมูล Excel: {e}")
+            
+            # สร้าง reference set ของเลขบัตร 13 หลักที่ถูกต้อง (จาก ID card JSON)
+            reference_ids = set()
+            for card in id_cards:
+                card_id = str(card.get('id_card_number', '')).replace(' ', '').strip()
+                card_id_digits = ''.join(c for c in card_id if c.isdigit())
+                if len(card_id_digits) == 13:
+                    reference_ids.add(card_id_digits)
+            
+            # เก็บ log เลขบัตรที่แก้ไข
+            id_card_corrections = {}  # original -> corrected
+            
+            # สร้าง map สำหรับรวบรวมข้อมูลตาม ID card และประเภทภาษี
+            employee_data_map = {}  # key: {id_card}_{income_type}
+            
+            # ประมวลผลข้อมูลจาก attachments
+            for att in attachments:
+                id_card_raw = att.get('recipient_id_card', '')
+                id_card = str(id_card_raw).replace(' ', '').strip() if id_card_raw else ''
+                if not id_card:
+                    continue
+                
+                # ตรวจสอบและแก้ไขเลขบัตรที่ไม่ครบ 13 หลัก
+                id_card_digits = ''.join(c for c in id_card if c.isdigit())
+                if len(id_card_digits) != 13 and reference_ids:
+                    name_hint = att.get('recipient_name', '')
+                    corrected, was_corrected, original = correct_id_card(id_card, reference_ids, name_hint)
+                    if was_corrected:
+                        id_card_corrections[original] = corrected
+                        id_card = corrected
+                    else:
+                        id_card = id_card_digits
+                else:
+                    id_card = id_card_digits if id_card_digits else id_card
+                
+                # ใช้ income_type จาก income_type_overrides ก่อน (priority สูงสุด)
+                income_type = income_type_overrides.get(id_card)
+                if not income_type:
+                    # ถ้าไม่มีใน income_type_overrides ให้ใช้จาก attachment
+                    income_type = att.get('income_type', '40(1)') or '40(1)'
+                
+                key = f"{id_card}_{income_type}"
+                
+                if key not in employee_data_map:
+                    employee_data_map[key] = {
+                        'id_card': id_card,
+                        'income_type': income_type,
+                        'name_parts': {},
+                        'address_parts': {},
+                        'total_income_year': 0.0,
+                        'total_tax_year': 0.0
+                    }
+                
+                # แยกชื่อ
+                recipient_name = att.get('recipient_name', '')
+                if recipient_name:
+                    name_parts = parse_thai_name(recipient_name)
+                    if not employee_data_map[key]['name_parts'].get('prefix'):
+                        employee_data_map[key]['name_parts'] = name_parts
+                
+                # แยกที่อยู่ (ถ้ามี) - ใช้ address_overrides ก่อน ถ้าไม่มีค่อยใช้จาก attachment
+                recipient_address = ''
+                # ตรวจสอบ address_overrides ก่อน (priority สูงสุด)
+                if id_card in address_overrides:
+                    recipient_address = str(address_overrides[id_card]).strip()
+                    if recipient_address and recipient_address != '-':
+                        logger.info(f"✅ ใช้ที่อยู่จาก address_overrides สำหรับ {id_card} (จาก attachments)")
+                        address_parts = parse_thai_address(recipient_address)
+                        employee_data_map[key]['address_parts'] = address_parts
+                else:
+                    # ถ้าไม่มีใน address_overrides ให้ใช้จาก attachment
+                    recipient_address = att.get('recipient_address', '')
+                    if recipient_address and recipient_address != '-':
+                        address_parts = parse_thai_address(recipient_address)
+                        if not employee_data_map[key]['address_parts'].get('house_number'):
+                            employee_data_map[key]['address_parts'] = address_parts
+                
+                # คำนวณยอดรวมทั้งปี (เฉพาะประเภทภาษีนี้)
+                income_amount = att.get('income_amount', '0')
+                tax_amount = att.get('tax_amount', '0')
+                att_income_type = att.get('income_type', '40(1)') or '40(1)'
+                
+                try:
+                    income_value = float(str(income_amount).replace(',', '').replace(' ', '')) if income_amount else 0.0
+                    tax_value = float(str(tax_amount).replace(',', '').replace(' ', '')) if tax_amount else 0.0
+                    
+                    # รวมเฉพาะถ้าประเภทภาษีตรงกัน
+                    if att_income_type == income_type:
+                        employee_data_map[key]['total_income_year'] += income_value
+                        employee_data_map[key]['total_tax_year'] += tax_value
+                except:
+                    pass
+                    
+            # ประมวลผลข้อมูลจาก Excel
+            for emp in excel_data:
+                id_card_raw = emp.get('tax_id', '')
+                id_card = str(id_card_raw).replace(' ', '').strip() if id_card_raw else ''
+                if not id_card:
+                    continue
+                
+                id_card_digits = ''.join(c for c in id_card if c.isdigit())
+                if len(id_card_digits) != 13 and reference_ids:
+                    name_hint = emp.get('name', '')
+                    corrected, was_corrected, original = correct_id_card(id_card, reference_ids, name_hint)
+                    if was_corrected:
+                        id_card_corrections[original] = corrected
+                        id_card = corrected
+                    else:
+                        id_card = id_card_digits
+                else:
+                    id_card = id_card_digits if id_card_digits else id_card
+                
+                income_type = income_type_overrides.get(id_card, '40(1)')
+                key = f"{id_card}_{income_type}"
+                
+                if key not in employee_data_map:
+                    employee_data_map[key] = {
+                        'id_card': id_card,
+                        'income_type': income_type,
+                        'name_parts': {},
+                        'address_parts': {},
+                        'total_income_year': 0.0,
+                        'total_tax_year': 0.0
+                    }
+                
+                emp_name = emp.get('name', '')
+                if emp_name:
+                    name_parts = parse_thai_name(emp_name)
+                    if not employee_data_map[key]['name_parts'].get('prefix') or (name_parts.get('last_name') and not employee_data_map[key]['name_parts'].get('last_name')):
+                        employee_data_map[key]['name_parts'].update(name_parts)
+                        
+                income_amount = emp.get('total_income', 0.0)
+                try:
+                    income_value = float(income_amount)
+                    # ใช้ค่าที่มากที่สุดระหว่างข้อมูลที่มี กับข้อมูลจาก Excel (เพื่อป้องกันการนำเบิ้ล หรือการทับทิ้ง)
+                    if income_value > employee_data_map[key]['total_income_year']:
+                        employee_data_map[key]['total_income_year'] = income_value
+                except:
+                    pass
+            
+            # ประมวลผลข้อมูลจาก ID cards (เพื่อดึงที่อยู่และชื่อที่ครบถ้วนกว่า)
+            for card in id_cards:
+                id_card = str(card.get('id_card_number', '')).replace(' ', '').strip()
+                if not id_card:
+                    continue
+                
+                # อัพเดทข้อมูลสำหรับทุกประเภทภาษีที่มี
+                for key in employee_data_map.keys():
+                    if key.startswith(f"{id_card}_"):
+                        # แยกชื่อจาก ID card
+                        full_name = card.get('full_name', '')
+                        if full_name:
+                            name_parts = parse_thai_name(full_name)
+                            if not employee_data_map[key]['name_parts'].get('prefix') or (name_parts.get('last_name') and not employee_data_map[key]['name_parts'].get('last_name')):
+                                employee_data_map[key]['name_parts'].update(name_parts)
+                        
+                        # แยกที่อยู่จาก ID card (ใช้ address_overrides ก่อน ถ้าไม่มีค่อยใช้จาก card)
+                        address = ''
+                        # ตรวจสอบ address_overrides ก่อน (priority สูงสุด)
+                        if id_card in address_overrides:
+                            address = str(address_overrides[id_card]).strip()
+                            if address and address != '-':
+                                logger.info(f"✅ ใช้ที่อยู่จาก address_overrides สำหรับ {id_card}")
+                                address_parts = parse_thai_address(address)
+                                employee_data_map[key]['address_parts'] = address_parts
+                        else:
+                            # ถ้าไม่มีใน address_overrides ให้ใช้จาก ID card
+                            address = card.get('address', '')
+                            if address and address != '-':
+                                address_parts = parse_thai_address(address)
+                                if not employee_data_map[key]['address_parts'].get('house_number') or (address_parts.get('province') and not employee_data_map[key]['address_parts'].get('province')):
+                                    employee_data_map[key]['address_parts'].update(address_parts)
+            
+            # อัพเดทที่อยู่จาก address_overrides สำหรับพนักงานที่ไม่มีใน id_cards แต่มีใน attachments
+            for key, data in employee_data_map.items():
+                id_card = data['id_card']
+                # ถ้ายังไม่มีที่อยู่ (หรือมีแต่ไม่ครบ) และมีใน address_overrides
+                if id_card in address_overrides:
+                    override_address = str(address_overrides[id_card]).strip()
+                    if override_address and override_address != '-':
+                        # ตรวจสอบว่ามีที่อยู่แล้วหรือยัง
+                        current_address_parts = data['address_parts']
+                        has_address = current_address_parts.get('house_number') or current_address_parts.get('province')
+                        
+                        # ถ้ายังไม่มีที่อยู่ หรือมีแต่ไม่ครบ ให้ใช้จาก address_overrides
+                        if not has_address:
+                            logger.info(f"✅ ใช้ที่อยู่จาก address_overrides สำหรับ {id_card} (ไม่มีใน id_cards)")
+                            address_parts = parse_thai_address(override_address)
+                            employee_data_map[key]['address_parts'] = address_parts
+            
+            for key, data in employee_data_map.items():
+                if data['total_income_year'] > 0 or data['total_tax_year'] > 0:
+                    emp_data = {
+                        'id_card': data['id_card'],
+                        'income_type': data['income_type'],
+                        'name_prefix': data['name_parts'].get('prefix', '') or 'คุณ',
+                        'name_first': data['name_parts'].get('first_name', ''),
+                        'name_middle': data['name_parts'].get('middle_name', ''),
+                        'name_last': data['name_parts'].get('last_name', ''),
+                        'address_building': data['address_parts'].get('building', ''),
+                        'address_room_number': data['address_parts'].get('room_number', ''),
+                        'address_floor': data['address_parts'].get('floor', ''),
+                        'address_village': data['address_parts'].get('village', ''),
+                        'address_house_number': data['address_parts'].get('house_number', ''),
+                        'address_moo': data['address_parts'].get('moo', ''),
+                        'address_soi': data['address_parts'].get('soi', ''),
+                        'address_intersection': data['address_parts'].get('intersection', ''),
+                        'address_road': data['address_parts'].get('road', ''),
+                        'address_province': data['address_parts'].get('province', ''),
+                        'address_district': data['address_parts'].get('district', ''),
+                        'address_subdistrict': data['address_parts'].get('subdistrict', ''),
+                        'address_postal_code': data['address_parts'].get('postal_code', ''),
+                        'total_income_year': round(data['total_income_year'], 2),
+                        'total_tax_year': round(data['total_tax_year'], 2)
+                    }
+                    
+                    if data['income_type'] == '40(2)':
+                        employees_40_2.append(emp_data)
+                    else:
+                        employees_40_1.append(emp_data)
         
         # สร้างไฟล์ txt
         lines = []
@@ -13057,6 +13162,204 @@ def upload_trial_balance():
     except Exception as e:
         logger.error(f"❌ เกิดข้อผิดพลาดในการอัพโหลดไฟล์งบทดลอง: {e}", exc_info=True)
         return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/pnd1k/upload-pnd1k-excel', methods=['POST'])
+def upload_pnd1k_excel():
+    """อัพโหลดไฟล์ Excel ภ.ง.ด.1ก และดึงข้อมูลพนักงาน"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        from datetime import datetime
+        
+        if 'file' not in request.files:
+            return jsonify({'success': False, 'error': 'ไม่พบไฟล์ที่อัพโหลด'}), 400
+        
+        file = request.files['file']
+        company = request.form.get('company', '').strip()
+        
+        if not company:
+            return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
+        
+        if file.filename == '':
+            return jsonify({'success': False, 'error': 'ไม่ได้เลือกไฟล์'}), 400
+        
+        if not (file.filename.lower().endswith('.xlsx') or file.filename.lower().endswith('.xls')):
+            return jsonify({'success': False, 'error': 'กรุณาอัพโหลดไฟล์ Excel (.xlsx หรือ .xls) เท่านั้น'}), 400
+        
+        parts = company.split(' ')
+        build = parts[0] if parts else ''
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        
+        def sanitize_filename(name):
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        safe_company_name = sanitize_filename(company_name or company)
+        pnd1k_data_dir = Path('data_pnd1k')
+        pnd1k_data_dir.mkdir(exist_ok=True)
+        
+        excel_upload_dir = pnd1k_data_dir / 'pnd1k_excel_upload'
+        excel_upload_dir.mkdir(exist_ok=True)
+        
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        file_extension = Path(file.filename).suffix
+        filename = f"pnd1k_excel_{safe_company_name}_{timestamp}{file_extension}"
+        file_path = excel_upload_dir / filename
+        
+        file.save(str(file_path))
+        
+        try:
+            from openpyxl import load_workbook
+        except ImportError:
+            return jsonify({'success': False, 'error': 'ไม่พบไลบรารี openpyxl'}), 500
+        
+        wb = load_workbook(str(file_path), data_only=True)
+        ws = wb.active
+        
+        employees = []
+        max_row = ws.max_row
+        
+        # คอลัมน์ที่ต้องการ: A (ลำดับ), B (ชื่อ-นามสกุล), C (Tax_ID), AD (รวม AD)
+        # แถวเริ่มจากแถวที่ 3
+        for row_num in range(3, max_row + 1):
+            try:
+                no_cell = ws[f'A{row_num}']
+                name_cell = ws[f'B{row_num}']
+                tax_id_cell = ws[f'C{row_num}']
+                total_income_cell = ws[f'AD{row_num}']
+                
+                no_val = str(no_cell.value).strip() if no_cell.value else ''
+                name_val = str(name_cell.value).strip() if name_cell.value else ''
+                tax_id_val = str(tax_id_cell.value).strip().replace('-', '').replace(' ', '') if tax_id_cell.value else ''
+                
+                # Check line is valid if name or tax_id exists
+                if not name_val and not tax_id_val:
+                    continue
+                
+                income_val = 0.0
+                if total_income_cell.value is not None:
+                    try:
+                        income_val = float(str(total_income_cell.value).replace(',', ''))
+                    except (ValueError, TypeError):
+                        income_val = 0.0
+                
+                employees.append({
+                    'row': row_num,
+                    'no': no_val,
+                    'name': name_val,
+                    'tax_id': tax_id_val,
+                    'total_income': income_val
+                })
+            except Exception as e:
+                logger.warning(f"⚠️ ไม่สามารถอ่านแถว {row_num} ได้: {e}")
+                continue
+        
+        wb.close()
+        
+        # Save to mapping JSON for frontend merge
+        target_json = pnd1k_data_dir / f"pnd1k_excel_data_{safe_company_name}.json"
+        existing_data = []
+        if target_json.exists():
+            try:
+                with open(target_json, 'r', encoding='utf-8') as f:
+                    existing_data = json.load(f)
+            except:
+                existing_data = []
+        
+        # Create a dict of existing data keyed by tax_id or name
+        merged_dict = {}
+        for emp in existing_data:
+            key = emp.get('tax_id') or emp.get('name')
+            if key:
+                merged_dict[key] = emp
+                
+        # Update with new data
+        for emp in employees:
+            key = emp.get('tax_id') or emp.get('name')
+            if key:
+                if key in merged_dict:
+                    merged_dict[key].update(emp)
+                else:
+                    merged_dict[key] = emp
+                    
+        final_employees = list(merged_dict.values())
+        
+        with open(target_json, 'w', encoding='utf-8') as f:
+            json.dump(final_employees, f, ensure_ascii=False, indent=2)
+        
+        logger.info(f"✅ อัพโหลดไฟล์ Excel ภ.ง.ด.1ก สำเร็จ: {filename} (บริษัท: {company_name}) - พบ {len(employees)} รายการ")
+        
+        return jsonify({
+            'success': True,
+            'message': 'อัพโหลดไฟล์ Excel ภ.ง.ด.1ก สำเร็จ',
+            'filename': filename,
+            'employees': employees
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการอัพโหลดไฟล์ Excel ภ.ง.ด.1ก: {e}", exc_info=True)
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/pnd1k/excel-data', methods=['GET'])
+def get_pnd1k_excel_data():
+    """ดึงข้อมูลที่อัพโหลดจากไฟล์ Excel ภ.ง.ด.1ก"""
+    try:
+        import json
+        import re
+        from pathlib import Path
+        
+        company = request.args.get('company', '').strip()
+        
+        if not company:
+            return jsonify({
+                'success': False,
+                'error': 'กรุณาระบุบริษัท'
+            }), 400
+        
+        # แยกชื่อบริษัท
+        parts = company.split(' ')
+        company_name = ' '.join(parts[1:]) if len(parts) > 1 else company
+        
+        def sanitize_filename(name):
+            if not name:
+                return 'default'
+            if isinstance(name, list):
+                name = ' '.join(name)
+            if not isinstance(name, str):
+                name = str(name) if name else 'default'
+            sanitized = re.sub(r'[<>:"/\\|?*]', '_', name)
+            sanitized = re.sub(r'\s+', '_', sanitized)
+            return sanitized[:100] if len(sanitized) > 100 else sanitized
+        
+        safe_company_name = sanitize_filename(company_name or company)
+        excel_data_file = Path('data_pnd1k') / f"pnd1k_excel_data_{safe_company_name}.json"
+        
+        if not excel_data_file.exists():
+            return jsonify({
+                'success': True,
+                'data': []
+            }), 200
+            
+        with open(excel_data_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+            
+        return jsonify({
+            'success': True,
+            'data': data
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการดึงข้อมูล Excel ภ.ง.ด.1ก: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 
 @app.route('/exports/<filename>')
