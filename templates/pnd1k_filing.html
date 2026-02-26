@@ -2863,7 +2863,7 @@
             }
             
             try {
-                const response = await fetch(`/api/pnd1k/id-cards?company=${encodeURIComponent(company)}`);
+                const response = await fetch(`/api/pnd1k/id-cards?company=${encodeURIComponent(company)}&_t=${new Date().getTime()}`);
                 const result = await response.json();
                 
                 if (result.success) {
@@ -2889,7 +2889,7 @@
             }
             
             try {
-                const response = await fetch(`/api/pnd1k/attachments?company=${encodeURIComponent(company)}`);
+                const response = await fetch(`/api/pnd1k/attachments?company=${encodeURIComponent(company)}&_t=${new Date().getTime()}`);
                 const result = await response.json();
                 
                 if (result.success && result.attachments) {
@@ -2912,7 +2912,7 @@
                 return;
             }
             try {
-                const response = await fetch(`/api/pnd1k/social-security?company=${encodeURIComponent(company)}`);
+                const response = await fetch(`/api/pnd1k/social-security?company=${encodeURIComponent(company)}&_t=${new Date().getTime()}`);
                 const result = await response.json();
                 if (result.success && result.social_security) {
                     socialSecurityData = Array.isArray(result.social_security) ? result.social_security : [result.social_security];
@@ -2933,7 +2933,7 @@
                 return;
             }
             try {
-                const response = await fetch(`/api/pnd1k/social-security-forms?company=${encodeURIComponent(company)}`);
+                const response = await fetch(`/api/pnd1k/social-security-forms?company=${encodeURIComponent(company)}&_t=${new Date().getTime()}`);
                 const result = await response.json();
                 if (result.success && result.forms) {
                     socialSecurityFormData = Array.isArray(result.forms) ? result.forms : [result.forms];
@@ -3059,7 +3059,7 @@
                 return;
             }
             try {
-                const response = await fetch(`/api/pnd1k/form?company=${encodeURIComponent(company)}`);
+                const response = await fetch(`/api/pnd1k/form?company=${encodeURIComponent(company)}&_t=${new Date().getTime()}`);
                 const result = await response.json();
                 if (result.success) {
                     if (result.forms && Array.isArray(result.forms) && result.forms.length > 0) {
@@ -5304,15 +5304,15 @@
                 const monthData = currentMonthlyEditData.monthlyData.find(m => `${m.year}-${String(m.month).padStart(2, '0')}` === monthKey);
                 if (monthData) {
                     if (field === 'income') {
-                        const value = parseFloat(input.value) || 0;
+                        const value = parseFloat(input.value.replace(/,/g, '')) || 0;
                         monthData.income = value;
                         sumIncome += value;
                     } else if (field === 'tax') {
-                        const value = parseFloat(input.value) || 0;
+                        const value = parseFloat(input.value.replace(/,/g, '')) || 0;
                         monthData.tax = value;
                         sumTax += value;
                     } else if (field === 'contribution') {
-                        const value = parseFloat(input.value) || 0;
+                        const value = parseFloat(input.value.replace(/,/g, '')) || 0;
                         monthData.contribution = value;
                         sumContrib += value;
                     } else if (field === 'incomeType') {
@@ -5396,11 +5396,11 @@
                 const monthData = currentMonthlyEditData.monthlyData.find(m => `${m.year}-${String(m.month).padStart(2, '0')}` === monthKey);
                 if (monthData) {
                     if (field === 'income') {
-                        monthData.income = parseFloat(input.value) || 0;
+                        monthData.income = parseFloat(input.value.replace(/,/g, '')) || 0;
                     } else if (field === 'tax') {
-                        monthData.tax = parseFloat(input.value) || 0;
+                        monthData.tax = parseFloat(input.value.replace(/,/g, '')) || 0;
                     } else if (field === 'contribution') {
-                        monthData.contribution = parseFloat(input.value) || 0;
+                        monthData.contribution = parseFloat(input.value.replace(/,/g, '')) || 0;
                     } else if (field === 'incomeType') {
                         // อัปเดตประเภทภาษี
                         monthData.incomeType = input.value || '-';

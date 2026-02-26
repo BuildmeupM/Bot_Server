@@ -955,7 +955,7 @@
     "payment_date": "31/01/2568",
     "payment_month": 1,
     "payment_year": 2025,
-    "income_amount": "14,000.00",
+    "income_amount": "14000.00",
     "tax_amount": "0.00",
     "condition": "1",
     "income_type": "40(1)",
@@ -3344,8 +3344,8 @@
     "recipient_index": 41
   },
   {
-    "recipient_name": "นางสาว Than Mon",
-    "recipient_id_card": "0013021218148",
+    "recipient_name": "Miss Than Mon",
+    "recipient_id_card": "0991018935730",
     "payment_date": "31/07/2568",
     "payment_month": 7,
     "payment_year": 2025,
@@ -3382,8 +3382,8 @@
     "recipient_index": 43
   },
   {
-    "recipient_name": "คุณ Than Chaung",
-    "recipient_id_card": "0013941092618",
+    "recipient_name": "Mr. THAN CHAUNG",
+    "recipient_id_card": "0991024548866",
     "payment_date": "31/07/2568",
     "payment_month": 7,
     "payment_year": 2025,
@@ -4276,7 +4276,7 @@
   },
   {
     "recipient_name": "Mr. Khonesavanh Phouadouangchanh",
-    "recipient_id_card": "1100656493124",
+    "recipient_id_card": "0991026852813",
     "payment_date": "31/08/2568",
     "payment_month": 8,
     "payment_year": 2025,
@@ -4389,8 +4389,8 @@
     "recipient_index": 42
   },
   {
-    "recipient_name": "นางสาว Than Mon",
-    "recipient_id_card": "0013021218148",
+    "recipient_name": "Miss Than Mon",
+    "recipient_id_card": "0991018935730",
     "payment_date": "31/08/2568",
     "payment_month": 8,
     "payment_year": 2025,
@@ -4427,8 +4427,8 @@
     "recipient_index": 44
   },
   {
-    "recipient_name": "คุณ Than Chaung",
-    "recipient_id_card": "0013941092618",
+    "recipient_name": "Mr. THAN CHAUNG",
+    "recipient_id_card": "0991024548866",
     "payment_date": "31/08/2568",
     "payment_month": 8,
     "payment_year": 2025,
@@ -5358,8 +5358,8 @@
     "recipient_index": 39
   },
   {
-    "recipient_name": "นางสาว Than Mon",
-    "recipient_id_card": "0013021218148",
+    "recipient_name": "Miss Than Mon",
+    "recipient_id_card": "0991018935730",
     "payment_date": "30/09/2568",
     "payment_month": 9,
     "payment_year": 2025,
@@ -5396,8 +5396,8 @@
     "recipient_index": 41
   },
   {
-    "recipient_name": "คุณ Than Chaung",
-    "recipient_id_card": "0013941092618",
+    "recipient_name": "Mr. THAN CHAUNG",
+    "recipient_id_card": "0991024548866",
     "payment_date": "30/09/2568",
     "payment_month": 9,
     "payment_year": 2025,
@@ -6365,8 +6365,8 @@
     "recipient_index": 41
   },
   {
-    "recipient_name": "นางสาว Than Mon",
-    "recipient_id_card": "0013021218148",
+    "recipient_name": "Miss Than Mon",
+    "recipient_id_card": "0991018935730",
     "payment_date": "31/10/2568",
     "payment_month": 10,
     "payment_year": 2025,
@@ -6403,8 +6403,8 @@
     "recipient_index": 43
   },
   {
-    "recipient_name": "คุณ Than Chaung",
-    "recipient_id_card": "0013941092618",
+    "recipient_name": "Mr. THAN CHAUNG",
+    "recipient_id_card": "0991024548866",
     "payment_date": "31/10/2568",
     "payment_month": 10,
     "payment_year": 2025,
@@ -8246,8 +8246,8 @@
     "recipient_index": 42
   },
   {
-    "recipient_name": "นางสาว Than Mon",
-    "recipient_id_card": "0013021218148",
+    "recipient_name": "Miss Than Mon",
+    "recipient_id_card": "0991018935730",
     "payment_date": "30/11/2568",
     "payment_month": 11,
     "payment_year": 2025,
@@ -8284,8 +8284,8 @@
     "recipient_index": 44
   },
   {
-    "recipient_name": "คุณ Than Chaung",
-    "recipient_id_card": "0013941092618",
+    "recipient_name": "Mr. THAN CHAUNG",
+    "recipient_id_card": "0991024548866",
     "payment_date": "30/11/2568",
     "payment_month": 11,
     "payment_year": 2025,

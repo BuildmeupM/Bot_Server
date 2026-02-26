@@ -1,0 +1,134 @@
+[
+  {
+    "recipient_id_card": "1240600152266",
+    "recipient_name": "นายภัทรธน วัฒนกิจ",
+    "payment_month": 9,
+    "payment_year": 2025,
+    "salary": "63,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 09.2025.pdf",
+    "created_at": "2026-02-26T18:31:46.827067"
+  },
+  {
+    "recipient_id_card": "1529900322341",
+    "recipient_name": "นายธีรพงศ์ อินสวน",
+    "payment_month": 9,
+    "payment_year": 2025,
+    "salary": "36,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 09.2025.pdf",
+    "created_at": "2026-02-26T18:31:46.827567"
+  },
+  {
+    "recipient_id_card": "1909802264130",
+    "recipient_name": "นางสาวสุดารัตน์ ยงเกียรติกานต์",
+    "payment_month": 9,
+    "payment_year": 2025,
+    "salary": "40,334.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 09.2025.pdf",
+    "created_at": "2026-02-26T18:31:46.827567"
+  },
+  {
+    "recipient_id_card": "1529900322341",
+    "recipient_name": "นายธีรพงศ์ อินสวน",
+    "payment_month": 10,
+    "payment_year": 2025,
+    "salary": "113,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 10.2025.pdf",
+    "created_at": "2026-02-26T18:32:09.319489"
+  },
+  {
+    "recipient_id_card": "1909802264130",
+    "recipient_name": "นางสาวสุดารัตน์ ยงเกียรติกานต์",
+    "payment_month": 10,
+    "payment_year": 2025,
+    "salary": "73,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 10.2025.pdf",
+    "created_at": "2026-02-26T18:32:09.319489"
+  },
+  {
+    "recipient_id_card": "1529900322341",
+    "recipient_name": "นายธีรพงศ์ อินสวน",
+    "payment_month": 11,
+    "payment_year": 2025,
+    "salary": "113,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 11.2025 (สปส.1-10 ส่วนที่ 2).pdf",
+    "created_at": "2026-02-26T18:32:20.687913"
+  },
+  {
+    "recipient_id_card": "1909802264130",
+    "recipient_name": "นางสาวสุดารัตน์ ยงเกียรติกานต์",
+    "payment_month": 11,
+    "payment_year": 2025,
+    "salary": "73,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 11.2025 (สปส.1-10 ส่วนที่ 2).pdf",
+    "created_at": "2026-02-26T18:32:20.687913"
+  },
+  {
+    "recipient_id_card": "1529900322341",
+    "recipient_name": "นายธีรพงศ์ อินสวน",
+    "payment_month": 12,
+    "payment_year": 2025,
+    "salary": "113,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 12.2025 (สปส.1-10 ส่วนที่ 2).pdf",
+    "created_at": "2026-02-26T18:32:52.690838"
+  },
+  {
+    "recipient_id_card": "1909802264130",
+    "recipient_name": "นางสาวสุดารัตน์ ยงเกียรติกานต์",
+    "payment_month": 12,
+    "payment_year": 2025,
+    "salary": "73,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 12.2025 (สปส.1-10 ส่วนที่ 2).pdf",
+    "created_at": "2026-02-26T18:32:52.690838"
+  },
+  {
+    "recipient_id_card": "1240600152266",
+    "recipient_name": "นายภัทรธน วัฒนกิจ",
+    "payment_month": 8,
+    "payment_year": 2025,
+    "salary": "103,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 08.2025.pdf",
+    "created_at": "2026-02-26T18:33:36.142446"
+  },
+  {
+    "recipient_id_card": "1103702722154",
+    "recipient_name": "นางสาววริศรา บุญเอนก",
+    "payment_month": 7,
+    "payment_year": 2025,
+    "salary": "25,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 07.2025.pdf",
+    "created_at": "2026-02-26T18:33:48.871117"
+  },
+  {
+    "recipient_id_card": "1240600152266",
+    "recipient_name": "นายภัทรธน วัฒนกิจ",
+    "payment_month": 7,
+    "payment_year": 2025,
+    "salary": "80,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build547 บริษัท อัลโตเทคโนโยลี จำกัด",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 07.2025.pdf",
+    "created_at": "2026-02-26T18:33:48.871117"
+  }
+]

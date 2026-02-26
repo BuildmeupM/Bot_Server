@@ -8979,6 +8979,7 @@ def update_monthly_data():
         company = data.get('company', '').strip()
         id_card = str(data.get('id_card', '')).strip().replace(' ', '').replace('-', '')
         monthly_data = data.get('monthly_data', [])
+        print(f"DEBUG update_monthly_data payload for {id_card}: {monthly_data}")
         
         if not company:
             return jsonify({'success': False, 'error': 'กรุณาระบุบริษัท'}), 400
@@ -9112,6 +9113,8 @@ def update_monthly_data():
             except Exception as e:
                 logger.warning(f"⚠️ ไม่สามารถอ่านไฟล์ประกันสังคม: {e}")
         
+        found_ss_keys = set()
+        
         # อัปเดตข้อมูลใน social security
         for ss in social_security:
             ss_id_card = str(ss.get('recipient_id_card', '')).strip().replace(' ', '').replace('-', '')
@@ -9129,6 +9132,34 @@ def update_monthly_data():
                 # อัปเดตเงินสมทบประกันสังคม
                 ss['social_security_contribution'] = f"{contribution:.2f}"
                 updated_social_security += 1
+                found_ss_keys.add(key)
+                
+        # สร้างรายการใหม่สำหรับเดือนที่ไม่พบในฐานข้อมูลประกันสังคม แต่ระบุเงินสมทบ
+        recipient_name = id_card
+        for att in attachments:
+            att_id_card = str(att.get('recipient_id_card', '')).strip().replace(' ', '').replace('-', '')
+            if att_id_card == id_card and att.get('recipient_name'):
+                recipient_name = att.get('recipient_name')
+                break
+
+        for key, md in monthly_map.items():
+            if key not in found_ss_keys:
+                contribution = md.get('contribution', 0)
+                if contribution > 0:
+                    year_str, month_str = key.split('-')
+                    new_ss = {
+                        "recipient_id_card": id_card,
+                        "recipient_name": recipient_name,
+                        "payment_month": int(month_str),
+                        "payment_year": int(year_str),
+                        "salary": f"{md.get('income', 0):.2f}",
+                        "social_security_contribution": f"{contribution:.2f}",
+                        "company": company,
+                        "file_name": f"เพิ่มเติมจากระบบ_{datetime.now().strftime('%Y%m%d%H%M%S')}",
+                        "created_at": datetime.now().isoformat()
+                    }
+                    social_security.append(new_ss)
+                    updated_social_security += 1
         
         if updated_social_security > 0:
             with open(ss_file, 'w', encoding='utf-8') as f:
