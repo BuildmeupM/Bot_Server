@@ -1,0 +1,134 @@
+[
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 1,
+    "payment_year": 2025,
+    "salary": "20,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม (ส่วนที่ 2) เดือน 01.68.pdf",
+    "created_at": "2026-02-27T11:09:08.271933"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 2,
+    "payment_year": 2025,
+    "salary": "20,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม (ส่วนที่ 2) เดือน 02.68.pdf",
+    "created_at": "2026-02-27T11:09:22.399246"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 3,
+    "payment_year": 2025,
+    "salary": "20,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม (ส่วนที่ 2) เดือน 03.68.pdf",
+    "created_at": "2026-02-27T11:09:37.888015"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 4,
+    "payment_year": 2025,
+    "salary": "20,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม (ส่วนที่ 2) เดือน 04.68.pdf",
+    "created_at": "2026-02-27T11:10:13.433713"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 5,
+    "payment_year": 2025,
+    "salary": "20,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม (ส่วนที่ 2) เดือน 05.68.pdf",
+    "created_at": "2026-02-27T11:10:26.670842"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 6,
+    "payment_year": 2025,
+    "salary": "20,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม (ส่วนที่ 2) เดือน 06.68.pdf",
+    "created_at": "2026-02-27T11:10:36.682710"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 7,
+    "payment_year": 2025,
+    "salary": "20,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม (ส่วนที่ 2) เดือน 07.68.pdf",
+    "created_at": "2026-02-27T11:10:48.933477"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 8,
+    "payment_year": 2025,
+    "salary": "20,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม (ส่วนที่ 2) เดือน 08.68.pdf",
+    "created_at": "2026-02-27T11:10:59.007059"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 9,
+    "payment_year": 2025,
+    "salary": "35,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม (ส่วนที่ 2) เดือน 09.68.pdf",
+    "created_at": "2026-02-27T11:11:09.910851"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 10,
+    "payment_year": 2025,
+    "salary": "35,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม (ส่วนที่ 2) เดือน 10.68.pdf",
+    "created_at": "2026-02-27T11:11:21.063427"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 11,
+    "payment_year": 2025,
+    "salary": "35,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 11.2025 (สปส. 1-10 ส่วนที่ 2).pdf",
+    "created_at": "2026-02-27T11:11:25.274404"
+  },
+  {
+    "recipient_id_card": "1959900501446",
+    "recipient_name": "นางสาวปราณปริยา เลิศพงศ์พิรุฬห์",
+    "payment_month": 12,
+    "payment_year": 2025,
+    "salary": "35,000.00",
+    "social_security_contribution": "750.00",
+    "company": "Build456 บริษัท ซีแอล เมด จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 12.2025 (สปส. 1-10 ส่วนที่ 2).pdf",
+    "created_at": "2026-02-27T11:11:31.142974"
+  }
+]

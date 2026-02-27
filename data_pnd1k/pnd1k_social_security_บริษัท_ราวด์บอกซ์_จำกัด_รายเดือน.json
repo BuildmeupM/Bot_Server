@@ -1,0 +1,90 @@
+[
+  {
+    "recipient_id_card": "3310900464803",
+    "recipient_name": "นางสาวณัชชนม์ เศรษฐพรมรินทร์",
+    "payment_month": 5,
+    "payment_year": 2025,
+    "salary": "12,000.00",
+    "social_security_contribution": "600.00",
+    "company": "Build473 บริษัท ราวด์บอกซ์ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม.pdf",
+    "created_at": "2026-02-27T17:32:49.928215"
+  },
+  {
+    "recipient_id_card": "3310900464803",
+    "recipient_name": "นางสาวณัชชนม์ เศรษฐพรมรินทร์",
+    "payment_month": 6,
+    "payment_year": 2025,
+    "salary": "12,000.00",
+    "social_security_contribution": "600.00",
+    "company": "Build473 บริษัท ราวด์บอกซ์ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม.pdf",
+    "created_at": "2026-02-27T17:32:56.428067"
+  },
+  {
+    "recipient_id_card": "3310900464803",
+    "recipient_name": "นางสาวณัชชนม์ เศรษฐพรมรินทร์",
+    "payment_month": 7,
+    "payment_year": 2025,
+    "salary": "12,000.00",
+    "social_security_contribution": "600.00",
+    "company": "Build473 บริษัท ราวด์บอกซ์ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม.pdf",
+    "created_at": "2026-02-27T17:33:03.763761"
+  },
+  {
+    "recipient_id_card": "3310900464803",
+    "recipient_name": "นางสาวณัชชนม์ เศรษฐพรมรินทร์",
+    "payment_month": 8,
+    "payment_year": 2025,
+    "salary": "12,000.00",
+    "social_security_contribution": "600.00",
+    "company": "Build473 บริษัท ราวด์บอกซ์ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม.pdf",
+    "created_at": "2026-02-27T17:33:10.158540"
+  },
+  {
+    "recipient_id_card": "3310900464803",
+    "recipient_name": "นางสาวณัชชนม์ เศรษฐพรมรินทร์",
+    "payment_month": 9,
+    "payment_year": 2025,
+    "salary": "12,000.00",
+    "social_security_contribution": "600.00",
+    "company": "Build473 บริษัท ราวด์บอกซ์ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม.pdf",
+    "created_at": "2026-02-27T17:33:18.097220"
+  },
+  {
+    "recipient_id_card": "3310900464803",
+    "recipient_name": "นางสาวณัชชนม์ เศรษฐพรมรินทร์",
+    "payment_month": 10,
+    "payment_year": 2025,
+    "salary": "12,000.00",
+    "social_security_contribution": "600.00",
+    "company": "Build473 บริษัท ราวด์บอกซ์ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม.pdf",
+    "created_at": "2026-02-27T17:33:26.618577"
+  },
+  {
+    "recipient_id_card": "3310900464803",
+    "recipient_name": "นางสาวณัชชนม์ เศรษฐพรมรินทร์",
+    "payment_month": 11,
+    "payment_year": 2025,
+    "salary": "12,000.00",
+    "social_security_contribution": "600.00",
+    "company": "Build473 บริษัท ราวด์บอกซ์ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม เดือน 11.2025 (สปส. 1-10 ส่วนที่ 2).pdf",
+    "created_at": "2026-02-27T17:33:36.064121"
+  },
+  {
+    "recipient_id_card": "3310900464803",
+    "recipient_name": "นางสาวณัชชนม์ เศรษฐพรมรินทร์",
+    "payment_month": 12,
+    "payment_year": 2025,
+    "salary": "12,000.00",
+    "social_security_contribution": "600.00",
+    "company": "Build473 บริษัท ราวด์บอกซ์ จำกัด รายเดือน",
+    "file_name": "ใบแนบ ประกันสังคม.pdf",
+    "created_at": "2026-02-27T17:33:42.992541"
+  }
+]
