@@ -1,0 +1,90 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-06T09:33:47.765Z",
+  "last_saved": "2026-03-06T16:33:46.522477",
+  "company": "Build349 บริษัท จีพีที เซอร์วิส จำกัด รายเดือน",
+  "base_company": "Build349 บริษัท จีพีที เซอร์วิส จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "3": ""
+  },
+  "initialNotes": {
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มหาจักรทูลส์ อินดัสเตรียล โซลูชั่น จำกัด' แต่ OCR='บริษัท มหาจักรกูลส์ อินดัสเทรียล โซลูชั่น จำกัด'"
+  },
+  "comparisonApprovals": {
+    "3-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build349 บริษัท จีพีที เซอร์วิส จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 5,
+    "metadata": [
+      {
+        "filename": "19.02.2026_EXP-20260200012_510110_วัสดุที่ใช้ในการประกอบชิ้นงานVAT.pdf",
+        "company_name": "บริษัท มหาจักรกูลส์ อินดัสเทรียล โซลูชั่น จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200013_510110_วัสดุที่ใช้ในการประกอบชิ้นงาน_VAT.pdf",
+        "company_name": "บริษัท มหาจักรทูลส์ อินดัสเตรียล โซลูชั่น จำกัด"
+      },
+      {
+        "filename": "06.02.2026_EXP-20260200010_510110_วัสดุที่ใช้ในการประกอบชิ้นงาน_VAT.pdf",
+        "company_name": "บริษัท เอสโบ้ โฮมเวิลด์ จำกัด"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200004_WHT_530401_ค่าทำบัญชี ด.02-69_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200011_510110_วัสดุที่ใช้ในการประกอบชิ้นงาน_VAT.pdf",
+        "company_name": "บริษัท มหาจักรทูลส์ อินดัสเตรียล โซลูชั่น จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 5,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "000101579813",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "CSHPV69020063",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "RT-20260200205",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "HPV690219-0006",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "CSHPV69020182",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}
