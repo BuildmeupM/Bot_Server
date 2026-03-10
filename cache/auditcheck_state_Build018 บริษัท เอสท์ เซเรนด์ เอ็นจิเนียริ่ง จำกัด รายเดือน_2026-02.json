@@ -1,0 +1,107 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-10T05:54:19.888Z",
+  "last_saved": "2026-03-10T12:54:21.294476",
+  "company": "Build018 บริษัท เอสท์ เซเรนด์ เอ็นจิเนียริ่ง จำกัด รายเดือน",
+  "base_company": "Build018 บริษัท เอสท์ เซเรนด์ เอ็นจิเนียริ่ง จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "2": "",
+    "5": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ยูฟิคอน จำกัด' แต่ OCR='บริษัท ยูฟคิ อน จจากัด'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00033' แต่ OCR='00000'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซี.เค. เทคโนโลยี (ไทยแลนด์) จำกัด' แต่ OCR='C.K. Technology (Thailand) Co.,Ltd. บจก.ซี.เค. เทคโนโลยี (ไทยแลนด์)'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เออีไอเอส อิเล็กทรอนิกส์ ซัพพลาย (ประเทศไทย) จำกัด' แต่ OCR='บริษัท เอสไอเอส อิเล็กทรอนิกส์ ซัพพลาย (ประเทศไทย) จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-branch_match": true,
+    "0-company_name_match": true,
+    "2-company_name_match": true,
+    "5-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build018 บริษัท เอสท์ เซเรนด์ เอ็นจิเนียริ่ง จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 6,
+    "metadata": [
+      {
+        "filename": "21.02.2026_EXP-2602006_510114_VAT_ใบเสร็จค่าอุปกรณ์อิเล็กทรอนิกส์ (21-02-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "บริษัท เอสไอเอส อิเล็กทรอนิกส์ ซัพพลาย (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXP-2602005_510114_VAT_ใบกำกับภาษีค่า Pointer (5-02-2026)_ใช้ในงาน_VAT.pdf",
+        "company_name": "C.K. Technology (Thailand) Co.,Ltd. บจก.ซี.เค. เทคโนโลยี (ไทยแลนด์)"
+      },
+      {
+        "filename": "04.02.2026_EXP-2602004_510114_VAT_ใบกำกับภาษีค่าหลอดไฟ (4-02-2026)_ใช้ในสำนักงาน.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "02.02.2026_EXP-2602019_ใบกำกับภาษีค่า Airpods (2-02-2026)_VAT.pdf",
+        "company_name": "บริษัท ยูฟคิ อน จจากัด"
+      },
+      {
+        "filename": "21.02.2026_EXP-2602007_530117_VAT_ใบเสร็จค่ารองเท้าหนัง (21-02-2026)_VAT.pdf",
+        "company_name": "บริษัท สรรพสินค้าเซ็นทรัล จำกัด"
+      },
+      {
+        "filename": "18.02.2026_WHT_EXP-2602003_530401_VAT_RT-20260200214_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 6,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-2602019",
+        "ocr_document_no": "TSHP260202-0042",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-2602004",
+        "ocr_document_no": "103275",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-2602005",
+        "ocr_document_no": "OIRM69020126",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-2602003",
+        "ocr_document_no": "RT-20260200214",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-2602007",
+        "ocr_document_no": "10125022610000292",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-2602006",
+        "ocr_document_no": "IVX-690221008",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}
