@@ -1,0 +1,57 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-11T03:44:10.052Z",
+  "last_saved": "2026-03-11T10:44:09.270501",
+  "company": "Build496 บริษัท สเปดิฟอร์ม ดับบลิวเจ ชิปปิ้ง จำกัด รายเดือน",
+  "base_company": "Build496 บริษัท สเปดิฟอร์ม ดับบลิวเจ ชิปปิ้ง จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {},
+  "initialNotes": {},
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build496 บริษัท สเปดิฟอร์ม ดับบลิวเจ ชิปปิ้ง จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 2,
+    "metadata": [
+      {
+        "filename": "23.02.2026_WHT_EXP-20260200001_530401_ค่าทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100004_510104_ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท เน็ตเบย์ จำกัด (มหาชน)"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 2,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "RE69010712",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "RT-20260200311",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": true
+  }
+}
