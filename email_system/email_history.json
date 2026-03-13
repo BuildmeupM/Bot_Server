@@ -67563,5 +67563,2107 @@
     "user_agent": null,
     "ip_address": null,
     "sent_time_old": "2026-03-12 19:56:33"
+  },
+  {
+    "id": "834d49af-8509-4a65-ac6a-341a4b2435d5",
+    "status": "success",
+    "sent_time": "2026-03-13T09:31:14.928404",
+    "created_at": "2026-03-13T09:31:14.928404",
+    "pattern_name": "219 พราว โซลูชั่น เทคโนโลยี ",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "anchalee.s@ratchata.com"
+    ],
+    "cc_emails": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย และภาษีมูลค่าเพิ่ม บริษัท พราว โซลูชั่น เทคโนโลยี จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท พราว โซลูชั่น เทคโนโลยี จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 81.00 บาท\n- ภ.พ. 30 : ไม่มียอดชำระ\n",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี เดือน 02.2026.pdf",
+        "size": 543573,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 165539,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 02.2026.pdf",
+        "size": 224962,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 120075,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200001.pdf",
+        "size": 1668760,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.พ.30 เดือน 02.2026.pdf",
+        "size": 166410,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท พราว โซลูชั่น เทคโนโลยี จำกัด_PP30-202602_20260309-110941.pdf",
+        "size": 294965,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท พราว โซลูชั่น เทคโนโลยี จำกัด_PP30-202602_20260312-184909.pdf",
+        "size": 302237,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T02-31-02.pdf",
+        "size": 112599,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 9,
+    "total_size": 3599120,
+    "line_enabled": false,
+    "line_user_id": "U5ade5937f7551a756f9be12fe639f729",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท พราว โซลูชั่น เทคโนโลยี จำกัด",
+      "tax_id": "01055-65197-86-3",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "81.00"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T02-31-02.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-03-13 09:31:14"
+  },
+  {
+    "id": "2432d5ce-bdae-4269-80c6-1433c0b21365",
+    "status": "success",
+    "sent_time": "2026-03-13T09:31:16.266055",
+    "created_at": "2026-03-13T09:31:16.266055",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 02.2026 \nให้ทางอีเมล anchalee.s@ratchata.com แล้วนะคะ\n\n- สำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 02.2026\nยอดกรมสรรพากรที่ต้องชำระ 81.00 บาท (ยื่นปกติประจำเดือน)\n\n- สำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน \nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 09:31:16"
+  },
+  {
+    "id": "f10a1b0d-db83-40b8-adb2-94c3582e722f",
+    "status": "success",
+    "sent_time": "2026-03-13T09:40:47.773790",
+    "created_at": "2026-03-13T09:40:47.773790",
+    "pattern_name": "109 ซิลค อินทีเรีย",
+    "signature_name": "วุ้นเส้น",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "fun.silk.interior@gmail.com"
+    ],
+    "cc_emails": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท ซิลค อินทีเรีย จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ซิลค อินทีเรีย จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบและใบแนบ ภ.ง.ด. 1\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 3\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- แบบและใบแนบ ประกันสังคม\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน 2/2026\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 1,024.68 บาท\n- ยอดชำระประกันสังคม เดือน 2/2026: จำนวน 1,210.00 บาท\nกรุณาชำระภายในวันที่ 16/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี เดือน 02.2026.pdf",
+        "size": 546734,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ภาพแบบ ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 227188,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.3 เดือน 02.2026.pdf",
+        "size": 167192,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 164592,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ประกันสังคม เดือน 02.2026 (สปส.1-10 ส่วนที่ 2).pdf",
+        "size": 47831,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ประกันสังคม เดือน 02.2026 (สปส.1-10 ส่วนที่ 1).pdf",
+        "size": 170203,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 167192,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.3 เดือน 02.2026.pdf",
+        "size": 119278,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200010.pdf",
+        "size": 1670050,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200009.pdf",
+        "size": 1670042,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200011.pdf",
+        "size": 1668761,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 120039,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200003.pdf",
+        "size": 1669005,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T02-40-18.pdf",
+        "size": 107975,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 14,
+    "total_size": 8516082,
+    "line_enabled": false,
+    "line_user_id": "U6b3f7e32cc687e0198ced2f5d62c9129",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท ซิลค อินทีเรีย จำกัด",
+      "tax_id": "01055-65006-12-0",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.3",
+          "จำนวนเงิน": "910.68"
+        },
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "114.00"
+        },
+        {
+          "แบบภาษี": "ประกันสังคม",
+          "จำนวนเงิน": "1,210.00"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T02-40-18.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.132",
+    "sent_time_old": "2026-03-13 09:40:47"
+  },
+  {
+    "id": "6189f5a9-04b7-4aa7-99b4-605828c96cb3",
+    "status": "success",
+    "sent_time": "2026-03-13T09:40:49.066624",
+    "created_at": "2026-03-13T09:40:49.066624",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษีและประกันสังคม  เดือน 2/2026\nให้ทางอีเมล fun.silk.interior@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 2/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 1,024.68 บาท (ยื่นปกติประจำเดือน)\n\nยอดประกันสังคมที่ต้องชำระ 1,210.00 บาท\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\n\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\n\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 09:40:49"
+  },
+  {
+    "id": "29d8245a-b802-48a5-9653-9a412c2e16c1",
+    "status": "success",
+    "sent_time": "2026-03-13T09:40:55.566657",
+    "created_at": "2026-03-13T09:40:55.566657",
+    "pattern_name": "456 ซีแอล เมด",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "qzlilym@gmail.com"
+    ],
+    "cc_emails": [
+      "kanlayanee.p@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท ซีแอล เมด จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ซีแอล เมด จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบและใบแนบ ภ.ง.ด. 1\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- แบบและใบแนบ ประกันสังคม\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 120.00 บาท\nกรุณาชำระภายในวันที่ 16/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี เดือน 02.2026.pdf",
+        "size": 546856,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ประกันสังคม เดือน 02.2026 (สปส.1-10 ส่วนที่ 2).pdf",
+        "size": 48322,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ประกันสังคม เดือน 02.2026 (สปส.1-10 ส่วนที่ 1).pdf",
+        "size": 174268,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ภาพแบบ ภ.ง.ด.1 เดือน 02.2026.pdf",
+        "size": 225733,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 164576,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.ง.ด.1 เดือน 02.2026.pdf",
+        "size": 164856,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 120080,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200001 (1).pdf",
+        "size": 1185454,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T02-40-45.pdf",
+        "size": 107656,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 9,
+    "total_size": 2737801,
+    "line_enabled": false,
+    "line_user_id": "Ud35186a9b85ac3b31bb3c0df3aea558a",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท ซีแอล เมด จำกัด",
+      "tax_id": "01055-67240-30-8",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "120.00"
+        },
+        {
+          "แบบภาษี": "ประกันสังคม",
+          "จำนวนเงิน": "1,750.00"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T02-40-45.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-03-13 09:40:55"
+  },
+  {
+    "id": "ebc2b946-3f89-4fa8-b3a2-1697233cb024",
+    "status": "success",
+    "sent_time": "2026-03-13T09:40:56.922928",
+    "created_at": "2026-03-13T09:40:56.922928",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษีและประกันสังคม  เดือน 02.2026\nให้ทางอีเมล qzlilym@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 02.2026\nยอดกรมสรรพากรที่ต้องชำระ 120.00 บาท (ยื่นปกติประจำเดือน)\nยอดประกันสังคมที่ต้องชำระ1,750.00 บาท\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 09:40:56"
+  },
+  {
+    "id": "534a8585-982f-4af0-b371-8e92b4926add",
+    "status": "success",
+    "sent_time": "2026-03-13T09:55:12.411119",
+    "created_at": "2026-03-13T09:55:12.411119",
+    "pattern_name": "508 ภูรีภัทรา แอนด์ โค",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "phuriphatthra.co@gmail.com"
+    ],
+    "cc_emails": [
+      "kanlayanee.p@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท ภูรีภัทรา แอนด์ โค จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ภูรีภัทรา แอนด์ โค จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบและใบแนบ ภ.ง.ด. 1\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 3\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 2,429.06 บาท\nกรุณาชำระภายในวันที่ 16/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี เดือน 02.2026.pdf",
+        "size": 546154,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ภาพแบบ ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 227036,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ภาพแบบ ภ.ง.ด.1 40(2) เดือน 02.2026.pdf",
+        "size": 226821,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.3 เดือน 02.2026.pdf",
+        "size": 168121,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 165541,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 166206,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน  ภ.ง.ด.1 40(2) เดือน 02.2026.pdf",
+        "size": 165338,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.3 เดือน 02.2026.pdf",
+        "size": 115644,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200003.pdf",
+        "size": 1668083,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 127130,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200009.pdf",
+        "size": 1179077,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200007.pdf",
+        "size": 1667901,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200005.pdf",
+        "size": 1666556,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200006.pdf",
+        "size": 1671582,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200004.pdf",
+        "size": 1666150,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T02-54-39.pdf",
+        "size": 107667,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 16,
+    "total_size": 11535007,
+    "line_enabled": false,
+    "line_user_id": "Ca9e5a7428d581c9a6279fae141b04fab",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท ภูรีภัทรา แอนด์ โค จำกัด",
+      "tax_id": "01055-67085-23-0",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.3",
+          "จำนวนเงิน": "60.00"
+        },
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "2,369.06"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T02-54-39.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-03-13 09:55:12"
+  },
+  {
+    "id": "e2fc5035-af29-4386-9860-2de8246a24b0",
+    "status": "success",
+    "sent_time": "2026-03-13T09:55:13.787913",
+    "created_at": "2026-03-13T09:55:13.787913",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 02.2026\nให้ทางอีเมล phuriphatthra.co@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 02.2026\nยอดกรมสรรพากรที่ต้องชำระ 2,429.06 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 09:55:13"
+  },
+  {
+    "id": "5f01c368-30c6-49ba-96f1-e9ef0f71cf33",
+    "status": "success",
+    "sent_time": "2026-03-13T09:57:22.112222",
+    "created_at": "2026-03-13T09:57:22.112222",
+    "pattern_name": "547 อัลโตเทคโนโลยี",
+    "signature_name": "วุ้นเส้น",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "mark@altoai.co"
+    ],
+    "cc_emails": [
+      "Kankanis.B@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท อัลโตเทคโนโลยี จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท อัลโตเทคโนโลยี จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบและใบแนบ ภ.ง.ด. 1\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 3\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- แบบและใบแนบ ประกันสังคม\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน 2/2026\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 97.50 บาท\n- ยอดชำระประกันสังคม เดือน 2/2026: จำนวน 3,50.00 บาท\nกรุณาชำระภายในวันที่ 16/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี เดือน 02.2026.pdf",
+        "size": 542152,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ภาพแบบ ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 228575,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ภาพแบบ ภ.ง.ด.1 40(1)(2) เดือน 02.2026.pdf",
+        "size": 228578,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.3 เดือน 02.2026.pdf",
+        "size": 169980,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 167570,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ประกันสังคม เดือน 02.2026 (สปส.1-10 ส่วนที่ 2).pdf",
+        "size": 48090,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ประกันสังคม เดือน 02.2026 (สปส.1-10 ส่วนที่ 1).pdf",
+        "size": 172068,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 164561,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.ง.ด.1 40(1)(2) เดือน 02.2026.pdf",
+        "size": 164786,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.3 เดือน 02.2026.pdf",
+        "size": 115506,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200001.pdf",
+        "size": 1662940,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 120042,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200002.pdf",
+        "size": 1659904,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T02-57-07.pdf",
+        "size": 108682,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 14,
+    "total_size": 5553434,
+    "line_enabled": false,
+    "line_user_id": "Ua4ceaeb83454fa2bc220bc6dad31e705",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท อัลโตเทคโนโลยี จำกัด",
+      "tax_id": "01055-67091-56-6",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.3",
+          "จำนวนเงิน": "7.50"
+        },
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "90.00"
+        },
+        {
+          "แบบภาษี": "ประกันสังคม",
+          "จำนวนเงิน": "350.00"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T02-57-07.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.132",
+    "sent_time_old": "2026-03-13 09:57:22"
+  },
+  {
+    "id": "c8911267-c43a-4137-a0cd-f466e7ecb143",
+    "status": "success",
+    "sent_time": "2026-03-13T09:57:23.303764",
+    "created_at": "2026-03-13T09:57:23.303764",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษีและประกันสังคม  เดือน 2/2026\nให้ทางอีเมล mark@altoai.co แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 2/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 97.50 บาท (ยื่นปกติประจำเดือน)\n\nยอดประกันสังคมที่ต้องชำระ 3,50.00 บาท\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\n\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\n\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 09:57:23"
+  },
+  {
+    "id": "dfde4b40-3d2e-45d7-9657-6ac9bd6932bd",
+    "status": "success",
+    "sent_time": "2026-03-13T10:04:19.664227",
+    "created_at": "2026-03-13T10:04:19.664227",
+    "pattern_name": "376 ก็อดฟาเธอร์ บิสสิเนส",
+    "signature_name": "วุ้นเส้น",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "supaporn270727@gmail.com"
+    ],
+    "cc_emails": [
+      "Sawitree.S@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท ก็อดฟาเธอร์ บิสสิเนส จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ก็อดฟาเธอร์ บิสสิเนส จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน 2/2026\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 8,405.00 บาท\nกรุณาชำระภายในวันที่ 16/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 162985,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "Pay-in ชำระภาษี  เดือน 02.2026.pdf",
+        "size": 544800,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 124306,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200003.pdf",
+        "size": 1670330,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200001.pdf",
+        "size": 1669230,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200002.pdf",
+        "size": 1669734,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T03-04-07.pdf",
+        "size": 107233,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 7,
+    "total_size": 5948618,
+    "line_enabled": false,
+    "line_user_id": "C335819c6c034a40bba33c2460766b3ff",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท ก็อดฟาเธอร์ บิสสิเนส จำกัด",
+      "tax_id": "01055-61179-83-6",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "8,405.00"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T03-04-07.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.132",
+    "sent_time_old": "2026-03-13 10:04:19"
+  },
+  {
+    "id": "49318a6e-67aa-479c-889c-d869fcd03cf7",
+    "status": "success",
+    "sent_time": "2026-03-13T10:04:20.932024",
+    "created_at": "2026-03-13T10:04:20.932024",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษีและประกันสังคม  เดือน 2/2026\nให้ทางอีเมล supaporn270727@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 2/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 8,405.00 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\n\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\n\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 10:04:20"
+  },
+  {
+    "id": "3344bd0d-34f5-4453-9ddd-a31b0bc24a76",
+    "status": "success",
+    "sent_time": "2026-03-13T10:22:11.038211",
+    "created_at": "2026-03-13T10:22:11.038211",
+    "pattern_name": "309 เอ็นทีเจอินเตอร์",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "ntjintertrade@gmail.com"
+    ],
+    "cc_emails": [
+      "nitirak.p@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท เอ็นทีเจอินเตอร์ จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท เอ็นทีเจอินเตอร์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- ภาพแบบและใบแนบ ภ.ง.ด. 1\n- แบบและใบแนบ ประกันสังคม\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: ไม่มียอดที่ต้องชำระ\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระประกันสังคม เดือน 2/2026: จำนวน 11,460.00 บาท\nกรุณาชำระภายในวันที่ 25/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 225214,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ประกันสังคม เดือน 02.2026 (สปส. 1-10 ส่วนที่ 1).pdf",
+        "size": 166571,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ประกันสังคม เดือน 02.2026 (สปส. 1-10 ส่วนที่ 2).pdf",
+        "size": 49385,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 244259,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จ ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 164412,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T03-22-01.pdf",
+        "size": 107323,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 6,
+    "total_size": 957164,
+    "line_enabled": false,
+    "line_user_id": "U336ed2e6fffe3dd53379de9193410def",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท เอ็นทีเจอินเตอร์ จำกัด",
+      "tax_id": "01955-62002-87-5",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ประกันสังคม",
+          "จำนวนเงิน": "22,920.00"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T03-22-01.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-03-13 10:22:11"
+  },
+  {
+    "id": "71879c80-85fc-4a04-a971-1e8408ebe098",
+    "status": "success",
+    "sent_time": "2026-03-13T10:22:12.567670",
+    "created_at": "2026-03-13T10:22:12.567670",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษีและประกันสังคม  เดือน 02/2026\nให้ทางอีเมล ntjintertrade@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 02/2026\nยอดกรมสรรพากรที่ต้องชำระ ไม่มียอดที่ต้องชำระค่ะ\nยอดประกันสังคมที่ต้องชำระ 11,460.00 บาท\n\nรบกวนทางลูกค้าชำระภายในวันที่ 25/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 10:22:12"
+  },
+  {
+    "id": "e53f1e9e-c659-469f-acf0-8645f767dc57",
+    "status": "success",
+    "sent_time": "2026-03-13T11:02:02.127563",
+    "created_at": "2026-03-13T11:02:02.127563",
+    "pattern_name": "512 โบ มี กรุ๊ป",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "thaionline0@gmail.com"
+    ],
+    "cc_emails": [
+      "Kuntida.F@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริิษัท โบ มี กรุ๊ป จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริิษัท โบ มี กรุ๊ป จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 1,527.27 บาท\nกรุณาชำระภายในวันที่ 16/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี ภงด. เดือน 02.2026.pdf",
+        "size": 545136,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 167348,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 159246,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "หนังสือรับรองหัก ณ ที่จ่าย ภ.ง.ด.53 เดือน 02.2026.zip",
+        "size": 9387519,
+        "content_type": "application/x-zip-compressed",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T04-01-30.pdf",
+        "size": 105778,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 10365027,
+    "line_enabled": false,
+    "line_user_id": "C3b34180da6f7d0c426bdee6c33153967",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท โบ มี กรุ๊ป จำกัด",
+      "tax_id": "01055-67130-50-2",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "1,527.27"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T04-01-30.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-03-13 11:02:02"
+  },
+  {
+    "id": "e24ccb80-f5a1-40a1-a2f2-de3effd8a2e4",
+    "status": "success",
+    "sent_time": "2026-03-13T11:02:03.481979",
+    "created_at": "2026-03-13T11:02:03.481979",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 02/2026\nให้ทางอีเมล thaionline0@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 02/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 1,527.27 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 11:02:03"
+  },
+  {
+    "id": "816c303c-2887-4130-9e55-190101d3a01f",
+    "status": "success",
+    "sent_time": "2026-03-13T11:05:26.978240",
+    "created_at": "2026-03-13T11:05:26.978240",
+    "pattern_name": "287 ลุคอีซี่",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "sale.lookeasy@gmail.com"
+    ],
+    "cc_emails": [
+      "Wiranya.W@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท ลุคอีซี่ จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ลุคอีซี่ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n-ไม่มียอดชำระ // ขอบคุณค่ะ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 02.2026.pdf",
+        "size": 224291,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 02.2026.pdf",
+        "size": 109832,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.พ.30 เดือน 02.2026.pdf",
+        "size": 164797,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 02.2026.pdf",
+        "size": 219514,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T04-05-18.pdf",
+        "size": 103558,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 821992,
+    "line_enabled": false,
+    "line_user_id": "C4ec37c0a680d6230d966c01022995503",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท ลุคอีซี่ จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 2/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-03-13T04-05-18.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-03-13 11:05:26"
+  },
+  {
+    "id": "6ca6149f-6037-43ac-8a08-5d12316f18e9",
+    "status": "success",
+    "sent_time": "2026-03-13T11:05:28.262454",
+    "created_at": "2026-03-13T11:05:28.262454",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 02.2026\nให้ทางอีเมล sale.lookeasy@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 02.2026\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 11:05:28"
+  },
+  {
+    "id": "a0edad43-eedc-400e-b000-327a6d756762",
+    "status": "success",
+    "sent_time": "2026-03-13T11:09:00.190293",
+    "created_at": "2026-03-13T11:09:00.190293",
+    "pattern_name": "33 วรัญญาแอร์",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "Waranyaa.air@gmail.com"
+    ],
+    "cc_emails": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท วรัญญาแอร์ จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท วรัญญาแอร์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- ภาพแบบและใบแนบ ภ.ง.ด. 1\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- แบบและใบแนบ ประกันสังคม\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 232.66 บาท\nกรุณาชำระภายในวันที่ 16/03/2026\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระประกันสังคม เดือน 2/2026: จำนวน 1,300.00 บาท\nกรุณาชำระภายในวันที่ 25/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี เดือน 02.2026.pdf",
+        "size": 545180,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ภาพแบบ ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 227297,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 167574,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ประกันสังคม เดือน 02.2026 (สปส.1-10 ส่วนที่ 2).pdf",
+        "size": 48594,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ประกันสังคม เดือน 02.2026 (สปส.1-10 ส่วนที่ 1).pdf",
+        "size": 170557,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 122831,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จ ภ.ง.ด.1 40(1) เดือน 02.2026.pdf",
+        "size": 163981,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 124147,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WithHoldingTax_บริษัทวรัญญาแอร์จำกัด_20260312094352.zip",
+        "size": 3121898,
+        "content_type": "application/x-zip-compressed",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T04-08-41.pdf",
+        "size": 108846,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 10,
+    "total_size": 4800905,
+    "line_enabled": false,
+    "line_user_id": "Uabac010fd211df486bcc01bb0db89516",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท วรัญญาแอร์ จำกัด",
+      "tax_id": "01355-64020-34-0",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "232.66"
+        },
+        {
+          "แบบภาษี": "ประกันสังคม",
+          "จำนวนเงิน": "1,300.00"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T04-08-41.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-03-13 11:09:00"
+  },
+  {
+    "id": "dd53ad37-4085-49c4-84e3-dd2922040fa4",
+    "status": "success",
+    "sent_time": "2026-03-13T11:09:01.446725",
+    "created_at": "2026-03-13T11:09:01.446725",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษีและประกันสังคม  เดือน 02/2026\nให้ทางอีเมล Waranyaa.air@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 02/2026\nยอดกรมสรรพากรที่ต้องชำระ 232.66 บาท (ยื่นปกติประจำเดือน)\nยอดประกันสังคมที่ต้องชำระ 1,300.00 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 11:09:01"
+  },
+  {
+    "id": "c02a533a-2f78-42f5-9fc7-da035839d940",
+    "status": "success",
+    "sent_time": "2026-03-13T11:13:53.251428",
+    "created_at": "2026-03-13T11:13:53.251428",
+    "pattern_name": "411 3567",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "Pyt.lews@gmail.com",
+      "sarapao.k@gmail.com"
+    ],
+    "cc_emails": [
+      "Kanokwan.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท 3567 จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท 3567 จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ไม่มียอดชำระ // ขอบคุณค่ะ",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "ภาพแบบ ภ.พ.30 เดือน 02.2026.pdf",
+        "size": 223902,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบเสร็จรับเงิน ภ.พ.30 เดือน 02.2026.pdf",
+        "size": 165153,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 02.2026.pdf",
+        "size": 212347,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T04-13-44.pdf",
+        "size": 99487,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 4,
+    "total_size": 700889,
+    "line_enabled": false,
+    "line_user_id": "C1679149cf3c62c0c9f71d983ea64ebca",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท 3567 จำกัด",
+      "tax_id": "",
+      "period": "ประจำเดือน 2/2026",
+      "data": [],
+      "filename": "สรุปภาษี_2026-03-13T04-13-44.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.163",
+    "sent_time_old": "2026-03-13 11:13:53"
+  },
+  {
+    "id": "fbbe32ca-c9b8-4ad6-984c-86ff0a223b54",
+    "status": "success",
+    "sent_time": "2026-03-13T11:13:54.579848",
+    "created_at": "2026-03-13T11:13:54.579848",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 02.2026\nให้ทางอีเมล Pyt.lews@gmail.com , sarapao.k@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 02.2026\nไม่มียอดชำระ // ขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 11:13:54"
+  },
+  {
+    "id": "539655c8-9938-4706-87d7-47e18e5322b3",
+    "status": "success",
+    "sent_time": "2026-03-13T11:31:09.901867",
+    "created_at": "2026-03-13T11:31:09.901867",
+    "pattern_name": "251 อินเตอร์เอกซ์เทค",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "interxtech@gmail.com"
+    ],
+    "cc_emails": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท อินเตอร์เอกซ์เทค จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท อินเตอร์เอกซ์เทค จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- แบบ ภ.ง.ด. 54\n- แบบ ภ.พ. 36\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 184.58 บาท\nกรุณาชำระภายในวันที่ 16/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "แบบ ภ.พ.36 เดือน 02.2026 META.pdf",
+        "size": 182402,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.36 เดือน 02.2026 TIKTOK.pdf",
+        "size": 183377,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.36 เดือน 02.2026 google.pdf",
+        "size": 181860,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.54 เดือน 02.2026 Google.pdf",
+        "size": 168008,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 162904,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "Pay-in ชำระภาษี เดือน 02.2026.pdf",
+        "size": 546110,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 139843,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200001.pdf",
+        "size": 1667472,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T04-30-59.pdf",
+        "size": 108937,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 9,
+    "total_size": 3340913,
+    "line_enabled": false,
+    "line_user_id": "U17add6631222a82dd8d50bd047263555",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท อินเตอร์เอกซ์เทค จำกัด",
+      "tax_id": "01055-66127-73-7",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "84.00"
+        },
+        {
+          "แบบภาษี": "ภ.ง.ด.54",
+          "จำนวนเงิน": "17.11"
+        },
+        {
+          "แบบภาษี": "ภ.พ.36",
+          "จำนวนเงิน": "83.47"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T04-30-59.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-03-13 11:31:09"
+  },
+  {
+    "id": "e1cc5ea5-ec33-470e-b41e-2d12e8706e3c",
+    "status": "success",
+    "sent_time": "2026-03-13T11:31:11.323331",
+    "created_at": "2026-03-13T11:31:11.323331",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 02/2026\nให้ทางอีเมล interxtech@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 02/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 184.58 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 11:31:11"
+  },
+  {
+    "id": "098786b4-c271-4b6d-88e1-63de1978b347",
+    "status": "success",
+    "sent_time": "2026-03-13T11:38:47.565990",
+    "created_at": "2026-03-13T11:38:47.565990",
+    "pattern_name": "574 ลอว์ เมต โซลูชั่นส์",
+    "signature_name": "วุ้นเส้น",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "lawmatesolutions@gmail.com"
+    ],
+    "cc_emails": [
+      "natthanicha.b@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท ลอว์ เมต โซลูชั่นส์ จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท ลอว์ เมต โซลูชั่นส์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 3\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน 2/2026\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 754.52 บาท\nกรุณาชำระภายในวันที่ 16/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี เดือน 02.2026.pdf",
+        "size": 545464,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.3 เดือน 02.2026.pdf",
+        "size": 168053,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 165479,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.3 เดือน 02.2026.pdf",
+        "size": 121041,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200002.pdf",
+        "size": 1669950,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200003.pdf",
+        "size": 1667743,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200005.pdf",
+        "size": 1670184,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 120063,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200001.pdf",
+        "size": 1185338,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T04-38-29.pdf",
+        "size": 111416,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 10,
+    "total_size": 7424731,
+    "line_enabled": false,
+    "line_user_id": "C87a1c9d3ec583abd62603c52f1f5fafc",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท ลอว์ เมต โซลูชั่นส์ จำกัด",
+      "tax_id": "05755-68005-00-7",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.3",
+          "จำนวนเงิน": "670.52"
+        },
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "84.00"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T04-38-29.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.132",
+    "sent_time_old": "2026-03-13 11:38:47"
+  },
+  {
+    "id": "0ad87643-c88a-4f57-9a2f-4d6f4715095c",
+    "status": "success",
+    "sent_time": "2026-03-13T11:38:48.826249",
+    "created_at": "2026-03-13T11:38:48.826249",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษีและประกันสังคม  เดือน 2/2026\nให้ทางอีเมล lawmatesolutions@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 2/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 754.52 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\n\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\n\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 11:38:48"
+  },
+  {
+    "id": "42c777f3-99b0-48dd-8978-551942158912",
+    "status": "success",
+    "sent_time": "2026-03-13T13:22:29.367752",
+    "created_at": "2026-03-13T13:22:29.367752",
+    "pattern_name": "222 วัชรกัมพล เกาะพะงัน",
+    "signature_name": "เกรซ",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "nmsince1988@gmail.com"
+    ],
+    "cc_emails": [
+      "Piyawat.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท วัชรกัมพล เกาะพะงัน จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท วัชรกัมพล เกาะพะงัน จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 3\n- แบบและใบแนบ ประกันสังคม\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 1,000.00 บาท\nกรุณาชำระภายในวันที่ 16/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี เดือน 02.2026.pdf",
+        "size": 547908,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.3 เดือน 02.2026.pdf",
+        "size": 169709,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ประกันสังคม เดือน 02.2026 (สปส. 1-10 ส่วนที่ 2).pdf",
+        "size": 48354,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ประกันสังคม เดือน 02.2026 (สปส. 1-10 ส่วนที่ 1).pdf",
+        "size": 171203,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.3 เดือน 02.2026.pdf",
+        "size": 118471,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260100002.pdf",
+        "size": 1667490,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T06-22-10.pdf",
+        "size": 108424,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 7,
+    "total_size": 2831559,
+    "line_enabled": false,
+    "line_user_id": "Cab511143140f45f61dc647608741fb44",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปภาษีประจำเดือน 2/2026",
+      "company_name": "บริษัท วัชรกัมพล เกาะพะงัน จำกัด",
+      "tax_id": "08455-66010-06-0",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.3",
+          "จำนวนเงิน": "1,000.00"
+        },
+        {
+          "แบบภาษี": "ประกันสังคม",
+          "จำนวนเงิน": "5,000.00"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T06-22-10.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36 Edg/145.0.0.0",
+    "ip_address": "192.168.1.129",
+    "sent_time_old": "2026-03-13 13:22:29"
+  },
+  {
+    "id": "a8b5ce2e-9266-4b0b-966b-aabee6fc1e81",
+    "status": "success",
+    "sent_time": "2026-03-13T13:22:30.696758",
+    "created_at": "2026-03-13T13:22:30.696758",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษีและประกันสังคม  เดือน  02.2026\nให้ทางอีเมล nmsince1988@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน  02.2026\nยอดกรมสรรพากรที่ต้องชำระ 1,000.00 บาท (ยื่นปกติประจำเดือน)\nยอดประกันสังคมที่ต้องชำระ 5,000.00 บาท\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\n\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 13:22:30"
+  },
+  {
+    "id": "3cce1d3f-fec2-4f1d-9359-2e7a15a9a5a8",
+    "status": "success",
+    "sent_time": "2026-03-13T16:37:10.238546",
+    "created_at": "2026-03-13T16:37:10.238546",
+    "pattern_name": "582 สกีคิว",
+    "signature_name": "วุ้นเส้น",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "nuttapon@gmail.com"
+    ],
+    "cc_emails": [
+      "Supasuta.C@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีหัก ณ ที่จ่าย บริษัท สกีคิว จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท สกีคิว จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ใบแนบ และใบหัก ณ ที่จ่าย ภ.ง.ด. 53\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน 2/2026\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 47,410.51 บาท\nกรุณาชำระภายในวันที่ 16/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี เดือน 02.2026.pdf",
+        "size": 548853,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 164590,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200001.pdf",
+        "size": 1667042,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "ใบแนบ ภ.ง.ด.53 เดือน 02.2026.pdf",
+        "size": 121325,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200003.pdf",
+        "size": 1668397,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "WTI-20260200008.pdf",
+        "size": 1668371,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-13T09-36-52.pdf",
+        "size": 105533,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 7,
+    "total_size": 5944111,
+    "line_enabled": false,
+    "line_user_id": "Ce71d70ba694128811f808d543973ad70",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท สกีคิว จำกัด",
+      "tax_id": "01055-68138-01-9",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.ง.ด.53",
+          "จำนวนเงิน": "47,410.51"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-13T09-36-52.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "ip_address": "192.168.1.132",
+    "sent_time_old": "2026-03-13 16:37:10"
+  },
+  {
+    "id": "b289e59b-4ee0-4837-b627-aa84c92614f3",
+    "status": "success",
+    "sent_time": "2026-03-13T16:37:11.582735",
+    "created_at": "2026-03-13T16:37:11.582735",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษีและประกันสังคม  เดือน 2/2026\nให้ทางอีเมล nuttapon@gmail.com แล้วนะคะ\n\nสำหรับภาษีหัก ณ ที่จ่าย ประจำเดือน 2/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 47,410.51 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 16/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\n\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\n\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-13 16:37:11"
   }
 ]
