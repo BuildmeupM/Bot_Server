@@ -1,0 +1,243 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-19T02:36:30.049Z",
+  "last_saved": "2026-03-19T09:36:31.842952",
+  "company": "Build332 บริษัท มีผลเทรดดิ้ง จำกัด รายเดือน",
+  "base_company": "Build332 บริษัท มีผลเทรดดิ้ง จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "11": "",
+    "16": ""
+  },
+  "initialNotes": {
+    "11": "วันที่ไม่ตรงกัน: ภาษีซื้อ='15/02/2026' แต่ OCR='15/02/69'",
+    "16": "วันที่ไม่ตรงกัน: ภาษีซื้อ='21/02/2026' แต่ OCR='21/02/69'"
+  },
+  "comparisonApprovals": {
+    "11-date_match": true,
+    "16-date_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build332 บริษัท มีผลเทรดดิ้ง จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 20,
+    "metadata": [
+      {
+        "filename": "06.02.2026_EXP-20260200008_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "21.02.2026_EXP-20260200019_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200017_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200016_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200009_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "04.02.2026_EXP-20260200006_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200012_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "09.02.2026_EXP-20260200010_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200018_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200013_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200005_510103ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "20.02.2026_WHT_EXP-20260200002_530401_ค่าบริการบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200022_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200004_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200015_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200007_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200021_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200011_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "14.02.2026_EXP-20260200014_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200020_510103 - ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "บริษัท เฉาก๊วยชากังราว จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 20,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "HS69020101",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "HS69020202",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "HS69020402",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "HS69020501",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "HS69020601",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "HS69020702",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "HS69020902",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "HS69021001",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "HS69021102",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "HS69021302",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "HS69021401",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "HS69021502",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "HS69021602",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200017",
+        "ocr_document_no": "HS69021802",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "HS69022001",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "RT-20260200239",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200019",
+        "ocr_document_no": "HS69022103",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "HS69022302",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260200021",
+        "ocr_document_no": "HS69022502",
+        "match_status": "full_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "HS69022701",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

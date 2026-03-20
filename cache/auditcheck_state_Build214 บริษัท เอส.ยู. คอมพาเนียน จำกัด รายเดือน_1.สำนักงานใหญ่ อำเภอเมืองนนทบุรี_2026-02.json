@@ -1,0 +1,941 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T12:03:22.705Z",
+  "last_saved": "2026-03-20T19:03:23.688448",
+  "company": "V:\\A.โฟร์เดอร์หลัก\\Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน\\1.สำนักงานใหญ่ อำเภอเมืองนนทบุรี",
+  "base_company": "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน",
+  "branch_info": {
+    "branch_name": "1.สำนักงานใหญ่ อำเภอเมืองนนทบุรี",
+    "branch_path": "V:\\A.โฟร์เดอร์หลัก\\Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน\\1.สำนักงานใหญ่ อำเภอเมืองนนทบุรี",
+    "base_company": "Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน"
+  },
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "6": "",
+    "7": "",
+    "8": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "13": "",
+    "14": "",
+    "15": "",
+    "16": "",
+    "18": "",
+    "19": "",
+    "20": "",
+    "21": "",
+    "22": "",
+    "23": "",
+    "24": "",
+    "25": "",
+    "26": "",
+    "27": "",
+    "28": "",
+    "29": "ไม่พบเอกสารต้นฉบับ",
+    "30": "",
+    "31": "",
+    "32": "",
+    "33": "",
+    "34": "",
+    "35": "",
+    "36": "",
+    "38": "",
+    "39": "",
+    "40": "",
+    "41": "",
+    "42": "",
+    "43": "",
+    "44": "",
+    "45": "",
+    "47": "",
+    "49": "",
+    "50": "",
+    "51": "",
+    "53": "",
+    "55": "",
+    "56": "",
+    "58": "",
+    "59": "",
+    "61": "",
+    "62": "",
+    "63": "",
+    "64": "",
+    "66": "",
+    "67": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXPSU202602060001"
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มิสเตอร์. ดี.ไอ.วาย. (กรุงเทพ) จำกัด' แต่ OCR='บริษัท มิสเตอร์.ดี.ไอ.วาย. (กรุงเทพ) จำกัด'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='สำนักงานเทศบาลนครนครปฐม' แต่ OCR='สนง.เทศบาลนครนครปฐม (กองการประปา)'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='048/095822' แต่ OCR='6902001118'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ณรงค์ชัย คอนกรีต' แต่ OCR='ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008 จำกัด'",
+    "6": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260204-0024507' แต่ OCR='TRSPEMKP00-00000-26'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ร้าน ต. พิพัฒน์ซัพพลาย' แต่ OCR='ต. พิพัฒน์ซัพพลาย'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='082/4057' แต่ OCR='4057'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260206-0025998' แต่ OCR='TRSPEMKP00-00000-26'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด'",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008 จำกัด'",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260208-0010107' แต่ OCR='TRSPEMKP00-00000-26'",
+    "13": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=33.96 แต่ OCR=177.96 (ต่างกัน 144.00)",
+    "14": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260210-0019078' แต่ OCR='TRSPEMKP00-00000-26'",
+    "15": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด'",
+    "16": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ช คอนกรีต ลานสัก' แต่ OCR='หจก.ช.ดอนกรีด ลานสัก'",
+    "18": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=51.00 แต่ OCR=196.00 (ต่างกัน 145.00)",
+    "19": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Adobe Systems Software Ireland Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=954.93 แต่ OCR=58.64 (ต่างกัน 896.29)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "20": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ณรงค์ชัย คอนกรีต' แต่ OCR='ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต'",
+    "21": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด พี.พี.เม็ททอลชีท(หนองฉาง)' แต่ OCR='ห้างหุ้นส่วนจำกัด . พี.พี. เม็ททอลชีท (หนองฉาง)'",
+    "22": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=28.80 แต่ OCR=119.80 (ต่างกัน 91.00)",
+    "23": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RT-20260200149' แต่ OCR='IV-20260200230'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='14/02/2026' แต่ OCR='05/02/2026'\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบแจ้งหนี้'",
+    "24": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด'",
+    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ร้าน อุดมธรรมอีเล็คทริค' แต่ OCR='ร้านอุดมธรรมอีเล็คทริค'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='010/44' แต่ OCR='44'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='12/02/2026' แต่ OCR='12/02/2024'",
+    "26": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ณรงค์ชัย คอนกรีต' แต่ OCR='ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต'",
+    "27": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ณรงค์ชัย คอนกรีต' แต่ OCR='ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต'",
+    "28": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=30.48 แต่ OCR=108.48 (ต่างกัน 78.00)",
+    "29": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXPSU202602120001 (เลขที่ใบกำกับ: RT-20260200135)",
+    "30": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด สาขาอุทัยธานี'",
+    "31": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260218-0023103' แต่ OCR='TRSPEMKP00-00000-26'",
+    "32": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด'",
+    "33": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด'",
+    "34": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008 จำกัด'",
+    "35": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='020/20' แต่ OCR='20'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='16/02/2026' แต่ OCR='16/02/2024'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=1,241.12 แต่ OCR=1,287.12 (ต่างกัน 46.00)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=86.88 แต่ OCR=90.88 (ต่างกัน 4.00)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=1,328.00 แต่ OCR=1,378.00 (ต่างกัน 50.00)",
+    "36": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด'\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='บิลเงินสด/ใบกํากับภาษี'",
+    "38": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ร้าน อุดมธรรมอีเล็คทริค' แต่ OCR='ร้านอุดมธรรมอีเล็คทริค'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='011/10' แต่ OCR='10'",
+    "39": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด'",
+    "40": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='021/6' แต่ OCR='6'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='18/02/2026' แต่ OCR='18/02/2024'",
+    "41": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='021/7' แต่ OCR='7'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='18/02/2026' แต่ OCR='18/02/2024'",
+    "42": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=15.00 แต่ OCR=59.00 (ต่างกัน 44.00)",
+    "43": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ร้าน อุดมธรรมอีเล็คทริค' แต่ OCR='ร้านอุดมธรรมอิเล็คทริค'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='011/18' แต่ OCR='18'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='19/02/2026' แต่ OCR='19/02/2024'",
+    "44": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาค' แต่ OCR='การไฟฟ้าส่วนภูมิภาค (Z000)'",
+    "45": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008 จำกัด'",
+    "47": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='000241022602104274' แต่ OCR='00022-000015991'",
+    "49": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008 จำกัด'",
+    "50": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด'",
+    "51": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาขอนแก่น)'",
+    "53": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='ARD-NRE-2600000039' แต่ OCR='ARD-NRE-260000039'",
+    "55": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด'",
+    "56": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด สาขากาฬสินธุ์'",
+    "58": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='021/16' แต่ OCR='16'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='25/02/2026' แต่ OCR='25/02/2024'",
+    "59": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-27,851.20 แต่ OCR=27,851.20 (ต่างกัน 55,702.40)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-1,949.58 แต่ OCR=1,949.58 (ต่างกัน 3,899.16)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-29,800.78 แต่ OCR=29,800.78 (ต่างกัน 59,601.56)",
+    "61": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด'",
+    "62": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด'",
+    "63": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='5411200033385' แต่ OCR='ไม่พบ'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='021/17' แต่ OCR='17'",
+    "64": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='นาย ณต สินรัชตานันท์' แต่ OCR='โรงแรม สวนสิน การ์เด้นรีสอร์ท'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'",
+    "66": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ศรีชัย โฮม เอ็กเพรส 2008 จำกัด' แต่ OCR='บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด'",
+    "67": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXPSU202602060001"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "0-address_match": true,
+    "2-document_no_match": true,
+    "6-document_no_match": true,
+    "8-document_no_match": true,
+    "11-document_no_match": true,
+    "13-amount_before_vat_match": true,
+    "14-document_no_match": true,
+    "18-amount_before_vat_match": true,
+    "19-company_name_match": true,
+    "19-tax_id_match": true,
+    "19-branch_match": true,
+    "19-total_amount_match": true,
+    "19-document_type_match": true,
+    "22-amount_before_vat_match": true,
+    "23-document_no_match": true,
+    "23-date_match": true,
+    "23-document_type_match": true,
+    "28-amount_before_vat_match": true,
+    "31-document_no_match": true,
+    "37-company_name_match": true,
+    "38-company_name_match": true,
+    "40-company_name_match": true,
+    "42-amount_before_vat_match": true,
+    "43-company_name_match": true,
+    "1-company_name_match": true,
+    "2-company_name_match": true,
+    "3-company_name_match": true,
+    "4-company_name_match": true,
+    "5-company_name_match": true,
+    "7-document_no_match": true,
+    "7-branch_match": true,
+    "7-company_name_match": true,
+    "8-company_name_match": true,
+    "9-company_name_match": true,
+    "10-company_name_match": true,
+    "11-date_match": true,
+    "11-company_name_match": true,
+    "13-company_name_match": true,
+    "14-company_name_match": true,
+    "15-company_name_match": true,
+    "16-company_name_match": true,
+    "18-company_name_match": true,
+    "19-document_no_match": true,
+    "20-company_name_match": true,
+    "21-company_name_match": true,
+    "22-branch_match": true,
+    "22-date_match": true,
+    "22-document_no_match": true,
+    "22-address_match": true,
+    "22-company_tax_id_match": true,
+    "22-company_name_match": true,
+    "23-company_name_match": true,
+    "24-company_name_match": true,
+    "25-document_no_match": true,
+    "25-date_match": true,
+    "25-company_name_match": true,
+    "25-branch_match": true,
+    "26-company_name_match": true,
+    "27-company_name_match": true,
+    "28-company_name_match": true,
+    "30-company_name_match": true,
+    "31-company_name_match": true,
+    "31-document_type_match": true,
+    "32-company_name_match": true,
+    "33-company_name_match": true,
+    "34-company_name_match": true,
+    "35-document_no_match": true,
+    "35-date_match": true,
+    "35-total_amount_match": true,
+    "35-vat_amount_match": true,
+    "35-amount_before_vat_match": true,
+    "36-company_name_match": true,
+    "36-document_type_match": true,
+    "38-document_no_match": true,
+    "38-branch_match": true,
+    "38-address_match": true,
+    "39-company_name_match": true,
+    "40-document_no_match": true,
+    "40-date_match": true,
+    "41-document_no_match": true,
+    "41-date_match": true,
+    "42-company_name_match": true,
+    "43-document_no_match": true,
+    "43-date_match": true,
+    "43-branch_match": true,
+    "44-company_name_match": true,
+    "45-company_name_match": true,
+    "46-company_name_match": true,
+    "47-document_no_match": true,
+    "48-company_name_match": true,
+    "49-company_name_match": true,
+    "50-company_name_match": true,
+    "51-company_name_match": true,
+    "53-document_no_match": true,
+    "55-company_name_match": true,
+    "56-company_name_match": true,
+    "57-company_name_match": true,
+    "58-document_no_match": true,
+    "58-date_match": true,
+    "59-amount_before_vat_match": true,
+    "59-vat_amount_match": true,
+    "59-total_amount_match": true,
+    "60-company_name_match": true,
+    "61-company_name_match": true,
+    "62-company_name_match": true,
+    "63-document_no_match": true,
+    "63-tax_id_match": true,
+    "64-company_name_match": true,
+    "64-branch_match": true,
+    "65-company_name_match": true,
+    "66-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build214 บริษัท เอส.ยู. คอมพาเนียน จำกัด รายเดือน\\1.สำนักงานใหญ่ อำเภอเมืองนนทบุรี\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 67,
+    "metadata": [
+      {
+        "filename": "10.02.2026_EXPSU202602100001_ณรงค์ชัยคอนกรีต อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต"
+      },
+      {
+        "filename": "24.02.2026_EXPSU202602240005_ไทวัสดุ อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด สาขากาฬสินธุ์"
+      },
+      {
+        "filename": "28.02.2026_EXPSU202602280001_ศรีชัยโฮม อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด"
+      },
+      {
+        "filename": "25.02.2026_CNXSU20260225001_มัดจำซื้อมาขายไป Electrical Part หักจากเงินมัดจำ_VAT.pdf",
+        "company_name": "บริษัท เอ็น. อาร์. เอ็นจิเนียริ่ง จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXPSU202602240004_เมืองชัย อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "เมืองชัย วัสดุภัณฑ์"
+      },
+      {
+        "filename": "18.02.2026_EXPSU202602180004_02-67-1100522 โชคทวี อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "ร้าน โชคทวีก่อสร้าง"
+      },
+      {
+        "filename": "23.02.2026_EXPSU202602230003_ศรีชัย โฮม  อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008 จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXPSU202602050003_ศรีชัยโฮม อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008 จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXPSU202602120005_พี.พี เมทัลชีท อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด พี.พี. เม็ททอลชีท (หนองฉาง)"
+      },
+      {
+        "filename": "12.02.2026_EXPSU202602120004_ณรงค์ชัยคอนกรีต อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต"
+      },
+      {
+        "filename": "26.12.2025_EXPSU202512260005_DIY อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "บริษัท มิสเตอร์.ดี.ไอ.วาย. (กรุงเทพ) จำกัด"
+      },
+      {
+        "filename": "19.02.2026_EXPSU202602190004_ณรงค์ชัย อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต"
+      },
+      {
+        "filename": "28.02.206_EXPSU202602280002_สยามโกลบอลเฮาส์ อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "25.02.2026_EXPSU202602250007_โชคทวี อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "ร้าน โชคทวีก่อสร้าง"
+      },
+      {
+        "filename": "16.02.2026_EXPSU202602160004_โชคทวี อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "ร้าน โชคทวีก่อสร้าง"
+      },
+      {
+        "filename": "14.02.2026_EXPSU202602140001_ศรีชัย อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008 จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXPSU202602120002_อุดมธรรม อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "ร้านอุดมธรรมอีเล็คทริค"
+      },
+      {
+        "filename": "07.02.2026_EXPSU202602070003_ณรงค์ชัย คอนกรีต อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต"
+      },
+      {
+        "filename": "11.02.2026_EXPSU202602110005_ศรีชัย อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด"
+      },
+      {
+        "filename": "25.02.2026_EXPSU202602250006_ศรีชัย โฮม  อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXPSU202602120003_ณรงค์ชัย อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต"
+      },
+      {
+        "filename": "19.02.2026_EXPSU202602190003_เอพีเค อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท เอพีเค โปรเกรส จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXPSU202602240003_ศรีชัย โฮม  อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXPSU202602050002_ศรีชัยโฮม อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด"
+      },
+      {
+        "filename": "11.02.2026_EXPSU202602110004_โชคทวี อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "ร้าน โชคทวีก่อสร้าง"
+      },
+      {
+        "filename": "12.02.2026_WHT_EXPSU202602060001_BMU ค่าทำบัญชี Back office_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXPSU202602130001_ศรีชัย อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด"
+      },
+      {
+        "filename": "03.02.2026_EXPSU202602030002_ดูโฮม อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "บริษัท ดูโฮม จำกัด (มหาชน)"
+      },
+      {
+        "filename": "11.02.2026_EXPSU202602110003_ศรีชัย อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด"
+      },
+      {
+        "filename": "17.02.2026_EXPSU202602170003_ศรีชัยโฮม อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXPSU202602130002_ศรีชัย อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด"
+      },
+      {
+        "filename": "27.01.2026_EXPSU202601270006_โฮมโปรดักส์ อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน) สาขา เมกาโฮม-รัตนาธิเบศร์"
+      },
+      {
+        "filename": "23.02.2026_WHT_EXPSU202602230001_DSE ทดสอบดิน 018 BSK_VAT.pdf",
+        "company_name": "บริษัท เดนิช ซอยล์ เอ็นจิเนียริ่ง จำกัด"
+      },
+      {
+        "filename": "19.02.2026_EXPSU202602190001_ศรีชัยโฮม อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008 จำกัด"
+      },
+      {
+        "filename": "25.02.2026_EXPSU202602250008_ศรีชัย โฮม  อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXPSU202602240007_MEA ค่าไฟ Back office_VAT.pdf",
+        "company_name": "การไฟฟ้านครหลวง"
+      },
+      {
+        "filename": "10.02.2026_EXPSU202602100003_NR Engineering มัดจำซื้อมาขายไป_VAT.pdf",
+        "company_name": "บริษัท เอ็น. อาร์. เอ็นจิเนียริ่ง จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXPSU202602120006_ไทวัสดุ อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด สาขาอุทัยธานี"
+      },
+      {
+        "filename": "04.02.2026_EXPSU202602040002_ต.พิพัฒ อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ต. พิพัฒน์ซัพพลาย"
+      },
+      {
+        "filename": "25.02.2026_EXPSU202602250005_NR Engineering มัดจำซื้อมาขายไป Electrical Part หักจากเงินมัดจำ_VAT.pdf",
+        "company_name": "บริษัท เอ็น. อาร์. เอ็นจิเนียริ่ง จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXPSU202602200001_ออฟฟิศเมท อุปกรณ์สำนักงาน Back office_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท (ไทย) จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXPSU202602240008_MWA ค่าน้ำ_VAT.pdf",
+        "company_name": "การประปานครหลวง"
+      },
+      {
+        "filename": "04.02.2026_EXPSU202602040001_ณรงค์ชัยคอนกรีต อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต"
+      },
+      {
+        "filename": "23.02.2026_EXPSU202602230004_ไทวัสดุ อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาขอนแก่น)"
+      },
+      {
+        "filename": "28.02.2026_EXPSU202602280003_โรงแรมสวนสิน ที่พัก 016 DWR_VAT.pdf",
+        "company_name": "โรงแรม สวนสิน การ์เด้นรีสอร์ท"
+      },
+      {
+        "filename": "19.02.2026_EXPSU202602190002_อุดมธรรม อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "ร้านอุดมธรรมอิเล็คทริค"
+      },
+      {
+        "filename": "09.02.2026_EXPSU202602090002_สยามออโต้แบคส์ เปลี่ยนยางรถยนต์ Back office_VAT.pdf",
+        "company_name": "บริษัท สยามออโต้แบคส์ จำกัด"
+      },
+      {
+        "filename": "16.02.2026_EXPSU202602160002_ดีวัน อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ดี-วัน ซิสเต็ม 2016 จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXPSU202602100002_พี.พี เมทัลชีท อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด . พี.พี. เม็ททอลชีท (หนองฉาง)"
+      },
+      {
+        "filename": "06.02.2026_EXPSU202602060002_โชคทวี อุปกรณ์ก่อสร้าง 014 NKS.pdf",
+        "company_name": "ร้าน โชคทวี ก่อสร้าง"
+      },
+      {
+        "filename": "18.02.2026_EXPSU202602180006_ณรงค์ชัย อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต"
+      },
+      {
+        "filename": "08.02.2026_EXPSU202602080001_ช.คอนกรีต อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "หจก.ช.ดอนกรีด ลานสัก"
+      },
+      {
+        "filename": "07.02.2026_EXPSU202602070004_ณรงค์ชัย อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต"
+      },
+      {
+        "filename": "09.02.2026_EXPSU202602090001_โซโนพาร์ อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท โซเนพาร์ (ประเทศไทย) จำกัด (สำนักงานใหญ่)"
+      },
+      {
+        "filename": "23.02.2026_EXPSU202602230005_ศรีชัย โฮม  อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด"
+      },
+      {
+        "filename": "18.02.2026_EXPSU202602180005_โชคทวี อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "ร้าน โชคทวีก่อสร้าง"
+      },
+      {
+        "filename": "16.02.2026_EXPSU202602160003_ศรีชัยโฮม อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด"
+      },
+      {
+        "filename": "02.02.2026_EXPSU202602020003_ไทวัสดุ อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "04.11.2025_EXPSU202511040006_วัสดุอุปกรณ์_VAT.pdf",
+        "company_name": "บริษัท แซลม่อน คอนกรีต เทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXPSU202602020002_ณรงค์ชัยคอนกรีต อุปกรณ์ก่อสร้าง 015 BPK_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ณรงค์ชัยคอนกรีต"
+      },
+      {
+        "filename": "02.02.2026_EXPSU202602020001_ศรีชัยโฮม อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008 จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXPSU202602130003_ศรีชัย อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด"
+      },
+      {
+        "filename": "24.02.2026_EXPSU202602240006_NR Engineering มัดจำซื้อมาขายไป_VAT.pdf",
+        "company_name": "บริษัท เอ็น. อาร์. เอ็นจิเนียริ่ง จำกัด"
+      },
+      {
+        "filename": "17.02.2026_EXPSU202602170002_อุดมธรรม อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "ร้านอุดมธรรมอีเล็คทริค"
+      },
+      {
+        "filename": "07.02.2026_EXPSU202602070001_เมืองชัย อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "เมืองชัย วัสดุภัณฑ์"
+      },
+      {
+        "filename": "07.02.2026_EXPSU202602070002_ศรีชัย อุปกรณ์ก่อสร้าง 014 NKS_VAT.pdf",
+        "company_name": "บริษัท ศรีชัยโฮมเอ็กเพรส 2008จํากัด"
+      },
+      {
+        "filename": "28.02.2026_EXPSU202602280004_วัสดุก่อสร้าง_VAT.jpg",
+        "company_name": "ร้าน โชคทวีก่อสร้าง"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 68,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXPSU202511040006",
+        "ocr_document_no": "IV681104-02",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXPSU202512260005",
+        "ocr_document_no": "0000010370",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXPSU202601270006",
+        "ocr_document_no": "111226",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXPSU202602020002",
+        "ocr_document_no": "BX6711341",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXPSU202602020001",
+        "ocr_document_no": "HS6902-0203",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXPSU202602020003",
+        "ocr_document_no": "UTIIE26020015941",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXPSU202602030002",
+        "ocr_document_no": "1210127883",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXPSU202602040002",
+        "ocr_document_no": "4057",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXPSU202602040001",
+        "ocr_document_no": "BX6711382",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXPSU202602050002",
+        "ocr_document_no": "HS6902-0501",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXPSU202602050003",
+        "ocr_document_no": "HS6902-0502",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXPSU202602060002",
+        "ocr_document_no": "42",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXPSU202602070001",
+        "ocr_document_no": "1-2602071645",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXPSU202602070003",
+        "ocr_document_no": "BX6711484",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXPSU202602070004",
+        "ocr_document_no": "BX6711497",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXPSU202602070002",
+        "ocr_document_no": "HS6902-0702",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXPSU202602080001",
+        "ocr_document_no": "69-VV00815",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXPSU202602090002",
+        "ocr_document_no": "ETI-A12900000083",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXPSU202602090001",
+        "ocr_document_no": "INV512602-02678",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXPSU202602100003",
+        "ocr_document_no": "ARD-NRE-260000031",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXPSU202602100001",
+        "ocr_document_no": "BX6711557",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXPSU202602100002",
+        "ocr_document_no": "HS6902/047",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXPSU202602110004",
+        "ocr_document_no": "46",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXPSU202602110003",
+        "ocr_document_no": "HS6902-1106",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXPSU202602110005",
+        "ocr_document_no": "HS6902-1107",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXPSU202602120002",
+        "ocr_document_no": "44",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXPSU202602120003",
+        "ocr_document_no": "BX6711595",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXPSU202602120004",
+        "ocr_document_no": "BX6711614",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXPSU202602120005",
+        "ocr_document_no": "HS6902/056",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXPSU202602120001",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXPSU202602120006",
+        "ocr_document_no": "UTIIE26020016383",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXPSU202602130002",
+        "ocr_document_no": "HS6902-1305",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXPSU202602130001",
+        "ocr_document_no": "HS6902-1307",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXPSU202602130003",
+        "ocr_document_no": "HS6902-1308",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXPSU202602140001",
+        "ocr_document_no": "HS6902-1404",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXPSU202602160004",
+        "ocr_document_no": "20",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXPSU202602160003",
+        "ocr_document_no": "HS6902-1603",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXPSU202602160002",
+        "ocr_document_no": "INV2026020006",
+        "match_status": "full_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXPSU202602170002",
+        "ocr_document_no": "10",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXPSU202602170003",
+        "ocr_document_no": "HS6902-1704",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXPSU202602180004",
+        "ocr_document_no": "6",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXPSU202602180005",
+        "ocr_document_no": "7",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 42,
+        "purchase_reference": "EXPSU202602180006",
+        "ocr_document_no": "BX6711751",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 43,
+        "purchase_reference": "EXPSU202602190002",
+        "ocr_document_no": "18",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 44,
+        "purchase_reference": "EXPSU202602190004",
+        "ocr_document_no": "BX6711806",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 45,
+        "purchase_reference": "EXPSU202602190001",
+        "ocr_document_no": "HS6902-1901",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 46,
+        "purchase_reference": "EXPSU202602190003",
+        "ocr_document_no": "INV2026020011",
+        "match_status": "full_match"
+      },
+      {
+        "index": 47,
+        "purchase_reference": "EXPSU202602200001",
+        "ocr_document_no": "00022-000015991",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 48,
+        "purchase_reference": "EXPSU202602230001",
+        "ocr_document_no": "69-00199",
+        "match_status": "full_match"
+      },
+      {
+        "index": 49,
+        "purchase_reference": "EXPSU202602230003",
+        "ocr_document_no": "HS6902-2303",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 50,
+        "purchase_reference": "EXPSU202602230005",
+        "ocr_document_no": "HS6902-2304",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 51,
+        "purchase_reference": "EXPSU202602230004",
+        "ocr_document_no": "KKNIE26020042808",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 52,
+        "purchase_reference": "EXPSU202602240004",
+        "ocr_document_no": "1-2602242472",
+        "match_status": "full_match"
+      },
+      {
+        "index": 53,
+        "purchase_reference": "EXPSU202602240006",
+        "ocr_document_no": "ARD-NRE-260000039",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 54,
+        "purchase_reference": "EXPSU202602240008",
+        "ocr_document_no": "E5667762537",
+        "match_status": "full_match"
+      },
+      {
+        "index": 55,
+        "purchase_reference": "EXPSU202602240003",
+        "ocr_document_no": "HS6902-2404",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 56,
+        "purchase_reference": "EXPSU202602240005",
+        "ocr_document_no": "KSNIE26020019622",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 57,
+        "purchase_reference": "EXPSU202602240007",
+        "ocr_document_no": "O0202249078",
+        "match_status": "full_match"
+      },
+      {
+        "index": 58,
+        "purchase_reference": "EXPSU202602250007",
+        "ocr_document_no": "16",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 59,
+        "purchase_reference": "CNXSU20260225001",
+        "ocr_document_no": "ARD-NRE-260070037",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 60,
+        "purchase_reference": "EXPSU202602250005",
+        "ocr_document_no": "AR-NRE-26007165",
+        "match_status": "full_match"
+      },
+      {
+        "index": 61,
+        "purchase_reference": "EXPSU202602250008",
+        "ocr_document_no": "HS6902-2505",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 62,
+        "purchase_reference": "EXPSU202602250006",
+        "ocr_document_no": "HS6902-2506",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 63,
+        "purchase_reference": "EXPSU202602280004",
+        "ocr_document_no": "17",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 64,
+        "purchase_reference": "EXPSU202602280003",
+        "ocr_document_no": "B2602-0350",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 65,
+        "purchase_reference": "EXPSU202602280002",
+        "ocr_document_no": "GHKRNCA05ACA-690228-0006",
+        "match_status": "full_match"
+      },
+      {
+        "index": 66,
+        "purchase_reference": "EXPSU202602280001",
+        "ocr_document_no": "HS6902-2805",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 67,
+        "ocr_document_no": "RT-20260200135",
+        "match_status": "no_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

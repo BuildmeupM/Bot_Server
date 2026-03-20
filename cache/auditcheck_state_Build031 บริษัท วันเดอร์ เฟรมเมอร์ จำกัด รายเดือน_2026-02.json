@@ -1,0 +1,173 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-18T02:33:31.139Z",
+  "last_saved": "2026-03-18T09:33:30.433123",
+  "company": "Build031 บริษัท วันเดอร์ เฟรมเมอร์ จำกัด รายเดือน",
+  "base_company": "Build031 บริษัท วันเดอร์ เฟรมเมอร์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "8": "",
+    "9": "ชื่อ/เลขที่/สาขา ผิดบริษัท"
+  },
+  "initialNotes": {
+    "0": "วันที่ไม่ตรงกัน: ภาษีซื้อ='01/02/2026' แต่ OCR='01/02/2027'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte. Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=779.99 แต่ OCR=47.89 (ต่างกัน 732.10)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='OpenAI OpCo , LLC'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=7,727.10 แต่ OCR=474.47 (ต่างกัน 7,252.63)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='OpenAI OpCo , LLC'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=777.10 แต่ OCR=47.72 (ต่างกัน 729.38)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Anthropic , PBC'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=7,725.89 แต่ OCR=474.40 (ต่างกัน 7,251.49)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)' แต่ OCR='บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน) สาขา รัชดาภิเษก'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)' แต่ OCR='บริษัท เพาเวอร์บาย จำกัด'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0107544000043' แต่ OCR='0105539004352'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00112' แต่ OCR='00174'"
+  },
+  "comparisonApprovals": {
+    "0-date_match": true,
+    "3-total_amount_match": true,
+    "3-document_type_match": true,
+    "3-branch_match": true,
+    "3-tax_id_match": true,
+    "3-company_name_match": true,
+    "4-company_name_match": true,
+    "4-tax_id_match": true,
+    "4-branch_match": true,
+    "4-total_amount_match": true,
+    "4-document_type_match": true,
+    "5-branch_match": true,
+    "5-tax_id_match": true,
+    "5-company_name_match": true,
+    "5-total_amount_match": true,
+    "5-document_type_match": true,
+    "6-document_type_match": true,
+    "6-total_amount_match": true,
+    "6-branch_match": true,
+    "6-tax_id_match": true,
+    "6-company_name_match": true,
+    "8-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build031 บริษัท วันเดอร์ เฟรมเมอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 10,
+    "metadata": [
+      {
+        "filename": "02.02.2026_EXP-20260200030_2569.02.02 seagate HDD_VAT.pdf",
+        "company_name": "บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน)"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200026_ภ.ง.ด.36_VAT.pdf",
+        "company_name": "Anthropic , PBC"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200031_2569.02.22 อ่างล้างหน้า_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน) สาขา รัชดาภิเษก"
+      },
+      {
+        "filename": "19.02.2026_EXP-20260200033_2569.02.19 ตู้ลิ้นชัก_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "09.02.2026_WHT_EXP-20260200010_ค่าทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200023_ภ.พ.36_VAT.pdf",
+        "company_name": "OpenAI OpCo , LLC"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200032_2569.02.01 หัวแปลงปลั๊กไฟ_VAT.pdf",
+        "company_name": "บริษัท คอมเซเว่น จำกัด (มหาชน)"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200025_ภ.พ.36_VAT.pdf",
+        "company_name": "Google Asia Pacific Pte. Ltd"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200024_ภ.พ.36_VAT.pdf",
+        "company_name": "OpenAI OpCo , LLC"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200034_2569.02.27 ปลั๊กแปลง_VAT.pdf",
+        "company_name": "บริษัท เพาเวอร์บาย จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 10,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200032",
+        "ocr_document_no": "6902-BR387-00036",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200030",
+        "ocr_document_no": "BPAVI00000690200000185",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "RT-20260200082",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200025",
+        "ocr_document_no": "69121842506",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "69121842508",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200023",
+        "ocr_document_no": "69121842510",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200026",
+        "ocr_document_no": "69121842515",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200033",
+        "ocr_document_no": "112524",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200031",
+        "ocr_document_no": "110034",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200034",
+        "ocr_document_no": "CEIE26020010470",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

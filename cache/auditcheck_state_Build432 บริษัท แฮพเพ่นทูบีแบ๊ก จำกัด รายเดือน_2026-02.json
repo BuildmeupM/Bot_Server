@@ -1,0 +1,375 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-19T10:08:02.659Z",
+  "last_saved": "2026-03-19T17:07:58.984276",
+  "company": "Build432 บริษัท แฮพเพ่นทูบีแบ๊ก จำกัด รายเดือน",
+  "base_company": "Build432 บริษัท แฮพเพ่นทูบีแบ๊ก จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "18": "",
+    "24": "",
+    "25": "",
+    "26": "",
+    "27": "",
+    "28": ""
+  },
+  "initialNotes": {
+    "18": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200010 (เลขที่ใบกำกับ: CR6902-0576)",
+    "24": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วีโซลด์ สไมล์ จำกัด' แต่ OCR='บริษัท วีโซลด์ สมิล์ จำกัด'",
+    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วีโซลด์ สไมล์ จำกัด' แต่ OCR='บริษัท วีโชลด์ สมัลล์ จำกัด'",
+    "26": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='HS2600194' แต่ OCR='IIS2600194'",
+    "27": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วีโซลด์ สไมล์ จำกัด' แต่ OCR='บริษัท วีโชลด์ สไมล์ จำกัด'",
+    "28": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เค.เอ็น.เท็กซ์ไทล์ จำกัด' แต่ OCR='K.N. TEXTILES CO., LTD. (บริษัท เค. เอ็น. เท็กซ์ไทล์ จำกัด)'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "2-company_name_match": true,
+    "3-company_name_match": true,
+    "4-company_name_match": true,
+    "5-company_name_match": true,
+    "6-company_name_match": true,
+    "6-company_tax_id_match": true,
+    "7-company_name_match": true,
+    "7-company_tax_id_match": true,
+    "8-company_name_match": true,
+    "9-company_name_match": true,
+    "11-company_name_match": true,
+    "12-company_name_match": true,
+    "13-company_name_match": true,
+    "14-company_name_match": true,
+    "15-company_name_match": true,
+    "16-company_name_match": true,
+    "17-company_name_match": true,
+    "19-company_name_match": true,
+    "20-company_name_match": true,
+    "22-company_name_match": true,
+    "23-company_name_match": true,
+    "24-company_name_match": true,
+    "25-company_name_match": true,
+    "26-document_no_match": true,
+    "27-company_name_match": true,
+    "28-company_name_match": true,
+    "18-document_no_match": true,
+    "18-date_match": true,
+    "18-company_name_match": true,
+    "18-tax_id_match": true,
+    "18-branch_match": true,
+    "18-reference_no_match": true,
+    "18-amount_before_vat_match": true,
+    "18-vat_amount_match": true,
+    "18-total_amount_match": true,
+    "18-document_type_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build432 บริษัท แฮพเพ่นทูบีแบ๊ก จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 29,
+    "metadata": [
+      {
+        "filename": "05.02.2026_EXP-20260200017_ต้นทุนสินค้า-วีโซลด์-TIV-202602016_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200037_ต้นทุนสินค้า-พลิกแพลงไอเดีย-022026_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด พลิกแพลงไอเดีย"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200036_ต้นทุนสินค้า-พลิกแพลงไอเดีย-022026_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด พลิกแพลงไอเดีย"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200021_ต้นทุนสินค้า-วีโซลด์-TIV-202602052_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200013_ต้นทุนสินค้า-พลิกแพลงไอเดีย-022026_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด พลิกแพลงไอเดีย"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200035_ต้นทุนสินค้า-พลิกแพลงไอเดีย-022026_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด พลิกแพลงไอเดีย"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200019_ต้นทุนสินค้า-วีโซลด์-TIV-202602041_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "11.02.2026_WHT_EXP-20260200006_530401_ค่าทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200011_อุปกรณ์สำนักงาน-022026_VAT.pdf",
+        "company_name": "บริษัท อินเด็กซ์ ลิฟวิ่งมอลล์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200024_ต้นทุนสินค้า-วีโซลด์-TIV-202602095_VAT.pdf",
+        "company_name": "บริษัท วีโชลด์ สมัลล์ จำกัด"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200008_ต้นทุนสินค้า-ไทยแกรนด์-022026_VAT.pdf",
+        "company_name": "บริษัท ไทยแกรนด์แบ็กส์ จำกัด"
+      },
+      {
+        "filename": "02.02.226_EXP-20260200014_ต้นทุนสินค้า-วีโซลด์-TIV-202602002_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200040_ต้นทุนสินค้า-ไทยแกรนด์-022026_VAT.pdf",
+        "company_name": "บริษัท ไทยแกรนด์แบ็กส์ จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200038_ต้นทุนสินค้า-ไทยแกรนด์-022026_VAT.pdf",
+        "company_name": "บริษัท ไทยแกรนด์แบ็กส์ จำกัด"
+      },
+      {
+        "filename": "04.02.2026_EXP-20260200016_ต้นทุนสินค้า-วีโซลด์-TIV-202602008_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200020_ต้นทุนสินค้า-วีโซลด์-TIV-202602049_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200034_ต้นทุนสินค้า-วีโซลด์-TIV-20260200034_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200022_ต้นทุนสินค้า-วีโซลด์-TIV-202602060_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200009_ต้นทุนสินค้า-เพิ่มพูนอินเตอร์เทรด-022026_VAT.pdf",
+        "company_name": "บริษัท เพิ่มพูนอินเตอร์เทรด จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200039_ต้นทุนสินค้า-ไทยแกรนด์-022026_VAT.pdf",
+        "company_name": "บริษัท ไทยแกรนด์แบ็กส์ จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200042_ต้นทุนสินค้า-ไทยแกรนด์-022026_VAT.pdf",
+        "company_name": "บริษัท ไทยแกรนด์แบ็กส์ จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200041_ต้นทุนสินค้า-ไทยแกรนด์-022026_VAT.pdf",
+        "company_name": "บริษัท ไทยแกรนด์แบ็กส์ จำกัด"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200023_ต้นทุนสินค้า-วีโซลด์-TIV-202602089_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สมิล์ จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200018_ต้นทุนสินค้า-วีโซลด์-TIV-202602035_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200025_ต้นทุนสินค้า-วีโซลด์-TIV-202602109_VAT.pdf",
+        "company_name": "บริษัท วีโชลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200015_ต้นทุนสินค้า-วีโซลด์-TIV-202602003_VAT.pdf",
+        "company_name": "บริษัท วีโซลด์ สไมล์ จำกัด"
+      },
+      {
+        "filename": "10.02.2026_WHT_EXP-20260200001_ต้นทุนค่าบริการ-ฟาสต์คาร์โก้_VAT.pdf",
+        "company_name": "บริษัท ฟาสต์ คาร์โก้ โลจิสติกส์ จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200012_ต้นทุนสินค้า-เคเอ็น-28022026_VAT.jpg",
+        "company_name": "K.N. TEXTILES CO., LTD. (บริษัท เค. เอ็น. เท็กซ์ไทล์ จำกัด)"
+      },
+      {
+        "filename": "14.02.2026_EXP-20260200010_ต้นทุนสินค้า-เคเอ็น-16022026_VAT.jpg"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 29,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "TIV-202602002",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "TIV-202602003",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "HS2600110",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "TIV-202602008",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200038",
+        "ocr_document_no": "HS2600121",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "IN2/69-014",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200035",
+        "ocr_document_no": "IN2/69-015",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "IV2026/0082",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200017",
+        "ocr_document_no": "TIV-202602016",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "5202000583",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "F2026/02170",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200036",
+        "ocr_document_no": "IN2/69-025",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "TIV-202602035",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "RT-20260200096",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200019",
+        "ocr_document_no": "TIV-202602041",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200039",
+        "ocr_document_no": "HS2600143",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "TIV-202602049",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200021",
+        "ocr_document_no": "TIV-202602052",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260200010",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260200034",
+        "ocr_document_no": "TIV-202602059",
+        "match_status": "full_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "TIV-202602060",
+        "match_status": "full_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260200040",
+        "ocr_document_no": "HS2600171",
+        "match_status": "full_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260200041",
+        "ocr_document_no": "HS2600172",
+        "match_status": "full_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260200037",
+        "ocr_document_no": "IN2/69-052",
+        "match_status": "full_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260200023",
+        "ocr_document_no": "TIV-202602089",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "TIV-202602095",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260200042",
+        "ocr_document_no": "IIS2600194",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260200025",
+        "ocr_document_no": "TIV-202602109",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "CR6902-1092",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-18T06:04:39.393Z",
+  "last_saved": "2026-03-18T13:04:41.389122",
+  "company": "Build614 บริษัท ไดมอนด์คอร์ป จำกัด",
+  "base_company": "Build614 บริษัท ไดมอนด์คอร์ป จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "1": "",
+    "2": ""
+  },
+  "initialNotes": {
+    "1": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=648.72 แต่ OCR=630.50 (ต่างกัน 18.22)",
+    "2": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=648.72 แต่ OCR=630.50 (ต่างกัน 18.22)"
+  },
+  "comparisonApprovals": {
+    "1-total_amount_match": true,
+    "2-total_amount_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build614 บริษัท ไดมอนด์คอร์ป จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "22.02.2026_EXP-20260200003_WHT_530408_ค่าบริการ_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200002_WHT_ค่าบริการ_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200006_520306_ค่าโทรศัพท์_VAT.pdf",
+        "company_name": "บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 3,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "TIDKBK18022026000000388",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "601875",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "601876",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

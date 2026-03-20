@@ -1,0 +1,234 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-19T02:59:36.333Z",
+  "last_saved": "2026-03-19T09:59:38.003867",
+  "company": "Build499 บริษัท บี-ฟอร์ม เอ็นจิเนียริ่ง จำกัด",
+  "base_company": "Build499 บริษัท บี-ฟอร์ม เอ็นจิเนียริ่ง จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "1": "",
+    "2": "",
+    "3": "",
+    "7": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI5206908938-2602-000325' แต่ OCR='T1520650893B-2602-000325'",
+    "9": "",
+    "11": "",
+    "12": "",
+    "13": "",
+    "15": ""
+  },
+  "initialNotes": {
+    "1": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI5260H0053B-2602-000081' แต่ OCR='T15260H0053B-2602-000081'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด โมบาย ฮาร์ดแวร์' แต่ OCR='ห้างหุ้นส่วนจำกัด โมบายฮาร์ดแวร์'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอส ที แอล 99 ซัพพลาย จำกัด' แต่ OCR='บริษัท เอสทีแอล 99 ซัพพลาย จำกัด'",
+    "7": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI5206908938-2602-000325' แต่ OCR='T1520650893B-2602-000325'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซาคอน-ไทย จำกัด' แต่ OCR='บริษัท ชาคอน-ไทย จำกัด'",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=1,043.24 แต่ OCR=1,013.93 (ต่างกัน 29.31)",
+    "12": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI5206S0893A-2602-000933' แต่ OCR='T15206S0893A-2602-000933'",
+    "13": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI5265F0347A-2602-000803' แต่ OCR='T15265F0347A-2602-000803'",
+    "15": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TI5265F0347A-2602-000955' แต่ OCR='TT5265F0347A-2602-000955'"
+  },
+  "comparisonApprovals": {
+    "1-document_no_match": true,
+    "2-company_name_match": true,
+    "3-company_name_match": true,
+    "9-company_name_match": true,
+    "11-company_name_match": true,
+    "11-total_amount_match": true,
+    "12-document_no_match": true,
+    "13-document_no_match": true,
+    "15-document_no_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build499 บริษัท บี-ฟอร์ม เอ็นจิเนียริ่ง จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 17,
+    "metadata": [
+      {
+        "filename": "21.02.2026_EXP-20260200011_510110 - วัสดุอุปกรณ์-งานติดตั้ง21-02-69.00_VAT.pdf",
+        "company_name": "บริษัท ดูโฮม จำกัด (มหาชน)"
+      },
+      {
+        "filename": "04.02.2026_EXP-20260200006_510110 - วัสดุอุปกรณ์-งานติดตั้ง04-02-69.01_VAT.pdf",
+        "company_name": "บริษัท เอสทีแอล 99 ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200010_510110 - วัสดุอุปกรณ์-งานติดตั้ง13-02-69.00_VAT.pdf",
+        "company_name": "บริษัท ชาคอน-ไทย จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200009_510110 - วัสดุอุปกรณ์-งานติดตั้ง12-02-69.00_VAT.pdf",
+        "company_name": "บริษัท เอส.เค.ที. โลหะการ จำกัด"
+      },
+      {
+        "filename": "16.02.206_WHT_EXP-20260200003_ค่าอินเตอร์เน็ต AIS_Receipt.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200018_530213 - ค่าใช้จ่ายสำนักงาน_03-02-69.00_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด เอ็มบี ทูลส์"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200008_510110 - วัสดุอุปกรณ์-งานติดตั้ง10-02-69.00_VAT.pdf",
+        "company_name": "บริษัท ดูโฮม จำกัด (มหาชน)"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200012_510110 - วัสดุอุปกรณ์-งานติดตั้ง28-02-69.00_VAT.pdf",
+        "company_name": "บริษัท ดูโฮม จำกัด (มหาชน)"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200014_520310 - ค่าใช้จ่ายในการเดินทางและยานพาหนะค่าน้ำมัน 11-02-69_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200015_520310 - ค่าใช้จ่ายในการเดินทางและยานพาหนะค่าน้ำมัน 18-02-69_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "04.02.2026_EXP-20260200004_510110 - วัสดุอุปกรณ์-งานติดตั้ง_04-02-69.00_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด โมบายฮาร์ดแวร์"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200005_510110 - วัสดุอุปกรณ์-งานติดตั้ง_05-02-69.00_VAT.pdf",
+        "company_name": "บริษัท เอ็น.ซี.ซี. สตีล จำกัด"
+      },
+      {
+        "filename": "16.02.2026_WHT_EXP-20260200002_RT-20260200171_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200013_520310 - ค่าใช้จ่ายในการเดินทางและยานพาหนะ_ค่าน้ำมัน 03-02-69_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200017_520310 - ค่าใช้จ่ายในการเดินทางและยานพาหนะค่าน้ำมัน 24-02-69_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200016_520310 - ค่าใช้จ่ายในการเดินทางและยานพาหนะค่าน้ำมัน 20-02-69_VAT.pdf",
+        "company_name": "บริษัท ปิโตรเลียมไทยคอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "06.02.2026_EXP-20260200007_510110 - วัสดุอุปกรณ์-งานติดตั้ง06-02-69.00_VAT.pdf",
+        "company_name": "บริษัท ดูโฮม จำกัด (มหาชน)"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 17,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "69020036",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "T15260H0053B-2602-000081",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "69020032",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "HS2601552",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "IV6902118",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "SKTX-20260206-0003",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "SKTX-20260210-0007",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "T1520650893B-2602-000325",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "IV2602058",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "HS-2600396",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "RT-20260200171",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "W-TS-1047-6902-12279545",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "T15206S0893A-2602-000933",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "T15265F0347A-2602-000803",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "BATX-20260221-0010",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200017",
+        "ocr_document_no": "TT5265F0347A-2602-000955",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "SKTX-20260228-0006",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

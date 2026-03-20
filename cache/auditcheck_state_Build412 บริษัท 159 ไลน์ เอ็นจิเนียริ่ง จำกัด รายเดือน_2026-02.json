@@ -1,0 +1,85 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-19T02:46:37.931Z",
+  "last_saved": "2026-03-19T09:46:35.315036",
+  "company": "Build412 บริษัท 159 ไลน์ เอ็นจิเนียริ่ง จำกัด รายเดือน",
+  "base_company": "Build412 บริษัท 159 ไลน์ เอ็นจิเนียริ่ง จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260200001",
+    "2": ""
+  },
+  "initialNotes": {
+    "0": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200012 (เลขที่ใบกำกับ: IVT-20260227002)",
+    "1": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260200001",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='IV6902-0254' แต่ OCR='JV6902-0254'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "2-document_no_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build412 บริษัท 159 ไลน์ เอ็นจิเนียริ่ง จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 4,
+    "metadata": [
+      {
+        "filename": "13.02.2026_EXP-20260200004_P22_rotated_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ไทยร่วมกิจค้าไม้"
+      },
+      {
+        "filename": "25.11.2025_EXP-20251100060_P26_rotated_VAT.pdf",
+        "company_name": "บริษัท เอไพร์ม พลัส จำกัด / APRIME PLUS CO.,LTD."
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200003_P9_rotated_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200005_P25_rotated_VAT.pdf",
+        "company_name": "บริษัท บิ๊กดีล โกลบอล จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 4,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251100060",
+        "ocr_document_no": "IV6811-2507",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "103236",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "JV6902-0254",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "TI2602-03053",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -2466,5 +2466,2298 @@
       "success": true
     },
     "cached_at": 1771411147.6316915
+  },
+  "6bd2e7fb9549e743375e83048e74ca30": {
+    "filename": "2026-02-01-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-01-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nเลขที่ใบกำกับภาษี: OMTH202602010218\nวันที่: 01/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 124.20\nภาษีมูลค่าเพิ่ม: 8.69\nยอดรวมสุทธิ: 132.89\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 124.20\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"124.20\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"3.73\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด (โอมิเซะ)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"8.69\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"124.20\",\n    \"ยอดรวมสุทธิ\": \"132.89\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"124.20\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\"\n      }\n    ],\n    \"วันที่\": \"01/02/2026\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602010218\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 9564,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 16,
+        "char_count": 709,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "เลขที่ใบกำกับภาษี: OMTH202602010218",
+          "วันที่: 01/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)",
+          "เลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890561.5915358
+  },
+  "8f10a03fdb2603d7c99cd3a77f5faed3": {
+    "filename": "2026-02-02-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-02-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602020253\nวันที่: 02/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 101.00\nภาษีมูลค่าเพิ่ม: 7.07\nยอดรวมสุทธิ: 108.07\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 101.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"101.00\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"3.03\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"7.07\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"101.00\",\n    \"ยอดรวมสุทธิ\": \"108.07\",\n    \"ยอดเงินที่ได้รับยกเว้นภาษี\": \"0.00\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"101.00\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"02/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"ส่วนลด\": \"0.00\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602020253\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 19720,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 730,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602020253",
+          "วันที่: 02/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890582.4556339
+  },
+  "f722e9663a3a192db2a5a32e37bea702": {
+    "filename": "2026-02-03-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-03-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602030251\nวันที่: 03/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 98.30\nภาษีมูลค่าเพิ่ม: 6.88\nยอดรวมสุทธิ: 105.18\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 98.30\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"2.95\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"ใบเสร็จรับเงิน/ใบกำกับภาษี\",\n    \"ภาษีมูลค่าเพิ่ม\": \"6.88\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"98.30\",\n    \"ยอดรวมสุทธิ\": \"105.18\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"98.30\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"03/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602030251\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 18341,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 705,
+        "first_lines": [
+          "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602030251",
+          "วันที่: 03/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890601.9939873
+  },
+  "0e48a923d77d2f00f63a96d9a8fb9e4f": {
+    "filename": "2026-02-04-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-04-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602040234\nวันที่: 04/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 57.20\nภาษีมูลค่าเพิ่ม: 4.00\nยอดรวมสุทธิ: 61.20\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 57.20\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"57.20\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"1.72\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด (โอมิเซะ)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"4.00\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"57.20\",\n    \"ยอดรวมสุทธิ\": \"61.20\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"57.20\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\"\n      }\n    ],\n    \"วันที่\": \"04/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602040234\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 17196,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 727,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602040234",
+          "วันที่: 04/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890620.2984273
+  },
+  "0ecf2478b919c4a2ace0b117cf52574a": {
+    "filename": "2026-02-05-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-05-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602050230\nวันที่: 05/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 74.04\nภาษีมูลค่าเพิ่ม: 5.18\nยอดรวมสุทธิ: 79.22\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 46.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 28.04",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"2.22\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"ใบเสร็จรับเงิน/ใบกำกับภาษี\",\n    \"ภาษีมูลค่าเพิ่ม\": \"5.18\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"74.04\",\n    \"ยอดรวมสุทธิ\": \"79.22\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"46.00\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"28.04\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"05/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602050230\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 9432,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 705,
+        "first_lines": [
+          "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602050230",
+          "วันที่: 05/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890630.9071352
+  },
+  "80400850c36bf2e1150d0cd9f8e64a11": {
+    "filename": "2026-02-06-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-06-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602060228\nวันที่: 06/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 59.20\nภาษีมูลค่าเพิ่ม: 4.14\nยอดรวมสุทธิ: 63.34\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 59.20\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"1.78\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด (โอมิเซะ)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"4.14\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"59.20\",\n    \"ยอดรวมสุทธิ\": \"63.34\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"59.20\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\"\n      }\n    ],\n    \"วันที่\": \"06/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602060228\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 18748,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 727,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602060228",
+          "วันที่: 06/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890650.7869656
+  },
+  "4190d44836d1329b01ba75bea72e5944": {
+    "filename": "2026-02-07-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-07-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602070209\nวันที่: 07/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 52.00\nภาษีมูลค่าเพิ่ม: 3.64\nยอดรวมสุทธิ: 55.64\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 52.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"52.00\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"1.56\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited (Omise)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt/Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"3.64\",\n    \"มีการหัก ณ ที่จ่าย\": \"ใช่\",\n    \"ยอดรวมก่อนภาษี\": \"52.00\",\n    \"ยอดรวมสุทธิ\": \"55.64\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"52.00\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"07/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602070209\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 12036,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 725,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt/Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602070209",
+          "วันที่: 07/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt/Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890663.92642
+  },
+  "a258b7c48f22559d0bbb86d752ebce55": {
+    "filename": "2026-02-08-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-08-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602080193\nวันที่: 08/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 95.00\nภาษีมูลค่าเพิ่ม: 6.65\nยอดรวมสุทธิ: 101.65\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 95.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"95.00\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"2.85\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"6.65\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"95.00\",\n    \"ยอดรวมสุทธิ\": \"101.65\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"95.00\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\"\n      }\n    ],\n    \"วันที่\": \"08/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602080193\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 17117,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 700,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602080193",
+          "วันที่: 08/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890682.207309
+  },
+  "501ea461af57b962e3673cd21acdb2e1": {
+    "filename": "2026-02-09-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-09-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602090231\nวันที่: 09/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 84.20\nภาษีมูลค่าเพิ่ม: 5.89\nยอดรวมสุทธิ: 90.09\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 84.20\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"84.20\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"2.53\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"5.89\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"84.20\",\n    \"ยอดรวมสุทธิ\": \"90.09\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"84.20\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\"\n      }\n    ],\n    \"วันที่\": \"09/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602090231\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 17209,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 699,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602090231",
+          "วันที่: 09/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890700.7135627
+  },
+  "47177e4881eb16119bbf70f9302520c3": {
+    "filename": "2026-02-10-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-10-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602100256\nวันที่: 10/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 010556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 117.90\nภาษีมูลค่าเพิ่ม: 8.25\nยอดรวมสุทธิ: 126.15\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 117.90\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"117.90\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"3.54\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"8.25\",\n    \"มีการหัก ณ ที่จ่าย\": \"ใช่\",\n    \"ยอดรวมก่อนภาษี\": \"117.90\",\n    \"ยอดรวมสุทธิ\": \"126.15\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"117.90\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"10/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602100256\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"010556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"010556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 10159,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 701,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602100256",
+          "วันที่: 10/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890712.048609
+  },
+  "77c00ce28777a96469e65f4c3f33426c": {
+    "filename": "2026-02-11-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-11-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602110230\nวันที่: 11/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 165.50\nภาษีมูลค่าเพิ่ม: 11.59\nยอดรวมสุทธิ: 177.09\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 165.50\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"165.50\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"4.97\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"11.59\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"165.50\",\n    \"ยอดรวมสุทธิ\": \"177.09\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"165.50\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"11/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602110230\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 10423,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 703,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602110230",
+          "วันที่: 11/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890723.877355
+  },
+  "71e0175d71bc9c59c360425101ef0984": {
+    "filename": "2026-02-12-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-12-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602120232\nวันที่: 12/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 165.75\nภาษีมูลค่าเพิ่ม: 11.60\nยอดรวมสุทธิ: 177.35\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 165.75\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"165.75\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"4.97\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt/Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"11.60\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"165.75\",\n    \"ยอดรวมสุทธิ\": \"177.35\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"165.75\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\"\n      }\n    ],\n    \"วันที่\": \"12/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602120232\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 9464,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 701,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt/Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602120232",
+          "วันที่: 12/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt/Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890734.6625826
+  },
+  "a5cdea8d8887e8875b956ada103e464f": {
+    "filename": "2026-02-13-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-13-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602130231\nวันที่: 13/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 115.50\nภาษีมูลค่าเพิ่ม: 8.09\nยอดรวมสุทธิ: 123.59\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 115.50\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"115.50\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"3.47\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited (Omise)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"8.09\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"115.50\",\n    \"ยอดรวมสุทธิ\": \"123.59\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"115.50\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"13/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602130231\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 12197,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 730,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602130231",
+          "วันที่: 13/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890747.9936976
+  },
+  "f226f1a95175faaf821b657e98b1caa0": {
+    "filename": "2026-02-14-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-14-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602140211\nวันที่: 14/02/2026\nชื่อผู้ขาย: บริษัท โอมิเซะ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 88.12\nภาษีมูลค่าเพิ่ม: 6.17\nยอดรวมสุทธิ: 94.29\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 88.12\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"2.64\",\n    \"ชื่อผู้ขาย\": \"บริษัท โอมิเซะ จำกัด\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"ใบเสร็จรับเงิน/ใบกำกับภาษี\",\n    \"ภาษีมูลค่าเพิ่ม\": \"6.17\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"88.12\",\n    \"ยอดรวมสุทธิ\": \"94.29\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"88.12\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"14/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602140211\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 9905,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 703,
+        "first_lines": [
+          "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602140211",
+          "วันที่: 14/02/2026",
+          "ชื่อผู้ขาย: บริษัท โอมิเซะ จำกัด"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890759.0768921
+  },
+  "ee401ac9eb07a321e2c25053dd5a93d8": {
+    "filename": "2026-02-15-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-15-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602150202\nวันที่: 15/02/2026\nชื่อผู้ขาย: บริษัท โอมิเซะ จำกัด (Omise Company Limited)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 101.00\nภาษีมูลค่าเพิ่ม: 7.07\nยอดรวมสุทธิ: 108.07\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 101.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"101.00\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"3.03\",\n    \"ชื่อผู้ขาย\": \"บริษัท โอมิเซะ จำกัด (Omise Company Limited)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"ใบเสร็จรับเงิน/ใบกำกับภาษี\",\n    \"ภาษีมูลค่าเพิ่ม\": \"7.07\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"101.00\",\n    \"ยอดรวมสุทธิ\": \"108.07\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"101.00\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"15/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602150202\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 17139,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 730,
+        "first_lines": [
+          "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602150202",
+          "วันที่: 15/02/2026",
+          "ชื่อผู้ขาย: บริษัท โอมิเซะ จำกัด (Omise Company Limited)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890777.3440819
+  },
+  "8282ce4f6be3a2c163f51d027c5d1e7f": {
+    "filename": "2026-02-16-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-16-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602160218\nวันที่: 16/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 10400\nยอดรวมก่อนภาษี: 88.50\nภาษีมูลค่าเพิ่ม: 6.20\nยอดรวมสุทธิ: 94.70\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 88.50\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"88.50\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"2.66\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"6.20\",\n    \"มีการหัก ณ ที่จ่าย\": \"ใช่\",\n    \"ยอดรวมก่อนภาษี\": \"88.50\",\n    \"ยอดรวมสุทธิ\": \"94.70\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"88.50\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"16/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602160218\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 10165,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 699,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602160218",
+          "วันที่: 16/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890788.6828768
+  },
+  "38c221b99dac46b6ec087b3e29d48f53": {
+    "filename": "2026-02-17-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-17-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt/Tax Invoice\nเลขที่ใบกำกับภาษี: OMTH202602170243\nวันที่: 17/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 171.00\nภาษีมูลค่าเพิ่ม: 11.97\nยอดรวมสุทธิ: 182.97\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 171.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"171.00\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"5.13\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt/Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"11.97\",\n    \"มีการหัก ณ ที่จ่าย\": \"ใช่\",\n    \"ยอดรวมก่อนภาษี\": \"171.00\",\n    \"ยอดรวมสุทธิ\": \"182.97\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"171.00\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"17/02/2026\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602170243\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 9713,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 16,
+        "char_count": 680,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt/Tax Invoice",
+          "เลขที่ใบกำกับภาษี: OMTH202602170243",
+          "วันที่: 17/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited",
+          "เลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt/Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890799.4937038
+  },
+  "12fa82da473b67958b24c7e9db961d34": {
+    "filename": "2026-02-18-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-18-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602180246\nวันที่: 18/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 83.70\nภาษีมูลค่าเพิ่ม: 5.86\nยอดรวมสุทธิ: 89.56\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 83.70\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"83.70\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"2.51\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited (โอมิเซะ)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt/Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"5.86\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"83.70\",\n    \"ยอดรวมสุทธิ\": \"89.56\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"83.70\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"18/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602180246\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 10603,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 697,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt/Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602180246",
+          "วันที่: 18/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt/Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890811.172425
+  },
+  "e9526bf2daea9cd3bc2f3e5b033d442a": {
+    "filename": "2026-02-19-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-19-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602190233\nวันที่: 19/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 10400\nยอดรวมก่อนภาษี: 113.10\nภาษีมูลค่าเพิ่ม: 7.92\nยอดรวมสุทธิ: 121.02\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 113.10\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"113.10\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"3.39\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"7.92\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"113.10\",\n    \"ยอดรวมสุทธิ\": \"121.02\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"113.10\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"19/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602190233\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 11030,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 730,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602190233",
+          "วันที่: 19/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890823.242375
+  },
+  "4530acbce8675b6a2201ae5737903e2b": {
+    "filename": "2026-02-20-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-20-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602200229\nวันที่: 20/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 199.40\nภาษีมูลค่าเพิ่ม: 13.96\nยอดรวมสุทธิ: 213.36\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 199.40\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"199.40\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"5.98\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด (โอมิเซะ)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt/Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"13.96\",\n    \"มีการหัก ณ ที่จ่าย\": \"ใช่\",\n    \"ยอดรวมก่อนภาษี\": \"199.40\",\n    \"ยอดรวมสุทธิ\": \"213.36\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"199.40\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"20/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602200229\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 10040,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 701,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt/Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602200229",
+          "วันที่: 20/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt/Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890834.3726609
+  },
+  "26144538c0ff09e431eacbd6993fcb8b": {
+    "filename": "2026-02-21-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-21-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602210207\nวันที่: 21/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 28.00\nภาษีมูลค่าเพิ่ม: 1.96\nยอดรวมสุทธิ: 29.96\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 28.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"0.84\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด (โอมิเซะ)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"1.96\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"28.00\",\n    \"ยอดรวมสุทธิ\": \"29.96\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"28.00\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"21/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602210207\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 16828,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 727,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602210207",
+          "วันที่: 21/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890852.2565634
+  },
+  "ae1dac932df6959cce0dace30b74c837": {
+    "filename": "2026-02-22-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-22-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602220208\nวันที่: 22/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 99.25\nภาษีมูลค่าเพิ่ม: 6.95\nยอดรวมสุทธิ: 106.20\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 99.25\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"2.98\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"6.95\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"99.25\",\n    \"ยอดรวมสุทธิ\": \"106.20\",\n    \"ยอดเงินที่ได้รับยกเว้นภาษี\": \"0.00\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"99.25\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\"\n      }\n    ],\n    \"วันที่\": \"22/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602220208\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 11913,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 700,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602220208",
+          "วันที่: 22/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890865.173467
+  },
+  "7ae24011854989a2e4142a287bdc2f26": {
+    "filename": "2026-02-23-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-23-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt / Tax Invoice\nเลขที่ใบกำกับภาษี: OMTH202602230254\nวันที่: 23/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 249.40\nภาษีมูลค่าเพิ่ม: 17.46\nยอดรวมสุทธิ: 266.86\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 249.40\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"7.48\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด (โอมิเซะ)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt / Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"17.46\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"249.40\",\n    \"ยอดรวมสุทธิ\": \"266.86\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"249.40\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"23/02/2026\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602230254\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 9559,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 16,
+        "char_count": 682,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt / Tax Invoice",
+          "เลขที่ใบกำกับภาษี: OMTH202602230254",
+          "วันที่: 23/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited",
+          "เลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt / Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890875.7413533
+  },
+  "2ff6452529bc1d601aca47b442468627": {
+    "filename": "2026-02-24-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-24-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602240243\nวันที่: 24/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 188.20\nภาษีมูลค่าเพิ่ม: 13.17\nยอดรวมสุทธิ: 201.37\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 188.20\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"188.20\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"5.65\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt/Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"13.17\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"188.20\",\n    \"ยอดรวมสุทธิ\": \"201.37\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"188.20\",\n        \"ราคาต่อหน่วย\": \"188.20\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"ราคาต่อหน่วย\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"24/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602240243\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 9891,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 701,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt/Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602240243",
+          "วันที่: 24/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt/Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890886.6817205
+  },
+  "50c1ea61befe8b964d26ff9ae6fb94f7": {
+    "filename": "2026-02-25-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-25-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602250235\nวันที่: 25/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 84.90\nภาษีมูลค่าเพิ่ม: 5.94\nยอดรวมสุทธิ: 90.84\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 84.90\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"84.90\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"2.55\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด (โอมิเซะ)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"Receipt/Tax Invoice\",\n    \"ภาษีมูลค่าเพิ่ม\": \"5.94\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"84.90\",\n    \"ยอดรวมสุทธิ\": \"90.84\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"84.90\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"25/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602250235\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 14209,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 725,
+        "first_lines": [
+          "ประเภทเอกสาร: Receipt/Tax Invoice",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602250235",
+          "วันที่: 25/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "Receipt/Tax Invoice",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890901.9768054
+  },
+  "b25fd06a465db70eb4c4dbc19b29db8d": {
+    "filename": "2026-02-26-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-26-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602260238\nวันที่: 26/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 235.40\nภาษีมูลค่าเพิ่ม: 16.48\nยอดรวมสุทธิ: 251.88\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 235.40\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"235.40\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"7.06\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"Omise Company Limited (Omise)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"ใบเสร็จรับเงิน/ใบกำกับภาษี\",\n    \"ภาษีมูลค่าเพิ่ม\": \"16.48\",\n    \"มีการหัก ณ ที่จ่าย\": \"ใช่\",\n    \"ยอดรวมก่อนภาษี\": \"235.40\",\n    \"ยอดรวมสุทธิ\": \"251.88\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"235.40\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"26/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602260238\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 9566,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 736,
+        "first_lines": [
+          "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602260238",
+          "วันที่: 26/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890912.6056318
+  },
+  "de979d958da2a09df7921a9b45896984": {
+    "filename": "2026-02-27-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-27-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602270241\nวันที่: 27/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 69.70\nภาษีมูลค่าเพิ่ม: 4.88\nยอดรวมสุทธิ: 74.58\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 69.70\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"2.09\",\n    \"ชื่อผู้ขาย\": \"Omise Company Limited (Head Office)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand) (Head office)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"ใบเสร็จรับเงิน/ใบกำกับภาษี\",\n    \"ภาษีมูลค่าเพิ่ม\": \"4.88\",\n    \"มีการหัก ณ ที่จ่าย\": \"มี\",\n    \"ยอดรวมก่อนภาษี\": \"69.70\",\n    \"ยอดรวมสุทธิ\": \"74.58\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"69.70\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"27/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602270241\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 8975,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 732,
+        "first_lines": [
+          "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602270241",
+          "วันที่: 27/02/2026",
+          "ชื่อผู้ขาย: Omise Company Limited (Head Office)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890922.6949708
+  },
+  "5c2c2fd31a60423ed3f6693a5537c685": {
+    "filename": "2026-02-28-receipt.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\ต้นฉบับ\\3.ค่าธรรมเนียม Omise\\2026-02-28-receipt.pdf",
+    "data": {
+      "text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602280223\nวันที่: 28/02/2026\nชื่อผู้ขาย: บริษัท โอมิเซะ จำกัด (Omise Company Limited)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 128.70\nภาษีมูลค่าเพิ่ม: 9.01\nยอดรวมสุทธิ: 137.71\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 128.70\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text": "{\n  \"success\": true,\n  \"data\": {\n    \"การหัก ณ ที่จ่ายเป็นการกระทำการแทน\": \"ใช่\",\n    \"ค่าธรรมเนียม\": \"128.70\",\n    \"จำนวนเงินหัก ณ ที่จ่าย\": \"3.86\",\n    \"ชื่อผู้ขาย\": \"บริษัท โอมิเซะ จำกัด (Omise Company Limited)\",\n    \"ชื่อผู้ซื้อ\": \"Thai Value Investor Association (Thailand)\",\n    \"ชื่อผู้รับมอบอำนาจ\": \"บริษัท โอมิเซะ จำกัด (Omise Company Limited)\",\n    \"ที่อยู่ผู้ขาย\": \"1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\",\n    \"ที่อยู่ผู้ซื้อ\": \"388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\",\n    \"ประเภทเอกสาร\": \"ใบเสร็จรับเงิน/ใบกำกับภาษี\",\n    \"ภาษีมูลค่าเพิ่ม\": \"9.01\",\n    \"มีการหัก ณ ที่จ่าย\": \"ใช่\",\n    \"ยอดรวมก่อนภาษี\": \"128.70\",\n    \"ยอดรวมสุทธิ\": \"137.71\",\n    \"รายการสินค้า\": [\n      {\n        \"จำนวนเงิน\": \"128.70\",\n        \"รายการ\": \"Software Transaction Fee | ค่าธรรมเนียมรายการ\",\n        \"ลำดับ\": \"1\"\n      },\n      {\n        \"จำนวนเงิน\": \"0.00\",\n        \"รายการ\": \"Software Transfer Fee | ค่าธรรมเนียมการโอน\",\n        \"ลำดับ\": \"2\"\n      }\n    ],\n    \"วันที่\": \"28/02/2026\",\n    \"สถานะเอกสาร\": \"ต้นฉบับ\",\n    \"สาขา - ผู้ขาย\": \"HQ (00000)\",\n    \"สาขา - ผู้ซื้อ\": \"HQ (00000)\",\n    \"อัตราหัก ณ ที่จ่าย\": \"3%\",\n    \"เลขที่ใบกำกับภาษี\": \"OMTH202602280223\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ขาย\": \"0105556091152\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ\": \"0993000281811\",\n    \"เลขประจำตัวผู้เสียภาษี - ผู้รับมอบอำนาจ\": \"0105556091152\"\n  },\n  \"confidence\": 100,\n  \"fieldConfidences\": [],\n  \"processingTimeMs\": 12429,\n  \"creditCost\": 1\n}",
+      "basic_info": {
+        "line_count": 17,
+        "char_count": 730,
+        "first_lines": [
+          "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี",
+          "สถานะเอกสาร: ต้นฉบับ",
+          "เลขที่ใบกำกับภาษี: OMTH202602280223",
+          "วันที่: 28/02/2026",
+          "ชื่อผู้ขาย: บริษัท โอมิเซะ จำกัด (Omise Company Limited)"
+        ],
+        "has_company_name": true,
+        "has_tax_id": true,
+        "has_numbers": true,
+        "form_type_detected": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+        "keywords_found": [
+          "ชื่อผู้ขาย",
+          "เลขประจำตัวผู้เสียภาษี",
+          "ยอดรวม"
+        ]
+      }
+    },
+    "cached_at": 1773890936.2022438
+  },
+  "2b3856ed4a140679192acd5adfd4a8bd": {
+    "filename": "01.02.2026_EXP-20260200022_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\01.02.2026_EXP-20260200022_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602010218\nวันที่: 01/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 124.20\nภาษีมูลค่าเพิ่ม: 8.69\nยอดรวมสุทธิ: 132.89\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 124.20\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602010218\nวันที่: 01/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Sams",
+      "company_name": "Omise Company Limited (Head Office)",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "01/02/2026",
+      "document_number": "OMTH202602010218",
+      "reference_number": "EXP-20260200022",
+      "document_status": "",
+      "amount_before_vat": 124.2,
+      "vat_amount": 8.69,
+      "total_amount": 132.89,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "124.20",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand) (Head office)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773902931.3792417
+  },
+  "3898ca7ebe8da85b95489f39ebb248bd": {
+    "filename": "01.02.2026_WHT_EXP-20260200009_520311_ค่าบริการไลน์_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\01.02.2026_WHT_EXP-20260200009_520311_ค่าบริการไลน์_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ONTX20260201-002867\nวันที่: 01/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th-18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok 10330, Thailand\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nยอดรวมก่อนภาษี: 1,780.00\nภาษีมูลค่าเพิ่ม: 124.60\nยอดรวมสุทธิ: 1,904.60\n\nรายการสินค้า/บริการ:\n  - ออฟฟิเชียลแอคเคาท์ แพ็กเกจรายเดือน โปร: 1,780.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ONTX20260201-002867\nวันที่: 01/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th-18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok 10330, Thailand\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไ",
+      "company_name": "LINE COMPANY (THAILAND) LIMITED",
+      "tax_id": "0105557074618",
+      "branch": "00000",
+      "date": "01/02/2026",
+      "document_number": "ONTX20260201-002867",
+      "reference_number": "EXP-20260200009",
+      "document_status": "",
+      "amount_before_vat": 1780.0,
+      "vat_amount": 124.6,
+      "total_amount": 1904.6,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1,780.00",
+          "ราคาต่อหน่วย": "1,780.00",
+          "รายการ": "ออฟฟิเชียลแอคเคาท์ แพ็กเกจรายเดือน โปร",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400",
+      "success": true
+    },
+    "cached_at": 1773902940.3079026
+  },
+  "7ad63d2f87d0bdd027aa091188182842": {
+    "filename": "02.02.2026_EXP-20260200023_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\02.02.2026_EXP-20260200023_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nเลขที่ใบกำกับภาษี: OMTH202602020253\nวันที่: 02/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 101.00\nภาษีมูลค่าเพิ่ม: 7.07\nยอดรวมสุทธิ: 108.07\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 101.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nเลขที่ใบกำกับภาษี: OMTH202602020253\nวันที่: 02/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: ",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "02/02/2026",
+      "document_number": "OMTH202602020253",
+      "reference_number": "EXP-20260200023",
+      "document_status": "",
+      "amount_before_vat": 101.0,
+      "vat_amount": 7.07,
+      "total_amount": 108.07,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "101.00",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773902952.3160803
+  },
+  "83a7aefe6f2429131fb2bfb1a9c6bd0a": {
+    "filename": "03.02.2026_EXP-20251200072_530301_ค่าไฟฟ้า_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\03.02.2026_EXP-20251200072_530301_ค่าไฟฟ้า_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: X13-001-C9B-0036874\nวันที่: 03/02/2569\nชื่อผู้ขาย: บริษัท เอส.พี.อาคาร จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105511004439\nที่อยู่ผู้ขาย: 388 ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nยอดรวมก่อนภาษี: 279.81\nภาษีมูลค่าเพิ่ม: 19.59\nยอดรวมสุทธิ: 299.40\n\nรายการสินค้า/บริการ:\n  - ค่าไฟฟ้า 12/2025 ใบแจ้งหนี้เลขที่ 47437: 279.81",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: X13-001-C9B-0036874\nวันที่: 03/02/2569\nชื่อผู้ขาย: บริษัท เอส.พี.อาคาร จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105511004439\nที่อยู่ผู้ขาย: 388 ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nยอดรวมก่อนภาษี: 279.81\nภาษีมูลค่าเพิ่ม: 19.59\nยอ",
+      "company_name": "บริษัท เอส.พี.อาคาร จำกัด",
+      "tax_id": "0105511004439",
+      "branch": "00000",
+      "date": "03/02/2569",
+      "document_number": "X13-001-C9B-0036874",
+      "reference_number": "EXP-20251200072",
+      "document_status": "",
+      "amount_before_vat": 279.81,
+      "vat_amount": 19.59,
+      "total_amount": 299.4,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "279.81",
+          "รายการ": "ค่าไฟฟ้า 12/2025 ใบแจ้งหนี้เลขที่ 47437"
+        }
+      ],
+      "buyer_name": "สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400",
+      "success": true
+    },
+    "cached_at": 1773902966.8462536
+  },
+  "2cbc30e2d0588c3d0b12bdeb7dcbbe6d": {
+    "filename": "03.02.2026_EXP-20260200020_530214_ค่าป้ายไวนิล_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\03.02.2026_EXP-20260200020_530214_ค่าป้ายไวนิล_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบกำกับภาษี/ใบเสร็จรับเงิน/ใบส่งสินค้า\nเลขที่ใบกำกับภาษี: CS2602-0203\nวันที่: 03/02/2569\nชื่อผู้ขาย: บริษัท ทำถูก จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105558065078\nที่อยู่ผู้ขาย: เลขที่ 18/110 ซอยประชานุทิศ 60 แขวงทุ่งครุ เขตทุ่งครุ กรุงเทพฯ 10140\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถ.พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nยอดรวมก่อนภาษี: 690.00\nภาษีมูลค่าเพิ่ม: 48.30\nยอดรวมสุทธิ: 738.30\n\nรายการสินค้า/บริการ:\n  - Banner 510g Outdoor Printing Material: 400.00\n  - Tumtook Fleet Delivery Service: 290.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบกำกับภาษี/ใบเสร็จรับเงิน/ใบส่งสินค้า\nเลขที่ใบกำกับภาษี: CS2602-0203\nวันที่: 03/02/2569\nชื่อผู้ขาย: บริษัท ทำถูก จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105558065078\nที่อยู่ผู้ขาย: เลขที่ 18/110 ซอยประชานุทิศ 60 แขวงทุ่งครุ เขตทุ่งครุ กรุงเทพฯ 10140\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถ.พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nยอดรวมก่อนภาษี: 690.00\nภาษีมูลค่าเพิ่ม: 48.30\nยอดรวมสุทธิ",
+      "company_name": "บริษัท ทำถูก จำกัด",
+      "tax_id": "0105558065078",
+      "branch": "00000",
+      "date": "03/02/2569",
+      "document_number": "CS2602-0203",
+      "reference_number": "EXP-20260200020",
+      "document_status": "",
+      "amount_before_vat": 690.0,
+      "vat_amount": 48.3,
+      "total_amount": 738.3,
+      "document_type": "ใบกำกับภาษี/ใบเสร็จรับเงิน/ใบส่งสินค้า",
+      "items": [
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "400.00",
+          "ราคาต่อหน่วย": "400.00",
+          "รายการ": "Banner 510g Outdoor Printing Material",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "290.00",
+          "ราคาต่อหน่วย": "290.00",
+          "รายการ": "Tumtook Fleet Delivery Service",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 อาคาร เอส พี ถ.พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400",
+      "success": true
+    },
+    "cached_at": 1773902977.9434779
+  },
+  "8e6a41a6ed18de00f800b9aef1091465": {
+    "filename": "03.02.2026_EXP-20260200024_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\03.02.2026_EXP-20260200024_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602030251\nวันที่: 03/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 98.30\nภาษีมูลค่าเพิ่ม: 6.88\nยอดรวมสุทธิ: 105.18\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 98.30\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602030251\nวันที่: 03/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangk",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "03/02/2026",
+      "document_number": "OMTH202602030251",
+      "reference_number": "EXP-20260200024",
+      "document_status": "",
+      "amount_before_vat": 98.3,
+      "vat_amount": 6.88,
+      "total_amount": 105.18,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "98.30",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773902987.4604642
+  },
+  "9d628c35c97e3767941f09fd6b1d28f9": {
+    "filename": "03.02.2026_WHT_EXP-20260200002_530213_ค่าบริการสำนักงาน_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\03.02.2026_WHT_EXP-20260200002_530213_ค่าบริการสำนักงาน_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: X13-001-C9B-0036873\nวันที่: 03/02/2569\nชื่อผู้ขาย: บริษัท เอส.พี.อาคาร จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105511004439\nที่อยู่ผู้ขาย: 388 ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nยอดรวมก่อนภาษี: 12,850.00\nภาษีมูลค่าเพิ่ม: 899.50\nยอดรวมสุทธิ: 13,749.50\n\nรายการสินค้า/บริการ:\n  - ค่าบริการ 02/26 (ใบแจ้งหนี้เลขที่ 47357 สัญญาเลขที่ 55-68-01): 12,850.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: X13-001-C9B-0036873\nวันที่: 03/02/2569\nชื่อผู้ขาย: บริษัท เอส.พี.อาคาร จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105511004439\nที่อยู่ผู้ขาย: 388 ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nยอดรวมก่อนภาษี: 12,850.00\nภาษีมูลค่าเพิ่ม: 899.5",
+      "company_name": "บริษัท เอส.พี.อาคาร จำกัด",
+      "tax_id": "0105511004439",
+      "branch": "00000",
+      "date": "03/02/2569",
+      "document_number": "X13-001-C9B-0036873",
+      "reference_number": "EXP-20260200002",
+      "document_status": "",
+      "amount_before_vat": 12850.0,
+      "vat_amount": 899.5,
+      "total_amount": 13749.5,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "12,850.00",
+          "รายการ": "ค่าบริการ 02/26 (ใบแจ้งหนี้เลขที่ 47357 สัญญาเลขที่ 55-68-01)"
+        }
+      ],
+      "buyer_name": "สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400",
+      "success": true
+    },
+    "cached_at": 1773902997.9247599
+  },
+  "a57bd3332f05fd3f09798256c16dfd18": {
+    "filename": "04.02.2026_EXP-20260200025_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\04.02.2026_EXP-20260200025_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602040234\nวันที่: 04/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 10400\nยอดรวมก่อนภาษี: 57.20\nภาษีมูลค่าเพิ่ม: 4.00\nยอดรวมสุทธิ: 61.20\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 57.20\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602040234\nวันที่: 04/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 1",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "04/02/2026",
+      "document_number": "OMTH202602040234",
+      "reference_number": "EXP-20260200025",
+      "document_status": "",
+      "amount_before_vat": 57.2,
+      "vat_amount": 4.0,
+      "total_amount": 61.2,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "57.20",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 10400",
+      "success": true
+    },
+    "cached_at": 1773903008.165057
+  },
+  "059985ad87b4d5851829a84c9c1bbb90": {
+    "filename": "05.02.2026_EXP-20260200026_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\05.02.2026_EXP-20260200026_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602050230\nวันที่: 05/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 74.04\nภาษีมูลค่าเพิ่ม: 5.18\nยอดรวมสุทธิ: 79.22\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 46.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 28.04",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602050230\nวันที่: 05/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangk",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "05/02/2026",
+      "document_number": "OMTH202602050230",
+      "reference_number": "EXP-20260200026",
+      "document_status": "",
+      "amount_before_vat": 74.04,
+      "vat_amount": 5.18,
+      "total_amount": 79.22,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "46.00",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "28.04",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903018.1429594
+  },
+  "4050b529e15ef44aa984a1531c7fd428": {
+    "filename": "06.02.2026_EXP-20260200027_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\06.02.2026_EXP-20260200027_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602060228\nวันที่: 06/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 59.20\nภาษีมูลค่าเพิ่ม: 4.14\nยอดรวมสุทธิ: 63.34\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 59.20\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602060228\nวันที่: 06/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 1",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "06/02/2026",
+      "document_number": "OMTH202602060228",
+      "reference_number": "EXP-20260200027",
+      "document_status": "",
+      "amount_before_vat": 59.2,
+      "vat_amount": 4.14,
+      "total_amount": 63.34,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "59.20",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903028.482921
+  },
+  "a8d816249120b79c0cbf3b1a1ed0752c": {
+    "filename": "07.02.2026_EXP-20260200028_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\07.02.2026_EXP-20260200028_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602070209\nวันที่: 07/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 52.00\nภาษีมูลค่าเพิ่ม: 3.64\nยอดรวมสุทธิ: 55.64\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 52.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602070209\nวันที่: 07/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 104",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "07/02/2026",
+      "document_number": "OMTH202602070209",
+      "reference_number": "EXP-20260200028",
+      "document_status": "",
+      "amount_before_vat": 52.0,
+      "vat_amount": 3.64,
+      "total_amount": 55.64,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "52.00",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903038.976186
+  },
+  "d02576e03576b02340fd26985ab92438": {
+    "filename": "08.02.2026_EXP-20260200029_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\08.02.2026_EXP-20260200029_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602080193\nวันที่: 08/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 95.00\nภาษีมูลค่าเพิ่ม: 6.65\nยอดรวมสุทธิ: 101.65\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 95.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602080193\nวันที่: 08/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 1",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "08/02/2026",
+      "document_number": "OMTH202602080193",
+      "reference_number": "EXP-20260200029",
+      "document_status": "",
+      "amount_before_vat": 95.0,
+      "vat_amount": 6.65,
+      "total_amount": 101.65,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "95.00",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903060.4662747
+  },
+  "5faf9e1b76efd4f49f46a0967255f6a6": {
+    "filename": "09.02.2026_EXP-20260200032_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\09.02.2026_EXP-20260200032_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602090231\nวันที่: 09/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 84.20\nภาษีมูลค่าเพิ่ม: 5.89\nยอดรวมสุทธิ: 90.09\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 84.20\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602090231\nวันที่: 09/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 104",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "09/02/2026",
+      "document_number": "OMTH202602090231",
+      "reference_number": "EXP-20260200032",
+      "document_status": "",
+      "amount_before_vat": 84.2,
+      "vat_amount": 5.89,
+      "total_amount": 90.09,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "84.20",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903078.255177
+  },
+  "2af7be46172915e010a0d02b4f170ac9": {
+    "filename": "10.02.2026_EXP-20260200032_5306012_ค่าบริจาคอุปกรณ์_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\10.02.2026_EXP-20260200032_5306012_ค่าบริจาคอุปกรณ์_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: IV26022480\nวันที่: 10/02/2026\nชื่อผู้ขาย: บริษัท เรียลเมดคอร์ป จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565092905\nที่อยู่ผู้ขาย: 31 ซอยบรมราชชนนี 4 แขวงบางบำหรุ เขตบางพลัด กรุงเทพมหานคร 10700\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 116,542.06\nภาษีมูลค่าเพิ่ม: 8,157.94\nยอดรวมสุทธิ: 124,700.00\n\nรายการสินค้า/บริการ:\n  - Y-9F-5BW เครื่องผลิตออกซิเจน 5 ลิตร Yuwell รุ่น 9F-5BW (รับประกันคอมเพรสเซอร์ 3 ปี อะไหล่ส่วนอื่นๆ 1 ปี): 59,700.00\n  - BLT-M70B แถม เครื่องวัดออกซิเจนปลายนิ้ว: 0.00\n  - Y-710 แถม เครื่องวัดน้ำตาล: 0.00\n  - 022-007-001-N แถม สายให้ออกซิเจน Cannula: 0.00\n  - MF-MW01-XL-2.0 แถม ชุดพ่นยา: 0.00\n  - YHD-0001-500 แถม น้ำกลั่นทางการแพทย์ 500 ml: 0.00\n  - GM-031 ของแถม หมอน YUWELL logo: 0.00\n  - Y-8F-10W เครื่องผลิตออกซิเจน 10 ลิตร Yuwell รุ่น 8F-10W (รับประกันคอมเพรสเซอร์ 3 ปี อะไหล่ส่วนอื่นๆ 1 ปี): 65,000.00\n  - Y-710 แถม เครื่องวัดน้ำตาล: 0.00\n  - Y-YE660B แถม เครื่องวัดความดัน: 0.00\n  - 022-007-001-N แถม สายให้ออกซิเจน Cannula: 0.00\n  - 022-004-101-N แถม หน้ากากออกซิเจน: 0.00\n  - MF-MW01-XL-2.0 แถม ชุดพ่นยา: 0.00\n  - YHD-0001-500 แถม น้ำกลั่นทางการแพทย์ 500 ml: 0.00\n  - GM-031 ของแถม หมอน YUWELL logo: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: IV26022480\nวันที่: 10/02/2026\nชื่อผู้ขาย: บริษัท เรียลเมดคอร์ป จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105565092905\nที่อยู่ผู้ขาย: 31 ซอยบรมราชชนนี 4 แขวงบางบำหรุ เขตบางพลัด กรุงเทพมหานคร 10700\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 116,542.06\nภาษีมูลค่าเพิ่",
+      "company_name": "บริษัท เรียลเมดคอร์ป จำกัด",
+      "tax_id": "0105565092905",
+      "branch": "00000",
+      "date": "10/02/2026",
+      "document_number": "IV26022480",
+      "reference_number": "EXP-20260200032",
+      "document_status": "",
+      "amount_before_vat": 116542.06,
+      "vat_amount": 8157.94,
+      "total_amount": 124700.0,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวน": "3 เครื่อง",
+          "จำนวนเงิน": "59,700.00",
+          "ราคาต่อหน่วย": "19,900.00",
+          "รายการ": "Y-9F-5BW เครื่องผลิตออกซิเจน 5 ลิตร Yuwell รุ่น 9F-5BW (รับประกันคอมเพรสเซอร์ 3 ปี อะไหล่ส่วนอื่นๆ 1 ปี)",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "2 ชิ้น",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "BLT-M70B แถม เครื่องวัดออกซิเจนปลายนิ้ว",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวน": "1 เครื่อง",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "Y-710 แถม เครื่องวัดน้ำตาล",
+          "ลำดับ": "3"
+        },
+        {
+          "จำนวน": "15 เส้น",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "022-007-001-N แถม สายให้ออกซิเจน Cannula",
+          "ลำดับ": "4"
+        },
+        {
+          "จำนวน": "3 ชิ้น",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "MF-MW01-XL-2.0 แถม ชุดพ่นยา",
+          "ลำดับ": "5"
+        },
+        {
+          "จำนวน": "6 ขวด",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "YHD-0001-500 แถม น้ำกลั่นทางการแพทย์ 500 ml",
+          "ลำดับ": "6"
+        },
+        {
+          "จำนวน": "3 ชิ้น",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "GM-031 ของแถม หมอน YUWELL logo",
+          "ลำดับ": "7"
+        },
+        {
+          "จำนวน": "2 เครื่อง",
+          "จำนวนเงิน": "65,000.00",
+          "ราคาต่อหน่วย": "32,500.00",
+          "รายการ": "Y-8F-10W เครื่องผลิตออกซิเจน 10 ลิตร Yuwell รุ่น 8F-10W (รับประกันคอมเพรสเซอร์ 3 ปี อะไหล่ส่วนอื่นๆ 1 ปี)",
+          "ลำดับ": "8"
+        },
+        {
+          "จำนวน": "1 เครื่อง",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "Y-710 แถม เครื่องวัดน้ำตาล",
+          "ลำดับ": "9"
+        },
+        {
+          "จำนวน": "1 เครื่อง",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "Y-YE660B แถม เครื่องวัดความดัน",
+          "ลำดับ": "10"
+        },
+        {
+          "จำนวน": "6 เส้น",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "022-007-001-N แถม สายให้ออกซิเจน Cannula",
+          "ลำดับ": "11"
+        },
+        {
+          "จำนวน": "4 ชุด",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "022-004-101-N แถม หน้ากากออกซิเจน",
+          "ลำดับ": "12"
+        },
+        {
+          "จำนวน": "2 ชิ้น",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "MF-MW01-XL-2.0 แถม ชุดพ่นยา",
+          "ลำดับ": "13"
+        },
+        {
+          "จำนวน": "4 ขวด",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "YHD-0001-500 แถม น้ำกลั่นทางการแพทย์ 500 ml",
+          "ลำดับ": "14"
+        },
+        {
+          "จำนวน": "2 ชิ้น",
+          "จำนวนเงิน": "0.00",
+          "ราคาต่อหน่วย": "0.00",
+          "รายการ": "GM-031 ของแถม หมอน YUWELL logo",
+          "ลำดับ": "15"
+        }
+      ],
+      "buyer_name": "สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400",
+      "success": true
+    },
+    "cached_at": 1773903097.3385065
+  },
+  "33a5e34335abbb837befb5e704769da7": {
+    "filename": "10.02.2026_EXP-20260200033_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\10.02.2026_EXP-20260200033_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602100256\nวันที่: 10/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 117.90\nภาษีมูลค่าเพิ่ม: 8.25\nยอดรวมสุทธิ: 126.15\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 117.90\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602100256\nวันที่: 10/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsen",
+      "company_name": "Omise Company Limited (Head Office)",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "10/02/2026",
+      "document_number": "OMTH202602100256",
+      "reference_number": "EXP-20260200033",
+      "document_status": "",
+      "amount_before_vat": 117.9,
+      "vat_amount": 8.25,
+      "total_amount": 126.15,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "117.90",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand) (Head office)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903107.806358
+  },
+  "1ee3e9989f2e27032227df91cc74b24d": {
+    "filename": "11.02.2026_EXP-20260200034_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\11.02.2026_EXP-20260200034_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602110230\nวันที่: 11/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 165.50\nภาษีมูลค่าเพิ่ม: 11.59\nยอดรวมสุทธิ: 177.09\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 165.50\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602110230\nวันที่: 11/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsen",
+      "company_name": "Omise Company Limited (Head Office)",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "11/02/2026",
+      "document_number": "OMTH202602110230",
+      "reference_number": "EXP-20260200034",
+      "document_status": "",
+      "amount_before_vat": 165.5,
+      "vat_amount": 11.59,
+      "total_amount": 177.09,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "165.50",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand) (Head office)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903117.7358263
+  },
+  "02e62105faecab6fd53c0fe5edf82b56": {
+    "filename": "11.02.2026_EXP-20260200057_530612_ค่าบริจาคสาธารณะ_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\11.02.2026_EXP-20260200057_530612_ค่าบริจาคสาธารณะ_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: CA2026020008\nวันที่: 11/02/2026\nชื่อผู้ขาย: ห้างหุ้นส่วนจำกัด แอทไซน์บอร์ด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0903556000964\nที่อยู่ผู้ขาย: 348 ถ.ศรีภูวนารถ ต.หาดใหญ่ อ.หาดใหญ่ จ.สงขลา 90110\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 720.00\nภาษีมูลค่าเพิ่ม: 50.40\nยอดรวมสุทธิ: 770.40\n\nรายการสินค้า/บริการ:\n  - ป้ายบริจาค Foamboard 5mm. ติดสติ๊กเกอร์เคลือบด้าน ขนาด 120*50 ชม.: 720.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: CA2026020008\nวันที่: 11/02/2026\nชื่อผู้ขาย: ห้างหุ้นส่วนจำกัด แอทไซน์บอร์ด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0903556000964\nที่อยู่ผู้ขาย: 348 ถ.ศรีภูวนารถ ต.หาดใหญ่ อ.หาดใหญ่ จ.สงขลา 90110\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 720.00\nภาษีมูลค่าเพิ่ม: 50.40\nย",
+      "company_name": "ห้างหุ้นส่วนจำกัด แอทไซน์บอร์ด",
+      "tax_id": "0903556000964",
+      "branch": "00000",
+      "date": "11/02/2026",
+      "document_number": "CA2026020008",
+      "reference_number": "EXP-20260200057",
+      "document_status": "",
+      "amount_before_vat": 720.0,
+      "vat_amount": 50.4,
+      "total_amount": 770.4,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "720.00",
+          "ราคาต่อหน่วย": "720.00",
+          "รายการ": "ป้ายบริจาค Foamboard 5mm. ติดสติ๊กเกอร์เคลือบด้าน ขนาด 120*50 ชม.",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400",
+      "success": true
+    },
+    "cached_at": 1773903128.9439516
+  },
+  "32026eb8084cc4a8c1e9566504622e3e": {
+    "filename": "12.02.2026_EXP-20260200035_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\12.02.2026_EXP-20260200035_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nเลขที่ใบกำกับภาษี: OMTH202602120232\nวันที่: 12/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 165.75\nภาษีมูลค่าเพิ่ม: 11.60\nยอดรวมสุทธิ: 177.35\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 165.75\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nเลขที่ใบกำกับภาษี: OMTH202602120232\nวันที่: 12/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภ",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "12/02/2026",
+      "document_number": "OMTH202602120232",
+      "reference_number": "EXP-20260200035",
+      "document_status": "",
+      "amount_before_vat": 165.75,
+      "vat_amount": 11.6,
+      "total_amount": 177.35,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "165.75",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903138.5195177
+  },
+  "247cda367b77354d8586410e4d1fd867": {
+    "filename": "13.02.2026_EXP-20260100005_ภาพแบบ ภ.พ.36 เดือน 01.2026.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\13.02.2026_EXP-20260100005_ภาพแบบ ภ.พ.36 เดือน 01.2026.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน\nเลขที่ใบกำกับภาษี: 69121353943\nวันที่: 13/02/2569\nชื่อผู้ขาย: Amazon Web Service\nที่อยู่ผู้ขาย: เลขที่ 410 ประเทศ สิงคโปร์\nชื่อผู้ซื้อ: สมาคม นักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: อาคาร เอส พี เลขที่ 388 ถนน พหลโยธิน ตำบล/แขวง สามเสนใน อำเภอ/เขต พญาไท จังหวัด กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 62.75\nภาษีมูลค่าเพิ่ม: 4.39\nยอดรวมสุทธิ: 4.39\n\nรายการสินค้า/บริการ:\n  - ค่าบริการหรือเงินได้ ตามมาตรา 40(8): 62.75",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน\nเลขที่ใบกำกับภาษี: 69121353943\nวันที่: 13/02/2569\nชื่อผู้ขาย: Amazon Web Service\nที่อยู่ผู้ขาย: เลขที่ 410 ประเทศ สิงคโปร์\nชื่อผู้ซื้อ: สมาคม นักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: อาคาร เอส พี เลขที่ 388 ถนน พหลโยธิน ตำบล/แขวง สามเสนใน อำเภอ/เขต พญาไท จังหวัด กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 62.75\nภาษีมูลค่าเพิ่ม: 4.39\nยอดรวมสุทธิ: 4.39\n\nรายการสินค้า/บริการ:\n  - ค่าบริการหรือเงินได้ ตามมาตรา 40(8): 62.75",
+      "company_name": "Amazon Web Service",
+      "tax_id": "ไม่พบ",
+      "branch": "ไม่พบ",
+      "date": "13/02/2569",
+      "document_number": "69121353943",
+      "reference_number": "EXP-20260100005",
+      "document_status": "",
+      "amount_before_vat": 62.75,
+      "vat_amount": 4.39,
+      "total_amount": 4.39,
+      "document_type": "ใบเสร็จรับเงิน",
+      "items": [
+        {
+          "จำนวนเงิน": "62.75",
+          "รายการ": "ค่าบริการหรือเงินได้ ตามมาตรา 40(8)"
+        }
+      ],
+      "buyer_name": "สมาคม นักลงทุนเน้นคุณค่า (ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "อาคาร เอส พี เลขที่ 388 ถนน พหลโยธิน ตำบล/แขวง สามเสนใน อำเภอ/เขต พญาไท จังหวัด กรุงเทพมหานคร 10400",
+      "success": true
+    },
+    "cached_at": 1773903148.397831
+  },
+  "8e48712c16e9ffab4288b5aacd6274dd": {
+    "filename": "13.02.2026_EXP-20260200036_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\13.02.2026_EXP-20260200036_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602130231\nวันที่: 13/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 115.50\nภาษีมูลค่าเพิ่ม: 8.09\nยอดรวมสุทธิ: 123.59\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 115.50\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602130231\nวันที่: 13/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 104",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "13/02/2026",
+      "document_number": "OMTH202602130231",
+      "reference_number": "EXP-20260200036",
+      "document_status": "",
+      "amount_before_vat": 115.5,
+      "vat_amount": 8.09,
+      "total_amount": 123.59,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "115.50",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903158.3597965
+  },
+  "3f09e9a9d1fbe142fe2afb7bbcc742b0": {
+    "filename": "13.02.2026_WHT_EXP-20260200010_530401_ค่าบริการบัญชี_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\13.02.2026_WHT_EXP-20260200010_530401_ค่าบริการบัญชี_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RT-20260200144\nวันที่: 13/02/2026\nชื่อผู้ขาย: บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105564068709\nที่อยู่ผู้ขาย: เลขที่ 212/249-250 หมู่บ้าน ศุภาลัย คอร์ทยาโศก ถนน บ้านกล้วย-ไทรน้อย ตำบล พิมลราช อำเภอบางบัวทอง จังหวัดนนทบุรี 11110\nชื่อผู้ซื้อ: Build324 สมาคม นักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nยอดรวมก่อนภาษี: 7,500.00\nภาษีมูลค่าเพิ่ม: 525.00\nยอดรวมสุทธิ: 8,025.00\n\nรายการสินค้า/บริการ:\n  - ทำบัญชี (P00001) ค่าบริการบัญชี - เดือนกุมภาพันธ์ 2026: 7,500.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RT-20260200144\nวันที่: 13/02/2026\nชื่อผู้ขาย: บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105564068709\nที่อยู่ผู้ขาย: เลขที่ 212/249-250 หมู่บ้าน ศุภาลัย คอร์ทยาโศก ถนน บ้านกล้วย-ไทรน้อย ตำบล พิมลราช อำเภอบางบัวทอง จังหวัดนนทบุรี 11110\nชื่อผู้ซื้อ: Build324 สมาคม นักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถนนพหลโยธิน แขวงส",
+      "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด",
+      "tax_id": "0105564068709",
+      "branch": "00000",
+      "date": "13/02/2026",
+      "document_number": "RT-20260200144",
+      "reference_number": "EXP-20260200010",
+      "document_status": "",
+      "amount_before_vat": 7500.0,
+      "vat_amount": 525.0,
+      "total_amount": 8025.0,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "7,500.00",
+          "ราคาต่อหน่วย": "7,500.00",
+          "รายการ": "ทำบัญชี (P00001) ค่าบริการบัญชี - เดือนกุมภาพันธ์ 2026",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "Build324 สมาคม นักลงทุนเน้นคุณค่า (ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 อาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400",
+      "success": true
+    },
+    "cached_at": 1773903169.482812
+  },
+  "2d1c1f1dd58f915cb5e4ce42d612061a": {
+    "filename": "14.02.2026_EXP-20260200038_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\14.02.2026_EXP-20260200038_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602140211\nวันที่: 14/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 88.12\nภาษีมูลค่าเพิ่ม: 6.17\nยอดรวมสุทธิ: 94.29\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 88.12\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602140211\nวันที่: 14/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangk",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "14/02/2026",
+      "document_number": "OMTH202602140211",
+      "reference_number": "EXP-20260200038",
+      "document_status": "",
+      "amount_before_vat": 88.12,
+      "vat_amount": 6.17,
+      "total_amount": 94.29,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "88.12",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903182.0915444
+  },
+  "cc4d047386ad34b9b1d64e8e917697c6": {
+    "filename": "15.02.2026_EXP-20260200039_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\15.02.2026_EXP-20260200039_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602150202\nวันที่: 15/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 10400\nยอดรวมก่อนภาษี: 101.00\nภาษีมูลค่าเพิ่ม: 7.07\nยอดรวมสุทธิ: 108.07\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 101.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602150202\nวันที่: 15/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Sams",
+      "company_name": "Omise Company Limited (Head Office)",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "15/02/2026",
+      "document_number": "OMTH202602150202",
+      "reference_number": "EXP-20260200039",
+      "document_status": "",
+      "amount_before_vat": 101.0,
+      "vat_amount": 7.07,
+      "total_amount": 108.07,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "101.00",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand) (Head office)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 10400",
+      "success": true
+    },
+    "cached_at": 1773903192.8674073
+  },
+  "2723fbb78079d11ce628446a3e7b0505": {
+    "filename": "16.02.2026_EXP-20260200040_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\16.02.2026_EXP-20260200040_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602160218\nวันที่: 16/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 88.50\nภาษีมูลค่าเพิ่ม: 6.20\nยอดรวมสุทธิ: 94.70\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 88.50\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602160218\nวันที่: 16/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 104",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "16/02/2026",
+      "document_number": "OMTH202602160218",
+      "reference_number": "EXP-20260200040",
+      "document_status": "",
+      "amount_before_vat": 88.5,
+      "vat_amount": 6.2,
+      "total_amount": 94.7,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "88.50",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903203.3394747
+  },
+  "6150b12d959d46a61f879b1876d17c13": {
+    "filename": "17.02.2026_EXP-20260200041_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\17.02.2026_EXP-20260200041_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602170243\nวันที่: 17/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 171.00\nภาษีมูลค่าเพิ่ม: 11.97\nยอดรวมสุทธิ: 182.97\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 171.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602170243\nวันที่: 17/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 104",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "17/02/2026",
+      "document_number": "OMTH202602170243",
+      "reference_number": "EXP-20260200041",
+      "document_status": "",
+      "amount_before_vat": 171.0,
+      "vat_amount": 11.97,
+      "total_amount": 182.97,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "171.00",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903235.0414436
+  },
+  "ee06c336504b4870f05903d4c1c1d47f": {
+    "filename": "18.02.2026_EXP-20260200042_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\18.02.2026_EXP-20260200042_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602180246\nวันที่: 18/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 83.70\nภาษีมูลค่าเพิ่ม: 5.86\nยอดรวมสุทธิ: 89.56\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 83.70\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602180246\nวันที่: 18/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangk",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "18/02/2026",
+      "document_number": "OMTH202602180246",
+      "reference_number": "EXP-20260200042",
+      "document_status": "",
+      "amount_before_vat": 83.7,
+      "vat_amount": 5.86,
+      "total_amount": 89.56,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "83.70",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903253.6465456
+  },
+  "163eb62f67f8024512b3f41b547be805": {
+    "filename": "19.02.2026_EXP-20260200043_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\19.02.2026_EXP-20260200043_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602190233\nวันที่: 19/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 10400\nยอดรวมก่อนภาษี: 113.10\nภาษีมูลค่าเพิ่ม: 7.92\nยอดรวมสุทธิ: 121.02\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 113.10\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602190233\nวันที่: 19/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 1",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "19/02/2026",
+      "document_number": "OMTH202602190233",
+      "reference_number": "EXP-20260200043",
+      "document_status": "",
+      "amount_before_vat": 113.1,
+      "vat_amount": 7.92,
+      "total_amount": 121.02,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "113.10",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok, 10400",
+      "success": true
+    },
+    "cached_at": 1773903274.6640706
+  },
+  "35cade6ef05a79e9cb7b81e7f0b75092": {
+    "filename": "20.02.2026_EXP-20260200044_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\20.02.2026_EXP-20260200044_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602200229\nวันที่: 20/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 199.40\nภาษีมูลค่าเพิ่ม: 13.96\nยอดรวมสุทธิ: 213.36\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 199.40\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602200229\nวันที่: 20/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangk",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "20/02/2026",
+      "document_number": "OMTH202602200229",
+      "reference_number": "EXP-20260200044",
+      "document_status": "",
+      "amount_before_vat": 199.4,
+      "vat_amount": 13.96,
+      "total_amount": 213.36,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "199.40",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903299.8188014
+  },
+  "278d8ccc83eaad5e7a4d5e5363640406": {
+    "filename": "21.02.2026_EXP-20260200046_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\21.02.2026_EXP-20260200046_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602210207\nวันที่: 21/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 28.00\nภาษีมูลค่าเพิ่ม: 1.96\nยอดรวมสุทธิ: 29.96\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 28.00\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602210207\nวันที่: 21/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 1",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "21/02/2026",
+      "document_number": "OMTH202602210207",
+      "reference_number": "EXP-20260200046",
+      "document_status": "",
+      "amount_before_vat": 28.0,
+      "vat_amount": 1.96,
+      "total_amount": 29.96,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "28.00",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903309.4733453
+  },
+  "d3f0c9d03e989e3f190a140e48905100": {
+    "filename": "22.02.2026_EXP-20260200015_530219_ค่าโทรศัพท์ True_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\22.02.2026_EXP-20260200015_530219_ค่าโทรศัพท์ True_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: TITKBKO22022026000005207\nวันที่: 22/02/2569\nชื่อผู้ขาย: บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105549025026\nที่อยู่ผู้ขาย: 18 อาคารทรู ทาวเวอร์ ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310\nชื่อผู้ซื้อ: สมาคม สมาคมนักลงทุนเน้นคุณค่า(ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281611\nที่อยู่ผู้ซื้อ: 388 หมู่บ้าน/อาคารอาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 599.00\nภาษีมูลค่าเพิ่ม: 41.93\nยอดรวมสุทธิ: 640.93\n\nรายการสินค้า/บริการ:\n  - ค่าบริการ กุมภาพันธ์ 2569: 599.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: TITKBKO22022026000005207\nวันที่: 22/02/2569\nชื่อผู้ขาย: บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105549025026\nที่อยู่ผู้ขาย: 18 อาคารทรู ทาวเวอร์ ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310\nชื่อผู้ซื้อ: สมาคม สมาคมนักลงทุนเน้นคุณค่า(ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281611\nที่อยู่ผู้ซื้อ: 388 หมู่บ้าน/อาคารอาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพ",
+      "company_name": "บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด",
+      "tax_id": "0105549025026",
+      "branch": "00000",
+      "date": "22/02/2569",
+      "document_number": "TITKBKO22022026000005207",
+      "reference_number": "EXP-20260200015",
+      "document_status": "",
+      "amount_before_vat": 599.0,
+      "vat_amount": 41.93,
+      "total_amount": 640.93,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "599.00",
+          "รายการ": "ค่าบริการ กุมภาพันธ์ 2569",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "สมาคม สมาคมนักลงทุนเน้นคุณค่า(ประเทศไทย)",
+      "buyer_tax_id": "0993000281611",
+      "buyer_address": "388 หมู่บ้าน/อาคารอาคาร เอส พี ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400",
+      "success": true
+    },
+    "cached_at": 1773903329.0049763
+  },
+  "dfd7e4bab9314ed1217d94c19987c072": {
+    "filename": "22.02.2026_EXP-20260200016_530217_ค่าโทรศัพท์ Ais_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\22.02.2026_EXP-20260200016_530217_ค่าโทรศัพท์ Ais_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: W-TS-1047-6902-12970873\nวันที่: 22/02/2026\nชื่อผู้ขาย: บริษัท แอดวานซ์ ไวร์เลส เน็ทเวิร์ค จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105548115897\nที่อยู่ผู้ขาย: 414 ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส.พี. ถนน พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nยอดรวมก่อนภาษี: 599.00\nภาษีมูลค่าเพิ่ม: 41.93\nยอดรวมสุทธิ: 640.93\n\nรายการสินค้า/บริการ:\n  - เลขหมาย 0622535588 ค่าใช้บริการรอบ 08/01/2026-07/02/2026: 640.93",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: W-TS-1047-6902-12970873\nวันที่: 22/02/2026\nชื่อผู้ขาย: บริษัท แอดวานซ์ ไวร์เลส เน็ทเวิร์ค จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105548115897\nที่อยู่ผู้ขาย: 414 ถนนพหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส.พี. ถนน พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400\nยอดรวมก่อนภาษี: 599.00\nภาษี",
+      "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวิร์ค จำกัด",
+      "tax_id": "0105548115897",
+      "branch": "00000",
+      "date": "22/02/2026",
+      "document_number": "W-TS-1047-6902-12970873",
+      "reference_number": "EXP-20260200016",
+      "document_status": "",
+      "amount_before_vat": 599.0,
+      "vat_amount": 41.93,
+      "total_amount": 640.93,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "640.93",
+          "ราคาต่อหน่วย": "599.00",
+          "รายการ": "เลขหมาย 0622535588 ค่าใช้บริการรอบ 08/01/2026-07/02/2026",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 อาคาร เอส.พี. ถนน พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพฯ 10400",
+      "success": true
+    },
+    "cached_at": 1773903338.6379015
+  },
+  "6496c3b0d69dc58eb5c27db942e4163d": {
+    "filename": "22.02.2026_EXP-20260200047_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\22.02.2026_EXP-20260200047_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602220208\nวันที่: 22/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 99.25\nภาษีมูลค่าเพิ่ม: 6.95\nยอดรวมสุทธิ: 106.20\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 99.25\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602220208\nวันที่: 22/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 104",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "22/02/2026",
+      "document_number": "OMTH202602220208",
+      "reference_number": "EXP-20260200047",
+      "document_status": "",
+      "amount_before_vat": 99.25,
+      "vat_amount": 6.95,
+      "total_amount": 106.2,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "99.25",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903349.246994
+  },
+  "5608b507144db43511750e8c1ac7c0b6": {
+    "filename": "23.02.2026_EXP-20260100012_530218_ค่าโทรศัพท์ TOT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\23.02.2026_EXP-20260100012_530218_ค่าโทรศัพท์ TOT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: สำเนา\nเลขที่ใบกำกับภาษี: E12690086920\nวันที่: 23/02/2569\nชื่อผู้ขาย: บริษัท โทรคมนาคมแห่งชาติ จำกัด (มหาชน)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0107564000014\nที่อยู่ผู้ขาย: 99 ถนนแจ้งวัฒนะ แขวงทุ่งสองห้อง เขตหลักสี่ กรุงเทพฯ 10210\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า(ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถ.พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 196.00\nภาษีมูลค่าเพิ่ม: 13.72\nยอดรวมสุทธิ: 209.72\n\nรายการสินค้า/บริการ:\n  - ใบแจ้งค่าใช้บริการ เลขที่ 0000925939387 รอบ 21/12/2568-20/01/2569: 209.72",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: สำเนา\nเลขที่ใบกำกับภาษี: E12690086920\nวันที่: 23/02/2569\nชื่อผู้ขาย: บริษัท โทรคมนาคมแห่งชาติ จำกัด (มหาชน)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0107564000014\nที่อยู่ผู้ขาย: 99 ถนนแจ้งวัฒนะ แขวงทุ่งสองห้อง เขตหลักสี่ กรุงเทพฯ 10210\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า(ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถ.พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 196.00\nภาษีมูลค่าเพิ",
+      "company_name": "บริษัท โทรคมนาคมแห่งชาติ จำกัด (มหาชน)",
+      "tax_id": "0107564000014",
+      "branch": "00001",
+      "date": "23/02/2569",
+      "document_number": "E12690086920",
+      "reference_number": "EXP-20260100012",
+      "document_status": "",
+      "amount_before_vat": 196.0,
+      "vat_amount": 13.72,
+      "total_amount": 209.72,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "209.72",
+          "ราคาต่อหน่วย": "196.00",
+          "รายการ": "ใบแจ้งค่าใช้บริการ เลขที่ 0000925939387 รอบ 21/12/2568-20/01/2569",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "สมาคมนักลงทุนเน้นคุณค่า(ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 อาคาร เอส พี ถ.พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400",
+      "success": true
+    },
+    "cached_at": 1773903364.917432
+  },
+  "c2e1eee14c669069d97eb1ab971f5d56": {
+    "filename": "23.02.2026_EXP-20260100013_530218_ค่าโทรศัพท์ TOT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\23.02.2026_EXP-20260100013_530218_ค่าโทรศัพท์ TOT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: สำเนา\nเลขที่ใบกำกับภาษี: E12690086988\nวันที่: 23/02/2569\nชื่อผู้ขาย: บริษัท โทรคมนาคมแห่งชาติ จำกัด (มหาชน)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0107564000014\nที่อยู่ผู้ขาย: 99 ถนนแจ้งวัฒนะ แขวงทุ่งสองห้อง เขตหลักสี่ กรุงเทพฯ 10210\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า(ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถ.พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 103.00\nภาษีมูลค่าเพิ่ม: 7.21\nยอดรวมสุทธิ: 110.21\n\nรายการสินค้า/บริการ:\n  - ค่าบริการตามใบแจ้งค่าใช้บริการเลขที่ 0000925454293 รอบ 21/12/2568-20/01/2569: 110.21",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: สำเนา\nเลขที่ใบกำกับภาษี: E12690086988\nวันที่: 23/02/2569\nชื่อผู้ขาย: บริษัท โทรคมนาคมแห่งชาติ จำกัด (มหาชน)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0107564000014\nที่อยู่ผู้ขาย: 99 ถนนแจ้งวัฒนะ แขวงทุ่งสองห้อง เขตหลักสี่ กรุงเทพฯ 10210\nชื่อผู้ซื้อ: สมาคมนักลงทุนเน้นคุณค่า(ประเทศไทย)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 อาคาร เอส พี ถ.พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400\nยอดรวมก่อนภาษี: 103.00\nภาษีมูลค่าเพิ",
+      "company_name": "บริษัท โทรคมนาคมแห่งชาติ จำกัด (มหาชน)",
+      "tax_id": "0107564000014",
+      "branch": "00001",
+      "date": "23/02/2569",
+      "document_number": "E12690086988",
+      "reference_number": "EXP-20260100013",
+      "document_status": "",
+      "amount_before_vat": 103.0,
+      "vat_amount": 7.21,
+      "total_amount": 110.21,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวนเงิน": "110.21",
+          "รายการ": "ค่าบริการตามใบแจ้งค่าใช้บริการเลขที่ 0000925454293 รอบ 21/12/2568-20/01/2569",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "สมาคมนักลงทุนเน้นคุณค่า(ประเทศไทย)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 อาคาร เอส พี ถ.พหลโยธิน แขวงสามเสนใน เขตพญาไท กรุงเทพมหานคร 10400",
+      "success": true
+    },
+    "cached_at": 1773903379.9733052
+  },
+  "c7471f1d3ae2ac070c39739464b024e1": {
+    "filename": "23.02.2026_EXP-20260200048_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\23.02.2026_EXP-20260200048_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602230254\nวันที่: 23/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 249.40\nภาษีมูลค่าเพิ่ม: 17.46\nยอดรวมสุทธิ: 266.86\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 249.40\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602230254\nวันที่: 23/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 104",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "23/02/2026",
+      "document_number": "OMTH202602230254",
+      "reference_number": "EXP-20260200048",
+      "document_status": "",
+      "amount_before_vat": 249.4,
+      "vat_amount": 17.46,
+      "total_amount": 266.86,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "249.40",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903389.9785373
+  },
+  "e8e145b634ce46b0a7572f1bdd7888a5": {
+    "filename": "24.02.2026_EXP-20260200049_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\24.02.2026_EXP-20260200049_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602240243\nวันที่: 24/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 188.20\nภาษีมูลค่าเพิ่ม: 13.17\nยอดรวมสุทธิ: 201.37\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 188.20\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602240243\nวันที่: 24/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 1",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "24/02/2026",
+      "document_number": "OMTH202602240243",
+      "reference_number": "EXP-20260200049",
+      "document_status": "",
+      "amount_before_vat": 188.2,
+      "vat_amount": 13.17,
+      "total_amount": 201.37,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "188.20",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903400.449436
+  },
+  "0958cd93d96a27bd79e0a7bf77a8ea31": {
+    "filename": "25.02.2026_EXP-20260200050_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\25.02.2026_EXP-20260200050_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nเลขที่ใบกำกับภาษี: OMTH202602250235\nวันที่: 25/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 84.90\nภาษีมูลค่าเพิ่ม: 5.94\nยอดรวมสุทธิ: 90.84\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 84.90\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nเลขที่ใบกำกับภาษี: OMTH202602250235\nวันที่: 25/02/2026\nชื่อผู้ขาย: Omise Company Limited (Head Office)\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand) (Head office)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Ban",
+      "company_name": "Omise Company Limited (Head Office)",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "25/02/2026",
+      "document_number": "OMTH202602250235",
+      "reference_number": "EXP-20260200050",
+      "document_status": "",
+      "amount_before_vat": 84.9,
+      "vat_amount": 5.94,
+      "total_amount": 90.84,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "84.90",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand) (Head office)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903419.933203
+  },
+  "781fbd5929314642d717301d955c9032": {
+    "filename": "26.02.2026_EXP-20260200052_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\26.02.2026_EXP-20260200052_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602260238\nวันที่: 26/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 235.40\nภาษีมูลค่าเพิ่ม: 16.48\nยอดรวมสุทธิ: 251.88\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 235.40\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt / Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602260238\nวันที่: 26/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 1",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "26/02/2026",
+      "document_number": "OMTH202602260238",
+      "reference_number": "EXP-20260200052",
+      "document_status": "",
+      "amount_before_vat": 235.4,
+      "vat_amount": 16.48,
+      "total_amount": 251.88,
+      "document_type": "Receipt / Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "235.40",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903430.8392956
+  },
+  "6c0652dd3902e6fbb726d528b169f2bf": {
+    "filename": "27.02.2026_EXP-20260200053_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\27.02.2026_EXP-20260200053_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602270241\nวันที่: 27/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 69.70\nภาษีมูลค่าเพิ่ม: 4.88\nยอดรวมสุทธิ: 74.58\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 69.70\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602270241\nวันที่: 27/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 104",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "27/02/2026",
+      "document_number": "OMTH202602270241",
+      "reference_number": "EXP-20260200053",
+      "document_status": "",
+      "amount_before_vat": 69.7,
+      "vat_amount": 4.88,
+      "total_amount": 74.58,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "69.70",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903440.4090612
+  },
+  "528c199241b0cbf658dff870f71472d2": {
+    "filename": "28.02.2026_EXP-20260200054_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "filepath": "Y:\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\28.02.2026_EXP-20260200054_ค่าธรรมเนียม_OMISE_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602280223\nวันที่: 28/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400\nยอดรวมก่อนภาษี: 128.70\nภาษีมูลค่าเพิ่ม: 9.01\nยอดรวมสุทธิ: 137.71\n\nรายการสินค้า/บริการ:\n  - Software Transaction Fee | ค่าธรรมเนียมรายการ: 128.70\n  - Software Transfer Fee | ค่าธรรมเนียมการโอน: 0.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: OMTH202602280223\nวันที่: 28/02/2026\nชื่อผู้ขาย: Omise Company Limited\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105556091152\nที่อยู่ผู้ขาย: 1448/4, J2 Building, Soi Ladprao 87 (Chandrasuk), Praditmanutham Road, Klongchan, Bangkapi, Bangkok, 10240\nชื่อผู้ซื้อ: Thai Value Investor Association (Thailand)\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0993000281811\nที่อยู่ผู้ซื้อ: 388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 104",
+      "company_name": "Omise Company Limited",
+      "tax_id": "0105556091152",
+      "branch": "00000",
+      "date": "28/02/2026",
+      "document_number": "OMTH202602280223",
+      "reference_number": "EXP-20260200054",
+      "document_status": "",
+      "amount_before_vat": 128.7,
+      "vat_amount": 9.01,
+      "total_amount": 137.71,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "128.70",
+          "รายการ": "Software Transaction Fee | ค่าธรรมเนียมรายการ"
+        },
+        {
+          "จำนวนเงิน": "0.00",
+          "รายการ": "Software Transfer Fee | ค่าธรรมเนียมการโอน"
+        }
+      ],
+      "buyer_name": "Thai Value Investor Association (Thailand)",
+      "buyer_tax_id": "0993000281811",
+      "buyer_address": "388 S.P.Tower, Phaholyothin Rd., Samsennai, Phayathai, Bangkok. 10400",
+      "success": true
+    },
+    "cached_at": 1773903449.545565
   }
 }

@@ -1,0 +1,233 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-18T06:21:55.836Z",
+  "last_saved": "2026-03-18T13:21:57.834273",
+  "company": "Build223 บริษัท เอ็นแอนด์เอ็ม ครีเอชั่น จำกัด รายเดือน",
+  "base_company": "Build223 บริษัท เอ็นแอนด์เอ็ม ครีเอชั่น จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='015/E6902' แต่ OCR='015'",
+    "11": "",
+    "15": "",
+    "16": "",
+    "17": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='S010260228000107900' แต่ OCR='107900'"
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาชัยพฤกษ์)'",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='015/E6902' แต่ OCR='015'",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาชัยพฤกษ์)'",
+    "15": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ออฟฟิศเมท (ไทย) จำกัด' แต่ OCR='บริษัท ออฟฟิศเมท(ไทย) จำกัด'",
+    "16": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ออฟฟิศเมท (ไทย) จำกัด' แต่ OCR='บริษัท ออฟฟิศเมท(ไทย) จำกัด'",
+    "17": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='S010260228000107900' แต่ OCR='107900'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "11-company_name_match": true,
+    "15-company_name_match": true,
+    "16-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build223 บริษัท เอ็นแอนด์เอ็ม ครีเอชั่น จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 18,
+    "metadata": [
+      {
+        "filename": "06.02.2026_EXP-20260200023_N&M_FEB2026_No.5_VAT.pdf",
+        "company_name": "ศิวะพร"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200027_510115 - N&M_FEB2026_No.31_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาชัยพฤกษ์)"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200020_N&M_FEB2026_No.34_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200025_N&M_FEB2026_No.62_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท(ไทย) จำกัด"
+      },
+      {
+        "filename": "26.02.2069_EXP-20260200100_N&M_FEB2026_No.54_VAT.pdf",
+        "company_name": "บริษัท หลังคาเย็นสยาม (กรุงเทพ) จำกัด"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200022_N&M_FEB2026_No.14_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "09.02.2026_EXP-20260200029_N&M_FEB2026_No.40_VAT.pdf",
+        "company_name": "บริษัท สยามออโต้แบคส์ จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200028_N&M_FEB2026_No.60_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "20.02.2026_WHT_EXP-20260200001_ค่าทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200031_N&M_FEB2026_No.57_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาชัยพฤกษ์)"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200018_N&M_FEB2026_No.11_VAT.pdf",
+        "company_name": "บริษัท ต.ธนาพาณิชย์ จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200026_N&M_FEB2026_No.58_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200017_N&M_FEB2026_No.43_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด"
+      },
+      {
+        "filename": "26.02.2069_EXP-20260200101_N&M_FEB2026_No.56_VAT.pdf",
+        "company_name": "บริษัท หลังคาเย็นสยาม (กรุงเทพ) จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200021_N&M_FEB2026_No.51_VAT.pdf",
+        "company_name": "บริษัท บีทูเอส จำกัด"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200030_N&M_FEB2026_No.37_VAT.pdf",
+        "company_name": "บริษัท โฮม โปรดักส์ เซ็นเตอร์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "14.02.2026_EXP-20260200019_N&M_FEB2026_No.47_VAT.pdf",
+        "company_name": "บริษัท ต.ธนาพาณิชย์ จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200024_N&M_FEB2026_No.61_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท(ไทย) จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 18,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200027",
+        "ocr_document_no": "CYKIE26020094189",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "CYKIE26020094694",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200023",
+        "ocr_document_no": "015",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200030",
+        "ocr_document_no": "106076",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200029",
+        "ocr_document_no": "TI-A07600000909",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200017",
+        "ocr_document_no": "CWTIE26020121790",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200019",
+        "ocr_document_no": "ORVM6902000109",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "CWTIE26020123599",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "ORVM6902000156",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200021",
+        "ocr_document_no": "50215022610000314",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "RT-20260200260",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200031",
+        "ocr_document_no": "CYKIE26020099962",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200100",
+        "ocr_document_no": "HS6902456",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200101",
+        "ocr_document_no": "HS6902469",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200026",
+        "ocr_document_no": "CYKIE26020100121",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "00117260210000272",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200025",
+        "ocr_document_no": "00117260210000273",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200028",
+        "ocr_document_no": "107900",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

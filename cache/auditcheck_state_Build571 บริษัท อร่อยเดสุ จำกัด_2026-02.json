@@ -1,0 +1,111 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T07:13:32.597Z",
+  "last_saved": "2026-03-20T14:13:34.381799",
+  "company": "Build571 บริษัท อร่อยเดสุ จำกัด",
+  "base_company": "Build571 บริษัท อร่อยเดสุ จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "3": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200001 (เลขที่ใบกำกับ: RT-20260200257)",
+    "4": "",
+    "5": "",
+    "6": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260300002"
+  },
+  "initialNotes": {
+    "3": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200001 (เลขที่ใบกำกับ: RT-20260200257)",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท รอเยล เนเชอร์รัล ฟู๊ด โปรดักส์ จำกัด' แต่ OCR='บริษัท รอยัล เนเชอร์รัล ฟู้ด โปรดักส์ จำกัด'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท หยกอินเตอร์เทรด(เชียงใหม่) จำกัด' แต่ OCR='บริษัท หยกอินเตอร์เทรด (เชียงใหม่) จำกัด'",
+    "6": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260300002"
+  },
+  "comparisonApprovals": {
+    "4-company_name_match": true,
+    "5-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build571 บริษัท อร่อยเดสุ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 6,
+    "metadata": [
+      {
+        "filename": "27.01.2026_EXP-20260100015_อุปกรณ์สำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ดิจิตอล คอมเมิร์ซ จำกัด"
+      },
+      {
+        "filename": "04.02.2026_EXP-20260200003_อุปกรณ์_VAT.pdf",
+        "company_name": "บริษัท ดิจิตอล คอมเมิร์ซ จำกัด"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200004_ต้นทุนการผลิตสินค้า_VAT.pdf",
+        "company_name": "บริษัท รอยัล เนเชอร์รัล ฟู้ด โปรดักส์ จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200006_ต้นทุนการผลิตสินค้า_VAT.pdf",
+        "company_name": "บริษัท โกลโบ ฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200005_ต้นทุนปลิตสินค้า_VAT.pdf",
+        "company_name": "บริษัท หยกอินเตอร์เทรด (เชียงใหม่) จำกัด"
+      },
+      {
+        "filename": "WHT_20.02.2026_EXP-20260300002_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 7,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "INF152601-0018",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "INF152602-0003",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "1126001220",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200001",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "IVS-260210442",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "HOT2602-4360",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "ocr_document_no": "RT-20260200257",
+        "match_status": "no_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

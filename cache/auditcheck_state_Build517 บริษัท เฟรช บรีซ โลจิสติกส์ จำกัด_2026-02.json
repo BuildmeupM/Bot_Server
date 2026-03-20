@@ -1,0 +1,260 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T07:05:30.054Z",
+  "last_saved": "2026-03-20T14:05:31.795892",
+  "company": "Build517 บริษัท เฟรช บรีซ โลจิสติกส์ จำกัด",
+  "base_company": "Build517 บริษัท เฟรช บรีซ โลจิสติกส์ จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "3": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "14": "",
+    "15": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26020936' แต่ OCR='IN26021152'",
+    "16": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26020937' แต่ OCR='IN26021150'",
+    "17": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26020938' แต่ OCR='IN26021151'"
+  },
+  "initialNotes": {
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัส โลจิสติกส์ จำกัด' แต่ OCR='Just Logistics Co., Ltd.'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26011221' แต่ OCR='IN26010772'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัส โลจิสติกส์ จำกัด' แต่ OCR='Just Logistics Co., Ltd.'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26020373' แต่ OCR='IN26020229'",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัส โลจิสติกส์ จำกัด' แต่ OCR='Just Logistics Co., Ltd.'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26020374' แต่ OCR='IN26020230'",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัส โลจิสติกส์ จำกัด' แต่ OCR='Just Logistics Co., Ltd.'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26020375' แต่ OCR='IN26020231'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัส โลจิสติกส์ จำกัด' แต่ OCR='Just Logistics Co., Ltd.'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26020935' แต่ OCR='IN26020969'",
+    "15": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัส โลจิสติกส์ จำกัด' แต่ OCR='Just Logistics Co., Ltd.'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26020936' แต่ OCR='IN26021152'",
+    "16": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัส โลจิสติกส์ จำกัด' แต่ OCR='Just Logistics Co., Ltd.'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26020937' แต่ OCR='IN26021150'",
+    "17": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท จัส โลจิสติกส์ จำกัด' แต่ OCR='Just Logistics Co., Ltd.'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TR26020938' แต่ OCR='IN26021151'"
+  },
+  "comparisonApprovals": {
+    "1-company_name_match": true,
+    "1-address_match": true,
+    "2-address_match": true,
+    "3-document_no_match": true,
+    "3-address_match": true,
+    "5-company_name_match": true,
+    "7-address_match": true,
+    "9-document_no_match": true,
+    "9-company_name_match": true,
+    "10-document_no_match": true,
+    "10-company_name_match": true,
+    "11-document_no_match": true,
+    "11-company_name_match": true,
+    "12-address_match": true,
+    "14-document_no_match": true,
+    "14-company_name_match": true,
+    "3-company_name_match": true,
+    "9-address_match": true,
+    "10-address_match": true,
+    "11-address_match": true,
+    "14-address_match": true,
+    "15-company_name_match": true,
+    "15-address_match": true,
+    "16-company_name_match": true,
+    "16-address_match": true,
+    "17-company_name_match": true,
+    "17-address_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build517 บริษัท เฟรช บรีซ โลจิสติกส์ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 18,
+    "metadata": [
+      {
+        "filename": "04.02.2026_WHT_EXP-20260100007_ห้องปฏิบัติการกลาง_VAT.pdf",
+        "company_name": "บริษัท ห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "13.02.2026_WHT_EXP-20260200003_ห้องปฏิบัติการกลาง_VAT.pdf",
+        "company_name": "บริษัท ห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "13.02.2026_WHT_EXP-20260200007_ห้องปฏิบัติการกลาง_VAT.pdf",
+        "company_name": "บริษัท ห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.02.2026_WHT_EXP-20260200010_ห้องปฏิบัติการกลาง_VAT.pdf",
+        "company_name": "บริษัท ห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.01.2026_WHT_EXP-20260100003_ห้องปฏิบัติการกลาง_VAT.pdf",
+        "company_name": "บริษัท ห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "13.02.2026_WHT_EXP-20260200022_ห้องปฏิบัติการกลาง_VAT.pdf",
+        "company_name": "บริษัท ห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.02.2026_WHT_EXP-20260200015_จัส โลจิสติกส์_VAT.pdf",
+        "company_name": "Just Logistics Co., Ltd."
+      },
+      {
+        "filename": "10.02.2026_WHT_EXP-20260200002_ห้องปฏิบัติการกลาง_VAT.pdf",
+        "company_name": "บริษัท ห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.02.2026_WHT_EXP-20260200016_จัส โลจิสติกส์_VAT.pdf",
+        "company_name": "Just Logistics Co., Ltd."
+      },
+      {
+        "filename": "16.02.2026_WHT_EXP-20260200005_จัส โลจิสติกส์_VAT.pdf",
+        "company_name": "Just Logistics Co., Ltd."
+      },
+      {
+        "filename": "30.01.2026_WHT_EXP-20260100005_FRESH BREEZE - TR26011221 - IN26010772 (1).pdf",
+        "company_name": "Just Logistics Co., Ltd."
+      },
+      {
+        "filename": "28.02.2026_WHT_EXP-20260200014_จัส โลจิสติกส์_VAT.pdf",
+        "company_name": "Just Logistics Co., Ltd."
+      },
+      {
+        "filename": "16.02.2026_WHT_EXP-20260200006_จัส โลจิสติกส์_VAT.pdf",
+        "company_name": "Just Logistics Co., Ltd."
+      },
+      {
+        "filename": "16.02.2026_WHT_EXP-20260200004_จัส โลจิสติกส์_VAT.pdf",
+        "company_name": "Just Logistics Co., Ltd."
+      },
+      {
+        "filename": "28.02.2026_WHT_EXP-20260200011_ห้องปฏิบัติการกลาง_VAT.pdf",
+        "company_name": "บริษัท ห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.02.2026_WHT_EXP-20260200017_จัส โลจิสติกส์_VAT.pdf",
+        "company_name": "Just Logistics Co., Ltd."
+      },
+      {
+        "filename": "19.01.2026_WHT_EXP-20260100004_ห้องปฏิบัติการกลาง_VAT.pdf",
+        "company_name": "บริษัท ห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "19.01.2026_WHT_EXP-20260100001_ห้องปฏิบัติการกลาง_VAT.pdf",
+        "company_name": "บริษัท ห้องปฏิบัติการกลาง (ประเทศไทย) จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 18,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "SRTBK-2601-0517",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100003",
+        "ocr_document_no": "SRTBK-2601-0895",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260100004",
+        "ocr_document_no": "SRTBK-2601-1000",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "IN26010772",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100007",
+        "ocr_document_no": "SRTBK-2602-0106",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "SRTBK-2602-0295",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "SRTBK-2602-0426",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "SRTBK-2602-0427",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "SRTBK-2602-0428",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "IN26020229",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "IN26020230",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "IN26020231",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "SRTBK-2602-1051",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "SRTBK-2602-1052",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "IN26020969",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200017",
+        "ocr_document_no": "IN26021152",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "IN26021150",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "IN26021151",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-17T05:00:30.305Z",
+  "last_saved": "2026-03-17T12:00:31.247727",
+  "company": "Build487 บริษัท ผึ้งหวาน เร็นท์แอนด์เซอร์วิซ จำกัด รายเดือน",
+  "base_company": "Build487 บริษัท ผึ้งหวาน เร็นท์แอนด์เซอร์วิซ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": ""
+  },
+  "initialNotes": {
+    "0": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=7,023.92 แต่ OCR=6,826.60 (ต่างกัน 197.32)"
+  },
+  "comparisonApprovals": {
+    "0-total_amount_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build487 บริษัท ผึ้งหวาน เร็นท์แอนด์เซอร์วิซ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 2,
+    "metadata": [
+      {
+        "filename": "20.02.2026_WHT_EXP-20260200001_530401_ค่าบริการบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "24.01.2026_WHT_EXP-20260100010_530107_ค่าอบรม_VAT..pdf",
+        "company_name": "บริษัท มาร์เก็ตติ้งส์ อินแบล็ค จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 2,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "INV6901121",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "RT-20260200249",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

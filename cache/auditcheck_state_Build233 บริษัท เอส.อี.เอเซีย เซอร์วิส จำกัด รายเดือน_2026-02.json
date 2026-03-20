@@ -1,0 +1,129 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-18T03:13:44.247Z",
+  "last_saved": "2026-03-18T10:13:46.535237",
+  "company": "Build233 บริษัท เอส.อี.เอเซีย เซอร์วิส จำกัด รายเดือน",
+  "base_company": "Build233 บริษัท เอส.อี.เอเซีย เซอร์วิส จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มิสเตอร์. ดี.ไอ.วาย. (กรุงเทพ) จำกัด' แต่ OCR='บริษัท มิสเตอร์.ดี.ไอ.วาย. (กรุงเทพ) จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='000000627' แต่ OCR='0000006627'",
+    "2": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=2,994.39 แต่ OCR=2,994.40 (ต่างกัน 0.01)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=209.61 แต่ OCR=209.60 (ต่างกัน 0.01)",
+    "6": "",
+    "7": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มิสเตอร์. ดี.ไอ.วาย. (กรุงเทพ) จำกัด' แต่ OCR='บริษัท มิสเตอร์.ดี.ไอ.วาย. (กรุงเทพ) จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='000000627' แต่ OCR='0000006627'",
+    "2": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=2,994.39 แต่ OCR=2,994.40 (ต่างกัน 0.01)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=209.61 แต่ OCR=209.60 (ต่างกัน 0.01)",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เซ็นทรัลเทรดดิ้ง จำกัด' แต่ OCR='บริษัท เซ็นทรัลเทรดดิ้ง จํากัด'\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบกํากับภาษี/ใบเสร็จรับเงิน'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ป.ปฏิญญา บิ้วท์แอนด์คอน' แต่ OCR='ห้างหุ้นส่วนจำกัด ป.ปฏิญญา บิวท์แอนด์คอน'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "6-company_name_match": true,
+    "6-document_type_match": true,
+    "7-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build233 บริษัท เอส.อี.เอเซีย เซอร์วิส จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 8,
+    "metadata": [
+      {
+        "filename": "25.02.2026_WHT_EXP-20260200008_510110_WHT_PV26-02-25_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ป.ปฏิญญา บิวท์แอนด์คอน"
+      },
+      {
+        "filename": "06.02.2026_EXP-20260200011_530213_PV26-02_06_STATIONERY SUPPLY_VAT.pdf",
+        "company_name": "บริษัท สเตชันเนอรี่ ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200010_530213_PV26-02_01 (2)_LOTUS_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "09.02.2026_WHT_EXP-20260200009_530401_RT-20260200045_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200013_530213_PV26-02-01 (1)_LOTUS_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200014_530213_PV26-02-01 (3)_VAT.pdf",
+        "company_name": "บริษัท มิสเตอร์.ดี.ไอ.วาย. (กรุงเทพ) จำกัด"
+      },
+      {
+        "filename": "04.02.2026_WHT_EXP-20260200007_510110_WHT_PV26-02-04_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ป.ปฏิญญา บิ้วท์แอนด์คอน"
+      },
+      {
+        "filename": "14.02.2026_EXP-20260200012_530213_PV26-02_14_VAT.pdf",
+        "company_name": "บริษัท เซ็นทรัลเทรดดิ้ง จํากัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 8,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "0000006627",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "0503220260201000057",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "0503220260201000058",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "RV6902-001",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "HS6901076",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "RT-20260200045",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "007/00003720",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "RV6902-004",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

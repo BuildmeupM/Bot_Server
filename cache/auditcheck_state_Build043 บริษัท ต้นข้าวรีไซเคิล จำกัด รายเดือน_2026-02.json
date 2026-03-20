@@ -1,0 +1,425 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-18T02:25:39.631Z",
+  "last_saved": "2026-03-18T09:25:42.047366",
+  "company": "Build043 บริษัท ต้นข้าวรีไซเคิล จำกัด รายเดือน",
+  "base_company": "Build043 บริษัท ต้นข้าวรีไซเคิล จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "1": "",
+    "2": "",
+    "6": "",
+    "19": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00005'",
+    "20": "",
+    "24": "",
+    "25": "",
+    "31": "",
+    "32": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte. Lid'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='6912124472' แต่ OCR='69121214472'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=5,350.00 แต่ OCR=350.00 (ต่างกัน 5,000.00)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='Receipt'",
+    "33": ""
+  },
+  "initialNotes": {
+    "1": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='GHKSCA01ACA-681012-0010' แต่ OCR='GHKSC A01 ACA-681012-0010'",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='GHKSCC01ACA-681018-0001' แต่ OCR='GHKSCCO1ACA-681018-0001'",
+    "6": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='GHKSCA04ACA-681028-0027' แต่ OCR='GHKSC A04ACA-681028-0027'",
+    "19": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00005'",
+    "20": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='GHKSST01ACA-681230-0029' แต่ OCR='GHKST01ACA-681230-0029'",
+    "24": "สาขาไม่ตรงกัน: ภาษีซื้อ='00008' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='GHKSST02ACA-690205-0028' แต่ OCR='GHSST02ACA-690205-0028'",
+    "25": "สาขาไม่ตรงกัน: ภาษีซื้อ='00008' แต่ OCR='00000'",
+    "31": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte. Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=16,050.00 แต่ OCR=1,050.00 (ต่างกัน 15,000.00)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "32": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Google Asia Pacific Pte. Lid'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='6912124472' แต่ OCR='69121214472'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=5,350.00 แต่ OCR=350.00 (ต่างกัน 5,000.00)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='Receipt'",
+    "33": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='GHKSCA07ACA-690218-0053' แต่ OCR='GHKSC A07ACA-690218-0053'"
+  },
+  "comparisonApprovals": {
+    "1-document_no_match": true,
+    "2-document_no_match": true,
+    "6-document_no_match": true,
+    "20-document_no_match": true,
+    "24-branch_match": true,
+    "24-document_no_match": true,
+    "25-branch_match": true,
+    "31-company_name_match": true,
+    "31-tax_id_match": true,
+    "31-branch_match": true,
+    "31-total_amount_match": true,
+    "31-document_type_match": true,
+    "32-company_name_match": true,
+    "32-tax_id_match": true,
+    "32-branch_match": true,
+    "32-total_amount_match": true,
+    "32-document_type_match": true,
+    "33-document_no_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build043 บริษัท ต้นข้าวรีไซเคิล จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 35,
+    "metadata": [
+      {
+        "filename": "10.02.2026_EXP-20260200012_10-2 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "26.11.2025_EXP-20251100008_26-11 อุปกรณ์ก่อสร้าง(1)_VAT.pdf",
+        "company_name": "บริษัท เอสซีจี เซรามิกส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "02.12.2025_EXP-20251200021_2-12 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท เอสซีจี เซรามิกส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "13.12.2025_EXP-20251200019_13-12 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท มิตซูขอนแก่นยนต์ไพบูลย์ จำกัด"
+      },
+      {
+        "filename": "08.12.2025_EXP-20251200017_8-12 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท เอสซีจี เซรามิกส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200015_18-2 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200010_7-2 อุปกรณ์ก่อสร้าง(1)_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "26.11.2025_EXP-20251100009_26-11 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "08.10.2025_EXP-20251000009_8-10 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท เอสซีจี เซรามิกส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200009_5-2 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "25.10.2025_EXP-20251000014_25-10 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200008_5-2 อุปกรณ์ก่อสร้าง(2)_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200021_ภาพแบบ ภ.พ.36 เดือน 01.2026 (Google 2)_VAT.pdf",
+        "company_name": "Google Asia Pacific Pte. Lid"
+      },
+      {
+        "filename": "18.10.2025_EXP-20251000011_18-10 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "27.11.2025_EXP-20251100010_27-11 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "30.01.2026_EXP-20260100010_30-1 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "03.01.2026_EXP-20260100009_3-1 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200016_25-2 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "07.12.2025_EXP-20251200016_7-12 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท เอสซีจี เซรามิกส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "23.10.2025_EXP-20251000012_23-10 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200011_7-2 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "30.11.2025_EXP-20251100012_30-11 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท เอสซีจี เซรามิกส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200013_11-2 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "11.12.2025_EXP-20251200018_11-12 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200014_13-2 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200007_5-2 อุปกรณ์ก่อสร้าง(1)_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200020_ภาพแบบ ภ.พ.36 เดือน 01.2026 (Google 1)_VAT.pdf",
+        "company_name": "Google Asia Pacific Pte. Ltd"
+      },
+      {
+        "filename": "07.12.2025_EXP-20251200015_7-12 อุปกรณ์ก่อสร้าง(2)_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "28.10.2025_EXP-20251000015_28-10 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "25.10.2025_EXP-20251000013_25-10 อุปกรณ์ก่อสร้าง(1)_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "04.12.2025_EXP-20251200014_4-12 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท เอสซีจี เซรามิกส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "12.10.2025_EXP-20251000010_12-10 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "29.11.2025_EXP-20251100011_29-11 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "30.12.2025_EXP-20251200020_30-12 อุปกรณ์ก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "04.12.2025_EXP-20251200013_4-12 อุปกรณ์ก่อสร้าง(1)_VAT.pdf",
+        "company_name": "บริษัท สยามโกลบอลเฮ้าส์ จำกัด (มหาชน)"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 35,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20251000009",
+        "ocr_document_no": "DO65G4251000098",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251000010",
+        "ocr_document_no": "GHKSC A01 ACA-681012-0010",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20251000011",
+        "ocr_document_no": "GHKSCCO1ACA-681018-0001",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20251000012",
+        "ocr_document_no": "GHKSSC02ACA-681023-0010",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20251000014",
+        "ocr_document_no": "GHKSSC02ACA-681025-0007",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20251000013",
+        "ocr_document_no": "GHKSSC02ACA-681025-0008",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20251000015",
+        "ocr_document_no": "GHKSC A04ACA-681028-0027",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20251100008",
+        "ocr_document_no": "DO65G4251100333",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20251100009",
+        "ocr_document_no": "GHKSSC02ACA-681126-0015",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20251100010",
+        "ocr_document_no": "GHKSSC02ACA-681127-0015",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20251100011",
+        "ocr_document_no": "GHKSSA02ACA-681129-0008",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20251100012",
+        "ocr_document_no": "DO65G4251100386",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20251200021",
+        "ocr_document_no": "DO65G4251200017",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20251200014",
+        "ocr_document_no": "DO65G4251200057",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20251200013",
+        "ocr_document_no": "GHKSSA02ACA-681204-0013",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20251200016",
+        "ocr_document_no": "DO65G4251200100",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20251200015",
+        "ocr_document_no": "GHKSSC02ACA-681207-0011",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20251200017",
+        "ocr_document_no": "DO65G4251200110",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20251200018",
+        "ocr_document_no": "GHKSSA02ACA-681211-0009",
+        "match_status": "full_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20251200019",
+        "ocr_document_no": "1M6802913",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20251200020",
+        "ocr_document_no": "GHKST01ACA-681230-0029",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260100009",
+        "ocr_document_no": "GHKSSA04ACA-690103-0004",
+        "match_status": "full_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260100010",
+        "ocr_document_no": "GHKSST01ACA-690130-0013",
+        "match_status": "full_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "GHKSST02ACA-690205-0027",
+        "match_status": "full_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "GHSST02ACA-690205-0028",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "GHKSST02ACA-690205-0029",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "GHKSCA05ACA-690207-0011",
+        "match_status": "full_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "GHKSST01ACA-690207-0005",
+        "match_status": "full_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "GHKSST02ACA-690210-0012",
+        "match_status": "full_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "GHKSCA05ACA-690211-0073",
+        "match_status": "full_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "GHKSSA02ACA-690213-0008",
+        "match_status": "full_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "69121214473",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260200021",
+        "ocr_document_no": "69121214472",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "GHKSC A07ACA-690218-0053",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "GHKSST02ACA-690225-0015",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

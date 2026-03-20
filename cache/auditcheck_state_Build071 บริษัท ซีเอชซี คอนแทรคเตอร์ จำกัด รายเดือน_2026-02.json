@@ -1,0 +1,83 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T08:53:14.735Z",
+  "last_saved": "2026-03-20T15:53:16.204122",
+  "company": "Build071 บริษัท ซีเอชซี คอนแทรคเตอร์ จำกัด รายเดือน",
+  "base_company": "Build071 บริษัท ซีเอชซี คอนแทรคเตอร์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "1": "",
+    "2": ""
+  },
+  "initialNotes": {
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาสุขาภิบาล3)'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาชัยพฤกษ์)'"
+  },
+  "comparisonApprovals": {
+    "1-company_name_match": true,
+    "2-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build071 บริษัท ซีเอชซี คอนแทรคเตอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 4,
+    "metadata": [
+      {
+        "filename": "19.02.2026_EXP-20260200005_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท (ไทย) จำกัด"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200003_510112_วัสดุก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาสุขาภิบาล3)"
+      },
+      {
+        "filename": "26.01.2026_EXP-20260100008_510112_วัสดุก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท ไดนาสตี้ เซรามิค จำกัด (มหาชน)"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200004_510112_วัสดุก่อสร้าง_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาชัยพฤกษ์)"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 4,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100008",
+        "ocr_document_no": "05-DC127-001-2601-1-000012",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "SK3IE26020192615",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "CYKIE26020097917",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "000211022602100769",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

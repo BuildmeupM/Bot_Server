@@ -1,0 +1,897 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-19T12:55:34.214Z",
+  "last_saved": "2026-03-19T19:55:31.527405",
+  "company": "Build589 บริษัท เวิลด เทรด เทคโนโลยี จำกัด",
+  "base_company": "Build589 บริษัท เวิลด เทรด เทคโนโลยี จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=84.84 แต่ OCR=24.62 (ต่างกัน 60.22)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=5.94 แต่ OCR=1.72 (ต่างกัน 4.22)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=90.78 แต่ OCR=26.34 (ต่างกัน 64.44)",
+    "2": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "3": "",
+    "4": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "6": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200102 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260203-0012747)",
+    "7": "",
+    "8": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "10": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "11": "",
+    "12": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "13": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "15": "",
+    "16": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200103 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260207-0022279)",
+    "17": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200104 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260208-0000297)",
+    "18": "",
+    "19": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00019'",
+    "20": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "21": "",
+    "22": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200105 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260209-0011333)",
+    "23": "",
+    "24": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200106 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260210-0014452)",
+    "26": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00201'",
+    "28": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200107 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260212-0010088)",
+    "29": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00202'",
+    "31": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "32": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200064 (เลขที่ใบกำกับ: FI2601268)",
+    "33": "",
+    "35": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "37": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "39": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200108 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260217-0011116)",
+    "40": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "42": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "44": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "46": "",
+    "47": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200109 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260221-0010643)",
+    "48": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "49": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00202'",
+    "50": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200110 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260222-0000904)",
+    "51": "",
+    "54": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00201'",
+    "56": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "58": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200111 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260225-0021409)",
+    "59": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "61": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200112 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260226-0021704)",
+    "62": "",
+    "64": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "66": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=9,276.79 แต่ OCR=9,926.17 (ต่างกัน 649.38)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=649.38 แต่ OCR=694.83 (ต่างกัน 45.45)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=9,926.17 แต่ OCR=10,621.00 (ต่างกัน 694.83)",
+    "67": "",
+    "68": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200113 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260228-0015480)",
+    "69": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-26 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "70": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-260222-0000904 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "71": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-26 0212-0010088 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "72": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-260226-0021704 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "73": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-26 0207-0022279 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "74": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-260209-0011333 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "75": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-26 0210-0014452 (ไม่มีเลขที่เอกสารอ้างอิง)"
+  },
+  "initialNotes": {
+    "0": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=84.84 แต่ OCR=24.62 (ต่างกัน 60.22)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=5.94 แต่ OCR=1.72 (ต่างกัน 4.22)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=90.78 แต่ OCR=26.34 (ต่างกัน 64.44)",
+    "2": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "3": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260202-0021435' แต่ OCR='TRSPEMKP00-00000-26'",
+    "4": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "6": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200102 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260203-0012747)",
+    "7": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260204-0002458' แต่ OCR='TRSPEMKP00-00000-26'",
+    "8": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "10": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260206-0002554' แต่ OCR='TRSPEMKP00-00000-26'",
+    "12": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "13": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "15": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260207-0009096' แต่ OCR='TRSPEMKP00-00000-26'",
+    "16": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200103 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260207-0022279)",
+    "17": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200104 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260208-0000297)",
+    "18": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260208-0024928' แต่ OCR='TRSPEMKP00-00000-26'",
+    "19": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00019'",
+    "20": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "21": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260209-0005579' แต่ OCR='TRSPEMKP00-00000-26'",
+    "22": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200105 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260209-0011333)",
+    "23": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260210-0002530' แต่ OCR='TRSPEMKP00-00000-26'",
+    "24": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200106 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260210-0014452)",
+    "26": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00201'",
+    "28": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200107 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260212-0010088)",
+    "29": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00202'",
+    "31": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "32": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200064 (เลขที่ใบกำกับ: FI2601268)",
+    "33": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260214-0005223' แต่ OCR='TRSPEMKP00-00000-26'",
+    "35": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "37": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "39": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200108 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260217-0011116)",
+    "40": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "42": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "44": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "46": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260221-0010025' แต่ OCR='TRSPEMKP00-00000-26'",
+    "47": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200109 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260221-0010643)",
+    "48": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "49": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00202'",
+    "50": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200110 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260222-0000904)",
+    "51": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260222-0010957' แต่ OCR='TRSPEMKP00-00000-26'",
+    "54": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00201'",
+    "56": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "58": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200111 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260225-0021409)",
+    "59": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "61": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200112 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260226-0021704)",
+    "62": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260227-0013058' แต่ OCR='TRSPEMKP00-00000-26'",
+    "64": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00001'",
+    "66": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=9,276.79 แต่ OCR=9,926.17 (ต่างกัน 649.38)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=649.38 แต่ OCR=694.83 (ต่างกัน 45.45)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=9,926.17 แต่ OCR=10,621.00 (ต่างกัน 694.83)",
+    "67": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260228-0010152' แต่ OCR='TRSPEMKP00-00000-26'",
+    "68": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200113 (เลขที่ใบกำกับ: TRSPEMKP00-00000-260228-0015480)",
+    "69": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-26 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "70": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-260222-0000904 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "71": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-26 0212-0010088 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "72": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-260226-0021704 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "73": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-26 0207-0022279 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "74": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-260209-0011333 (ไม่มีเลขที่เอกสารอ้างอิง)",
+    "75": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่ใบกำกับ: TRSPEMKP00-00000-26 0210-0014452 (ไม่มีเลขที่เอกสารอ้างอิง)"
+  },
+  "comparisonApprovals": {
+    "3-document_no_match": true,
+    "7-document_no_match": true,
+    "11-document_no_match": true,
+    "15-document_no_match": true,
+    "18-document_no_match": true,
+    "21-document_no_match": true,
+    "23-document_no_match": true,
+    "33-document_no_match": true,
+    "46-document_no_match": true,
+    "51-document_no_match": true,
+    "62-document_no_match": true,
+    "67-document_no_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build589 บริษัท เวิลด เทรด เทคโนโลยี จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 69,
+    "metadata": [
+      {
+        "filename": "28.02.2026_EXP-20260200094_510111_IV2602176 บจ.เวิลด เทรด เดือน ก.พ.69_VAT.pdf",
+        "company_name": "บริษัท ไอก้า อินโนเวชั่น (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200095_510111_IV2602177 บจ.เวิลด เทรด เดือน ก.พ.69_VAT.pdf",
+        "company_name": "บริษัท ไอก้า อินโนเวชั่น (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "14.02.2026_WHT_EXP-20260200064_510112_260214 บริษัท จีจีเอสไลน์ (ไทยแลนด์) จำกัด_VAT-1-4.pdf"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200096_520310_260207 รอยัล เปเปอ_VAT.pdf",
+        "company_name": "บริษัท รอยัล เปเปอร์ จำกัด"
+      },
+      {
+        "filename": "19.01.2026_EXP-20260100138_530301_260202 การไฟฟ้านครหลวง_VAT.pdf",
+        "company_name": "การไฟฟ้านครหลวง"
+      },
+      {
+        "filename": "19.02.2026_EXP-20260200084_260219 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200071_260203 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200088_260223 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200079_260213 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200078_260212 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200070_260202 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "17.02.2026_EXP-20260200082_260217 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200083_260218 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200072_260205 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "09.02.2026_EXP-20260200076_260209 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200074_260207 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200090_260225 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "06.02.2026_EXP-20260200073_260206 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200075_260207-8 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200093_260228-34 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "09.02.2026_EXP-20260200077_260209-เสื้อ Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200092_260228-33 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200086_260222 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200091_260226 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200085_260220 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200089_260224 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200081_260216 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200087_260222-26 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "14.02.2026_EXP-20260200080_260214 Legacy_VAT.pdf",
+        "company_name": "บริษัท เลกาซี่ คอร์ป จำกัด"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200041_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200036_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200098_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200058_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "บริษัท ช้อปปี้ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "09.02.2026_EXP-20260200024_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200013_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "14.02.2026_EXP-20260200034_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200028_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260208-0000297.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "21.02.2026_EXP-20260200049_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200097_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260222-0000904.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200047_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "06.02.2026_EXP-20260200018_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200030_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260217-0011116.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200016_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260225-0021409.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "19.02.2026_EXP-20260300004_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200011_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200038_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200026_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260212-0010088.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260226-0021704.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200008_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260203-0012747.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200053_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200056_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260221-0010643.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200020_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200061_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "17.02.2026_EXP-20260200039_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260207-0022279.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "04.02.2026_EXP-20260200014_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200032_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260209-0011333.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "08.02.2026_EXP-20260200022_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200051_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260228-0015480.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "Shopee-TIV-TRSPEMKP00-00000-260210-0014452.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 81,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100138",
+        "ocr_document_no": "0016901303708",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "TRSPEMKP00-00000-260201-0001555",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200070",
+        "ocr_document_no": "202260200030",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200071",
+        "ocr_document_no": "201260200045",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "TRSPEMKP00-00000-260203-0002174",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200102",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200072",
+        "ocr_document_no": "201260200074",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "TRSPEMKP00-00000-260205-0013623",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200073",
+        "ocr_document_no": "202260200191",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200074",
+        "ocr_document_no": "202260200223",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200075",
+        "ocr_document_no": "202260200237",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200096",
+        "ocr_document_no": "RT-2026020700006",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200103",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200104",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260200077",
+        "ocr_document_no": "019260200162",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260200076",
+        "ocr_document_no": "202260200289",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260200105",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260200026",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260200106",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260200028",
+        "ocr_document_no": "TRSPEMKP00-00000-260211-0010803",
+        "match_status": "full_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260200078",
+        "ocr_document_no": "201260200230",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260200030",
+        "ocr_document_no": "TRSPEMKP00-00000-260212-0002998",
+        "match_status": "full_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260200107",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260200079",
+        "ocr_document_no": "202260200417",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260200032",
+        "ocr_document_no": "TRSPEMKP00-00000-260213-0004064",
+        "match_status": "full_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260200080",
+        "ocr_document_no": "202260200455",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260200064",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260200034",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260200036",
+        "ocr_document_no": "TRSPEMKP00-00000-260215-0024809",
+        "match_status": "full_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260200081",
+        "ocr_document_no": "202260200524",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260200038",
+        "ocr_document_no": "TRSPEMKP00-00000-260216-0013507",
+        "match_status": "full_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXP-20260200082",
+        "ocr_document_no": "202260200551",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-20260200039",
+        "ocr_document_no": "TRSPEMKP00-00000-260217-0001190",
+        "match_status": "full_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-20260200108",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXP-20260200083",
+        "ocr_document_no": "202260200568",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXP-20260200041",
+        "ocr_document_no": "TRSPEMKP00-00000-260218-0004129",
+        "match_status": "full_match"
+      },
+      {
+        "index": 42,
+        "purchase_reference": "EXP-20260200084",
+        "ocr_document_no": "202260200603",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 43,
+        "purchase_reference": "EXP-20260300004",
+        "ocr_document_no": "TRSPEMKP00-00000-260219-0004605",
+        "match_status": "full_match"
+      },
+      {
+        "index": 44,
+        "purchase_reference": "EXP-20260200085",
+        "ocr_document_no": "202260200636",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 45,
+        "purchase_reference": "EXP-20260200047",
+        "ocr_document_no": "TRSPEMKP00-00000-260220-0002707",
+        "match_status": "full_match"
+      },
+      {
+        "index": 46,
+        "purchase_reference": "EXP-20260200049",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 47,
+        "purchase_reference": "EXP-20260200109",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 48,
+        "purchase_reference": "EXP-20260200087",
+        "ocr_document_no": "200260201476",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 49,
+        "purchase_reference": "EXP-20260200086",
+        "ocr_document_no": "202260200731",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 50,
+        "purchase_reference": "EXP-20260200110",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 51,
+        "purchase_reference": "EXP-20260200051",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 52,
+        "purchase_reference": "EXP-20260200088",
+        "ocr_document_no": "202260200787",
+        "match_status": "full_match"
+      },
+      {
+        "index": 53,
+        "purchase_reference": "EXP-20260200053",
+        "ocr_document_no": "TRSPEMKP00-00000-260223-0014013",
+        "match_status": "full_match"
+      },
+      {
+        "index": 54,
+        "purchase_reference": "EXP-20260200089",
+        "ocr_document_no": "201260200590",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 55,
+        "purchase_reference": "EXP-20260200056",
+        "ocr_document_no": "TRSPEMKP00-00000-260224-0023980",
+        "match_status": "full_match"
+      },
+      {
+        "index": 56,
+        "purchase_reference": "EXP-20260200090",
+        "ocr_document_no": "202260200879",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 57,
+        "purchase_reference": "EXP-20260200058",
+        "ocr_document_no": "TRSPEMKP00-00000-260225-0008006",
+        "match_status": "full_match"
+      },
+      {
+        "index": 58,
+        "purchase_reference": "EXP-20260200111",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 59,
+        "purchase_reference": "EXP-20260200091",
+        "ocr_document_no": "201260200646",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 60,
+        "purchase_reference": "EXP-20260200061",
+        "ocr_document_no": "TRSPEMKP00-00000-260226-0017675",
+        "match_status": "full_match"
+      },
+      {
+        "index": 61,
+        "purchase_reference": "EXP-20260200112",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 62,
+        "purchase_reference": "EXP-20260200097",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 63,
+        "purchase_reference": "EXP-20260200093",
+        "ocr_document_no": "200260201997",
+        "match_status": "full_match"
+      },
+      {
+        "index": 64,
+        "purchase_reference": "EXP-20260200092",
+        "ocr_document_no": "202260201027",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 65,
+        "purchase_reference": "EXP-20260200094",
+        "ocr_document_no": "IV2602176",
+        "match_status": "full_match"
+      },
+      {
+        "index": 66,
+        "purchase_reference": "EXP-20260200095",
+        "ocr_document_no": "IV2602177",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 67,
+        "purchase_reference": "EXP-20260200098",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 68,
+        "purchase_reference": "EXP-20260200113",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 69,
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "no_match"
+      },
+      {
+        "index": 70,
+        "ocr_document_no": "TRSPEMKP00-00000-260222-0000904",
+        "match_status": "no_match"
+      },
+      {
+        "index": 71,
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "no_match"
+      },
+      {
+        "index": 72,
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "no_match"
+      },
+      {
+        "index": 73,
+        "ocr_document_no": "TRSPEMKP00-00000-26 0212-0010088",
+        "match_status": "no_match"
+      },
+      {
+        "index": 74,
+        "ocr_document_no": "TRSPEMKP00-00000-260226-0021704",
+        "match_status": "no_match"
+      },
+      {
+        "index": 75,
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "no_match"
+      },
+      {
+        "index": 76,
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "no_match"
+      },
+      {
+        "index": 77,
+        "ocr_document_no": "TRSPEMKP00-00000-26 0207-0022279",
+        "match_status": "no_match"
+      },
+      {
+        "index": 78,
+        "ocr_document_no": "TRSPEMKP00-00000-260209-0011333",
+        "match_status": "no_match"
+      },
+      {
+        "index": 79,
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "no_match"
+      },
+      {
+        "index": 80,
+        "ocr_document_no": "TRSPEMKP00-00000-26 0210-0014452",
+        "match_status": "no_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

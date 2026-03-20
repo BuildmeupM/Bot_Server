@@ -1,0 +1,74 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-17T07:59:12.071Z",
+  "last_saved": "2026-03-17T14:59:12.722164",
+  "company": "Build445 บริษัท บิส เจเนอเรชั่น จำกัด รายเดือน",
+  "base_company": "Build445 บริษัท บิส เจเนอเรชั่น จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด' แต่ OCR='บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาแจ้งวัฒนะ)'",
+    "1": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='014/0697' แต่ OCR='0697'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='13/01/2026' แต่ OCR='13/11/2021'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-date_match": true,
+    "1-document_no_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build445 บริษัท บิส เจเนอเรชั่น จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "08.01.2026_EXP-20260300001_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ซีอาร์ซี ไทวัสดุ จำกัด (สาขาแจ้งวัฒนะ)"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200002_WHT_530401_ค่าบริการทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "13.01.2026_EXP-20260100012_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท พี.เอ. เซอร์วิส คอร์ปอเรชั่น จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 3,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260300001",
+        "ocr_document_no": "CWTIE26010113108",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "0697",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "RT-20260200319",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

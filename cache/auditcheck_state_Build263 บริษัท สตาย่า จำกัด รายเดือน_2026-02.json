@@ -1,0 +1,171 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-18T06:44:41.652Z",
+  "last_saved": "2026-03-18T13:44:42.154149",
+  "company": "Build263 บริษัท สตาย่า จำกัด รายเดือน",
+  "base_company": "Build263 บริษัท สตาย่า จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "6": "",
+    "7": "เอกสารเป็นใบลดหนี้ ",
+    "8": "",
+    "10": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited (Head Office)'",
+    "2": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105564068709' แต่ OCR='0105564058709'",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited (Head Office)'\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='Credit Note'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited (Head Office)'",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ลาซาด้า จำกัด' แต่ OCR='Lazada Limited (Head Office)'"
+  },
+  "comparisonApprovals": {
+    "5-company_name_match": true,
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "2-tax_id_match": true,
+    "4-company_name_match": true,
+    "6-company_name_match": true,
+    "8-company_name_match": true,
+    "10-company_name_match": true
+  },
+  "invalidDocuments": {
+    "0": true
+  },
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build263 บริษัท สตาย่า จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 11,
+    "metadata": [
+      {
+        "filename": "28.02.2026_EXP-20260200018_520219_f4659d82e2a4405d245b0b97d1daa8e3_VAT.pdf",
+        "company_name": "Lazada Limited (Head Office)"
+      },
+      {
+        "filename": "14.02.2026_WHT_EXP-20260200014_SMART PRINT FABRIC 19,050.47_VAT.pdf",
+        "company_name": "บริษัท สมาร์ท ปริ้นท์ แฟบริค จำกัด"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200020_COUNT ME IN 17,355.40_VAT.pdf",
+        "company_name": "บริษัท เคาท์มีอินดีไซน์ จำกัด"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200001_71a39df33cc2e358a604b7cfec33d814_VAT.pdf",
+        "company_name": "Lazada Limited"
+      },
+      {
+        "filename": "08.02.2026_EXP-20260200019_520219_fa4e086f53015d34c296cd43f9f874ba_VAT.pdf",
+        "company_name": "Lazada Limited (Head Office)"
+      },
+      {
+        "filename": "14.02.2026_WHT_EXP-20260200013_SMART PRINT FABRIC 2,721.50_VAT.pdf",
+        "company_name": "บริษัท สมาร์ท ปริ้นท์ แฟบริค จำกัด"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200016_520219_21934d428c5a0eb9e9917526e1c66549_VAT.pdf",
+        "company_name": "Lazada Limited (Head Office)"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200015_520219_0fdf2a4a41ea1f890ea85137ae32e9e8_VAT.pdf",
+        "company_name": "Lazada Limited"
+      },
+      {
+        "filename": "09.02.2026_WHT_EXP-20260200009_BUILD ME UP 4,160.00_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200017_520219_bd12bd126614ecff0165aff4bdd7c767_VAT.pdf",
+        "company_name": "Lazada Limited (Head Office)"
+      },
+      {
+        "filename": "14.02.2026_WHT_EXP-20260200012_SMART PRINT FABRIC 52,524.86_VAT.pdf",
+        "company_name": "บริษัท สมาร์ท ปริ้นท์ แฟบริค จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 11,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "THMPTI2026020000075377",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200019",
+        "ocr_document_no": "THMPTI2026020000175389",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "RT-20260200073",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "INV-00-2602/0165",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "INV-00-2602/0166",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "INV-00-2602/0167",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "THMPTI2026020000321615",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "THMPTC2026020000053502",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200017",
+        "ocr_document_no": "THMPTI2026020000370287",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "INV2026020002",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "THMPTI2026020000483265",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

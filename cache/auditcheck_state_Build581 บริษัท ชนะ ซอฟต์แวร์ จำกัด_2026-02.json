@@ -1,0 +1,72 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-16T11:45:47.052Z",
+  "last_saved": "2026-03-16T18:45:37.512238",
+  "company": "Build581 บริษัท ชนะ ซอฟต์แวร์ จำกัด",
+  "base_company": "Build581 บริษัท ชนะ ซอฟต์แวร์ จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เพย์ โซลูชั่น จำกัด' แต่ OCR='บริษัท เพย โซลูชั่น จํากัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=365.80 แต่ OCR=355.82 (ต่างกัน 9.98)",
+    "1": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RT-2026020094' แต่ OCR='RT-20260200094'",
+    "2": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=365.80 แต่ OCR=355.82 (ต่างกัน 9.98)"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "0-total_amount_match": true,
+    "1-document_no_match": true,
+    "2-total_amount_match": true,
+    "0-tax_id_match": true,
+    "0-branch_match": true,
+    "0-amount_before_vat_match": true,
+    "0-document_type_match": true,
+    "1-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build581 บริษัท ชนะ ซอฟต์แวร์ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 2,
+    "metadata": [
+      {
+        "filename": "09.02.2026_EXP-20260200003_ภาพแบบ ภ.พ.36 เดือน 01.2026 Vast.ai Inc.pdf",
+        "company_name": "Vast.ai Inc"
+      },
+      {
+        "filename": "16.02.2026_WHT_EXP-20260200002_ค่าบริการบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 2,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "69119556571",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "RT-20260200203",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

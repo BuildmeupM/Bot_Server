@@ -1,0 +1,79 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-18T09:35:02.730Z",
+  "last_saved": "2026-03-18T16:35:02.776399",
+  "company": "Build408 บริษัท มิว สเปซ แอนด์ แอดวานซ์ เทคโนโลยี จำกัด รายเดือน",
+  "base_company": "Build408 บริษัท มิว สเปซ แอนด์ แอดวานซ์ เทคโนโลยี จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "2": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200023 (เลขที่ใบกำกับ: TIO000016902000671)",
+    "3": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200024 (เลขที่ใบกำกับ: 000001014)",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ เอส เอ พี เอเจนซี่ จำกัด' แต่ OCR='ASAP Agency co.,ltd.'"
+  },
+  "initialNotes": {
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ฝนอิ้งค์ ไอที จำกัด' แต่ OCR='บริษัท ฟอนอิ้งค์ ไอที จำกัด'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='08/02/2026' แต่ OCR='08/02/2069'",
+    "3": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200024 (เลขที่ใบกำกับ: 000001014)",
+    "4": "วันที่ไม่ตรงกัน: ภาษีซื้อ='16/02/2026' แต่ OCR='16/02/2024'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "2-date_match": true,
+    "2-company_name_match": true,
+    "4-date_match": true,
+    "5-company_name_match": true,
+    "1-address_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build408 บริษัท มิว สเปซ แอนด์ แอดวานซ์ เทคโนโลยี จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "04.02.2026_EXP-202602007_260206_Electric F00 Jan 26_VAT.pdf",
+        "company_name": "การไฟฟ้านครหลวง"
+      },
+      {
+        "filename": "06.02.2026_EXP-202602008_260206_ค่าน้ำประปา Feb 26_VAT.pdf",
+        "company_name": "การประปานครหลวง"
+      },
+      {
+        "filename": "20.02.2026_WHT_EXP-202602003_260220_ACC. HR fees Feb 26_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 3,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-202602007",
+        "ocr_document_no": "O0200441765",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-202602008",
+        "ocr_document_no": "E1542004032",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-202602003",
+        "ocr_document_no": "RT-20260200273",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": true
+  }
+}

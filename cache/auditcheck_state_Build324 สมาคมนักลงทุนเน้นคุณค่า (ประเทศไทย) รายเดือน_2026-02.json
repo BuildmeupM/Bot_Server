@@ -1,0 +1,537 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T04:45:36.831Z",
+  "last_saved": "2026-03-20T11:45:38.932794",
+  "company": "Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน",
+  "base_company": "Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "4": "",
+    "5": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='X13-001-C98-0036874' แต่ OCR='X13-001-C9B-0036874'",
+    "7": "",
+    "8": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "12": "",
+    "13": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200031 (เลขที่ใบกำกับ: IV26022480)",
+    "14": "",
+    "16": "",
+    "17": "",
+    "18": "",
+    "19": "",
+    "21": "",
+    "22": "",
+    "23": "",
+    "24": "",
+    "25": "",
+    "26": "",
+    "27": "",
+    "28": "",
+    "29": "",
+    "31": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวิร์ค จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='W-TS-6902-12970873' แต่ OCR='W-TS-1047-6902-12970873'",
+    "34": "",
+    "35": "",
+    "36": "",
+    "37": "",
+    "38": "",
+    "39": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited (Head Office)'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "5": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='X13-001-C98-0036874' แต่ OCR='X13-001-C9B-0036874'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "13": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200031 (เลขที่ใบกำกับ: IV26022480)",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited (Head Office)'",
+    "16": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited (Head Office)'",
+    "17": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "18": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='Amazon web services Company Limited' แต่ OCR='Amazon Web Service'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0000000000000' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=67.14 แต่ OCR=4.39 (ต่างกัน 62.75)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "19": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "21": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited (Head Office)'",
+    "23": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "24": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "26": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "27": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "28": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "29": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "31": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวิร์ค จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='W-TS-6902-12970873' แต่ OCR='W-TS-1047-6902-12970873'",
+    "34": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "36": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited (Head Office)'",
+    "37": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "38": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'",
+    "39": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท โอมิเซะ จำกัด' แต่ OCR='Omise Company Limited'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "2-company_name_match": true,
+    "4-company_name_match": true,
+    "7-company_name_match": true,
+    "8-company_name_match": true,
+    "9-company_name_match": true,
+    "10-company_name_match": true,
+    "11-company_name_match": true,
+    "12-company_name_match": true,
+    "14-company_name_match": true,
+    "16-company_name_match": true,
+    "17-company_name_match": true,
+    "18-company_name_match": true,
+    "18-tax_id_match": true,
+    "18-branch_match": true,
+    "18-total_amount_match": true,
+    "18-document_type_match": true,
+    "19-company_name_match": true,
+    "21-company_name_match": true,
+    "22-company_name_match": true,
+    "23-company_name_match": true,
+    "24-company_name_match": true,
+    "25-company_name_match": true,
+    "26-company_name_match": true,
+    "27-company_name_match": true,
+    "28-company_name_match": true,
+    "29-company_name_match": true,
+    "31-company_name_match": true,
+    "34-company_name_match": true,
+    "35-company_name_match": true,
+    "36-company_name_match": true,
+    "37-company_name_match": true,
+    "38-company_name_match": true,
+    "39-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build324 สมาคมนักลงทุนเน้นคุณค่า (ประเทศไทย) รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 40,
+    "metadata": [
+      {
+        "filename": "28.02.2026_EXP-20260200054_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200040_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "06.02.2026_EXP-20260200027_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200016_530217_ค่าโทรศัพท์ Ais_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวิร์ค จำกัด"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200024_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200047_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "08.02.2026_EXP-20260200029_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200050_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited (Head Office)"
+      },
+      {
+        "filename": "03.02.2026_EXP-20251200072_530301_ค่าไฟฟ้า_VAT.pdf",
+        "company_name": "บริษัท เอส.พี.อาคาร จำกัด"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200015_530219_ค่าโทรศัพท์ True_VAT.pdf",
+        "company_name": "บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200022_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited (Head Office)"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200053_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260100005_ภาพแบบ ภ.พ.36 เดือน 01.2026.pdf",
+        "company_name": "Amazon Web Service"
+      },
+      {
+        "filename": "21.02.2026_EXP-20260200046_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200039_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited (Head Office)"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200020_530214_ค่าป้ายไวนิล_VAT.pdf",
+        "company_name": "บริษัท ทำถูก จำกัด"
+      },
+      {
+        "filename": "19.02.2026_EXP-20260200043_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200035_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200036_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260100013_530218_ค่าโทรศัพท์ TOT.pdf",
+        "company_name": "บริษัท โทรคมนาคมแห่งชาติ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200032_5306012_ค่าบริจาคอุปกรณ์_VAT.pdf",
+        "company_name": "บริษัท เรียลเมดคอร์ป จำกัด"
+      },
+      {
+        "filename": "17.02.2026_EXP-20260200041_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200048_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200052_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200034_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited (Head Office)"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200042_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200044_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200026_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200023_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200033_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited (Head Office)"
+      },
+      {
+        "filename": "03.02.2026_WHT_EXP-20260200002_530213_ค่าบริการสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท เอส.พี.อาคาร จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200057_530612_ค่าบริจาคสาธารณะ_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด แอทไซน์บอร์ด"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200028_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260100012_530218_ค่าโทรศัพท์ TOT.pdf",
+        "company_name": "บริษัท โทรคมนาคมแห่งชาติ จำกัด (มหาชน)"
+      },
+      {
+        "filename": "04.02.2026_EXP-20260200025_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "13.02.2026_WHT_EXP-20260200010_530401_ค่าบริการบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200049_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "14.02.2026_EXP-20260200038_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      },
+      {
+        "filename": "01.02.2026_WHT_EXP-20260200009_520311_ค่าบริการไลน์_VAT.pdf",
+        "company_name": "LINE COMPANY (THAILAND) LIMITED"
+      },
+      {
+        "filename": "09.02.2026_EXP-20260200032_ค่าธรรมเนียม_OMISE_VAT.pdf",
+        "company_name": "Omise Company Limited"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 40,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "OMTH202602010218",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "ONTX20260201-002867",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200023",
+        "ocr_document_no": "OMTH202602020253",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "CS2602-0203",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "OMTH202602030251",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20251200072",
+        "ocr_document_no": "X13-001-C9B-0036874",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "X13-001-C9B-0036873",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200025",
+        "ocr_document_no": "OMTH202602040234",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200026",
+        "ocr_document_no": "OMTH202602050230",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200027",
+        "ocr_document_no": "OMTH202602060228",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200028",
+        "ocr_document_no": "OMTH202602070209",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200029",
+        "ocr_document_no": "OMTH202602080193",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200032",
+        "ocr_document_no": "OMTH202602090231",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200031",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200033",
+        "ocr_document_no": "OMTH202602100256",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200057",
+        "ocr_document_no": "CA2026020008",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200034",
+        "ocr_document_no": "OMTH202602110230",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200035",
+        "ocr_document_no": "OMTH202602120232",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100005",
+        "ocr_document_no": "69121353943",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260200036",
+        "ocr_document_no": "OMTH202602130231",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "RT-20260200144",
+        "match_status": "full_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260200038",
+        "ocr_document_no": "OMTH202602140211",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260200039",
+        "ocr_document_no": "OMTH202602150202",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260200040",
+        "ocr_document_no": "OMTH202602160218",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260200041",
+        "ocr_document_no": "OMTH202602170243",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260200042",
+        "ocr_document_no": "OMTH202602180246",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260200043",
+        "ocr_document_no": "OMTH202602190233",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260200044",
+        "ocr_document_no": "OMTH202602200229",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260200046",
+        "ocr_document_no": "OMTH202602210207",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260200047",
+        "ocr_document_no": "OMTH202602220208",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "TITKBKO22022026000005207",
+        "match_status": "full_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "W-TS-1047-6902-12970873",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260100012",
+        "ocr_document_no": "E12690086920",
+        "match_status": "full_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "E12690086988",
+        "match_status": "full_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260200048",
+        "ocr_document_no": "OMTH202602230254",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260200049",
+        "ocr_document_no": "OMTH202602240243",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260200050",
+        "ocr_document_no": "OMTH202602250235",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXP-20260200052",
+        "ocr_document_no": "OMTH202602260238",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-20260200053",
+        "ocr_document_no": "OMTH202602270241",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-20260200054",
+        "ocr_document_no": "OMTH202602280223",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

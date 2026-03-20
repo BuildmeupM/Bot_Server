@@ -1,0 +1,515 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T11:03:37.351Z",
+  "last_saved": "2026-03-20T18:03:37.602603",
+  "company": "Build519 บริษัท คัลติเวชั่น จำกัด",
+  "base_company": "Build519 บริษัท คัลติเวชั่น จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "8": "",
+    "14": "",
+    "16": "",
+    "18": "",
+    "20": "",
+    "22": "",
+    "24": "",
+    "27": "",
+    "30": "",
+    "32": "",
+    "37": ""
+  },
+  "initialNotes": {
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด' แต่ OCR='บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เมนท์ (ประเทศไทย) จำกัด'",
+    "14": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-17.73 แต่ OCR=17.73 (ต่างกัน 35.46)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-1.24 แต่ OCR=1.24 (ต่างกัน 2.48)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-18.97 แต่ OCR=18.97 (ต่างกัน 37.94)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบลดหนี้' แต่ OCR='ไม่ระบุ'",
+    "16": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-92.75 แต่ OCR=92.75 (ต่างกัน 185.50)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-6.49 แต่ OCR=6.49 (ต่างกัน 12.98)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-99.24 แต่ OCR=99.24 (ต่างกัน 198.48)",
+    "18": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-82.08 แต่ OCR=82.08 (ต่างกัน 164.16)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-5.75 แต่ OCR=5.75 (ต่างกัน 11.50)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-87.83 แต่ OCR=87.83 (ต่างกัน 175.66)",
+    "20": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-17.89 แต่ OCR=17.89 (ต่างกัน 35.78)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-1.25 แต่ OCR=1.25 (ต่างกัน 2.50)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-19.14 แต่ OCR=19.14 (ต่างกัน 38.28)",
+    "22": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-194.57 แต่ OCR=194.57 (ต่างกัน 389.14)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-13.62 แต่ OCR=13.62 (ต่างกัน 27.24)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-208.19 แต่ OCR=208.19 (ต่างกัน 416.38)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบลดหนี้' แต่ OCR='ไม่ระบุ'",
+    "24": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-49.94 แต่ OCR=49.94 (ต่างกัน 99.88)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-3.50 แต่ OCR=3.50 (ต่างกัน 7.00)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-53.44 แต่ OCR=53.44 (ต่างกัน 106.88)",
+    "27": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-30.59 แต่ OCR=30.59 (ต่างกัน 61.18)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-2.14 แต่ OCR=2.14 (ต่างกัน 4.28)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-32.73 แต่ OCR=32.73 (ต่างกัน 65.46)",
+    "30": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-24.39 แต่ OCR=24.39 (ต่างกัน 48.78)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-1.71 แต่ OCR=1.71 (ต่างกัน 3.42)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-26.10 แต่ OCR=26.10 (ต่างกัน 52.20)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบลดหนี้' แต่ OCR='Credit Note'",
+    "32": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-29.01 แต่ OCR=29.01 (ต่างกัน 58.02)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-2.03 แต่ OCR=2.03 (ต่างกัน 4.06)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-31.04 แต่ OCR=31.04 (ต่างกัน 62.08)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบลดหนี้' แต่ OCR='ไม่ระบุ'",
+    "37": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=-27.59 แต่ OCR=27.59 (ต่างกัน 55.18)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=-1.93 แต่ OCR=1.93 (ต่างกัน 3.86)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=-29.52 แต่ OCR=29.52 (ต่างกัน 59.04)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบลดหนี้' แต่ OCR='ไม่ระบุ'"
+  },
+  "comparisonApprovals": {
+    "8-company_name_match": true,
+    "14-amount_before_vat_match": true,
+    "14-vat_amount_match": true,
+    "14-total_amount_match": true,
+    "14-document_type_match": true,
+    "16-amount_before_vat_match": true,
+    "16-vat_amount_match": true,
+    "16-total_amount_match": true,
+    "18-amount_before_vat_match": true,
+    "18-vat_amount_match": true,
+    "18-total_amount_match": true,
+    "20-amount_before_vat_match": true,
+    "20-vat_amount_match": true,
+    "20-total_amount_match": true,
+    "22-amount_before_vat_match": true,
+    "22-vat_amount_match": true,
+    "22-total_amount_match": true,
+    "22-document_type_match": true,
+    "24-amount_before_vat_match": true,
+    "24-vat_amount_match": true,
+    "24-total_amount_match": true,
+    "27-amount_before_vat_match": true,
+    "27-vat_amount_match": true,
+    "27-total_amount_match": true,
+    "30-amount_before_vat_match": true,
+    "30-vat_amount_match": true,
+    "30-total_amount_match": true,
+    "30-document_type_match": true,
+    "32-amount_before_vat_match": true,
+    "32-vat_amount_match": true,
+    "32-total_amount_match": true,
+    "32-document_type_match": true,
+    "37-amount_before_vat_match": true,
+    "37-vat_amount_match": true,
+    "37-total_amount_match": true,
+    "37-document_type_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build519 บริษัท คัลติเวชั่น จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 42,
+    "metadata": [
+      {
+        "filename": "06.02.2026_EXP-20260200007_W568-59-69547_VAT.pdf",
+        "company_name": "บริษัท สวนลุม พร็อพเพอร์ตี้ จำกัด"
+      },
+      {
+        "filename": "20.02.2026_WHT_EXP-20260200005_RT-20260200262_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "06.02.2026_WHT_EXP-20260200003_W607-47-74681_VAT.pdf",
+        "company_name": "บริษัท สวนลุม พร็อพเพอร์ตี้ จำกัด"
+      },
+      {
+        "filename": "28.02.2026_WHT_EXP-20260200004_RECEIPT_LMRN202602138772_VAT.pdf",
+        "company_name": "บริษัท ไลน์แมน (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200013_05.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "14.02.2026_EXP-20260200022_14.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200026_18.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200023_15.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200019_11.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "21.02.2026_CNX-20260200007_Credit note 21.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200020_12.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200028_20.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "08.02.2026_EXP-20260200016_08.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "19.02.2026_EXP-20260200027_19.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "13.02.2026_CNX-20260200001_Credit note 13.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200035_27.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "20.02.2026_CNX-20260200006_Credit note 20.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200034_27.02 (2)_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200024_16.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200018_10.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "18.02.2026_CNX-20260200005_Credit note 18.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200036_28.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "09.02.2026_EXP-20260200017_09.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "21.02.2026_EXP-20260200029_21.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "27.02.2026_CNX-20260200009_Credit note 27.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "14.02.2026_CNX-20260200002_Credit note 14.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "22.02.2026_CNX-20260200008_credit note 22.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200033_26.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200030_22.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200010_02.02 _VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200015_07.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เมนท์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200032_25.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200009_01.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "17.02.2026_CNX-20260200004_credit note 17.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200021_13.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "17.02.2026_EXP-20260200025_17.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "16.02.2026_CNX-20260200010_Credit Note16.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "04.02.2026_EXP-20260200012_04.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "06.02.2026_EXP-20260200014_06.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200011_03.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "15.02.2026_CNX-20260200003_Credit note 15.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200031_23.02_VAT.pdf",
+        "company_name": "บริษัท เอ็นทีที เดต้า ดิจิทัล เพย์เม้นส์ (ประเทศไทย) จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 42,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "M202602-001753",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "M202602-003682",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "M202602-005530",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "M202602-007397",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "M202602-009257",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "2026-10200296",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "2026-10200455",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "M202602-011169",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "M202602-013146",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "M202602-015217",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200017",
+        "ocr_document_no": "M202602-017162",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "M202602-019044",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200019",
+        "ocr_document_no": "M202602-020899",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "M202602-022800",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "CNX-20260200001",
+        "ocr_document_no": "CN202602-003518",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200021",
+        "ocr_document_no": "M202602-024724",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "CNX-20260200002",
+        "ocr_document_no": "CN202602-005478",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "M202602-026682",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "CNX-20260200003",
+        "ocr_document_no": "CN202602-010143",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260200023",
+        "ocr_document_no": "M202602-028753",
+        "match_status": "full_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "CNX-20260200010",
+        "ocr_document_no": "CN202602-011080",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "M202602-030773",
+        "match_status": "full_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "CNX-20260200004",
+        "ocr_document_no": "CN202602-017792",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260200025",
+        "ocr_document_no": "M202602-032646",
+        "match_status": "full_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "CNX-20260200005",
+        "ocr_document_no": "CN202602-015858",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260200026",
+        "ocr_document_no": "M202602-034541",
+        "match_status": "full_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260200027",
+        "ocr_document_no": "M202602-036456",
+        "match_status": "full_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "CNX-20260200006",
+        "ocr_document_no": "CN202602-019296",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260200028",
+        "ocr_document_no": "M202602-038401",
+        "match_status": "full_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "RT-20260200262",
+        "match_status": "full_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "CNX-20260200007",
+        "ocr_document_no": "CN202602-022573",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260200029",
+        "ocr_document_no": "M202602-040409",
+        "match_status": "full_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "CNX-20260200008",
+        "ocr_document_no": "CN202602-022212",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260200030",
+        "ocr_document_no": "M202602-042500",
+        "match_status": "full_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260200031",
+        "ocr_document_no": "M202602-044584",
+        "match_status": "full_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260200032",
+        "ocr_document_no": "M202602-048416",
+        "match_status": "full_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260200033",
+        "ocr_document_no": "M202602-050328",
+        "match_status": "full_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "CNX-20260200009",
+        "ocr_document_no": "CN202602-001595",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-20260200035",
+        "ocr_document_no": "M202602-052212",
+        "match_status": "full_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-20260200034",
+        "ocr_document_no": "M202602-054098",
+        "match_status": "full_match"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "LMRN202602138772",
+        "match_status": "full_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXP-20260200036",
+        "ocr_document_no": "M202602-057971",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,371 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T10:01:18.988Z",
+  "last_saved": "2026-03-20T17:01:20.492375",
+  "company": "Build306 บริษัท วิซแรพ จำกัด รายเดือน",
+  "base_company": "Build306 บริษัท วิซแรพ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "7": "",
+    "8": "",
+    "11": "",
+    "12": "",
+    "13": "",
+    "14": "",
+    "15": "",
+    "18": "",
+    "20": "",
+    "21": "",
+    "22": "",
+    "23": "",
+    "24": "",
+    "25": "",
+    "26": "",
+    "27": "",
+    "29": "",
+    "31": "",
+    "34": "",
+    "35": "",
+    "36": "",
+    "37": "",
+    "41": "",
+    "42": "",
+    "45": "",
+    "46": "",
+    "47": "",
+    "48": "",
+    "50": "",
+    "51": "",
+    "55": "",
+    "56": "",
+    "57": "",
+    "58": ""
+  },
+  "initialNotes": {
+    "0": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260201-0022512' แต่ OCR='TRSPEMKP00-00000-26'",
+    "1": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260201-0024461' แต่ OCR='TRSPEMKP00-00000-26'",
+    "2": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260202-0006182' แต่ OCR='TRSPEMKP00-00000-26'",
+    "3": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260203-0010114' แต่ OCR='TRSPEMKP00-00000-26'",
+    "4": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260203-0018511' แต่ OCR='TRSPEMKP00-00000-26'",
+    "5": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='OH6901369' แต่ OCR='OH6901359'",
+    "7": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260204-0019078' แต่ OCR='TRSPEMKP00-00000-26'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260205-0004085' แต่ OCR='TRSPEMKP00-00000-26'",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260206-0020234' แต่ OCR='TRSPEMKP00-00000-26'",
+    "12": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260207-0011740' แต่ OCR='TRSPEMKP00-00000-26'",
+    "13": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260207-0013339' แต่ OCR='TRSPEMKP00-00000-26'",
+    "14": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260208-0010690' แต่ OCR='TRSPEMKP00-00000-26'",
+    "15": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260208-0014304' แต่ OCR='TRSPEMKP00-00000-26'",
+    "18": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด' แต่ OCR='บริษัท ทรู มันนี่ จำกัด'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105549025026' แต่ OCR='0105546143531'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='001619'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='0000444' แต่ OCR='B020140003A0001'",
+    "20": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ตั้ง ซุ่น ฮวด ผลิตภัณฑ์ จำกัด' แต่ OCR='บริษัท ตั้งหุ่นขวดผลิตภัณฑ์ จำกัด'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='09/02/2026' แต่ OCR='09/02/2023'",
+    "21": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260210-0008733' แต่ OCR='TRSPEMKP00-00000-26'",
+    "22": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260210-0009550' แต่ OCR='TRSPEMKP00-00000-26'",
+    "23": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260211-0003521' แต่ OCR='TRSPEMKP00-00000-26'",
+    "24": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260211-0020024' แต่ OCR='TRSPEMKP00-00000-26'",
+    "25": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260212-0009400' แต่ OCR='TRSPEMKP00-00000-26'",
+    "26": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260212-0020311' แต่ OCR='TRSPEMKP00-00000-26'",
+    "27": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260213-0007982' แต่ OCR='TRSPEMKP00-00000-26'",
+    "29": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260214-0021262' แต่ OCR='TRSPEMKP00-00000-26'",
+    "31": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260215-0001470' แต่ OCR='TRSPEMKP00-00000-26'",
+    "34": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260217-0008081' แต่ OCR='TRSPEMKP00-00000-26'",
+    "35": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260217-0021392' แต่ OCR='TRSPEMKP00-00000-26'",
+    "36": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260218-0007867' แต่ OCR='TRSPEMKP00-00000-26'",
+    "37": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260218-0015826' แต่ OCR='TRSPEMKP00-00000-26'",
+    "41": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260220-0022979' แต่ OCR='TRSPEMKP00-00000-26'",
+    "42": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260221-0010089' แต่ OCR='TRSPEMKP00-00000-26'",
+    "45": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260222-0009381' แต่ OCR='TRSPEMKP00-00000-26'",
+    "46": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ฮงฮวด จำกัด' แต่ OCR='HONG HUAT COMPANY LIMITED'",
+    "47": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260223-0018457' แต่ OCR='TRSPEMKP00-00000-26'",
+    "48": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260223-0023844' แต่ OCR='TRSPEMKP00-00000-26'",
+    "50": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260224-0016547' แต่ OCR='TRSPEMKP00-00000-26'",
+    "51": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260225-0005173' แต่ OCR='TRSPEMKP00-00000-26'",
+    "55": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260227-0003956' แต่ OCR='TRSPEMKP00-00000-26'",
+    "56": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260227-0016145' แต่ OCR='TRSPEMKP00-00000-26'",
+    "57": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260228-0015110' แต่ OCR='TRSPEMKP00-00000-26'",
+    "58": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260228-0017653' แต่ OCR='TRSPEMKP00-00000-26'"
+  },
+  "comparisonApprovals": {
+    "0-document_no_match": true,
+    "2-document_no_match": true,
+    "4-document_no_match": true,
+    "5-document_no_match": true,
+    "8-document_no_match": true,
+    "11-document_no_match": true,
+    "12-document_no_match": true,
+    "13-document_no_match": true,
+    "14-document_no_match": true,
+    "15-document_no_match": true,
+    "20-date_match": true,
+    "20-company_name_match": true,
+    "21-document_no_match": true,
+    "22-document_no_match": true,
+    "23-document_no_match": true,
+    "24-document_no_match": true,
+    "25-document_no_match": true,
+    "26-document_no_match": true,
+    "27-document_no_match": true,
+    "29-document_no_match": true,
+    "31-document_no_match": true,
+    "34-document_no_match": true,
+    "35-document_no_match": true,
+    "36-document_no_match": true,
+    "37-document_no_match": true,
+    "41-document_no_match": true,
+    "42-document_no_match": true,
+    "45-document_no_match": true,
+    "46-company_name_match": true,
+    "47-document_no_match": true,
+    "48-document_no_match": true,
+    "50-document_no_match": true,
+    "51-document_no_match": true,
+    "55-document_no_match": true,
+    "56-document_no_match": true,
+    "57-document_no_match": true,
+    "58-document_no_match": true,
+    "0-document_type_match": true,
+    "0-company_name_match": true,
+    "0-tax_id_match": true,
+    "0-branch_match": true,
+    "1-document_no_match": true,
+    "2-company_name_match": true,
+    "2-total_amount_match": true,
+    "3-document_no_match": true,
+    "7-company_name_match": true,
+    "7-document_no_match": true,
+    "11-company_name_match": true,
+    "13-company_name_match": true,
+    "13-amount_before_vat_match": true,
+    "18-document_no_match": true,
+    "18-company_name_match": true,
+    "18-tax_id_match": true,
+    "18-branch_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build306 บริษัท วิซแรพ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 20,
+    "metadata": [
+      {
+        "filename": "25.02.2026_WHT_EXP-20260200013_RE2026020255_Ayasan_VAT.pdf",
+        "company_name": "บริษัท อะยะซัน เซอร์วิส จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200021_530302_INV202602050012__มานีธาดา_ค่าน้ำ Jan 2026_VAT.pdf",
+        "company_name": "บริษัท มานีธาดา พร็อพเพอร์ตี้ จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200023_124106_BNAVI00000690200004973_Advice_Fixed asset_VAT.pdf",
+        "company_name": "บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน)"
+      },
+      {
+        "filename": "20.02.2026_WHT_EXP-20260200004_RT-20260200254_BMU_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "05.02.2026_WHT_EXP-20260200010_INV202602050282_Flow Account_VAT.pdf",
+        "company_name": "บริษัท โฟลวแอคเคาท์ จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-20251200003_ใบสำคัญจ่าย 12-003_True internet_แก้ไขชื่อแล้ว_VAT.pdf",
+        "company_name": "บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "25.02.2026_WHT_EXP-20260200003_IV-20260200040_Monster Online_VAT.pdf",
+        "company_name": "บริษัท มอนสเตอร์ ออนไลน์ จำกัด"
+      },
+      {
+        "filename": "06.02.2026_EXP-20260200022_124106_428279_Speedcom_VAT.pdf",
+        "company_name": "บริษัท สปีด คอมพิวเตอร์ จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200025_530213_BNAVI00000690200011925_Advice_VAT.pdf",
+        "company_name": "บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน)"
+      },
+      {
+        "filename": "26.02.2026_WHT_EXP-20260200007_ใบสำคัญจ่าย 02-007_True_VAT.pdf",
+        "company_name": "บริษัท ทรู มันนี่ จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-20251200004_ใบสำคัญจ่าย 12-004_AIS sim & internet_แก้ไขชื่อแล้ว_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200024_530213_BNAVI00000690200006054_Advice_VAT.pdf",
+        "company_name": "บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน)"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200026_530213_BNAVI00000690200012194_Advice_VAT.pdf",
+        "company_name": "บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน)"
+      },
+      {
+        "filename": "19.02.2026_WHT_EXP-20260200011_C2016-RCP-000050151_JobDB_VAT.pdf",
+        "company_name": "Jobs DB Recruitment (Thailand) Limited"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200020_530301_INV202602050013_มานีธาดา_ค่าไฟ Jan 2026_VAT.pdf",
+        "company_name": "บริษัท มานีธาดา พร็อพเพอร์ตี้ จำกัด"
+      },
+      {
+        "filename": "02.02.2026_WHT_EXP-20260200005_ใบสำคัญจ่าย 02-001_AIS_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวิร์ค จำกัด"
+      },
+      {
+        "filename": "05.02.2026_WHT_EXP-20260200009_INV202602050011_มานีธาดา ค่าบริการอาคาร_Feb 2026_VAT.pdf",
+        "company_name": "บริษัท มานีธาดา พร็อพเพอร์ตี้ จำกัด"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200018_ใบสำคัญจ่าย 02-002_FedEx Customs - Copy_VAT.pdf",
+        "company_name": "กรมศุลกากร"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200019_D11690381_DHL_VAT.pdf",
+        "company_name": "DHL EXPRESS INTERNATIONAL (THAILAND) LTD."
+      },
+      {
+        "filename": "26.02.2026_WHT_EXP-20260200006_ใบสำคัญจ่าย 02-008_AIS_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 20,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "1190-090587",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20251200003",
+        "ocr_document_no": "B020140002H0387",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "W-CS-1147-6902-10000136",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20251200004",
+        "ocr_document_no": "W-OZ-1147-6802-10000001",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "INV202602050011",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200021",
+        "ocr_document_no": "INV202602050012",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "INV202602050013",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "INV202602050282",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "428279",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200023",
+        "ocr_document_no": "BNAVI00000690200004973",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "BNAVI00000690200006054",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "C2016-RCP-000050151",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "RT-20260200254",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200019",
+        "ocr_document_no": "D11690381",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200025",
+        "ocr_document_no": "BNAVI00000690200011925",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200026",
+        "ocr_document_no": "BNAVI00000690200012194",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "IV-20260200040",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "RE2026020255",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "B020140003A0001",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "W-OR-1147-6902-10000109",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}
