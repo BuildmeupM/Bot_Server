@@ -1,0 +1,102 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T07:41:15.189Z",
+  "last_saved": "2026-03-20T14:41:16.938265",
+  "company": "Build602 ห้างหุ้นส่วนจำกัด โปร แพค",
+  "base_company": "Build602 ห้างหุ้นส่วนจำกัด โปร แพค",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00003'",
+    "1": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200007 (เลขที่ใบกำกับ: IV6902-00075)",
+    "2": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200006 (เลขที่ใบกำกับ: IV6902-00101)",
+    "4": "",
+    "5": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200008 (เลขที่ใบกำกับ: IV6902-00275)"
+  },
+  "initialNotes": {
+    "0": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00003'",
+    "1": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200007 (เลขที่ใบกำกับ: IV6902-00075)",
+    "2": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200006 (เลขที่ใบกำกับ: IV6902-00101)",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ฟูกุซึรุ พลาสติก แพคเก็จจิ้ง จำกัด' แต่ OCR='บริษัท ฟูกูซูรุ พลาสติก แพคเก็จจิ้ง จำกัด'",
+    "5": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200008 (เลขที่ใบกำกับ: IV6902-00275)"
+  },
+  "comparisonApprovals": {
+    "4-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build602 ห้างหุ้นส่วนจำกัด โปร แพค\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 6,
+    "metadata": [
+      {
+        "filename": "16.02.2026_EXP-20260200005_510110 - ใบกำกับ ฟุกุซึรุ_VAT.pdf",
+        "company_name": "บริษัท ฟูกูซูรุ พลาสติก แพคเก็จจิ้ง จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200006_510110 - ใบกำกับ เอฟพี02_VAT.pdf"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200007_510110 - ใบกำกับ เอฟพี07_VAT.pdf"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200009_ใบกำกับ เอฟพีโปรแพค_VAT.pdf",
+        "company_name": "บริษัท เอฟพีซี โปรแพค จำกัด"
+      },
+      {
+        "filename": "23.01.2026_EXP-20260100013_510110_ใบกำกับ 3เอ_VAT.pdf",
+        "company_name": "บริษัท 3 เอ เซ็นเตอร์ จำกัด"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200008_510110 - ใบกำกับ เอฟพี26_VAT.pdf"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 6,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100013",
+        "ocr_document_no": "ORVC6901000564",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200007",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200006",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "IV6902022",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "IV6902176",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200008",
+        "match_status": "no_ocr_data"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

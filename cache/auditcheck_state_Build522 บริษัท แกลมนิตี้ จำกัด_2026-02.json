@@ -1,0 +1,302 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T07:48:41.625Z",
+  "last_saved": "2026-03-20T14:48:43.347892",
+  "company": "Build522 บริษัท แกลมนิตี้ จำกัด",
+  "base_company": "Build522 บริษัท แกลมนิตี้ จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "5": "",
+    "8": "",
+    "12": ""
+  },
+  "initialNotes": {
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท อีโนช ฟลูริง (ไทยแลนด์) จำกัด' แต่ OCR='บริษัท อีโนช พลูริง (ไทยแลนด์) จำกัด'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท อีโนช ฟลูริง (ไทยแลนด์) จำกัด' แต่ OCR='บริษัท อีโนซ พลูริล(ไทยแลนด์) จำกัด'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เมธีกุลวิศวกรรม จำกัด' แต่ OCR='บริษัท เมธีกลวิศวกรรม จำกัด'"
+  },
+  "comparisonApprovals": {
+    "5-company_name_match": true,
+    "8-company_name_match": true,
+    "12-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build522 บริษัท แกลมนิตี้ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 16,
+    "metadata": [
+      {
+        "filename": "26.02.2026_EXP-20260200002_520310_เครื่องฟอก 2_VAT.pdf",
+        "company_name": "บริษัท บีทูเอส จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200007_520310_ทริปเปิ้ล อายส์ ใบกำกับ UG Rack_VAT.pdf",
+        "company_name": "บริษัท ทริปเปิ้ล อายส์ เอ็นจิเนียริ่ง จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200016_RIN26021621 รอยัลเทค ขายก่อแก้ว LOT 1 14 รายการ_VAT.pdf",
+        "company_name": "บริษัท รอยัลเทค อินเตอร์เนชั่นแนล จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200012_520310_วิชัยการไฟฟ้า หางปลา_VAT.pdf",
+        "company_name": "บริษัท วิชัยการไฟฟ้า จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200011_520310_วิชัยการไฟฟ้า ใบกำกับ LOT 2_VAT.pdf",
+        "company_name": "บริษัท วิชัยการไฟฟ้า จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200015_RIN26021620 รอยัลเทค ขาย นีโอเวชั่น GRCBU 66+KW 200 อัน_VAT.pdf",
+        "company_name": "บริษัท รอยัลเทค อินเตอร์เนชั่นแนล จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200001_520310_THW GY 550 m DSAM LOT 3_VAT.pdf",
+        "company_name": "บริษัท เมธีกลวิศวกรรม จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200008_520310_บริษัท บริลเลียนท์ อิเล็กทริค แอนด์ เอ็นจิ_VAT.pdf",
+        "company_name": "บริษัท บริลเลียนท์ อิเล็คทริค แอนด์ เอ็นจิเนียริ่ง จำกัด"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200010_520310_บริษัท วิชัยการไฟฟ้า จำกัด UG Rack Lot 3_VAT.pdf",
+        "company_name": "บริษัท วิชัยการไฟฟ้า จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200009_520310_บริษัท รอยัลเทค อินเตอร์เนชั่นแนล จำกัด GXCIP ขาย P&S_VAT.pdf",
+        "company_name": "บริษัท รอยัลเทค อินเตอร์เนชั่นแนล จำกัด"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200004_520310_เอดจิ้ง ENOCH ทำสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท อีโนซ พลูริล(ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200006_520310_ค่ากระเบื้องยางปรับปรุงสำนักงาน ENOCH_VAT.pdf",
+        "company_name": "บริษัท อีโนช พลูริง (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200014_RIN26021618 รอยัลเทค ขายคริติคอล ล่อฟ้า 3 รายการ ขาดสายไฟ_VAT.pdf",
+        "company_name": "บริษัท รอยัลเทค อินเตอร์เนชั่นแนล จำกัด"
+      },
+      {
+        "filename": "17.02.2026_EXP-20260200013_RIN26020911 รอยัลเทค Sinoma LOT 1 ล่อฟ้า ขาด 3 รายการ_VAT.pdf",
+        "company_name": "บริษัท รอยัลเทค อินเตอร์เนชั่นแนล จำกัด"
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200003_520310_เครื่องฟอก 3_VAT.pdf",
+        "company_name": "บริษัท บีทูเอส จำกัด"
+      },
+      {
+        "filename": "19.02.2026_EXP-20260200005_520310_ใบกำกับภาษีใบเสร็จรับเงิน-Sefco_VAT.pdf",
+        "company_name": "บริษัท เซฟโก้ ซัพพลาย จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 32,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "RIN/26020674",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "4714576",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "RE690217",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "RIN/26020911",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "HS0000700",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "EN9021044",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "IV6900550",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "IV6900558",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "EN9021076",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "50139022610000477",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "IV6900583",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "50139022610000495",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "IV7020192",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "RIN/26021618",
+        "match_status": "full_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "RIN/26021620",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "RIN/26021621",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "RIN/26020674",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "4714576",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "RE690217",
+        "match_status": "full_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "RIN/26020911",
+        "match_status": "full_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "HS0000700",
+        "match_status": "full_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "EN9021044",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "IV6900550",
+        "match_status": "full_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "IV6900558",
+        "match_status": "full_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "EN9021076",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "50139022610000477",
+        "match_status": "full_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "IV6900583",
+        "match_status": "full_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "50139022610000495",
+        "match_status": "full_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "IV7020192",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "RIN/26021618",
+        "match_status": "full_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "RIN/26021620",
+        "match_status": "full_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "RIN/26021621",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

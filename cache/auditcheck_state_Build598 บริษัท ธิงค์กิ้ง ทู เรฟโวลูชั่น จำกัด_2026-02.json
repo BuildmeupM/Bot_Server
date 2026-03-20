@@ -1,0 +1,80 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T07:19:04.390Z",
+  "last_saved": "2026-03-20T14:19:06.176078",
+  "company": "Build598 บริษัท ธิงค์กิ้ง ทู เรฟโวลูชั่น จำกัด",
+  "base_company": "Build598 บริษัท ธิงค์กิ้ง ทู เรฟโวลูชั่น จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "3": ""
+  },
+  "initialNotes": {
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ดีเวลล็อปเม้นท์ 01 (ประเทศไทย) จำกัด' แต่ OCR='บริษัท ดีเวลล็อปเมนท์ 01 (ประเทศไทย) จำกัด'"
+  },
+  "comparisonApprovals": {
+    "3-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build598 บริษัท ธิงค์กิ้ง ทู เรฟโวลูชั่น จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 4,
+    "metadata": [
+      {
+        "filename": "18.02.2026_EXP-20260200006_จีไอเอส-ยังไม่ได้ชำระเงิน_VAT.pdf",
+        "company_name": "บริษัท จีไอเอส จำกัด"
+      },
+      {
+        "filename": "13.01.2026_WHT_EXP-20260100015_530306_ค่าบริการคลาวด์เซอร์วิช_VAT.pdf",
+        "company_name": "บริษัท เมทราไบต์ คลาวด์ จำกัด"
+      },
+      {
+        "filename": "20.02.2026_WHT_EXP-20260200005_ค่าบริการ_VAT.pdf",
+        "company_name": "บริษัท ดีเวลล็อปเมนท์ 01 (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "06.02.2026_WHT_EXP-20260200002_530401_ค่าทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 4,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100015",
+        "ocr_document_no": "MT69010735",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "RT-20260200022",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "GIS-IN-2602-0534",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "7523/1286",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

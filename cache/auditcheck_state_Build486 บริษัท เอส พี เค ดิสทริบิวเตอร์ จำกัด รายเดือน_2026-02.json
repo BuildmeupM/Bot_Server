@@ -1,0 +1,215 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-17T04:28:49.622Z",
+  "last_saved": "2026-03-17T11:28:50.635918",
+  "company": "Build486 บริษัท เอส พี เค ดิสทริบิวเตอร์ จำกัด รายเดือน",
+  "base_company": "Build486 บริษัท เอส พี เค ดิสทริบิวเตอร์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "2": "วันที่ไม่ตรงกัน: ภาษีซื้อ='02/02/2026' แต่ OCR='09/02/2026'",
+    "4": "",
+    "5": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='6902/114' แต่ OCR='IA6900029'",
+    "7": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=109,367.00 แต่ OCR=51,600.00 (ต่างกัน 57,767.00)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=7,655.69 แต่ OCR=3,612.00 (ต่างกัน 4,043.69)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=117,022.69 แต่ OCR=55,212.00 (ต่างกัน 61,810.69)",
+    "8": "",
+    "9": "",
+    "13": ""
+  },
+  "initialNotes": {
+    "2": "วันที่ไม่ตรงกัน: ภาษีซื้อ='02/02/2026' แต่ OCR='09/02/2026'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอเคอี เซอร์วิส จำกัด' แต่ OCR='บริษัท เอเคอี เซอร์วิส จำกัด (AKE SERVICE COMPANY LIMITED)'",
+    "5": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='6902/114' แต่ OCR='IA6900029'",
+    "7": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=109,367.00 แต่ OCR=51,600.00 (ต่างกัน 57,767.00)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=7,655.69 แต่ OCR=3,612.00 (ต่างกัน 4,043.69)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=117,022.69 แต่ OCR=55,212.00 (ต่างกัน 61,810.69)",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท สยามไดกิ้นเซลส์ จำกัด' แต่ OCR='บริษัท สยามไดกิ้นเซลล์ จำกัด'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ฮาตาริ อีคอมเมิร์ซ จำกัด' แต่ OCR='บจก. ฮาตาริ อีคอมเมิร์ซ'",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท สมใจบิซกรุ๊ป จำกัด' แต่ OCR='บริษัท สมใจธุรกิจ จำกัด'"
+  },
+  "comparisonApprovals": {
+    "4-company_name_match": true,
+    "8-company_name_match": true,
+    "9-company_name_match": true,
+    "13-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build486 บริษัท เอส พี เค ดิสทริบิวเตอร์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 16,
+    "metadata": [
+      {
+        "filename": "20.02.2026_EXP-2026020022_MGW SPK-6_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "21.02.2026_EXP-2026020016_530206_ค่าเครื่องเขียนวัสดุ_VAT.pdf",
+        "company_name": "บริษัท สมใจธุรกิจ จำกัด"
+      },
+      {
+        "filename": "06.01.2026_EXP-2026010038_530214_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท อิงค์ ซัพพลาย (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-2026020019_MGW SPK-3_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-2026020025_MGW SPK-9_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "25.02.2026_EXP-2026020024_MGW SPK-8_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-2026020026_530401_ค่าทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "18.02.2026_EXP-2026020003_530408_ค่าบริการ.pdf",
+        "company_name": "บริษัท สยามไดกิ้นเซลล์ จำกัด"
+      },
+      {
+        "filename": "03.02.2026_EXP-2026020020_MGW SPK-4_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-2026020017_MGW SPK-2_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-2026020021_MGW SPK-5_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-2026020023_MGW SPK-7_VAT.pdf",
+        "company_name": "บริษัท มาร์เก็ตเกทเวย์ จำกัด"
+      },
+      {
+        "filename": "19.02.2026_EXP-2026020015_530214_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บจก. ฮาตาริ อีคอมเมิร์ซ"
+      },
+      {
+        "filename": "09.02.2026_EXP-2026020001 _510113_ค่าจ้างเหมา_VAT.pdf",
+        "company_name": "บริษัท เอเคอี เซอร์วิส จำกัด (AKE SERVICE COMPANY LIMITED)"
+      },
+      {
+        "filename": "16.02.2026_EXP-2026020002_ค่าบริการ_VAT.pdf.pdf",
+        "company_name": "บริษัท สยามไดกิ้นเซลส์ จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-2026020014_114102_สินค้าสำเร็จรูป_VAT .pdf",
+        "company_name": "บริษัท หงต้า เอ็นเตอร์ไพรส์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 16,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-2026010038",
+        "ocr_document_no": "690010075",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-2026020017",
+        "ocr_document_no": "IV6900069",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-2026020019",
+        "ocr_document_no": "IV6900087",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-2026020020",
+        "ocr_document_no": "IV6900073",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-2026020001",
+        "ocr_document_no": "202602035",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-2026020014",
+        "ocr_document_no": "IA6900029",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-2026020021",
+        "ocr_document_no": "IV6900088",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-2026020002",
+        "ocr_document_no": "5500072922",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-2026020003",
+        "ocr_document_no": "5500073430",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-2026020015",
+        "ocr_document_no": "SI26021445",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-2026020022",
+        "ocr_document_no": "IV6900113",
+        "match_status": "full_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-2026020023",
+        "ocr_document_no": "IV6900114",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-2026020026",
+        "ocr_document_no": "RT-20260200250",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-2026020016",
+        "ocr_document_no": "ARP-0226200163",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-2026020024",
+        "ocr_document_no": "IV6900122",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-2026020025",
+        "ocr_document_no": "IV6900125",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

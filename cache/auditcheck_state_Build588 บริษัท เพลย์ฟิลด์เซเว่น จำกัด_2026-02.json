@@ -1,0 +1,288 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-19T09:00:39.222Z",
+  "last_saved": "2026-03-19T16:00:38.891406",
+  "company": "Build588 บริษัท เพลย์ฟิลด์เซเว่น จำกัด",
+  "base_company": "Build588 บริษัท เพลย์ฟิลด์เซเว่น จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00002'\n",
+    "2": "",
+    "3": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00002'",
+    "4": "",
+    "5": "",
+    "6": "",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด วันชัยการไฟฟ้า 2530' แต่ OCR='ห้างหุ้นส่วนจำกัด วันชัยการไฟฟ้า (2530)'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='073/3613' แต่ OCR='3613'",
+    "8": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00043'",
+    "9": "",
+    "10": "",
+    "11": "",
+    "12": "",
+    "13": "",
+    "14": "",
+    "18": "",
+    "21": "",
+    "22": "",
+    "23": "",
+    "25": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด วันชัยการไฟฟ้า 2530' แต่ OCR='ห้างหุ้นส่วนจำกัด วันชัยการไฟฟ้า (2530)'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='054/2683' แต่ OCR='2683'",
+    "1": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00002'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='I02602001324' แต่ OCR='IO2602001324'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บุญรอด เทรดดิ้ง จำกัด' แต่ OCR='บริษัท บุญรอดเทรดดิ้ง จำกัด'",
+    "3": "สาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00002'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='นาย สิทธิโชค บุญศิริ' แต่ OCR='โชตินันท์ การเกษตร'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='35/1725' แต่ OCR='1725'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='11/02/2026' แต่ OCR='11/02/2024'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=14,126.17 แต่ OCR=14,127.14 (ต่างกัน 0.97)",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด โชคศิลาทองวัสดุก่อสร้าง' แต่ OCR='ห้างหุ้นส่วนจำกัดโชคศิลาทองวัสดุก่อสร้าง'",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด วันชัยการไฟฟ้า 2530' แต่ OCR='ห้างหุ้นส่วนจำกัด วันชัยการไฟฟ้า (2530)'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='073/3650' แต่ OCR='3650'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='14/02/2026' แต่ OCR='24/02/2026'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด วันชัยการไฟฟ้า 2530' แต่ OCR='ห้างหุ้นส่วนจำกัด วันชัยการไฟฟ้า (2530)'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='073/3613' แต่ OCR='3613'",
+    "8": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บุญรอด เทรดดิ้ง จำกัด' แต่ OCR='บริษัท บุญรอดเทรดดิ้ง จำกัด'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='00043'",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด วันชัยการไฟฟ้า 2530' แต่ OCR='ห้างหุ้นส่วนจำกัด วันชัยการไฟฟ้า (2530)'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='053/2636' แต่ OCR='2636'",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เสริมสุข จำกัด (มหาชน)' แต่ OCR='บริษัท เสริมสุข จำกัด (มหาชน) สาขาปทุมธานี'",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท วิสฮิส โฮมมาร์ท จำกัด' แต่ OCR='บริษัท วิลลิส โฮมมาร์ท จำกัด'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ใหญ่การค้า' แต่ OCR='หจก.ใหญ่การค้า'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='210/10483' แต่ OCR='10483'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='19/02/2026' แต่ OCR='19/02/2024'",
+    "13": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='I02602030998' แต่ OCR='102602030998'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ยงคอนกรีต จำกัด' แต่ OCR='บริษัท ยงคอนกรีต จำกัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='0107562000271'",
+    "18": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=30,190.00 แต่ OCR=31,190.00 (ต่างกัน 1,000.00)",
+    "21": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ท่าม่วง อลูมิเนียม จำกัด' แต่ OCR='บริษัท ท่าม่วงอลูมิเนียม จำกัด'",
+    "22": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ป.เจริญภัณฑ์วัสดุ' แต่ OCR='หจก. ป.เจริญภัณฑ์วัสดุ'",
+    "23": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ใหญ่การค้า' แต่ OCR='หจก.ใหญ่การค้า'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='213/10637' แต่ OCR='10637'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='26/02/2026' แต่ OCR='26/02/2024'",
+    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ท่าม่วง อลูมิเนียม จำกัด' แต่ OCR='บริษัท ท่าม่วงอลูมิเนียม จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-document_no_match": true,
+    "0-company_name_match": true,
+    "0-address_match": true,
+    "1-address_match": true,
+    "3-company_name_match": true,
+    "3-address_match": true,
+    "4-document_no_match": true,
+    "4-date_match": true,
+    "4-company_name_match": true,
+    "4-branch_match": true,
+    "4-amount_before_vat_match": true,
+    "5-company_name_match": true,
+    "6-company_name_match": true,
+    "6-date_match": true,
+    "7-company_name_match": true,
+    "8-address_match": true,
+    "9-document_no_match": true,
+    "9-company_name_match": true,
+    "10-address_match": true,
+    "11-company_name_match": true,
+    "11-address_match": true,
+    "12-document_no_match": true,
+    "12-date_match": true,
+    "12-company_name_match": true,
+    "13-company_name_match": true,
+    "13-address_match": true,
+    "14-company_name_match": true,
+    "14-tax_id_match": true,
+    "15-company_name_match": true,
+    "15-address_match": true,
+    "16-company_name_match": true,
+    "16-address_match": true,
+    "17-company_name_match": true,
+    "17-address_match": true,
+    "18-total_amount_match": true,
+    "19-address_match": true,
+    "20-company_name_match": true,
+    "20-address_match": true,
+    "21-company_name_match": true,
+    "21-address_match": true,
+    "22-company_name_match": true,
+    "23-document_no_match": true,
+    "23-date_match": true,
+    "23-company_name_match": true,
+    "24-company_tax_id_match": true,
+    "24-address_match": true,
+    "25-company_name_match": true,
+    "26-address_match": true,
+    "27-company_name_match": true,
+    "27-address_match": true,
+    "1-document_no_match": true,
+    "2-company_name_match": true,
+    "6-document_no_match": true,
+    "7-document_no_match": true,
+    "7-address_match": true,
+    "8-company_name_match": true,
+    "9-branch_match": true,
+    "10-company_name_match": true,
+    "12-tax_id_match": true,
+    "13-document_no_match": true,
+    "13-company_tax_id_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build588 บริษัท เพลย์ฟิลด์เซเว่น จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 15,
+    "metadata": [
+      {
+        "filename": "20.02.2026_EXP-20260200015_510111_20-02 บจก.เสริมสุข_VAT.pdf",
+        "company_name": "บริษัท เสริมสุข จำกัด (มหาชน) สาขาปทุมธานี"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200013_510111_16-02 บจก.วิลลิเม็กซฺ์_VAT.pdf",
+        "company_name": "บริษัท วิลลิเม็กซ์ จำกัด"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200019_510111_27-02 บจก.พลังเต็มร้อย_VAT.pdf",
+        "company_name": "บริษัท พลังเต็มร้อย จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200023_510111_13-02 ค่าสินค้าแมคโคร_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200018_510111_27-02 บจก.บุญรอดเทรดดิ้ง_VAT.pdf",
+        "company_name": "บริษัท บุญรอดเทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200021_510111_02-02 บจก.วิลลิเม็กซ์_VAT.pdf",
+        "company_name": "บริษัท วิลลิเม็กซ์ จำกัด"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200020_510111_27-02 บจก.วิลลิเม็ซ์_VAT.pdf",
+        "company_name": "บริษัท วิลลิเม็กซ์ จำกัด"
+      },
+      {
+        "filename": "31.01.2026_WHT_EXP-20260100031_ใบเสร็จรับเงิน-ค่าบริหาร เดือน ม.ค.69_VAT.pdf",
+        "company_name": "บริษัท ไอ แอม ฟิวเจอร์ จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200016_510111_20-02 บจก.ไทยน้ำทิพย์คอร์ปอเรชั่น_VAT.pdf",
+        "company_name": "บริษัท ไทยน้ำทิพย์ คอร์ปอเรชั่น จำกัด (มหาชน)"
+      },
+      {
+        "filename": "09.02.2026_EXP-20260200022_510111_09-02 บจก.วิลลิเม็กซ์_VAT.pdf",
+        "company_name": "บริษัท วิลลิเม็กซ์ จำกัด"
+      },
+      {
+        "filename": "15.02.2026_WHT_EXP-20260200002_ ค่าโทรศัพท์เดือน ม.ค.69_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด"
+      },
+      {
+        "filename": "27.02.2026_WHT_EXP-20260200004_ค่าโปรแกรมการจองสนาม_VAT.pdf",
+        "company_name": "บริษัท แมทช์เดย์ ฮับ จำกัด"
+      },
+      {
+        "filename": "13.02.2026_WHT_EXP-20260200010_บจก.บิลด์มีอัพ คอนซัลอทนท์ (ค่าทำบัญชี)_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200017_510111_20-02 บจก.ธรรมธนากร_VAT.pdf",
+        "company_name": "บริษัท ธรรมธรากร จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200012_510111_06-02 บจก.บุญรอดเทรดดิ้ง(ค่าน้ำสิงห์)_VAT.pdf",
+        "company_name": "บริษัท บุญรอดเทรดดิ้ง จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 15,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100031",
+        "ocr_document_no": "RT-20260100002",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200021",
+        "ocr_document_no": "IO2602001324",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "1039/10202157",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "I02602011711",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200023",
+        "ocr_document_no": "054901021138",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "RT-20260200133",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "W-CS-97679-6602-10000441",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "I02602021466",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "1039/10210762",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "1433897336",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "4000251755100151",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200017",
+        "ocr_document_no": "INV-26021053",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200019",
+        "ocr_document_no": "B570227468",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "102602030998",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "INV2026020166",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

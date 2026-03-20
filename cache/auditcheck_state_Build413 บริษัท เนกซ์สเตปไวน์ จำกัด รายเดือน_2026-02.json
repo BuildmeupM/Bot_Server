@@ -1,0 +1,50 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T04:15:32.523Z",
+  "last_saved": "2026-03-20T11:15:32.197504",
+  "company": "Build413 บริษัท เนกซ์สเตปไวน์ จำกัด รายเดือน",
+  "base_company": "Build413 บริษัท เนกซ์สเตปไวน์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='311327260100064' แต่ OCR='311327260100004'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='09/01/2026' แต่ OCR='09/01/2024'"
+  },
+  "initialNotes": {
+    "0": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='311327260100064' แต่ OCR='311327260100004'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='09/01/2026' แต่ OCR='09/01/2024'"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build413 บริษัท เนกซ์สเตปไวน์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 1,
+    "metadata": [
+      {
+        "filename": "23.02.2026_WHT_EXP-20260200004_RT-20260200306_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 1,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "RT-20260200306",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": true
+  }
+}

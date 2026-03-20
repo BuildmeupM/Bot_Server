@@ -1,0 +1,198 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T11:53:49.382Z",
+  "last_saved": "2026-03-20T18:53:49.388820",
+  "company": "Build612 บริษัท บีโอเอ อินโนเวชั่น แอนด์ เอนเนอร์ยี่ จำกัด",
+  "base_company": "Build612 บริษัท บีโอเอ อินโนเวชั่น แอนด์ เอนเนอร์ยี่ จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "10": "",
+    "13": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='B10108253' แต่ OCR='B1 0108253'"
+  },
+  "initialNotes": {
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท พีบีเอ ฟอร์เอฟเวอร์ เทคโนโลยี จำกัด' แต่ OCR='บริษัท ฟีบีโอ ฟอร์เอฟเวอร์ เทคโนโลยี จำกัด'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ส.ศศิวรรณ ชิปปิ้งเซอร์วิส' แต่ OCR='ห้างหุ้นส่วนจำกัด ส.ศศิวัณณ์ ชิปปิ้งเซอร์วิส'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เอช ไอ พี โกลบอล จำกัด' แต่ OCR='บริษัท เอช ไอ พี โกลบอล จำกัด (H I P GLOBAL CO., LTD.)'",
+    "5": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR='ไม่พบ'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=549,457.14 แต่ OCR=0.00 (ต่างกัน 549,457.14)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=587,919.14 แต่ OCR=38,462.00 (ต่างกัน 549,457.14)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ดีบริส ซีซีทีวี เซอร์วิส จำกัด' แต่ OCR='บริษัท ดีบรีส ซีซีทีวี เซอร์วิส จำกัด'",
+    "13": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='B10108253' แต่ OCR='B1 0108253'"
+  },
+  "comparisonApprovals": {
+    "2-company_name_match": true,
+    "3-company_name_match": true,
+    "4-company_name_match": true,
+    "5-amount_before_vat_match": true,
+    "5-total_amount_match": true,
+    "5-document_type_match": true,
+    "5-branch_match": true,
+    "5-tax_id_match": true,
+    "10-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build612 บริษัท บีโอเอ อินโนเวชั่น แอนด์ เอนเนอร์ยี่ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 14,
+    "metadata": [
+      {
+        "filename": "17.02.2026_EXP-20260200043_510110_pv6902050_VAT.pdf",
+        "company_name": "บริษัท ชัยเจริญซัพพลาย จำกัด"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200038_510110_pv69020052_VAT.pdf",
+        "company_name": "บริษัท เอช ไอ พี โกลบอล จำกัด"
+      },
+      {
+        "filename": "23.2.2026_WHT_EXP-20260200007_530408_pv6902017_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200042_510111_pv6902032_VAT.pdf",
+        "company_name": "บริษัท เจ.ไอ.บี. คอมพิวเตอร์ กรุ๊ป จำกัด"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200039_510110 _pv6902001_VAT.pdf",
+        "company_name": "บริษัท ฟีบีโอ ฟอร์เอฟเวอร์ เทคโนโลยี จำกัด"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200044_510111_pv69020061_VAT.pdf",
+        "company_name": "บริษัท กรุงเทพธุรภัณฑ์ ออโตเมชั่น จำกัด"
+      },
+      {
+        "filename": "18.02.2026_WHT_EXP-20260200009_530408_pv6902023_VAT.pdf",
+        "company_name": "บริษัท ดีบรีส ซีซีทีวี เซอร์วิส จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200040_510110_pv6902015_VAT.pdf",
+        "company_name": "บริษัท เอช ไอ พี โกลบอล จำกัด (H I P GLOBAL CO., LTD.)"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200041_510111_pv6902028_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท (ไทย) จำกัด"
+      },
+      {
+        "filename": "23.2.2026_WHT_EXP-20260200024_530401_pv6902057_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "17.2.2026_EXP-20260200057_ใบกำกับภาษี-เอวิท เลขที่2026_0287.pdf",
+        "company_name": "บริษัท เอวิท คอมมูนิเคชั่น จำกัด"
+      },
+      {
+        "filename": "16.01.2026_EXP-20260100001_510111_pv6902002_VAT.pdf",
+        "company_name": "บริษัท โกโกพริ้นท์ (ไทยแลนด์) จำกัด"
+      },
+      {
+        "filename": "10.2.2026_WHT_EXP-20260200001_pv6902016-3.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด ส.ศศิวัณณ์ ชิปปิ้งเซอร์วิส"
+      },
+      {
+        "filename": "11.2.2026_EXP-20260200055_ค่าภาษีกรมศุลกากร.pdf",
+        "company_name": "กรมศุลกากร"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 14,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100001",
+        "ocr_document_no": "IN-2601/001275",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200038",
+        "ocr_document_no": "IV26020082",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200039",
+        "ocr_document_no": "IV-202602202",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "0553",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200040",
+        "ocr_document_no": "IV26020377",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200055",
+        "ocr_document_no": "0210-020154",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200041",
+        "ocr_document_no": "SI2602051617",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200042",
+        "ocr_document_no": "IX00167-6902-000056",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200057",
+        "ocr_document_no": "2026/0287",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200043",
+        "ocr_document_no": "CA2602-0121",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "IV2026053",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "RT-20260200313",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "RT-20260200314",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200044",
+        "ocr_document_no": "B1 0108253",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-18T04:53:37.894Z",
+  "last_saved": "2026-03-18T11:53:40.023583",
+  "company": "Build319 บริษัท แพนเตอร์ พลัส (ประเทศไทย) จำกัด รายเดือน",
+  "base_company": "Build319 บริษัท แพนเตอร์ พลัส (ประเทศไทย) จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "2": ""
+  },
+  "initialNotes": {
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ทีมีนาว จำกัด' แต่ OCR='บริษัท แพนเตอร์ พลัส (ประเทศไทย) จำกัด'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105554096513' แต่ OCR='0105566186016'"
+  },
+  "comparisonApprovals": {
+    "2-company_name_match": true,
+    "2-tax_id_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build319 บริษัท แพนเตอร์ พลัส (ประเทศไทย) จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "20.02.2026_WHT-EXP-20260200003_ภงด53 (2)_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "23.02.2026_WHT_EXP-20260200001_ภงด53 (3)_VAT.pdf",
+        "company_name": "บริษัท แพนเตอร์ พลัส (ประเทศไทย) จำกัด"
+      },
+      {
+        "filename": "04.02.2026_WHT_EXP-20260200002_ภงด53_VAT.pdf",
+        "company_name": "บริษัท บี.เค.สปาคอสเมด จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 3,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "INV2026020025",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200003",
+        "ocr_document_no": "RT-20260200265",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "v2026020032",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-17T09:26:47.294Z",
+  "last_saved": "2026-03-17T16:26:47.813818",
+  "company": "Build392 บริษัท ร็อคเก็ต ลิ้ง เอ็นเตอร์เทนเม้นท์ จำกัด รายเดือน",
+  "base_company": "Build392 บริษัท ร็อคเก็ต ลิ้ง เอ็นเตอร์เทนเม้นท์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "3": ""
+  },
+  "initialNotes": {
+    "3": "สาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'"
+  },
+  "comparisonApprovals": {
+    "3-branch_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AA.โฟรเดอร์หลัก\\Build392 บริษัท ร็อคเก็ต ลิ้ง เอ็นเตอร์เทนเม้นท์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 5,
+    "metadata": [
+      {
+        "filename": "28.02.2026_EXP-20260200031_033 280269 ค่าไฟฟ้า การไฟฟ้านครหลวง กพ 69.pdf",
+        "company_name": "การไฟฟ้านครหลวง"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200030_002 030269 ค่าไฟฟ้า การไฟฟ้านครหลวง_VAT.pdf",
+        "company_name": "การไฟฟ้านครหลวง"
+      },
+      {
+        "filename": "09.02.2026_WHT_EXP-20260200028_090269ค่าส่วนแบ่งการบริหารศิลปินธค68 มค 69_VAT.pdf",
+        "company_name": "บริษัท ก๊อปปี้ เอ แบงคอก จำกัด"
+      },
+      {
+        "filename": "19.02.2026_EXP-20260200032_029 190269 ทรูออนไลน์ ค่าอินเตอร์เน็ต กพ 69_VAT.pdf",
+        "company_name": "บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "09.02.2026_WHT_EXP-20260200029_023 090269ค่าทำบัญชีบิลด์มีอัพคอนซัลแทนท์ กพ 69_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 5,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200030",
+        "ocr_document_no": "O0200316548",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200028",
+        "ocr_document_no": "INV2026020001",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200029",
+        "ocr_document_no": "RT-20260200077",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200032",
+        "ocr_document_no": "TITKBKO19022026000009256",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200031",
+        "ocr_document_no": "O0202890124",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

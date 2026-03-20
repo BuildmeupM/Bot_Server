@@ -1,0 +1,566 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-20T08:08:53.827Z",
+  "last_saved": "2026-03-20T15:08:52.143514",
+  "company": "Build313 บริษัท เฮียเม้ง มั่งมี จำกัด รายเดือน",
+  "base_company": "Build313 บริษัท เฮียเม้ง มั่งมี จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "4": "",
+    "6": "เลขที่ใบกำกับไม่ตรงกับเอกสาร IV0007549",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บางจากกรีนเนท จำกัด' แต่ OCR='บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105536080112' แต่ OCR='0107561000013'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00467' แต่ OCR='01049'\nเอกสารใช้ไม่ได้ให้เอาออก",
+    "8": "",
+    "9": "",
+    "10": "",
+    "11": "",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บางจากกรีนเนท จำกัด' แต่ OCR='บริษัท บางจากกรีน เนท จำกัด'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=934.58 แต่ OCR=953.27 (ต่างกัน 18.69)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=65.42 แต่ OCR=66.73 (ต่างกัน 1.31)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=1,000.00 แต่ OCR=1,020.00 (ต่างกัน 20.00)\nเอกสารใช้ไม่ได้ให้เอาออก",
+    "16": "สาขาผิด ต้อง 69",
+    "18": "",
+    "19": "",
+    "20": "ยอดผิด",
+    "21": "",
+    "22": "สาขาผิด ต้อง 18",
+    "25": "เลขที่ใบกำกับไม่ตรงกับเอกสาร 001101110323",
+    "26": "ยอดผิด",
+    "30": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท สุทธิจิตพัฒนา จำกัด' แต่ OCR='บริษัท สหโชควัฒนา จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='381621' แต่ OCR='IV0000146990'\nเอกสารใช้ไม่ได้ให้เอาออก",
+    "31": "เลขที่ใบกำกับไม่ตรงกับเอกสาร RT-20260200230",
+    "32": "",
+    "34": "",
+    "35": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='2000984' แต่ OCR='200984'\nเอกสารใช้ไม่ได้ให้เอาออก",
+    "36": "ยอดผิด",
+    "37": "",
+    "38": "เลขที่ใบกำกับไม่ตรงกับเอกสาร 068901159981",
+    "39": "ยอดผิด",
+    "40": "",
+    "41": "",
+    "42": ""
+  },
+  "initialNotes": {
+    "0": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=70.09 แต่ OCR=3,460.56 (ต่างกัน 3,390.47)",
+    "1": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=3,894.39 แต่ OCR=4,155.39 (ต่างกัน 261.00)",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)' แต่ OCR='บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน) สำนักงานใหญ่'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=70.09 แต่ OCR=11,089.98 (ต่างกัน 11,019.89)",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไอ.โอ.พี. ฟู้ดส์ จำกัด' แต่ OCR='บริษัท ไอ.ไอ.พี.ฟู้ดส์ จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='IV0007542' แต่ OCR='IV0007549'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บางจากกรีนเนท จำกัด' แต่ OCR='บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0105536080112' แต่ OCR='0107561000013'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00467' แต่ OCR='01049'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='149091076967' แต่ OCR='49091076967'",
+    "9": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=476.64 แต่ OCR=1,752.64 (ต่างกัน 1,276.00)",
+    "10": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=4,346.26 แต่ OCR=5,123.76 (ต่างกัน 777.50)",
+    "11": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=28.04 แต่ OCR=1,168.04 (ต่างกัน 1,140.00)",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บางจากกรีนเนท จำกัด' แต่ OCR='บริษัท บางจากกรีน เนท จำกัด'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=934.58 แต่ OCR=953.27 (ต่างกัน 18.69)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=65.42 แต่ OCR=66.73 (ต่างกัน 1.31)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=1,000.00 แต่ OCR=1,020.00 (ต่างกัน 20.00)",
+    "16": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)' แต่ OCR='บริษัท สยามแม็คโคร จำกัด (มหาชน)'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00143' แต่ OCR='00069'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='068151085624' แต่ OCR='68151085624'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=2,572.90 แต่ OCR=5,815.40 (ต่างกัน 3,242.50)",
+    "18": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=3,490.65 แต่ OCR=3,613.65 (ต่างกัน 123.00)",
+    "19": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ณายลอย เบเกอรี่ จำกัด' แต่ OCR='บริษัท ชวนชมเบเกอรี่ จำกัด'",
+    "20": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='111011090872' แต่ OCR='1101090872'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=503.04 แต่ OCR=530.20 (ต่างกัน 27.16)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=35.21 แต่ OCR=8.05 (ต่างกัน 27.16)",
+    "21": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=723.36 แต่ OCR=1,818.36 (ต่างกัน 1,095.00)",
+    "22": "สาขาไม่ตรงกัน: ภาษีซื้อ='00143' แต่ OCR='00018'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=387.85 แต่ OCR=2,853.60 (ต่างกัน 2,465.75)",
+    "25": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ณายลอย เบเกอรี่ จำกัด' แต่ OCR='บริษัท ฉายลอย เบเกอรี่ จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='00110110323' แต่ OCR='001101110323'",
+    "26": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='068031099034' แต่ OCR='68031099034'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=2,206.07 แต่ OCR=2,320.99 (ต่างกัน 114.92)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=154.43 แต่ OCR=39.51 (ต่างกัน 114.92)",
+    "30": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท สุทธิจิตพัฒนา จำกัด' แต่ OCR='บริษัท สหโชควัฒนา จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='381621' แต่ OCR='IV0000146990'",
+    "31": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RT20260200230' แต่ OCR='RT-20260200230'",
+    "32": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=903.74 แต่ OCR=2,717.74 (ต่างกัน 1,814.00)",
+    "34": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=977.57 แต่ OCR=1,046.57 (ต่างกัน 69.00)",
+    "35": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='2000984' แต่ OCR='200984'",
+    "36": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='68011111297' แต่ OCR='8011111297'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=539.02 แต่ OCR=553.98 (ต่างกัน 14.96)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=37.73 แต่ OCR=22.77 (ต่างกัน 14.96)",
+    "37": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ณายลอย เบเกอรี่ จำกัด' แต่ OCR='บริษัท ชายลอย เบเกอรี่ จำกัด'",
+    "38": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='00069' แต่ OCR='068901159981'",
+    "39": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='068051113815' แต่ OCR='68051113815'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=937.38 แต่ OCR=950.47 (ต่างกัน 13.09)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=65.62 แต่ OCR=52.53 (ต่างกัน 13.09)",
+    "40": "รายการ 7% ไม่ตรงกัน: ภาษีซื้อ=924.30 แต่ OCR=1,615.30 (ต่างกัน 691.00)",
+    "41": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ณายลอย เบเกอรี่ จำกัด' แต่ OCR='บริษัท ถวายบอย เบเกอรี่ จำกัด'",
+    "42": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ณายลอย เบเกอรี่ จำกัด' แต่ OCR='บริษัท ถกลอย เบเกอรี่ จำกัด'"
+  },
+  "comparisonApprovals": {
+    "0-amount_before_vat_match": true,
+    "1-amount_before_vat_match": true,
+    "3-company_name_match": true,
+    "4-amount_before_vat_match": true,
+    "4-company_name_match": true,
+    "6-company_name_match": true,
+    "8-document_no_match": true,
+    "9-amount_before_vat_match": true,
+    "10-amount_before_vat_match": true,
+    "11-amount_before_vat_match": true,
+    "14-company_name_match": true,
+    "16-document_no_match": true,
+    "16-company_name_match": true,
+    "16-amount_before_vat_match": true,
+    "17-company_name_match": true,
+    "18-amount_before_vat_match": true,
+    "18-company_name_match": true,
+    "19-company_name_match": true,
+    "20-document_no_match": true,
+    "21-amount_before_vat_match": true,
+    "22-amount_before_vat_match": true,
+    "24-company_name_match": true,
+    "25-company_name_match": true,
+    "26-document_no_match": true,
+    "29-company_name_match": true,
+    "32-amount_before_vat_match": true,
+    "33-company_name_match": true,
+    "34-amount_before_vat_match": true,
+    "36-document_no_match": true,
+    "37-company_name_match": true,
+    "39-document_no_match": true,
+    "40-amount_before_vat_match": true,
+    "41-company_name_match": true,
+    "42-company_name_match": true
+  },
+  "invalidDocuments": {
+    "7": true,
+    "13": true,
+    "30": true,
+    "35": true
+  },
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build313 บริษัท เฮียเม้ง มั่งมี จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 43,
+    "metadata": [
+      {
+        "filename": "05.02.2026_EXP-20260200027_TaxInvoice-Paid-Feb-2026-4_VAT.pdf",
+        "company_name": "บริษัท รสทิพย์ จำกัด"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200041_PV202603080002-VAT-4_VAT.pdf",
+        "company_name": "บริษัท ชายลอย เบเกอรี่ จำกัด"
+      },
+      {
+        "filename": "19.02.2026_EXP-20260200045_PV202603080002-VAT-12_VAT.pdf",
+        "company_name": "บริษัท คิงเบเกอรี่ เซ็นเตอร์ จำกัด"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200024_PV202603080003-VAT-5_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200019_ilovepdf_merged - 2026-03-18T101511.779.pdf",
+        "company_name": "บริษัท สยามแม็คโคร จำกัด (มหาชน)"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200044_PV202603080002-VAT-11_VAT.pdf",
+        "company_name": "บริษัท คิงเบเกอรี่ เซ็นเตอร์ จำกัด"
+      },
+      {
+        "filename": "19.02.2026_EXP-20260200047_PV202603080001-Fuel-5_VAT.pdf",
+        "company_name": "บริษัท สหโชควัฒนา จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200025_TaxInvoice-Paid-Feb-2026-1_VAT.pdf",
+        "company_name": "บริษัท วันทูเทรดดิ้ง จำกัด"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200030_TaxInvoice-กรรมการสำรองจ่าย-Feb-2026-7_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200013_ilovepdf_merged - 2026-03-18T100815.960_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200046_PV202603080001-Fuel-6_VAT.pdf",
+        "company_name": "บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200022_PV202603080003-VAT-2_VAT.pdf",
+        "company_name": "บริษัท ไอ.ไอ.พี.ฟู้ดส์ จำกัด"
+      },
+      {
+        "filename": "14.02.2026_EXP-20260200034_TaxInvoice-กรรมการสำรองจ่าย-Feb-2026-43_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "19.02.2026_WHT_EXP-20260200004_530401_RT-20260200230-Accounting Fee_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200012_ilovepdf_merged - 2026-03-18T100759.350_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "09.02.2026_EXP-20260200011_ilovepdf_merged - 2026-03-18T100717.087.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200048_PV202603080001-Fuel-4_VAT.pdf",
+        "company_name": "บริษัท บีทีซี (พุทธสาคร) จำกัด"
+      },
+      {
+        "filename": "17.02.2026_EXP-20260200040_PV202603080002-VAT-3_VAT.pdf",
+        "company_name": "บริษัท ฉายลอย เบเกอรี่ จำกัด"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200036_TaxInvoice-กรรมการสำรองจ่าย-Feb-2026-49_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200021_ilovepdf_merged - 2026-03-18T101729.801_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200009_ilovepdf_merged - 2026-03-17T155011.216_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "04.02.2026_EXP-20260200026_TaxInvoice-Paid-Feb-2026-3_VAT.pdf",
+        "company_name": "บริษัท รสทิพย์ จำกัด"
+      },
+      {
+        "filename": "14.02.2026_EXP-20260200039_PV202603080002-VAT-2_VAT.pdf",
+        "company_name": "บริษัท ชวนชมเบเกอรี่ จำกัด"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200018_ilovepdf_merged - 2026-03-18T101345.097.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "01.02.2026_EXP-20260200028_TaxInvoice-กรรมการสำรองจ่าย-Feb-2026-2.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200042_PV202603080002-VAT-5_VAT.pdf",
+        "company_name": "บริษัท ถวายบอย เบเกอรี่ จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200049_PV202603080001-Fuel-3_VAT.pdf",
+        "company_name": "บริษัท บางจากกรีน เนท จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200033_TaxInvoice-กรรมการสำรองจ่าย-Feb-2026-38_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200038_ilovepdf_merged - 2026-03-17T120748.375_VAT.pdf",
+        "company_name": "บริษัท บางบอนซุปเปอร์เซ็นเตอร์ จำกัด"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200014_ilovepdf_merged - 2026-03-18T100840.554_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "06.02.2026_EXP-20260200050_PV202603080001-Fuel-2_VAT.pdf",
+        "company_name": "บริษัท ปตท. น้ำมันและการค้าปลีก จำกัด (มหาชน)"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200010_ilovepdf_merged - 2026-03-18T100608.356_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200016_ilovepdf_merged - 2026-03-18T101215.948_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "14..02.2026_EXP-20260200020_ilovepdf_merged - 2026-03-18T101535.999_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200015_ilovepdf_merged - 2026-03-18T101151.441_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200017_ilovepdf_merged - 2026-03-18T101243.396_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200037_ilovepdf_merged - 2026-03-17T120717.661_VAT.pdf",
+        "company_name": "บริษัท บางบอนซุปเปอร์เซ็นเตอร์ จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200043_PV202603080002-VAT-6_VAT.pdf",
+        "company_name": "บริษัท ถกลอย เบเกอรี่ จำกัด"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200032_TaxInvoice-กรรมการสำรองจ่าย-Feb-2026-33_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "18.02.2026_EXP-20260200023_ilovepdf_merged - 2026-03-18T101821.347_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200031_TaxInvoice-กรรมการสำรองจ่าย-Feb-2026-10_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      },
+      {
+        "filename": "05.02.2026_EXP-20260200029_TaxInvoice-กรรมการสำรองจ่าย-Feb-2026-5_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน) สำนักงานใหญ่"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200035_TaxInvoice-กรรมการสำรองจ่าย-Feb-2026-48_VAT.pdf",
+        "company_name": "บริษัท ซีพี แอ็กซ์ตร้า จำกัด (มหาชน)"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 43,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200028",
+        "ocr_document_no": "068841069469",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "068901152010",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200037",
+        "ocr_document_no": "DS6902/0008",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200026",
+        "ocr_document_no": "DS6902/064",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200029",
+        "ocr_document_no": "068841069826",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200027",
+        "ocr_document_no": "DS6902/078",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "IV0007549",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200050",
+        "ocr_document_no": "200162",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "49091076967",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200030",
+        "ocr_document_no": "149901055708",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "068901154528",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200031",
+        "ocr_document_no": "068901154963",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200038",
+        "ocr_document_no": "DS6902/0106",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200049",
+        "ocr_document_no": "ต26103001002249",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200044",
+        "ocr_document_no": "001501180967",
+        "match_status": "full_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200033",
+        "ocr_document_no": "068111085447",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200019",
+        "ocr_document_no": "68151085624",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200025",
+        "ocr_document_no": "6902132170101",
+        "match_status": "full_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "068901155870",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260200039",
+        "ocr_document_no": "000301543362",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260200034",
+        "ocr_document_no": "1101090872",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "149061090117",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260200021",
+        "ocr_document_no": "018131093168",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "068901156545",
+        "match_status": "full_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260200048",
+        "ocr_document_no": "TIO000116902001227",
+        "match_status": "full_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260200040",
+        "ocr_document_no": "001101110323",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260200023",
+        "ocr_document_no": "68031099034",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "068901157520",
+        "match_status": "full_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "068901157526",
+        "match_status": "full_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260200045",
+        "ocr_document_no": "001501182394",
+        "match_status": "full_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260200047",
+        "ocr_document_no": "IV0000146990",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "RT-20260200230",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "149901057791",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "068901159536",
+        "match_status": "full_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "068901159809",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260200046",
+        "ocr_document_no": "200984",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260200035",
+        "ocr_document_no": "8011111297",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXP-20260200041",
+        "ocr_document_no": "000301544891",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-20260200032",
+        "ocr_document_no": "068901159981",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-20260200036",
+        "ocr_document_no": "68051113815",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXP-20260200017",
+        "ocr_document_no": "068901159928",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXP-20260200042",
+        "ocr_document_no": "001101111563",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 42,
+        "purchase_reference": "EXP-20260200043",
+        "ocr_document_no": "001101111886",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-19T04:00:37.351Z",
+  "last_saved": "2026-03-19T11:00:34.454079",
+  "company": "Build103 บริษัท กฤษณะ แอร์เซอร์วิส จำกัด รายเดือน",
+  "base_company": "Build103 บริษัท กฤษณะ แอร์เซอร์วิส จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "6": "",
+    "7": "",
+    "11": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ภาดา เอ็ดดูเคชั่น จำกัด' แต่ OCR='บริษัท ภาคา เอ็ดดูเคชั่น จำกัด'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Meta Platforms Ireland Limited'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR=''\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=18,707.95 แต่ OCR=1,164.90 (ต่างกัน 17,543.05)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Microsoft Regional Sales Pte Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR=''\nวันที่ไม่ตรงกัน: ภาษีซื้อ='19/02/2026' แต่ OCR='08/01/2026'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=593.64 แต่ OCR=36.97 (ต่างกัน 556.67)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR=''",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Microsoft Regional Sales Pte Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR=''\nวันที่ไม่ตรงกัน: ภาษีซื้อ='19/02/2026' แต่ OCR='09/01/2026'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=833.45 แต่ OCR=0.00 (ต่างกัน 833.45)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=58.34 แต่ OCR=0.00 (ต่างกัน 58.34)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=951.01 แต่ OCR=0.00 (ต่างกัน 951.01)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Microsoft Regional Sales Pte Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR=''\nวันที่ไม่ตรงกัน: ภาษีซื้อ='19/02/2026' แต่ OCR='14/01/2026'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=348.16 แต่ OCR=0.00 (ต่างกัน 348.16)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=24.37 แต่ OCR=0.00 (ต่างกัน 24.37)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=397.27 แต่ OCR=0.00 (ต่างกัน 397.27)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='แบบนำส่งภาษีมูลค่าเพิ่ม ภ.พ.36'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Microsoft Regional Sales Pte Ltd'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR=''\nวันที่ไม่ตรงกัน: ภาษีซื้อ='19/02/2026' แต่ OCR='23/01/2026'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=726.05 แต่ OCR=0.00 (ต่างกัน 726.05)\nภาษีมูลค่าเพิ่มไม่ตรงกัน: ภาษีซื้อ=50.82 แต่ OCR=0.00 (ต่างกัน 50.82)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=828.45 แต่ OCR=0.00 (ต่างกัน 828.45)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ภ.พ.36'",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='OpenAI,LLC'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR=''\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=900.82 แต่ OCR=56.09 (ต่างกัน 844.73)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR=''",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Teachable,Inc'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR=''\nสาขาไม่ตรงกัน: ภาษีซื้อ='00000' แต่ OCR=''\nวันที่ไม่ตรงกัน: ภาษีซื้อ='19/02/2026' แต่ OCR='28/01/2026'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=4,049.38 แต่ OCR=252.15 (ต่างกัน 3,797.23)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR=''",
+    "11": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เจเอ คลีนนิ่ง จำกัด' แต่ OCR='บริษัท เจอ คลีนนิ่ง จำกัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=17,649.49 แต่ OCR=17,154.64 (ต่างกัน 494.85)"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "1-tax_id_match": true,
+    "1-branch_match": true,
+    "1-total_amount_match": true,
+    "1-document_type_match": true,
+    "2-date_match": true,
+    "2-company_name_match": true,
+    "2-tax_id_match": true,
+    "2-branch_match": true,
+    "2-total_amount_match": true,
+    "2-document_type_match": true,
+    "3-date_match": true,
+    "3-company_name_match": true,
+    "3-tax_id_match": true,
+    "3-branch_match": true,
+    "3-amount_before_vat_match": true,
+    "3-vat_amount_match": true,
+    "3-total_amount_match": true,
+    "3-document_type_match": true,
+    "4-date_match": true,
+    "4-company_name_match": true,
+    "4-tax_id_match": true,
+    "4-branch_match": true,
+    "4-amount_before_vat_match": true,
+    "4-vat_amount_match": true,
+    "4-total_amount_match": true,
+    "4-document_type_match": true,
+    "5-date_match": true,
+    "5-company_name_match": true,
+    "5-tax_id_match": true,
+    "5-branch_match": true,
+    "5-amount_before_vat_match": true,
+    "5-vat_amount_match": true,
+    "5-total_amount_match": true,
+    "5-document_type_match": true,
+    "6-company_name_match": true,
+    "6-tax_id_match": true,
+    "6-branch_match": true,
+    "6-total_amount_match": true,
+    "6-document_type_match": true,
+    "7-date_match": true,
+    "7-company_name_match": true,
+    "7-tax_id_match": true,
+    "7-branch_match": true,
+    "7-total_amount_match": true,
+    "7-document_type_match": true,
+    "11-company_name_match": true,
+    "11-total_amount_match": true,
+    "0-date_match": true,
+    "1-company_name_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build103 บริษัท กฤษณะ แอร์เซอร์วิส จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 6,
+    "metadata": [
+      {
+        "filename": "16.02.2026_EXP-20260200008_510104_ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท โชคชัย ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200005_510104_ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท โชคชัย ซัพพลาย จำกัด (สำนักงานใหญ่)"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200006_510104_ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท โชคชัย ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200007_510104_ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท โชคชัย ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "17.02.2026_EXP-20260200009_510104_ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท โชคชัย ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "11.02.2026_EXP-20260200002_WHT_530401_ค่าทำบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 6,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "6903707",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "6904023",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "RT-20260200119",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200007",
+        "ocr_document_no": "6904276",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "6904627",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "6904704",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

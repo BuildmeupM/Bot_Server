@@ -1,0 +1,934 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-18T08:26:32.570Z",
+  "last_saved": "2026-03-18T15:26:32.797379",
+  "company": "Build540 บริษัท อ่างทองเคเบิลทีวี จำกัด",
+  "base_company": "Build540 บริษัท อ่างทองเคเบิลทีวี จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "ชื่อ คู่ค้าไม่ตรงกับเอกสาร",
+    "5": "",
+    "6": "",
+    "7": "",
+    "8": "",
+    "9": "",
+    "10": "ชื่อคู่ค้าไม่ตรงกับเอกสาร",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน:\nวันที่ไม่ตรงกัน: ภาษีซื้อ",
+    "12": "ไม่พบเอกสารต้นฉบับ",
+    "13": "",
+    "14": "ชื่อคู่ค้าไม่ตรงกับเอกสาร",
+    "15": "ไม่พบข้อมูล เอกสารต้นฉบับ",
+    "16": "",
+    "17": "ชื่อคู่ค้าไม่ตรงกับเอกสาร",
+    "18": "เอกสารที่อยู่บริษัทไม่ครบ",
+    "19": "ที่อยู่เอกสารไม่ครบ",
+    "20": "ที่อยู่ไม่ครบ",
+    "21": "ที่อยู่ไม่ครบ",
+    "22": "ที่อยู่ไม่ครบ",
+    "23": "ที่อยู่ไม่ครบ",
+    "24": "ที่อยู่ไม่ครบ",
+    "25": "ที่อยู่ไม่ครบ",
+    "26": "",
+    "29": "",
+    "30": "",
+    "31": "",
+    "35": "",
+    "37": "",
+    "38": "",
+    "39": "",
+    "40": "",
+    "41": "",
+    "42": "",
+    "44": "",
+    "45": "",
+    "49": "",
+    "51": "",
+    "54": "",
+    "55": "",
+    "58": "",
+    "60": "",
+    "61": "",
+    "62": "",
+    "67": "",
+    "69": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260200022",
+    "70": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260200084"
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เพิ่มพูลทรัพย์อ่างทอง (1991) จำกัด' แต่ OCR='บริษัท เพิ่มพูนทรัพย์อ่างทอง (1991) จำกัด'",
+    "1": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไลน์ คอมพานี (ประเทศไทย) จำกัด' แต่ OCR='LINE COMPANY (THAILAND) LIMITED'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท มาสเตอร์คูล อินเตอร์เนชั่นแนล ซีแอล จำกัด' แต่ OCR='บริษัท มาสเตอร์คูล อินเตอร์เนชั่นแนล ซีแอล จำกัด (สำนักงานใหญ่)'",
+    "3": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด เอเค วิทยุสื่อสาร' แต่ OCR='ห้างหุ้นส่วนจำกัด เอ เค วิทยุสื่อสาร'",
+    "5": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='ห้างหุ้นส่วนจำกัด ไทยดีค้าวัสดุก่อสร้าง' แต่ OCR='หจก. ไทยดีค้าวัสดุก่อสร้าง'",
+    "6": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='กรมสรรพากร' แต่ OCR='Meta Platform Ireland Limited'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=394,497.02 แต่ OCR=24,223.50 (ต่างกัน 370,273.52)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='แบบนำส่งภาษีมูลค่าเพิ่ม ภ.พ.36'",
+    "7": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จำกัด' แต่ OCR='บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด'",
+    "8": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200003 (เลขที่ใบกำกับ: RT-20260200325)",
+    "9": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไพลัดดา จำกัด' แต่ OCR='PAILADDA Co.,Ltd. (Samyan Serene Hotel)'",
+    "10": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ไพลัดดา จำกัด' แต่ OCR='PAILADDA Co.,Ltd. (Samyan Serene Hotel)'",
+    "11": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='QT-202602572' แต่ OCR='IV-202602545'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='10/02/2026' แต่ OCR='13/02/2026'",
+    "12": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ยูนิโคล่ (ประเทศไทย) จำกัด' แต่ OCR='UNIQLO (THAILAND) CO.,LTD'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='25/02/2026' แต่ OCR='26/02/2026'",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท กากันท์ (ประเทศไทย) จำกัด' แต่ OCR='บริษัท กากัน (ประเทศไทย) จำกัด / GAGAN (Thailand) Co., Ltd.'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00009' แต่ OCR='00000'",
+    "14": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท กากันท์ (ประเทศไทย) จำกัด' แต่ OCR='บริษัท กากัน (ประเทศไทย) จำกัด'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='28/02/2026' แต่ OCR='28/02/2024'",
+    "15": "ไม่พบข้อมูล OCR ในระบบสำหรับเลขที่เอกสารอ้างอิง: EXP-20260200006 (เลขที่ใบกำกับ: RT-20260200288)",
+    "16": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "17": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='ก.ไฟฟ้า'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0994000165501' แต่ OCR='3150100039697'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00189' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='008/0365' แต่ OCR='0365'\nวันที่ไม่ตรงกัน: ภาษีซื้อ='24/02/2026' แต่ OCR='21/02/2024'",
+    "19": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='AA69696902240029' แต่ OCR='AA69696902240028'",
+    "21": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "22": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='AA69696902240032' แต่ OCR='AA69669602240032'",
+    "24": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='AA69696902240034' แต่ OCR='AA68696902240034'",
+    "29": "สาขาไม่ตรงกัน: ภาษีซื้อ='00189' แต่ OCR='00169'",
+    "30": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "31": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00189' แต่ OCR='00001'",
+    "35": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัด อ่างทอง'",
+    "37": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "38": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "39": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'\nสาขาไม่ตรงกัน: ภาษีซื้อ='00189' แต่ OCR='00001'",
+    "40": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "41": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาค จังหวัดอ่างทอง'\nเลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0994000165501' แต่ OCR='0994001655011'",
+    "42": "วันที่ไม่ตรงกัน: ภาษีซื้อ='24/02/2026' แต่ OCR='19/01/2026'",
+    "44": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "45": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "49": "วันที่ไม่ตรงกัน: ภาษีซื้อ='24/02/2026' แต่ OCR='24/02/2022'",
+    "51": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาค'",
+    "54": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "55": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0994000165501' แต่ OCR='0994000165561'",
+    "58": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "60": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='AA69696902240071' แต่ OCR='AA69686902240071'",
+    "61": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "62": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง' แต่ OCR='การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)'",
+    "67": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='0994000165501' แต่ OCR='0994000165561'",
+    "69": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260200022",
+    "70": "ไม่พบข้อมูลภาษีซื้อที่ตรงกับเลขที่เอกสารอ้างอิง: EXP-20260200084"
+  },
+  "comparisonApprovals": {
+    "2-company_name_match": true,
+    "4-company_name_match": true,
+    "5-company_name_match": true,
+    "6-company_name_match": true,
+    "6-tax_id_match": true,
+    "6-branch_match": true,
+    "6-total_amount_match": true,
+    "6-document_type_match": true,
+    "7-company_name_match": true,
+    "9-company_name_match": true,
+    "10-company_name_match": true,
+    "12-company_name_match": true,
+    "13-company_name_match": true,
+    "13-branch_match": true,
+    "14-date_match": true,
+    "14-company_name_match": true,
+    "0-company_name_match": true,
+    "1-company_name_match": true,
+    "3-company_name_match": true,
+    "3-address_match": true,
+    "5-address_match": true,
+    "7-address_match": true,
+    "8-company_name_match": true,
+    "9-address_match": true,
+    "13-date_match": true,
+    "13-tax_id_match": true,
+    "13-total_amount_match": true,
+    "13-document_type_match": true,
+    "13-address_match": true,
+    "16-company_name_match": true,
+    "17-document_no_match": true,
+    "17-date_match": true,
+    "17-address_match": true,
+    "17-company_name_match": true,
+    "18-company_name_match": true,
+    "19-company_name_match": true,
+    "20-company_name_match": true,
+    "22-company_data_all": true,
+    "25-company_name_match": true,
+    "26-address_match": true,
+    "27-address_match": true,
+    "28-address_match": true,
+    "29-branch_match": true,
+    "29-address_match": true,
+    "29-company_name_match": true,
+    "30-company_name_match": true,
+    "31-company_name_match": true,
+    "31-branch_match": true,
+    "32-company_name_match": true,
+    "32-address_match": true,
+    "33-address_match": true,
+    "34-address_match": true,
+    "34-company_name_match": true,
+    "35-company_name_match": true,
+    "36-address_match": true,
+    "37-company_name_match": true,
+    "38-company_name_match": true,
+    "38-address_match": true,
+    "39-company_name_match": true,
+    "39-branch_match": true,
+    "40-company_name_match": true,
+    "40-address_match": true,
+    "41-company_name_match": true,
+    "41-tax_id_match": true,
+    "42-date_match": true,
+    "43-company_name_match": true,
+    "43-address_match": true,
+    "44-company_name_match": true,
+    "44-address_match": true,
+    "45-company_name_match": true,
+    "46-address_match": true,
+    "47-address_match": true,
+    "47-company_name_match": true,
+    "48-company_name_match": true,
+    "48-address_match": true,
+    "49-company_name_match": true,
+    "49-date_match": true,
+    "50-company_name_match": true,
+    "50-address_match": true,
+    "51-company_name_match": true,
+    "52-company_name_match": true,
+    "52-address_match": true,
+    "53-company_name_match": true,
+    "53-address_match": true,
+    "54-company_name_match": true,
+    "55-tax_id_match": true,
+    "56-company_name_match": true,
+    "56-address_match": true,
+    "57-company_name_match": true,
+    "57-address_match": true,
+    "58-company_name_match": true,
+    "59-company_name_match": true,
+    "59-address_match": true,
+    "60-document_no_match": true,
+    "61-company_name_match": true,
+    "62-company_name_match": true,
+    "63-company_name_match": true,
+    "63-address_match": true,
+    "64-company_name_match": true,
+    "64-address_match": true,
+    "65-company_name_match": true,
+    "65-address_match": true,
+    "67-tax_id_match": true,
+    "68-address_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build540 บริษัท อ่างทองเคเบิลทีวี จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 69,
+    "metadata": [
+      {
+        "filename": "24.02.2026_EXP-20260200027 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-5.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200023 530303_ค่าโทรศํพท์สำนักงาน - 1_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200019_510104_ต้นทุนการให้บริการ - 5_VAT.pdf",
+        "company_name": "บริษัท พีบีเอ ฟอร์เอฟเวอร์ เทคโนโลยี จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200086_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท มีโลจิก จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200028 _530301_ค่าไฟฟ้า เดือนมกราคม_VAT-6.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200071 530301_ค่าไฟฟ้า_VAT.pdf",
+        "company_name": "ก.ไฟฟ้า"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200057 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-38.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาค"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200065 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-46.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200042 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-20.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "03.02.2026 EXP-20260100098 03.02.2026_510104_ต้นทุนการให้บริการ - 2_VAT.pdf",
+        "company_name": "บริษัท แซทดิจิตอล จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200031 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-9.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200070 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-51.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200039 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-17.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200060 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-41.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200044 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-24.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "01.02.2026_WHT_EXP-20260200001_520219_ค่าบริการไลน์ OA_VAT.pdf",
+        "company_name": "LINE COMPANY (THAILAND) LIMITED"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200067 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-48.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200062 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-43.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200061 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-42.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200049 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-30.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200063 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-44.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200056 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-37.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "28.02.2026 EXP-20260200022 28.02.2026_530504_ค่าธรรมเนียมอื่น ๆ - 2_VAT.pdf",
+        "company_name": "บริษัท เซ็นดิท เทค จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200030 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-8.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "04.02.2026_EXP-20260200018_510104_ต้นทุนการให้บริการ - 4_VAT.pdf",
+        "company_name": "นางสาวเรณู สารการ"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200087_530408_ค่าบริการอื่นๆ_VAT.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_ EXP-20260300001 24.02.2026_530301_ค่าไฟฟ้า เดือนมกราคม_VAT-21.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026 EXP-20260200035 24.02.2026_530301_ค่าไฟฟ้า เดือนมกราคม_VAT-13.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200037 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-15.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200069 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-50.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200048 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-29.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200058 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-39.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200055 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-36.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "03.02.2026 EXP-20260100097 03.02.2026_510104_ต้นทุนการให้บริการ - 1_VAT.pdf",
+        "company_name": "บริษัท พีบีเอ ฟอร์เอฟเวอร์ เทคโนโลยี จำกัด"
+      },
+      {
+        "filename": "24.02.2026 EXP-20260100101 24.02.2026_530301_ค่าไฟฟ้า เดือนมกราคม_VAT-4.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "03.02.2026 EXP-20260100099 03.02.2026_510104_ต้นทุนการให้บริการ - 3_VAT.pdf",
+        "company_name": "บริษัท ยอดยิ่ง อิเล็กโทรนิกส์ จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200066 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-47.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200064 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-45.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200047 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-28.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาค จังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200051 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-32.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200050 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-31.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200059 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-40.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200084_ภาพแบบ ภ.พ.36 เดือน 02.2026_VAT.pdf",
+        "company_name": "Google Asia Pacific Pte.Ltd."
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200040 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-18.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200072 510104_ต้นทุนการให้บริการ_VAT.pdf",
+        "company_name": "บริษัท เอสไอเอส ดิสทริบิวชั่น (ประเทศไทย) จำกัด (มหาชน)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200054 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-35.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200036 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-14.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200024 530303_ค่าโทรศํพท์สำนักงาน - 2_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "28.02.2026 EXP-20260200021 28.02.2026_530504_ค่าธรรมเนียมอื่น ๆ - 1_VAT.pdf",
+        "company_name": "บริษัท เซ็นดิท เทค จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200053 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-34.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200020_510104_ต้นทุนการให้บริการ - 6_VAT.pdf",
+        "company_name": "บริษัท สิษฐ์ปการ เทคโนโลยี แอนด์ ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260300003 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-25.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200052 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-33.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200008_ภาพแบบ ภ.พ.36 เดือน 01.2026.pdf",
+        "company_name": "Google Asia Pacific Pte.Ltd."
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200043 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-22.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัด อ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200032 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-10.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200026 530303_ค่าโทรศํพท์สำนักงาน - 4_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260300002 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-23.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200034 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-12.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "23.01.2026 EXP-20260100100 23.01.2026_530213_ค่าใช้จ่ายสำนักงาน_VAT.pdf",
+        "company_name": "บริษัท เพิ่มพูนทรัพย์อ่างทอง (1991) จำกัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200068 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-49.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200045 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-26.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200041 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-19.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "03.02.2026_EXP-20260200025 530303_ค่าโทรศํพท์สำนักงาน - 3_VAT.pdf",
+        "company_name": "บริษัท แอดวานซ์ ไวร์เลส เน็ทเวอร์ค จํากัด"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200046 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-27.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200038 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-16.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_ EXP-20260200029 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-7.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง (สาขาที่ 00189)"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260200033 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-11.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      },
+      {
+        "filename": "24.02.2026_EXP-20260300004 530301_ค่าไฟฟ้า เดือนมกราคม_VAT-52.pdf",
+        "company_name": "การไฟฟ้าส่วนภูมิภาคจังหวัดอ่างทอง"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 71,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260100100",
+        "ocr_document_no": "IV6901/0304",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "ONTX20260201-017063",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200086",
+        "ocr_document_no": "CA2026020056",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200023",
+        "ocr_document_no": "W-TS-84439-6902-10001232",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260100098",
+        "ocr_document_no": "6902013",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260100099",
+        "ocr_document_no": "CA13396",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260100097",
+        "ocr_document_no": "IV-202602100",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "W-TS-84439-6902-10001233",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200025",
+        "ocr_document_no": "W-TS-84439-6902-10001234",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200026",
+        "ocr_document_no": "W-TS-84439-6902-10001235",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200018",
+        "ocr_document_no": "7",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200019",
+        "ocr_document_no": "IV-202602545",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200002",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "69122096153",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200020",
+        "ocr_document_no": "HS2600162",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200006",
+        "match_status": "no_ocr_data"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200035",
+        "ocr_document_no": "AA69696902240037",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200071",
+        "ocr_document_no": "0365",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260100101",
+        "ocr_document_no": "AA69696902240028",
+        "match_status": "full_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260200027",
+        "ocr_document_no": "AA69696902240028",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 20,
+        "purchase_reference": "EXP-20260200028",
+        "ocr_document_no": "AA69696902240030",
+        "match_status": "full_match"
+      },
+      {
+        "index": 21,
+        "purchase_reference": "EXP-20260200029",
+        "ocr_document_no": "AA69696902240031",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 22,
+        "purchase_reference": "EXP-20260200030",
+        "ocr_document_no": "AA69669602240032",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 23,
+        "purchase_reference": "EXP-20260200031",
+        "ocr_document_no": "AA69696902240033",
+        "match_status": "full_match"
+      },
+      {
+        "index": 24,
+        "purchase_reference": "EXP-20260200032",
+        "ocr_document_no": "AA68696902240034",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 25,
+        "purchase_reference": "EXP-20260200033",
+        "ocr_document_no": "AA69696902240035",
+        "match_status": "full_match"
+      },
+      {
+        "index": 26,
+        "purchase_reference": "EXP-20260200034",
+        "ocr_document_no": "AA69696902240036",
+        "match_status": "full_match"
+      },
+      {
+        "index": 27,
+        "purchase_reference": "EXP-20260200036",
+        "ocr_document_no": "AA69696902240038",
+        "match_status": "full_match"
+      },
+      {
+        "index": 28,
+        "purchase_reference": "EXP-20260200037",
+        "ocr_document_no": "AA69696902240039",
+        "match_status": "full_match"
+      },
+      {
+        "index": 29,
+        "purchase_reference": "EXP-20260200038",
+        "ocr_document_no": "AA69696902240040",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 30,
+        "purchase_reference": "EXP-20260200039",
+        "ocr_document_no": "AA69696902240041",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 31,
+        "purchase_reference": "EXP-20260200040",
+        "ocr_document_no": "AA69696902240042",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 32,
+        "purchase_reference": "EXP-20260200041",
+        "ocr_document_no": "AA69696902240043",
+        "match_status": "full_match"
+      },
+      {
+        "index": 33,
+        "purchase_reference": "EXP-20260200042",
+        "ocr_document_no": "AA69696902240044",
+        "match_status": "full_match"
+      },
+      {
+        "index": 34,
+        "purchase_reference": "EXP-20260300001",
+        "ocr_document_no": "AA69696902240045",
+        "match_status": "full_match"
+      },
+      {
+        "index": 35,
+        "purchase_reference": "EXP-20260200043",
+        "ocr_document_no": "AA69696902240046",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 36,
+        "purchase_reference": "EXP-20260300002",
+        "ocr_document_no": "AA69696902240047",
+        "match_status": "full_match"
+      },
+      {
+        "index": 37,
+        "purchase_reference": "EXP-20260200044",
+        "ocr_document_no": "AA69696902240048",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 38,
+        "purchase_reference": "EXP-20260300003",
+        "ocr_document_no": "AA69696902240049",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 39,
+        "purchase_reference": "EXP-20260200045",
+        "ocr_document_no": "AA69696902240050",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 40,
+        "purchase_reference": "EXP-20260200046",
+        "ocr_document_no": "AA69696902240051",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 41,
+        "purchase_reference": "EXP-20260200047",
+        "ocr_document_no": "AA69696902240052",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 42,
+        "purchase_reference": "EXP-20260200048",
+        "ocr_document_no": "AA69696902240053",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 43,
+        "purchase_reference": "EXP-20260200049",
+        "ocr_document_no": "AA69696902240054",
+        "match_status": "full_match"
+      },
+      {
+        "index": 44,
+        "purchase_reference": "EXP-20260200050",
+        "ocr_document_no": "AA69696902240055",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 45,
+        "purchase_reference": "EXP-20260200051",
+        "ocr_document_no": "AA69696902240056",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 46,
+        "purchase_reference": "EXP-20260200052",
+        "ocr_document_no": "AA69696902240057",
+        "match_status": "full_match"
+      },
+      {
+        "index": 47,
+        "purchase_reference": "EXP-20260200053",
+        "ocr_document_no": "AA69696902240058",
+        "match_status": "full_match"
+      },
+      {
+        "index": 48,
+        "purchase_reference": "EXP-20260200054",
+        "ocr_document_no": "AA69696902240059",
+        "match_status": "full_match"
+      },
+      {
+        "index": 49,
+        "purchase_reference": "EXP-20260200055",
+        "ocr_document_no": "AA69696902240060",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 50,
+        "purchase_reference": "EXP-20260200056",
+        "ocr_document_no": "AA69696902240061",
+        "match_status": "full_match"
+      },
+      {
+        "index": 51,
+        "purchase_reference": "EXP-20260200057",
+        "ocr_document_no": "AA69696902240062",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 52,
+        "purchase_reference": "EXP-20260200058",
+        "ocr_document_no": "AA69696902240063",
+        "match_status": "full_match"
+      },
+      {
+        "index": 53,
+        "purchase_reference": "EXP-20260200059",
+        "ocr_document_no": "AA69696902240064",
+        "match_status": "full_match"
+      },
+      {
+        "index": 54,
+        "purchase_reference": "EXP-20260200060",
+        "ocr_document_no": "AA69696902240065",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 55,
+        "purchase_reference": "EXP-20260200061",
+        "ocr_document_no": "AA69696902240066",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 56,
+        "purchase_reference": "EXP-20260200062",
+        "ocr_document_no": "AA69696902240067",
+        "match_status": "full_match"
+      },
+      {
+        "index": 57,
+        "purchase_reference": "EXP-20260200063",
+        "ocr_document_no": "AA69696902240068",
+        "match_status": "full_match"
+      },
+      {
+        "index": 58,
+        "purchase_reference": "EXP-20260200064",
+        "ocr_document_no": "AA69696902240069",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 59,
+        "purchase_reference": "EXP-20260200065",
+        "ocr_document_no": "AA69696902240070",
+        "match_status": "full_match"
+      },
+      {
+        "index": 60,
+        "purchase_reference": "EXP-20260200066",
+        "ocr_document_no": "AA69686902240071",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 61,
+        "purchase_reference": "EXP-20260200067",
+        "ocr_document_no": "AA69696902240072",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 62,
+        "purchase_reference": "EXP-20260200068",
+        "ocr_document_no": "AA69696902240073",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 63,
+        "purchase_reference": "EXP-20260200069",
+        "ocr_document_no": "AA69696902240074",
+        "match_status": "full_match"
+      },
+      {
+        "index": 64,
+        "purchase_reference": "EXP-20260200070",
+        "ocr_document_no": "AA69696902240075",
+        "match_status": "full_match"
+      },
+      {
+        "index": 65,
+        "purchase_reference": "EXP-20260300004",
+        "ocr_document_no": "AA69696902240076",
+        "match_status": "full_match"
+      },
+      {
+        "index": 66,
+        "purchase_reference": "EXP-20260200072",
+        "ocr_document_no": "1414554219",
+        "match_status": "full_match"
+      },
+      {
+        "index": 67,
+        "purchase_reference": "EXP-20260200087",
+        "ocr_document_no": "EA69126902260001",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 68,
+        "purchase_reference": "EXP-20260200021",
+        "ocr_document_no": "002/0018",
+        "match_status": "full_match"
+      },
+      {
+        "index": 69,
+        "ocr_document_no": "TF.002/0014",
+        "match_status": "no_match"
+      },
+      {
+        "index": 70,
+        "ocr_document_no": "69122096153",
+        "match_status": "no_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

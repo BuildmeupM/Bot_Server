@@ -1,0 +1,258 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-19T12:37:30.090Z",
+  "last_saved": "2026-03-19T19:37:27.458073",
+  "company": "Build550 บริษัท เน็กซ์ไลฟ์สไตล์ จำกัด",
+  "base_company": "Build550 บริษัท เน็กซ์ไลฟ์สไตล์ จำกัด",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "6": "",
+    "8": "",
+    "10": "",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท อัลฟ่า ซัพพลาย จำกัด' แต่ OCR='บริษัท อัลฟ้า ซัพพลาย จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='IVT-2026020000' แต่ OCR='IVT-20260200001'",
+    "14": "",
+    "17": "",
+    "19": ""
+  },
+  "initialNotes": {
+    "6": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260217-0025245' แต่ OCR='TRSPEMKP00-00000-26'",
+    "8": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260219-0005418' แต่ OCR='TRSPEMKP00-00000-26'",
+    "10": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260222-0022006' แต่ OCR='TRSPEMKP00-00000-26'",
+    "13": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท อัลฟ่า ซัพพลาย จำกัด' แต่ OCR='บริษัท อัลฟ้า ซัพพลาย จำกัด'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='IVT-2026020000' แต่ OCR='IVT-20260200001'",
+    "14": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260225-0020421' แต่ OCR='TRSPEMKP00-00000-26'",
+    "17": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260227-0009011' แต่ OCR='TRSPEMKP00-00000-26'",
+    "19": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='TRSPEMKP00-00000-260228-0001808' แต่ OCR='TRSPEMKP00-00000-26'"
+  },
+  "comparisonApprovals": {
+    "6-document_no_match": true,
+    "8-document_no_match": true,
+    "10-document_no_match": true,
+    "13-company_name_match": true,
+    "14-document_no_match": true,
+    "17-document_no_match": true,
+    "19-document_no_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\AAA.โฟรเดอร์หลัก\\Build550 บริษัท เน็กซ์ไลฟ์สไตล์ จำกัด\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 20,
+    "metadata": [
+      {
+        "filename": "26.02.2026_EXP-20260200015_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "15.02.2026_EXP-20260200002_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "27.02.2026_EXP-20260200017_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "17.02.2026_EXP-20260300001_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "28.02.2026_WHT_EXP-20260200022_530401_ค่าบริการบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "28.02.2026_EXP-20260200019_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200028_510103_ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด แคนวาส ฟุตแวร์"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200011_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "22.02.2026_EXP-20260200010_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200026_510103_ต้นทุนขายสินค้า_VAT.pdf",
+        "company_name": "ห้างหุ้นส่วนจำกัด แคนวาส ฟุตแวร์"
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200013_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "20.02.2026_EXP-20260200008_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "19.02.2026_EXP-20260200006_ค่าบริการ_Shopee_VAT.pdf",
+        "company_name": "Shopee (Thailand) Co., Ltd."
+      },
+      {
+        "filename": "25.02.2026_EXP-20260200031_510103_ต้นทุนขายสินค้า_VAT.jpg",
+        "company_name": "บริษัท อัลฟ้า ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200025_510103_ต้นทุนขายสินค้า_VAT.jpg",
+        "company_name": "ห้างหุ้นส่วนจำกัด แคนวาส ฟุตแวร์"
+      },
+      {
+        "filename": "07.02.2026_EXP-20260200027_510103_ต้นทุนขายสินค้า_VAT.jpg",
+        "company_name": "ห้างหุ้นส่วนจำกัด แคนวาส ฟุตแวร์"
+      },
+      {
+        "filename": "26.02.2026_EXP-20260200032_510103_ต้นทุนขายสินค้า_VAT.jpg",
+        "company_name": "บริษัท อัลฟ่า ซัพพลาย จำกัด"
+      },
+      {
+        "filename": "19.02.2026_EXP-20260200029_510103_ต้นทุนขายสินค้า_VAT.jpg",
+        "company_name": "ห้างหุ้นส่วนจำกัด แคนวาส ฟุตแวร์"
+      },
+      {
+        "filename": "02.02.2026_EXP-20260200024_510103_ต้นทุนขายสินค้า_VAT..jpg",
+        "company_name": "ห้างหุ้นส่วนจำกัด แคนวาส ฟุตแวร์"
+      },
+      {
+        "filename": "23.02.2026_EXP-20260200030_510103_ต้นทุนขายสินค้า_VAT.jpg",
+        "company_name": "บริษัท คอนนิ โซลูชั่น จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 20,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200025",
+        "ocr_document_no": "IV-69-0276",
+        "match_status": "full_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200026",
+        "ocr_document_no": "IV-69-0277",
+        "match_status": "full_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200024",
+        "ocr_document_no": "IV-69-0278",
+        "match_status": "full_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200027",
+        "ocr_document_no": "IV-69-0335",
+        "match_status": "full_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200028",
+        "ocr_document_no": "IV-69-0336",
+        "match_status": "full_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200002",
+        "ocr_document_no": "TRSPEMKP00-00000-260215-0007021",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260300001",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200029",
+        "ocr_document_no": "IV-69-0395",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200008",
+        "ocr_document_no": "TRSPEMKP00-00000-260220-0007380",
+        "match_status": "full_match"
+      },
+      {
+        "index": 10,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 11,
+        "purchase_reference": "EXP-20260200030",
+        "ocr_document_no": "IVT-20260200004",
+        "match_status": "full_match"
+      },
+      {
+        "index": 12,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "TRSPEMKP00-00000-260223-0019249",
+        "match_status": "full_match"
+      },
+      {
+        "index": 13,
+        "purchase_reference": "EXP-20260200031",
+        "ocr_document_no": "IVT-20260200001",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 14,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 15,
+        "purchase_reference": "EXP-20260200032",
+        "ocr_document_no": "IVT-20260200002",
+        "match_status": "full_match"
+      },
+      {
+        "index": 16,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "TRSPEMKP00-00000-260226-0018429",
+        "match_status": "full_match"
+      },
+      {
+        "index": 17,
+        "purchase_reference": "EXP-20260200017",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 18,
+        "purchase_reference": "EXP-20260200022",
+        "ocr_document_no": "RT-20260200351",
+        "match_status": "full_match"
+      },
+      {
+        "index": 19,
+        "purchase_reference": "EXP-20260200019",
+        "ocr_document_no": "TRSPEMKP00-00000-26",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

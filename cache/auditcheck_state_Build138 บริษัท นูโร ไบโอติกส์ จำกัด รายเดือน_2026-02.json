@@ -1,0 +1,77 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-16T11:40:07.850Z",
+  "last_saved": "2026-03-16T18:39:58.329808",
+  "company": "Build138 บริษัท นูโร ไบโอติกส์ จำกัด รายเดือน",
+  "base_company": "Build138 บริษัท นูโร ไบโอติกส์ จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท เพย์ โซลูชั่น จำกัด' แต่ OCR='บริษัท เพย โซลูชั่น จํากัด'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=365.80 แต่ OCR=355.82 (ต่างกัน 9.98)",
+    "1": "เลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='RT-2026020094' แต่ OCR='RT-20260200094'",
+    "2": "มูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=365.80 แต่ OCR=355.82 (ต่างกัน 9.98)"
+  },
+  "comparisonApprovals": {
+    "0-company_name_match": true,
+    "0-total_amount_match": true,
+    "1-document_no_match": true,
+    "2-total_amount_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build138 บริษัท นูโร ไบโอติกส์ จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 3,
+    "metadata": [
+      {
+        "filename": "06.02.2026_WHT_EXP-20260200004_ค่าบริการ_VAT.pdf",
+        "company_name": "บริษัท เพย โซลูชั่น จํากัด"
+      },
+      {
+        "filename": "28.02.2025_WHT_EXP-20260200005_ค่าบริการ_VAT.pdf",
+        "company_name": "บริษัท เพย์ โซลูชั่น จำกัด"
+      },
+      {
+        "filename": "10.02.2026_WHT_EXP-20260200001_ค่าบริการบัญชี_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 3,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200004",
+        "ocr_document_no": "202602060084",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "RT-20260200094",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200005",
+        "ocr_document_no": "202602280305",
+        "match_status": "partial_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

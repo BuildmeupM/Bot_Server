@@ -1,0 +1,166 @@
+{
+  "version": "1.1",
+  "timestamp": "2026-03-18T06:17:58.832Z",
+  "last_saved": "2026-03-18T13:18:00.807526",
+  "company": "Build114 บริษัท ดับเบิ้ลยูเอ็ม เจมส์ แอนด์ โค. จำกัด รายเดือน",
+  "base_company": "Build114 บริษัท ดับเบิ้ลยูเอ็ม เจมส์ แอนด์ โค. จำกัด รายเดือน",
+  "branch_info": null,
+  "taxMonth": "2026-02",
+  "taxYear": "2026",
+  "taxMonthValue": "02",
+  "comparisonNotes": {
+    "0": "",
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": ""
+  },
+  "initialNotes": {
+    "0": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท บีส กรุงเทพฯบริการ จำกัด' แต่ OCR='บริษัท บีส กรุงเทพฯ บริการ จำกัด'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=13,386.00 แต่ OCR=21,666.00 (ต่างกัน 8,280.00)",
+    "1": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='1190-091675/10-02-69' แต่ OCR='1190-091675'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=27,414.29 แต่ OCR=0.00 (ต่างกัน 27,414.29)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=29,333.29 แต่ OCR=1,919.00 (ต่างกัน 27,414.29)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "2": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ดีเอชแอล เอ๊กซ์เพรส อินเตอร์เนชั่นแนล (ประเทศไทย) จำกัด' แต่ OCR='DHL EXPRESS INTERNATIONAL (THAILAND) LTD.'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=1,048.50 แต่ OCR=2,967.50 (ต่างกัน 1,919.00)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=1,121.90 แต่ OCR=3,040.90 (ต่างกัน 1,919.00)",
+    "3": "เลขประจำตัวผู้เสียภาษีไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='ไม่พบ'\nสาขาไม่ตรงกัน: ภาษีซื้อ='' แต่ OCR='00000'\nเลขที่ใบกำกับไม่ตรงกัน: ภาษีซื้อ='1190-095073/12-02-69' แต่ OCR='1190-095073'\nรายการ 7% ไม่ตรงกัน: ภาษีซื้อ=19,071.43 แต่ OCR=0.00 (ต่างกัน 19,071.43)\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=20,406.43 แต่ OCR=1,335.00 (ต่างกัน 19,071.43)\nประเภทเอกสารไม่ตรงกัน: ภาษีซื้อ='ใบกำกับภาษี' แต่ OCR='ใบเสร็จรับเงิน'",
+    "4": "ชื่อบริษัทไม่ตรงกัน: ภาษีซื้อ='บริษัท ดีเอชแอล เอ๊กซ์เพรส อินเตอร์เนชั่นแนล (ประเทศไทย) จำกัด' แต่ OCR='DHL EXPRESS INTERNATIONAL (THAILAND) LTD.'\nมูลค่ารวมไม่ตรงกัน: ภาษีซื้อ=604.55 แต่ OCR=1,939.55 (ต่างกัน 1,335.00)"
+  },
+  "comparisonApprovals": {
+    "0-amount_before_vat_match": true,
+    "0-company_name_match": true,
+    "1-document_no_match": true,
+    "1-tax_id_match": true,
+    "1-branch_match": true,
+    "1-amount_before_vat_match": true,
+    "1-total_amount_match": true,
+    "1-document_type_match": true,
+    "2-amount_before_vat_match": true,
+    "2-total_amount_match": true,
+    "2-company_name_match": true,
+    "3-document_no_match": true,
+    "3-tax_id_match": true,
+    "3-branch_match": true,
+    "3-amount_before_vat_match": true,
+    "3-total_amount_match": true,
+    "3-document_type_match": true,
+    "4-company_name_match": true,
+    "4-total_amount_match": true
+  },
+  "invalidDocuments": {},
+  "selfCheckMode": {},
+  "vatFolderPath": "V:\\A.โฟร์เดอร์หลัก\\Build114 บริษัท ดับเบิ้ลยูเอ็ม เจมส์ แอนด์ โค. จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT",
+  "step4OCRData": {
+    "count": 10,
+    "metadata": [
+      {
+        "filename": "10.02.2026_EXP-20260200012_นำข้าสินค้า 1_VAT.pdf",
+        "company_name": "DHL EXPRESS INTERNATIONAL (THAILAND) LTD."
+      },
+      {
+        "filename": "09.02.2026_WHT_EXP-20260200001_ค่าเช่าออฟฟิต_VAT-1.pdf",
+        "company_name": "บริษัท บีส กรุงเทพฯ บริการ จำกัด"
+      },
+      {
+        "filename": "10.02.2026_EXP-20260200013_กรมศุล นำข้าสินค้า 1_VAT.pdf",
+        "company_name": "กรมศุลกากร"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200011_ทรู 2_VAT.pdf",
+        "company_name": "บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200015_กรมศุลกากร นำเข้าสินค้า 2_VAT.pdf",
+        "company_name": "กรมศุลกากร"
+      },
+      {
+        "filename": "13.02.2026_EXP-20260200009_ค่าอุปกรณ์สำนักงาน_VAT.pdf",
+        "company_name": "บริษัท ออฟฟิศเมท (ไทย) จำกัด"
+      },
+      {
+        "filename": "12.02.2026_EXP-20260200014_นำเข้าสินค้า 2_VAT.pdf",
+        "company_name": "DHL EXPRESS INTERNATIONAL (THAILAND) LTD."
+      },
+      {
+        "filename": "20.02.2026_WHT_EXP-20260200006_ค่าทำบัญชี RT-20260200255_VAT.pdf",
+        "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200016_แพ็คเกจ_VAT.pdf",
+        "company_name": "บริษัท เพชรรัตน์ แพ็คเกจ จำกัด"
+      },
+      {
+        "filename": "16.02.2026_EXP-20260200010_ทรู 1_VAT.pdf",
+        "company_name": "บริษัท ทรู อินเทอร์เน็ต คอร์ปอเรชั่น จำกัด"
+      }
+    ]
+  },
+  "comparisonResults": {
+    "count": 10,
+    "metadata": [
+      {
+        "index": 0,
+        "purchase_reference": "EXP-20260200001",
+        "ocr_document_no": "RE6900414",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 1,
+        "purchase_reference": "EXP-20260200013",
+        "ocr_document_no": "1190-091675",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 2,
+        "purchase_reference": "EXP-20260200012",
+        "ocr_document_no": "D11666317",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 3,
+        "purchase_reference": "EXP-20260200015",
+        "ocr_document_no": "1190-095073",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 4,
+        "purchase_reference": "EXP-20260200014",
+        "ocr_document_no": "D11672642",
+        "match_status": "partial_match"
+      },
+      {
+        "index": 5,
+        "purchase_reference": "EXP-20260200009",
+        "ocr_document_no": "000861022602101191",
+        "match_status": "full_match"
+      },
+      {
+        "index": 6,
+        "purchase_reference": "EXP-20260200016",
+        "ocr_document_no": "OCTM6902000082",
+        "match_status": "full_match"
+      },
+      {
+        "index": 7,
+        "purchase_reference": "EXP-20260200010",
+        "ocr_document_no": "TIISVO16022026000002214",
+        "match_status": "full_match"
+      },
+      {
+        "index": 8,
+        "purchase_reference": "EXP-20260200011",
+        "ocr_document_no": "TIISVO16022026000002215",
+        "match_status": "full_match"
+      },
+      {
+        "index": 9,
+        "purchase_reference": "EXP-20260200006",
+        "ocr_document_no": "RT-20260200255",
+        "match_status": "full_match"
+      }
+    ]
+  },
+  "completedSteps": {
+    "step1": true,
+    "step2": true,
+    "step3": true,
+    "step4": true,
+    "step5": false
+  }
+}

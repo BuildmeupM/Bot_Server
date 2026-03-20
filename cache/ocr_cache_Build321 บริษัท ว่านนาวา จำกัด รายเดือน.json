@@ -566,5 +566,377 @@
       "success": true
     },
     "cached_at": 1771575488.0785346
+  },
+  "43a9f48bf35ec978eb9289cfa795575a": {
+    "filename": "14.02.2026_WHT_EXP-20260200011_RT-20260200175_VAT.pdf",
+    "filepath": "Y:\\Build321 บริษัท ว่านนาวา จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\14.02.2026_WHT_EXP-20260200011_RT-20260200175_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RT-20260200175\nวันที่: 14/02/2026\nชื่อผู้ขาย: บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105564068709\nที่อยู่ผู้ขาย: เลขที่ 212/249-250 หมู่บ้าน คุณาลัย คอร์ทยาคิต ถนน บ้านกล้วย-ไทรน้อย ตำบล พิมลราช อำเภอบางบัวทอง จังหวัดนนทบุรี 11110\nชื่อผู้ซื้อ: Build321 บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: เลขที่ 49/12 หมู่ 1 ถนนพุทธมณฑล สาย 4 ตำบลบางกระทึก อำเภอสามพราน จังหวัดนครปฐม 73210\nยอดรวมก่อนภาษี: 3,700.00\nภาษีมูลค่าเพิ่ม: 259.00\nยอดรวมสุทธิ: 3,959.00\n\nรายการสินค้า/บริการ:\n  - ทำบัญชี (P00001) ค่าบริการบัญชี - เดือนกุมภาพันธ์ 2026: 3,700.00",
+      "raw_text_preview": "ประเภทเอกสาร: ใบเสร็จรับเงิน/ใบกำกับภาษี\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: RT-20260200175\nวันที่: 14/02/2026\nชื่อผู้ขาย: บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105564068709\nที่อยู่ผู้ขาย: เลขที่ 212/249-250 หมู่บ้าน คุณาลัย คอร์ทยาคิต ถนน บ้านกล้วย-ไทรน้อย ตำบล พิมลราช อำเภอบางบัวทอง จังหวัดนนทบุรี 11110\nชื่อผู้ซื้อ: Build321 บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: เลขที่ 49/12 หมู่ 1 ถนนพุทธมณฑล สาย 4 ตำบลบางกระท",
+      "company_name": "บริษัท บิลด์มีอัพ คอนซัลแทนท์ จำกัด",
+      "tax_id": "0105564068709",
+      "branch": "00000",
+      "date": "14/02/2026",
+      "document_number": "RT-20260200175",
+      "reference_number": "EXP-20260200011",
+      "document_status": "",
+      "amount_before_vat": 3700.0,
+      "vat_amount": 259.0,
+      "total_amount": 3959.0,
+      "document_type": "ใบเสร็จรับเงิน/ใบกำกับภาษี",
+      "items": [
+        {
+          "จำนวน": "1.00",
+          "จำนวนเงิน": "3,700.00",
+          "ราคาต่อหน่วย": "3,700.00",
+          "รายการ": "ทำบัญชี (P00001) ค่าบริการบัญชี - เดือนกุมภาพันธ์ 2026",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "Build321 บริษัท ว่านนาวา จำกัด",
+      "buyer_tax_id": "0735561005662",
+      "buyer_address": "เลขที่ 49/12 หมู่ 1 ถนนพุทธมณฑล สาย 4 ตำบลบางกระทึก อำเภอสามพราน จังหวัดนครปฐม 73210",
+      "success": true
+    },
+    "cached_at": 1773920159.9400992
+  },
+  "f647c78db59d4524d5f825ffbf0a74ce": {
+    "filename": "01.02.2026_WHT_EXP-20260200003_ค่าแพ็คเกจรายเดือน Line OA_VAT.pdf",
+    "filepath": "Y:\\Build321 บริษัท ว่านนาวา จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\Line\\01.02.2026_WHT_EXP-20260200003_ค่าแพ็คเกจรายเดือน Line OA_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ONTX20260201-005104\nวันที่: 01/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th-18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok 10330, Thailand\nชื่อผู้ซื้อ: บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: เลขที่ 49/12 หมู่ที่ 1 ถนน พุทธมณฑล สาย 4 ตำบลบางกระทึก อำเภอสามพราน จังหวัดนครปฐม 73210\nยอดรวมก่อนภาษี: 1,280.00\nภาษีมูลค่าเพิ่ม: 89.60\nยอดรวมสุทธิ: 1,369.60\n\nรายการสินค้า/บริการ:\n  - ออฟฟิเชียลแอคเคาท์ แพ็กเกจรายเดือน เบสิค (Period of service: 2026-02): 1,280.00",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ONTX20260201-005104\nวันที่: 01/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th-18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok 10330, Thailand\nชื่อผู้ซื้อ: บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: เลขที่ 49/12 หมู่ที่ 1 ถนน พุทธมณฑล สาย 4 ตำบลบางกระทึก อำเภอสา",
+      "company_name": "LINE COMPANY (THAILAND) LIMITED",
+      "tax_id": "0105557074618",
+      "branch": "00000",
+      "date": "01/02/2026",
+      "document_number": "ONTX20260201-005104",
+      "reference_number": "EXP-20260200003",
+      "document_status": "",
+      "amount_before_vat": 1280.0,
+      "vat_amount": 89.6,
+      "total_amount": 1369.6,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "1,280.00",
+          "ราคาต่อหน่วย": "1,280.00",
+          "รายการ": "ออฟฟิเชียลแอคเคาท์ แพ็กเกจรายเดือน เบสิค (Period of service: 2026-02)",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "บริษัท ว่านนาวา จำกัด",
+      "buyer_tax_id": "0735561005662",
+      "buyer_address": "เลขที่ 49/12 หมู่ที่ 1 ถนน พุทธมณฑล สาย 4 ตำบลบางกระทึก อำเภอสามพราน จังหวัดนครปฐม 73210",
+      "success": true
+    },
+    "cached_at": 1773920170.305318
+  },
+  "29d770ed8c0932408ffa87f90114d018": {
+    "filename": "06.02.2026_EXP-20260200014_ใบกำกับภาษี 6.2.2569_VAT.pdf",
+    "filepath": "Y:\\Build321 บริษัท ว่านนาวา จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\Line\\06.02.2026_EXP-20260200014_ใบกำกับภาษี 6.2.2569_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Tax Invoice/Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ECPTX20260206-GP000115\nวันที่: 06/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th - 18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok, 10330\nชื่อผู้ซื้อ: บ.วานนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม 73210\nยอดรวมก่อนภาษี: 9.00\nภาษีมูลค่าเพิ่ม: 0.63\nยอดรวมสุทธิ: 9.63\n\nรายการสินค้า/บริการ:\n  - LINE Shopping: Transaction fee for order date 2026-02-06: 9.00",
+      "raw_text_preview": "ประเภทเอกสาร: Tax Invoice/Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ECPTX20260206-GP000115\nวันที่: 06/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th - 18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok, 10330\nชื่อผู้ซื้อ: บ.วานนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม ",
+      "company_name": "LINE COMPANY (THAILAND) LIMITED",
+      "tax_id": "0105557074618",
+      "branch": "00000",
+      "date": "06/02/2026",
+      "document_number": "ECPTX20260206-GP000115",
+      "reference_number": "EXP-20260200014",
+      "document_status": "",
+      "amount_before_vat": 9.0,
+      "vat_amount": 0.63,
+      "total_amount": 9.63,
+      "document_type": "Tax Invoice/Receipt",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "9.00",
+          "ราคาต่อหน่วย": "9.00",
+          "รายการ": "LINE Shopping: Transaction fee for order date 2026-02-06",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "บ.วานนาวา จำกัด",
+      "buyer_tax_id": "0735561005662",
+      "buyer_address": "49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม 73210",
+      "success": true
+    },
+    "cached_at": 1773920178.804778
+  },
+  "5f47268f3e8aaafa6cd37b98f04f3191": {
+    "filename": "16.02.2026_EXP-20260200015_ใบกำกับภาษี 16.2.2569_VAT.pdf",
+    "filepath": "Y:\\Build321 บริษัท ว่านนาวา จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\Line\\16.02.2026_EXP-20260200015_ใบกำกับภาษี 16.2.2569_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Tax Invoice/Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ECPTX20260216-GP001151\nวันที่: 16/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th - 18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok, 10330\nชื่อผู้ซื้อ: บ.วานนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม 73210\nยอดรวมก่อนภาษี: 81.00\nภาษีมูลค่าเพิ่ม: 5.67\nยอดรวมสุทธิ: 86.67\n\nรายการสินค้า/บริการ:\n  - LINE Shopping: Transaction fee for order date 2026-02-16: 40.50\n  - LINE Shopping: Service fee for order date 2026-02-16: 40.50",
+      "raw_text_preview": "ประเภทเอกสาร: Tax Invoice/Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ECPTX20260216-GP001151\nวันที่: 16/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th - 18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok, 10330\nชื่อผู้ซื้อ: บ.วานนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม ",
+      "company_name": "LINE COMPANY (THAILAND) LIMITED",
+      "tax_id": "0105557074618",
+      "branch": "00000",
+      "date": "16/02/2026",
+      "document_number": "ECPTX20260216-GP001151",
+      "reference_number": "EXP-20260200015",
+      "document_status": "",
+      "amount_before_vat": 81.0,
+      "vat_amount": 5.67,
+      "total_amount": 86.67,
+      "document_type": "Tax Invoice/Receipt",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "40.50",
+          "ราคาต่อหน่วย": "40.50",
+          "รายการ": "LINE Shopping: Transaction fee for order date 2026-02-16",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "40.50",
+          "ราคาต่อหน่วย": "40.50",
+          "รายการ": "LINE Shopping: Service fee for order date 2026-02-16",
+          "ลำดับ": "2"
+        }
+      ],
+      "buyer_name": "บ.วานนาวา จำกัด",
+      "buyer_tax_id": "0735561005662",
+      "buyer_address": "49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม 73210",
+      "success": true
+    },
+    "cached_at": 1773920188.4718876
+  },
+  "ae63aa4b9c65ac8181dbe8155f294f4b": {
+    "filename": "19.02.2026_EXP-20260200016_ใบกำกับภาษี 19.2.2569_VAT.pdf",
+    "filepath": "Y:\\Build321 บริษัท ว่านนาวา จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\Line\\19.02.2026_EXP-20260200016_ใบกำกับภาษี 19.2.2569_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Tax Invoice/Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ECPTX20260219-GP000569\nวันที่: 19/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th - 18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok, 10330\nชื่อผู้ซื้อ: บ.วานนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม 73210\nยอดรวมก่อนภาษี: 16.50\nภาษีมูลค่าเพิ่ม: 1.16\nยอดรวมสุทธิ: 17.66\n\nรายการสินค้า/บริการ:\n  - LINE Shopping: Transaction fee for order date 2026-02-19: 16.50",
+      "raw_text_preview": "ประเภทเอกสาร: Tax Invoice/Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ECPTX20260219-GP000569\nวันที่: 19/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th - 18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok, 10330\nชื่อผู้ซื้อ: บ.วานนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม ",
+      "company_name": "LINE COMPANY (THAILAND) LIMITED",
+      "tax_id": "0105557074618",
+      "branch": "00000",
+      "date": "19/02/2026",
+      "document_number": "ECPTX20260219-GP000569",
+      "reference_number": "EXP-20260200016",
+      "document_status": "",
+      "amount_before_vat": 16.5,
+      "vat_amount": 1.16,
+      "total_amount": 17.66,
+      "document_type": "Tax Invoice/Receipt",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "16.50",
+          "ราคาต่อหน่วย": "16.50",
+          "รายการ": "LINE Shopping: Transaction fee for order date 2026-02-19",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "บ.วานนาวา จำกัด",
+      "buyer_tax_id": "0735561005662",
+      "buyer_address": "49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม 73210",
+      "success": true
+    },
+    "cached_at": 1773920197.135937
+  },
+  "0ae578fabb616b0cbf4d8d7e80f2d5e9": {
+    "filename": "24.02.2026_EXP-20260200017_ใบกำกับภาษี 24.2.2569_VAT.pdf",
+    "filepath": "Y:\\Build321 บริษัท ว่านนาวา จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\Line\\24.02.2026_EXP-20260200017_ใบกำกับภาษี 24.2.2569_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ECPTX20260224-GP000214\nวันที่: 24/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th - 18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok, 10330\nชื่อผู้ซื้อ: บ.วานนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม 73210\nยอดรวมก่อนภาษี: 40.50\nภาษีมูลค่าเพิ่ม: 2.84\nยอดรวมสุทธิ: 43.34\n\nรายการสินค้า/บริการ:\n  - LINE Shopping: Transaction fee for order date 2026-02-24: 40.50",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: ECPTX20260224-GP000214\nวันที่: 24/02/2026\nชื่อผู้ขาย: LINE COMPANY (THAILAND) LIMITED\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105557074618\nที่อยู่ผู้ขาย: 127 Gaysorn Tower, 17th - 18th Floor, Ratchadamri Road, Lumpini Subdistrict, Pathumwan District, Bangkok, 10330\nชื่อผู้ซื้อ: บ.วานนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม ",
+      "company_name": "LINE COMPANY (THAILAND) LIMITED",
+      "tax_id": "0105557074618",
+      "branch": "00000",
+      "date": "24/02/2026",
+      "document_number": "ECPTX20260224-GP000214",
+      "reference_number": "EXP-20260200017",
+      "document_status": "",
+      "amount_before_vat": 40.5,
+      "vat_amount": 2.84,
+      "total_amount": 43.34,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวน": "1",
+          "จำนวนเงิน": "40.50",
+          "ราคาต่อหน่วย": "40.50",
+          "รายการ": "LINE Shopping: Transaction fee for order date 2026-02-24",
+          "ลำดับ": "1"
+        }
+      ],
+      "buyer_name": "บ.วานนาวา จำกัด",
+      "buyer_tax_id": "0735561005662",
+      "buyer_address": "49/12 1 พุทธมณฑลสาย4 แขวง/ตำบล บางกระทึก เขต/อำเภอ สามพราน จังหวัดนครปฐม 73210",
+      "success": true
+    },
+    "cached_at": 1773920206.6088138
+  },
+  "ed5d4498381ed95b85ae96297d9dc676": {
+    "filename": "03.02.2026_EXP-20260200001_ค่าบริการ_Tiktok_VAT.pdf",
+    "filepath": "Y:\\Build321 บริษัท ว่านนาวา จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\Tiktok\\03.02.2026_EXP-20260200001_ค่าบริการ_Tiktok_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Tax Invoice / Receipt\nเลขที่ใบกำกับภาษี: TTSTH20260001084404\nวันที่: 03/02/2026\nชื่อผู้ขาย: TikTok Shop (Thailand) Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105566214176\nที่อยู่ผู้ขาย: No. 1 Park Silom Building, 9th-10th Floors, Convent Road, Silom Sub-district, Bangrak District, Bangkok, 10500\nชื่อผู้ซื้อ: บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพราน จ.นครปฐม 73210 Sam Phran District Nakhon Pathom Province The Kingdom of Thailand\nยอดรวมก่อนภาษี: 648.45\nภาษีมูลค่าเพิ่ม: 45.39\nยอดรวมสุทธิ: 693.84\n\nรายการสินค้า/บริการ:\n  - Commerce Growth Fee: 279.27\n  - TikTok Shop commission fee: 279.27\n  - Transaction fee: 135.30",
+      "raw_text_preview": "ประเภทเอกสาร: Tax Invoice / Receipt\nเลขที่ใบกำกับภาษี: TTSTH20260001084404\nวันที่: 03/02/2026\nชื่อผู้ขาย: TikTok Shop (Thailand) Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105566214176\nที่อยู่ผู้ขาย: No. 1 Park Silom Building, 9th-10th Floors, Convent Road, Silom Sub-district, Bangrak District, Bangkok, 10500\nชื่อผู้ซื้อ: บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพราน จ.นครปฐม 73210 Sam",
+      "company_name": "TikTok Shop (Thailand) Ltd.",
+      "tax_id": "0105566214176",
+      "branch": "00000",
+      "date": "03/02/2026",
+      "document_number": "TTSTH20260001084404",
+      "reference_number": "EXP-20260200001",
+      "document_status": "",
+      "amount_before_vat": 648.45,
+      "vat_amount": 45.39,
+      "total_amount": 693.84,
+      "document_type": "Tax Invoice / Receipt",
+      "items": [
+        {
+          "จำนวนเงิน": "279.27",
+          "ราคาต่อหน่วย": "261.00",
+          "รายการ": "Commerce Growth Fee",
+          "ลำดับ": "1"
+        },
+        {
+          "จำนวนเงิน": "279.27",
+          "ราคาต่อหน่วย": "261.00",
+          "รายการ": "TikTok Shop commission fee",
+          "ลำดับ": "2"
+        },
+        {
+          "จำนวนเงิน": "135.30",
+          "ราคาต่อหน่วย": "126.45",
+          "รายการ": "Transaction fee",
+          "ลำดับ": "3"
+        }
+      ],
+      "buyer_name": "บริษัท ว่านนาวา จำกัด",
+      "buyer_tax_id": "0735561005662",
+      "buyer_address": "49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพราน จ.นครปฐม 73210 Sam Phran District Nakhon Pathom Province The Kingdom of Thailand",
+      "success": true
+    },
+    "cached_at": 1773920219.0939195
+  },
+  "05b8a416da5f8f193a2e3b41261de16b": {
+    "filename": "10.02.2026_EXP-20260200018_TTSTH20260001121682PDF_VAT.pdf",
+    "filepath": "Y:\\Build321 บริษัท ว่านนาวา จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\Tiktok\\10.02.2026_EXP-20260200018_TTSTH20260001121682PDF_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Tax Invoice / Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: TTSTH20260001121682\nวันที่: 10/02/2026\nชื่อผู้ขาย: TikTok Shop (Thailand) Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105566214176\nที่อยู่ผู้ขาย: No. 1 Park Silom Building, 9th-10th Floors, Convent Road, Silom Sub-district, Bangrak District, Bangkok, 10500\nชื่อผู้ซื้อ: บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพราน จ.นครปฐม 73210\nยอดรวมก่อนภาษี: 210.01\nภาษีมูลค่าเพิ่ม: 14.70\nยอดรวมสุทธิ: 224.71\n\nรายการสินค้า/บริการ:\n  - Commerce Growth Fee: 89.88\n  - TikTok Shop commission fee: 89.88\n  - Transaction fee: 44.95",
+      "raw_text_preview": "ประเภทเอกสาร: Tax Invoice / Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: TTSTH20260001121682\nวันที่: 10/02/2026\nชื่อผู้ขาย: TikTok Shop (Thailand) Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105566214176\nที่อยู่ผู้ขาย: No. 1 Park Silom Building, 9th-10th Floors, Convent Road, Silom Sub-district, Bangrak District, Bangkok, 10500\nชื่อผู้ซื้อ: บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพร",
+      "company_name": "TikTok Shop (Thailand) Ltd.",
+      "tax_id": "0105566214176",
+      "branch": "00000",
+      "date": "10/02/2026",
+      "document_number": "TTSTH20260001121682",
+      "reference_number": "EXP-20260200018",
+      "document_status": "",
+      "amount_before_vat": 210.01,
+      "vat_amount": 14.7,
+      "total_amount": 224.71,
+      "document_type": "Tax Invoice / Receipt",
+      "items": [
+        {
+          "จำนวนเงิน": "89.88",
+          "ราคาต่อหน่วย": "84.00",
+          "รายการ": "Commerce Growth Fee"
+        },
+        {
+          "จำนวนเงิน": "89.88",
+          "ราคาต่อหน่วย": "84.00",
+          "รายการ": "TikTok Shop commission fee"
+        },
+        {
+          "จำนวนเงิน": "44.95",
+          "ราคาต่อหน่วย": "42.01",
+          "รายการ": "Transaction fee"
+        }
+      ],
+      "buyer_name": "บริษัท ว่านนาวา จำกัด",
+      "buyer_tax_id": "0735561005662",
+      "buyer_address": "49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพราน จ.นครปฐม 73210",
+      "success": true
+    },
+    "cached_at": 1773920228.9296668
+  },
+  "b214c04250e2da3545bbad41a6317841": {
+    "filename": "17.02.2026_EXP-20260200019_TTSTH20260001515996PDF_VAT.pdf",
+    "filepath": "Y:\\Build321 บริษัท ว่านนาวา จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\Tiktok\\17.02.2026_EXP-20260200019_TTSTH20260001515996PDF_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Tax Invoice / Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: TTSTH20260001515996\nวันที่: 17/02/2026\nชื่อผู้ขาย: TikTok Shop (Thailand) Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105566214176\nที่อยู่ผู้ขาย: No. 1 Park Silom Building, 9th-10th Floors, Convent Road, Silom Sub-district, Bangrak District, Bangkok, 10500\nชื่อผู้ซื้อ: บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพราน จ.นครปฐม 73210 Sam Phran District Nakhon Pathom Province The Kingdom of Thailand\nยอดรวมก่อนภาษี: 127.50\nภาษีมูลค่าเพิ่ม: 8.93\nยอดรวมสุทธิ: 136.43\n\nรายการสินค้า/บริการ:\n  - Commerce Growth Fee: 54.57\n  - TikTok Shop commission fee: 54.57\n  - Transaction fee: 27.29",
+      "raw_text_preview": "ประเภทเอกสาร: Tax Invoice / Receipt\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: TTSTH20260001515996\nวันที่: 17/02/2026\nชื่อผู้ขาย: TikTok Shop (Thailand) Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105566214176\nที่อยู่ผู้ขาย: No. 1 Park Silom Building, 9th-10th Floors, Convent Road, Silom Sub-district, Bangrak District, Bangkok, 10500\nชื่อผู้ซื้อ: บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพร",
+      "company_name": "TikTok Shop (Thailand) Ltd.",
+      "tax_id": "0105566214176",
+      "branch": "00000",
+      "date": "17/02/2026",
+      "document_number": "TTSTH20260001515996",
+      "reference_number": "EXP-20260200019",
+      "document_status": "",
+      "amount_before_vat": 127.5,
+      "vat_amount": 8.93,
+      "total_amount": 136.43,
+      "document_type": "Tax Invoice / Receipt",
+      "items": [
+        {
+          "จำนวนเงิน": "54.57",
+          "ราคาต่อหน่วย": "51.00",
+          "รายการ": "Commerce Growth Fee"
+        },
+        {
+          "จำนวนเงิน": "54.57",
+          "ราคาต่อหน่วย": "51.00",
+          "รายการ": "TikTok Shop commission fee"
+        },
+        {
+          "จำนวนเงิน": "27.29",
+          "ราคาต่อหน่วย": "25.50",
+          "รายการ": "Transaction fee"
+        }
+      ],
+      "buyer_name": "บริษัท ว่านนาวา จำกัด",
+      "buyer_tax_id": "0735561005662",
+      "buyer_address": "49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพราน จ.นครปฐม 73210 Sam Phran District Nakhon Pathom Province The Kingdom of Thailand",
+      "success": true
+    },
+    "cached_at": 1773920240.2115045
+  },
+  "38905f08c4ec1a79508a6de199d08a44": {
+    "filename": "24.02.2026_EXP-20260200020_TTSTH20260001697926PDF_VAT.pdf",
+    "filepath": "Y:\\Build321 บริษัท ว่านนาวา จำกัด รายเดือน\\บัญชี\\002-รายจ่าย\\PV\\2026\\2026-02\\VAT\\Tiktok\\24.02.2026_EXP-20260200020_TTSTH20260001697926PDF_VAT.pdf",
+    "data": {
+      "raw_text": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: TTSTH20260001697926\nวันที่: 24/02/2026\nชื่อผู้ขาย: TikTok Shop (Thailand) Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105566214176\nที่อยู่ผู้ขาย: No. 1 Park Silom Building, 9th-10th Floors, Convent Road, Silom Sub-district, Bangrak District, Bangkok, 10500\nชื่อผู้ซื้อ: บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพราน จ.นครปฐม 73210 Sam Phran District Nakhon Pathom Province The Kingdom of Thailand\nยอดรวมก่อนภาษี: 127.50\nภาษีมูลค่าเพิ่ม: 8.93\nยอดรวมสุทธิ: 136.43\n\nรายการสินค้า/บริการ:\n  - Commerce Growth Fee: 54.57\n  - TikTok Shop commission fee: 54.57\n  - Transaction fee: 27.29",
+      "raw_text_preview": "ประเภทเอกสาร: Receipt/Tax Invoice\nสถานะเอกสาร: ต้นฉบับ\nเลขที่ใบกำกับภาษี: TTSTH20260001697926\nวันที่: 24/02/2026\nชื่อผู้ขาย: TikTok Shop (Thailand) Ltd.\nเลขประจำตัวผู้เสียภาษี - ผู้ขาย: 0105566214176\nที่อยู่ผู้ขาย: No. 1 Park Silom Building, 9th-10th Floors, Convent Road, Silom Sub-district, Bangrak District, Bangkok, 10500\nชื่อผู้ซื้อ: บริษัท ว่านนาวา จำกัด\nเลขประจำตัวผู้เสียภาษี - ผู้ซื้อ: 0735561005662\nที่อยู่ผู้ซื้อ: 49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพราน",
+      "company_name": "TikTok Shop (Thailand) Ltd.",
+      "tax_id": "0105566214176",
+      "branch": "00000",
+      "date": "24/02/2026",
+      "document_number": "TTSTH20260001697926",
+      "reference_number": "EXP-20260200020",
+      "document_status": "",
+      "amount_before_vat": 127.5,
+      "vat_amount": 8.93,
+      "total_amount": 136.43,
+      "document_type": "Receipt/Tax Invoice",
+      "items": [
+        {
+          "จำนวนเงิน": "54.57",
+          "ราคาต่อหน่วย": "51.00",
+          "รายการ": "Commerce Growth Fee"
+        },
+        {
+          "จำนวนเงิน": "54.57",
+          "ราคาต่อหน่วย": "51.00",
+          "รายการ": "TikTok Shop commission fee"
+        },
+        {
+          "จำนวนเงิน": "27.29",
+          "ราคาต่อหน่วย": "25.50",
+          "รายการ": "Transaction fee"
+        }
+      ],
+      "buyer_name": "บริษัท ว่านนาวา จำกัด",
+      "buyer_tax_id": "0735561005662",
+      "buyer_address": "49/12 หมู่ 1 ถนนพุทธมณฑลสาย 4 หมู่บ้านดารารัศมี ซอย 2 ต.บางกระทึก อ.สามพราน จ.นครปฐม 73210 Sam Phran District Nakhon Pathom Province The Kingdom of Thailand",
+      "success": true
+    },
+    "cached_at": 1773920265.3964467
   }
 }

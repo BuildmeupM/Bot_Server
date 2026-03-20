@@ -69665,5 +69665,235 @@
     "user_agent": null,
     "ip_address": null,
     "sent_time_old": "2026-03-13 16:37:11"
+  },
+  {
+    "id": "8e8313d0-6325-4dd2-b2b7-7e22e862fb6c",
+    "status": "success",
+    "sent_time": "2026-03-19T18:28:32.041189",
+    "created_at": "2026-03-19T18:28:32.041189",
+    "pattern_name": "309 เอ็นทีเจอินเตอร์",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "ntjintertrade@gmail.com"
+    ],
+    "cc_emails": [
+      "Nitirak.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท เอ็นทีเจอินเตอร์ จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท เอ็นทีเจอินเตอร์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 137,708.95 บาท\nกรุณาชำระภายในวันที่ 23/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ภพ.30 เดือน 02.2026.pdf",
+        "size": 548813,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 02.2026.pdf",
+        "size": 174067,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ เดือน 02.2026.pdf",
+        "size": 352115,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย เดือน 02.2026.pdf",
+        "size": 372297,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-19T11-28-23.pdf",
+        "size": 108841,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 1556133,
+    "line_enabled": false,
+    "line_user_id": "U336ed2e6fffe3dd53379de9193410def",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท เอ็นทีเจอินเตอร์ จำกัด",
+      "tax_id": "01955-62002-87-5",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "137,708.95"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-19T11-28-23.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-03-19 18:28:32"
+  },
+  {
+    "id": "3ca5c636-2c21-4b31-a4d1-5bdd828d550f",
+    "status": "success",
+    "sent_time": "2026-03-19T18:28:33.575729",
+    "created_at": "2026-03-19T18:28:33.575729",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 02/2026\nให้ทางอีเมล ntjintertrade@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 02/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 137,708.95 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-19 18:28:33"
+  },
+  {
+    "id": "89231ed7-7c49-4089-8cb1-70acecff35a4",
+    "status": "success",
+    "sent_time": "2026-03-19T18:34:35.988454",
+    "created_at": "2026-03-19T18:34:35.988454",
+    "pattern_name": "369 มีพรอนันต์",
+    "signature_name": "ชมพู่",
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [
+      "MeePornAnan@gmail.com"
+    ],
+    "cc_emails": [
+      "Kanlayanee.P@bmuc.co.th"
+    ],
+    "bcc_emails": [],
+    "subject": "ส่งเอกสารยื่นแบบภาษีมูลค่าเพิ่ม บริษัท มีพรอนันต์ จำกัด ประจำเดือน 2/2026",
+    "body": "เรียน ผู้ที่เกี่ยวข้องทุกท่าน\nบริษัท มีพรอนันต์ จำกัด\n\nขออนุญาตส่งเอกสารประกอบการยื่นแบบภาษีประจำเดือน 2/2026 โดยมีรายการดังต่อไปนี้\n\n- แบบ ภ.พ.30\n- รายงานภาษีซื้อ และ ภาษีขาย\n- ใบชำระเงิน (Pay-in) ภาษี\n- สรุปภาษี ประจำเดือน\n\nยอดที่ต้องชำระมีดังนี้\n- ยอดชำระภาษีกรมสรรพากร เดือน 2/2026: จำนวน 8,731.61 บาท\nกรุณาชำระภายในวันที่ 23/03/2026",
+    "body_html": null,
+    "attachments": [
+      {
+        "filename": "Pay-in ชำระภาษี 02.2026 (ภพ.30).pdf",
+        "size": 545691,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "แบบ ภ.พ.30 เดือน 02.2026.pdf",
+        "size": 176364,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีซื้อ_บริษัท มีพรอนันต์ จำกัด_PP30-202602_20260319-160230.xlsx",
+        "size": 9448,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "is_zipped": false
+      },
+      {
+        "filename": "รายงานภาษีขาย_บริษัท มีพรอนันต์ จำกัด_PP30-202602_20260319-160225.xlsx",
+        "size": 36908,
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "is_zipped": false
+      },
+      {
+        "filename": "สรุปภาษี_2026-03-19T11-34-28.pdf",
+        "size": 107959,
+        "content_type": "application/pdf",
+        "is_zipped": false
+      }
+    ],
+    "attachment_count": 5,
+    "total_size": 876370,
+    "line_enabled": false,
+    "line_user_id": "Ua8dfb8769b1c83d5ba73a78987b3d627",
+    "line_message": null,
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": true,
+    "summary_data": {
+      "title": "สรุปข้อมูล",
+      "company_name": "บริษัท มีพรอนันต์ จำกัด",
+      "tax_id": "02055-60040-50-7",
+      "period": "ประจำเดือน 2/2026",
+      "data": [
+        {
+          "แบบภาษี": "ภ.พ.30",
+          "จำนวนเงิน": "8,731.61"
+        }
+      ],
+      "filename": "สรุปภาษี_2026-03-19T11-34-28.pdf"
+    },
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0",
+    "ip_address": "192.168.1.120",
+    "sent_time_old": "2026-03-19 18:34:35"
+  },
+  {
+    "id": "53482d90-d18f-47af-8a78-e6f5ce1b3130",
+    "status": "success",
+    "sent_time": "2026-03-19T18:34:37.302912",
+    "created_at": "2026-03-19T18:34:37.302912",
+    "pattern_name": null,
+    "signature_name": null,
+    "from_email": "Deknoi.D@bmuc.co.th",
+    "to_emails": [],
+    "cc_emails": [],
+    "bcc_emails": [],
+    "subject": null,
+    "body": null,
+    "body_html": null,
+    "attachments": [],
+    "attachment_count": 0,
+    "total_size": 0,
+    "line_enabled": false,
+    "line_user_id": null,
+    "line_message": "📢 แจ้งเตือนข้อมูลบัญชี\n\nสวัสดีค่ะ  ส่งเอกสารการยื่นภาษี  เดือน 02/2026\nให้ทางอีเมล MeePornAnan@gmail.com แล้วนะคะ\n\nสำหรับภาษีมูลค่าเพิ่ม (ภ.พ.30) ประจำเดือน 02/2026\n\nยอดกรมสรรพากรที่ต้องชำระ 8,731.61 บาท (ยื่นปกติประจำเดือน)\n\nรบกวนทางลูกค้าชำระภายในวันที่ 23/03/2026\nไม่เกินเวลา 20:00 น. นะคะ\nหากทำการชำระเรียบร้อยแล้ว\nรบกวนส่งสลิปการโอนกลับมาเพื่อคอนเฟิร์มด้วยนะคะ\nขอบคุณค่ะ",
+    "line_sent": false,
+    "line_sent_time": null,
+    "summary_pdf_generated": false,
+    "summary_data": null,
+    "error_message": null,
+    "error_code": null,
+    "retry_count": 0,
+    "smtp_server": "smtppro.zoho.com",
+    "smtp_port": 587,
+    "smtp_use_tls": true,
+    "user_agent": null,
+    "ip_address": null,
+    "sent_time_old": "2026-03-19 18:34:37"
   }
 ]
