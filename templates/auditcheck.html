@@ -4735,6 +4735,15 @@
                     html += `</button>`;
 
                     html += `</div>`;
+
+                    // ปุ่ม "ดาวน์โหลดเทมเพลต Excel"
+                    html += `<div style="margin-top: 12px;">`;
+                    html += `<button onclick="downloadExcelTemplate()" class="btn" style="width: 100%; background: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%); display: flex; align-items: center; justify-content: center; gap: 8px;">`;
+                    html += `📥 ดาวน์โหลดเทมเพลต Excel`;
+                    html += `<span style="font-size: 0.85em; opacity: 0.9;"> — สำหรับกรอกข้อมูลด้วยตัวเอง</span>`;
+                    html += `</button>`;
+                    html += `</div>`;
+
                     html += `</div>`;
 
                     html += `</div>`;
@@ -9880,6 +9889,15 @@
             html += `</button>`;
 
             html += `</div>`;
+
+            // ปุ่ม "ดาวน์โหลดเทมเพลต Excel"
+            html += `<div style="margin-top: 12px;">`;
+            html += `<button onclick="downloadExcelTemplate()" class="btn" style="width: 100%; background: linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%); display: flex; align-items: center; justify-content: center; gap: 8px;">`;
+            html += `📥 ดาวน์โหลดเทมเพลต Excel`;
+            html += `<span style="font-size: 0.85em; opacity: 0.9;"> — สำหรับกรอกข้อมูลด้วยตัวเอง</span>`;
+            html += `</button>`;
+            html += `</div>`;
+
             html += `</div>`;
             html += `</div>`;
 
@@ -10452,6 +10470,17 @@
                 status.className = 'step-status error';
                 details.innerHTML = `❌ เกิดข้อผิดพลาด: ${error.message}`;
             }
+        }
+
+        function downloadExcelTemplate() {
+            // ดาวน์โหลดเทมเพลต Excel สำหรับกรอกข้อมูล OCR
+            const link = document.createElement('a');
+            link.href = '/api/auditcheck/download-excel-template';
+            link.download = 'Invoice_Data_OCR_Template.xlsx';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('success', '📥 กำลังดาวน์โหลดเทมเพลต Excel...');
         }
 
         function uploadExcelForStep4(taxMonth, company) {

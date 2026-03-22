@@ -17980,6 +17980,99 @@ def cancel_ocr_queue(queue_id: str):
         }), 500
 
 
+@app.route('/api/auditcheck/download-excel-template', methods=['GET'])
+def download_excel_template():
+    """ดาวน์โหลดเทมเพลตไฟล์ Excel สำหรับกรอกข้อมูล OCR"""
+    try:
+        import openpyxl
+        from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+        from io import BytesIO
+        
+        wb = openpyxl.Workbook()
+        ws = wb.active
+        ws.title = "Invoice Data OCR"
+        
+        # กำหนด header columns ตามที่ระบบอ่าน
+        headers = [
+            'เลขที่เอกสาร',
+            'วันที่',
+            'ชื่อบริษัท',
+            'เลขประจำตัวผู้เสียภาษี',
+            'สาขา',
+            'ยอดก่อนภาษีมูลค่าเพิ่ม',
+            'ยอดภาษีมูลค่าเพิ่ม',
+            'ยอดหลังบวกภาษีมูลค่าเพิ่ม',
+            'ชื่อผู้ซื้อ',
+            'เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ',
+            'ประเภทเอกสาร',
+            'สถานะเอกสาร',
+        ]
+        
+        # สไตล์ header
+        header_font = Font(name='TH SarabunPSK', size=14, bold=True, color='FFFFFF')
+        header_fill = PatternFill(start_color='1E3A5F', end_color='1E3A5F', fill_type='solid')
+        header_alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
+        thin_border = Border(
+            left=Side(style='thin', color='334155'),
+            right=Side(style='thin', color='334155'),
+            top=Side(style='thin', color='334155'),
+            bottom=Side(style='thin', color='334155')
+        )
+        
+        # เขียน header
+        for col_idx, header in enumerate(headers, 1):
+            cell = ws.cell(row=1, column=col_idx, value=header)
+            cell.font = header_font
+            cell.fill = header_fill
+            cell.alignment = header_alignment
+            cell.border = thin_border
+        
+        # ปรับขนาดคอลัมน์
+        column_widths = {
+            1: 20,   # เลขที่เอกสาร
+            2: 15,   # วันที่
+            3: 35,   # ชื่อบริษัท
+            4: 22,   # เลขประจำตัวผู้เสียภาษี
+            5: 12,   # สาขา
+            6: 25,   # ยอดก่อนภาษี
+            7: 22,   # ยอดภาษี
+            8: 28,   # ยอดหลังบวกภาษี
+            9: 35,   # ชื่อผู้ซื้อ
+            10: 28,  # เลขประจำตัวผู้เสียภาษี - ผู้ซื้อ
+            11: 18,  # ประเภทเอกสาร
+            12: 18,  # สถานะเอกสาร
+        }
+        
+        for col_idx, width in column_widths.items():
+            col_letter = openpyxl.utils.get_column_letter(col_idx)
+            ws.column_dimensions[col_letter].width = width
+        
+        # ตั้งค่าแถว header ให้สูงขึ้น
+        ws.row_dimensions[1].height = 30
+        
+        # Freeze pane (ล็อค header)
+        ws.freeze_panes = 'A2'
+        
+        # บันทึกลง memory
+        output = BytesIO()
+        wb.save(output)
+        output.seek(0)
+        
+        return send_file(
+            output,
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            as_attachment=True,
+            download_name='Invoice_Data_OCR_Template.xlsx'
+        )
+    
+    except Exception as e:
+        logger.error(f"❌ เกิดข้อผิดพลาดในการสร้างเทมเพลต Excel: {e}", exc_info=True)
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+
 @app.route('/api/auditcheck/upload-excel', methods=['POST'])
 def upload_excel_for_audit():
     """อัปโหลดไฟล์ Excel และบันทึกในโฟลเดอร์ VAT"""
